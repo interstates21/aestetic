@@ -30,6 +30,12 @@ typedef struct s_rgb {
 	int a;
 }				t_rgb;
 
+typedef	struct s_v2f
+{
+	double		x;
+	double		y;
+}				t_v2f;
+
 typedef enum { false, true } bool;
 typedef struct s_sdl
 {
@@ -44,10 +50,15 @@ typedef struct s_sdl
 
 typedef	struct s_player
 {
-	int		pos_x;
-	int		pos_y;
-	int		dix_x;
-	int		dir_y;
+	t_v2f	pos;
+	t_v2f	dir;
+	t_v2f	cam;
+	double	move_speed;
+	double	rot_speed;
+	bool	move_forv;
+	bool	move_back;
+	bool	rot_left;
+	bool	rot_right;
 }			t_player;
 
 
@@ -58,6 +69,8 @@ typedef	struct s_scene
 	int			map_height;
 	t_player	player;
 }				t_scene;
+
+
 
 # include "functions.h"
 

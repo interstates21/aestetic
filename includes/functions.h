@@ -10,7 +10,7 @@ void    event_hooks(t_sdl *sdl, bool *end);
 
 t_rgb   new_rgb(int r, int g, int b);
 
-
+t_v2f   new_v2f(double x, double y);
 
 
 
@@ -20,3 +20,6 @@ void    print_err(const char *err);
 
 void	parse_manager(t_scene *scene, char *filename);
 void    print_map(t_scene *scene);
+
+void    init_contols(t_scene *scene);
+void    apply_controls(t_player *player);

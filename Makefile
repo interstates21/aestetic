@@ -1,6 +1,6 @@
 NAME = doom
 CC = clang
-FILES = main parse console_output color_math sdl_events sdl_helpers sdl_init vector_math
+FILES = main parse console_output color_math controls_listen controls_apply controls_init sdl_helpers sdl_init vector_math
 LIBFT_DIR = libft/
 SRC = $(addprefix src/, $(addsuffix .c, $(FILES)))
 OBJ = $(addprefix obj/, $(addsuffix .o, $(FILES)))

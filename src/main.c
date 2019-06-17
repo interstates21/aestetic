@@ -27,21 +27,26 @@ Uint32    *get_screen_pixels(void) {
     return (pixels);
 }
 
+
 void    run(t_sdl *sdl, t_scene *scene)
 {
     bool        end;
 
     print_map(scene);
+    init_contols(scene);
     end = false;
     while (!end)
     {
+        listen_controls();
+        apply_controls(&(scene->player));
         render(sdl);
         SDL_UpdateTexture(sdl->texture, NULL, sdl->pixels, WIDTH * sizeof(Uint32));
         SDL_RenderClear(sdl->renderer);
         SDL_RenderCopy(sdl->renderer, sdl->texture, NULL, NULL);
         SDL_RenderPresent(sdl->renderer);
         SDL_WaitEvent(&(sdl->event));
-        event_hooks(sdl, &end);
+        if (sdl->event.type == SDL_QUIT)
+            end = true;
     }
 }
 
