@@ -9,9 +9,11 @@ void       render(t_sdl *sdl)
     x = 0;
     while(x < WIDTH)
     {
-        sdl_put_pix(&(sdl->pixels), x, 0, 0x0000ff);
         sdl_put_pix(&(sdl->pixels), x, 1, 0x0000ff);
         sdl_put_pix(&(sdl->pixels), x, 2, 0x0000ff);
+        sdl_put_pix(&(sdl->pixels), x, 3, 0x0000ff);
+        sdl_put_pix(&(sdl->pixels), x, 4, 0x0000ff);
+        sdl_put_pix(&(sdl->pixels), x, 5, 0x00ffff);
         x++;
     }
 }
@@ -33,6 +35,7 @@ void    run(t_sdl *sdl, t_scene *scene)
     end = false;
     while (!end)
     {
+        render(sdl);
         SDL_UpdateTexture(sdl->texture, NULL, sdl->pixels, WIDTH * sizeof(Uint32));
         SDL_RenderClear(sdl->renderer);
         SDL_RenderCopy(sdl->renderer, sdl->texture, NULL, NULL);

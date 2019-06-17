@@ -11,5 +11,5 @@ void    sdl_clean(t_sdl *sdl)
 
 void sdl_put_pix(Uint32 **pixels, int x, int y, Uint32 color)
 {
-    (*pixels)[y * 640 + x] = color;
+    (*pixels)[y * WIDTH + x] = color;
 }
