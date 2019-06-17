@@ -3,6 +3,7 @@
 
 # include <time.h>
 # include <fcntl.h>
+# include <stdio.h>
 # include <SDL2/SDL.h>
 # include <SDL2/SDL_render.h>
 # include "libft.h"
@@ -41,6 +42,22 @@ typedef struct s_sdl
 	Uint32		*pixels;
 }				t_sdl;
 
+typedef	struct s_player
+{
+	int		pos_x;
+	int		pos_y;
+	int		dix_x;
+	int		dir_y;
+}			t_player;
+
+
+typedef	struct s_scene
+{
+	char		**map;
+	int			map_width;
+	int			map_height;
+	t_player	player;
+}				t_scene;
 
 # include "functions.h"
 

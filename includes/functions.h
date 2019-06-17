@@ -15,3 +15,8 @@ t_rgb   new_rgb(int r, int g, int b);
 
 
 void    print_err(const char *err);
+
+
+
+void	parse_manager(t_scene *scene, char *filename);
+void    print_map(t_scene *scene);

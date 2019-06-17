@@ -2,6 +2,20 @@
 
 // todo: resize window
 
+void       render(t_sdl *sdl)
+{
+    int x;
+
+    x = 0;
+    while(x < WIDTH)
+    {
+        sdl_put_pix(&(sdl->pixels), x, 0, 0x0000ff);
+        sdl_put_pix(&(sdl->pixels), x, 1, 0x0000ff);
+        sdl_put_pix(&(sdl->pixels), x, 2, 0x0000ff);
+        x++;
+    }
+}
+
 Uint32    *get_screen_pixels(void) {
     Uint32 *pixels;
 
@@ -11,10 +25,11 @@ Uint32    *get_screen_pixels(void) {
     return (pixels);
 }
 
-void    run(t_sdl *sdl)
+void    run(t_sdl *sdl, t_scene *scene)
 {
     bool        end;
 
+    print_map(scene);
     end = false;
     while (!end)
     {
@@ -31,28 +46,23 @@ bool    validate_arg(char **argv)
 {
     if (argv)
         return (true);
-    return (false);
-}
-
-bool    parse_map(void)
-{
     return (true);
 }
 
 int     main(int argc, char **argv)
 {
     t_sdl   sdl;
+    t_scene scene;
 
     if (argc != 2)
         print_err("Usage: ./aestetic [mapname]");
     if (!validate_arg(argv))
         print_err("Wrong arg.");
-    if (!parse_map())
-        print_err("Parse failed.");
+    parse_manager(&scene, argv[1]);
     sdl_init(&sdl);
     sdl_init_renderer(&sdl);
     sdl.pixels = get_screen_pixels();
-    run(&sdl);
+    run(&sdl, &scene);
     sdl_clean(&sdl); 
     return 0;
 }
