@@ -1,25 +1,17 @@
 #include "alt.h"
 
-void    event_hooks(t_sdl *sdl, bool *end)
+# define UP (state[SDL_SCANCODE_UP] && state[SDL_SCANCODE_W])
+# define DOWN (state[SDL_SCANCODE_DOWN] && state[SDL_SCANCODE_S])
+# define LEFT (state[SDL_SCANCODE_LEFT] && state[SDL_SCANCODE_A])
+# define RIGHT (state[SDL_SCANCODE_RIGHT] && state[SDL_SCANCODE_D])
+
+void    listen_controls(t_sdl *sdl)
 {
-     if (sdl->event.type == SDL_LEFT)
-            *end = true;
+    const Uint8 *state;
+
+    state =  SDL_GetKeyboardState(NULL);
+    sdl->player->move_forw = UP ? true : false
+    sdl->player->move_back = DOWN ? true : false
+    sdl->player->rot_right = RIGHT ? true : false
+    sdl->player->rot_left = LEFT ? true : false
 }
-
-
-// int				key_listener(int keycode, t_world *e)
-// {
-// 	if (keycode == 53)
-// 		exit(1);
-// 	if (keycode == K_TAB)
-// 		e->color_mode = (e->color_mode + 1) % 2;
-// 	if (keycode == K_UP)
-// 		e->move_forw = (e->move_forw + 1) % 2;
-// 	if (keycode == K_DOWN)
-// 		e->move_back = (e->move_back + 1) % 2;
-// 	if (keycode == K_RIGHT)
-// 		e->rot_right = (e->rot_right + 1) % 2;
-// 	if (keycode == K_LEFT)
-// 		e->rot_left = (e->rot_left + 1) % 2;
-// 	return (0);
-// }

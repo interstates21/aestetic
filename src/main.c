@@ -2,21 +2,6 @@
 
 // todo: resize window
 
-void       render(t_sdl *sdl)
-{
-    int x;
-
-    x = 0;
-    while(x < WIDTH)
-    {
-        sdl_put_pix(&(sdl->pixels), x, 1, 0x0000ff);
-        sdl_put_pix(&(sdl->pixels), x, 2, 0x0000ff);
-        sdl_put_pix(&(sdl->pixels), x, 3, 0x0000ff);
-        sdl_put_pix(&(sdl->pixels), x, 4, 0x0000ff);
-        sdl_put_pix(&(sdl->pixels), x, 5, 0x00ffff);
-        x++;
-    }
-}
 
 Uint32    *get_screen_pixels(void) {
     Uint32 *pixels;
@@ -33,6 +18,7 @@ void    run(t_sdl *sdl, t_scene *scene)
     bool        end;
 
     print_map(scene);
+    init_render(scene);
     init_contols(scene);
     end = false;
     while (!end)
@@ -40,9 +26,15 @@ void    run(t_sdl *sdl, t_scene *scene)
         listen_controls();
         apply_controls(&(scene->player));
         render(sdl);
+        /* Fill our ScreenTexture with the Pixels we have put */
+        /* Texture are used for performance */
         SDL_UpdateTexture(sdl->texture, NULL, sdl->pixels, WIDTH * sizeof(Uint32));
+          /* Clear Window */
         SDL_RenderClear(sdl->renderer);
+          /* Put Image(Texture) to Window */
+          /* TODO: clear texture */
         SDL_RenderCopy(sdl->renderer, sdl->texture, NULL, NULL);
+          /* Render Frame */
         SDL_RenderPresent(sdl->renderer);
         SDL_WaitEvent(&(sdl->event));
         if (sdl->event.type == SDL_QUIT)

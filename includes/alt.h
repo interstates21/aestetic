@@ -18,6 +18,8 @@
 
 #endif
 
+# include "macros.h"
+
 # define MAP_WIDTH 5
 # define MAP_HEIGHT 6
 # define WIDTH 1200
@@ -36,6 +38,23 @@ typedef	struct s_v2f
 	double		y;
 }				t_v2f;
 
+typedef	struct s_v2
+{
+	int			x;
+	int			y;
+}				t_v2;
+
+typedef struct	s_ray {
+	t_v2f	dir;
+	t_v2	move_side;
+	t_v2    cell;
+    t_v2f   dist;
+    t_v2f   dist_delta;
+    char    hit_side;
+    bool    is_hit;
+    double  dist_hit;
+}				t_ray
+
 typedef enum { false, true } bool;
 typedef struct s_sdl
 {
@@ -52,7 +71,7 @@ typedef	struct s_player
 {
 	t_v2f	pos;
 	t_v2f	dir;
-	t_v2f	cam;
+	t_v2f	view;
 	double	move_speed;
 	double	rot_speed;
 	bool	move_forv;

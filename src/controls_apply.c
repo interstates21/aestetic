@@ -24,9 +24,9 @@ static void    apply_move_forvard(t_player *player, char **map)
     pos_y = player->pos.y;
     new_pos_x = pos_x + player.dir.x * player.move_speed;
     new_pos_y = pos_y + player.dir.y * player.move_speed;
-    if (map[(int)pos_y][(int)new_pos_x]) // EXISTS
+    if /* Exists */ (map[(int)pos_y][(int)new_pos_x])
     {
-        if (map[(int)pos_y][(int)new_pos_x] == '0')// IS WALKABLE
+        if /* Is walkable */ (map[(int)pos_y][(int)new_pos_x] == '0')
 		    player->pos.x = new_pos_x;
     }
     if (map[(int)new_pos_y][(int)pos_x])
