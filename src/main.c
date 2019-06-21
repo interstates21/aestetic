@@ -23,12 +23,11 @@ void    run(t_sdl *sdl, t_scene *scene)
     end = false;
     while (!end)
     {
-        listen_controls();
-        apply_controls(&(scene->player));
-        render(sdl);
+        listen_controls(&(scene->player));
+        apply_controls(&(scene->player), scene->map);
         /* Fill our ScreenTexture with the Pixels we have put */
         /* Texture are used for performance */
-        SDL_UpdateTexture(sdl->texture, NULL, sdl->pixels, WIDTH * sizeof(Uint32));
+        SDL_UpdateTexture(sdl->texture, NULL, scene->pixels, WIDTH * sizeof(Uint32));
           /* Clear Window */
         SDL_RenderClear(sdl->renderer);
           /* Put Image(Texture) to Window */
@@ -37,6 +36,7 @@ void    run(t_sdl *sdl, t_scene *scene)
           /* Render Frame */
         SDL_RenderPresent(sdl->renderer);
         SDL_WaitEvent(&(sdl->event));
+        render(scene);
         if (sdl->event.type == SDL_QUIT)
             end = true;
     }
@@ -61,7 +61,7 @@ int     main(int argc, char **argv)
     parse_manager(&scene, argv[1]);
     sdl_init(&sdl);
     sdl_init_renderer(&sdl);
-    sdl.pixels = get_screen_pixels();
+    scene.pixels = get_screen_pixels();
     run(&sdl, &scene);
     sdl_clean(&sdl); 
     return 0;

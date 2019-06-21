@@ -25,6 +25,8 @@
 # define WIDTH 1200
 # define HEIGHT 600
 
+typedef enum { false, true } bool;
+
 typedef struct s_rgb {
 	int r;
 	int g;
@@ -44,6 +46,19 @@ typedef	struct s_v2
 	int			y;
 }				t_v2;
 
+typedef	struct s_player
+{
+	t_v2f	pos;
+	t_v2f	dir;
+	t_v2f	view;
+	double	move_speed;
+	double	rot_speed;
+	bool	move_forw;
+	bool	move_back;
+	bool	rot_left;
+	bool	rot_right;
+}			t_player;
+
 typedef struct	s_ray {
 	t_v2f	dir;
 	t_v2	move_side;
@@ -53,9 +68,18 @@ typedef struct	s_ray {
     char    hit_side;
     bool    is_hit;
     double  dist_hit;
-}				t_ray
+}				t_ray;
 
-typedef enum { false, true } bool;
+
+typedef	struct s_scene
+{
+	Uint32		*pixels;
+	char		**map;
+	int			map_width;
+	int			map_height;
+	t_player	player;
+}				t_scene;
+
 typedef struct s_sdl
 {
 	SDL_Window	*window;
@@ -64,32 +88,7 @@ typedef struct s_sdl
 	SDL_Texture *texture;
 	SDL_Surface *surface;
 	SDL_Event	event;
-	Uint32		*pixels;
 }				t_sdl;
-
-typedef	struct s_player
-{
-	t_v2f	pos;
-	t_v2f	dir;
-	t_v2f	view;
-	double	move_speed;
-	double	rot_speed;
-	bool	move_forv;
-	bool	move_back;
-	bool	rot_left;
-	bool	rot_right;
-}			t_player;
-
-
-typedef	struct s_scene
-{
-	char		**map;
-	int			map_width;
-	int			map_height;
-	t_player	player;
-}				t_scene;
-
-
 
 # include "functions.h"
 

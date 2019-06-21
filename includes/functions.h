@@ -10,6 +10,9 @@ void    sdl_clean(t_sdl *sdl);
 t_rgb   new_rgb(int r, int g, int b);
 
 t_v2f   new_v2f(double x, double y);
+t_v2    new_v2(int x, int y);
+
+void	rotate_z(t_v2f *p, float teta);
 
 
 
@@ -20,9 +23,10 @@ void	parse_manager(t_scene *scene, char *filename);
 void    print_map(t_scene *scene);
 
 void    init_contols(t_scene *scene);
-void    apply_controls(t_player *player);
-void    listen_controls(t_sdl *sdl);
+void    apply_controls(t_player *player, char **map);
+void    listen_controls(t_player *player);
 
 void    init_render(t_scene *scene);
-void    render_line(t_scene *scene, int x, t_ray *ray);
-void    cast_ray(t_ray *ray);
+void    render(t_scene *scene);
+void    render_line(t_scene *scene, t_ray *ray, int x);
+void    cast_ray(t_scene *scene, t_ray *ray, int x);

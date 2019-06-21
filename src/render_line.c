@@ -13,9 +13,9 @@ void            line(Uint32 **pixels, int x, int head, int foot)
     }
 }
 
-void    render_line(t_scene *scene, int x, t_ray *ray)
+void    render_line(t_scene *scene, t_ray *ray, int x)
 {
-    int line_height = (int)(HEIGHT / ray->dist_hit)
+    int line_height = (int)(HEIGHT / ray->dist_hit);
     int head = -line_height / 2 + HEIGHT / 2;
     int foot = line_height / 2 + HEIGHT / 2;
 
@@ -27,5 +27,5 @@ void    render_line(t_scene *scene, int x, t_ray *ray)
     if (ray->hit_side == 'e')
         color /= 2;
 
-    line(&(scene->pixels), x, head, foot, color);
+    line(&(scene->pixels), x, head, foot);
 }

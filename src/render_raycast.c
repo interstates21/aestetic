@@ -12,12 +12,12 @@ ray:
     double  dist_hit;
 */
 
-bool       is_wall(t_v2 pos)
+bool       is_wall(char **map, t_v2 pos)
 {
-    return (map[pos.x] && map[pos.x][pos.y]);
+    return (map[pos.x] && map[pos.x][pos.y] != '0');
 }
 
-void        cast_ray(t_scene *scene, t_ray *ray)
+void        cast_ray(t_scene *scene, t_ray *ray, int x)
 {
     ray->is_hit = false;
 
@@ -28,21 +28,21 @@ void        cast_ray(t_scene *scene, t_ray *ray)
         {
             ray->dist.x += ray->dist_delta.x;
             ray->cell.x += ray->move_side.x;
-            ray->side = 'e';
+            ray->hit_side = 'e';
         }
         else
         {
             ray->dist.y += ray->dist_delta.y;
             ray->cell.y += ray->move_side.y;
-            ray->side = 'w';
+            ray->hit_side = 'w';
         }
-        ray->is_hit = is_wall(ray->cell);
+        ray->is_hit = is_wall(scene->map, ray->cell);
     }
 
     /* Either X or Y dist. Y in the world coordinate frame is X in a WallCell frame */
-    ray->dist_hit = ray->side == 'e'
-    ? (cell_x - scene->player->pos.x + (1 - ray->move_dir.x) / 2) / ray->dir.x
-    : (cell_y - scene->player->pos.y + (1 - ray->move_dir.y) / 2) / ray->dir.y;
+    ray->dist_hit = ray->hit_side == 'e'
+    ? (ray->cell.x - scene->player.pos.x + (1 - ray->move_side.x) / 2) / ray->dir.x
+    : (ray->cell.y - scene->player.pos.y + (1 - ray->move_side.y) / 2) / ray->dir.y;
 
-    render_line(scene, x, ray);
+    render_line(scene, ray, x );
 }

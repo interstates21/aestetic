@@ -2,14 +2,14 @@
 
 static void    apply_rot_left(t_player *player)
 {
-    player->cam = rotate_z(player->cam, player->rot_speed);
-	player->dir = rotate_z(player->dir, player->rot_speed);
+    rotate_z(&(player->view), player->rot_speed);
+	rotate_z(&(player->dir), player->rot_speed);
 }
 
 static void    apply_rot_right(t_player *player)
 {
-    player->cam = rotate_z(player->cam, -player->rot_speed);
-	player->dir = rotate_z(player->dir, -player->rot_speed);
+    rotate_z(&(player->view), -player->rot_speed);
+	rotate_z(&(player->dir), -player->rot_speed);
 }
 
 static void    apply_move_forvard(t_player *player, char **map)
@@ -22,8 +22,8 @@ static void    apply_move_forvard(t_player *player, char **map)
 
     pos_x = player->pos.x;
     pos_y = player->pos.y;
-    new_pos_x = pos_x + player.dir.x * player.move_speed;
-    new_pos_y = pos_y + player.dir.y * player.move_speed;
+    new_pos_x = pos_x + player->dir.x * player->move_speed;
+    new_pos_y = pos_y + player->dir.y * player->move_speed;
     if /* Exists */ (map[(int)pos_y][(int)new_pos_x])
     {
         if /* Is walkable */ (map[(int)pos_y][(int)new_pos_x] == '0')
@@ -36,7 +36,7 @@ static void    apply_move_forvard(t_player *player, char **map)
     }
 }
 
-static void    apply_move_back(t_player *player)
+static void    apply_move_back(t_player *player, char **map)
 {
     double  new_pos_x;
     double  new_pos_y;
@@ -46,8 +46,8 @@ static void    apply_move_back(t_player *player)
 
     pos_x = player->pos.x;
     pos_y = player->pos.y;
-    new_pos_x = pos_x - player.dir.x * player.move_speed;
-    new_pos_y = pos_y - player.dir.y * player.move_speed;
+    new_pos_x = pos_x - player->dir.x * player->move_speed;
+    new_pos_y = pos_y - player->dir.y * player->move_speed;
     if (map[(int)pos_y][(int)new_pos_x]) // EXISTS
     {
         if (map[(int)pos_y][(int)new_pos_x] == '0')// IS WALKABLE
