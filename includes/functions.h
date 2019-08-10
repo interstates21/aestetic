@@ -18,7 +18,7 @@ t_v2    new_v2(int x, int y);
 void	rotate_z(t_v2f *p, float teta);
 
 
-
+void init_textures(t_scene *scene);
 void    print_err(const char *err);
 
 

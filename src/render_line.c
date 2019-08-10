@@ -1,10 +1,10 @@
 #include "alt.h"
 #define NARROW_EYE_EFFECT 2 // normal - 2
 
-void            line(Uint32 **pixels, int x, int head, int foot, Uint32 color)
+void line(Uint32 **pixels, int x, int head, int foot, Uint32 color)
 {
 
-    int b = MAX(head, foot);  
+    int b = MAX(head, foot);
     int a = MIN(head, foot);
 
     while (a < b)
@@ -14,42 +14,48 @@ void            line(Uint32 **pixels, int x, int head, int foot, Uint32 color)
     }
 }
 
+void drawTexture(t_scene *scene, t_ray *ray, int x, int head, int foot, int line_height)
+{
+    double wall_x;
+    int pos_x = scene->player.pos.x;
+    int pos_y = scene->player.pos.y;
 
-// void            drawTexture() {
-//         double wallX;
-//     if (ray->hit_side == 'e')
-//         wallX = posY + ray->dist_hit * ray.dir.y;
-//       else
-//         wallX = posX + ray->dist_hit * ray.dir.x;
-//     wallX -= floor((wallX));
+    int b = MAX(head, foot);
+    int a = MIN(head, foot);
 
-//     for(int y = drawStart; y<drawEnd; y++)
-//       {
-//         int d = y * 256 - h * 128 + lineHeight * 128;  //256 and 128 factors to avoid floats
-//         // TODO: avoid the division to speed this up
-//         int texY = ((d * texHeight) / lineHeight) / 256;
-//         Uint32 color = texture[texNum][texHeight * texY + texX];
-//         //make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
-//         if(side == 1) color = (color >> 1) & 8355711;
-//         buffer[y][x] = color;
-//       }
-//     }
-// }
-// Uint32  chooseColor() {
+    if (ray->hit_side == 'e')
+        wall_x = pos_y + ray->dist_hit * ray->dir.y;
+    else
+        wall_x = pos_x + ray->dist_hit * ray->dir.x;
+    wall_x -= floor((wall_x));
 
-// }
+    int tex_x = (int)(wall_x * (double)(scene->tex_width));
+    if (ray->hit_side == 'e' && ray->dir.x > 0)
+        tex_x = scene->tex_width - tex_x - 1;
+    if (ray->hit_side == 1 && ray->dir.x < 0)
+        tex_x = scene->tex_width - tex_x - 1;
+    while (a < b)
+    {
+        int d = a * 256 - HEIGHT * 128 + line_height * 128; //256 and 128 factors to avoid floats
+                                                            // TODO: avoid the division to speed this up
+        int tex_y = ((d * scene->tex_height) / line_height) / 256;
+        Uint32 color = scene->textures[6][scene->tex_height * tex_y + tex_x];
+        //make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
+        // if (ray->hit_side == 'e')
+        //     color = (color >> 1) & 8355711;
+        a++;
+        sdl_put_pix(&(scene->pixels), x, a, color);
+    }
+}
 
-void    render_line(t_scene *scene, t_ray *ray, int x)
+void render_line(t_scene *scene, t_ray *ray, int x)
 {
     int line_height = (int)(HEIGHT / ray->dist_hit);
     int head = -line_height / NARROW_EYE_EFFECT + HEIGHT / 2;
     int foot = line_height / NARROW_EYE_EFFECT + HEIGHT / 2;
 
-
-
     head = CLAMP(head, 0, HEIGHT - 1);
     foot = CLAMP(foot, 0, HEIGHT - 1);
-
 
     Uint32 color = 0x0000ff;
     Uint32 foot_color = 0x000055;
@@ -57,7 +63,8 @@ void    render_line(t_scene *scene, t_ray *ray, int x)
     if (ray->hit_side == 'e')
         color /= 2;
 
-    line(&(scene->pixels), x, head, foot, color);
+    // line(&(scene->pixels), x, head, foot, color);
+    drawTexture(scene, ray, x, head, foot, line_height);
     line(&(scene->pixels), x, head, 0, head_color);
     line(&(scene->pixels), x, foot, HEIGHT, foot_color);
 }

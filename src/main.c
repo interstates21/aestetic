@@ -2,7 +2,6 @@
 
 // todo: resize window
 
-
 // SDL_Texture   *load_sur(SDL_Renderer *ren) {
 //     SDL_Texture *tex = NULL;
 
@@ -19,33 +18,31 @@
 //      return (tex);
 // }
 
-
-
-bool    validate_arg(char **argv)
+bool validate_arg(char **argv)
 {
     if (argv)
         return (true);
     return (true);
 }
 
-
-Uint32    *get_screen_pixels(void) {
+Uint32 *get_screen_pixels(void)
+{
     Uint32 *pixels;
 
-    if (!(pixels = (Uint32*)malloc(WIDTH * HEIGHT * sizeof(Uint32)))) // todo: make sure we don't need 1 extra memory cell
+    if (!(pixels = (Uint32 *)malloc(WIDTH * HEIGHT * sizeof(Uint32)))) // todo: make sure we don't need 1 extra memory cell
         print_err("allocating pixels failed.");
     memset(pixels, 0, WIDTH * HEIGHT * sizeof(Uint32));
     return (pixels);
 }
 
-
-void    run(t_sdl *sdl, t_scene *scene)
+void run(t_sdl *sdl, t_scene *scene)
 {
-    bool        end;
+    bool end;
 
     print_map(scene);
     init_render(scene);
     init_contols(scene);
+    init_textures(scene);
     end = false;
     while (!end)
     {
@@ -54,7 +51,7 @@ void    run(t_sdl *sdl, t_scene *scene)
         render(scene);
         draw_test_square(scene);
         SDL_UpdateTexture(sdl->texture, NULL, scene->pixels, WIDTH * sizeof(Uint32));
-    //   SDL_Texture *tex = load_sur(sdl->renderer);
+        //   SDL_Texture *tex = load_sur(sdl->renderer);
         // SDL_RenderCopy(sdl->renderer, tex, NULL, NULL);
         SDL_RenderCopy(sdl->renderer, sdl->texture, NULL, NULL);
         SDL_RenderPresent(sdl->renderer);
@@ -62,9 +59,9 @@ void    run(t_sdl *sdl, t_scene *scene)
         SDL_RenderClear(sdl->renderer);
     }
 }
-int     main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-    t_sdl   sdl;
+    t_sdl sdl;
     t_scene scene;
 
     if (argc != 2)
@@ -76,6 +73,6 @@ int     main(int argc, char **argv)
     sdl_init_renderer(&sdl);
     scene.pixels = get_screen_pixels();
     run(&sdl, &scene);
-    sdl_clean(&sdl); 
+    sdl_clean(&sdl);
     return 0;
 }

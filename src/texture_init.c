@@ -1,27 +1,44 @@
-#define texWidth 64
-#define texHeight 64
+#include "alt.h"
 
-void init_texture() {
+#define TEX_WIDTH 64
+#define TEX_HEIGHT 64
+#define tex_len 8
 
-}
+void init_textures(t_scene *scene)
+{
+  int x;
+  int y;
+  int len;
 
-void test_texture() {
-
-    Uint32 texture[HEIGHT][WIDTH][8];
-for(int x = 0; x < texWidth; x++)
-  for(int y = 0; y < texHeight; y++)
+  len = 0;
+  scene->textures = (Uint32 **)malloc(sizeof(Uint32 *) * tex_len);
+  while (len < tex_len)
   {
-    int xorcolor = (x * 256 / texWidth) ^ (y * 256 / texHeight);
-    //int xcolor = x * 256 / texWidth;
-    int ycolor = y * 256 / texHeight;
-    int xycolor = y * 128 / texHeight + x * 128 / texWidth;
-    texture[0][texWidth * y + x] = 65536 * 254 * (x != y && x != texWidth - y); //flat red texture with black cross
-    texture[1][texWidth * y + x] = xycolor + 256 * xycolor + 65536 * xycolor; //sloped greyscale
-    texture[2][texWidth * y + x] = 256 * xycolor + 65536 * xycolor; //sloped yellow gradient
-    texture[3][texWidth * y + x] = xorcolor + 256 * xorcolor + 65536 * xorcolor; //xor greyscale
-    texture[4][texWidth * y + x] = 256 * xorcolor; //xor green
-    texture[5][texWidth * y + x] = 65536 * 192 * (x % 16 && y % 16); //red bricks
-    texture[6][texWidth * y + x] = 65536 * ycolor; //red gradient
-    texture[7][texWidth * y + x] = 128 + 256 * 128 + 65536 * 128; //flat grey texture
+    scene->textures[len] = (Uint32 *)malloc(sizeof(Uint32) * TEX_WIDTH * TEX_HEIGHT);
+    len++;
   }
+
+  x = 0;
+  while (x < TEX_WIDTH)
+  {
+    y = 0;
+    while (y < TEX_HEIGHT)
+    {
+      y++;
+      int xorcolor = (x * 256 / TEX_WIDTH) ^ (y * 256 / TEX_HEIGHT);
+      int ycolor = y * 256 / TEX_HEIGHT;
+      int xycolor = y * 128 / TEX_HEIGHT + x * 128 / TEX_WIDTH;
+      scene->textures[0][TEX_WIDTH * y + x] = 65536 * 254 * (x != y && x != TEX_WIDTH - y); //flat red texture with black cross
+      scene->textures[1][TEX_WIDTH * y + x] = xycolor + 256 * xycolor + 65536 * xycolor;    //sloped greyscale
+      scene->textures[2][TEX_WIDTH * y + x] = 256 * xycolor + 65536 * xycolor;              //sloped yellow gradient
+      scene->textures[3][TEX_WIDTH * y + x] = xorcolor + 256 * xorcolor + 65536 * xorcolor; //xor greyscale
+      scene->textures[4][TEX_WIDTH * y + x] = 256 * xorcolor;                               //xor green
+      scene->textures[5][TEX_WIDTH * y + x] = 65536 * 192 * (x % 16 && y % 16);             //red bricks
+      scene->textures[6][TEX_WIDTH * y + x] = 65536 * ycolor;                               //red gradient
+      scene->textures[7][TEX_WIDTH * y + x] = 128 + 256 * 128 + 65536 * 128;                //flat grey texture
+    }
+    x++;
+  }
+  scene->tex_width = TEX_WIDTH;
+  scene->tex_height = TEX_HEIGHT;
 }
