@@ -1,18 +1,48 @@
 #include "alt.h"
 
-# define UP (state[SDL_SCANCODE_UP] || state[SDL_SCANCODE_W])
-# define DOWN (state[SDL_SCANCODE_DOWN] || state[SDL_SCANCODE_S])
-# define LEFT (state[SDL_SCANCODE_LEFT] || state[SDL_SCANCODE_A])
-# define RIGHT (state[SDL_SCANCODE_RIGHT] || state[SDL_SCANCODE_D])
+# define UP (state[SDLK_w] == 1)
+# define DOWN (state[SDLK_s] == 1)
+# define LEFT (state[SDLK_a] == 1)
+# define RIGHT (state[SDLK_d] == 1)
 
-void    listen_controls(t_player *player)
+void    listen_controls(t_player *player, bool *end)
 {
-    const Uint8 *state;
 
-    state =  SDL_GetKeyboardState(NULL);
-    player->move_forw = UP ? true : false;
-    player->move_back = DOWN ? true : false;
-    player->rot_right = RIGHT ? true : false;
-    player->rot_left = LEFT ? true : false;
-    // printf("-%d-%d-%d-%d", player->move_forw, player->move_back, player->rot_right, player->rot_left);
+      SDL_Event e;
+
+    SDL_PollEvent(&e);
+
+    if (e.type == SDL_QUIT) {
+        *end = true;
+    }
+     if (e.type == SDL_KEYDOWN) {
+                if (e.key.keysym.sym == SDLK_UP) {
+                    player->move_forw = true;
+                }
+                if (e.key.keysym.sym == SDLK_DOWN) {
+                     player->move_back = true;
+                }
+                if (e.key.keysym.sym == SDLK_RIGHT) {
+                    player->rot_right= true;
+                }
+                if (e.key.keysym.sym == SDLK_LEFT) {
+                     player->rot_left = true;
+                }
+            }
+
+     if (e.type == SDL_KEYUP) {
+                if (e.key.keysym.sym == SDLK_UP) {
+                    player->move_forw = false;
+                }
+                if (e.key.keysym.sym == SDLK_DOWN) {
+                     player->move_back = false;
+                }
+                if (e.key.keysym.sym == SDLK_RIGHT) {
+                    player->rot_right= false;
+                }
+                if (e.key.keysym.sym == SDLK_LEFT) {
+                     player->rot_left = false;
+                }       
+     }
+
 }

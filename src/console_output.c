@@ -22,3 +22,27 @@ void    print_map(t_scene *scene)
         ft_putchar('\n');
     }
 }
+
+void     print_v2(t_v2 v, char *s) {
+    ft_putstr(s);
+    ft_putstr(" = ");
+    ft_putnbr(v.x);
+    ft_putstr(" -- ");
+    ft_putnbr(v.y);
+    ft_putchar('\n');
+}
+
+
+void     print_v2f(t_v2f v, char *s) {
+    ft_putstr(s);
+    ft_putstr(" = ");
+    ft_putnbr(v.x);
+    ft_putstr(" -- ");
+    ft_putnbr(v.y);
+    ft_putchar('\n');
+}
+
+
+// void     print_v2f(t_v2f v, char *s) {
+//     printf("Vector %s = x:%f - y:%f", s, v.x, v.y);
+// }

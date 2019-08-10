@@ -23,22 +23,15 @@ void    run(t_sdl *sdl, t_scene *scene)
     end = false;
     while (!end)
     {
-        listen_controls(&(scene->player));
+        listen_controls(&(scene->player), &end);
         apply_controls(&(scene->player), scene->map);
-        /* Fill our ScreenTexture with the Pixels we have put */
-        /* Texture are used for performance */
-        SDL_UpdateTexture(sdl->texture, NULL, scene->pixels, WIDTH * sizeof(Uint32));
-          /* Clear Window */
-        SDL_RenderClear(sdl->renderer);
-          /* Put Image(Texture) to Window */
-          /* TODO: clear texture */
-        SDL_RenderCopy(sdl->renderer, sdl->texture, NULL, NULL);
-          /* Render Frame */
-        SDL_RenderPresent(sdl->renderer);
-        SDL_WaitEvent(&(sdl->event));
         render(scene);
-        if (sdl->event.type == SDL_QUIT)
-            end = true;
+        draw_test_square(&scene->pixels, scene->player.pos);
+        SDL_UpdateTexture(sdl->texture, NULL, scene->pixels, WIDTH * sizeof(Uint32));
+        SDL_RenderCopy(sdl->renderer, sdl->texture, NULL, NULL);
+        SDL_RenderPresent(sdl->renderer);
+        sdl_clear_texture(&(scene->pixels));
+        SDL_RenderClear(sdl->renderer);
     }
 }
 

@@ -112,7 +112,6 @@ void		parse_manager(t_scene *scene, char *file)
     scene->map_width = 0;
     scene->map_height = 0;
 	fd = 0;
-	file = ft_strjoin("src/", file);
 	if ((fd = open(file, O_RDONLY)) == -1)
 		print_err("Opening file for count falied.");
     count_map_size(fd, scene);

@@ -1,3 +1,6 @@
+#ifndef FUNCTIONS_H
+#define FUNCTIONS_H
+
 #include "alt.h"
 
 void    sdl_init(t_sdl *sdl);
@@ -24,9 +27,17 @@ void    print_map(t_scene *scene);
 
 void    init_contols(t_scene *scene);
 void    apply_controls(t_player *player, char **map);
-void    listen_controls(t_player *player);
+void    listen_controls(t_player *player, bool *end);
 
 void    init_render(t_scene *scene);
 void    render(t_scene *scene);
 void    render_line(t_scene *scene, t_ray *ray, int x);
 void    cast_ray(t_scene *scene, t_ray *ray, int x);
+
+void	draw_test_square(Uint32 **pixels, t_v2f v);
+void     sdl_clear_texture(Uint32 **pixels);
+void     print_v2(t_v2 v, char *s);
+void     print_v2f(t_v2f v, char *s);
+void test_controls(t_player *player, char **map);
+
+#endif
