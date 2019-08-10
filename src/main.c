@@ -3,6 +3,32 @@
 // todo: resize window
 
 
+// SDL_Texture   *load_sur(SDL_Renderer *ren) {
+//     SDL_Texture *tex = NULL;
+
+//     SDL_Surface *sur = SDL_LoadBMP("src/0.bmp");
+//     if (sur == NULL) {
+//         ft_putstr(SDL_GetError());
+//         exit(1);
+//     }
+
+//      tex = SDL_CreateTextureFromSurface(ren, sur);
+
+//      SDL_FreeSurface(sur);
+
+//      return (tex);
+// }
+
+
+
+bool    validate_arg(char **argv)
+{
+    if (argv)
+        return (true);
+    return (true);
+}
+
+
 Uint32    *get_screen_pixels(void) {
     Uint32 *pixels;
 
@@ -26,22 +52,16 @@ void    run(t_sdl *sdl, t_scene *scene)
         listen_controls(&(scene->player), &end);
         apply_controls(&(scene->player), scene->map);
         render(scene);
-        draw_test_square(&scene->pixels, scene->player.pos);
+        draw_test_square(scene);
         SDL_UpdateTexture(sdl->texture, NULL, scene->pixels, WIDTH * sizeof(Uint32));
+    //   SDL_Texture *tex = load_sur(sdl->renderer);
+        // SDL_RenderCopy(sdl->renderer, tex, NULL, NULL);
         SDL_RenderCopy(sdl->renderer, sdl->texture, NULL, NULL);
         SDL_RenderPresent(sdl->renderer);
         sdl_clear_texture(&(scene->pixels));
         SDL_RenderClear(sdl->renderer);
     }
 }
-
-bool    validate_arg(char **argv)
-{
-    if (argv)
-        return (true);
-    return (true);
-}
-
 int     main(int argc, char **argv)
 {
     t_sdl   sdl;

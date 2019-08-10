@@ -34,7 +34,7 @@ void    render(t_scene *scene);
 void    render_line(t_scene *scene, t_ray *ray, int x);
 void    cast_ray(t_scene *scene, t_ray *ray, int x);
 
-void	draw_test_square(Uint32 **pixels, t_v2f v);
+void	draw_test_square(t_scene *scene);
 void     sdl_clear_texture(Uint32 **pixels);
 void     print_v2(t_v2 v, char *s);
 void     print_v2f(t_v2f v, char *s);

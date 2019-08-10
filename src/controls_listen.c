@@ -1,10 +1,5 @@
 #include "alt.h"
 
-# define UP (state[SDLK_w] == 1)
-# define DOWN (state[SDLK_s] == 1)
-# define LEFT (state[SDLK_a] == 1)
-# define RIGHT (state[SDLK_d] == 1)
-
 void    listen_controls(t_player *player, bool *end)
 {
 
@@ -27,6 +22,9 @@ void    listen_controls(t_player *player, bool *end)
                 }
                 if (e.key.keysym.sym == SDLK_LEFT) {
                      player->rot_left = true;
+                }
+                 if (e.key.keysym.sym == SDLK_ESCAPE) {
+                     *end = true;
                 }
             }
 
