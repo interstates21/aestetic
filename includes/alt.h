@@ -96,7 +96,9 @@ typedef struct s_sdl
 	SDL_Surface *surface_sreen;
 	SDL_Renderer *renderer;
 	SDL_Texture *texture;
+	/* not used */
 	SDL_Surface *surface;
+	//
 	SDL_Event event;
 } t_sdl;
 

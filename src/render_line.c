@@ -1,8 +1,9 @@
 #include "alt.h"
-#define NARROW_EYE_EFFECT 2 // normal - 2
+#define WALL_HEIGHT 2
 #define NICE_BLUE 0x4444ff
+#define NICE_GREY 0xa4a4a4
 
-void line(Uint32 **pixels, int x, int head, int foot, Uint32 color)
+void untextured_line(Uint32 **pixels, int x, int head, int foot, Uint32 color)
 {
 
     int b = MAX(head, foot);
@@ -15,7 +16,7 @@ void line(Uint32 **pixels, int x, int head, int foot, Uint32 color)
     }
 }
 
-void drawTexture(t_scene *scene, t_ray *ray, int x, int head, int foot, int line_height)
+void textured_line(t_scene *scene, t_ray *ray, int x, int head, int foot, int line_height)
 {
     double wall_x;
     int tex_num = scene->map[ray->cell.x][ray->cell.y] - 1 - '0';
@@ -40,7 +41,6 @@ void drawTexture(t_scene *scene, t_ray *ray, int x, int head, int foot, int line
     {
         int d = a * 256 - HEIGHT * 128 + line_height * 128;
         int tex_y = ((d * scene->tex_height) / line_height) / 256;
-        // printf(" --- %d --- %d---%d-\n", tex_y, a, tex_num);
         Uint32 color = scene->textures[tex_num][scene->tex_width * tex_y + tex_x];
         //make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
         if (ray->hit_side == 'e')
@@ -52,7 +52,7 @@ void drawTexture(t_scene *scene, t_ray *ray, int x, int head, int foot, int line
 
 void render_line(t_scene *scene, t_ray *ray, int x)
 {
-    int line_height = (int)(NARROW_EYE_EFFECT * HEIGHT / ray->dist_hit);
+    int line_height = (int)(WALL_HEIGHT * HEIGHT / ray->dist_hit);
     int head = -line_height / 2 + HEIGHT / 2;
     int foot = line_height / 2 + HEIGHT / 2;
 
@@ -60,13 +60,13 @@ void render_line(t_scene *scene, t_ray *ray, int x)
     foot = CLAMP(foot, 0, HEIGHT - 1);
 
     Uint32 color = 0x0000ff;
-    Uint32 foot_color = 0x000055;
-    Uint32 head_color = 0x000022;
+    Uint32 foot_color = NICE_BLUE;
+    Uint32 head_color = NICE_BLUE;
     if (ray->hit_side == 'e')
         color /= 2;
 
-    // line(&(scene->pixels), x,? head, foot, color);
-    drawTexture(scene, ray, x, head, foot, line_height);
-    line(&(scene->pixels), x, head, 0, head_color);
-    line(&(scene->pixels), x, foot, HEIGHT, foot_color);
+    // untextured_line(&(scene->pixels), x,? head, foot, color);
+    textured_line(scene, ray, x, head, foot, line_height);
+    untextured_line(&(scene->pixels), x, head, 0, head_color);
+    untextured_line(&(scene->pixels), x, foot, HEIGHT, foot_color);
 }

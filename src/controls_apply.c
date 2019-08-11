@@ -18,7 +18,6 @@ static void    apply_move_forvard(t_player *player, char **map)
     double  new_pos_y;
     double  pos_x;
     double  pos_y;
-    // todo: define as const
 
     pos_x = player->pos.x;
     pos_y = player->pos.y;
@@ -36,11 +35,10 @@ static void    apply_move_forvard(t_player *player, char **map)
 static void    apply_move_back(t_player *player, char **map)
 {
 
-      double  new_pos_x;
+    double  new_pos_x;
     double  new_pos_y;
     double  pos_x;
     double  pos_y;
-    // todo: define as const
 
     pos_x = player->pos.x;
     pos_y = player->pos.y;

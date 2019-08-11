@@ -44,6 +44,7 @@ void run(t_sdl *sdl, t_scene *scene)
     init_contols(scene);
     init_textures(scene);
     end = false;
+    /* todo: proper timing */
     while (!end)
     {
         listen_controls(&(scene->player), &end);
@@ -51,7 +52,7 @@ void run(t_sdl *sdl, t_scene *scene)
         render(scene);
         draw_test_square(scene);
         SDL_UpdateTexture(sdl->texture, NULL, scene->pixels, WIDTH * sizeof(Uint32));
-        //   SDL_Texture *tex = load_sur(sdl->renderer);
+        // SDL_Texture *tex = load_sur(sdl->renderer);
         // SDL_RenderCopy(sdl->renderer, tex, NULL, NULL);
         SDL_RenderCopy(sdl->renderer, sdl->texture, NULL, NULL);
         SDL_RenderPresent(sdl->renderer);
@@ -65,7 +66,7 @@ int main(int argc, char **argv)
     t_scene scene;
 
     if (argc != 2)
-        print_err("Usage: ./aestetic [mapname]");
+        print_err("Usage: ./doom [mapname]");
     if (!validate_arg(argv))
         print_err("Wrong arg.");
     parse_manager(&scene, argv[1]);
