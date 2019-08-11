@@ -35,7 +35,7 @@ void textured_line(t_scene *scene, t_ray *ray, int x, int head, int foot, int li
     int tex_x = (int)(wall_x * (double)(scene->tex_width));
     if (ray->hit_side == 'e' && ray->dir.x > 0)
         tex_x = scene->tex_width - tex_x - 1;
-    if (ray->hit_side == 'w' && ray->dir.x < 0)
+    if (ray->hit_side == 'w' && ray->dir.y < 0)
         tex_x = scene->tex_width - tex_x - 1;
     while (a < b)
     {

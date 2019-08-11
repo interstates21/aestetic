@@ -1,4 +1,5 @@
 #include "alt.h"
+#define EPSILON 2 // FIXING SMASHING INTO TEXTURES
 
 static void    apply_rot_left(t_player *player)
 {
@@ -22,8 +23,8 @@ static void    apply_move_forvard(t_player *player, char **map)
     pos_x = player->pos.x;
     pos_y = player->pos.y;
 
-    new_pos_x = pos_x + player->dir.x * player->move_speed;
-    new_pos_y = pos_y + player->dir.y * player->move_speed;
+    new_pos_x = pos_x + player->dir.x * EPSILON * player->move_speed;
+    new_pos_y = pos_y + player->dir.y * EPSILON * player->move_speed;
     if (map[(int)pos_x][(int)new_pos_y] == '0') {
 		    player->pos.y = new_pos_y;
     }
