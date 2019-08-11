@@ -24,10 +24,9 @@ void init_textures(t_scene *scene)
     y = 0;
     while (y < TEX_HEIGHT)
     {
-      y++;
-      int xorcolor = (x * 256 / TEX_WIDTH) ^ (y * 256 / TEX_HEIGHT);
-      int ycolor = y * 256 / TEX_HEIGHT;
-      int xycolor = y * 128 / TEX_HEIGHT + x * 128 / TEX_WIDTH;
+      Uint32 xorcolor = (x * 256 / TEX_WIDTH) ^ (y * 256 / TEX_HEIGHT);
+      Uint32 ycolor = y * 256 / TEX_HEIGHT;
+      Uint32 xycolor = y * 128 / TEX_HEIGHT + x * 128 / TEX_WIDTH;
       scene->textures[0][TEX_WIDTH * y + x] = 65536 * 254 * (x != y && x != TEX_WIDTH - y); //flat red texture with black cross
       scene->textures[1][TEX_WIDTH * y + x] = xycolor + 256 * xycolor + 65536 * xycolor;    //sloped greyscale
       scene->textures[2][TEX_WIDTH * y + x] = 256 * xycolor + 65536 * xycolor;              //sloped yellow gradient
@@ -36,6 +35,7 @@ void init_textures(t_scene *scene)
       scene->textures[5][TEX_WIDTH * y + x] = 65536 * 192 * (x % 16 && y % 16);             //red bricks
       scene->textures[6][TEX_WIDTH * y + x] = 65536 * ycolor;                               //red gradient
       scene->textures[7][TEX_WIDTH * y + x] = 128 + 256 * 128 + 65536 * 128;                //flat grey texture
+      y++;
     }
     x++;
   }

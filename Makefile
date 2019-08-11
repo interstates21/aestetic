@@ -7,7 +7,7 @@ OBJ = $(addprefix obj/, $(addsuffix .o, $(FILES)))
 OBJ_LIST = $(addsuffix .o, $(FILES))
 SDL_CFLAGS = $(shell sdl2-config --cflags)
 SPEED = -O3
-FLAGS = -Wall -Wextra -Werror
+FLAGSTMP = -Wall -Wextra -Werror
 HEADERS = -I./includes -I./libft
 
 OS = $(shell uname)
