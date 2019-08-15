@@ -39,7 +39,6 @@ void run(t_sdl *sdl, t_scene *scene)
 {
     bool end;
 
-    print_map(scene);
     init_render(scene);
     init_contols(scene);
     init_textures(scene);
