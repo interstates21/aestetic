@@ -66,19 +66,29 @@ static void UnloadData()
 }
 
 
-/* vline: Draw a vertical line on screen, with a different color pixel in top & bottom */
-static void vline(SDL_Surface* surface, int x, int y1,int y2, int top,int middle,int bottom)
+Uint32 *get_screen_pixels(void)
 {
-    int *pix = (int*) surface->pixels;
+    Uint32 *pixels;
+
+    if (!(pixels = (Uint32 *)malloc(WIDTH * HEIGHT * sizeof(Uint32)))) // todo: make sure we don't need 1 extra memory cell
+        print_err("allocating pixels failed.");
+    memset(pixels, 0, WIDTH * HEIGHT * sizeof(Uint32));
+    return (pixels);
+}
+
+/* vline: Draw a vertical line on screen, with a different color pixel in top & bottom */
+static void vline(t_scene* scene, int x, int y1,int y2, int top,int middle,int bottom)
+{
     y1 = clamp(y1, 0, HEIGHT-1);
     y2 = clamp(y2, 0, HEIGHT-1);
     if(y2 == y1)
-        pix[y1*WIDTH+x] = middle;
+        sdl_put_pix(&(scene->pixels), x, y1, middle);
     else if(y2 > y1)
     {
-        pix[y1*WIDTH+x] = top;
-        for(int y=y1+1; y<y2; ++y) pix[y*WIDTH+x] = middle;
-        pix[y2*WIDTH+x] = bottom;
+         sdl_put_pix(&(scene->pixels), x, y1, top);
+        for(int y=y1+1; y<y2; ++y)
+            sdl_put_pix(&(scene->pixels), x, y, middle);
+        sdl_put_pix(&(scene->pixels), x, y2, bottom);
     }
 }
 
@@ -111,7 +121,7 @@ static void MovePlayer(float dx, float dy)
     player.anglecos = cosf(player.angle);
 }
 
-static void DrawScreen(SDL_Surface *surface)
+static void DrawScreen(t_scene *scene)
 {
     enum { MaxQueue = 32 };  // maximum number of pending portal renders
     struct item { int sectorno,sx1,sx2; } queue[MaxQueue], *head=queue, *tail=queue;
@@ -187,9 +197,9 @@ static void DrawScreen(SDL_Surface *surface)
             int yb = (x - x1) * (y2b-y1b) / (x2-x1) + y1b, cyb = clamp(yb, ytop[x],ybottom[x]); // bottom
 
             /* Render ceiling: everything above this sector's ceiling height. */
-            vline(surface, x, ytop[x], cya-1, 0x111111 ,0x222222,0x111111);
+            vline(scene, x, ytop[x], cya-1, 0x111111 ,0x222222,0x111111);
             /* Render floor: everything below this sector's floor height. */
-            vline(surface, x, cyb+1, ybottom[x], 0x0000FF,0x0000AA,0x0000FF);
+            vline(scene, x, cyb+1, ybottom[x], 0x0000FF,0x0000AA,0x0000FF);
 
             /* Is there another sector behind this edge? */
             if(neighbor >= 0)
@@ -199,17 +209,17 @@ static void DrawScreen(SDL_Surface *surface)
                 int nyb = (x - x1) * (ny2b-ny1b) / (x2-x1) + ny1b, cnyb = clamp(nyb, ytop[x],ybottom[x]);
                 /* If our ceiling is higher than their ceiling, render upper wall */
                 unsigned r1 = 0x010101 * (255-z), r2 = 0x040007 * (31-z/8);
-                vline(surface, x, cya, cnya-1, 0, x==x1||x==x2 ? 0 : r1, 0); // Between our and their ceiling
+                vline(scene, x, cya, cnya-1, 0, x==x1||x==x2 ? 0 : r1, 0); // Between our and their ceiling
                 ytop[x] = clamp(max(cya, cnya), ytop[x], HEIGHT-1);   // Shrink the remaining window below these ceilings
                 /* If our floor is lower than their floor, render bottom wall */
-                vline(surface, x, cnyb+1, cyb, 0, x==x1||x==x2 ? 0 : r2, 0); // Between their and our floor
+                vline(scene, x, cnyb+1, cyb, 0, x==x1||x==x2 ? 0 : r2, 0); // Between their and our floor
                 ybottom[x] = clamp(min(cyb, cnyb), 0, ybottom[x]); // Shrink the remaining window above these floors
             }
             else
             {
                 /* There's no neighbor. Render wall from top (cya = ceiling level) to bottom (cyb = floor level). */
                 unsigned r = 0x010101 * (255-z);
-                vline(surface, x, cya, cyb, 0, x==x1||x==x2 ? 0 : r, 0);
+                vline(scene, x, cya, cyb, 0, x==x1||x==x2 ? 0 : r, 0);
             }
         }
         /* Schedule the neighboring sector for rendering within the window formed by this wall. */
@@ -227,26 +237,25 @@ int main()
 {
     LoadData();
     t_sdl       sdl;
+    t_scene     scene;
     SDL_Window  *window;
     SDL_Surface *surface;
 
-
     sdl_init(&sdl);
-    // sdl_init_renderer(&sdl);
-    // scene.pixels = get_screen_pixels();
-    surface = SDL_GetWindowSurface(sdl.window);
-
-    //SDL_EnableKeyRepeat(150, 30);
-    SDL_ShowCursor(SDL_DISABLE);
+    sdl_init_renderer(&sdl);
+    scene.pixels = get_screen_pixels();
 
     int wsad[4]={0,0,0,0}, ground=0, falling=1, moving=0, ducking=0;
     float yaw = 0;
     for(;;)
     {
-        SDL_LockSurface(surface);
-        DrawScreen(surface);
-        SDL_UnlockSurface(surface);
-        SDL_UpdateWindowSurface(sdl.window);
+
+        DrawScreen(&scene);
+        SDL_UpdateTexture(sdl.texture, NULL, scene.pixels, WIDTH * sizeof(Uint32));
+        SDL_RenderCopy(sdl.renderer, sdl.texture, NULL, NULL);
+        SDL_RenderPresent(sdl.renderer);
+        sdl_clear_texture(&(scene.pixels));
+        SDL_RenderClear(sdl.renderer);
 
         /* Vertical collision detection */
         float eyeheight = ducking ? DuckHeight : EyeHeight;
@@ -368,15 +377,6 @@ done:
 //     return (true);
 // }
 
-// Uint32 *get_screen_pixels(void)
-// {
-//     Uint32 *pixels;
-
-//     if (!(pixels = (Uint32 *)malloc(WIDTH * HEIGHT * sizeof(Uint32)))) // todo: make sure we don't need 1 extra memory cell
-//         print_err("allocating pixels failed.");
-//     memset(pixels, 0, WIDTH * HEIGHT * sizeof(Uint32));
-//     return (pixels);
-// }
 
 // void run(t_sdl *sdl, t_scene *scene)
 // {
@@ -393,12 +393,12 @@ done:
 //         apply_controls(&(scene->player), scene->map);
 //         render(scene);
 //         draw_test_square(scene);
-//         SDL_UpdateTexture(sdl->texture, NULL, scene->pixels, WIDTH * sizeof(Uint32));
+//         SDL_UpdateTexture(sdl->texture, NULL, scene, WIDTH * sizeof(Uint32));
 //         // SDL_Texture *tex = load_sur(sdl->renderer);
 //         // SDL_RenderCopy(sdl->renderer, tex, NULL, NULL);
 //         SDL_RenderCopy(sdl->renderer, sdl->texture, NULL, NULL);
 //         SDL_RenderPresent(sdl->renderer);
-//         sdl_clear_texture(&(scene->pixels));
+//         sdl_clear_texture(&(scene));
 //         SDL_RenderClear(sdl->renderer);
 //     }
 // }

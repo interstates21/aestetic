@@ -35,7 +35,7 @@ void    print_err(const char *err);
 // void    cast_ray(t_scene *scene, t_ray *ray, int x);
 
 // void	draw_test_square(t_scene *scene);
-// void     sdl_clear_texture(Uint32 **pixels);
+void     sdl_clear_texture(Uint32 **pixels);
 // void     print_v2(t_v2 v, char *s);
 // void     print_v2f(t_v2f v, char *s);
 // void test_controls(t_player *player, char **map);

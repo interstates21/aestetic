@@ -48,11 +48,37 @@ typedef struct s_v2f
 	double y;
 } t_v2f;
 
+typedef struct s_v3f
+{
+	double x;
+	double y;
+	double z;
+} t_v3f;
+
+
 typedef struct s_v2
 {
 	int x;
 	int y;
 } t_v2;
+
+typedef struct s_player
+{
+	// t_v3f pos;
+	// t_v3f motion;
+    // float angle, anglesin, anglecos, yaw;
+	double move_speed;
+	double rot_speed;
+	bool move_forw;
+	bool move_back;
+	bool rot_left;
+	bool rot_right;
+	t_v2f dir;
+	t_v2f pos;
+	t_v2f view;
+} t_player;
+
+
 
 typedef struct s_scene
 {
@@ -63,9 +89,10 @@ typedef struct s_scene
 	int tex_width;
 	int map_width;
 	int map_height;
-	// t_player player;
+	t_player player;
 
 } t_scene;
+
 
 typedef struct s_sdl
 {
