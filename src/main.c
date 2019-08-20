@@ -233,59 +233,36 @@ static void DrawScreen(t_scene *scene)
     } while(head != tail); // render any other queued sectors
 }
 
-int main()
-{
-    LoadData();
-    t_sdl       sdl;
-    t_scene     scene;
-    SDL_Window  *window;
-    SDL_Surface *surface;
+void shitty_controller(t_controller *controller, bool *end) {
 
-    sdl_init(&sdl);
-    sdl_init_renderer(&sdl);
-    scene.pixels = get_screen_pixels();
-
-    int wsad[4]={0,0,0,0}, ground=0, falling=1, moving=0, ducking=0;
-    float yaw = 0;
-    for(;;)
-    {
-
-        DrawScreen(&scene);
-        SDL_UpdateTexture(sdl.texture, NULL, scene.pixels, WIDTH * sizeof(Uint32));
-        SDL_RenderCopy(sdl.renderer, sdl.texture, NULL, NULL);
-        SDL_RenderPresent(sdl.renderer);
-        sdl_clear_texture(&(scene.pixels));
-        SDL_RenderClear(sdl.renderer);
-
-        /* Vertical collision detection */
-        float eyeheight = ducking ? DuckHeight : EyeHeight;
-        ground = !falling;
-        if(falling)
+ float eyeheight =controller->ducking ? DuckHeight : EyeHeight;
+       controller->ground= !controller->falling;
+        if(controller->falling)
         {
             player.velocity.z -= 0.05f; /* Add gravity */
             float nextz = player.where.z + player.velocity.z;
             if(player.velocity.z < 0 && nextz  < sectors[player.sector].floor + eyeheight) // When going down
             {
-                /* Fix to ground */
+                /* Fix tocontroller.ground*/
                 player.where.z    = sectors[player.sector].floor + eyeheight;
                 player.velocity.z = 0;
-                falling = 0;
-                ground  = 1;
+                controller->falling = 0;
+               controller->ground = 1;
             }
             else if(player.velocity.z > 0 && nextz > sectors[player.sector].ceil) // When going up
             {
                 /* Prevent jumping above ceiling */
                 player.velocity.z = 0;
-                falling = 1;
+                controller->falling = 1;
             }
-            if(falling)
+            if(controller->falling)
             {
                 player.where.z += player.velocity.z;
-                moving = 1;
+                controller->moving = 1;
             }
         }
         /* Horizontal collision detection */
-        if(moving)
+        if(controller->moving)
         {
             float px = player.where.x,    py = player.where.y;
             float dx = player.velocity.x, dy = player.velocity.y;
@@ -309,11 +286,11 @@ int main()
                         float xd = vert[s+1].x - vert[s+0].x, yd = vert[s+1].y - vert[s+0].y;
                         dx = xd * (dx*xd + yd*dy) / (xd*xd + yd*yd);
                         dy = yd * (dx*xd + yd*dy) / (xd*xd + yd*yd);
-                        moving = 0;
+                        controller->moving = 0;
                     }
                 }
             MovePlayer(dx, dy);
-            falling = 1;
+            controller->falling = 1;
         }
 
         SDL_Event ev;
@@ -324,46 +301,93 @@ int main()
                 case SDL_KEYUP:
                     switch(ev.key.keysym.sym)
                     {
-                        case 'w': wsad[0] = ev.type==SDL_KEYDOWN; break;
-                        case 's': wsad[1] = ev.type==SDL_KEYDOWN; break;
-                        case 'a': wsad[2] = ev.type==SDL_KEYDOWN; break;
-                        case 'd': wsad[3] = ev.type==SDL_KEYDOWN; break;
-                        case 'q': goto done;
+                        case 'w': controller->move_forw = ev.type==SDL_KEYDOWN; break;
+                        case 's': controller->move_back = ev.type==SDL_KEYDOWN; break;
+                        case 'a': controller->rot_left = ev.type==SDL_KEYDOWN; break;
+                        case 'd': controller->rot_right = ev.type==SDL_KEYDOWN; break;
+                        case 'q': *end = true;
                         case ' ': /* jump */
-                            if(ground) { player.velocity.z += 0.5; falling = 1; }
+                            if(controller->ground) { player.velocity.z += 0.5; controller->falling = 1; }
                             break;
                         case SDLK_LCTRL: /* duck */
-                        case SDLK_RCTRL: ducking = ev.type==SDL_KEYDOWN; falling=1; break;
+                        case SDLK_RCTRL:controller->ducking = ev.type==SDL_KEYDOWN; controller->falling=1; break;
                         default: break;
                     }
                     break;
-                case SDL_QUIT: goto done;
+                case SDL_QUIT: *end = true;
             }
 
         /* mouse aiming */
         int x,y;
         SDL_GetRelativeMouseState(&x,&y);
         player.angle += x * 0.03f;
-        yaw          = clamp(yaw - y*0.05f, -5, 5);
-        player.yaw   = yaw - player.velocity.z*0.5f;
+        controller->yaw    = clamp(controller->yaw - y*0.05f, -5, 5);
+        player.yaw   = controller->yaw - player.velocity.z*0.5f;
         MovePlayer(0,0);
 
         float move_vec[2] = {0.f, 0.f};
-        if(wsad[0]) { move_vec[0] += player.anglecos*0.2f; move_vec[1] += player.anglesin*0.2f; }
-        if(wsad[1]) { move_vec[0] -= player.anglecos*0.2f; move_vec[1] -= player.anglesin*0.2f; }
-        if(wsad[2]) { move_vec[0] += player.anglesin*0.2f; move_vec[1] -= player.anglecos*0.2f; }
-        if(wsad[3]) { move_vec[0] -= player.anglesin*0.2f; move_vec[1] += player.anglecos*0.2f; }
-        int pushing = wsad[0] || wsad[1] || wsad[2] || wsad[3];
+        if(controller->move_forw) { move_vec[0] += player.anglecos*0.2f; move_vec[1] += player.anglesin*0.2f; }
+        if(controller->move_back) { move_vec[0] -= player.anglecos*0.2f; move_vec[1] -= player.anglesin*0.2f; }
+        if(controller->rot_left) { move_vec[0] += player.anglesin*0.2f; move_vec[1] -= player.anglecos*0.2f; }
+        if(controller->rot_right) { move_vec[0] -= player.anglesin*0.2f; move_vec[1] += player.anglecos*0.2f; }
+        int pushing = controller->move_forw || controller->move_back || controller->rot_left || controller->rot_right;
         float acceleration = pushing ? 0.4 : 0.2;
 
         player.velocity.x = player.velocity.x * (1-acceleration) + move_vec[0] * acceleration;
         player.velocity.y = player.velocity.y * (1-acceleration) + move_vec[1] * acceleration;
 
-        if(pushing) moving = 1;
+        if(pushing) controller->moving = 1;
 
         SDL_Delay(10);
+}
+
+void init_controller(t_controller *controller) {
+    controller->move_forw = false;
+    controller->move_back = false;
+    controller->rot_left = false;
+    controller->rot_right = false;
+    controller->falling = true;
+    controller->ground = false;
+    controller->moving = false;
+    controller->ducking = false;
+    controller->yaw = 0;
+}
+
+int main()
+{
+    LoadData();
+    t_sdl           sdl;
+    t_scene         scene;
+    t_controller    controller;
+    SDL_Window      *window;
+    bool            end;
+
+
+    end = false;
+    sdl_init(&sdl);
+    sdl_init_renderer(&sdl);
+    scene.pixels = get_screen_pixels();
+
+    init_controller(&controller);
+    //     init_render(scene);
+    //     init_contols(scene);
+    //     init_textures(scene);
+
+    while (!end)
+    {
+
+        DrawScreen(&scene);
+        SDL_UpdateTexture(sdl.texture, NULL, scene.pixels, WIDTH * sizeof(Uint32));
+        SDL_RenderCopy(sdl.renderer, sdl.texture, NULL, NULL);
+        SDL_RenderPresent(sdl.renderer);
+        sdl_clear_texture(&(scene.pixels));
+        SDL_RenderClear(sdl.renderer);
+
+        shitty_controller(&controller, &end);
+
+        /* Vertical collision detection */
+       
     }
-done:
     UnloadData();
     SDL_Quit();
     return 0;
@@ -378,30 +402,7 @@ done:
 // }
 
 
-// void run(t_sdl *sdl, t_scene *scene)
-// {
-//     bool end;
 
-//     init_render(scene);
-//     init_contols(scene);
-//     init_textures(scene);
-//     end = false;
-//     /* todo: proper timing */
-//     while (!end)
-//     {
-//         listen_controls(&(scene->player), &end);
-//         apply_controls(&(scene->player), scene->map);
-//         render(scene);
-//         draw_test_square(scene);
-//         SDL_UpdateTexture(sdl->texture, NULL, scene, WIDTH * sizeof(Uint32));
-//         // SDL_Texture *tex = load_sur(sdl->renderer);
-//         // SDL_RenderCopy(sdl->renderer, tex, NULL, NULL);
-//         SDL_RenderCopy(sdl->renderer, sdl->texture, NULL, NULL);
-//         SDL_RenderPresent(sdl->renderer);
-//         sdl_clear_texture(&(scene));
-//         SDL_RenderClear(sdl->renderer);
-//     }
-// }
 // int main(int argc, char **argv)
 // {
 //     t_sdl sdl;
