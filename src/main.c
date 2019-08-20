@@ -355,14 +355,13 @@ void init_controller(t_controller *controller) {
 
 int main()
 {
-    LoadData();
     t_sdl           sdl;
     t_scene         scene;
     t_controller    controller;
-    SDL_Window      *window;
     bool            end;
 
 
+    LoadData();
     end = false;
     sdl_init(&sdl);
     sdl_init_renderer(&sdl);
@@ -383,9 +382,9 @@ int main()
         sdl_clear_texture(&(scene.pixels));
         SDL_RenderClear(sdl.renderer);
 
+        //listen_controls()
+        //apply_controls()
         shitty_controller(&controller, &end);
-
-        /* Vertical collision detection */
        
     }
     UnloadData();
