@@ -4,9 +4,12 @@
 #include <time.h>
 #include <fcntl.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_render.h>
 #include "libft.h"
+#include "bisquit.h"
 #ifdef __APPLE__
 #include "SDL_image.h"
 #include "SDL_mixer.h"
@@ -51,32 +54,6 @@ typedef struct s_v2
 	int y;
 } t_v2;
 
-typedef struct s_player
-{
-	t_v2f pos;
-	t_v2f dir;
-	t_v2f view;
-	double move_speed;
-	double rot_speed;
-	bool move_forw;
-	bool move_back;
-	bool rot_left;
-	bool rot_right;
-} t_player;
-
-typedef struct s_ray
-{
-	t_v2f dir;
-	t_v2 move_side;
-	t_v2 cell;
-	t_v2f dist;
-	t_v2f dist_delta;
-	char hit_side;
-	bool is_hit;
-	double dist_hit;
-	int line_height;
-} t_ray;
-
 typedef struct s_scene
 {
 	Uint32 *pixels;
@@ -86,7 +63,7 @@ typedef struct s_scene
 	int tex_width;
 	int map_width;
 	int map_height;
-	t_player player;
+	// t_player player;
 
 } t_scene;
 
