@@ -40,4 +40,7 @@ void     sdl_clear_texture(Uint32 **pixels);
 // void     print_v2f(t_v2f v, char *s);
 // void test_controls(t_player *player, char **map);
 
+t_v2f		*vertex_init(char *str, int *NumVertices, t_v2f *arr);
+int			player_init(t_scene *s, t_v2f pos, double ang, unsigned int sect);
+
 #endif
