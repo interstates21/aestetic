@@ -4,9 +4,12 @@
 #include <time.h>
 #include <fcntl.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_render.h>
 #include "libft.h"
+#include "bisquit.h"
 #ifdef __APPLE__
 #include "SDL_image.h"
 #include "SDL_mixer.h"
@@ -45,6 +48,14 @@ typedef struct s_v2f
 	double y;
 } t_v2f;
 
+typedef struct s_v3f
+{
+	double x;
+	double y;
+	double z;
+} t_v3f;
+
+
 typedef struct s_v2
 {
 	int x;
@@ -53,29 +64,33 @@ typedef struct s_v2
 
 typedef struct s_player
 {
-	t_v2f pos;
-	t_v2f dir;
-	t_v2f view;
+	// t_v3f pos;
+	// t_v3f motion;
+    // float angle, anglesin, anglecos, yaw;
 	double move_speed;
 	double rot_speed;
 	bool move_forw;
 	bool move_back;
 	bool rot_left;
 	bool rot_right;
+	t_v2f dir;
+	t_v2f pos;
+	t_v2f view;
 } t_player;
 
-typedef struct s_ray
+typedef struct s_controller
 {
-	t_v2f dir;
-	t_v2 move_side;
-	t_v2 cell;
-	t_v2f dist;
-	t_v2f dist_delta;
-	char hit_side;
-	bool is_hit;
-	double dist_hit;
-	int line_height;
-} t_ray;
+	bool move_forw;
+	bool move_back;
+	bool rot_left;
+	bool rot_right;
+	bool ground;
+	bool falling;
+	bool moving;
+	bool ducking;
+    float yaw;
+} t_controller;
+
 
 typedef struct s_scene
 {
@@ -89,6 +104,7 @@ typedef struct s_scene
 	t_player player;
 
 } t_scene;
+
 
 typedef struct s_sdl
 {

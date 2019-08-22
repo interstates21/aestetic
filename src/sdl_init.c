@@ -10,7 +10,7 @@ void    sdl_init_renderer(t_sdl *sdl)
 
 void    sdl_init(t_sdl *sdl)
 {
-    SDL_Init(SDL_INIT_VIDEO);
+    SDL_Init(SDL_INIT_EVERYTHING);
     sdl->window = SDL_CreateWindow("Aestetic",
     SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, 0);
 }
