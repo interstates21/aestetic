@@ -1,46 +1,57 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   controls_listen.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/08/23 17:05:56 by bdeomin           #+#    #+#             */
+/*   Updated: 2019/08/23 18:10:36 by bdeomin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "alt.h"
 
-void    listen_controls(t_player *player, bool *end)
+void	keyboard_input(struct player *player, bool *end, t_controller *controller)
 {
+	SDL_Event ev;
 
-      SDL_Event e;
-
-    SDL_PollEvent(&e);
-
-    if (e.type == SDL_QUIT) {
-        *end = true;
-    }
-     if (e.type == SDL_KEYDOWN) {
-                if (e.key.keysym.sym == SDLK_UP) {
-                    player->move_forw = true;
-                }
-                if (e.key.keysym.sym == SDLK_DOWN) {
-                     player->move_back = true;
-                }
-                if (e.key.keysym.sym == SDLK_RIGHT) {
-                    player->rot_right= true;
-                }
-                if (e.key.keysym.sym == SDLK_LEFT) {
-                     player->rot_left = true;
-                }
-                 if (e.key.keysym.sym == SDLK_ESCAPE) {
-                     *end = true;
-                }
-            }
-
-     if (e.type == SDL_KEYUP) {
-                if (e.key.keysym.sym == SDLK_UP) {
-                    player->move_forw = false;
-                }
-                if (e.key.keysym.sym == SDLK_DOWN) {
-                     player->move_back = false;
-                }
-                if (e.key.keysym.sym == SDLK_RIGHT) {
-                    player->rot_right= false;
-                }
-                if (e.key.keysym.sym == SDLK_LEFT) {
-                     player->rot_left = false;
-                }       
-     }
-
+	while (SDL_PollEvent(&ev))
+	{
+		if (ev.type == SDL_QUIT)
+			*end = true;
+		if (ev.type == SDL_KEYDOWN || ev.type == SDL_KEYUP)
+		{
+			if (ev.type == SDL_KEYDOWN)
+				if (ev.key.keysym.sym == SDLK_RCTRL)
+					SDL_SetRelativeMouseMode(SDL_GetRelativeMouseMode() ?
+														SDL_FALSE : SDL_TRUE);
+			if (ev.key.keysym.sym == SDLK_ESCAPE)
+				*end = true;
+			if (SDL_GetRelativeMouseMode())
+			{
+				if (ev.key.keysym.sym == SDLK_w)
+					controller->move_forw = ev.type == SDL_KEYDOWN;
+				if (ev.key.keysym.sym == SDLK_s)
+					controller->move_back = ev.type == SDL_KEYDOWN;
+				if (ev.key.keysym.sym == SDLK_a)
+					controller->rot_left = ev.type == SDL_KEYDOWN;
+				if (ev.key.keysym.sym == SDLK_d)
+					controller->rot_right = ev.type == SDL_KEYDOWN;
+				if (ev.key.keysym.sym == SDLK_SPACE)
+				{
+					if (controller->ground)
+					{
+						player->velocity.z += 0.5;
+						controller->falling = 1;
+					}
+				}
+				if (ev.key.keysym.sym == SDLK_LCTRL)
+				{
+					controller->ducking = ev.type == SDL_KEYDOWN;
+					controller->falling = 1;
+				}
+			}
+		}
+	}
 }

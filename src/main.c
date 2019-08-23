@@ -233,7 +233,7 @@ static void DrawScreen(t_scene *scene)
     } while(head != tail); // render any other queued sectors
 }
 
-void shitty_controller(t_controller *controller, bool *end) {
+void shitty_controller(t_controller *controller, bool *end, t_sdl sdl) {
 
  float eyeheight =controller->ducking ? DuckHeight : EyeHeight;
        controller->ground= !controller->falling;
@@ -292,37 +292,50 @@ void shitty_controller(t_controller *controller, bool *end) {
             MovePlayer(dx, dy);
             controller->falling = 1;
         }
-
-        SDL_Event ev;
-        while(SDL_PollEvent(&ev))
-            switch(ev.type)
-            {
-                case SDL_KEYDOWN:
-                case SDL_KEYUP:
-                    switch(ev.key.keysym.sym)
-                    {
-                        case 'w': controller->move_forw = ev.type==SDL_KEYDOWN; break;
-                        case 's': controller->move_back = ev.type==SDL_KEYDOWN; break;
-                        case 'a': controller->rot_left = ev.type==SDL_KEYDOWN; break;
-                        case 'd': controller->rot_right = ev.type==SDL_KEYDOWN; break;
-                        case 'q': *end = true;
-                        case ' ': /* jump */
-                            if(controller->ground) { player.velocity.z += 0.5; controller->falling = 1; }
-                            break;
-                        case SDLK_LCTRL: /* duck */
-                        case SDLK_RCTRL:controller->ducking = ev.type==SDL_KEYDOWN; controller->falling=1; break;
-                        default: break;
-                    }
-                    break;
-                case SDL_QUIT: *end = true;
-            }
+        keyboard_input(&player, end, controller);
+        // SDL_Event ev;
+        // while(SDL_PollEvent(&ev))
+        // {
+        //     if (ev.type == SDL_QUIT)
+		// 		*end = true;
+		// 	if (ev.type == SDL_KEYDOWN || ev.type == SDL_KEYUP)
+		// 	{
+		// 		if (ev.key.keysym.sym == SDLK_ESCAPE)
+		// 			*end = true;
+		// 		if (ev.key.keysym.sym == SDLK_w)
+		// 			controller->move_forw = ev.type == SDL_KEYDOWN;
+		// 		if (ev.key.keysym.sym == SDLK_s)
+		// 			controller->move_back = ev.type == SDL_KEYDOWN;
+		// 		if (ev.key.keysym.sym == SDLK_a)
+		// 			controller->rot_left = ev.type == SDL_KEYDOWN;
+		// 		if (ev.key.keysym.sym == SDLK_d)
+		// 			controller->rot_right = ev.type == SDL_KEYDOWN;
+		// 		if (ev.key.keysym.sym == SDLK_SPACE)
+        //         {
+		// 			if(controller->ground)
+        //             {
+        //                 player.velocity.z += 0.5;
+        //                 controller->falling = 1;
+        //             }
+        //         }
+        //         if (ev.key.keysym.sym == SDLK_LCTRL || ev.key.keysym.sym == SDLK_RCTRL)
+		// 		{
+        //             controller->ducking = ev.type == SDL_KEYDOWN;
+        //             controller->falling = 1;
+        //         }
+		// 	}
+        // }
 
         /* mouse aiming */
-        int x,y;
-        SDL_GetRelativeMouseState(&x,&y);
-        player.angle += x * 0.03f;
-        controller->yaw    = clamp(controller->yaw - y*0.05f, -5, 5);
-        player.yaw   = controller->yaw - player.velocity.z*0.5f;
+
+        if (SDL_GetRelativeMouseMode())
+        {
+            int x,y;
+            SDL_GetRelativeMouseState(&x,&y);
+            player.angle += x * 0.015f;
+            controller->yaw    = clamp(controller->yaw - y * (-0.05f), -5, 5);
+            player.yaw   = controller->yaw - player.velocity.z * 0.5f;
+        }
         MovePlayer(0,0);
 
         float move_vec[2] = {0.f, 0.f};
@@ -371,7 +384,7 @@ int main()
     //     init_render(scene);
     //     init_contols(scene);
     //     init_textures(scene);
-
+    SDL_SetRelativeMouseMode(SDL_TRUE);
     while (!end)
     {
 
@@ -384,8 +397,8 @@ int main()
 
         //listen_controls()
         //apply_controls()
-        shitty_controller(&controller, &end);
-       
+        shitty_controller(&controller, &end, sdl);
+
     }
     UnloadData();
     SDL_Quit();
