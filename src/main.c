@@ -38,11 +38,16 @@ Uint32 *get_screen_pixels(void)
 void run(t_sdl *sdl, t_scene *scene)
 {
     bool end;
+    int     mx;
+    int     my;
 
+    mx = WIDTH / 2;
+    my = HEIGHT / 2;
     print_map(scene);
     init_render(scene);
     init_contols(scene);
     init_textures(scene);
+    //SDL_ShowCursor(SDL_DISABLE);
     end = false;
     /* todo: proper timing */
     while (!end)

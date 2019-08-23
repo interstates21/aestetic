@@ -1,5 +1,10 @@
 {
     "files.associations": {
         "alt.h": "c"
-    }
+    },
+    "editor.insertSpaces": false,
+    "editor.renderWhitespace": "all",
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "editor.fontFamily": "DroidSansMono Nerd Font"
 }

@@ -1,4 +1,4 @@
-NAME = doom
+NAME = doom_nukem
 CC = clang
 FILES = color_math texture_init draw_test_square console_output controls_listen controls_init controls_apply linear_math main parse render_init render_line render_manager render_raycast sdl_helpers sdl_init vector_math
 LIBFT_DIR = libft/
@@ -30,7 +30,7 @@ endif
 all: $(NAME)
 
 .PHONY: all clean
-.NOTPARALLEL: all $(NAME) clean fclean re 
+.NOTPARALLEL: all $(NAME) clean fclean re
 
 $(NAME): libft/libft.a $(OBJ)
 	@echo "\033[36mLinking...\033[0m"

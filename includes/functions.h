@@ -27,6 +27,7 @@ void    print_map(t_scene *scene);
 
 void    init_contols(t_scene *scene);
 void    apply_controls(t_player *player, char **map);
+void	apply_mouse_rot(t_player *player, int x, int y);
 void    listen_controls(t_player *player, bool *end);
 
 void    init_render(t_scene *scene);

@@ -3,44 +3,41 @@
 void    listen_controls(t_player *player, bool *end)
 {
 
-      SDL_Event e;
+    SDL_Event e;
 
     SDL_PollEvent(&e);
 
-    if (e.type == SDL_QUIT) {
+    if (e.type == SDL_QUIT)
         *end = true;
+    if (e.type == SDL_KEYDOWN)
+    {
+        if (e.key.keysym.sym == SDLK_UP)
+            player->move_forw = true;
+        if (e.key.keysym.sym == SDLK_DOWN)
+            player->move_back = true;
+        if (e.key.keysym.sym == SDLK_RIGHT)
+            player->rot_right= true;
+        if (e.key.keysym.sym == SDLK_LEFT)
+            player->rot_left = true;
+        if (e.key.keysym.sym == SDLK_ESCAPE)
+            *end = true;
+        if (e.key.keysym.sym == SDLK_LCTRL)
+            player->viewment = (player->viewment + 1) % 2;
     }
-     if (e.type == SDL_KEYDOWN) {
-                if (e.key.keysym.sym == SDLK_UP) {
-                    player->move_forw = true;
-                }
-                if (e.key.keysym.sym == SDLK_DOWN) {
-                     player->move_back = true;
-                }
-                if (e.key.keysym.sym == SDLK_RIGHT) {
-                    player->rot_right= true;
-                }
-                if (e.key.keysym.sym == SDLK_LEFT) {
-                     player->rot_left = true;
-                }
-                 if (e.key.keysym.sym == SDLK_ESCAPE) {
-                     *end = true;
-                }
-            }
-
-     if (e.type == SDL_KEYUP) {
-                if (e.key.keysym.sym == SDLK_UP) {
-                    player->move_forw = false;
-                }
-                if (e.key.keysym.sym == SDLK_DOWN) {
-                     player->move_back = false;
-                }
-                if (e.key.keysym.sym == SDLK_RIGHT) {
-                    player->rot_right= false;
-                }
-                if (e.key.keysym.sym == SDLK_LEFT) {
-                     player->rot_left = false;
-                }       
-     }
+    if (player->viewment && e.type == SDL_MOUSEMOTION)
+    {
+        apply_mouse_rot(player, e.motion.x, e.motion.y);
+    }
+    if (e.type == SDL_KEYUP)
+    {
+        if (e.key.keysym.sym == SDLK_UP)
+            player->move_forw = false;
+        if (e.key.keysym.sym == SDLK_DOWN)
+            player->move_back = false;
+        if (e.key.keysym.sym == SDLK_RIGHT)
+            player->rot_right= false;
+        if (e.key.keysym.sym == SDLK_LEFT)
+            player->rot_left = false;
+    }
 
 }

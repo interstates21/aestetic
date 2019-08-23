@@ -62,6 +62,8 @@ typedef struct s_player
 	bool move_back;
 	bool rot_left;
 	bool rot_right;
+
+	bool viewment;
 } t_player;
 
 typedef struct s_ray
