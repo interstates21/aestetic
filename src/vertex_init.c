@@ -12,35 +12,62 @@
 
 #include "../includes/alt.h"
 
-//TODO: merge_arr()
+
 /*
- * принимает указатель на вершину, которую надо считать,
- * строку с вершинами,
- * индекс
+ * приниает указатели на массивы, которые нужно обьеденить
+ * возвращает указатель на массив (b + a)
+ * или указатель на первый массив, если второй пуст
+ * к моменту вызову этой функции, массив а не может быть пустым
  */
-static int	fetch_v2f(t_v2f *v, char *str, int *c)
+static t_v2f	*merge_arr(t_v2f *a, t_v2f *b, int ia, int *ib)
+{
+	t_v2f		*res;
+	int 		c;
+
+	if (!b || !*ib)
+	{
+		*ib += ia;
+		return (a);
+	}
+	res = (t_v2f*)malloc(sizeof(t_v2f) * (ia + *ib));
+	c = -1;
+	while (++c < *ib)
+		res[c] = b[c];
+	c -= 1;
+	while (++c < ia + *ib)
+		res[c] = a[c - *ib];
+	*ib += ia;
+	free(a);
+	free(b);
+	a = NULL;
+	b = NULL;
+	return (res);
+}
+
+/*
+ * принимает указатель на дабл, который надо считать,
+ * строку с вершинами,
+ * индекс последнего считаного символа
+ */
+static int	fetch_f(double *i, char *str, int *c)
 {
 	if (*c == ft_strlen(str))
 		return (0);
 	while (!ft_isdigit(str[*c]) && str[*c] ^ '-')
 		*c += 1;
-	v->x = atof(str + *c);
-	while(str[*c] ^ ' ' && str[*c] ^ '\t')
-		*c += 1;
-	while (!ft_isdigit(str[*c]) && str[*c] ^ '-')
-		*c += 1;
-	v->y = atof(str + *c);
-	while(str[*c] && str[*c] ^ ' ' && str[*c] ^ '\t')
+	*i = atof(str + *c);
+	while(ft_isdigit(str[*c]) && str[*c] == '-')
 		*c += 1;
 	return (1);
 }
 
 /*
  * примиает строку с вершинами
- * возвращает кол-во вершин
+ * возвращает кол-во вершин (кол-во х - один у)
  * или 0 если
  * 		1) в числе больше 1 точки (13.42.53)
- * ?	2) кол-во координат не кратно двум?
+ * ?	кол-во координат не кратно двум?
+ * > 	только первая координата в строке у, все остальные х
  * ? формат строки
  */
 static int	count_v(char *s)
@@ -65,7 +92,7 @@ static int	count_v(char *s)
 		db = 1;
 		s++;
 	}
-	return (res % 2 ? 0 : res / 2);
+	return (res - 1);
 }
 
 /*
@@ -92,22 +119,22 @@ t_v2f		*init_vertices(char *str, t_v2f *arr, int *NumVertices)
 	int 	v;
 	int 	i;
 	int 	c;
-	char	**start;
+	int 	y;
+
 
 	if (!str || (v = count_v(str) < 1))
 		return (NULL);
 	res = (t_v2f*)malloc(sizeof(t_v2f) * v);
 	i = -1;
 	c = 0;
-	start = &str;
+	fetch_f(&y, str, &c);
 	while (++i < v)
 	{
-		if (fetch_v2f(&res[i], str, &c))
+		res[i].y = y;
+		if (fetch_f(&res[i].x, str, &c))
 			continue ;
-		str = start;
 		free(res);
 		return (NULL);
 	}
-	str = *start;
 	return (merge_arr(res, arr, v, NumVertices));
 }
