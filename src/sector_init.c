@@ -75,15 +75,12 @@ static int		fetch_int(char *str, int *i)
  * !> число интов в строке всегда парное
  * ?> не нужно проверять строку на наличие символов,
  * 		если она прошла через fetch_int()
- * возвращает NULL если кол-во интов в строке непарное
  */
 static int		*get_ints(char *s, int c, int *m)
 {
 	int			*res;
 	int			i;
 
-	if (*m % 2)
-		return (NULL);
 	res = (int*)malloc(sizeof(int) * *m);
 	i = -1;
 	while (++i < *m)
