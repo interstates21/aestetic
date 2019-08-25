@@ -12,11 +12,85 @@
 
 #include "../includes/alt.h"
 
-//TODO: copy_arr()
-//TODO: fetch_int()
-//TODO:    ^^^ *= get_ints()
+/*
+ * принимает указатель на новый массив, на старый массив (или NULL),
+ * кол-во копируемых елементов
+ *
+ * копирует старый массив в новый
+ * чистит старый массив (если он был)
+ */
+static void		copy_arr(t_sector *a, t_sector *b, int s)
+{
+	int			i;
 
-//TODO: load_data()
+	i = -1;
+	while (++i < s)
+		a[i] = b[i];
+	if (b)
+		free(b);
+}
+
+// считает кол-во интов в строке после с
+static int		*num_ints(char *s, int c, int *m)
+{
+	int			db;
+
+	db = 0;
+	*m = 0;
+	while (s[c])
+	{
+		if (!ft_isdigit(s[c]) && s[c] ^ '-')
+			db = 0;
+		else if (!db)
+		{
+			*m += 1;
+			db = 1;
+		}
+		c++;
+	}
+	return (m);
+}
+
+/*
+ * принимает строку и индекс в ней
+ * возвращает первый найденый инт и сдвигает индекс в конец инта
+ */
+static int		fetch_int(char *str, int *i)
+{
+	int			res;
+
+	while (str[*i] && !ft_isdigit(str[*i]) && str[*i] ^ '-')
+		*i += 1;
+	res = ft_atoi(str + *i);
+	while (str[*i] && ft_isdigit(str[*i]))
+		*i += 1;
+	return (res);
+}
+
+/*
+ * принимает строку, индекс в строке, кол-во интов в строке
+ * аллочит массив интов
+ * считывает инты в массив
+ * возвращает указатель на массив интов
+ * !> число интов в строке всегда парное
+ * ?> не нужно проверять строку на наличие символов,
+ * 		если она прошла через fetch_int()
+ * возвращает NULL если кол-во интов в строке непарное
+ */
+static int		*get_ints(char *s, int c, int *m)
+{
+	int			*res;
+	int			i;
+
+	if (*m % 2)
+		return (NULL);
+	res = (int*)malloc(sizeof(int) * *m);
+	i = -1;
+	while (++i < *m)
+		res[i] = fetch_int(s, &c);
+	*m /= 2;
+	return (res);
+}
 
 /*
  * бисквит:
@@ -40,31 +114,31 @@
  *  возвращает указатель на новый массив
  *  или NULL если [давай по новой, Миша, всё ху@ня]
  */
-t_sector		*sector_init(t_sector *arr, int *NumSectors, char *s, t_v2f *v)
+t_sector		*sector_init(t_sector *arr, int *n_sectors, char *s, t_v2f *v)
 {
 	int			c;
 	t_sector	*res;
-	int 		*num;
-	int 		m;
-	int 		n;
+	int			*num;
+	int			m;
 
 	c = 0;
-	*NumSectors += 1;
-	res = (t_sector*)malloc(sizeof(t_sector) * *NumSectors);
-	copy_arr(res, arr, *NumSectors - 1);
-	res[*NumSectors - 1].floor = fetch_int(s, &c);
-	res[*NumSectors - 1].ceil = fetch_int(s, &c);
-	num = get_ints(s, c, &m);
-	res[*NumSectors - 1].npoints = m;
-	res[*NumSectors - 1].neighbours = (char*)malloc(sizeof(char) * m);
-	res[*NumSectors - 1].vertex = (t_v2f*)malloc(sizeof(t_v2f) * (m + 1));
-	n = -1;
-	while (++n < m)
+	if ((*n_sectors += 1) < 0 && *num_ints(s, c, &m) % 2)
+		return (NULL);
+	res = (t_sector*)malloc(sizeof(t_sector) * *n_sectors);
+	copy_arr(res, arr, *n_sectors - 1);
+	res[*n_sectors - 1].floor = fetch_int(s, &c);
+	res[*n_sectors - 1].ceil = fetch_int(s, &c);
+	num = get_ints(s, c, num_ints(s, c, &m));
+	res[*n_sectors - 1].npoints = m;
+	res[*n_sectors - 1].neighbours = (char*)malloc(sizeof(char) * m);
+	res[*n_sectors - 1].vertex = (t_v2f*)malloc(sizeof(t_v2f) * (m + 1));
+	c = -1;
+	while (++c < m)
 	{
-		res[*NumSectors - 1].vertex[n + 1] = v[num[n]];
-		res[*NumSectors - 1].neighbours[n] = num[m + n];
+		res[*n_sectors - 1].vertex[c + 1] = v[num[c]];
+		res[*n_sectors - 1].neighbours[c] = num[m + c];
 	}
-	res[*NumSectors - 1].vertex[0] = res[*NumSectors - 1].vertex[m];
+	res[*n_sectors - 1].vertex[0] = res[*n_sectors - 1].vertex[m];
 	free(num);
 	return (res);
 }
