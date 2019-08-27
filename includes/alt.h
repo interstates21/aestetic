@@ -132,7 +132,7 @@ typedef struct		s_scene
 	int				map_width;
 	int				map_height;
 	t_player		player;
-	int				sectors_total;
+	int				n_sectors;
 	t_sector		*sectors;
 }					t_scene;
 

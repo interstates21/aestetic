@@ -1,4 +1,5 @@
-#include "alt.h"
+#include "../includes/alt.h"
+#include "../includes/functions.h"
 
 // todo: resize window
 
@@ -39,7 +40,7 @@ static void LoadData()
                 sscanf(ptr += n, "%f%f%n", &sect->floor,&sect->ceil, &n);
                 for(m=0; sscanf(ptr += n, "%32s%n", word, &n) == 1 && word[0] != '#'; )
                     { num = realloc(num, ++m * sizeof(*num)); num[m-1] = word[0]=='x' ? -1 : atoi(word); }
-                sect->npoints   = m /= 2;
+                sect->npoints   = m /= 2;//уууух, сука
                 sect->neighbors = malloc( (m  ) * sizeof(*sect->neighbors) );
                 sect->vertex    = malloc( (m+1) * sizeof(*sect->vertex)    );
                 for(n=0; n<m; ++n) sect->neighbors[n] = num[m + n];
@@ -360,8 +361,10 @@ int main()
     t_controller    controller;
     bool            end;
 
-
-    LoadData();
+//!
+	scene.sectors = NULL;
+//!
+    load_data("map-clear.txt", &scene);
     end = false;
     sdl_init(&sdl);
     sdl_init_renderer(&sdl);

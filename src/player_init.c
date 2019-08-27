@@ -13,18 +13,18 @@
 #include "../includes/alt.h"
 
 // сцена нужна для проверки по секторам
-int		player_init(t_scene *s, t_v2f pos, double ang, unsigned int sect)
+int		player_init(t_scene *s, char *l)
 {
-	if (sect >= s->sectors_total)
+	int		sect;
+	int 	i;
+	t_v2f	v;
+	double	ang;
+
+	i = 0;
+	if (!fetch_f(&v.x, l, &i) || !fetch_f(&v.y, l, &i) || !fetch_f(&ang, l, &i)
+	|| !fetch_int(l, &sect) || sect >= s->n_sectors)
 		return (0);
-	s->player.angle = ang;
-	s->player.sector = sect;
-	s->player.pos = (t_v3f){ pos.x, pos.y, s->sectors[sect].floor + EYE_HEIGHT};
-	s->player.anglecos = 0.0;
-	s->player.anglesin = 0.0;
-	s->player.motion = (t_v3f){ 0.0, 0.0, 0.0 };
-	s->player.yaw = 0.0;
-	s->player.move_speed = 0.0;
-	s->player.rot_speed = 0.0;
+	s->player = (t_player){(t_v3f){v.x, v.y, 0}, (t_v3f){0, 0, 0}, ang, 0, 0,
+	0, 0, 0, sect};
 	return (1);
 }

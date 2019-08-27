@@ -21,6 +21,7 @@
  */
 static void		copy_arr(t_sector *a, t_sector *b, int s)
 {
+	printf("    +copy_arr\n");
 	int			i;
 
 	i = -1;
@@ -28,11 +29,13 @@ static void		copy_arr(t_sector *a, t_sector *b, int s)
 		a[i] = b[i];
 	if (b)
 		free(b);
+	printf("    -copy_arr\n");
 }
 
 // считает кол-во интов в строке после с
 static int		*num_ints(char *s, int c, int *m)
 {
+	printf("    +num_ints\n");
 	int			db;
 
 	db = 0;
@@ -48,6 +51,7 @@ static int		*num_ints(char *s, int c, int *m)
 		}
 		c++;
 	}
+	printf("    -num_ints\n");
 	return (m);
 }
 
@@ -55,8 +59,9 @@ static int		*num_ints(char *s, int c, int *m)
  * принимает строку и индекс в ней
  * возвращает первый найденый инт и сдвигает индекс в конец инта
  */
-static int		fetch_int(char *str, int *i)
+int				fetch_int(char *str, int *i)
 {
+	printf("     +fetch_int\n");
 	int			res;
 
 	while (str[*i] && !ft_isdigit(str[*i]) && str[*i] ^ '-')
@@ -64,6 +69,7 @@ static int		fetch_int(char *str, int *i)
 	res = ft_atoi(str + *i);
 	while (str[*i] && ft_isdigit(str[*i]))
 		*i += 1;
+	printf("     -fetch_int\n");
 	return (res);
 }
 
@@ -78,6 +84,7 @@ static int		fetch_int(char *str, int *i)
  */
 static int		*get_ints(char *s, int c, int *m)
 {
+	printf("    +get_ints\n");
 	int			*res;
 	int			i;
 
@@ -86,6 +93,7 @@ static int		*get_ints(char *s, int c, int *m)
 	while (++i < *m)
 		res[i] = fetch_int(s, &c);
 	*m /= 2;
+	printf("    -get_ints\n");
 	return (res);
 }
 
@@ -113,6 +121,7 @@ static int		*get_ints(char *s, int c, int *m)
  */
 t_sector		*sector_init(t_sector *arr, int *n_sectors, char *s, t_v2f *v)
 {
+	printf("  +sector_init\n");
 	int			c;
 	t_sector	*res;
 	int			*num;
@@ -132,10 +141,13 @@ t_sector		*sector_init(t_sector *arr, int *n_sectors, char *s, t_v2f *v)
 	c = -1;
 	while (++c < m)
 	{
+		printf(">> %d -- %d\n", *n_sectors, num[c]);
 		res[*n_sectors - 1].vertex[c + 1] = v[num[c]];
+		printf("x-x segf\n");
 		res[*n_sectors - 1].neighbours[c] = num[m + c];
 	}
 	res[*n_sectors - 1].vertex[0] = res[*n_sectors - 1].vertex[m];
 	free(num);
+	printf("  -sector_init\n");
 	return (res);
 }

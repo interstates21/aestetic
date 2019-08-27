@@ -12,6 +12,11 @@
 
 #include "../includes/alt.h"
 
+/*
+ * на самом деле большая часть проверок больше не актуальна
+ * тк есть куча проверок до вызова этих f()
+ */
+
 
 /*
  * приниает указатели на массивы, которые нужно обьеденить
@@ -49,15 +54,15 @@ static t_v2f	*merge_arr(t_v2f *a, t_v2f *b, int ia, int *ib)
  * строку с вершинами,
  * индекс последнего считаного символа
  */
-static int	fetch_f(double *i, char *str, int *c)
+int			fetch_f(double *i, char *str, int *c)
 {
-	if (*c == ft_strlen(str))
-		return (0);
 	while (!ft_isdigit(str[*c]) && str[*c] ^ '-')
-		*c += 1;
+		*c = *c + 1;
 	*i = atof(str + *c);
-	while(ft_isdigit(str[*c]) && str[*c] == '-')
-		*c += 1;
+	printf("--- %f\n", *i);
+	*c += str[*c] == '-' ? 1 : 0;
+	while(ft_isdigit(str[*c]))
+		*c = *c + 1;
 	return (1);
 }
 
@@ -115,14 +120,15 @@ static int	count_v(char *s)
  */
 t_v2f		*init_vertices(char *str, t_v2f *arr, int *NumVertices)
 {
+	printf("  +vertex_init\n");
 	t_v2f	*res;
 	int 	v;
 	int 	i;
 	int 	c;
-	int 	y;
+	double	y;
 
 
-	if (!str || (v = count_v(str) < 1))
+	if (!str || ((v = count_v(str)) < 1))
 		return (NULL);
 	res = (t_v2f*)malloc(sizeof(t_v2f) * v);
 	i = -1;
@@ -133,8 +139,10 @@ t_v2f		*init_vertices(char *str, t_v2f *arr, int *NumVertices)
 		res[i].y = y;
 		if (fetch_f(&res[i].x, str, &c))
 			continue ;
+		printf("che\n");
 		free(res);
 		return (NULL);
 	}
+	printf("  -vertex_init\n");
 	return (merge_arr(res, arr, v, NumVertices));
 }
