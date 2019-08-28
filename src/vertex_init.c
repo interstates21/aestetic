@@ -23,30 +23,33 @@
  * возвращает указатель на массив (b + a)
  * или указатель на первый массив, если второй пуст
  * к моменту вызову этой функции, массив а не может быть пустым
+ *
+ * upd:
+ *  ничего не возвращает
+ *  сразу присваевает второму массиву нужное значение
  */
-static t_v2f	*merge_arr(t_v2f *a, t_v2f *b, int ia, int *ib)
+static void		merge_arr(t_v2f **a, t_v2f **b, int ia, int *ib)
 {
 	t_v2f		*res;
 	int 		c;
 
-	if (!b || !*ib)
-	{
-		*ib += ia;
-		return (a);
-	}
+
 	res = (t_v2f*)malloc(sizeof(t_v2f) * (ia + *ib));
 	c = -1;
 	while (++c < *ib)
-		res[c] = b[c];
+	{
+		res[c] = (*b)[c];
+	}
 	c -= 1;
 	while (++c < ia + *ib)
-		res[c] = a[c - *ib];
+		res[c] = (*a)[c - *ib];
 	*ib += ia;
-	free(a);
-	free(b);
-	a = NULL;
-	b = NULL;
-	return (res);
+	if (*a)
+		free(*a);
+	if (*b)
+		free(*b);
+	*b = res;
+	*a = NULL;
 }
 
 /*
@@ -59,9 +62,9 @@ int			fetch_f(double *i, char *str, int *c)
 	while (!ft_isdigit(str[*c]) && str[*c] ^ '-')
 		*c = *c + 1;
 	*i = atof(str + *c);
-	printf("--- %f\n", *i);
+	//printf("- - %s\n--- %f\n", str + *c, *i);
 	*c += str[*c] == '-' ? 1 : 0;
-	while(ft_isdigit(str[*c]))
+	while(str[*c] && (ft_isdigit(str[*c]) || str[*c] == '.'))
 		*c = *c + 1;
 	return (1);
 }
@@ -80,22 +83,26 @@ static int	count_v(char *s)
 	int		db;
 	int 	old;
 	int 	res;
+	int 	i;
 
 	res = 0;
 	db = 1;
-	while (*s)
+	i = ft_strlen(s) - 1;
+	while (i >= 0)
 	{
 		old = res;
-		while (ft_isdigit(*s) || *s == '.')
+		while (i >= 0 && (ft_isdigit(s[i]) || s[i] == '.'))
 		{
-			db = *s ^ '.' ? db : db - 1 ;
+			db = s[i] ^ '.' ? db : db - 1 ;
 			if (db < 0)
 				return (0);
 			res = res ^ old ? res : res + 1;
-			s++;
+			//if (res ^ old)
+				//printf("%d -- %s\n",res,  s + i);
+			i--;
 		}
 		db = 1;
-		s++;
+		i--;
 	}
 	return (res - 1);
 }
@@ -117,8 +124,12 @@ static int	count_v(char *s)
  *
  * ? какой формат входящей строки
  * ? ft_atof()
+ *
+ * upd:
+ *  принимает УКАЗАТЕЛЬ на МАССИВ (какой же я тупой)
+ *  возвращает 1|0 вместо адресс|NULL
  */
-t_v2f		*init_vertices(char *str, t_v2f *arr, int *NumVertices)
+int			init_vertices(char *str, t_v2f **arr, int *n_v)
 {
 	printf("  +vertex_init\n");
 	t_v2f	*res;
@@ -127,22 +138,22 @@ t_v2f		*init_vertices(char *str, t_v2f *arr, int *NumVertices)
 	int 	c;
 	double	y;
 
-
 	if (!str || ((v = count_v(str)) < 1))
-		return (NULL);
+		return (0);
 	res = (t_v2f*)malloc(sizeof(t_v2f) * v);
 	i = -1;
 	c = 0;
 	fetch_f(&y, str, &c);
 	while (++i < v)
 	{
+		//printf("<>- i = %d, v = %d\n", i, v);
 		res[i].y = y;
 		if (fetch_f(&res[i].x, str, &c))
 			continue ;
-		printf("che\n");
 		free(res);
-		return (NULL);
+		return (0);
 	}
+	merge_arr(&res, arr, v, n_v);
 	printf("  -vertex_init\n");
-	return (merge_arr(res, arr, v, NumVertices));
+	return (1);
 }

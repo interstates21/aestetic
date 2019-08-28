@@ -52,7 +52,7 @@ static int	check_i(char *s, int i)
 	return (1);
 }
 
-static int	gut_check(char *s, t_scene *g, t_v2f *v, int *n_v)
+static int	gut_check(char *s, t_scene *g, t_v2f **v, int *n_v)
 {
 	printf(" +gut_check\n");
 	if (!ft_strlen(s))
@@ -61,13 +61,14 @@ static int	gut_check(char *s, t_scene *g, t_v2f *v, int *n_v)
 	{
 		if (ft_strncmp(s, "vertex", 6) || !check_f(s + 6, -1))
 			return (0);
-		return ((v = init_vertices(s + 6, v, n_v)) ? 1 : 0);
+		return (init_vertices(s + 6, v, n_v));
 	}
 	else if (s[0] == 's')
 	{
+		exit(1);
 		if (ft_strncmp(s, "sector", 6) || !check_i(s + 6, -1))
 			return (0);
-		return ((g->sectors = sector_init(g->sectors, &g->n_sectors, s + 6, v))
+		return ((g->sectors = sector_init(g->sectors, &g->n_sectors, s + 6, *v))
 		? 1 : 0);
 	}
 	else if (s[0] == 'p')
@@ -112,7 +113,7 @@ int 		load_data(char *fname, t_scene *scene)
 	while (get_next_line(fd, &line))
 	{
 		if (!seq_check(&stage, line[0])
-		|| !gut_check(line, scene, vert, &n_vert))
+		|| !gut_check(line, scene, &vert, &n_vert))
 		{
 			free(line);
 			return (0);
@@ -120,8 +121,7 @@ int 		load_data(char *fname, t_scene *scene)
 		printf("%s\n", line);
 		free(line);
 	}
-	if (vert)
-		free(vert);
+	free(vert);
 	printf("-load_data\n");
 	return (1);
 }

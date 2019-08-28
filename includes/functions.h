@@ -40,7 +40,7 @@ void     sdl_clear_texture(Uint32 **pixels);
 // void     print_v2f(t_v2f v, char *s);
 // void test_controls(t_player *player, char **map);
 
-t_v2f			*init_vertices(char *str, t_v2f *arr, int *NumVertices);
+int				init_vertices(char *str, t_v2f **arr, int *n_v);
 int				player_init(t_scene *s, char *l);
 int				fetch_int(char *str, int *i);
 int				fetch_f(double *i, char *str, int *c);
