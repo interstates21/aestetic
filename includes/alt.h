@@ -78,18 +78,22 @@ typedef struct s_player
 	t_v2f view;
 } t_player;
 
-typedef struct s_controller
+typedef struct	s_controller
 {
-	bool move_forw;
-	bool move_back;
-	bool rot_left;
-	bool rot_right;
-	bool ground;
-	bool falling;
-	bool moving;
-	bool ducking;
-    float yaw;
-} t_controller;
+	bool		move_forw;
+	bool		move_back;
+	bool		rot_left;
+	bool		rot_right;
+	bool		ground;
+	bool		falling;
+	bool		moving;
+	bool		ducking;
+
+	float		yaw;
+	int			mouse_x;
+	int			mouse_y;
+	bool		checkmouse_way;
+}				t_controller;
 
 
 typedef struct s_scene

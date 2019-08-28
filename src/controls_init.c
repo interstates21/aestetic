@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 17:55:17 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/08/13 19:30:46 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/08/27 18:27:33 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,4 @@ void	init_contols(t_scene *scene)
 	scene->player.move_back = 0;
 	scene->player.rot_left = 0;
 	scene->player.rot_right = 0;
-
-	scene->player.viewment = 0;
 }

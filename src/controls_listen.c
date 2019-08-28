@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/23 17:05:56 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/08/23 18:25:41 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/08/28 20:19:32 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	keyboard_input(struct player *player, bool *end, t_controller *controller)
 {
 	SDL_Event ev;
 
+	controller->checkmouse_way = true;
 	while (SDL_PollEvent(&ev))
 	{
 		if (ev.type == SDL_QUIT)
@@ -24,8 +25,15 @@ void	keyboard_input(struct player *player, bool *end, t_controller *controller)
 		{
 			if (ev.type == SDL_KEYDOWN)
 				if (ev.key.keysym.sym == SDLK_RCTRL)
+				{
 					SDL_SetRelativeMouseMode(SDL_GetRelativeMouseMode() ?
 														SDL_FALSE : SDL_TRUE);
+					controller->move_forw = false;
+					controller->move_back = false;
+					controller->rot_left = false;
+					controller->rot_right = false;
+					controller->checkmouse_way = false;
+				}
 			if (ev.key.keysym.sym == SDLK_ESCAPE)
 				*end = true;
 			if (SDL_GetRelativeMouseMode())
@@ -53,5 +61,16 @@ void	keyboard_input(struct player *player, bool *end, t_controller *controller)
 				}
 			}
 		}
+	}
+}
+
+void	mouse_aiming(struct player *player, t_controller *controller)
+{
+	SDL_GetRelativeMouseState(&controller->mouse_x, &controller->mouse_y);
+	if (SDL_GetRelativeMouseMode() && controller->checkmouse_way)
+	{
+		player->angle += controller->mouse_x * 0.007f;
+		controller->yaw = clamp(controller->yaw - controller->mouse_y * (-0.025f), -5, 5);
+		player->yaw = controller->yaw - player->velocity.z * 0.5f;
 	}
 }

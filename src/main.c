@@ -20,6 +20,7 @@
 
 static void LoadData()
 {
+
     FILE* fp = fopen("map-clear.txt", "rt");
     if(!fp) { perror("map-clear.txt"); exit(1); }
     char Buf[256], word[256], *ptr;
@@ -292,50 +293,10 @@ void shitty_controller(t_controller *controller, bool *end, t_sdl sdl) {
             MovePlayer(dx, dy);
             controller->falling = 1;
         }
+
         keyboard_input(&player, end, controller);
-        // SDL_Event ev;
-        // while(SDL_PollEvent(&ev))
-        // {
-        //     if (ev.type == SDL_QUIT)
-		// 		*end = true;
-		// 	if (ev.type == SDL_KEYDOWN || ev.type == SDL_KEYUP)
-		// 	{
-		// 		if (ev.key.keysym.sym == SDLK_ESCAPE)
-		// 			*end = true;
-		// 		if (ev.key.keysym.sym == SDLK_w)
-		// 			controller->move_forw = ev.type == SDL_KEYDOWN;
-		// 		if (ev.key.keysym.sym == SDLK_s)
-		// 			controller->move_back = ev.type == SDL_KEYDOWN;
-		// 		if (ev.key.keysym.sym == SDLK_a)
-		// 			controller->rot_left = ev.type == SDL_KEYDOWN;
-		// 		if (ev.key.keysym.sym == SDLK_d)
-		// 			controller->rot_right = ev.type == SDL_KEYDOWN;
-		// 		if (ev.key.keysym.sym == SDLK_SPACE)
-        //         {
-		// 			if(controller->ground)
-        //             {
-        //                 player.velocity.z += 0.5;
-        //                 controller->falling = 1;
-        //             }
-        //         }
-        //         if (ev.key.keysym.sym == SDLK_LCTRL || ev.key.keysym.sym == SDLK_RCTRL)
-		// 		{
-        //             controller->ducking = ev.type == SDL_KEYDOWN;
-        //             controller->falling = 1;
-        //         }
-		// 	}
-        // }
-
         /* mouse aiming */
-
-        if (SDL_GetRelativeMouseMode())
-        {
-            int x,y;
-            SDL_GetRelativeMouseState(&x,&y);
-            player.angle += x * 0.015f;
-            controller->yaw    = clamp(controller->yaw - y * (-0.05f), -5, 5);
-            player.yaw   = controller->yaw - player.velocity.z * 0.5f;
-        }
+        mouse_aiming(&player, controller);
         MovePlayer(0,0);
 
         float move_vec[2] = {0.f, 0.f};
