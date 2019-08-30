@@ -27,7 +27,9 @@ void    print_err(const char *err);
 
 // void    init_contols(t_scene *scene);
 // void    apply_controls(t_player *player, char **map);
-// void    listen_controls(t_player *player, bool *end);
+void	keyboard_input(struct player *player, bool *end, t_controller *controller);
+void	mouse_aiming(struct player *player, t_controller *controller);
+
 
 // void    init_render(t_scene *scene);
 // void    render(t_scene *scene);
