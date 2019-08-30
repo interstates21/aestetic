@@ -25,7 +25,7 @@
 
 #define MAP_WIDTH 5
 #define MAP_HEIGHT 6
-#define WIDTH 1200
+#define WIDTH 800
 #define HEIGHT 600
 # define EYE_HEIGHT		6
 # define DUCK_HEIGHT	2.5
@@ -79,17 +79,6 @@ typedef struct		s_player
 	double			move_speed;
 	double			rot_speed;
 	unsigned int	sector;
-	/* дублируют контроллер
-	 * bool move_forw;
-	 * bool move_back;
-	 * bool rot_left;
-	 * bool rot_right;
-	 */
-	/* 
-	 * t_v2f dir;
-	 * t_v2f pos;
-	 * t_v2f view;
-	 */
 }					t_player;
 
 typedef struct	s_controller
@@ -103,6 +92,8 @@ typedef struct	s_controller
 	bool		moving;
 	bool		ducking;
 
+
+	//to remove
 	float		yaw;
 	int			mouse_x;
 	int			mouse_y;
@@ -130,15 +121,17 @@ typedef struct		s_scene
 {
 	Uint32			*pixels;
 	Uint32			**textures;
+	t_player		player;
+	t_controller	controller;
 	char			**map;
 	int				tex_height;
 	int				tex_width;
 	int				map_width;
 	int				map_height;
-	t_player		player;
 	int				n_sectors;
 	t_sector		*sectors;
 }					t_scene;
+
 
 
 typedef struct s_sdl
