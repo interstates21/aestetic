@@ -19,53 +19,53 @@
 //      return (tex);
 // }
 
-static void LoadData()
-{
+// static void LoadData()
+// {
 
-    FILE* fp = fopen("map-clear.txt", "rt");
-    if(!fp) { perror("map-clear.txt"); exit(1); }
-    char Buf[256], word[256], *ptr;
-    struct xy* vert = NULL, v;
-    int n, m, NumVertices = 0;
-    while(fgets(Buf, sizeof Buf, fp))
-        switch(sscanf(ptr = Buf, "%32s%n", word, &n) == 1 ? word[0] : '\0')
-        {
-            case 'v': // vertex
-                for(sscanf(ptr += n, "%f%n", &v.y, &n); sscanf(ptr += n, "%f%n", &v.x, &n) == 1; )
-                    { vert = realloc(vert, ++NumVertices * sizeof(*vert)); vert[NumVertices-1] = v; }
-                break;
-            case 's': // sector
-                sectors = realloc(sectors, ++NumSectors * sizeof(*sectors));
-                struct sector* sect = &sectors[NumSectors-1];
-                int* num = NULL;
-                sscanf(ptr += n, "%f%f%n", &sect->floor,&sect->ceil, &n);
-                for(m=0; sscanf(ptr += n, "%32s%n", word, &n) == 1 && word[0] != '#'; )
-                    { num = realloc(num, ++m * sizeof(*num)); num[m-1] = word[0]=='x' ? -1 : atoi(word); }
-                sect->npoints   = m /= 2;//уууух, сука
-                sect->neighbors = malloc( (m  ) * sizeof(*sect->neighbors) );
-                sect->vertex    = malloc( (m+1) * sizeof(*sect->vertex)    );
-                for(n=0; n<m; ++n) sect->neighbors[n] = num[m + n];
-                for(n=0; n<m; ++n) sect->vertex[n+1]  = vert[num[n]]; // TODO: Range checking
-                sect->vertex[0] = sect->vertex[m]; // Ensure the vertexes form a loop
-                free(num);
-                break;
-            case 'p':; // player
-                float angle;
-                sscanf(ptr += n, "%f %f %f %d", &v.x, &v.y, &angle,&n);
-                player = (struct player) { {v.x, v.y, 0}, {0,0,0}, angle,0,0,0, n }; // TODO: Range checking
-                player.where.z = sectors[player.sector].floor + EyeHeight;
-        }
-    fclose(fp);
-    free(vert);
-}
-static void UnloadData()
-{
-    for(unsigned a=0; a<NumSectors; ++a) free(sectors[a].vertex);
-    for(unsigned a=0; a<NumSectors; ++a) free(sectors[a].neighbors);
-    free(sectors);
-    sectors    = NULL;
-    NumSectors = 0;
-}
+//     FILE* fp = fopen("map-clear.txt", "rt");
+//     if(!fp) { perror("map-clear.txt"); exit(1); }
+//     char Buf[256], word[256], *ptr;
+//     struct xy* vert = NULL, v;
+//     int n, m, NumVertices = 0;
+//     while(fgets(Buf, sizeof Buf, fp))
+//         switch(sscanf(ptr = Buf, "%32s%n", word, &n) == 1 ? word[0] : '\0')
+//         {
+//             case 'v': // vertex
+//                 for(sscanf(ptr += n, "%f%n", &v.y, &n); sscanf(ptr += n, "%f%n", &v.x, &n) == 1; )
+//                     { vert = realloc(vert, ++NumVertices * sizeof(*vert)); vert[NumVertices-1] = v; }
+//                 break;
+//             case 's': // sector
+//                 sectors = realloc(sectors, ++NumSectors * sizeof(*sectors));
+//                 struct sector* sect = &sectors[NumSectors-1];
+//                 int* num = NULL;
+//                 sscanf(ptr += n, "%f%f%n", &sect->floor,&sect->ceil, &n);
+//                 for(m=0; sscanf(ptr += n, "%32s%n", word, &n) == 1 && word[0] != '#'; )
+//                     { num = realloc(num, ++m * sizeof(*num)); num[m-1] = word[0]=='x' ? -1 : atoi(word); }
+//                 sect->npoints   = m /= 2;//уууух, сука
+//                 sect->neighbors = malloc( (m  ) * sizeof(*sect->neighbors) );
+//                 sect->vertex    = malloc( (m+1) * sizeof(*sect->vertex)    );
+//                 for(n=0; n<m; ++n) sect->neighbors[n] = num[m + n];
+//                 for(n=0; n<m; ++n) sect->vertex[n+1]  = vert[num[n]]; // TODO: Range checking
+//                 sect->vertex[0] = sect->vertex[m]; // Ensure the vertexes form a loop
+//                 free(num);
+//                 break;
+//             case 'p':; // player
+//                 float angle;
+//                 sscanf(ptr += n, "%f %f %f %d", &v.x, &v.y, &angle,&n);
+//                 player = (struct player) { {v.x, v.y, 0}, {0,0,0}, angle,0,0,0, n }; // TODO: Range checking
+//                 player.where.z = sectors[player.sector].floor + EyeHeight;
+//         }
+//     fclose(fp);
+//     free(vert);
+// // }
+// static void UnloadData()
+// {
+//     for(unsigned a=0; a<NumSectors; ++a) free(sectors[a].vertex);
+//     for(unsigned a=0; a<NumSectors; ++a) free(sectors[a].neighbors);
+//     free(sectors);
+//     sectors    = NULL;
+//     NumSectors = 0;
+// }
 
 
 Uint32 *get_screen_pixels(void)
@@ -328,44 +328,22 @@ void init_controller(t_controller *controller) {
     controller->yaw = 0;
 }
 
-int main()
+
+void run(t_scene scene, t_sdl sdl)
 {
-    t_sdl           sdl;
-    t_scene         scene;
     t_controller    controller;
     bool            end;
 
-//!
-	scene.sectors = NULL;
-//!
-  load_data("map-clear.txt", &scene);
-//	LoadData();
-
-    int r = -1;
-    while (++r < scene.n_sectors)
-	{
-    	int y = -1;
-    	printf("sector %d:\n\tfloor = %f, ceil = %f\nvertices:\n", r, scene.sectors[r].ceil, scene.sectors[r].floor);
-    	while (++y < scene.sectors[r].npoints)
-    		printf("\t(%f, %f)\n", scene.sectors[r].vertex[y].x, scene.sectors[r].vertex[y].y);
-	}
-    printf("player:\n\t(%f, %f)\tang = %f\tsect = %d\n", scene.player.pos.x, scene.player.pos.y, scene.player.angle, scene.player.sector);
-exit(1);
     end = false;
-    sdl_init(&sdl);
-    sdl_init_renderer(&sdl);
-    scene.pixels = get_screen_pixels();
 
     init_controller(&controller);
-    //     init_render(scene);
-    //     init_contols(scene);
     //     init_textures(scene);
+    // console_log_map(scene);
     SDL_SetRelativeMouseMode(SDL_TRUE);
     while (!end)
     {
 
-        DrawScreen(&scene);
-		//printf("x-x dead\n");
+        // DrawScreen(&scene);
         SDL_UpdateTexture(sdl.texture, NULL, scene.pixels, WIDTH * sizeof(Uint32));
         SDL_RenderCopy(sdl.renderer, sdl.texture, NULL, NULL);
         SDL_RenderPresent(sdl.renderer);
@@ -379,33 +357,37 @@ exit(1);
     }
     UnloadData();
     SDL_Quit();
-    return 0;
+
 }
 
 
-// bool validate_arg(char **argv)
-// {
-//     if (argv)
-//         return (true);
-//     return (true);
-// }
+bool validate_arg(char **argv)
+{
+    if (argv)
+        return (true);
+    return (true);
+}
 
+void scene_init(t_scene *scene) {
+	scene->sectors = NULL;
+}
 
+int main(int argc, char **argv)
+{
+    t_sdl sdl;
+    t_scene scene;
 
-// int main(int argc, char **argv)
-// {
-//     t_sdl sdl;
-//     t_scene scene;
-
-//     if (argc != 2)
-//         print_err("Usage: ./doom [mapname]");
-//     if (!validate_arg(argv))
-//         print_err("Wrong arg.");
-//     parse_manager(&scene, argv[1]);
-//     sdl_init(&sdl);
-//     sdl_init_renderer(&sdl);
-//     scene.pixels = get_screen_pixels();
-//     run(&sdl, &scene);
-//     sdl_clean(&sdl);
-//     return 0;
-// }
+    if (argc == 32)
+        print_err("Usage: ./doom [mapname]");
+    if (!validate_arg(argv))
+        print_err("Wrong arg.");
+    sdl_init(&sdl);
+    scene_init(&scene);
+    load_data("map-clear.txt", &scene);
+    return (0);
+    sdl_init_renderer(&sdl);
+    scene.pixels = get_screen_pixels();
+    run(scene, sdl);
+    sdl_clean(&sdl);
+    return 0;
+}

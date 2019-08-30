@@ -46,3 +46,17 @@ void     print_v2f(t_v2f v, char *s) {
 // void     print_v2f(t_v2f v, char *s) {
 //     printf("Vector %s = x:%f - y:%f", s, v.x, v.y);
 // }
+
+void console_log_map(t_scene scene) {
+    int r = -1;
+    while (++r < scene.n_sectors)
+	{
+    	int y = -1;
+    	printf("sector %d:\n\tfloor = %f, ceil = %f\nvertices:\n", r, scene.sectors[r].ceil, scene.sectors[r].floor);
+    	while (++y < scene.sectors[r].npoints)
+    		printf("\t(%f, %f)\n", scene.sectors[r].vertex[y].x, scene.sectors[r].vertex[y].y);
+
+	}
+     printf("player:\n\t(%f, %f)\tang = %f\tsect = %d\n", scene.player.pos.x, scene.player.pos.y, scene.player.angle, scene.player.sector);
+    
+}
