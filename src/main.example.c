@@ -1,23 +1,5 @@
 #include "alt.h"
 
-// todo: resize window
-
-// SDL_Texture   *load_sur(SDL_Renderer *ren) {
-//     SDL_Texture *tex = NULL;
-
-//     SDL_Surface *sur = SDL_LoadBMP("src/0.bmp");
-//     if (sur == NULL) {
-//         ft_putstr(SDL_GetError());
-//         exit(1);
-//     }
-
-//      tex = SDL_CreateTextureFromSurface(ren, sur);
-
-//      SDL_FreeSurface(sur);
-
-//      return (tex);
-// }
-
 bool validate_arg(char **argv)
 {
     if (argv)
