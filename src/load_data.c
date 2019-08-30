@@ -110,6 +110,7 @@ int 		load_data(char *fname, t_scene *scene)
 		|| !gut_check(line, scene, &vert, &n_vert))
 		{
 			free(line);
+			free(vert);
 			return (0);
 		}
 		free(line);

@@ -79,17 +79,15 @@ typedef struct		s_player
 	double			move_speed;
 	double			rot_speed;
 	unsigned int	sector;
-	/* дублируют контроллер
-	 * bool move_forw;
-	 * bool move_back;
-	 * bool rot_left;
-	 * bool rot_right;
-	 */
-	/* 
-	 * t_v2f dir;
-	 * t_v2f pos;
-	 * t_v2f view;
-	 */
+
+	 bool move_forw;
+	 bool move_back;
+	 bool rot_left;
+	 bool rot_right;
+
+	 t_v2f dir;
+	 t_v2f view;
+
 }					t_player;
 
 typedef struct s_controller

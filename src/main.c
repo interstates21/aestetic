@@ -367,16 +367,6 @@ int main()
  //   load_data("map-clear.txt", &scene);
 	LoadData();
 
-    int r = -1;
-    while (++r < NumSectors)
-	{
-    	int y = -1;
-    	printf("sector %d:\n\tfloor = %f, ceil = %f\nvertices:\n", r, sectors[r].ceil, sectors[r].floor);
-    	while (++y < sectors[r].npoints)
-    		printf("\t(%f, %f)\n", sectors[r].vertex[y].x, sectors[r].vertex[y].y);
-	}
-    printf("player:\n\t(%f, %f)\tang = %f\tsect = %d\n", player.where.x, player.where.y, player.angle, player.sector);
-exit(1);
     end = false;
     sdl_init(&sdl);
     sdl_init_renderer(&sdl);
