@@ -370,6 +370,7 @@ bool validate_arg(char **argv)
 
 void scene_init(t_scene *scene) {
 	scene->sectors = NULL;
+    scene->n_sectors = 0;
 }
 
 int main(int argc, char **argv)
@@ -384,7 +385,6 @@ int main(int argc, char **argv)
     sdl_init(&sdl);
     scene_init(&scene);
     load_data("map-clear.txt", &scene);
-    return (0);
     sdl_init_renderer(&sdl);
     scene.pixels = get_screen_pixels();
     run(scene, sdl);

@@ -90,11 +90,13 @@ int 		load_data(char *fname, t_scene *scene)
 
 	if ((fd = open(fname, O_RDONLY)) == -1)
 		return (0);
+
 	vert = NULL;
 	n_vert = 0;
 	stage = 0;
 	while (get_next_line(fd, &line))
 	{
+		ft_putendl(line);
 		if (!seq_check(&stage, line[0])
 		|| !gut_check(line, scene, &vert, &n_vert))
 		{
