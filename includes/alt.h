@@ -6,14 +6,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_render.h>
-#include "libft.h"
+#include "../frameworks/SDL2/SDL.h"
+#include "../frameworks/SDL2/SDL_render.h"
+#include "../libft/libft.h"
 #include "bisquit.h"
 #ifdef __APPLE__
-#include "SDL_image.h"
-#include "SDL_mixer.h"
-#include "SDL_ttf.h"
+#include "../frameworks/SDL2_image.framework/Headers/SDL_image.h"
+#include "../frameworks/SDL2_mixer.framework/Headers/SDL_mixer.h"
+#include "../frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h"
 #elif __linux__
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
@@ -27,6 +27,12 @@
 #define MAP_HEIGHT 6
 #define WIDTH 1200
 #define HEIGHT 600
+# define EYE_HEIGHT		6
+# define DUCK_HEIGHT	2.5
+# define HEAD_MARGIN	1
+# define KNEE_HIGHT		2
+# define H_FOV			(0.73f * HEIGHT)
+# define V_FOW			(.2f * HEIGHT)
 
 typedef enum
 {
@@ -62,48 +68,77 @@ typedef struct s_v2
 	int y;
 } t_v2;
 
-typedef struct s_player
+typedef struct		s_player
 {
-	// t_v3f pos;
-	// t_v3f motion;
-    // float angle, anglesin, anglecos, yaw;
-	double move_speed;
-	double rot_speed;
-	bool move_forw;
-	bool move_back;
-	bool rot_left;
-	bool rot_right;
-	t_v2f dir;
-	t_v2f pos;
-	t_v2f view;
-} t_player;
+	t_v3f			pos;
+	t_v3f			motion;
+    double			angle;
+	double			anglesin;
+	double			anglecos;
+	double			yaw;
+	double			move_speed;
+	double			rot_speed;
+	unsigned int	sector;
+	/* дублируют контроллер
+	 * bool move_forw;
+	 * bool move_back;
+	 * bool rot_left;
+	 * bool rot_right;
+	 */
+	/* 
+	 * t_v2f dir;
+	 * t_v2f pos;
+	 * t_v2f view;
+	 */
+}					t_player;
 
-typedef struct s_controller
+typedef struct	s_controller
 {
-	bool move_forw;
-	bool move_back;
-	bool rot_left;
-	bool rot_right;
-	bool ground;
-	bool falling;
-	bool moving;
-	bool ducking;
-    float yaw;
-} t_controller;
+	bool		move_forw;
+	bool		move_back;
+	bool		rot_left;
+	bool		rot_right;
+	bool		ground;
+	bool		falling;
+	bool		moving;
+	bool		ducking;
 
+	float		yaw;
+	int			mouse_x;
+	int			mouse_y;
+	bool		checkmouse_way;
+}				t_controller;
 
-typedef struct s_scene
+/*
+ *	floor		= высота пола
+ * 	ceil		= высота потолка
+ * 	*vertex		= х, у координаты вершин
+ * 	*neighbours	= указатель на соседний сектор
+ *	npoints		= кол-во вершин
+ */
+typedef struct		s_sector
 {
-	Uint32 *pixels;
-	Uint32 **textures;
-	char **map;
-	int tex_height;
-	int tex_width;
-	int map_width;
-	int map_height;
-	t_player player;
+	double			floor;
+	double			ceil;
+	t_v2f			*vertex;
+	/*signed*/ char	*neighbours;
+	unsigned int	npoints;
+}					t_sector;
+/**/
 
-} t_scene;
+typedef struct		s_scene
+{
+	Uint32			*pixels;
+	Uint32			**textures;
+	char			**map;
+	int				tex_height;
+	int				tex_width;
+	int				map_width;
+	int				map_height;
+	t_player		player;
+	int				n_sectors;
+	t_sector		*sectors;
+}					t_scene;
 
 
 typedef struct s_sdl

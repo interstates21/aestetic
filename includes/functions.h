@@ -27,7 +27,9 @@ void    print_err(const char *err);
 
 // void    init_contols(t_scene *scene);
 // void    apply_controls(t_player *player, char **map);
-// void    listen_controls(t_player *player, bool *end);
+void	keyboard_input(struct player *player, bool *end, t_controller *controller);
+void	mouse_aiming(struct player *player, t_controller *controller);
+
 
 // void    init_render(t_scene *scene);
 // void    render(t_scene *scene);
@@ -40,4 +42,12 @@ void     sdl_clear_texture(Uint32 **pixels);
 // void     print_v2f(t_v2f v, char *s);
 // void test_controls(t_player *player, char **map);
 
+int				init_vertices(char *str, t_v2f **arr, int *n_v);
+int				player_init(t_scene *s, char *l);
+int				fetch_int(char *str, int *i);
+int				fetch_f(double *i, char *str, int *c);
+t_sector		*sector_init(t_sector **arr, int *n_sectors, char *s, t_v2f *v);
+int 			load_data(char *fname, t_scene *scene);
+
 #endif
+

@@ -1,4 +1,5 @@
-#include "alt.h"
+#include "../includes/alt.h"
+#include "../includes/functions.h"
 
 // todo: resize window
 
@@ -20,6 +21,7 @@
 
 static void LoadData()
 {
+
     FILE* fp = fopen("map-clear.txt", "rt");
     if(!fp) { perror("map-clear.txt"); exit(1); }
     char Buf[256], word[256], *ptr;
@@ -39,7 +41,7 @@ static void LoadData()
                 sscanf(ptr += n, "%f%f%n", &sect->floor,&sect->ceil, &n);
                 for(m=0; sscanf(ptr += n, "%32s%n", word, &n) == 1 && word[0] != '#'; )
                     { num = realloc(num, ++m * sizeof(*num)); num[m-1] = word[0]=='x' ? -1 : atoi(word); }
-                sect->npoints   = m /= 2;
+                sect->npoints   = m /= 2;//уууух, сука
                 sect->neighbors = malloc( (m  ) * sizeof(*sect->neighbors) );
                 sect->vertex    = malloc( (m+1) * sizeof(*sect->vertex)    );
                 for(n=0; n<m; ++n) sect->neighbors[n] = num[m + n];
@@ -233,7 +235,7 @@ static void DrawScreen(t_scene *scene)
     } while(head != tail); // render any other queued sectors
 }
 
-void shitty_controller(t_controller *controller, bool *end) {
+void shitty_controller(t_controller *controller, bool *end, t_sdl sdl) {
 
  float eyeheight =controller->ducking ? DuckHeight : EyeHeight;
        controller->ground= !controller->falling;
@@ -293,36 +295,9 @@ void shitty_controller(t_controller *controller, bool *end) {
             controller->falling = 1;
         }
 
-        SDL_Event ev;
-        while(SDL_PollEvent(&ev))
-            switch(ev.type)
-            {
-                case SDL_KEYDOWN:
-                case SDL_KEYUP:
-                    switch(ev.key.keysym.sym)
-                    {
-                        case 'w': controller->move_forw = ev.type==SDL_KEYDOWN; break;
-                        case 's': controller->move_back = ev.type==SDL_KEYDOWN; break;
-                        case 'a': controller->rot_left = ev.type==SDL_KEYDOWN; break;
-                        case 'd': controller->rot_right = ev.type==SDL_KEYDOWN; break;
-                        case 'q': *end = true;
-                        case ' ': /* jump */
-                            if(controller->ground) { player.velocity.z += 0.5; controller->falling = 1; }
-                            break;
-                        case SDLK_LCTRL: /* duck */
-                        case SDLK_RCTRL:controller->ducking = ev.type==SDL_KEYDOWN; controller->falling=1; break;
-                        default: break;
-                    }
-                    break;
-                case SDL_QUIT: *end = true;
-            }
-
+        keyboard_input(&player, end, controller);
         /* mouse aiming */
-        int x,y;
-        SDL_GetRelativeMouseState(&x,&y);
-        player.angle += x * 0.03f;
-        controller->yaw    = clamp(controller->yaw - y*0.05f, -5, 5);
-        player.yaw   = controller->yaw - player.velocity.z*0.5f;
+        mouse_aiming(&player, controller);
         MovePlayer(0,0);
 
         float move_vec[2] = {0.f, 0.f};
@@ -360,8 +335,22 @@ int main()
     t_controller    controller;
     bool            end;
 
+//!
+	scene.sectors = NULL;
+//!
+  load_data("map-clear.txt", &scene);
+//	LoadData();
 
-    LoadData();
+    int r = -1;
+    while (++r < scene.n_sectors)
+	{
+    	int y = -1;
+    	printf("sector %d:\n\tfloor = %f, ceil = %f\nvertices:\n", r, scene.sectors[r].ceil, scene.sectors[r].floor);
+    	while (++y < scene.sectors[r].npoints)
+    		printf("\t(%f, %f)\n", scene.sectors[r].vertex[y].x, scene.sectors[r].vertex[y].y);
+	}
+    printf("player:\n\t(%f, %f)\tang = %f\tsect = %d\n", scene.player.pos.x, scene.player.pos.y, scene.player.angle, scene.player.sector);
+exit(1);
     end = false;
     sdl_init(&sdl);
     sdl_init_renderer(&sdl);
@@ -371,11 +360,12 @@ int main()
     //     init_render(scene);
     //     init_contols(scene);
     //     init_textures(scene);
-
+    SDL_SetRelativeMouseMode(SDL_TRUE);
     while (!end)
     {
 
         DrawScreen(&scene);
+		//printf("x-x dead\n");
         SDL_UpdateTexture(sdl.texture, NULL, scene.pixels, WIDTH * sizeof(Uint32));
         SDL_RenderCopy(sdl.renderer, sdl.texture, NULL, NULL);
         SDL_RenderPresent(sdl.renderer);
@@ -384,8 +374,8 @@ int main()
 
         //listen_controls()
         //apply_controls()
-        shitty_controller(&controller, &end);
-       
+        shitty_controller(&controller, &end, sdl);
+
     }
     UnloadData();
     SDL_Quit();

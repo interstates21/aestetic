@@ -1,6 +1,6 @@
-NAME = doom
+NAME = doom_nukem
 CC = clang
-FILES = color_math console_output linear_math main sdl_helpers sdl_init vector_math
+FILES = color_math console_output linear_math main sdl_helpers sdl_init vector_math controls_listen load_data player_init sector_init vertex_init
 LIBFT_DIR = libft/
 SRC = $(addprefix src/, $(addsuffix .c, $(FILES)))
 OBJ = $(addprefix obj/, $(addsuffix .o, $(FILES)))
@@ -30,7 +30,7 @@ endif
 all: $(NAME)
 
 .PHONY: all clean
-.NOTPARALLEL: all $(NAME) clean fclean re 
+.NOTPARALLEL: all $(NAME) clean fclean re
 
 $(NAME): libft/libft.a $(OBJ)
 	@echo "\033[36mLinking...\033[0m"
