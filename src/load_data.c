@@ -54,7 +54,6 @@ static int	check_i(char *s, int i)
 
 static int	gut_check(char *s, t_scene *g, t_v2f **v, int *n_v)
 {
-	printf(" +gut_check\n");
 	if (!ft_strlen(s))
 		return (1);
 	if (s[0] == 'v')
@@ -65,25 +64,22 @@ static int	gut_check(char *s, t_scene *g, t_v2f **v, int *n_v)
 	}
 	else if (s[0] == 's')
 	{
-		exit(1);
 		if (ft_strncmp(s, "sector", 6) || !check_i(s + 6, -1))
 			return (0);
-		return ((g->sectors = sector_init(g->sectors, &g->n_sectors, s + 6, *v))
+		return ((g->sectors = sector_init(&g->sectors, &g->n_sectors, s + 6, *v))
 		? 1 : 0);
 	}
 	else if (s[0] == 'p')
 	{
-		if (ft_strncmp(s, "player", 6) || !check_i(s + 6, -1))
+		if (ft_strncmp(s, "player", 6) || !check_f(s + 6, -1))
 			return (0);
 		return (player_init(g, s + 6));
 	}
-	printf(" -gut_check\n");
 	return (0);
 }
 
 static int	seq_check(int *i, char c)
 {
-	printf(" +seq_check\n");
 	if (!c)
 		return (1);
 	if (c == 'v')
@@ -92,13 +88,11 @@ static int	seq_check(int *i, char c)
 		*i = *i == 1 || *i == 2 ? 2 : 0;
 	else if (c == 'p')
 		*i = *i == 2 || *i == 3 ? 3 : 0;
-	printf(" -seq_check\n");
 	return (*i);
 }
 
 int 		load_data(char *fname, t_scene *scene)
 {
-	printf("+load_data\n");
 	int 	fd;
 	char	*line;
 	t_v2f	*vert;
@@ -118,10 +112,8 @@ int 		load_data(char *fname, t_scene *scene)
 			free(line);
 			return (0);
 		}
-		printf("%s\n", line);
 		free(line);
 	}
 	free(vert);
-	printf("-load_data\n");
 	return (1);
 }

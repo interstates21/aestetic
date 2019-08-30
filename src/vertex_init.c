@@ -62,7 +62,6 @@ int			fetch_f(double *i, char *str, int *c)
 	while (!ft_isdigit(str[*c]) && str[*c] ^ '-')
 		*c = *c + 1;
 	*i = atof(str + *c);
-	//printf("- - %s\n--- %f\n", str + *c, *i);
 	*c += str[*c] == '-' ? 1 : 0;
 	while(str[*c] && (ft_isdigit(str[*c]) || str[*c] == '.'))
 		*c = *c + 1;
@@ -97,8 +96,6 @@ static int	count_v(char *s)
 			if (db < 0)
 				return (0);
 			res = res ^ old ? res : res + 1;
-			//if (res ^ old)
-				//printf("%d -- %s\n",res,  s + i);
 			i--;
 		}
 		db = 1;
@@ -131,7 +128,6 @@ static int	count_v(char *s)
  */
 int			init_vertices(char *str, t_v2f **arr, int *n_v)
 {
-	printf("  +vertex_init\n");
 	t_v2f	*res;
 	int 	v;
 	int 	i;
@@ -146,7 +142,6 @@ int			init_vertices(char *str, t_v2f **arr, int *n_v)
 	fetch_f(&y, str, &c);
 	while (++i < v)
 	{
-		//printf("<>- i = %d, v = %d\n", i, v);
 		res[i].y = y;
 		if (fetch_f(&res[i].x, str, &c))
 			continue ;
@@ -154,6 +149,5 @@ int			init_vertices(char *str, t_v2f **arr, int *n_v)
 		return (0);
 	}
 	merge_arr(&res, arr, v, n_v);
-	printf("  -vertex_init\n");
 	return (1);
 }
