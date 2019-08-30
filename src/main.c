@@ -1,4 +1,5 @@
-#include "alt.h"
+#include "../includes/alt.h"
+#include "../includes/functions.h"
 
 // todo: resize window
 
@@ -40,7 +41,7 @@ static void LoadData()
                 sscanf(ptr += n, "%f%f%n", &sect->floor,&sect->ceil, &n);
                 for(m=0; sscanf(ptr += n, "%32s%n", word, &n) == 1 && word[0] != '#'; )
                     { num = realloc(num, ++m * sizeof(*num)); num[m-1] = word[0]=='x' ? -1 : atoi(word); }
-                sect->npoints   = m /= 2;
+                sect->npoints   = m /= 2;//уууух, сука
                 sect->neighbors = malloc( (m  ) * sizeof(*sect->neighbors) );
                 sect->vertex    = malloc( (m+1) * sizeof(*sect->vertex)    );
                 for(n=0; n<m; ++n) sect->neighbors[n] = num[m + n];
@@ -334,8 +335,22 @@ int main()
     t_controller    controller;
     bool            end;
 
+//!
+//	scene.sectors = NULL;
+//!
+ //   load_data("map-clear.txt", &scene);
+	LoadData();
 
-    LoadData();
+    int r = -1;
+    while (++r < NumSectors)
+	{
+    	int y = -1;
+    	printf("sector %d:\n\tfloor = %f, ceil = %f\nvertices:\n", r, sectors[r].ceil, sectors[r].floor);
+    	while (++y < sectors[r].npoints)
+    		printf("\t(%f, %f)\n", sectors[r].vertex[y].x, sectors[r].vertex[y].y);
+	}
+    printf("player:\n\t(%f, %f)\tang = %f\tsect = %d\n", player.where.x, player.where.y, player.angle, player.sector);
+exit(1);
     end = false;
     sdl_init(&sdl);
     sdl_init_renderer(&sdl);
@@ -350,6 +365,7 @@ int main()
     {
 
         DrawScreen(&scene);
+		//printf("x-x dead\n");
         SDL_UpdateTexture(sdl.texture, NULL, scene.pixels, WIDTH * sizeof(Uint32));
         SDL_RenderCopy(sdl.renderer, sdl.texture, NULL, NULL);
         SDL_RenderPresent(sdl.renderer);
