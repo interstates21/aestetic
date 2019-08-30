@@ -21,6 +21,7 @@
 
 static void LoadData()
 {
+
     FILE* fp = fopen("map-clear.txt", "rt");
     if(!fp) { perror("map-clear.txt"); exit(1); }
     char Buf[256], word[256], *ptr;
@@ -234,7 +235,7 @@ static void DrawScreen(t_scene *scene)
     } while(head != tail); // render any other queued sectors
 }
 
-void shitty_controller(t_controller *controller, bool *end) {
+void shitty_controller(t_controller *controller, bool *end, t_sdl sdl) {
 
  float eyeheight =controller->ducking ? DuckHeight : EyeHeight;
        controller->ground= !controller->falling;
@@ -294,36 +295,9 @@ void shitty_controller(t_controller *controller, bool *end) {
             controller->falling = 1;
         }
 
-        SDL_Event ev;
-        while(SDL_PollEvent(&ev))
-            switch(ev.type)
-            {
-                case SDL_KEYDOWN:
-                case SDL_KEYUP:
-                    switch(ev.key.keysym.sym)
-                    {
-                        case 'w': controller->move_forw = ev.type==SDL_KEYDOWN; break;
-                        case 's': controller->move_back = ev.type==SDL_KEYDOWN; break;
-                        case 'a': controller->rot_left = ev.type==SDL_KEYDOWN; break;
-                        case 'd': controller->rot_right = ev.type==SDL_KEYDOWN; break;
-                        case 'q': *end = true;
-                        case ' ': /* jump */
-                            if(controller->ground) { player.velocity.z += 0.5; controller->falling = 1; }
-                            break;
-                        case SDLK_LCTRL: /* duck */
-                        case SDLK_RCTRL:controller->ducking = ev.type==SDL_KEYDOWN; controller->falling=1; break;
-                        default: break;
-                    }
-                    break;
-                case SDL_QUIT: *end = true;
-            }
-
+        keyboard_input(&player, end, controller);
         /* mouse aiming */
-        int x,y;
-        SDL_GetRelativeMouseState(&x,&y);
-        player.angle += x * 0.03f;
-        controller->yaw    = clamp(controller->yaw - y*0.05f, -5, 5);
-        player.yaw   = controller->yaw - player.velocity.z*0.5f;
+        mouse_aiming(&player, controller);
         MovePlayer(0,0);
 
         float move_vec[2] = {0.f, 0.f};
@@ -386,7 +360,7 @@ exit(1);
     //     init_render(scene);
     //     init_contols(scene);
     //     init_textures(scene);
-
+    SDL_SetRelativeMouseMode(SDL_TRUE);
     while (!end)
     {
 
@@ -400,8 +374,8 @@ exit(1);
 
         //listen_controls()
         //apply_controls()
-        shitty_controller(&controller, &end);
-       
+        shitty_controller(&controller, &end, sdl);
+
     }
     UnloadData();
     SDL_Quit();
