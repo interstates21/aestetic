@@ -12,7 +12,7 @@
 
 #include "alt.h"
 
-void	keyboard_input(struct player *player, bool *end, t_controller *controller)
+void	listen_controls(t_player *player, bool *end, t_controller *controller)
 {
 	SDL_Event ev;
 
@@ -50,7 +50,7 @@ void	keyboard_input(struct player *player, bool *end, t_controller *controller)
 				{
 					if (controller->ground)
 					{
-						player->velocity.z += 0.5;
+						player->motion.z += 0.5;
 						controller->falling = 1;
 					}
 				}
@@ -64,13 +64,13 @@ void	keyboard_input(struct player *player, bool *end, t_controller *controller)
 	}
 }
 
-void	mouse_aiming(struct player *player, t_controller *controller)
+void	mouse_aiming(t_player *player, t_controller *controller)
 {
 	SDL_GetRelativeMouseState(&controller->mouse_x, &controller->mouse_y);
 	if (SDL_GetRelativeMouseMode() && controller->checkmouse_way)
 	{
 		player->angle += controller->mouse_x * 0.007f;
 		controller->yaw = clamp(controller->yaw - controller->mouse_y * (-0.025f), -5, 5);
-		player->yaw = controller->yaw - player->velocity.z * 0.5f;
+		player->yaw = controller->yaw - player->motion.z * 0.5f;
 	}
 }

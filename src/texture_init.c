@@ -43,3 +43,19 @@ void init_textures(t_scene *scene)
   scene->tex_width = TEX_WIDTH;
   scene->tex_height = TEX_HEIGHT;
 }
+
+// SDL_Texture   *load_sur(SDL_Renderer *ren) {
+//     SDL_Texture *tex = NULL;
+
+//     SDL_Surface *sur = SDL_LoadBMP("src/0.bmp");
+//     if (sur == NULL) {
+//         ft_putstr(SDL_GetError());
+//         exit(1);
+//     }
+
+//      tex = SDL_CreateTextureFromSurface(ren, sur);
+
+//      SDL_FreeSurface(sur);
+
+//      return (tex);
+// }

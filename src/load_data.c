@@ -96,7 +96,6 @@ int 		load_data(char *fname, t_scene *scene)
 	stage = 0;
 	while (get_next_line(fd, &line))
 	{
-		ft_putendl(line);
 		if (!seq_check(&stage, line[0])
 		|| !gut_check(line, scene, &vert, &n_vert))
 		{

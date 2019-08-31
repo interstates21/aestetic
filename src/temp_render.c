@@ -1,6 +1,16 @@
 #include "alt.h"
 
 #define SQUARE_SIZE 10
+
+void paint_screen(t_scene *scene) {
+     for (int i = 0; i < WIDTH; i++) {
+
+        for (int j = 0; j < HEIGHT; j++) {
+            sdl_put_pix(&(scene->pixels), i , j, 0xffffff);
+        }
+    } 
+}
+
 void draw_test_square(t_scene *scene) {
     for(int i = 0; i <  scene->map_height + SQUARE_SIZE; i++) {
         for (int j = 0; j < scene->map_width + SQUARE_SIZE; j++) {

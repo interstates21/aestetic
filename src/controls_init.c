@@ -12,12 +12,15 @@
 
 #include "alt.h"
 
-void	init_contols(t_scene *scene)
-{
-	scene->player.move_speed = 0.05;
-	scene->player.rot_speed = 2;
-	scene->player.move_forw = 0;
-	scene->player.move_back = 0;
-	scene->player.rot_left = 0;
-	scene->player.rot_right = 0;
+void init_controller(t_controller *controller) {
+    SDL_SetRelativeMouseMode(SDL_TRUE);
+    controller->move_forw = false;
+    controller->move_back = false;
+    controller->rot_left = false;
+    controller->rot_right = false;
+    controller->falling = true;
+    controller->ground = false;
+    controller->moving = false;
+    controller->ducking = false;
+    controller->yaw = 0;
 }
