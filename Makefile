@@ -1,6 +1,6 @@
 NAME = doom_nukem
 CC = clang
-FILES = color_math console_output linear_math main sdl_helpers sdl_init vector_math controls_listen load_data player_init sector_init vertex_init  controls_init render_manager temp_render
+FILES = color_math console_output linear_math main sdl_helpers sdl_init vector_math controls_listen controls_apply load_data player_init sector_init vertex_init  controls_init render_manager temp_render
 LIBFT_DIR = libft/
 SRC = $(addprefix src/, $(addsuffix .c, $(FILES)))
 OBJ = $(addprefix obj/, $(addsuffix .o, $(FILES)))
@@ -8,6 +8,7 @@ OBJ_LIST = $(addsuffix .o, $(FILES))
 SDL_CFLAGS = $(shell sdl2-config --cflags)
 SPEED = -O3
 FLAGSTMP = -Wall -Wextra -Werror
+MATH = -lm
 HEADERS = -I./includes -I./libft
 
 OS = $(shell uname)
@@ -34,7 +35,7 @@ all: $(NAME)
 
 $(NAME): libft/libft.a $(OBJ)
 	@echo "\033[36mLinking...\033[0m"
-	@$(CC) -o $(NAME) $(FLAGS) $(SPEED) $(OBJ) $(CGFLAGS) $(FRAMEWORKS) libft/libft.a
+	@$(CC) -o $(NAME) $(FLAGS) $(SPEED) $(OBJ) $(CGFLAGS) ${MATH} $(FRAMEWORKS) libft/libft.a
 	@echo "\033[32m[ ✔ ] Binary \033[1;32m$(NAME)\033[1;0m\033[32m created.\033[0m"
 libft/libft.a:
 	@make --no-print-directory -j3 -C $(LIBFT_DIR)

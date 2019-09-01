@@ -24,10 +24,9 @@ void run(t_scene scene, t_sdl sdl)
     while (!end)
     {
         listen_controls(&(scene.player), &end, &(scene.controller));
-        // apply_controls();
-        // shitty_controller(&(scene.controller), &end, sdl); illegal hardware instr because there's no player
-        render(&scene);
-        sdl_apply_renderer(sdl, scene.pixels);
+        controls_manager(&scene);
+        // render(&scene);
+        // sdl_apply_renderer(sdl, scene.pixels);
     }
 
     // todo clean_up();
@@ -73,7 +72,7 @@ int main(int argc, char **argv)
     sdl_init(&sdl);
     scene_init(&scene);
     load_data("map-clear.txt", &scene);
-    // console_log_map(scene);
+    console_log_map(scene);
     sdl_init_renderer(&sdl);
     run(scene, sdl);
     sdl_clean(&sdl);

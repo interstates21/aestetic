@@ -39,6 +39,16 @@ static int	gut_check(char *s)
 	return (res == 4);
 }
 
+static void init_extra_data(t_player *player) {
+	player->move_speed = 1;
+	player->rot_speed = 1;
+	player->yaw = 0;
+	player->falling = false;
+	// player->angle = 0;
+	// player->anglesin = 0;
+	// player->anglecos = 0;
+}
+
 // сцена нужна для проверки по секторам
 int			player_init(t_scene *s, char *l)
 {
@@ -56,5 +66,8 @@ int			player_init(t_scene *s, char *l)
 	fetch_f(&sect, l, &i);
 	s->player = (t_player){(t_v3f){v.x, v.y, 0}, (t_v3f){0, 0, 0}, ang, 0, 0,
 	0, 0, 0, (int)floor(sect)};
+
+	/* Movement and stuff */
+	init_extra_data(&(s->player));
 	return (1);
 }
