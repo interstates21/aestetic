@@ -129,13 +129,13 @@ t_sector		*sector_init(t_sector **arr, int *n_sectors, char *s, t_v2f *v)
 	res[*n_sectors - 1].ceil = fetch_int(s, &c);
 	num = get_ints(s, c, num_ints(s, c, &m));
 	res[*n_sectors - 1].npoints = m;
-	res[*n_sectors - 1].next_sector = (char*)malloc(sizeof(char) * m);
+	res[*n_sectors - 1].portals = (char*)malloc(sizeof(char) * m);
 	res[*n_sectors - 1].vertex = (t_v2f*)malloc(sizeof(t_v2f) * (m + 1));
 	c = -1;
 	while (++c < m)
 	{
 		res[*n_sectors - 1].vertex[c + 1] = v[num[c]];
-		res[*n_sectors - 1].next_sector[c] = num[m + c];
+		res[*n_sectors - 1].portals[c] = num[m + c];
 	}
 	res[*n_sectors - 1].vertex[0] = res[*n_sectors - 1].vertex[m];
 	free(num);

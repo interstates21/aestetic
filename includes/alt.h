@@ -33,6 +33,7 @@
 # define KNEE_HIGHT		2
 # define H_FOV			(0.73f * HEIGHT)
 # define V_FOW			(.2f * HEIGHT)
+# define MAX_Q			32
 
 typedef enum
 {
@@ -112,10 +113,28 @@ typedef struct		s_sector
 	double			floor;
 	double			ceil;
 	t_v2f			*vertex;
-	/*signed*/ char	*next_sector;
+	/*signed*/ char	*portals;
 	unsigned int	npoints;
 }					t_sector;
 /**/
+
+typedef struct		s_item
+{
+	int				sector_n;
+	int 			sx1;
+	int 			sx2;
+}					t_item;
+
+typedef struct		s_draw
+{
+	t_item			queue[MAX_Q];
+	t_item			*head;
+	t_item			*tail;
+	t_item			*now;
+	int 			ytop[WIDTH];
+	int 			ybot[WIDTH];
+	int 			*render_sec;
+}					t_draw;
 
 typedef struct		s_scene
 {
