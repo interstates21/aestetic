@@ -44,7 +44,6 @@
 // }
 
 bool        check_something(t_player *player, t_v2f current_point, t_v2f next_point) {
-
     return (
         IntersectBox(
         player->pos.x,
@@ -117,7 +116,6 @@ void move(t_player *player, t_scene *scene)
             n = 0;
     
             while ( n < current_sector.npoints) {
-                printf(" -- %d -- ", n);
             if (check_something(player, current_sector.vertex[n], current_sector.vertex[n + 1])) {
                 // deep  = current_sector.portals[n] < 0 ?  INFIN : max(current_sector.floor, sectors[current_sector.portals[n]].floor);
                 // hight = current_sector.portals[n] < 0 ? -INFIN : min(current_sector.ceil,  sectors[current_sector.portals[n]].ceil );
