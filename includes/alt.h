@@ -112,7 +112,7 @@ typedef struct		s_sector
 	double			floor;
 	double			ceil;
 	t_v2f			*vertex;
-	/*signed*/ char	*neighbours;
+	/*signed*/ char	*next_sector;
 	unsigned int	npoints;
 }					t_sector;
 /**/

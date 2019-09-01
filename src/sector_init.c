@@ -26,6 +26,7 @@ static void		copy_arr(t_sector **a, t_sector **b, int s)
 	i = -1;
 	while (++i < s)
 		(*a)[i] = (*b)[i];
+	printf("segf\n");
 	if (*b)
 		free(*b);
 }
@@ -123,17 +124,18 @@ t_sector		*sector_init(t_sector **arr, int *n_sectors, char *s, t_v2f *v)
 		return (NULL);
 	res = (t_sector*)malloc(sizeof(t_sector) * *n_sectors);
 	copy_arr(&res, arr, *n_sectors - 1);
+	printf("segf\n");
 	res[*n_sectors - 1].floor = fetch_int(s, &c);
 	res[*n_sectors - 1].ceil = fetch_int(s, &c);
 	num = get_ints(s, c, num_ints(s, c, &m));
 	res[*n_sectors - 1].npoints = m;
-	res[*n_sectors - 1].neighbours = (char*)malloc(sizeof(char) * m);
+	res[*n_sectors - 1].next_sector = (char*)malloc(sizeof(char) * m);
 	res[*n_sectors - 1].vertex = (t_v2f*)malloc(sizeof(t_v2f) * (m + 1));
 	c = -1;
 	while (++c < m)
 	{
 		res[*n_sectors - 1].vertex[c + 1] = v[num[c]];
-		res[*n_sectors - 1].neighbours[c] = num[m + c];
+		res[*n_sectors - 1].next_sector[c] = num[m + c];
 	}
 	res[*n_sectors - 1].vertex[0] = res[*n_sectors - 1].vertex[m];
 	free(num);
