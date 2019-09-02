@@ -15,6 +15,7 @@ t_v2f   new_v2f(double x, double y);
 t_v2    new_v2(int x, int y);
 
 void	rotate_z(t_v2f *p, float teta);
+double			x_prod(t_v2f a, t_v2f b);
 
 
 // void init_textures(t_scene *scene);
@@ -50,5 +51,6 @@ t_sector		*sector_init(t_sector **arr, int *n_sectors, char *s, t_v2f *v);
 int 			load_data(char *fname, t_scene *scene);
 void            shitty_controller(t_controller *controller, bool *end, t_sdl sdl);
 void            render(t_scene *scene);
+void			draw_wall(t_draw *d, t_scene *s, int k);
 #endif
 

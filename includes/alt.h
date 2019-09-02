@@ -34,6 +34,10 @@
 # define H_FOV			(0.73f * HEIGHT)
 # define V_FOW			(.2f * HEIGHT)
 # define MAX_Q			32
+# define NEAR_Z			0.0001
+# define FAR_Z			5
+# define NEAR_SIDE		0.00001
+# define FAR_SIDE		20.0
 
 typedef enum
 {
@@ -118,6 +122,18 @@ typedef struct		s_sector
 }					t_sector;
 /**/
 
+typedef struct		s_math
+{
+	t_v2f			v1;
+	t_v2f			v2;
+	t_v2f			t1;
+	t_v2f			t2;
+	double			pcos;
+	double			psin;
+	t_v2f			in1;
+	t_v2f			in2;
+}					t_math;
+
 typedef struct		s_item
 {
 	int				sector_n;
@@ -134,6 +150,7 @@ typedef struct		s_draw
 	int 			ytop[WIDTH];
 	int 			ybot[WIDTH];
 	int 			*render_sec;
+	t_sector		*sec;
 }					t_draw;
 
 typedef struct		s_scene
