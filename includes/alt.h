@@ -34,10 +34,10 @@
 # define H_FOV			(0.73f * HEIGHT)
 # define V_FOW			(.2f * HEIGHT)
 # define MAX_Q			32
-# define NEAR_Z			0.0001
-# define FAR_Z			5
-# define NEAR_SIDE		0.00001
-# define FAR_SIDE		20.0
+# define N_Z			0.0001
+# define F_Z			5
+# define N_SIDE			0.00001
+# define F_SIDE			20.0
 
 typedef enum
 {
@@ -132,6 +132,13 @@ typedef struct		s_math
 	double			psin;
 	t_v2f			in1;
 	t_v2f			in2;
+	t_v2f			x_scale1;
+	t_v2f			x_scale2;
+	int				x1;
+	int 			x2;
+	double			y_ceil;
+	double			y_floor;
+	int 			nghbr;
 }					t_math;
 
 typedef struct		s_item
