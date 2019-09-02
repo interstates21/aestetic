@@ -68,19 +68,12 @@ bool        check_something(t_player *player, t_v2f current_point, t_v2f next_po
 
 static void apply_movement(t_player *player, t_sector current_sector, t_v2f *vertices)
 {
-    /* Check if this movement crosses one of this sector's edges
-     * that have a neighboring sector on the other side.
-     * Because the edge vertices of each sector are defined in
-     * clockwise order, PointSide will always return -1 for a point
-     * that is outside the sector and 0 or 1 for a point that is inside.
-     */
     int n;
     n = 0;
 
-    while ( n < current_sector.npoints) {
+    while ( n < current_sector.npoints - 1) {
         if (check_something(player, vertices[n], vertices[n + 1]))
             player->sector = current_sector.portals[n];
-            // todo save a portal inside a wall
         n++;
     }
 
