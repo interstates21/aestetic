@@ -53,6 +53,7 @@ void console_log_map(t_scene scene) {
 	{
     	int y = -1;
     	printf("sector %d:\n\tfloor = %f, ceil = %f\nvertices:\n", r, scene.sectors[r].ceil, scene.sectors[r].floor);
+    	printf("npoints %d:\n", scene.sectors[r].npoints);
     	while (++y < scene.sectors[r].npoints)
     		printf("\t(%f, %f)\n", scene.sectors[r].vertex[y].x, scene.sectors[r].vertex[y].y);
 

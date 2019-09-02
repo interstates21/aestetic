@@ -1,23 +1,45 @@
+
+
 static void DrawScreen(t_scene *scene)
 {
     enum { MaxQueue = 32 };  // maximum number of pending portal renders
-    struct item { int sectorno,sx1,sx2; } queue[MaxQueue], *head=queue, *tail=queue;
-    int ytop[WIDTH]={0}, ybottom[WIDTH], renderedsectors[NumSectors];
-    for(unsigned x=0; x<WIDTH; ++x) ybottom[x] = HEIGHT-1;
-    for(unsigned n=0; n<NumSectors; ++n) renderedsectors[n] = 0;
+    struct item {
+        int sectorno,sx1,sx2;
+    }
+
+    queue[MaxQueue],
+    *head=queue,
+    *tail=queue;
+
+
+    int
+    ytop[WIDTH]={0}, 
+    ybottom[WIDTH],
+    renderedsectors[NumSectors];
+
+
+    for(unsigned x=0; x<WIDTH; ++x)
+        ybottom[x] = HEIGHT-1;
+    for(unsigned n=0; n<NumSectors; ++n)
+        renderedsectors[n] = 0;
 
     /* Begin whole-screen rendering from where the player is. */
-    *head = (struct item) { player.sector, 0, WIDTH-1 };
-    if(++head == queue+MaxQueue) head = queue;
+    *head = (struct item){ player.sector, 0, WIDTH-1 };
+    if(++head == queue+MaxQueue)
+        head = queue;
 
     do {
     /* Pick a sector & slice from the queue to draw */
     const struct item now = *tail;
-    if(++tail == queue+MaxQueue) tail = queue;
+    if(++tail == queue+MaxQueue)
+        tail = queue;
 
     if(renderedsectors[now.sectorno] & 0x21) continue; // Odd = still rendering, 0x20 = give up
     ++renderedsectors[now.sectorno];
-    const struct sector* const sect = &sectors[now.sectorno];
+    const struct sector*;
+    const sect = &sectors[now.sectorno];
+
+
     /* Render each wall of this sector that is facing towards player. */
     for(unsigned s = 0; s < sect->npoints; ++s)
     {
@@ -26,8 +48,10 @@ static void DrawScreen(t_scene *scene)
         float vx2 = sect->vertex[s+1].x - player.where.x, vy2 = sect->vertex[s+1].y - player.where.y;
         /* Rotate them around the player's view */
         float pcos = player.anglecos, psin = player.anglesin;
-        float tx1 = vx1 * psin - vy1 * pcos,  tz1 = vx1 * pcos + vy1 * psin;
-        float tx2 = vx2 * psin - vy2 * pcos,  tz2 = vx2 * pcos + vy2 * psin;
+        float tx1 = vx1 * psin - vy1 * pcos;
+        float tz1 = vx1 * pcos + vy1 * psin;
+        float tx2 = vx2 * psin - vy2 * pcos;
+        float tz2 = vx2 * pcos + vy2 * psin;
         /* Is the wall at least partially in front of the player? */
         if(tz1 <= 0 && tz2 <= 0) continue;
         /* If it's partially behind the player, clip it against player's view frustrum */
@@ -110,18 +134,3 @@ static void DrawScreen(t_scene *scene)
     } while(head != tail); // render any other queued sectors
 }
 
-
-static void vline(t_scene* scene, int x, int y1,int y2, int top,int middle,int bottom)
-{
-    y1 = clamp(y1, 0, HEIGHT-1);
-    y2 = clamp(y2, 0, HEIGHT-1);
-    if(y2 == y1)
-        sdl_put_pix(&(scene->pixels), x, y1, middle);
-    else if(y2 > y1)
-    {
-         sdl_put_pix(&(scene->pixels), x, y1, top);
-        for(int y=y1+1; y<y2; ++y)
-            sdl_put_pix(&(scene->pixels), x, y, middle);
-        sdl_put_pix(&(scene->pixels), x, y2, bottom);
-    }
-}

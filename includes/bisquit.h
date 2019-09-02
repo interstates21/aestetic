@@ -10,27 +10,6 @@
 #define hfov (0.73f*H)  // Affects the horizontal field of vision
 #define vfov (.2f*H)    // Affects the vertical field of vision
 
-
-static struct sector
-{
-    float floor, ceil;
-    struct xy { float x,y; } *vertex; // Each vertex has an x and y coordinate
-    signed char *neighbors;           // Each edge may have a corresponding neighboring sector
-    unsigned npoints;                 // How many vertexes there are
-} *sectors = NULL;
-
-static unsigned NumSectors = 0;
-
-
-/* Player: location */
-static struct player
-{
-    struct xyz { float x,y,z; } where,      // Current position
-                                velocity;   // Current motion vector
-    float angle, anglesin, anglecos, yaw;   // Looking towards (and sin() and cos() thereof)
-    unsigned sector;                        // Which sector the player is currently in
-} player;
-
 #define min(a,b)             (((a) < (b)) ? (a) : (b)) // min: Choose smaller of two scalars.
 #define max(a,b)             (((a) > (b)) ? (a) : (b)) // max: Choose greater of two scalars.
 #define clamp(a, mi,ma)      min(max(a,mi),ma)         // clamp: Clamp value into set range.

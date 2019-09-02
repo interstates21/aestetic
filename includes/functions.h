@@ -16,7 +16,7 @@ t_v2    new_v2(int x, int y);
 
 void	rotate_z(t_v2f *p, float teta);
 
-
+void controls_manager(t_scene *scene);
 // void init_textures(t_scene *scene);
 void    print_err(const char *err);
 void console_log_map(t_scene scene);

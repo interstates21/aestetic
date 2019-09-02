@@ -71,13 +71,14 @@ typedef struct s_v2
 typedef struct		s_player
 {
 	t_v3f			pos;
-	t_v3f			motion;
+	t_v3f			dir;
     double			angle;
 	double			anglesin;
 	double			anglecos;
 	double			yaw;
 	double			move_speed;
 	double			rot_speed;
+	bool			falling;
 	unsigned int	sector;
 }					t_player;
 
@@ -85,19 +86,15 @@ typedef struct	s_controller
 {
 	bool		move_forw;
 	bool		move_back;
-	bool		rot_left;
-	bool		rot_right;
-	bool		ground;
-	bool		falling;
-	bool		moving;
-	bool		ducking;
-
-
-	//to remove
-	float		yaw;
-	int			mouse_x;
-	int			mouse_y;
+	bool		move_left;
+	bool		move_right;
+	bool		squat;
+	bool		jumping;
+	bool		rotating;
 	bool		checkmouse_way;
+	bool		falling;
+	t_v2		mouse;
+
 }				t_controller;
 
 /*
@@ -112,7 +109,7 @@ typedef struct		s_sector
 	double			floor;
 	double			ceil;
 	t_v2f			*vertex;
-	/*signed*/ char	*neighbours;
+	char			*portals;
 	unsigned int	npoints;
 }					t_sector;
 /**/
