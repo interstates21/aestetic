@@ -25,8 +25,8 @@ void run(t_scene scene, t_sdl sdl)
     {
         listen_controls(&(scene.player), &end, &(scene.controller));
         controls_manager(&scene);
-        // render(&scene);
-        // sdl_apply_renderer(sdl, scene.pixels);
+        render(&scene);
+        sdl_apply_renderer(sdl, scene.pixels);
     }
 
     // todo clean_up();
