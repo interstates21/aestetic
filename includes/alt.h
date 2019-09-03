@@ -31,8 +31,8 @@
 # define DUCK_HEIGHT	2.5
 # define HEAD_MARGIN	1
 # define KNEE_HIGHT		2
-# define H_FOV			(0.73f * HEIGHT)
-# define V_FOW			(.2f * HEIGHT)
+# define H_FOV			(0.73 * HEIGHT)
+# define V_FOV			(0.2 * HEIGHT)
 # define MAX_Q			32
 # define N_Z			0.0001
 # define F_Z			5
@@ -132,13 +132,21 @@ typedef struct		s_math
 	double			psin;
 	t_v2f			in1;
 	t_v2f			in2;
-	t_v2f			x_scale1;
-	t_v2f			x_scale2;
+	t_v2f			scale1;
+	t_v2f			scale2;
 	int				x1;
 	int 			x2;
 	double			y_ceil;
 	double			y_floor;
 	int 			nghbr;
+	double			nyceil;
+	double			nyfloor;
+	t_v2			y1;
+	t_v2			y2;
+	t_v2			ny1;
+	t_v2			ny2;
+	int				begin;
+	int 			end;
 }					t_math;
 
 typedef struct		s_item

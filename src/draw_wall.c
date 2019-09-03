@@ -24,6 +24,8 @@ static void		init_math(t_draw *d, t_scene *s, int k, t_math *m)
 	m->v1.x * m->pcos + m->v1.y * m->psin};
 	m->t2 = (t_v2f){ m->v2.x * m->psin - m->v2.y * m->pcos,
 	m->v2.x * m->pcos + m->v2.y * m->psin};
+	m->nyceil = 0;
+	m->nyfloor = 0;
 }
 
 /*
@@ -66,13 +68,42 @@ static void		part_behind(t_math *m)
 	}
 }
 
+static int		math2(t_math *m, t_scene *s, t_draw *d, int k)
+{
+	m->scale1 = (t_v2f){H_FOV / m->t1.y, V_FOV / m->t1.y};
+	m->x1 = WIDTH / 2 - (int)(m->t1.x * m->scale1.x);
+	m->scale2 = (t_v2f){H_FOV / m->t2.y, V_FOV / m->t2.y};
+	m->x2 = WIDTH / 2 - (int)(m->t2.x * m->scale2.x);
+	if (m->x1 >= m->x2 || m->x2 < d->now->sx1 || m->x1 < d->now->sx2)
+		return (1);
+	m->y_ceil = d->sec->ceil - s->player.pos.z;
+	m->y_ceil = d->sec->floor - s->player.pos.z;
+	if ((m->nghbr = d->sec->portals[k]) >= 0)
+	{
+		m->nyceil = s->sectors[m->nghbr].ceil - s->player.pos.z;
+		m->nyfloor = s->sectors[m->nghbr].floor - s->player.pos.z;
+	}
+	black_magic(m, s);
+	m->begin = MAX(m->x1, d->now->sx1);
+	m->end = MIN(m->x2, d->now->sx2);
+}
+
 void			draw_wall(t_draw *d, t_scene *s, int k)
 {
 	t_math	m;
+	int		i;
 
 	init_math(d, s, k, &m);
 	if (m.t1.y <= 0 && m.t2.y <= 0)
 		return ;
 	if (m.t1.y <= 0 && m.t2.y <= 0)
 		part_behind(&m);
+	if (math2(&m, s, d, k))
+		return ;
+	i = m.begin;
+	while (i <= m.end)
+	{
+		render_wall(s, d, m, i);
+		i++;
+	}
 }

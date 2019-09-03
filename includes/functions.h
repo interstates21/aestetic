@@ -52,5 +52,10 @@ int 			load_data(char *fname, t_scene *scene);
 void            shitty_controller(t_controller *controller, bool *end, t_sdl sdl);
 void            render(t_scene *scene);
 void			draw_wall(t_draw *d, t_scene *s, int k);
+int 			yaw(double y, double a, double w);
+void			black_magic(t_math *m, t_scene *s);
+void			render_wall(t_scene *s, t_draw *d, t_math m, int i);
+
+
 #endif
 
