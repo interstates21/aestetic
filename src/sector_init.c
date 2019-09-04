@@ -26,7 +26,6 @@ static void		copy_arr(t_sector **a, t_sector **b, int s)
 	i = -1;
 	while (++i < s)
 		(*a)[i] = (*b)[i];
-	printf("segf\n");
 	if (*b)
 		free(*b);
 }
@@ -124,7 +123,6 @@ t_sector		*sector_init(t_sector **arr, int *n_sectors, char *s, t_v2f *v)
 		return (NULL);
 	res = (t_sector*)malloc(sizeof(t_sector) * *n_sectors);
 	copy_arr(&res, arr, *n_sectors - 1);
-	printf("segf\n");
 	res[*n_sectors - 1].floor = fetch_int(s, &c);
 	res[*n_sectors - 1].ceil = fetch_int(s, &c);
 	num = get_ints(s, c, num_ints(s, c, &m));
