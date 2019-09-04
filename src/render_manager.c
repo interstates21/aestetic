@@ -1,6 +1,6 @@
 #include "alt.h"
 
-void       render(t_scene *scene)
+void       no_render(t_scene *scene)
 {
     paint_screen(scene);
 }

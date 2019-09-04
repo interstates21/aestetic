@@ -122,6 +122,16 @@ typedef struct		s_sector
 }					t_sector;
 /**/
 
+typedef struct		s_line
+{
+	int				x;
+	int 			y1;
+	int 			y2;
+	int 			c_top;
+	int 			c_mid;
+	int 			c_bot;
+}					t_line;
+
 typedef struct		s_math
 {
 	t_v2f			v1;
@@ -166,6 +176,9 @@ typedef struct		s_draw
 	int 			ybot[WIDTH];
 	int 			*render_sec;
 	t_sector		*sec;
+	int				z;
+	int				ya;
+	int				yb;
 }					t_draw;
 
 typedef struct		s_scene

@@ -26,7 +26,7 @@ void run(t_scene scene, t_sdl sdl)
         listen_controls(&(scene.player), &end, &(scene.controller));
         // apply_controls();
         // shitty_controller(&(scene.controller), &end, sdl); illegal hardware instr because there's no player
-        render(&scene);
+		render(&scene);
         sdl_apply_renderer(sdl, scene.pixels);
     }
 

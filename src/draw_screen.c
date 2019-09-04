@@ -49,13 +49,17 @@ static void		drender(t_draw *d, t_scene *s)
 }
 
 /*
- *
+ * draw_screen() = render()
  */
-void			draw_screen(t_scene *s)
+void			/*draw_screen*/render(t_scene *s)
 {
 	t_draw	d;
 
 	init_draw_screen(&d, s->n_sectors, s->player.sector);
 	while (d.head != d.tail)
+	{
 		drender(&d, s);
+		++d.render_sec[d.now->sector_n];
+	}
+	free(d.render_sec);
 }

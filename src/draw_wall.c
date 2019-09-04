@@ -86,6 +86,7 @@ static int		math2(t_math *m, t_scene *s, t_draw *d, int k)
 	black_magic(m, s);
 	m->begin = MAX(m->x1, d->now->sx1);
 	m->end = MIN(m->x2, d->now->sx2);
+	return (0);
 }
 
 void			draw_wall(t_draw *d, t_scene *s, int k)
@@ -100,10 +101,14 @@ void			draw_wall(t_draw *d, t_scene *s, int k)
 		part_behind(&m);
 	if (math2(&m, s, d, k))
 		return ;
-	i = m.begin;
-	while (i <= m.end)
-	{
+	i = m.begin - 1;
+	while (++i <= m.end)
 		render_wall(s, d, m, i);
-		i++;
+	if (m.nghbr >= 0 && m.end>= m.begin &&
+	(d->head + MAX_Q + 1 - d->tail) % MAX_Q)
+	{
+		*d->head = (t_item){m.nghbr, m.begin, m.end};
+		if (++d->head == d->queue + MAX_Q)
+			d->head = d->queue;
 	}
 }
