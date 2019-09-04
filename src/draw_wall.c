@@ -74,7 +74,7 @@ static int		math2(t_math *m, t_scene *s, t_draw *d, int k)
 	m->x1 = WIDTH / 2 - (int)(m->t1.x * m->scale1.x);
 	m->scale2 = (t_v2f){H_FOV / m->t2.y, V_FOV / m->t2.y};
 	m->x2 = WIDTH / 2 - (int)(m->t2.x * m->scale2.x);
-	if (m->x1 >= m->x2 || m->x2 < d->now->sx1 || m->x1 < d->now->sx2)
+	if (m->x1 >= m->x2 || m->x2 < d->now->sx1 || m->x1 > d->now->sx2)
 		return (1);
 	m->y_ceil = d->sec->ceil - s->player.pos.z;
 	m->y_ceil = d->sec->floor - s->player.pos.z;
