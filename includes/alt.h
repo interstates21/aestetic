@@ -27,12 +27,11 @@
 #define MAP_HEIGHT 6
 #define WIDTH 800
 #define HEIGHT 600
-# define EYE_HEIGHT		6
-# define DUCK_HEIGHT	2.5
-# define HEAD_MARGIN	1
-# define KNEE_HIGHT		2
-# define H_FOV			(0.73f * HEIGHT)
-# define V_FOW			(.2f * HEIGHT)
+
+#define NICE_RED 0xdf5456
+#define NICE_BLUE 0x3402f4
+#define NICE_BLACK 0x023345
+#define NICE_PURPLE 0x660399
 
 typedef enum
 {
@@ -61,41 +60,40 @@ typedef struct s_v3f
 	double z;
 } t_v3f;
 
-
 typedef struct s_v2
 {
 	int x;
 	int y;
 } t_v2;
 
-typedef struct		s_player
+typedef struct s_player
 {
-	t_v3f			pos;
-	t_v3f			dir;
-    double			angle;
-	double			anglesin;
-	double			anglecos;
-	double			yaw;
-	double			move_speed;
-	double			rot_speed;
-	bool			falling;
-	unsigned int	sector;
-}					t_player;
+	t_v3f pos;
+	t_v3f dir;
+	double angle;
+	double anglesin;
+	double anglecos;
+	double yaw;
+	double move_speed;
+	double rot_speed;
+	bool falling;
+	unsigned int sector;
+} t_player;
 
-typedef struct	s_controller
+typedef struct s_controller
 {
-	bool		move_forw;
-	bool		move_back;
-	bool		move_left;
-	bool		move_right;
-	bool		squat;
-	bool		jumping;
-	bool		rotating;
-	bool		checkmouse_way;
-	bool		falling;
-	t_v2		mouse;
+	bool move_forw;
+	bool move_back;
+	bool move_left;
+	bool move_right;
+	bool squat;
+	bool jumping;
+	bool rotating;
+	bool checkmouse_way;
+	bool falling;
+	t_v2 mouse;
 
-}				t_controller;
+} t_controller;
 
 /*
  *	floor		= высота пола
@@ -104,32 +102,26 @@ typedef struct	s_controller
  * 	*neighbours	= указатель на соседний сектор
  *	npoints		= кол-во вершин
  */
-typedef struct		s_sector
+typedef struct s_sector
 {
-	double			floor;
-	double			ceil;
-	t_v2f			*vertex;
-	char			*portals;
-	unsigned int	npoints;
-}					t_sector;
+	double floor;
+	double ceil;
+	t_v2f *vertex;
+	char *portals;
+	unsigned int npoints;
+} t_sector;
 /**/
 
-typedef struct		s_scene
+typedef struct s_scene
 {
-	Uint32			*pixels;
-	Uint32			**textures;
-	t_player		player;
-	t_controller	controller;
-	char			**map;
-	int				tex_height;
-	int				tex_width;
-	int				map_width;
-	int				map_height;
-	int				n_sectors;
-	t_sector		*sectors;
-}					t_scene;
-
-
+	Uint32 *pixels;
+	Uint32 **textures;
+	t_player player;
+	t_controller controller;
+	char **map;
+	int n_sectors;
+	t_sector *sectors;
+} t_scene;
 
 typedef struct s_sdl
 {
@@ -137,9 +129,7 @@ typedef struct s_sdl
 	SDL_Surface *surface_sreen;
 	SDL_Renderer *renderer;
 	SDL_Texture *texture;
-	/* not used */
 	SDL_Surface *surface;
-	//
 	SDL_Event event;
 } t_sdl;
 
