@@ -3,7 +3,7 @@
 // {
 //     float floorHeight;
 //     float ceilHeight;
-//     t_v2f wall;
-//     signed char *neighbors;         
-//     unsigned npoints;              
+//     t_vt wall;
+//     signed char *neighbors;
+//     unsigned npoints;
 // } *sectors = NULL;

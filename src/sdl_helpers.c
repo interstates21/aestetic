@@ -11,6 +11,8 @@ void sdl_clean(t_sdl *sdl)
 
 void sdl_put_pix(Uint32 **pixels, int x, int y, Uint32 color)
 {
+    if (x <= 0 || y <= 0 || x > WIDTH - 1 || y > HEIGHT - 1)
+        return;
     (*pixels)[y * WIDTH + x] = color;
 }
 

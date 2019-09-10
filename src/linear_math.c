@@ -1,6 +1,6 @@
 #include "alt.h"
 
-void		rotate_z(t_v2f *p, float teta)
+void rotate_z(t_vt *p, float teta)
 {
 	float tmp;
 	float cos_teta;

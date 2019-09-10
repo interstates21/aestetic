@@ -43,7 +43,7 @@
 //         /* Horizontal collision detection */
 // }
 
-bool        check_something(t_player *player, t_v2f current_point, t_v2f next_point) {
+bool        check_something(t_player *player, t_vt current_point, t_vt next_point) {
     return (
         IntersectBox(
         player->pos.x,
@@ -66,7 +66,7 @@ bool        check_something(t_player *player, t_v2f current_point, t_v2f next_po
 
 
 
-static void apply_movement(t_player *player, t_sector current_sector, t_v2f *vertices)
+static void apply_movement(t_player *player, t_sector current_sector, t_vt *vertices)
 {
     int n;
     n = 0;
@@ -104,12 +104,12 @@ void move(t_player *player, t_scene *scene)
             float hight;
             int   n;
             t_sector  current_sector  = scene->sectors[player->sector];
-            t_v2f     *vertices        = current_sector.vertex;
+            t_vt     *vertices        = current_sector.walls;
 
             n = 0;
     
             while ( n < current_sector.npoints) {
-            if (check_something(player, current_sector.vertex[n], current_sector.vertex[n + 1])) {
+            if (check_something(player, current_sector.walls[n], current_sector.walls[n + 1])) {
                 // deep  = current_sector.portals[n] < 0 ?  INFIN : max(current_sector.floor, sectors[current_sector.portals[n]].floor);
                 // hight = current_sector.portals[n] < 0 ? -INFIN : min(current_sector.ceil,  sectors[current_sector.portals[n]].ceil );
             }
@@ -123,7 +123,7 @@ void move(t_player *player, t_scene *scene)
 
 
 static void        player_movement(t_player *player, t_controller *controller, t_scene *scene) {
-    t_v2f temp_dir;
+    t_vt temp_dir;
 
     if(controller->move_forw)
         {

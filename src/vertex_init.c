@@ -17,7 +17,6 @@
  * тк есть куча проверок до вызова этих f()
  */
 
-
 /*
  * приниает указатели на массивы, которые нужно обьеденить
  * возвращает указатель на массив (b + a)
@@ -28,13 +27,12 @@
  *  ничего не возвращает
  *  сразу присваевает второму массиву нужное значение
  */
-static void		merge_arr(t_v2f **a, t_v2f **b, int ia, int *ib)
+static void merge_arr(t_vt **a, t_vt **b, int ia, int *ib)
 {
-	t_v2f		*res;
-	int 		c;
+	t_vt *res;
+	int c;
 
-
-	res = (t_v2f*)malloc(sizeof(t_v2f) * (ia + *ib));
+	res = (t_vt *)malloc(sizeof(t_vt) * (ia + *ib));
 	c = -1;
 	while (++c < *ib)
 	{
@@ -57,13 +55,13 @@ static void		merge_arr(t_v2f **a, t_v2f **b, int ia, int *ib)
  * строку с вершинами,
  * индекс последнего считаного символа
  */
-int			fetch_f(double *i, char *str, int *c)
+int fetch_f(double *i, char *str, int *c)
 {
 	while (!ft_isdigit(str[*c]) && str[*c] ^ '-')
 		*c = *c + 1;
 	*i = atof(str + *c);
 	*c += str[*c] == '-' ? 1 : 0;
-	while(str[*c] && (ft_isdigit(str[*c]) || str[*c] == '.'))
+	while (str[*c] && (ft_isdigit(str[*c]) || str[*c] == '.'))
 		*c = *c + 1;
 	return (1);
 }
@@ -77,12 +75,12 @@ int			fetch_f(double *i, char *str, int *c)
  * > 	только первая координата в строке у, все остальные х
  * ? формат строки
  */
-static int	count_v(char *s)
+static int count_v(char *s)
 {
-	int		db;
-	int 	old;
-	int 	res;
-	int 	i;
+	int db;
+	int old;
+	int res;
+	int i;
 
 	res = 0;
 	db = 1;
@@ -92,7 +90,7 @@ static int	count_v(char *s)
 		old = res;
 		while (i >= 0 && (ft_isdigit(s[i]) || s[i] == '.'))
 		{
-			db = s[i] ^ '.' ? db : db - 1 ;
+			db = s[i] ^ '.' ? db : db - 1;
 			if (db < 0)
 				return (0);
 			res = res ^ old ? res : res + 1;
@@ -126,17 +124,17 @@ static int	count_v(char *s)
  *  принимает УКАЗАТЕЛЬ на МАССИВ (какой же я тупой)
  *  возвращает 1|0 вместо адресс|NULL
  */
-int			init_vertices(char *str, t_v2f **arr, int *n_v)
+int init_vertices(char *str, t_vt **arr, int *n_v)
 {
-	t_v2f	*res;
-	int 	v;
-	int 	i;
-	int 	c;
-	double	y;
+	t_vt *res;
+	int v;
+	int i;
+	int c;
+	double y;
 
 	if (!str || ((v = count_v(str)) < 1))
 		return (0);
-	res = (t_v2f*)malloc(sizeof(t_v2f) * v);
+	res = (t_vt *)malloc(sizeof(t_vt) * v);
 	i = -1;
 	c = 0;
 	fetch_f(&y, str, &c);
@@ -144,7 +142,7 @@ int			init_vertices(char *str, t_v2f **arr, int *n_v)
 	{
 		res[i].y = y;
 		if (fetch_f(&res[i].x, str, &c))
-			continue ;
+			continue;
 		free(res);
 		return (0);
 	}

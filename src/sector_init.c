@@ -19,9 +19,9 @@
  * копирует старый массив в новый
  * чистит старый массив (если он был)
  */
-static void		copy_arr(t_sector **a, t_sector **b, int s)
+static void copy_arr(t_sector **a, t_sector **b, int s)
 {
-	int			i;
+	int i;
 
 	i = -1;
 	while (++i < s)
@@ -31,9 +31,9 @@ static void		copy_arr(t_sector **a, t_sector **b, int s)
 }
 
 // считает кол-во интов в строке после с
-static int		*num_ints(char *s, int c, int *m)
+static int *num_ints(char *s, int c, int *m)
 {
-	int			db;
+	int db;
 
 	db = 0;
 	*m = 0;
@@ -55,9 +55,9 @@ static int		*num_ints(char *s, int c, int *m)
  * принимает строку и индекс в ней
  * возвращает первый найденый инт и сдвигает индекс в конец инта
  */
-int				fetch_int(char *str, int *i)
+int fetch_int(char *str, int *i)
 {
-	int			res;
+	int res;
 
 	while (str[*i] && !ft_isdigit(str[*i]) && str[*i] ^ '-')
 		*i += 1;
@@ -76,12 +76,12 @@ int				fetch_int(char *str, int *i)
  * ?> не нужно проверять строку на наличие символов,
  * 		если она прошла через fetch_int()
  */
-static int		*get_ints(char *s, int c, int *m)
+static int *get_ints(char *s, int c, int *m)
 {
-	int			*res;
-	int			i;
+	int *res;
+	int i;
 
-	res = (int*)malloc(sizeof(int) * *m);
+	res = (int *)malloc(sizeof(int) * *m);
 	i = -1;
 	while (++i < *m)
 		res[i] = fetch_int(s, &c);
@@ -96,12 +96,12 @@ static int		*get_ints(char *s, int c, int *m)
  *  считывает в цикле массив интов (тупо ВСЕ инты в строке без первых двух)
  *	npoints = кол-во вершин, npoints = половина кол-ва интов в строке
  * ? neighbours = соседние СЕКТОРа (signed char = 1 byte, -128->127)
- *	vertex = кол-во вершин в секторе, n(vertex) = arr / 2 + 1 (что б *замкнуть* сектор)
+ *	walls = кол-во вершин в секторе, n(walls) = arr / 2 + 1 (что б *замкнуть* сектор)
  * ----
  *  принимает массив секторов (или NULL, если пока пуст),
  *  строку, которую вернул гнл
  *  указатель на NumSectors
- *  указатель на массив вершин, полученый после всех итераций через vertex_init()
+ *  указатель на массив вершин, полученый после всех итераций через walls_init()
  *
  *  аллочит новый сектор
  *  считывает данные со строки
@@ -111,31 +111,31 @@ static int		*get_ints(char *s, int c, int *m)
  *  возвращает указатель на новый массив
  *  или NULL если [давай по новой, Миша, всё ху@ня]
  */
-t_sector		*sector_init(t_sector **arr, int *n_sectors, char *s, t_v2f *v)
+t_sector *sector_init(t_sector **arr, int *n_sectors, char *s, t_vt *v)
 {
-	int			c;
-	t_sector	*res;
-	int			*num;
-	int			m;
+	int c;
+	t_sector *res;
+	int *num;
+	int m;
 
 	c = 0;
 	if ((*n_sectors += 1) < 0 && *num_ints(s, c, &m) % 2)
 		return (NULL);
-	res = (t_sector*)malloc(sizeof(t_sector) * *n_sectors);
+	res = (t_sector *)malloc(sizeof(t_sector) * *n_sectors);
 	copy_arr(&res, arr, *n_sectors - 1);
 	res[*n_sectors - 1].floor = fetch_int(s, &c);
 	res[*n_sectors - 1].ceil = fetch_int(s, &c);
 	num = get_ints(s, c, num_ints(s, c, &m));
 	res[*n_sectors - 1].npoints = m;
-	res[*n_sectors - 1].portals = (char*)malloc(sizeof(char) * m);
-	res[*n_sectors - 1].vertex = (t_v2f*)malloc(sizeof(t_v2f) * (m + 1));
+	res[*n_sectors - 1].portals = (char *)malloc(sizeof(char) * m);
+	res[*n_sectors - 1].walls = (t_vt *)malloc(sizeof(t_vt) * (m + 1));
 	c = -1;
 	while (++c < m)
 	{
-		res[*n_sectors - 1].vertex[c + 1] = v[num[c]];
+		res[*n_sectors - 1].walls[c + 1] = v[num[c]];
 		res[*n_sectors - 1].portals[c] = num[m + c];
 	}
-	res[*n_sectors - 1].vertex[0] = res[*n_sectors - 1].vertex[m];
+	res[*n_sectors - 1].walls[0] = res[*n_sectors - 1].walls[m];
 	free(num);
 	return (res);
 }
