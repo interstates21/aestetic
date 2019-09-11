@@ -16,8 +16,8 @@ static void		init_draw_screen(t_draw *d, int num_sect, unsigned int ps)
 {
 	int 		i;
 
-	d->head = &d->queue[0];
-	d->tail = &d->queue[0];
+	d->head = d->queue;
+	d->tail = d->queue;
 	d->render_sec = (int*)malloc(sizeof(int) * num_sect);
 	i = -1;
 	while (++i < WIDTH)
@@ -29,7 +29,7 @@ static void		init_draw_screen(t_draw *d, int num_sect, unsigned int ps)
 	while (++i < num_sect)
 		d->render_sec[i] = 0;
 	*d->head = (t_item){ ps, 0, WIDTH - 1 };
-	if(++(*d).head == (*d).queue + MAX_Q)
+	if(++d->head == d->queue + MAX_Q)
 		d->head = d->queue;
 }
 
@@ -37,12 +37,12 @@ static void		drender(t_draw *d, t_scene *s)
 {
 	int			i;
 
-	d->now = d->tail;
-	if (++(*d).tail == (*d).queue + MAX_Q)
+	d->now = *d->tail;
+	if (++d->tail == d->queue + MAX_Q)
 		d->tail = d->queue;
-	if (d->render_sec[d->now->sector_n] ^ 1)
+	if (d->render_sec[d->now.sector_n] & 0x21)
 		return ;
-	d->sec = &s->sectors[d->now->sector_n];
+	d->sec = &s->sectors[d->now.sector_n];
 	i = -1;
 	while (++i < d->sec->npoints)
 		draw_wall(d, s, i);
@@ -59,7 +59,7 @@ void			/*draw_screen*/render(t_scene *s)
 	while (d.head != d.tail)
 	{
 		drender(&d, s);
-		++d.render_sec[d.now->sector_n];
+		++d.render_sec[d.now.sector_n];
 	}
 	free(d.render_sec);
 }

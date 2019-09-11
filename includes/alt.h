@@ -171,7 +171,7 @@ typedef struct		s_draw
 	t_item			queue[MAX_Q];
 	t_item			*head;
 	t_item			*tail;
-	t_item			*now;
+	t_item			now;
 	int 			ytop[WIDTH];
 	int 			ybot[WIDTH];
 	int 			*render_sec;

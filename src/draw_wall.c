@@ -74,7 +74,7 @@ static int		math2(t_math *m, t_scene *s, t_draw *d, int k)
 	m->x1 = WIDTH / 2 - (int)(m->t1.x * m->scale1.x);
 	m->scale2 = (t_v2f){H_FOV / m->t2.y, V_FOV / m->t2.y};
 	m->x2 = WIDTH / 2 - (int)(m->t2.x * m->scale2.x);
-	if (m->x1 >= m->x2 || m->x2 < d->now->sx1 || m->x1 > d->now->sx2)
+	if (m->x1 >= m->x2 || m->x2 < d->now.sx1 || m->x1 > d->now.sx2)
 		return (1);
 	m->y_ceil = d->sec->ceil - s->player.pos.z;
 	m->y_ceil = d->sec->floor - s->player.pos.z;
@@ -84,8 +84,8 @@ static int		math2(t_math *m, t_scene *s, t_draw *d, int k)
 		m->nyfloor = s->sectors[m->nghbr].floor - s->player.pos.z;
 	}
 	black_magic(m, s);
-	m->begin = MAX(m->x1, d->now->sx1);
-	m->end = MIN(m->x2, d->now->sx2);
+	m->begin = MAX(m->x1, d->now.sx1);
+	m->end = MIN(m->x2, d->now.sx2);
 	return (0);
 }
 
@@ -97,14 +97,14 @@ void			draw_wall(t_draw *d, t_scene *s, int k)
 	init_math(d, s, k, &m);
 	if (m.t1.y <= 0 && m.t2.y <= 0)
 		return ;
-	if (m.t1.y <= 0 && m.t2.y <= 0)
+	if (m.t1.y <= 0 || m.t2.y <= 0)
 		part_behind(&m);
 	if (math2(&m, s, d, k))
 		return ;
 	i = m.begin - 1;
 	while (++i <= m.end)
 		render_wall(s, d, m, i);
-	if (m.nghbr >= 0 && m.end>= m.begin &&
+	if (m.nghbr >= 0 && m.end >= m.begin &&
 	(d->head + MAX_Q + 1 - d->tail) % MAX_Q)
 	{
 		*d->head = (t_item){m.nghbr, m.begin, m.end};

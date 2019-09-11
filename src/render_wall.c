@@ -56,7 +56,7 @@ void		render_wall(t_scene *s, t_draw *d, t_math m, int x)
 	int 	ya;
 	int 	yb;
 
-	d->z = 8 * (int)((x - m.x1) * (m.t2.y - m.t1.y) / (m.x2 - m.x1) + m.t2.y);
+	d->z = 8 * (int)((x - m.x1) * (m.t2.y - m.t1.y) / (m.x2 - m.x1) + m.t1.y);
 	ya = (x - m.x1) * (m.y2.x - m.y1.x) / (m.x2 - m.x1) + m.y1.x;
 	d->ya = CLAMP(ya, d->ytop[x], d->ybot[x]);
 	yb = (x - m.x1) * (m.y2.y - m.y1.y) / (m.x2 - m.x1) + m.y1.y;
