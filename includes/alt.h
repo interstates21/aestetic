@@ -55,6 +55,14 @@ typedef struct s_vt
 	double z;
 } t_vt;
 
+typedef struct s_queue
+{
+	int nSector;
+	int	sx;
+	int sy;
+} t_queue;
+
+
 typedef struct s_v2f
 {
 	double x;

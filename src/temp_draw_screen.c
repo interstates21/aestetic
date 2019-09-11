@@ -5,18 +5,23 @@ static void DrawScreen(t_scene *scene)
     enum
     {
         MaxQueue = 32
-    }; // maximum number of pending portal renders
+    }; /
     struct item
     {
         int sectorno, sx1, sx2;
     }
 
-    queue[MaxQueue],
-        *head = queue,
-        *tail = queue;
+  struct item
+  {
+    short sectorno,
+  sx1,
+  sx2;
+  } queue[MaxQueue],
+  *head=queue, *tail=queue;
 
-    int
-        ytop[WIDTH] = {0},
+
+
+    int ytop[WIDTH] = {0},
         ybottom[WIDTH],
         renderedsectors[NumSectors];
 
@@ -25,8 +30,7 @@ static void DrawScreen(t_scene *scene)
     for (unsigned n = 0; n < NumSectors; ++n)
         renderedsectors[n] = 0;
 
-    /* Begin whole-screen rendering from where the player is. */
-    *head = (struct item){player.sector, 0, WIDTH - 1};
+    *head = t_queue{player.sector, 0, WIDTH - 1};
     if (++head == queue + MaxQueue)
         head = queue;
 

@@ -9,6 +9,8 @@
 #define END WIDTH - 1
 #define YAW(y, z) (y + z * 1) // player->yaw
 
+#define MAX_QUEUE 32
+
 void handleHiddenWall(t_vt *p1, t_vt *p2)
 {
     t_v2f i1;
@@ -201,6 +203,27 @@ void renderSector(t_scene *scene, const t_sector currentSector)
 void render(t_scene *scene)
 {
     draw_test_square(scene);
+
+    int yBottom[WIDTH];
+    int yTop[WIDTH] = {0};
+    int renderSectors[WIDTH];
+
+    t_queue queue[MAX_QUEUE];
+    t_queue *tail = queue;
+    t_queue *head = queue;
+
+    int renderSectors;
+
+    for (unsigned x = 0; x < WIDTH; ++x)
+        ybottom[x] = HEIGHT - 1;
+    for (int n = 0; n < NumSectors; ++n)
+    renderedsectors[n] = 0;
+
+
+    *head = 
+
+     if (++head == queue + MaxQueue)
+        head = queue;
     int i;
 
     i = 0;
