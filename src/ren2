@@ -206,40 +206,29 @@ void render(t_scene *scene)
     int yBottom[WIDTH];
     int yTop[WIDTH] = {0};
     int renderSectors[WIDTH];
-    int i;
 
     t_queue queue[MAX_QUEUE];
     t_queue *tail = queue;
     t_queue *head = queue;
 
-    int renderSectors[scene->n_sectors];
+    int renderSectors;
 
     for (unsigned x = 0; x < WIDTH; ++x)
-        yBottom[x] = HEIGHT - 1;
-    for (int n = 0; n < scene->n_sectors; ++n)
-        renderSectors[n] = 0;
+        ybottom[x] = HEIGHT - 1;
+    for (int n = 0; n < NumSectors; ++n)
+        renderedsectors[n] = 0;
 
-    t_queue b = {scene->player.sector, 0, WIDTH - 1};
-    *head = b;
+    *head =
 
-    if (++head == queue + MAX_QUEUE)
-        head = queue;
+        if (++head == queue + MaxQueue)
+            head = queue;
+    int i;
 
     i = 0;
 
-    // t_sector currentSector = scene->sectors[scene->player.sector];
+    t_sector currentSector = scene->sectors[scene->player.sector];
     while (sectors)
     {
-        t_queue this = *tail;
-        if (++tail == queue + MAX_QUEUE)
-            tail = queue;
-
-        if (renderSectors[this.nSector] & 0x21)
-            continue;
-        ++renderSectors[this.nSector];
-
-        const t_sector current = scene->sectors[this.nSector];
-
-        renderSector(scene, current);
+        renderSector(scene, currentSector);
     }
 }
