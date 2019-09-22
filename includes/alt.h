@@ -58,16 +58,15 @@ typedef struct s_vt
 typedef struct s_queue
 {
 	int nSector;
-	int	sx;
+	int sx;
 	int sy;
 } t_queue;
-
 
 typedef struct s_v2f
 {
 	double x;
 	double y;
-	double z;
+	// double z;
 } t_v2f;
 
 typedef struct s_cam

@@ -1,6 +1,6 @@
 NAME = doom_nukem
 CC = clang
-FILES = color_math console_output linear_math main sdl_helpers sdl_init vector_math controls_listen controls_apply load_data player_init sector_init vertex_init  controls_init render_manager temp_render
+FILES = color_math console_output linear_math main sdl_helpers sdl_init vector_math controls_listen controls_apply load_data player_init sector_init vertex_init  controls_init render_manager temp_render temp_draw_screen
 LIBFT_DIR = libft/
 SRC = $(addprefix src/, $(addsuffix .c, $(FILES)))
 OBJ = $(addprefix obj/, $(addsuffix .o, $(FILES)))

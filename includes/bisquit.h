@@ -7,8 +7,8 @@
 #define DuckHeight 2.5   // And when crouching
 #define HeadMargin 1     // How much room there is above camera before the head hits the ceiling
 #define KneeHeight 2     // How tall obstacles the player can simply walk over without jumping
-#define hfov (0.73f * H) // Affects the horizontal field of vision
-#define vfov (.2f * H)   // Affects the vertical field of vision
+#define HFOV (0.73f * H) // Affects the horizontal field of vision
+#define VFOV (.2f * H)   // Affects the vertical field of vision
 
 #define min(a, b) (((a) < (b)) ? (a) : (b))               // min: Choose smaller of two scalars.
 #define max(a, b) (((a) > (b)) ? (a) : (b))               // max: Choose greater of two scalars.

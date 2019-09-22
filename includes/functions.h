@@ -50,4 +50,6 @@ t_sector *sector_init(t_sector **arr, int *n_sectors, char *s, t_vt *v);
 int load_data(char *fname, t_scene *scene);
 void shitty_controller(t_controller *controller, bool *end, t_sdl sdl);
 void render(t_scene *scene);
+void print_screen(t_scene *scene);
+void DrawScreen(t_scene *scene);
 #endif
