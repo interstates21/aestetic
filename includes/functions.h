@@ -14,7 +14,15 @@ t_rgb new_rgb(int r, int g, int b);
 t_vt new_v2f(double x, double y);
 t_v2i new_v2(int x, int y);
 
+double		minf(double a, double b);
+double		maxf(double a, double b);
+int			mini(int a, int b);
+int			maxi(int a, int b);
+int			clampi(int i, int big, int low);
+
 void rotate_z(t_vt *p, float teta);
+double		line_eq(double k, double x, double b);
+double		xprod(t_v2f a, t_v2f b);;
 
 void controls_manager(t_scene *scene);
 // void init_textures(t_scene *scene);
@@ -50,6 +58,12 @@ t_sector *sector_init(t_sector **arr, int *n_sectors, char *s, t_vt *v);
 int load_data(char *fname, t_scene *scene);
 void shitty_controller(t_controller *controller, bool *end, t_sdl sdl);
 void render(t_scene *scene);
+void init_draw(t_scene *scene, t_draw *d);
+int	init_math(t_scene *scene, t_draw *d, t_math *m, int s);
+void			transform(t_scene *scene, t_draw *d, t_math *m);
+t_v2f			find_cross(t_v2f a, t_v2f b, t_cam c, int i);
+int				init_cycle(t_scene *scene, t_draw *d);
+void			draw_line(t_scene *s, t_scheme sc);
 void print_screen(t_scene *scene);
 void DrawScreen(t_scene *scene);
 #endif

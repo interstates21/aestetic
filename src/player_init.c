@@ -50,6 +50,17 @@ static void init_extra_data(t_player *player)
 	// player->anglecos = 0;
 }
 
+static void	init_cam(t_scene *s)
+{
+	s->cam.hfov = 0.73 * HEIGHT;
+	s->cam.vfov = 0.2 * HEIGHT;
+	s->cam.n_z = 0.0001;
+	s->cam.f_z = 5.0;
+	s->cam.n_s = 0.00001;
+	s->cam.f_s = 20.0;
+	//printf("cam_init\n");
+}
+
 // сцена нужна для проверки по секторам
 int player_init(t_scene *s, char *l)
 {
@@ -67,8 +78,10 @@ int player_init(t_scene *s, char *l)
 	fetch_f(&sect, l, &i);
 	s->player = (t_player){(t_vt){v.x, v.y, 0}, (t_vt){0, 0, 0}, ang, 0, 0,
 						   0, 0, 0, (int)floor(sect)};
-
+	s->player.anglecos = cos(s->player.angle);
+	s->player.anglesin = sin(s->player.angle);
 	/* Movement and stuff */
 	init_extra_data(&(s->player));
+	init_cam(s);
 	return (1);
 }

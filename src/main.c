@@ -72,7 +72,7 @@ int main(int argc, char **argv)
     sdl_init(&sdl);
     scene_init(&scene);
     load_data("map-clear.txt", &scene);
-    console_log_map(scene);
+    //console_log_map(scene);
     sdl_init_renderer(&sdl);
     run(scene, sdl);
     sdl_clean(&sdl);

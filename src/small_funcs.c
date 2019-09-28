@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linear_math.c                                      :+:      :+:    :+:   */
+/*   small_funcs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akolomoi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/28 16:26:16 by akolomoi          #+#    #+#             */
-/*   Updated: 2019/09/28 16:26:17 by akolomoi         ###   ########.fr       */
+/*   Created: 2019/09/23 16:38:46 by akolomoi          #+#    #+#             */
+/*   Updated: 2019/09/23 16:38:47 by akolomoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "alt.h"
+#include "../includes/alt.h"
 
-double		xprod(t_v2f a, t_v2f b)
+int			maxi(int a, int b)
 {
-	return ((double)(a.x * b.y - b.x * a.y));
+	return (a > b ? a : b);
 }
 
-double		line_eq(double k, double x, double b)
+int			mini(int a, int b)
 {
-	return (k * x + b);
+	return (a < b ? a : b);
 }
 
-void		rotate_z(t_vt *p, float teta)
+double		minf(double a, double b)
 {
-	float tmp;
-	float cos_teta;
-	float sin_teta;
+	return (a < b ? a : b);
+}
 
-	teta *= M_PI / 180.0;
-	cos_teta = cos(teta);
-	sin_teta = sin(teta);
-	tmp = p->x;
-	p->x = p->x * cos_teta - p->y * sin_teta;
-	p->y = tmp * sin_teta + p->y * cos_teta;
+double		maxf(double a, double b)
+{
+	return (a > b ? a : b);
+}
+
+int			clampi(int i, int big, int low)//
+{
+	return (clamp(i, big, low));//
 }
