@@ -119,5 +119,7 @@ void controls_manager(t_scene *scene) {
         move(player, sectors, current, controller, eyeheight);
     move_2(player, current, 0,0);
     apply_all(player, controller);
+    print_v3f(player->pos, "pos");
+    
     SDL_Delay(10);
 }

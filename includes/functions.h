@@ -28,6 +28,9 @@ double		xprod(t_v2f a, t_v2f b);;
 void print_err(const char *err);
 void console_log_map(t_scene scene);
 
+
+
+void print_v3f(t_vt v, char *s);
 void init_controller(t_controller *controller);
 // void	parse_manager(t_scene *scene, char *filename);
 // void    print_map(t_scene *scene);

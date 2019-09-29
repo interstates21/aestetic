@@ -43,6 +43,20 @@ void print_v2f(t_vt v, char *s)
     ft_putchar('\n');
 }
 
+
+
+void print_v3f(t_vt v, char *s)
+{
+    ft_putstr(s);
+    ft_putstr(" = ");
+    ft_putnbr(v.x);
+    ft_putstr(" -- ");
+    ft_putnbr(v.y);
+    ft_putstr(" -- ");
+    ft_putnbr(v.z);
+    ft_putchar('\n');
+}
+
 // void     print_v2f(t_vt v, char *s) {
 //     printf("Vector %s = x:%f - y:%f", s, v.x, v.y);
 // }
