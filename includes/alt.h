@@ -27,7 +27,7 @@
 #define MAP_WIDTH 5
 #define MAP_HEIGHT 6
 #define UNDEF -42
-#define INFIN 9e9
+#define INFIN 100000
 #define WIDTH 800
 #define HEIGHT 600
 #define EYE_HEIGHT 6

@@ -1,7 +1,7 @@
 #include "alt.h"
 
 
-static void move_2(t_player *player, const t_sector *current, float dx, float dy)
+static void portal_move(t_player *player, const t_sector *current, float dx, float dy)
 {
     float px = player->pos.x;
     float py = player->pos.y;
@@ -57,8 +57,11 @@ static void move(t_player *player, const t_sector *sectors, const t_sector *curr
                 {
                     /* Check pos the hole is. */
                     float hole_low  = current->portals[s] < 0 ?  INFIN : max(current->floor, sectors[current->portals[s]].floor);
+
+                    ft_putnbr(hole_low);
+                    ft_putendl("yo !");
                     float hole_high = current->portals[s] < 0 ? -INFIN : min(current->ceil,  sectors[current->portals[s]].ceil );
-                    if(hole_high < player->pos.z+HEAD_MARGIN || hole_low  > player->pos.z - eyeheight + KNEE_HEIGHT)
+                    if(hole_high < player->pos.z + HEAD_MARGIN || hole_low  > player->pos.z - eyeheight + KNEE_HEIGHT)
                     {
                         float xd = current->walls[s+1].x - current->walls[s+0].x, yd = current->walls[s+1].y - current->walls[s+0].y;
                         dx = xd * (dx*xd + yd*dy) / (xd*xd + yd*yd);
@@ -66,7 +69,7 @@ static void move(t_player *player, const t_sector *sectors, const t_sector *curr
                         controller->moving = 0;
                     }
                 }
-            move_2(player, current, dx, dy);
+            portal_move(player, current, dx, dy);
             controller->falling = 1;
 }
 
@@ -117,9 +120,9 @@ void controls_manager(t_scene *scene) {
 
     if (controller->moving)
         move(player, sectors, current, controller, eyeheight);
-    move_2(player, current, 0,0);
+    portal_move(player, current, 0,0);
     apply_all(player, controller);
-    print_v3f(player->pos, "pos");
+    // print_v3f(player->pos, "pos");
     
     SDL_Delay(10);
 }
