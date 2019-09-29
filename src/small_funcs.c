@@ -32,7 +32,7 @@ double		maxf(double a, double b)
 	return (a > b ? a : b);
 }
 
-int			clampi(int i, int big, int low)//
+int			clampi(int i, int big, int low)
 {
-	return (clamp(i, big, low));//
+	return (mini(maxi(i, big), low));
 }
