@@ -29,7 +29,7 @@ void run(t_scene scene, t_sdl sdl)
         listen_controls(&(scene.player), &end, &(scene.controller));
         /* mouse aiming */
         apply_mouse_controls(&(scene.player), &(scene.controller));
-        aplly_controls(&(scene), &end, sdl);
+        controls_manager(&scene);
         render(&scene);
         sdl_apply_renderer(sdl, scene.pixels);
     }

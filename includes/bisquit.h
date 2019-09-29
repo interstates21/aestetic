@@ -3,10 +3,10 @@
 #define W 608
 #define H 480
 /* Define various vision related constants */
-#define EyeHeight 6      // Camera height from floor when standing
-#define DuckHeight 2.5   // And when crouching
-#define HeadMargin 1     // How much room there is above camera before the head hits the ceiling
-#define KneeHeight 2     // How tall obstacles the player can simply walk over without jumping
+#define DEFAULT_EYE_HEIGHT 6      // Camera height from floor when standing
+#define DEFAULT_DUCK_HEIGHT 2.5   // And when crouching
+#define HEAD_MARGIN 1     // How much room there is above camera before the head hits the ceiling
+#define KNEE_HEIGHT 2     // How tall obstacles the player can simply walk over without jumping
 #define HFOV (0.73f * H) // Affects the horizontal field of vision
 #define VFOV (.2f * H)   // Affects the vertical field of vision
 

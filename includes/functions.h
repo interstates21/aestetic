@@ -24,7 +24,6 @@ void rotate_z(t_vt *p, float teta);
 double		line_eq(double k, double x, double b);
 double		xprod(t_v2f a, t_v2f b);;
 
-void controls_manager(t_scene *scene);
 // void init_textures(t_scene *scene);
 void print_err(const char *err);
 void console_log_map(t_scene scene);
@@ -37,7 +36,7 @@ void init_controller(t_controller *controller);
 void listen_controls(t_player *player, bool *end, t_controller *controller);
 void listen_controls(t_player *player, bool *end, t_controller *controller);
 void apply_mouse_controls(t_player *player, t_controller *controller);
-void aplly_controls(t_scene *scene, bool *end, t_sdl sdl);
+void controls_manager(t_scene *scene);
 void paint_screen(t_scene *scene);
 // void    init_render(t_scene *scene);
 // void    render(t_scene *scene);
