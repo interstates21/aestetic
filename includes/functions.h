@@ -35,9 +35,9 @@ void init_controller(t_controller *controller);
 
 // void    apply_controls(t_player *player, char **map);
 void listen_controls(t_player *player, bool *end, t_controller *controller);
-void keyboard_input(t_player *player, bool *end, t_controller *controller);
-void mouse_aiming(t_player *player, t_controller *controller);
-void shitty_controller(t_scene *scene, bool *end, t_sdl sdl);
+void listen_controls(t_player *player, bool *end, t_controller *controller);
+void apply_mouse_controls(t_player *player, t_controller *controller);
+void aplly_controls(t_scene *scene, bool *end, t_sdl sdl);
 void paint_screen(t_scene *scene);
 // void    init_render(t_scene *scene);
 // void    render(t_scene *scene);

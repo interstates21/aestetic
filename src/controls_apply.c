@@ -1,6 +1,18 @@
 #include "alt.h"
 
 
+
+void	apply_mouse_controls(t_player *player, t_controller *controller)
+{
+	SDL_GetRelativeMouseState(&controller->mouse.x, &controller->mouse.y);
+	if (SDL_GetRelativeMouseMode())
+	{
+		player->angle += controller->mouse.x * 0.007f;
+		controller->yaw = clamp(controller->yaw - controller->mouse.y * (-0.025f), -5, 5);
+		player->yaw = controller->yaw - player->dir.z * 0.5f;
+	}
+}
+
 static void MovePlayer(t_scene *scene, float dx, float dy)
 {
     float px = scene->player.pos.x;
@@ -27,7 +39,11 @@ static void MovePlayer(t_scene *scene, float dx, float dy)
     scene->player.anglecos = cosf(scene->player.angle);
 }
 
-void shitty_controller(t_scene *scene, bool *end, t_sdl sdl) {
+// void controls_manager( ) {
+
+// }
+
+void aplly_controls(t_scene *scene, bool *end, t_sdl sdl) {
 
     t_sector *sectors = scene->sectors;
     t_player *player = &(scene->player);
@@ -90,9 +106,6 @@ void shitty_controller(t_scene *scene, bool *end, t_sdl sdl) {
             controller->falling = 1;
         }
 
-        keyboard_input(player, end, controller);
-        /* mouse aiming */
-        mouse_aiming(player, controller);
         MovePlayer(scene, 0,0);
 
         float move_vec[2] = {0.f, 0.f};
@@ -111,14 +124,5 @@ void shitty_controller(t_scene *scene, bool *end, t_sdl sdl) {
         SDL_Delay(10);
 }
 
-void init_controller(t_controller *controller) {
-    controller->move_forw = false;
-    controller->move_back = false;
-    controller->rot_left = false;
-    controller->rot_right = false;
-    controller->falling = true;
-    controller->ground = false;
-    controller->moving = false;
-    controller->ducking = false;
-    controller->yaw = 0;
-}
+
+

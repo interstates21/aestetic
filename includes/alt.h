@@ -115,8 +115,6 @@ typedef struct s_controller
 {
 	bool move_forw;
 	bool move_back;
-	bool move_left;
-	bool move_right;
 	bool rot_left;
 	bool rot_right;
 	bool squat;
@@ -126,7 +124,6 @@ typedef struct s_controller
 	bool moving;
 	bool ground;
 	bool rotating;
-	bool checkmouse_way;
 	bool falling;
 	t_v2i mouse;
 
