@@ -24,20 +24,22 @@ void rotate_z(t_vt *p, float teta);
 double		line_eq(double k, double x, double b);
 double		xprod(t_v2f a, t_v2f b);;
 
-void controls_manager(t_scene *scene);
 // void init_textures(t_scene *scene);
 void print_err(const char *err);
 void console_log_map(t_scene scene);
 
+
+
+void print_v3f(t_vt v, char *s);
 void init_controller(t_controller *controller);
 // void	parse_manager(t_scene *scene, char *filename);
 // void    print_map(t_scene *scene);
 
 // void    apply_controls(t_player *player, char **map);
 void listen_controls(t_player *player, bool *end, t_controller *controller);
-void keyboard_input(t_player *player, bool *end, t_controller *controller);
-void mouse_aiming(t_player *player, t_controller *controller);
-void shitty_controller(t_controller *controller, bool *end, t_sdl sdl);
+void listen_controls(t_player *player, bool *end, t_controller *controller);
+void apply_mouse_controls(t_player *player, t_controller *controller);
+void controls_manager(t_scene *scene);
 void paint_screen(t_scene *scene);
 // void    init_render(t_scene *scene);
 // void    render(t_scene *scene);
@@ -56,7 +58,6 @@ int fetch_int(char *str, int *i);
 int fetch_f(double *i, char *str, int *c);
 t_sector *sector_init(t_sector **arr, int *n_sectors, char *s, t_vt *v);
 int load_data(char *fname, t_scene *scene);
-void shitty_controller(t_controller *controller, bool *end, t_sdl sdl);
 void render(t_scene *scene);
 void init_draw(t_scene *scene, t_draw *d);
 int	init_math(t_scene *scene, t_draw *d, t_math *m, int s);

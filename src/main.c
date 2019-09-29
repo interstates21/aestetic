@@ -23,7 +23,12 @@ void run(t_scene scene, t_sdl sdl)
     // todo  init_textures(scene);
     while (!end)
     {
+        // listen_controls(&(scene.player), &end, &(scene.controller));
+
+        // t_player *player, t_controller *controller, bool *end, t_sdl sdl)
         listen_controls(&(scene.player), &end, &(scene.controller));
+        /* mouse aiming */
+        apply_mouse_controls(&(scene.player), &(scene.controller));
         controls_manager(&scene);
         render(&scene);
         sdl_apply_renderer(sdl, scene.pixels);

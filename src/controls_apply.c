@@ -1,206 +1,128 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   controls_apply.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/13 18:24:17 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/08/23 18:24:22 by bdeomin          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "alt.h"
-#define INFIN 9e9
-// void        complex_movement() {
-
-//  float eyeheight =controller->ducking ? DuckHeight : EyeHeight;
-//        controller->ground= !controller->falling;
-//         if(controller->falling)
-//         {
-//             player->dir.z -= 0.05f; /* Add gravity */
-//             float nextz = player->pos.z + player->dir.z;
-//             if(player->dir.z < 0 && nextz  < sectors[player->sector].floor + eyeheight) // When going down
-//             {
-//                 /* Fix tocontroller.ground*/
-//                 player->pos.z    = sectors[player->sector].floor + eyeheight;
-//                 player->dir.z = 0;
-//                 controller->falling = 0;
-//                controller->ground = 1;
-//             }
-//             else if(player->dir.z > 0 && nextz > sectors[player->sector].ceil) // When going up
-//             {
-//                 /* Prevent jumping above ceiling */
-//                 player->dir.z = 0;
-//                 controller->falling = 1;
-//             }
-//             if(controller->falling)
-//             {
-//                 player->pos.z += player->dir.z;
-//                 controller->moving = 1;
-//             }
-//         }
-//         /* Horizontal collision detection */
-// }
-
-bool        check_something(t_player *player, t_vt current_point, t_vt next_point) {
-    return (
-        IntersectBox(
-        player->pos.x,
-        player->pos.y,
-        player->pos.x + player->dir.x,
-        player->pos.y + player->dir.y,
-        current_point.x,
-        current_point.y,
-        next_point.x,
-        next_point.y)
-        &&
-        PointSide(
-        player->pos.x + player->dir.x,
-        player->pos.y + player->dir.y,
-        current_point.x,
-        current_point.y, 
-        next_point.x,
-        next_point.y) < 0);
-}
 
 
-
-static void apply_movement(t_player *player, t_sector current_sector, t_vt *vertices)
+static void portal_move(t_player *player, const t_sector *current, float dx, float dy)
 {
-    int n;
-    n = 0;
+    float px = player->pos.x;
+    float py = player->pos.y;
+    for(unsigned s = 0; s < current->npoints; ++s)
+        if(current->portals[s] >= 0
+        && IntersectBox(px,py, px+dx,py+dy, current->walls[s+0].x, current->walls[s+0].y, current->walls[s+1].x, current->walls[s+1].y)
+        && PointSide(px+dx, py+dy, current->walls[s+0].x, current->walls[s+0].y, current->walls[s+1].x, current->walls[s+1].y) < 0)
+        {
+            player->sector = current->portals[s];
+            break;
+        }
 
-    while ( n < current_sector.npoints - 1) {
-        if (check_something(player, vertices[n], vertices[n + 1]))
-            player->sector = current_sector.portals[n];
-        n++;
-    }
-
-    player->pos.x += player->dir.x;
-    player->pos.y += player->dir.y; 
-    player->anglesin = sin(player->angle);
-    player->anglecos = cos(player->angle);
+    player->pos.x += dx;
+    player->pos.y += dy;
+    player->anglesin = sinf(player->angle);
+    player->anglecos = cosf(player->angle);
 }
 
 
-// void bump_aside() {
-//  /* Bumps into a wall! Slide along the wall. */
-//                         /* This formula is from Wikipedia article "vector projection". */
-//                         float xd = vert[n+1].x - vert[n].x, yd = vert[n+1].y - vert[n].y;
-//                         dx = xd * (dx*xd + yd*dy) / (xd*xd + yd*yd);
-//                         dy = yd * (dx*xd + yd*dy) / (xd*xd + yd*yd);
-//                         controller->moving = 0;
-// }
-
-// bool wall_collision() {
-
-//     return ((hole_high < player->pos.z+HeadMargin || hole_low  > player->pos.z-eyeheight+KneeHeight))
-// }
-
-void move(t_player *player, t_scene *scene)
-{
-            float deep;
-            float hight;
-            int   n;
-            t_sector  current_sector  = scene->sectors[player->sector];
-            t_vt     *vertices        = current_sector.walls;
-
-            n = 0;
-    
-            while ( n < current_sector.npoints) {
-            if (check_something(player, current_sector.walls[n], current_sector.walls[n + 1])) {
-                // deep  = current_sector.portals[n] < 0 ?  INFIN : max(current_sector.floor, sectors[current_sector.portals[n]].floor);
-                // hight = current_sector.portals[n] < 0 ? -INFIN : min(current_sector.ceil,  sectors[current_sector.portals[n]].ceil );
+static void fall(t_player *player, const t_sector *current, t_controller *controller,  float eyeheight) {
+            player->dir.z -= 0.05f; /* Add gravity */
+            float nextz = player->pos.z + player->dir.z;
+            if(player->dir.z < 0 && nextz  < current->floor + eyeheight) // When going down
+            {
+                /* Fix tocontroller.ground*/
+                player->pos.z    = current->floor + eyeheight;
+                player->dir.z = 0;
+                controller->falling = 0;
+                controller->ground = 1;
             }
-                // if (wall_collision())
-                //     bump_aside();      
-                n++;
-
+            else if(player->dir.z > 0 && nextz > current->ceil) // When going up
+            {
+                /* Prevent jumping above ceiling */
+                player->dir.z = 0;
+                controller->falling = 1;
             }
-            apply_movement(player, current_sector, vertices);
+            if(controller->falling)
+            {
+                player->pos.z += player->dir.z;
+                controller->moving = 1;
+            }
+}
+
+static void move(t_player *player, const t_sector *sectors, const t_sector *current, t_controller *controller, float eyeheight) {
+    float px = player->pos.x;
+    float py = player->pos.y;
+    float dx = player->dir.x;
+    float dy = player->dir.y;
+
+            for(unsigned s = 0; s < current->npoints; ++s)
+                if(IntersectBox(px,py, px+dx,py+dy, current->walls[s+0].x, current->walls[s+0].y, current->walls[s+1].x, current->walls[s+1].y)
+                && PointSide(px+dx, py+dy, current->walls[s+0].x, current->walls[s+0].y, current->walls[s+1].x, current->walls[s+1].y) < 0)
+                {
+                    /* Check pos the hole is. */
+                    float hole_low  = current->portals[s] < 0 ?  INFIN : max(current->floor, sectors[current->portals[s]].floor);
+
+                    ft_putnbr(hole_low);
+                    ft_putendl("yo !");
+                    float hole_high = current->portals[s] < 0 ? -INFIN : min(current->ceil,  sectors[current->portals[s]].ceil );
+                    if(hole_high < player->pos.z + HEAD_MARGIN || hole_low  > player->pos.z - eyeheight + KNEE_HEIGHT)
+                    {
+                        float xd = current->walls[s+1].x - current->walls[s+0].x, yd = current->walls[s+1].y - current->walls[s+0].y;
+                        dx = xd * (dx*xd + yd*dy) / (xd*xd + yd*yd);
+                        dy = yd * (dx*xd + yd*dy) / (xd*xd + yd*yd);
+                        controller->moving = 0;
+                    }
+                }
+            portal_move(player, current, dx, dy);
+            controller->falling = 1;
 }
 
 
-static void        player_movement(t_player *player, t_controller *controller, t_scene *scene) {
-    t_vt temp_dir;
+static void apply_all(t_player *player, const t_controller *controller) {
+    t_vt vec = new_v2f(0, 0);
 
-    if(controller->move_forw)
-        {
-            temp_dir.x += player->anglecos * 0.2f;
-            temp_dir.y += player->anglesin * 0.2f;
+    /* TODO: refactor with rotate_z() */
+        if(controller->move_forw) {
+            vec.x += player->anglecos * 0.2f;
+            vec.y += player->anglesin * 0.2f;
         }
-        if(controller->move_back)
-        {
-            temp_dir.x -= player->anglecos * 0.2f;
-            temp_dir.y -= player->anglesin * 0.2f;
+        if(controller->move_back) {
+            vec.x -= player->anglecos * 0.2f;
+            vec.y -= player->anglesin * 0.2f;
         }
-        if(controller->move_left)
-        {
-            temp_dir.x += player->anglesin * 0.2f;
-            temp_dir.y -= player->anglecos * 0.2f;
+        if(controller->rot_left) {
+            vec.x += player->anglesin * 0.2f;
+            vec.y -= player->anglecos * 0.2f;
         }
-        if(controller->move_right)
-        {
-            temp_dir.x -= player->anglesin * 0.2f;
-            temp_dir.y += player->anglecos * 0.2f;
+        if(controller->rot_right) {
+            vec.x -= player->anglesin * 0.2f;
+            vec.y += player->anglecos * 0.2f;
         }
+            
+        float acceleration = controller->moving ? 0.4 : 0.2;
 
-        float acceleration = true ? 0.4 : 0.2; // why?
-
-        player->dir.x = player->dir.x * (1 - acceleration) + temp_dir.x * acceleration;
-        player->dir.y = player->dir.y * (1 - acceleration) + temp_dir.y * acceleration;
-
-        move(player, scene);
-        controller->falling = 1; // why?
+        player->dir.x = player->dir.x * (1-acceleration) + vec.x * acceleration;
+        player->dir.y = player->dir.y * (1-acceleration) + vec.y * acceleration;
 }
-
-
-static void player_rotation(t_player *player, t_controller controller) {
-    float temp_yaw = clamp(player->yaw - controller.mouse.y * (-0.025f), -5, 5);
-    player->angle += controller.mouse.x * 0.007f;
-	player->yaw = temp_yaw - player->dir.z * 0.5f;
-}
-
-
-static void player_jump(t_player *player) {
-    player->dir.z += 0.5;
-    player->falling = 1;
-    // if (!player->falling)
-	// {
-	// 	player->dir.z += 0.5;
-	// 	controller->falling = 1;
-	// }
-}
-
-static void player_squat(t_player *player) {
-    player->falling = 1;
-}
-
 
 void controls_manager(t_scene *scene) {
 
-    bool    moving =
-            scene->controller.move_forw ||
-            scene->controller.move_back ||
-            scene->controller.move_left  ||
-            scene->controller.move_right ?
-            true : false;
-
-    if (moving) {
-        player_movement(&(scene->player), &(scene->controller), scene);
-    }
-    if (scene->controller.rotating) {
-        player_rotation(&(scene->player), scene->controller);
-    }
-    if (scene->controller.jumping) {
-        player_jump(&(scene->player));
-    }
-    if (scene->controller.squat) {
-        player_squat(&(scene->player));
-    }
-    // apply_player_gravity
+    float eyeheight;
+    t_sector *sectors = scene->sectors;
+    t_player *player = &(scene->player);
+    t_controller *controller = &(scene->controller);
 
 
-    SDL_Delay(10); // why
-} 
+    controller->moving  = controller->move_forw || controller->move_back || controller->rot_left || controller->rot_right;
+
+    eyeheight = controller->ducking ? DEFAULT_DUCK_HEIGHT : DEFAULT_EYE_HEIGHT;
+    controller->ground= !controller->falling;
+
+    t_sector * current = &sectors[player->sector];
+    if (controller->falling)
+        fall(player, current, controller, eyeheight);
+
+    if (controller->moving)
+        move(player, sectors, current, controller, eyeheight);
+    portal_move(player, current, 0,0);
+    apply_all(player, controller);
+    // print_v3f(player->pos, "pos");
+    
+    SDL_Delay(10);
+}

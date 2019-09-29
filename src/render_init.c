@@ -54,7 +54,6 @@ void			init_draw(t_scene *s, t_draw *d)
 	int			x;
 
 	d->player = s->player;
-	d->player.pos.z = 5; // ghost#hardcoded
 	d->head = 0;
 	d->tail = 0;
 	d->flags = (int*)malloc(sizeof(int) * s->n_sectors);

@@ -6,8 +6,10 @@ t_vt new_v2f(double x, double y)
 
     a.x = x;
     a.y = y;
+    a.z = UNDEF;
     return (a);
 }
+
 
 t_vt v_minus(t_vt a, t_vt b)
 {
