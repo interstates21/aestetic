@@ -23,8 +23,10 @@ void run(t_scene scene, t_sdl sdl)
     // todo  init_textures(scene);
     while (!end)
     {
-        listen_controls(&(scene.player), &end, &(scene.controller));
-        controls_manager(&scene);
+        // listen_controls(&(scene.player), &end, &(scene.controller));
+
+        // t_player *player, t_controller *controller, bool *end, t_sdl sdl)
+        shitty_controller(&(scene), &end, sdl);
         render(&scene);
         sdl_apply_renderer(sdl, scene.pixels);
     }
