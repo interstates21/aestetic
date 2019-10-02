@@ -1,0 +1,167 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: nallani <marvin@42.fr>                     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/03/23 19:47:10 by nallani           #+#    #+#              #
+#    Updated: 2019/07/09 22:44:40 by nallani          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME= doom-nukem
+
+FILES= main \
+	   fix_neighborsects \
+	   main_menu \
+	   difficulty_menu \
+	   pause_menu \
+	   intro_screen \
+	   help_screen \
+	   texanim \
+	   jetpack \
+	   draw_hud \
+	   draw_hud2 \
+	   msg \
+	   asset_collision \
+	   draw_assets \
+	   collision \
+	   floceiheight \
+	   floceiheight2 \
+	   the_end \
+	   load_sound \
+	   sound \
+	   handle_finish \
+	   handle_respawn \
+	   exit \
+	   init_sdl \
+	   init_monsters \
+	   init_projectiles \
+	   init_player \
+	   init_font \
+	   loop \
+	   events \
+	   activate_door \
+	   press_e \
+	   monster_behaviour \
+	   monster_behaviour_chargingdemon \
+	   monster_anim_state \
+	   reorder_sprite \
+	   create_projectile \
+	   player_actions \
+	   projectile_collision \
+	   update_anim_projectile \
+	   find_closest_wall_dist \
+	   blaster_col_recur \
+	   blaster_col \
+	   m16_util \
+	   m16_recur \
+	   m16 \
+	   update_2 \
+	   update \
+	   draw_weapon \
+	   color_buffer \
+	   render \
+	   render_sector \
+	   draw_floor \
+	   draw_ceil \
+	   draw_wall \
+	   draw_wall2 \
+	   clip_wall \
+	   proj_wall \
+	   pixel \
+	   getpixel \
+	   player_damage \
+	   load_map load_assets \
+	   inside \
+	   utils \
+	   fly_gravity \
+	   jump \
+	   inertia \
+	   monster_collision \
+	   movement \
+	   draw_sprite \
+   	   get_rot_monster \
+	   draw_monster \
+	   shade \
+	   swap_list \
+	   draw_aim_cross \
+	   font \
+	   vector \
+	   vector2 \
+	   vector3 \
+	   load_monsters_texture \
+	   load_weapons_texture
+
+
+SRC= $(addprefix src/, $(addsuffix .c, $(FILES)))
+OBJ= $(addprefix obj/, $(addsuffix .o, $(FILES)))
+
+ABS_PATH:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
+SDL_SOURCES:=$(ABS_PATH)/SDL
+SDL_MIX_SOURCES:=$(ABS_PATH)/SDL2_mixer
+SDL_PATH:=$(ABS_PATH)/SDL/library
+SDL_CFG = $(SDL_PATH)/bin/sdl2-config
+FT_DIR = libft
+LIBMIX = $(SDL_PATH)/lib/libSDL2_mixer.a
+INCLUDE = includes/
+INCLUDE_FILE_NAMES = common.h structs_doom.h doom_nukem.h
+INCLUDE_FILES = $(addprefix $(INCLUDE), $(INCLUDE_FILE_NAMES))
+CFLAGS = -Wall -Wextra -Werror -Ofast -I$(INCLUDE) -I$(FT_DIR) `$(SDL_CFG)\
+		 --cflags`
+LDFLAGS = -lm -lpthread -L$(FT_DIR) -lft $(LIBMIX) `$(SDL_CFG) --static-libs`
+ED_DIR = srced
+
+all: $(NAME) editor
+
+$(NAME):$(OBJ)
+	make -C libft
+	$(CC) -o $@ $(OBJ) $(LDFLAGS)
+
+editor:
+	make -C $(ED_DIR)
+
+clean:
+	make -C $(FT_DIR) clean
+	make -C $(ED_DIR) clean
+	rm -rf $(OBJ)
+
+fclean:
+	make -C $(FT_DIR) fclean
+	make -C $(ED_DIR) fclean
+	rm -rf $(OBJ)
+	rm -rf $(NAME)
+
+re: fclean all
+
+obj/%.o: src/%.c $(INCLUDE_FILES)
+	@mkdir -p obj
+	$(CC) -o $@ -c $< $(CFLAGS)
+
+#compilation SDL
+
+SDL:
+	cd $(SDL_SOURCES); ./configure --disable-shared --prefix=$(SDL_PATH)
+	make -C $(SDL_SOURCES) -j4
+	make -C $(SDL_SOURCES) install
+	cd ..
+	cd $(SDL_MIX_SOURCES); ./configure --disable-shared --prefix=$(SDL_PATH)
+	make -C $(SDL_MIX_SOURCES) -j4
+	make -C $(SDL_MIX_SOURCES) install
+
+SDL_clean:
+	make -C $(SDL_MIX_SOURCES) clean
+	make -C $(SDL_MIX_SOURCES) uninstall
+	make -C $(SDL_SOURCES) clean
+	make -C $(SDL_SOURCES) uninstall
+
+SDL_re: SDL_clean SDL
+
+sdl:SDL
+
+sdl_re:SDL_re
+
+sdl_clean:SDL_clean
+	
+.PHONY: SDL clean fclean re all sdl fast editor
