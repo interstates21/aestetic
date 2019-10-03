@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "doom_nukem.h"
+#include "../includes/doom_nukem.h"
 
 void	draw_health(t_data *d)
 {

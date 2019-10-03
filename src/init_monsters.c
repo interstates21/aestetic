@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "doom_nukem.h"
+#include "../includes/doom_nukem.h"
 
 void	add_monster(t_sector *sector, int16_t id_of_monster)
 {

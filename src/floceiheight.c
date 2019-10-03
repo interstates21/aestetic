@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "doom_nukem.h"
+#include "../includes/doom_nukem.h"
 
 t_vec2f	get_sector_center(t_data *d, t_sector *sect)
 {

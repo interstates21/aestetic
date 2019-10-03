@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "doom_nukem.h"
+#include "../includes/doom_nukem.h"
 
 void	set_find_alpha(double *scale_x, double *scale_y)
 {

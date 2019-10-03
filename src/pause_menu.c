@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "doom_nukem.h"
+#include "../includes/doom_nukem.h"
 
 #define NB_MENU_ITEMS 2
 

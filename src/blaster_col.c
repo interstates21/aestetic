@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "doom_nukem.h"
+#include "../includes/doom_nukem.h"
 
 #define BLASTER_HITBOX 0.4
 #define LEFT_MOUSE_BLASTER_DAMAGE 35

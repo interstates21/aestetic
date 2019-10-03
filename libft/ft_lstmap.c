@@ -3,24 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbiebuyc <gbiebuyc@student.s19.be>         +#+  +:+       +#+        */
+/*   By: akolomoi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/07 14:21:52 by gbiebuyc          #+#    #+#             */
-/*   Updated: 2019/01/18 23:25:17 by gbiebuyc         ###   ########.fr       */
+/*   Created: 2018/11/01 16:37:55 by akolomoi          #+#    #+#             */
+/*   Updated: 2018/11/01 16:37:56 by akolomoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_list *new;
+	t_list	*res;
+	t_list	*cr;
 
-	if (!lst || !f)
-		return (0);
-	if (!(new = (*f)(lst)))
-		return (0);
-	if (lst->next)
-		new->next = ft_lstmap(lst->next, f);
-	return (new);
+	cr = (t_list*)malloc(sizeof(t_list));
+	if (lst == NULL || f == NULL || cr == NULL)
+		return (NULL);
+	cr = f(lst);
+	res = cr;
+	while (lst->next != NULL)
+	{
+		lst = lst->next;
+		cr->next = (t_list*)malloc(sizeof(t_list));
+		if (cr->next == NULL)
+			return (NULL);
+		cr->next = f(lst);
+		cr = cr->next;
+	}
+	return (res);
 }

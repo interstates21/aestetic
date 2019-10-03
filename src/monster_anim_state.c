@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "doom_nukem.h"
+#include "../includes/doom_nukem.h"
 
 #define SPEED_ANIM 10
 #define SPEED_ANIM_CHARG 7

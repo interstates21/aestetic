@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "doom_nukem.h"
+#include "../includes/doom_nukem.h"
 
 static void		set_var(t_data *d, uint16_t sect_to_scan, short *i,
 		short *j)

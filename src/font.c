@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "doom_nukem.h"
+#include "../includes/doom_nukem.h"
 #define CHAR_WIDTH 5
 #define CHAR_HEIGHT 8
 

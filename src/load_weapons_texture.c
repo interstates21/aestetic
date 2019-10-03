@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "doom_nukem.h"
+#include "../includes/doom_nukem.h"
 
 int		load_weapons_texture(t_data *d, int f, int *nb_tex,
 													int *nb_projectiles)

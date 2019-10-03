@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "doom_nukem.h"
+#include "../includes/doom_nukem.h"
 
 void	proj_wall2(t_data *d, t_projdata *p, t_frustum *fr)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "doom_nukem.h"
+#include "../includes/doom_nukem.h"
 
 #define MONSTER_MIN_DIST_HITBOX 0.15
 #define MINIMUM_SIZE_AROUND_MONSTERS 0.8

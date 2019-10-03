@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "doom_nukem.h"
+#include "../includes/doom_nukem.h"
 
 t_m16_inf		m16_inside_sector(t_data *d, uint16_t sect_to_scan, double dist)
 {

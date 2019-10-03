@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "doom_nukem.h"
+#include "../includes/doom_nukem.h"
 
 static void	monster_hit_2(t_data *d, uint16_t damage, uint16_t id_monster)
 {

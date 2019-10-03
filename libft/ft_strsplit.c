@@ -3,51 +3,73 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbiebuyc <gbiebuyc@student.s19.be>         +#+  +:+       +#+        */
+/*   By: akolomoi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/06 13:22:51 by gbiebuyc          #+#    #+#             */
-/*   Updated: 2019/02/01 18:52:45 by gbiebuyc         ###   ########.fr       */
+/*   Created: 2018/10/28 16:13:27 by akolomoi          #+#    #+#             */
+/*   Updated: 2018/10/28 16:13:29 by akolomoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-static bool		fill_arr(char **arr, const char *s, char c)
+static	int		cnt(const char *str, char c)
 {
-	size_t word_len;
+	size_t	i;
+	int		words;
 
-	while (*s == c)
-		s++;
-	if (!*s)
+	i = 0;
+	words = 1;
+	if (str[0] == c && str[0])
+		words--;
+	if (words)
+		while (str[i] && str[i] != c)
+			i++;
+	while (str[i])
 	{
-		*arr = NULL;
-		return (true);
+		if (str[i] == c && str[i + 1] && str[i + 1] != c)
+			words++;
+		i++;
 	}
-	word_len = 0;
-	while (s[word_len] && s[word_len] != c)
-		word_len++;
-	if (!(*arr = ft_strsub(s, 0, word_len)))
-		return (false);
-	if (!fill_arr(arr + 1, s + word_len, c))
-	{
-		free(*arr);
-		return (false);
-	}
-	return (true);
+	if (str[i - 1] != c && str[i - 2] == c)
+		words++;
+	return (words);
+}
+
+static	size_t	len_of(const char *str, int ind, char del)
+{
+	size_t	l;
+
+	l = 0;
+	while (str[ind + l] && str[ind + l] != del)
+		l++;
+	return (l);
 }
 
 char			**ft_strsplit(char const *s, char c)
 {
-	char **arr;
+	char	**res;
+	int		w;
+	int		i;
+	size_t	j;
 
-	if (!s)
+	if (s == NULL)
 		return (NULL);
-	if (!(arr = (char**)malloc(sizeof(char*) * (ft_wordcount(s, c) + 1))))
+	w = cnt(s, c);
+	j = 0;
+	res = (char**)malloc(sizeof(char*) * (w + 1));
+	if (!res)
 		return (NULL);
-	if (!fill_arr(arr, s, c))
+	res[w] = NULL;
+	i = 0;
+	while (i < w && s[j])
 	{
-		free(arr);
-		return (NULL);
+		while (s[j] == c && s[j])
+			j++;
+		res[i] = ft_strsub(s, j, len_of(s, j, c));
+		while (s[j] != c && s[j])
+			j++;
+		i++;
 	}
-	return (arr);
+	return (res);
 }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "doom_nukem.h"
+#include "../includes/doom_nukem.h"
 
 static void	set_var_find_closest_wall(t_data *d, t_vec2f *pos2, short *j,
 		uint16_t sect_to_scan)

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "doom_nukem.h"
+#include "../includes/doom_nukem.h"
 
 #define MINIMUM_HEIGHT_TO_WALK 0.32
 #define MOVE_SPEED 0.02

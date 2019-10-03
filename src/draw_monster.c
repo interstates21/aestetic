@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "doom_nukem.h"
+#include "../includes/doom_nukem.h"
 
 static void	display_sprite_one_point_monst(t_data *d, SDL_Surface *s,
 		t_display_data display_data, double dist)

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "doom_nukem.h"
+#include "../includes/doom_nukem.h"
 
 void	set_doorstate(t_data *d)
 {
@@ -58,7 +58,7 @@ int		main(int ac, char **av)
 {
 	t_data d;
 
-	if (ac > 2)
+	if (ac != 2)
 	{
 		printf("Usage : ./doom-nukem \"Map_name\"\n");
 		printf("The map must be in the \"maps\" folder.\n");

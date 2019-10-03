@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "doom_nukem.h"
+#include "../includes/doom_nukem.h"
 
 #define SIZE_OF_WEAP 1.5;
 #define MAX_INERTIA 0.19

@@ -3,40 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbiebuyc <gbiebuyc@student.s19.be>         +#+  +:+       +#+        */
+/*   By: akolomoi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/06 11:40:57 by gbiebuyc          #+#    #+#             */
-/*   Updated: 2019/01/18 23:25:22 by gbiebuyc         ###   ########.fr       */
+/*   Created: 2018/10/28 15:53:19 by akolomoi          #+#    #+#             */
+/*   Updated: 2018/10/28 15:53:20 by akolomoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-static int	is_space(char c)
+static	int		is_ws(char c)
 {
-	return (c == ' ' || c == '\n' || c == '\t');
+	if (c == ' ' || c == '\n' || c == '\t')
+		return (1);
+	return (0);
 }
 
-char		*ft_strtrim(char const *s)
+static	int		full_blank(const char *str)
 {
-	unsigned int	i;
-	unsigned int	start;
-	unsigned int	end;
+	size_t	i;
 
-	if (!s)
-		return (NULL);
 	i = 0;
-	while (is_space(s[i]))
-		i++;
-	start = i;
-	end = i;
-	while (s[i])
+	while (str[i])
 	{
-		while (!is_space(s[i]) && s[i])
-			i++;
-		end = i;
-		while (is_space(s[i]))
-			i++;
+		if (!is_ws(str[i]))
+			return (1);
+		i++;
 	}
-	return (ft_strsub(s, start, end - start));
+	return (0);
+}
+
+char			*ft_strtrim(char const *s)
+{
+	size_t	z;
+	size_t	i;
+	size_t	sz;
+	char	*res;
+
+	if (s == NULL)
+		return (NULL);
+	if (!full_blank(s))
+		return (ft_strdup(""));
+	i = 0;
+	sz = ft_strlen(s);
+	z = ft_strlen(s) - 1;
+	while (is_ws(s[i]))
+		i++;
+	while (is_ws(s[z]))
+		z--;
+	res = (char*)malloc(sizeof(*res) * (sz - (sz - z + i) + 1));
+	if (res == NULL)
+		return (NULL);
+	res = ft_strsub(s, i, (ft_strlen(s) - (sz - z + i) + 1));
+	return (res);
 }

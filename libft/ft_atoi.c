@@ -3,32 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbiebuyc <gbiebuyc@student.s19.be>         +#+  +:+       +#+        */
+/*   By: akolomoi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/04 19:26:34 by gbiebuyc          #+#    #+#             */
-/*   Updated: 2019/01/18 23:25:15 by gbiebuyc         ###   ########.fr       */
+/*   Created: 2018/10/27 19:54:24 by akolomoi          #+#    #+#             */
+/*   Updated: 2018/10/27 19:54:26 by akolomoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+int		ft_atoi(const char *s)
 {
-	int	sign;
-	int	res;
+	unsigned long int	res;
+	int					i;
+	int					si;
 
-	sign = 1;
-	while (*str == '\t' || *str == '\v' || *str == '\n' ||
-			*str == '\r' || *str == '\f' || *str == ' ')
-		str++;
-	if (*str == '-')
-		sign = -1;
-	if (*str == '-' || *str == '+')
-		str++;
+	i = 0;
+	si = 1;
 	res = 0;
-	while (*str && *str >= '0' && *str <= '9')
+	while (s[i] > 0 && s[i] != '\e' && s[i] <= ' ')
+		i++;
+	if (s[i] == '-')
+		si = -1;
+	if (s[i] == '-' || s[i] == '+')
+		i++;
+	while (s[i] >= '0' && s[i] <= '9')
 	{
-		res = res * 10 + *str++ - '0';
+		res = res * 10 + (s[i] - '0');
+		i++;
+		if (res > 9223372036854775807 && si == 1)
+			return (-1);
+		else if (res >= 9223372036854775807 && si == -1)
+			return (0);
 	}
-	return (res * sign);
+	return ((int)res * si);
 }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "doom_nukem.h"
+#include "../includes/doom_nukem.h"
 
 #define BOUNCING_DIST_PROJ 0.12
 #define BOUNCING_DIST_MOTHERDEMON 0.1

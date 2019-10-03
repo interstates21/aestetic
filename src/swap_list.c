@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "doom_nukem.h"
+#include "../includes/doom_nukem.h"
 
 void	destroy_mail(short id, t_sector *sector, uint8_t type_to_destroy)
 {

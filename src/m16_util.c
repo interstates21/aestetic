@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "doom_nukem.h"
+#include "../includes/doom_nukem.h"
 
 bool	set_pos_m16_inside_sec(t_data *d, int16_t id, t_vec2f *pos)
 {

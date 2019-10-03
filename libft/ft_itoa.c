@@ -3,49 +3,80 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbiebuyc <gbiebuyc@student.s19.be>         +#+  +:+       +#+        */
+/*   By: akolomoi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/06 17:27:38 by gbiebuyc          #+#    #+#             */
-/*   Updated: 2019/01/18 23:25:16 by gbiebuyc         ###   ########.fr       */
+/*   Created: 2018/10/28 16:16:20 by akolomoi          #+#    #+#             */
+/*   Updated: 2018/10/28 16:16:21 by akolomoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	fill_str(char *str, int n, int div)
+static int	l_of(int a)
 {
-	if (n < 0)
+	int		i;
+
+	i = 0;
+	if (a < 0)
+		i++;
+	while (a / 10)
 	{
-		*str++ = '-';
-		n = -n;
+		i++;
+		a = a / 10;
 	}
-	while (div)
-	{
-		*str++ = '0' + (n / div) % 10;
-		div /= 10;
-	}
-	*str = '\0';
+	i++;
+	return (i);
 }
 
-char		*ft_itoa(int n)
+static char	*rev(char *str, int len)
 {
-	char	*str;
-	int		len;
-	int		div;
+	int		i;
+	char	*res;
+	int		j;
 
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	if (n == 0)
-		return (ft_strdup("0"));
-	len = 10;
-	div = 1000000000;
-	while (len > 0 && n / div == 0)
+	i = 0;
+	j = len - 1;
+	res = ft_strnew(len);
+	if (str[i] == '-')
 	{
-		div /= 10;
-		len--;
+		res[i] = '-';
+		i++;
 	}
-	if (!(str = (char*)malloc(len + ((n < 0) ? 2 : 1))))
-		return (0);
-	fill_str(str, n, div);
-	return (str);
+	while (str[i])
+	{
+		if (str[j] != '-')
+			res[i] = str[j];
+		j--;
+		i++;
+	}
+	return (res);
+}
+
+char		*ft_itoa(int a)
+{
+	int		n;
+	int		i;
+	char	*res;
+
+	if (a == -2147483648)
+		return (ft_strdup("-2147483648"));
+	i = 0;
+	n = l_of(a);
+	res = ft_strnew(n);
+	if (res == NULL)
+		return (NULL);
+	if (a < 0)
+	{
+		a = -a;
+		res[0] = '-';
+		i++;
+	}
+	while (a / 10)
+	{
+		res[i] = a % 10 + '0';
+		a = a / 10;
+		i++;
+	}
+	res[i] = a + '0';
+	return (rev(res, n));
 }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "doom_nukem.h"
+#include "../includes/doom_nukem.h"
 
 void	proj_asset(t_data *d, t_projdata *p, t_vec3f v, SDL_Surface *tex)
 {
