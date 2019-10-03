@@ -1,70 +1,106 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: gbiebuyc <gbiebuyc@student.s19.be>         +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/04/29 04:25:11 by gbiebuyc          #+#    #+#              #
-#    Updated: 2019/06/30 14:10:20 by nallani          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME = editor
+CC = clang
+FILES = main \
+	ed_add_protection \
+	ed_bmp_reader \
+	ed_init_structures \
+	ed_init_editor \
+	ed_init_texture \
+	ed_init_assets \
+	ed_draw \
+	ed_draw_assets \
+	ed_draw_string \
+	ed_conversion \
+	ed_pixel \
+	ed_editor \
+	ed_editor_functions \
+	ed_editor_sector \
+	ed_editor_wall \
+	ed_editor_assets_handler \
+	ed_editor_assets_handler2 \
+	ed_list_manager_monster \
+	ed_list_manager_assets \
+	ed_event \
+	ed_event_keyboard \
+	ed_event_functions \
+	ed_event_mouse_button \
+	ed_event_functions2 \
+	ed_event_assets_options \
+	ed_event_sector_options \
+	ed_interface \
+	ed_interface_functions \
+	ed_interface_print_values \
+	ed_interface_map_list \
+	ed_interface_select_map \
+	ed_interface_properties \
+	ed_interface_properties2 \
+	ed_utils \
+	ed_door_toggle \
+	ed_detect_wall \
+	ed_detect_assets \
+	ed_read_map \
+	ed_read_map_assets \
+	ed_read_map_fix \
+	ed_save_file \
+	ed_fix_data_to_save \
+	ed_save_monster \
+	ed_save_weapons \
+	ed_save_posters \
+	ed_save_sound \
+	ed_save_assets \
+	ed_get_monster_files \
+	ed_get_animation_files \
+	ed_get_weapon_list \
 
-NAME = ../editor
+LIBFT_DIR = ../libft/
+SRC = $(addsuffix .c, $(FILES))
+OBJ = $(addprefix obj/, $(addsuffix .o, $(FILES)))
+OBJ_LIST = $(addsuffix .o, $(FILES))
+SDL_CFLAGS = $(shell sdl2-config --cflags)
+SPEED = -O3
+FLAGSTMP = -Wall -Wextra -Werror
+MATH = -lm
+HEADERS = -I../includes -I../libft
 
-SRC = main.c \
-	ed_add_protection.c \
-	ed_bmp_reader.c \
-	ed_init_structures.c ed_init_editor.c ed_init_texture.c ed_init_assets.c \
-	ed_draw.c ed_draw_assets.c ed_draw_string.c \
-	ed_conversion.c \
-	ed_pixel.c \
-	ed_editor.c ed_editor_functions.c ed_editor_sector.c ed_editor_wall.c \
-	ed_editor_assets_handler.c ed_editor_assets_handler2.c \
-	ed_list_manager_monster.c ed_list_manager_assets.c \
-	ed_event.c ed_event_keyboard.c ed_event_functions.c ed_event_mouse_button.c \
-	ed_event_functions2.c ed_event_assets_options.c ed_event_sector_options.c \
-	ed_interface.c ed_interface_functions.c ed_interface_print_values.c \
-	ed_interface_map_list.c ed_interface_select_map.c \
-	ed_interface_properties.c ed_interface_properties2.c\
-	ed_utils.c \
-	ed_door_toggle.c \
-	ed_detect_wall.c ed_detect_assets.c \
-	ed_read_map.c ed_read_map_assets.c ed_read_map_fix.c \
-	ed_save_file.c ed_fix_data_to_save.c ed_save_monster.c ed_save_weapons.c \
-	ed_save_posters.c ed_save_sound.c ed_save_assets.c \
-	ed_get_monster_files.c ed_get_animation_files.c ed_get_weapon_list.c
-
-OBJ1 = $(SRC:.c=.o)
-OBJ2 = $(OBJ1:../src/%=%)
-OBJ = $(addprefix obj/, $(OBJ2))
-
-
-CC = gcc
-#-fsanitize=address
-
-FT_DIR = ../libft
-SDL_CFG = $(dir $(abspath $(lastword $(MAKEFILE_LIST))))/../SDL/library/bin/sdl2-config
-LIBMIX = $(dir $(abspath $(lastword $(MAKEFILE_LIST))))/../SDL/library/lib/libSDL2_mixer.a
-CFLAGS = -Wall -Wextra -Werror -I$(FT_DIR) -I../includes `$(SDL_CFG) --cflags`
-LDFLAGS = -lm -L$(FT_DIR) -lft $(LIBMIX) `$(SDL_CFG) --static-libs`
+OS = $(shell uname)
+ifeq ($(OS), Linux)
+CGFLAGS = `sdl2-config --cflags --libs` -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lm
+else
+CGFLAGS = -framework OpenGL -framework AppKit
+INCLUDES	=	-I../frameworks/SDL2.framework/Versions/A/Headers \
+				-I../frameworks/SDL2_ttf.framework/Versions/A/Headers \
+				-I../frameworks/SDL2_image.framework/Versions/A/Headers \
+				-I../frameworks/SDL2_mixer.framework/Headers \
+				-F../frameworks/
+FRAMEWORKS	=	-F../frameworks \
+				-rpath ../frameworks \
+				-framework OpenGL -framework AppKit -framework OpenCl \
+				-framework SDL2 -framework SDL2_ttf -framework SDL2_image \
+				-framework SDL2_mixer
+endif
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) -o $(NAME) $(OBJ) $(LDFLAGS)
+.PHONY: all clean
+.NOTPARALLEL: all $(NAME) clean fclean re
 
+$(NAME): ../libft/libft.a $(OBJ)
+	@echo "\033[36mLinking...\033[0m"
+	@$(CC) -o $(NAME) $(FLAGS) $(SPEED) $(OBJ) $(CGFLAGS) ${MATH} $(FRAMEWORKS) ../libft/libft.a
+	@echo "\033[32m[ ✔ ] Binary \033[1;32m$(NAME)\033[1;0m\033[32m created.\033[0m"
+../libft/libft.a:
+	@make --no-print-directory -j3 -C $(LIBFT_DIR)
+obj/%.o: %.c
+	@$(CC) -o $@ $(FLAGS) $(SPEED) $(HEADERS) $(INCLUDES) -c $^
+	@echo "\033[37mCompilation of \033[97m$(notdir $<) \033[0m\033[37mdone. \033[0m"
 clean:
-	rm -rf $(OBJ)
-
+	@rm -f $(OBJ)
+	@make --no-print-directory -j3 -C ../libft/ clean
+	@echo "\033[31m[ ✔ ] Objects files \033[91m$(OBJ_LIST) \033[0m\033[31m removed. \033[0m"
 fclean:
-	rm -rf $(OBJ)
-	rm -rf $(NAME)
-
+	@rm -rf $(OBJ)
+	@rm -f $(NAME)
+	@make --no-print-directory -j3 -C ../libft/ fclean
+	@echo "\033[31m[ ✔ ] Objects files \033[91m$(OBJ_LIST) \033[0m\033[31m removed. \033[0m"
+	@echo "\033[31m[ ✔ ] Binary \033[1;31m$(NAME) \033[1;0m\033[31mremoved.\033[0m"
 re: fclean all
-
-./obj/%.o: ./%.c ./editor.h ../includes/common.h ./bmp_reader.h ./font.h
-	@mkdir -p obj
-	$(CC) -o $@ -c $< $(CFLAGS)
-
-.PHONY: all clean fclean re
