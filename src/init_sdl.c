@@ -17,20 +17,6 @@ void	fix_picnum2(t_data *d)
 	int		i;
 	int		name_i;
 
-	i = -1;
-	while (++i < d->numsectors)
-	{
-		name_i = -1;
-		while (++name_i < d->nb_textures)
-		{
-			if (ft_strequ(d->sectors[i].floor_texture_name,
-						d->tex_name_list[name_i]))
-				d->sectors[i].floorpicnum = name_i;
-			if (ft_strequ(d->sectors[i].ceil_texture_name,
-						d->tex_name_list[name_i]))
-				d->sectors[i].ceilpicnum = name_i;
-		}
-	}
 }
 
 void	fix_picnum(t_data *d)
@@ -39,16 +25,25 @@ void	fix_picnum(t_data *d)
 	int		name_i;
 
 	i = -1;
-	while (++i < d->numwalls)
-	{
-		name_i = -1;
+	while (++i < d->numwalls && (name_i = -1))
 		while (++name_i < d->nb_textures)
 			if (ft_strequ(d->walls[i].texture_name, d->tex_name_list[name_i]))
-				d->walls[i].lowerpicnum =
-				d->walls[i].middlepicnum =
+			{
+				d->walls[i].lowerpicnum = name_i;
+				d->walls[i].middlepicnum = name_i;
 				d->walls[i].upperpicnum = name_i;
-	}
-	fix_picnum2(d);
+			}
+	i = -1;
+	while (++i < d->numsectors && (name_i = -1))
+		while (++name_i < d->nb_textures)
+		{
+			if (ft_strequ(d->sectors[i].floor_texture_name,
+						  d->tex_name_list[name_i]))
+				d->sectors[i].floorpicnum = name_i;
+			if (ft_strequ(d->sectors[i].ceil_texture_name,
+						  d->tex_name_list[name_i]))
+				d->sectors[i].ceilpicnum = name_i;
+		}
 }
 
 void	init_sdl(t_data *d)

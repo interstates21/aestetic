@@ -18,32 +18,20 @@
 t_vec3f	update_pos_vec3f(t_vec3f new_pos, t_vec2f point, double radius)
 {
 	t_vec2f		tmp[2];
-	double		angle;
 
-	(void)new_pos;
-	(void)point;
-	(void)radius;
-	tmp[0].x = new_pos.x - point.x;
-	tmp[0].y = new_pos.z - point.y;
-	tmp[1].x = radius;
-	tmp[1].y = 0.0;
-	angle = atan2(tmp[0].y, tmp[0].x);
-	actualize_dir(angle, &tmp[1]);
-	new_pos.x = tmp[1].x + point.x;
-	new_pos.z = tmp[1].y + point.y;
-	return (new_pos);
+	tmp[0] = (t_vec2f){ new_pos.x - point.x, new_pos.z - point.y };
+	tmp[1] = (t_vec2f){ radius, 0.0 };
+	actualize_dir(atan2(tmp[0].y, tmp[0].x), &tmp[1]);
+	return ((t_vec3f){ tmp[1].x + point.x, new_pos.y ,tmp[1].y + point.y });
 }
 
 t_vec2f	update_pos_vec2f(t_vec2f pos, t_vec2f point)
 {
 	t_vec2f		tmp;
-	double		angle;
 
 	tmp = sub_vec2f(pos, point);
-	angle = atan2(tmp.y, tmp.x);
-	tmp.y = 0.0;
-	tmp.x = MINIMUM_SIZE_AROUND_MONSTERS;
-	actualize_dir(angle, &tmp);
+	tmp = (t_vec2f){ 0.0, MINIMUM_SIZE_AROUND_MONSTERS };
+	actualize_dir( atan2(tmp.y, tmp.x), &tmp);
 	return (add_vec2f(point, tmp));
 }
 
