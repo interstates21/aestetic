@@ -77,7 +77,7 @@ static void	find_wall(t_data *d, t_vec2f *p, double min_dist, t_wall *wall)
 	while (wall - d->walls < d->numwalls)
 	{
 		w = worldtoscreen(d, wall->point);
-		dist = vec2f_length((t_vec2f){p->x - w.x, p->y - w.y});
+		dist = v2_len((t_vec2f){p->x - w.x, p->y - w.y});
 		if (dist < 15 && ((dist < min_dist) || (dist == min_dist &&
 			wall->neighborsect != -1)))
 		{

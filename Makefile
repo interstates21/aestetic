@@ -77,8 +77,6 @@ FILES = main \
 	   draw_aim_cross \
 	   font \
 	   vector \
-	   vector2 \
-	   vector3 \
 	   load_monsters_texture \
 	   load_weapons_texture
 LIBFT_DIR = libft/

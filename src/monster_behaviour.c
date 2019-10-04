@@ -21,7 +21,7 @@ bool	motherdemon_behaviour_change_after_attack(t_data *d,
 {
 	t_vec2f	tmp2;
 
-	if (vec2f_length(sub_vec2f(vec3to2(d->cam.pos), monster->pos))
+	if (v2_len(v2_min(v3_to_v2(d->cam.pos), monster->pos))
 			< LONG_RANGE)
 	{
 		rand = ((abs((int)(monster->pos.x * 1000)) % 63) + 1);
@@ -35,10 +35,10 @@ bool	motherdemon_behaviour_change_after_attack(t_data *d,
 	}
 	else
 	{
-		tmp2 = sub_vec2f(monster->pos, vec3to2(d->cam.pos));
+		tmp2 = v2_min(monster->pos, v3_to_v2(d->cam.pos));
 		rand = atan2(tmp2.y, tmp2.x) + M_PI;
 		actualize_dir(rand, &tmp);
-		tmp = mul_vec2f(tmp, 1.5);
+		tmp = v2_scale(tmp, 1.5);
 		monster->dir = tmp;
 		monster->rot = rand;
 		monster->timer = 100;
@@ -60,7 +60,7 @@ void	motherdemon_behaviour_change_pattern(t_data *d, t_monster *monster)
 		ret = motherdemon_behaviour_change_after_attack(d, monster, rand, tmp);
 	if (!ret)
 	{
-		tmp = sub_vec2f(vec3to2(d->cam.pos), monster->pos);
+		tmp = v2_min(v3_to_v2(d->cam.pos), monster->pos);
 		monster->anim_state = 4;
 		monster->anim_time = 10;
 		monster->rot = atan2(tmp.y, tmp.x);
@@ -75,7 +75,7 @@ void	motherdemon_behaviour(t_data *d, t_monster *monster, uint16_t id)
 
 	if ((monster->timer > 0) && (monster->anim_state < 4) && !(protection = 0))
 	{
-		monster->pos = add_vec2f(monster->pos, monster->dir);
+		monster->pos = v2_plus(monster->pos, monster->dir);
 		collision_monster_monster(d, monster->cursectnum, monster);
 		while (collision_monster_wall(d, &d->sectors[monster->cursectnum],
 					&monster->pos, COLLISION_DIST_MOTHERDEMON))
@@ -100,7 +100,7 @@ void	check_activation(t_data *d, t_monster *monster, t_vec2f pos, bool recur)
 {
 	t_sprite_list	*tmp;
 
-	if (vec2f_length(sub_vec2f(monster->pos, pos)) <
+	if (v2_len(v2_min(monster->pos, pos)) <
 			ACTIVATION_RADIUS)
 	{
 		monster->activated = true;
@@ -124,7 +124,7 @@ void	monster_behaviour(t_data *d, t_monster *monster, uint16_t id)
 	if (!monster->can_collide)
 		return ;
 	if (!monster->activated)
-		check_activation(d, monster, vec3to2(d->cam.pos), true);
+		check_activation(d, monster, v3_to_v2(d->cam.pos), true);
 	if (!monster->activated)
 		return ;
 	monster->timer--;

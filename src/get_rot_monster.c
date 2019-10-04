@@ -32,7 +32,7 @@ uint8_t	get_nb_anim_from_rot(double monster_rot,
 	double	vision_rot;
 	t_vec2f	vision;
 
-	vision = sub_vec2f(monster_pos, player_pos);
+	vision = v2_min(monster_pos, player_pos);
 	vision_rot = atan2(vision.y, vision.x);
 	rot = vision_rot - monster_rot;
 	rot += M_PI_2;

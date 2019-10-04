@@ -19,15 +19,15 @@ static void	behaviour_update_charge(t_data *d, t_monster *monster)
 	t_vec2f	tmp;
 	double	new_angle;
 
-	tmp = sub_vec2f(monster->pos, vec3to2(d->cam.pos));
+	tmp = v2_min(monster->pos, v3_to_v2(d->cam.pos));
 	new_angle = atan2(tmp.y, tmp.x) + M_PI;
-	monster->dir = mul_vec2f(monster->dir, 0.9);
+	monster->dir = v2_scale(monster->dir, 0.9);
 	tmp.x = 0.015;
 	tmp.y = 0.0;
 	actualize_dir(new_angle, &tmp);
-	monster->dir = add_vec2f(monster->dir, tmp);
+	monster->dir = v2_plus(monster->dir, tmp);
 	monster->rot = atan2(monster->dir.y, monster->dir.x);
-	monster->pos = add_vec2f(monster->pos, monster->dir);
+	monster->pos = v2_plus(monster->pos, monster->dir);
 }
 
 void		charging_demon_wait(t_monster *monster)
@@ -61,7 +61,7 @@ void		monster_behaviour_chargingdemon(t_data *d, t_monster *monster,
 
 	if (monster->timer == 0 && monster->dir.x == 0.0)
 	{
-		tmp = sub_vec2f(monster->pos, vec3to2(d->cam.pos));
+		tmp = v2_min(monster->pos, v3_to_v2(d->cam.pos));
 		monster->rot = atan2(tmp.y, tmp.x) + M_PI;
 		tmp.x = 0.02;
 		tmp.y = 0.0;

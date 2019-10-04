@@ -70,7 +70,7 @@ void	set_projectile_id_monster(t_data *d, short i,
 		d->projectile_type[id_of_proj_type].speed;
 	d->projectiles[i].dir.y = (d->cam.pos.y -
 			(d->sectors[monster->cursectnum].floorheight + 0.8)) /
-		vec3f_length(sub_vec3f(d->projectiles[i].pos, d->cam.pos)) *
+		vec3f_length(v3_min(d->projectiles[i].pos, d->cam.pos)) *
 		d->projectile_type[id_of_proj_type].speed;
 	d->projectiles[i].dir.x = cos(monster->rot) *
 		d->projectile_type[id_of_proj_type].speed;

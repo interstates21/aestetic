@@ -25,7 +25,7 @@ static void	set_dist_if_intersec(t_data *d, double *dist, t_vec2f intersec)
 {
 	double		tmp;
 
-	tmp = get_vec2f_length(sub_vec2f(vec3to2(d->cam.pos), intersec));
+	tmp = v2_dot(v2_min(v3_to_v2(d->cam.pos), intersec));
 	if (*dist < tmp || *dist == -1)
 		*dist = tmp;
 	return ;
@@ -47,11 +47,11 @@ double		find_closest_wall_dist(t_data *d, uint16_t sect_to_scan)
 	{
 		if (d->walls[j].neighborsect == -1 || d->doorstate[j] < 0.7)
 		{
-			intersec = intersect(vec3to2(d->cam.pos), pos2, d->walls[j].point,
+			intersec = intersect(v3_to_v2(d->cam.pos), pos2, d->walls[j].point,
 					d->walls[i].point);
 			if (intersec.x != -1 && intersec.y != -1 && is_inside_vec2f(
 						d->walls[j].point, d->walls[i].point, intersec)
-					&& is_inside_vec2f(vec3to2(d->cam.pos), pos2, intersec))
+					&& is_inside_vec2f(v3_to_v2(d->cam.pos), pos2, intersec))
 				set_dist_if_intersec(d, &dist, intersec);
 		}
 		j = i;

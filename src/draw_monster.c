@@ -109,7 +109,7 @@ void		draw_monster(t_data *d, t_monster monster)
 	if (point_in_screen.z <= 0)
 		return ;
 	nb_of_anim[1] = get_nb_anim_from_rot(monster.rot,
-			monster.pos, vec3to2(d->cam.pos));
+			monster.pos, v3_to_v2(d->cam.pos));
 	nb_of_anim[0] = nb_of_anim[1];
 	if (nb_of_anim[1] > 4)
 		nb_of_anim[0] = 8 - nb_of_anim[0];

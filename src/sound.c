@@ -21,14 +21,14 @@ void	play_sound(t_data *d, uint8_t id, t_vec2f pos)
 	if (pos.x == d->cam.pos.x)
 	{
 		angle = 0;
-		dist = ft_min(vec2f_length(sub_vec2f(vec3to2(d->cam.pos), pos)), 254);
+		dist = ft_min(v2_len(v2_min(v3_to_v2(d->cam.pos), pos)), 254);
 	}
 	else
 	{
-		pos = sub_vec2f(pos, vec3to2(d->cam.pos));
+		pos = v2_min(pos, v3_to_v2(d->cam.pos));
 		actualize_dir(d->cam.rot, &pos);
 		angle = -atan2(pos.y, pos.x) * 180 / M_PI + 90;
-		dist = ft_min(vec2f_length(sub_vec2f(vec3to2(d->cam.pos), pos)) * 4,
+		dist = ft_min(v2_len(v2_min(v3_to_v2(d->cam.pos), pos)) * 4,
 				254);
 	}
 	Mix_PlayChannel(i, d->chunk[id], 0);

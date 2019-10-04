@@ -45,7 +45,7 @@ t_vec2f	get_closest(t_vec2f a, t_vec2f b, t_vec2f p)
 	atb2 = a_to_b.x * a_to_b.x + a_to_b.y * a_to_b.y;
 	atp_dot_atb = a_to_p.x * a_to_b.x + a_to_p.y * a_to_b.y;
 	t = atp_dot_atb / atb2;
-	t = fclamp(t, 0, 1);
+	t = CLAMP(t, 0, 1);
 	return ((t_vec2f){a.x + t * a_to_b.x, a.y + t * a_to_b.y});
 }
 
@@ -64,9 +64,9 @@ bool	collision(t_data *d, t_sector *sect)
 	while (i[1] < sect->firstwallnum + sect->numwalls)
 	{
 		v[0] = get_closest(d->walls[i[0]].point, d->walls[i[1]].point,
-				vec3to2(d->cam.pos));
-		v[1] = sub_vec2f(vec3to2(d->cam.pos), v[0]);
-		if ((dist = vec2f_length(v[1])) < COLLISION_DIST)
+				v3_to_v2(d->cam.pos));
+		v[1] = v2_min(v3_to_v2(d->cam.pos), v[0]);
+		if ((dist = v2_len(v[1])) < COLLISION_DIST)
 			(can_traverse(d, i[0], &d->walls[i[0]])) ? (collided |=
 			collision(d, &d->sectors[d->walls[i[0]].neighborsect])) :
 			((d->cam.pos.x = v[0].x + v[1].x * COLLISION_DIST * 1.001 /
@@ -116,8 +116,8 @@ bool	collision_monster_wall(t_data *d,
 	{
 		v[0] = get_closest(d->walls[i[0]].point, d->walls[i[1]].point,
 				*pos);
-		v[1] = sub_vec2f(*pos, v[0]);
-		if ((dist = vec2f_length(v[1])) < dist_coll)
+		v[1] = v2_min(*pos, v[0]);
+		if ((dist = v2_len(v[1])) < dist_coll)
 			(can_traverse_monster(d, i[0], pos, sect)) ?
 				(collided |= collision_monster_wall(d,
 				&d->sectors[d->walls[i[0]].neighborsect], pos, dist_coll)) :

@@ -29,11 +29,11 @@ t_m16_inf		m16_inside_sector(t_data *d, uint16_t sect_to_scan, double dist)
 				pos.x < M16_HITBOX + d->monster_type[d->
 				monsters[tmp->id].id_type].hitbox_radius)
 				if (d->monsters[tmp->id].can_collide && (dist == -1 ||
-							get_vec2f_length(sub_vec2f(vec3to2(d->cam.pos),
+							v2_dot(v2_min(v3_to_v2(d->cam.pos),
 							d->monsters[tmp->id].pos)) < dist))
 				{
 					inf.id_of_monst = tmp->id;
-					inf.dist = vec2f_length(sub_vec2f(vec3to2(d->cam.pos),
+					inf.dist = v2_len(v2_min(v3_to_v2(d->cam.pos),
 								d->monsters[tmp->id].pos));
 				}
 		tmp = tmp->next;
@@ -70,10 +70,10 @@ static bool		check_condition_inside_wall(t_data *d, short i, short j)
 
 	tmp2 = (t_vec2f){d->cam.pos.x + 1000 * d->cam.sin,
 		d->cam.pos.z + 1000 * d->cam.cos};
-	tmp = intersect(vec3to2(d->cam.pos), tmp2,
+	tmp = intersect(v3_to_v2(d->cam.pos), tmp2,
 			d->walls[j].point, d->walls[i].point);
 	if (is_inside_vec2f(d->walls[j].point, d->walls[i].point, tmp) &&
-			is_inside_vec2f(vec3to2(d->cam.pos), tmp2, tmp))
+			is_inside_vec2f(v3_to_v2(d->cam.pos), tmp2, tmp))
 		return (true);
 	return (false);
 }

@@ -21,7 +21,6 @@
 # include <fcntl.h>
 # include <pthread.h>
 # include <limits.h>
-# include "macros.h"
 # define WIDTH 800
 # define HEIGHT 600
 # define MUST_BE_DESTROYED 255
@@ -132,8 +131,8 @@ uint32_t	sprite_shade(t_data *d, t_sector *sector, double dist,
 		uint32_t img);
 uint32_t	shade(double factor, uint32_t c);
 void		reorder_sprite(t_data *d, t_sector *sect);
-t_vec3f		vec2to3(t_vec2f v);
-t_vec2f		vec3to2(t_vec3f v);
+t_vec3f		v2_to_v3(t_vec2f v);
+t_vec2f		v3_to_v2(t_vec3f v);
 double		vec3f_length(t_vec3f v);
 bool		is_inside_vec2f(t_vec2f p1, t_vec2f p2, t_vec2f point);
 bool		is_near(double v1, double v2, double range);
@@ -263,8 +262,6 @@ void		draw_monster(t_data *d, t_monster monster);
 
 double		lerp(double norm, double min, double max);
 double		norm(double val, double min, double max);
-int			clamp(int x, int min, int max);
-double		fclamp(double x, double min, double max);
 
 /*
 ** exit.c

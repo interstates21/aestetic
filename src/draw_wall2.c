@@ -33,7 +33,7 @@ void	draw_wall_transparent2(t_data *d, t_projdata *p, t_frustum *fr)
 
 void	draw_wall_transparent(t_data *d, t_projdata *p, t_frustum *fr)
 {
-	p->n = fclamp(norm(p->x, p->x1, p->x2), 0, 1);
+	p->n = CLAMP(norm(p->x, p->x1, p->x2), 0, 1);
 	p->z = 1 / lerp(p->n, p->z1, p->z2);
 	p->u = lerp(p->n, p->u1, p->u2) * p->z;
 	p->ya = lerp(p->n, p->y1a, p->y2a);

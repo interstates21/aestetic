@@ -55,12 +55,12 @@ int	ft_min(int a, int b)
 
 double	get_floorheight_player(t_data *d, int16_t sectnum)
 {
-	return (get_floorheight_point(d, sectnum, vec3to2(d->cam.pos)));
+	return (get_floorheight_point(d, sectnum, v3_to_v2(d->cam.pos)));
 }
 
 double	get_ceilheight_player(t_data *d, int16_t sectnum)
 {
-	return (get_ceilheight_point(d, sectnum, vec3to2(d->cam.pos)));
+	return (get_ceilheight_point(d, sectnum, v3_to_v2(d->cam.pos)));
 }
 
 /*

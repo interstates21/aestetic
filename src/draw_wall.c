@@ -65,9 +65,9 @@ void	draw_wall4(t_data *d, t_projdata *p, t_frustum *fr, t_frustum *nfr)
 	p->doorheight = p->doorbottom - p->yc;
 	p->nya += (p->doorbottom - ft_max(p->yc, p->nya)) *
 		(1 - d->doorstate[p->wall - d->walls]);
-	nfr->ytop[p->x] = clamp((p->sector->outdoor && p->neighbor->outdoor) ?
+	nfr->ytop[p->x] = CLAMP((p->sector->outdoor && p->neighbor->outdoor) ?
 			0 : p->nya + 1, fr->ytop[p->x], fr->ybottom[p->x]);
-	nfr->ybottom[p->x] = clamp(p->nyb, fr->ytop[p->x],
+	nfr->ybottom[p->x] = CLAMP(p->nyb, fr->ytop[p->x],
 			fr->ybottom[p->x]);
 	if (p->sector->outdoor && p->neighbor->outdoor)
 		p->ya = p->nya;
@@ -75,7 +75,7 @@ void	draw_wall4(t_data *d, t_projdata *p, t_frustum *fr, t_frustum *nfr)
 
 void	draw_wall2(t_data *d, t_projdata *p, t_frustum *fr, t_frustum *nfr)
 {
-	p->n = fclamp(norm(p->x, p->x1, p->x2), 0, 1);
+	p->n = CLAMP(norm(p->x, p->x1, p->x2), 0, 1);
 	p->z = 1 / lerp(p->n, p->z1, p->z2);
 	p->u = lerp(p->n, p->u1, p->u2) * p->z;
 	if (p->z >= p->zbuffer[p->x])

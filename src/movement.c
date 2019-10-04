@@ -39,7 +39,7 @@ void	smooth_movement(t_data *d, short *count, t_vec2f *mvt)
 		mvt->x += d->cam.cos * MOVE_SPEED;
 	}
 	if (*count == 2)
-		*mvt = mul_vec2f(*mvt, 0.707);
+		*mvt = v2_scale(*mvt, 0.707);
 	inertia(d, *mvt);
 }
 

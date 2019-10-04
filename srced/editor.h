@@ -376,8 +376,8 @@ void			draw_assets_to_map(t_data *d, SDL_Surface *a[3][100]);
 
 t_vec2f			worldtoscreen(t_data *d, t_vec2f p);
 t_vec2f			screentoworld(t_data *d, t_vec2f p);
-double			vec2f_length(t_vec2f v);
-t_vec2f			add_vec2f(t_vec2f v1, t_vec2f v2);
+double			v2_len(t_vec2f v);
+t_vec2f			v2_plus(t_vec2f v1, t_vec2f v2);
 
 /*
 **	pixel.c
@@ -507,7 +507,7 @@ void			copy_surface_to_surface(SDL_Surface *src,
 								SDL_Surface *dest, int p[2], t_data *d);
 void			cpy_scale_surf(SDL_Surface *src, int p[2],
 														int size, t_data *d);
-double			fclamp(double x, double min, double max);
+double			CLAMP(double x, double min, double max);
 
 /*
 **	ed_event.c
@@ -639,7 +639,7 @@ void			detect_assets(t_data *d, int x, int y);
 
 void			detect_wall(t_data *d, int x, int y);
 void			detect_select_wall(t_data *d, int x, int y);
-double			fclamp(double x, double min, double max);
+double			CLAMP(double x, double min, double max);
 
 /*
 **	ed_list_manager_monsters.c

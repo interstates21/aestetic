@@ -30,7 +30,7 @@ static void	draw_line(t_data *d, t_vec2f v1, t_vec2f v2, uint32_t color)
 			putpixel(d, (int)v1.x, (int)v1.y, color);
 		else if ((int)v1.x < W - TEXTURE_TOOLBAR)
 			putpixel(d, (int)v1.x, (int)v1.y, color);
-		v1 = add_vec2f(v1, increment);
+		v1 = v2_plus(v1, increment);
 	}
 }
 

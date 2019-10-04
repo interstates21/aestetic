@@ -24,12 +24,12 @@ t_vec2f	screentoworld(t_data *d, t_vec2f p)
 			-(p.y - H / 2) / d->scale + d->pos.y});
 }
 
-t_vec2f	add_vec2f(t_vec2f v1, t_vec2f v2)
+t_vec2f	v2_plus(t_vec2f v1, t_vec2f v2)
 {
 	return ((t_vec2f){v1.x + v2.x, v1.y + v2.y});
 }
 
-double	vec2f_length(t_vec2f v)
+double	v2_len(t_vec2f v)
 {
 	return (sqrt(v.x * v.x + v.y * v.y));
 }

@@ -22,7 +22,7 @@ int		calc_closest_and_distance(t_data *d, int w1, t_vec2f *p,
 
 	dx = p->x - closest.x;
 	dy = p->y - closest.y;
-	dist = vec2f_length((t_vec2f){dx, dy});
+	dist = v2_len((t_vec2f){dx, dy});
 	selected_sector = find_sect_under_cursor(d);
 	selected_sector = (selected_sector == -1) ? 0 : selected_sector;
 	if (dist < 15 && w1 >= d->sectors[selected_sector].firstwallnum)
@@ -43,7 +43,7 @@ int		is_on_wall(t_data *d, int w1, t_vec2f *ab, t_vec2f *p)
 	atb2 = a_to_b.x * a_to_b.x + a_to_b.y * a_to_b.y;
 	atp_dot_atb = a_to_p.x * a_to_b.x + a_to_p.y * a_to_b.y;
 	t = atp_dot_atb / atb2;
-	t = fclamp(t, 0, 1);
+	t = CLAMP(t, 0, 1);
 	if (calc_closest_and_distance(d, w1, p,
 		(t_vec2f){ab[0].x + t * a_to_b.x, ab[0].y + t * a_to_b.y}))
 		return (1);

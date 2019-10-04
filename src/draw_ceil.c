@@ -29,7 +29,7 @@ void	draw_sky(t_data *d, t_projdata *p, t_frustum *fr)
 	{
 		p->u = (unsigned int)(((double)x + d->cam.rot * 1000) /
 				(WIDTH * (h / HEIGHT)) * tex->w) % tex->w;
-		y = ft_min(fr->ybottom[x], lerp(fclamp(norm(x,
+		y = ft_min(fr->ybottom[x], lerp(CLAMP(norm(x,
 							p->x1, p->x2), 0, 1), p->y1a, p->y2a)) + 1;
 		while (--y >= fr->ytop[x])
 		{
@@ -49,11 +49,11 @@ void	proj_ceil(t_data *d, t_projdata *p)
 	p->b[2] = transform_back(d, (t_vec3f){0, 0, 2});
 	y_offset = HEIGHT / 2 - d->cam.y_offset;
 	p->a[0] = (t_vec3f){-WIDTH + WIDTH / 2, get_ceildh(d,
-			p->sector, vec3to2(p->b[0])) * -WIDTH + y_offset, 1};
+			p->sector, v3_to_v2(p->b[0])) * -WIDTH + y_offset, 1};
 	p->a[1] = (t_vec3f){WIDTH + WIDTH / 2, get_ceildh(d,
-			p->sector, vec3to2(p->b[1])) * -WIDTH + y_offset, 1};
+			p->sector, v3_to_v2(p->b[1])) * -WIDTH + y_offset, 1};
 	p->a[2] = (t_vec3f){WIDTH / 2, get_ceildh(d, p->sector,
-			vec3to2(p->b[2])) * -WIDTH * 0.5 + y_offset, 0.5};
+			v3_to_v2(p->b[2])) * -WIDTH * 0.5 + y_offset, 0.5};
 	p->b[2].x /= 2;
 	p->b[2].z /= 2;
 	p->areaa = edge_function(p->a[0], p->a[1], p->a[2].x, p->a[2].y);
@@ -69,7 +69,7 @@ void	draw_ceil(t_data *d, t_projdata *p, t_frustum *fr)
 	x = p->cx1 - 1;
 	while (++x <= p->cx2)
 	{
-		y = ft_min(fr->ybottom[x], lerp(fclamp(norm(x,
+		y = ft_min(fr->ybottom[x], lerp(CLAMP(norm(x,
 							p->x1, p->x2), 0, 1), p->y1a, p->y2a)) + 1;
 		while (--y >= fr->ytop[x])
 		{

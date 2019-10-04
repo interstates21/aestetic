@@ -39,7 +39,7 @@ static bool	check_jetpack(t_data *d, t_assets *asset)
 {
 	if (asset->stat_mod.blaster_ammo || asset->stat_mod.m16_ammo ||
 			asset->stat_mod.ballista_ammo)
-		play_sound(d, AMMO_SOUND, vec3to2(d->cam.pos));
+		play_sound(d, AMMO_SOUND, v3_to_v2(d->cam.pos));
 	if (asset->is_key)
 	{
 		if (!d->slot1)
@@ -82,7 +82,7 @@ void		use_asset(t_data *d, t_assets *asset)
 			current_ammo, d->weapon_type[M16].max_ammo);
 	if (asset->stat_mod.heal > 0)
 	{
-		play_sound(d, HEALTH_SOUND, vec3to2(d->cam.pos));
+		play_sound(d, HEALTH_SOUND, v3_to_v2(d->cam.pos));
 		change_buf_colo(d, asset->stat_mod.heal / 2, HEALTH_COLO);
 	}
 	if (!check_jetpack(d, asset))
@@ -97,8 +97,8 @@ void		asset_collision2(t_data *d, t_assets *asset)
 
 	if (asset->used || asset->is_on_ceil)
 		return ;
-	dist = sub_vec2f(vec3to2(d->cam.pos), asset->world_pos);
-	dist_len = vec2f_length(dist);
+	dist = v2_min(v3_to_v2(d->cam.pos), asset->world_pos);
+	dist_len = v2_len(dist);
 	if (dist_len > COLLISION_R)
 		return ;
 	if (asset->collision)

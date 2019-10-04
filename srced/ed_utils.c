@@ -70,7 +70,7 @@ void			cpy_scale_surf(SDL_Surface *src, int p[2], int size, t_data *d)
 				}
 }
 
-double			fclamp(double x, double min, double max)
+double			CLAMP(double x, double min, double max)
 {
 	if (x < min)
 		return (min);
