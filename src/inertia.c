@@ -33,6 +33,7 @@ void	inertia(t_data *d, t_vec2f mvt)
 		d->inertia.x = 0;
 		d->inertia.y = 0;
 	}
+}
 
 void	change_inertia(t_data *d, double angle, double length)
 {
