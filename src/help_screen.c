@@ -19,7 +19,7 @@ void	help_screen(t_data *d)
 	ft_memset(d->screen->pixels, 0, d->screen->pitch * d->screen->h);
 	draw_string(d, (t_font){
 			"E             Open doors / pickup items\n"
-			"WASD / ZQSD   Move\n"
+			"WASD          Move\n"
 			"Ctrl          Crouch\n"
 			"Space         Jump / Jetpack\n"
 			"1             Cryo Ballista\n"
@@ -30,7 +30,7 @@ void	help_screen(t_data *d)
 	while (SDL_WaitEvent(&e))
 	{
 		if (e.type == SDL_QUIT)
-			exit(EXIT_SUCCESS);
+			exit(0);
 		if ((e.type != SDL_KEYDOWN) || e.key.repeat)
 			continue ;
 		else if (e.key.keysym.sym == SDLK_RETURN)

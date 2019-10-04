@@ -23,8 +23,7 @@ void	inertia(t_data *d, t_vec2f mvt)
 	if (v2_len(d->inertia) > MAX_INERTIA)
 	{
 		angle = atan2(d->inertia.y, d->inertia.x) - M_PI_2;
-		d->inertia.x = 0.0;
-		d->inertia.y = MAX_INERTIA;
+		d->inertia = (t_vec2f){ 0.0, MAX_INERTIA };
 		actualize_dir(angle, &d->inertia);
 	}
 	if (v2_len(d->inertia) > 0.001)
@@ -34,11 +33,9 @@ void	inertia(t_data *d, t_vec2f mvt)
 		d->inertia.x = 0;
 		d->inertia.y = 0;
 	}
-}
 
 void	change_inertia(t_data *d, double angle, double length)
 {
-	d->inertia.x = length;
-	d->inertia.y = 0.0;
+	d->inertia = (t_vec2f){ length, 0.0 };
 	actualize_dir(angle, &d->inertia);
 }
