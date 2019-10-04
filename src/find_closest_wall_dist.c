@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   find_closest_wall_dist.c                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nallani <unkown@noaddress.com>             +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/29 11:47:34 by nallani           #+#    #+#             */
-/*   Updated: 2019/06/29 12:05:46 by nallani          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/doom_nukem.h"
 
 static void	set_var_find_closest_wall(t_data *d, t_vec2f *pos2, short *j,

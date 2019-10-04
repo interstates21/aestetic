@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   projectile_collision.c                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nallani <unkown@noaddress.com>             +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/18 22:30:55 by nallani           #+#    #+#             */
-/*   Updated: 2019/06/30 16:40:40 by nallani          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/doom_nukem.h"
 
 static void	monster_hit_2(t_data *d, uint16_t damage, uint16_t id_monster)
