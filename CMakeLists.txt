@@ -54,7 +54,6 @@ add_executable(doom
         src/m16_recur.c
         src/m16_util.c
         src/main.c
-        src/main_menu.c
         src/monster_anim_state.c
         src/monster_behaviour.c
         src/monster_behaviour_chargingdemon.c

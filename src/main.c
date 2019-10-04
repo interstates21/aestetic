@@ -69,9 +69,8 @@ int		main(int ac, char **av)
 	if (!(d.zbuffer = malloc(sizeof(double) * WIDTH * HEIGHT)))
 		exit(printf("malloc zbuffer_sprites failed.\n"));
 	ft_strcpy(d.nextmap, (ac == 2) ? av[1] : "newmap.DNMAP");
-	if (ft_strequ(d.nextmap, "./maps/newmap.DNMAP"))
-		init_everything(&d, d.nextmap);
-	else
-		main_menu(&d);
+	// if (ft_strequ(d.nextmap, "./maps/newmap.DNMAP")) ghost#hidden
+	init_everything(&d, d.nextmap);
+
 	return (EXIT_SUCCESS);
 }
