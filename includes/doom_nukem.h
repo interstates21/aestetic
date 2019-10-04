@@ -13,7 +13,8 @@
 #ifndef DOOM_NUKEM_H
 # define DOOM_NUKEM_H
 
-# include <common.h>
+# include <stdbool.h>
+# include "common.h"
 # include <stdlib.h>
 # include <stdio.h>
 # include <errno.h>
@@ -27,7 +28,7 @@
 # define FPS 60
 # define MAX_Y_OFFSET (HEIGHT/2)
 # define PLAYER_HITBOX 0.1
-# include <structs_doom.h>
+# include "structs_doom.h"
 # define PATH_MAP "./maps/"
 # define POSTER_W 1.3
 # define MINIMUM_HEIGHT 0.5
@@ -63,6 +64,11 @@
 # define RED 0xFF0000
 # define GREEN_BLAST 0x5CE26E
 # define HEALTH_COLO 0xFFFF66
+
+
+char	*ft_itoa_static(intmax_t n);
+int	ft_max(int a, int b);
+int	ft_min(int a, int b);
 
 void		draw_aim_cross(t_data *d);
 void		m16_shoot(t_data *d);

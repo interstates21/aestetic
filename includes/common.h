@@ -21,6 +21,7 @@
 #include "../frameworks/SDL2_mixer.framework/Headers/SDL_mixer.h"
 #include "../frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h"
 
+# include <stdbool.h>
 
 
 // typedef enum
