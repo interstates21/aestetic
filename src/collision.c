@@ -45,7 +45,7 @@ t_vec2f	get_closest(t_vec2f a, t_vec2f b, t_vec2f p)
 	atb2 = a_to_b.x * a_to_b.x + a_to_b.y * a_to_b.y;
 	atp_dot_atb = a_to_p.x * a_to_b.x + a_to_p.y * a_to_b.y;
 	t = atp_dot_atb / atb2;
-	t = fclamp(t, 0, 1);
+	t = CLAMP(t, 0, 1);
 	return ((t_vec2f){a.x + t * a_to_b.x, a.y + t * a_to_b.y});
 }
 

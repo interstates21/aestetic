@@ -262,8 +262,6 @@ void		draw_monster(t_data *d, t_monster monster);
 
 double		lerp(double norm, double min, double max);
 double		norm(double val, double min, double max);
-int			clamp(int x, int min, int max);
-double		fclamp(double x, double min, double max);
 
 /*
 ** exit.c

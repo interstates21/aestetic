@@ -37,7 +37,7 @@ void	event_mouse_motion(t_data *d, SDL_MouseMotionEvent event)
 	if (SDL_GetRelativeMouseMode() == SDL_FALSE)
 		return ;
 	d->cam.y_offset += event.yrel * MOUSE_SENSITIVTY * 0.5;
-	d->cam.y_offset = fclamp(d->cam.y_offset, -MAX_Y_OFFSET, MAX_Y_OFFSET);
+	d->cam.y_offset = CLAMP(d->cam.y_offset, -MAX_Y_OFFSET, MAX_Y_OFFSET);
 	d->cam.rot += event.xrel * MOUSE_SENSITIVTY * 0.001;
 }
 

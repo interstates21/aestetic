@@ -28,7 +28,7 @@ void	update_doors(t_data *d)
 			d->doorstate[i] += d->dooranimstep[i];
 			if (d->doorstate[i] >= 1 || d->doorstate[i] <= 0)
 			{
-				d->doorstate[i] = fclamp(d->doorstate[i], 0, 1);
+				d->doorstate[i] = CLAMP(d->doorstate[i], 0, 1);
 				d->dooranimstep[i] = 0;
 			}
 		}
