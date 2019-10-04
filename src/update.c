@@ -52,7 +52,7 @@ void	update(t_data *d)
 	d->cam.cos = cos(d->cam.rot);
 	movement(d);
 	asset_collision(d);
-	if ((sect = update_cursect_smart(d, DEPTH_TO_SCAN, vec3to2(d->cam.pos),
+	if ((sect = update_cursect_smart(d, DEPTH_TO_SCAN, v3_to_v2(d->cam.pos),
 					d->cursectnum)) != -1)
 	{
 		if (sect != d->cursectnum && d->cam.pos.y < get_floorheight_player(d,

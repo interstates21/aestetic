@@ -57,14 +57,14 @@ bool		collision_proj_one_monst(t_data *d, t_monster *monster,
 	double		dist;
 	t_vec2f		vec2f_tmp[2];
 
-	dist = vec2f_length(sub_vec2f(vec3to2(newpos), monster->pos));
+	dist = v2_len(v2_min(v3_to_v2(newpos), monster->pos));
 	if (dist < d->projectile_type[projectile->id_type].hitbox_radius +
 			d->monster_type[monster->id_type].hitbox_radius)
 		if (newpos.y > get_floorheight_point(d, monster->cursectnum,
 					monster->pos) && newpos.y <
 				d->monster_type[monster->id_type].height)
 		{
-			vec2f_tmp[0] = sub_vec2f((t_vec2f){projectile->pos.x,
+			vec2f_tmp[0] = v2_min((t_vec2f){projectile->pos.x,
 					projectile->pos.z}, monster->pos);
 			vec2f_tmp[1] = (t_vec2f){d->monster_type[monster->id_type].
 				hitbox_radius +
@@ -84,7 +84,7 @@ bool		collision_proj_monster(t_data *d, t_sector *sector,
 	t_vec3f			newpos;
 	t_sprite_list	*tmp;
 
-	newpos = add_vec3f(projectile->pos, projectile->dir);
+	newpos = v3_plus(projectile->pos, projectile->dir);
 	tmp = sector->sprite_list;
 	while (tmp)
 	{
@@ -95,8 +95,8 @@ bool		collision_proj_monster(t_data *d, t_sector *sector,
 				monster_hit(d, d->projectile_type[projectile->id_type].damage,
 						tmp->id);
 				projectile->target = &d->monsters[tmp->id];
-				projectile->dir = sub_vec3f(newpos,
-						vec2to3(d->monsters[tmp->id].pos));
+				projectile->dir = v3_min(newpos,
+						v2_to_v3(d->monsters[tmp->id].pos));
 				return (true);
 			}
 		tmp = tmp->next;
@@ -114,12 +114,12 @@ bool		collision_proj_player(t_data *d, t_projectile *projectile)
 	t_vec2f	tmp;
 	double	dist;
 
-	newpos = add_vec3f(projectile->pos, projectile->dir);
-	dist = vec3f_length(sub_vec3f(newpos, d->cam.pos));
+	newpos = v3_plus(projectile->pos, projectile->dir);
+	dist = vec3f_length(v3_min(newpos, d->cam.pos));
 	if (dist < d->projectile_type[projectile->
 			id_type].hitbox_radius + PLAYER_HITBOX)
 	{
-		tmp_pos = sub_vec3f(projectile->pos, d->cam.pos);
+		tmp_pos = v3_min(projectile->pos, d->cam.pos);
 		tmp = (t_vec2f){MIN_DIST_TO_PLAYER, 0.0};
 		player_hit_projectile(d, projectile);
 		actualize_dir(atan2(tmp_pos.y, tmp_pos.x) - M_PI_2, &tmp);

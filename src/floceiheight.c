@@ -20,17 +20,17 @@ t_vec2f	get_sector_center(t_data *d, t_sector *sect)
 	center = (t_vec2f){0, 0};
 	i = -1;
 	while (++i < sect->numwalls)
-		center = add_vec2f(center, d->walls[sect->firstwallnum + i].point);
-	center = mul_vec2f(center, 1.0 / sect->numwalls);
+		center = v2_plus(center, d->walls[sect->firstwallnum + i].point);
+	center = v2_scale(center, 1.0 / sect->numwalls);
 	return (center);
 }
 
 t_vec2f	rotate_point(t_vec2f p, t_vec2f center, double angle)
 {
-	p = sub_vec2f(p, center);
+	p = v2_min(p, center);
 	p = (t_vec2f){p.x * cos(angle) - p.y * sin(angle),
 			p.x * sin(angle) + p.y * cos(angle)};
-	return (add_vec2f(p, center));
+	return (v2_plus(p, center));
 }
 
 double	get_floceiheight(t_data *d, int16_t sectnum, t_vec2f p, bool is_floor)

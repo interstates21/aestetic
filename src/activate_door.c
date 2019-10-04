@@ -46,7 +46,7 @@ void	activate_neighbor_door(t_data *d, t_wall *door,
 
 double	get_dist(t_vec2f a, t_vec2f b, t_vec2f p)
 {
-	return (vec2f_length(sub_vec2f(p, get_closest(a, b, p))));
+	return (v2_len(v2_min(p, get_closest(a, b, p))));
 }
 
 bool	activate_door2(t_data *d, t_wall *w, int n[4])
@@ -65,7 +65,7 @@ bool	activate_door2(t_data *d, t_wall *w, int n[4])
 	d->dooranimstep[n[0]] = (d->doorstate[n[0]] == 0 ||
 			d->dooranimstep[n[0]] < 0) ? 0.01 : -0.01;
 	play_sound(d, d->dooranimstep[n[0]] > 0 ? OPEN_DOOR_SOUND :
-			CLOSE_DOOR_SOUND, vec3to2(d->cam.pos));
+			CLOSE_DOOR_SOUND, v3_to_v2(d->cam.pos));
 	activate_neighbor_door(d, &d->walls[n[0]], &d->walls[n[1]],
 			&d->sectors[d->walls[n[0]].neighborsect]);
 	return (true);
@@ -83,7 +83,7 @@ bool	activate_door(t_data *d, t_sector *sect)
 	{
 		if (d->walls[n[2]].is_door && d->walls[n[2]].neighborsect >= 0 &&
 				(m[0] = get_dist(d->walls[n[2]].point, d->walls[n[3]].point,
-				vec3to2(d->cam.pos))) < ACTIVATION_DIST && m[0] < m[1] &&
+				v3_to_v2(d->cam.pos))) < ACTIVATION_DIST && m[0] < m[1] &&
 					(m[1] = m[0]) >= 0 &&
 					(n[0] = n[2]) >= 0)
 			n[1] = n[3];

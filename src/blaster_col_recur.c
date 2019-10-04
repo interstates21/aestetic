@@ -48,10 +48,10 @@ static bool		check_condition_inside_wall(t_data *d, short i, short j)
 
 	tmp2 = (t_vec2f){d->cam.pos.x + 1000 * d->cam.sin,
 		d->cam.pos.z + 1000 * d->cam.cos};
-	tmp = intersect(vec3to2(d->cam.pos), tmp2,
+	tmp = intersect(v3_to_v2(d->cam.pos), tmp2,
 			d->walls[j].point, d->walls[i].point);
 	if (is_inside_vec2f(d->walls[j].point, d->walls[i].point, tmp) &&
-			is_inside_vec2f(vec3to2(d->cam.pos), tmp2, tmp))
+			is_inside_vec2f(v3_to_v2(d->cam.pos), tmp2, tmp))
 		return (true);
 	return (false);
 }

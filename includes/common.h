@@ -31,6 +31,8 @@
 // } bool;
 
 
+#define CLAMP(x, a, b) (((x) > (b)) ? (b) : (((x) < (a)) ? (a) : (x)))
+
 # define MAXNUMSECTORS 1024
 # define MAXNUMMONSTERS 256
 # define MAXNUMWALLS 4096
@@ -177,20 +179,20 @@ typedef struct				s_texture_data
 ** vec2.c
 */
 
-t_vec2f						sub_vec2f(t_vec2f v1, t_vec2f v2);
-t_vec2f						add_vec2f(t_vec2f v1, t_vec2f v2);
+t_vec2f						v2_min(t_vec2f v1, t_vec2f v2);
+t_vec2f						v2_plus(t_vec2f v1, t_vec2f v2);
 void						actualize_dir(double angle, t_vec2f *vec);
-t_vec3f						sub_vec3f(t_vec3f v1, t_vec3f v2);
-t_vec3f						mul_vec3f(t_vec3f v1, double scalar);
+t_vec3f						v3_min(t_vec3f v1, t_vec3f v2);
+t_vec3f						v3_scale(t_vec3f v1, double scalar);
 
 /*
 ** vec2_2.c
 */
 
-t_vec2f						mul_vec2f(t_vec2f v, double scalar);
-float						get_vec2f_length(t_vec2f v);
-double						vec2f_length(t_vec2f v);
-double						get_vec2f_angle(t_vec2f v1, t_vec2f v2);
-t_vec3f						add_vec3f(t_vec3f a, t_vec3f b);
+t_vec2f						v2_scale(t_vec2f v, double scalar);
+float						v2_dot(t_vec2f v);
+double						v2_len(t_vec2f v);
+double						v2_atan(t_vec2f v1, t_vec2f v2);
+t_vec3f						v3_plus(t_vec3f a, t_vec3f b);
 
 #endif

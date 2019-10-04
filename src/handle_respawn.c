@@ -28,7 +28,7 @@ void	reset_assets(t_data *d)
 
 void	handle_respawn(t_data *d)
 {
-	play_sound(d, PLAYER_DEATH_SOUND, vec3to2(d->cam.pos));
+	play_sound(d, PLAYER_DEATH_SOUND, v3_to_v2(d->cam.pos));
 	init_monsters(d);
 	init_player(d, &d->player);
 	reset_assets(d);

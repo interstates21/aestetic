@@ -22,7 +22,7 @@ int		calc_closest_and_distance(t_data *d, int w1, t_vec2f *p,
 
 	dx = p->x - closest.x;
 	dy = p->y - closest.y;
-	dist = vec2f_length((t_vec2f){dx, dy});
+	dist = v2_len((t_vec2f){dx, dy});
 	selected_sector = find_sect_under_cursor(d);
 	selected_sector = (selected_sector == -1) ? 0 : selected_sector;
 	if (dist < 15 && w1 >= d->sectors[selected_sector].firstwallnum)

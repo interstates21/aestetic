@@ -29,7 +29,7 @@ void	update_collided_proj(t_data *d, t_projectile *projectile, bool anim,
 	}
 	if (projectile->target)
 	{
-		projectile->pos = add_vec3f(vec2to3(projectile->target->pos),
+		projectile->pos = v3_plus(v2_to_v3(projectile->target->pos),
 				projectile->dir);
 		if ((update_sec = update_cursect_proj((int16_t[2]){projectile->
 						cursectnum, -1}, d, NB_OF_SECTOR_DEPTH,
@@ -54,7 +54,7 @@ void	update_anim_projectile(t_projectile *projectile, t_data *d, short id,
 		projectile->current_anim_playing =
 			d->projectile_type[projectile->id_type].anim_order[COLLISION_ID];
 		projectile->time_remaining_anim = 5;
-		play_sound(d, EXPLOSION_SOUND, vec3to2(projectile->pos));
+		play_sound(d, EXPLOSION_SOUND, v3_to_v2(projectile->pos));
 		return ;
 	}
 	if (projectile->time_remaining_anim)

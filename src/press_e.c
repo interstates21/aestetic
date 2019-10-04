@@ -23,7 +23,7 @@ bool	pickup_asset(t_data *d)
 	while (d->nb_assets && ++i < d->assets[d->cursectnum][0].nb_assets)
 	{
 		asset = &d->assets[d->cursectnum][i];
-		if (vec2f_length(sub_vec2f(vec3to2(d->cam.pos), asset->world_pos)) <
+		if (v2_len(v2_min(v3_to_v2(d->cam.pos), asset->world_pos)) <
 				ACTIVATION_DIST && !asset->used &&
 				(asset->is_interactive || asset->is_autopick ||
 				asset->is_key || asset->is_jetpack))

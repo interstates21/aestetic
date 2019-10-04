@@ -15,11 +15,11 @@
 void	handle_sound_shot(t_data *d)
 {
 	if (d->player.current_weapon == BLASTER)
-		play_sound(d, BLASTER_SOUND, vec3to2(d->cam.pos));
+		play_sound(d, BLASTER_SOUND, v3_to_v2(d->cam.pos));
 	if (d->player.current_weapon == CRYO_BALLISTA)
-		play_sound(d, CRYO_SOUND, vec3to2(d->cam.pos));
+		play_sound(d, CRYO_SOUND, v3_to_v2(d->cam.pos));
 	if (d->player.current_weapon == M16)
-		play_sound(d, M16_SOUND, vec3to2(d->cam.pos));
+		play_sound(d, M16_SOUND, v3_to_v2(d->cam.pos));
 }
 
 void	shoot_weapon(t_data *d, uint8_t *w)
@@ -42,7 +42,7 @@ void	shoot_weapon(t_data *d, uint8_t *w)
 		d->player.timer_anim_weap = d->player.speed_anim[*w];
 		d->player.current_anim_playing = 1;
 		d->player.click = RIGHT_CLICK;
-		play_sound(d, BLASTER_2_SOUND, vec3to2(d->cam.pos));
+		play_sound(d, BLASTER_2_SOUND, v3_to_v2(d->cam.pos));
 	}
 }
 

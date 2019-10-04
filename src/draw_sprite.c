@@ -45,7 +45,7 @@ t_vec3f		transform_vec3f_to_screen(t_data *d, t_vec3f v)
 {
 	t_vec3f	new;
 
-	new = sub_vec3f(v, d->cam.pos);
+	new = v3_min(v, d->cam.pos);
 	new = (t_vec3f){
 		new.x * d->cam.cos - new.z * d->cam.sin,
 			new.y,
@@ -82,7 +82,7 @@ void		draw_projectile(t_data *d, t_frustum *fr,
 	point_in_screen = transform_vec3f_to_screen(d, proj.pos);
 	if (point_in_screen.z <= 0)
 		return ;
-	dist = vec3f_length(sub_vec3f(proj.pos, d->cam.pos));
+	dist = vec3f_length(v3_min(proj.pos, d->cam.pos));
 	a.start.x = point_in_screen.x - (d->projectile_tex[proj.weapon_id]
 			[proj.current_anim_playing]->w *
 			d->projectile_type[proj.id_type].size) / dist;

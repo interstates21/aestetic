@@ -24,7 +24,7 @@ bool		should_touch_blaster_hitbox(t_data *d, t_vec2f updated_pos,
 			updated_pos.x < BLASTER_HITBOX +
 			d->monster_type[d->monsters[id_of_monst].id_type].hitbox_radius)
 		if (d->monsters[id_of_monst].can_collide && (dist == -1 ||
-					get_vec2f_length(sub_vec2f(vec3to2(d->cam.pos),
+					v2_dot(v2_min(v3_to_v2(d->cam.pos),
 							d->monsters[id_of_monst].pos)) < dist))
 			return (true);
 	return (false);
@@ -69,10 +69,10 @@ double		get_dist_to_intersect_wall(t_data *d, t_vec2f wall1, t_vec2f wall2)
 	pos2 = (t_vec2f){d->cam.pos.x + 100000 * d->cam.sin,
 		d->cam.pos.z + 100000 * d->cam.cos};
 	dist = -1;
-	intersec = intersect(vec3to2(d->cam.pos), pos2, wall1, wall2);
+	intersec = intersect(v3_to_v2(d->cam.pos), pos2, wall1, wall2);
 	if (is_inside_vec2f(wall1, wall2, intersec) &&
-			is_inside_vec2f(vec3to2(d->cam.pos), pos2, intersec))
-		dist = get_vec2f_length(sub_vec2f(vec3to2(d->cam.pos), intersec));
+			is_inside_vec2f(v3_to_v2(d->cam.pos), pos2, intersec))
+		dist = v2_dot(v2_min(v3_to_v2(d->cam.pos), intersec));
 	return (dist);
 }
 

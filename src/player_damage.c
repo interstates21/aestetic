@@ -25,7 +25,7 @@ void	player_fell(t_data *d)
 	d->player.health -= 10;
 	d->player.gravity = 0.0;
 	if (d->player.health > 0)
-		play_sound(d, PLAYER_FELL_SOUND, vec3to2(d->cam.pos));
+		play_sound(d, PLAYER_FELL_SOUND, v3_to_v2(d->cam.pos));
 }
 
 void	player_hit_projectile(t_data *d, t_projectile *projectile)
@@ -35,7 +35,7 @@ void	player_hit_projectile(t_data *d, t_projectile *projectile)
 		change_inertia(d, atan2(projectile->dir.z,
 					projectile->dir.x), BOUNCING_DIST_PROJ);
 	d->player.health -= d->projectile_type[projectile->id_type].damage;
-	play_sound(d, PLAYER_GOT_HIT_SOUND, vec3to2(d->cam.pos));
+	play_sound(d, PLAYER_GOT_HIT_SOUND, v3_to_v2(d->cam.pos));
 }
 
 void	check_dangerous_area(t_data *d)
@@ -51,7 +51,7 @@ void	check_dangerous_area(t_data *d)
 	d->player.health -= 20;
 	d->last_dangerous_area_damage = SDL_GetTicks();
 	if (d->player.health > 0)
-		play_sound(d, PLAYER_GOT_HIT_SOUND, vec3to2(d->cam.pos));
+		play_sound(d, PLAYER_GOT_HIT_SOUND, v3_to_v2(d->cam.pos));
 }
 
 void	player_contact_monster_2(t_data *d, t_monster *monster)
@@ -64,7 +64,7 @@ void	player_contact_monster_2(t_data *d, t_monster *monster)
 		if (d->player.health > 0)
 		{
 			play_sound(d, CHARG_ATK_SOUND, monster->pos);
-			play_sound(d, PLAYER_FELL_SOUND, vec3to2(d->cam.pos));
+			play_sound(d, PLAYER_FELL_SOUND, v3_to_v2(d->cam.pos));
 		}
 	}
 	change_inertia(d, atan2(monster->dir.y, monster->dir.x),
@@ -82,7 +82,7 @@ void	player_contact_monster(t_data *d, t_monster *monster)
 			d->player.can_be_stomped = 30;
 			change_buf_colo(d, 5, RED);
 			if (d->player.health > 0)
-				play_sound(d, PLAYER_FELL_SOUND, vec3to2(d->cam.pos));
+				play_sound(d, PLAYER_FELL_SOUND, v3_to_v2(d->cam.pos));
 		}
 		change_inertia(d, atan2(monster->dir.y, monster->dir.x),
 				BOUNCING_DIST_MOTHERDEMON);
