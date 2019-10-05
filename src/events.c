@@ -12,12 +12,6 @@ void	event_key_down(t_data *d, SDL_KeyboardEvent event)
 		press_e(d);
 }
 
-void	event_key_up(t_data *d, SDL_KeyboardEvent event)
-{
-	(void)d;
-	(void)event;
-}
-
 void	event_mouse_motion(t_data *d, SDL_MouseMotionEvent event)
 {
 	if (SDL_GetRelativeMouseMode() == SDL_FALSE)
@@ -41,26 +35,15 @@ void	event_mouse_button(t_data *d, SDL_MouseButtonEvent event)
 	}
 }
 
-void	debug_pause(t_data *d)
+void	proper_exit(t_data *d)
 {
-	SDL_Event	e;
+	SDL_DestroyWindow(d->win);
+	SDL_Quit();
+	exit(EXIT_SUCCESS);
+}
 
-	if (!d->debug_pause)
-		return ;
-	SDL_UpdateWindowSurface(d->win);
-	while (SDL_WaitEvent(&e))
-	{
-		if (e.type == SDL_KEYDOWN)
-		{
-			if (e.key.keysym.sym == SDLK_SPACE)
-				return ;
-			else if (e.key.keysym.sym == SDLK_PAUSE)
-			{
-				d->debug_pause = false;
-				return ;
-			}
-			else if (e.key.keysym.sym == SDLK_ESCAPE)
-				exit(EXIT_SUCCESS);
-		}
-	}
+void	err_exit(const char *msg)
+{
+	printf("%s\n", msg);
+	exit(EXIT_FAILURE);
 }

@@ -38,8 +38,6 @@ void	loop(t_data *d)
 		{
 			if (e.type == SDL_KEYDOWN)
 				event_key_down(d, e.key);
-			if (e.type == SDL_KEYUP)
-				event_key_up(d, e.key);
 			if (e.type == SDL_MOUSEMOTION)
 				event_mouse_motion(d, e.motion);
 			if (e.type == SDL_MOUSEBUTTONDOWN ||

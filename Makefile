@@ -19,7 +19,6 @@ FILES = main \
 	   sound \
 	   handle_finish \
 	   handle_respawn \
-	   exit \
 	   init_sdl \
 	   init_monsters \
 	   init_projectiles \
