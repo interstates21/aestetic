@@ -3,7 +3,6 @@ CC = clang
 FILES = main \
 	   fix_neighborsects \
 	   difficulty_menu \
-	   pause_menu \
 	   intro_screen \
 	   help_screen \
 	   draw_hud \

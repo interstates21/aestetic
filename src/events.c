@@ -1,37 +1,29 @@
 #include "../includes/doom_nukem.h"
 
-static void	press_e(t_data *d)
+void	event_key_down(t_data *d, SDL_KeyboardEvent event)
 {
 	int			i;
 	t_assets	*asset;
 
-	i = -1;
-	while (d->nb_assets && ++i < d->assets[d->cursectnum][0].nb_assets)
+	if (event.keysym.sym == SDLK_ESCAPE)
+		proper_exit(d);
+	if (event.keysym.sym == SDLK_e)
 	{
-		asset = &d->assets[d->cursectnum][i];
-		if (v2_len(v2_min(v3_to_v2(d->cam.pos), asset->world_pos)) <
-			1.5 && !asset->used &&
-			(asset->is_interactive || asset->is_autopick ||
-			 asset->is_key || asset->is_jetpack))
+		i = -1;
+		while (d->nb_assets && ++i < d->assets[d->cursectnum][0].nb_assets)
 		{
-			use_asset(d, asset);
-			return ;
+			asset = &d->assets[d->cursectnum][i];
+			if (v2_len(v2_min(v3_to_v2(d->cam.pos), asset->world_pos)) <
+				1.5 && !asset->used &&
+				(asset->is_interactive || asset->is_autopick ||
+				 asset->is_key || asset->is_jetpack))
+			{
+				use_asset(d, asset);
+				return ;
+			}
 		}
+		activate_door(d, &d->sectors[d->cursectnum]);
 	}
-	if (activate_door(d, &d->sectors[d->cursectnum]))
-		return ;
-}
-
-void	event_key_down(t_data *d, SDL_KeyboardEvent event)
-{
-	if (event.keysym.sym == SDLK_ESCAPE && !event.repeat)
-		pause_menu(d);
-	else if (event.keysym.sym == SDLK_p)
-		pause_menu(d);
-	else if (event.keysym.sym == SDLK_PAUSE)
-		d->debug_pause = true;
-	else if (event.keysym.sym == SDLK_e)
-		press_e(d);
 }
 
 void	event_mouse_motion(t_data *d, SDL_MouseMotionEvent event)
