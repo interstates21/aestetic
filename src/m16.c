@@ -1,6 +1,6 @@
 #include "../includes/doom_nukem.h"
 
-void		set_projectile_visual_collided_m16(t_data *d,
+static void		set_projectile_visual_collided_m16(t_data *d,
 		short i, t_m16_inf inf)
 {
 	t_vec2f	tmp;
@@ -30,7 +30,7 @@ void		set_projectile_visual_collided_m16(t_data *d,
 				d->monsters[inf.id_of_monst].pos));
 }
 
-void		m16_create_projectile(t_data *d, t_m16_inf inf)
+static void		m16_create_projectile(t_data *d, t_m16_inf inf)
 {
 	t_sprite_list	*new_projectile;
 	short			i;
@@ -54,6 +54,15 @@ void		m16_create_projectile(t_data *d, t_m16_inf inf)
 		d->sectors[d->monsters[inf.id_of_monst].
 			cursectnum].sprite_list = new_projectile;
 	}
+}
+
+bool	set_pos_m16_inside_sec(t_data *d, int16_t id, t_vec2f *pos)
+{
+	*pos = d->monsters[id].pos;
+	pos->x -= d->cam.pos.x;
+	pos->y -= d->cam.pos.z;
+	actualize_dir(d->cam.rot, pos);
+	return (true);
 }
 
 void		m16_shoot(t_data *d)

@@ -6,7 +6,6 @@ FILES = main \
 	   pause_menu \
 	   intro_screen \
 	   help_screen \
-	   texanim \
 	   draw_hud \
 	   draw_hud2 \
 	   asset_collision \
@@ -35,11 +34,9 @@ FILES = main \
 	   create_projectile \
 	   player_actions \
 	   projectile_collision \
-	   update_anim_projectile \
 	   find_closest_wall_dist \
 	   blaster_col_recur \
 	   blaster_col \
-	   m16_util \
 	   m16_recur \
 	   m16 \
 	   update_2 \
