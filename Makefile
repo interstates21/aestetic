@@ -7,10 +7,8 @@ FILES = main \
 	   intro_screen \
 	   help_screen \
 	   texanim \
-	   jetpack \
 	   draw_hud \
 	   draw_hud2 \
-	   msg \
 	   asset_collision \
 	   draw_assets \
 	   collision \
@@ -49,7 +47,6 @@ FILES = main \
 	   update \
 	   draw_weapon \
 	   color_buffer \
-	   render \
 	   render_sector \
 	   draw_floor \
 	   draw_ceil \
@@ -77,7 +74,7 @@ FILES = main \
 	   font \
 	   vector \
 	   load_monsters_texture \
-	   load_weapons_texture
+
 LIBFT_DIR = libft/
 SRC = $(addprefix src/, $(addsuffix .c, $(FILES)))
 OBJ = $(addprefix obj/, $(addsuffix .o, $(FILES)))
