@@ -16,6 +16,7 @@
 # define MAX_Y_OFFSET (HEIGHT/2)
 # define PLAYER_HITBOX 0.1
 # include "structs_doom.h"
+# include "defines.h"
 # define PATH_MAP "./maps/"
 # define POSTER_W 1.3
 # define MINIMUM_HEIGHT 0.5
@@ -165,7 +166,6 @@ void		draw_health(t_data *d);
 void		draw_fuel(t_data *d);
 void		draw_ammo(t_data *d, t_weapon_type weapon_type);
 void		check_dangerous_area(t_data *d);
-void		decrease_fuel(t_data *d);
 void		handle_respawn(t_data *d);
 void		precompute_texanim(t_data *d);
 void		intro_screen(t_data *d);
