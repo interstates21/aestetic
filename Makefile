@@ -26,7 +26,6 @@ FILES = main \
 	   loop \
 	   events \
 	   activate_door \
-	   press_e \
 	   monster_behaviour \
 	   monster_behaviour_chargingdemon \
 	   monster_anim_state \
@@ -57,7 +56,6 @@ FILES = main \
 	   inside \
 	   utils \
 	   fly_gravity \
-	   jump \
 	   inertia \
 	   monster_collision \
 	   movement \

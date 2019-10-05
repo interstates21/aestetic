@@ -1,5 +1,27 @@
 #include "../includes/doom_nukem.h"
 
+static void	press_e(t_data *d)
+{
+	int			i;
+	t_assets	*asset;
+
+	i = -1;
+	while (d->nb_assets && ++i < d->assets[d->cursectnum][0].nb_assets)
+	{
+		asset = &d->assets[d->cursectnum][i];
+		if (v2_len(v2_min(v3_to_v2(d->cam.pos), asset->world_pos)) <
+			1.5 && !asset->used &&
+			(asset->is_interactive || asset->is_autopick ||
+			 asset->is_key || asset->is_jetpack))
+		{
+			use_asset(d, asset);
+			return ;
+		}
+	}
+	if (activate_door(d, &d->sectors[d->cursectnum]))
+		return ;
+}
+
 void	event_key_down(t_data *d, SDL_KeyboardEvent event)
 {
 	if (event.keysym.sym == SDLK_ESCAPE && !event.repeat)
@@ -42,8 +64,3 @@ void	proper_exit(t_data *d)
 	exit(EXIT_SUCCESS);
 }
 
-void	err_exit(const char *msg)
-{
-	printf("%s\n", msg);
-	exit(EXIT_FAILURE);
-}

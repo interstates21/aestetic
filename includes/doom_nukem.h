@@ -82,7 +82,6 @@ void		draw_floor(t_data *d, t_projdata *p, t_frustum *fr);
 void		draw_ceil(t_data *d, t_projdata *p, t_frustum *fr);
 void		*draw_ceil_thread(void *arg);
 void		player_actions(t_data *d);
-void		render(t_data *d);
 void		draw_weapon(t_data *d);
 void		blaster_shot(t_data *d);
 void		render_sector(t_data *d, t_sector *sect, t_frustum *fr);
@@ -157,7 +156,6 @@ void		use_asset(t_data *d, t_assets *asset);
 void		draw_hud(t_data *d);
 void		invoke_msg(t_data *d, char *msg);
 bool		activate_door(t_data *d, t_sector *sect);
-void		press_e(t_data *d);
 void		putpixel2(t_data *d, double z, t_vec2 p, uint32_t color);
 t_vec2f		get_closest(t_vec2f a, t_vec2f b, t_vec2f p);
 void		move_monster(t_data *d, int i);
@@ -254,7 +252,6 @@ double		norm(double val, double min, double max);
 */
 
 void		proper_exit(t_data *d);
-void		err_exit(const char *msg);
 
 /*
 ** ini
@@ -272,7 +269,6 @@ void		loop(t_data *d);
 ** events.c
 */
 
-void		event_key_up(t_data *d, SDL_KeyboardEvent event);
 void		event_mouse_motion(t_data *d, SDL_MouseMotionEvent event);
 void		event_mouse_button(t_data *d, SDL_MouseButtonEvent event);
 void		event_key_down(t_data *d, SDL_KeyboardEvent event);

@@ -1,10 +1,9 @@
 #include "../includes/doom_nukem.h"
 
-void	fix_picnum2(t_data *d)
+static void	err_exit(const char *msg)
 {
-	int		i;
-	int		name_i;
-
+	printf("%s\n", msg);
+	exit(EXIT_FAILURE);
 }
 
 void	fix_picnum(t_data *d)
