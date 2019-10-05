@@ -43,12 +43,12 @@ int	ft_min(int a, int b)
 
 double	get_floorheight_player(t_data *d, int16_t sectnum)
 {
-	return (get_floorheight_point(d, sectnum, v3_to_v2(d->cam.pos)));
+	return (get_floceiheight(d, sectnum, v3_to_v2(d->cam.pos), 1));
 }
 
 double	get_ceilheight_player(t_data *d, int16_t sectnum)
 {
-	return (get_ceilheight_point(d, sectnum, v3_to_v2(d->cam.pos)));
+	return (get_floceiheight(d, sectnum, v3_to_v2(d->cam.pos), 0));
 }
 
 /*
@@ -57,12 +57,12 @@ double	get_ceilheight_player(t_data *d, int16_t sectnum)
 
 double	get_floordh(t_data *d, t_sector *sect, t_vec2f v)
 {
-	return (get_floorheight_point(d, sect - d->sectors, v) -
+	return (get_floceiheight(d, sect - d->sectors, v, 1) -
 			d->cam.pos.y);
 }
 
 double	get_ceildh(t_data *d, t_sector *sect, t_vec2f v)
 {
-	return (get_ceilheight_point(d, sect - d->sectors, v) -
+	return (get_floceiheight(d, sect - d->sectors, v, 0) -
 			d->cam.pos.y);
 }

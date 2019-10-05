@@ -91,8 +91,8 @@ void		draw_monster(t_data *d, t_monster monster)
 	t_vec3f			monsterpos;
 	short			nb_of_anim[2];
 
-	monsterpos = (t_vec3f){monster.pos.x, get_floorheight_point(d,
-			monster.cursectnum, monster.pos), monster.pos.y};
+	monsterpos = (t_vec3f){monster.pos.x, get_floceiheight(d,
+			monster.cursectnum, monster.pos, 1), monster.pos.y};
 	point_in_screen = transform_vec3f_to_screen(d, monsterpos);
 	if (point_in_screen.z <= 0)
 		return ;

@@ -9,8 +9,7 @@ t_vec2f	get_sector_center(t_data *d, t_sector *sect)
 	i = -1;
 	while (++i < sect->numwalls)
 		center = v2_plus(center, d->walls[sect->firstwallnum + i].point);
-	center = v2_scale(center, 1.0 / sect->numwalls);
-	return (center);
+	return (v2_scale(center, 1.0 / sect->numwalls));
 }
 
 t_vec2f	rotate_point(t_vec2f p, t_vec2f center, double angle)
@@ -42,18 +41,4 @@ double	get_floceiheight(t_data *d, int16_t sectnum, t_vec2f p, bool is_floor)
 			sect->is_animatedslope) || (!is_floor &&
 			sect->is_animatedslopeceil)) ? (SDL_GetTicks() / 1000.0) : 0));
 	return (h + tan(slope * M_PI / 180) * (p.x - center.x));
-}
-
-/*
-**	Height of the floor/ceil at point.
-*/
-
-double	get_floorheight_point(t_data *d, int16_t sectnum, t_vec2f p)
-{
-	return (get_floceiheight(d, sectnum, p, true));
-}
-
-double	get_ceilheight_point(t_data *d, int16_t sectnum, t_vec2f p)
-{
-	return (get_floceiheight(d, sectnum, p, false));
 }

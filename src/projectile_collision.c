@@ -48,8 +48,8 @@ bool		collision_proj_one_monst(t_data *d, t_monster *monster,
 	dist = v2_len(v2_min(v3_to_v2(newpos), monster->pos));
 	if (dist < d->projectile_type[projectile->id_type].hitbox_radius +
 			d->monster_type[monster->id_type].hitbox_radius)
-		if (newpos.y > get_floorheight_point(d, monster->cursectnum,
-					monster->pos) && newpos.y <
+		if (newpos.y > get_floceiheight(d, monster->cursectnum,
+					monster->pos, 1) && newpos.y <
 				d->monster_type[monster->id_type].height)
 		{
 			vec2f_tmp[0] = v2_min((t_vec2f){projectile->pos.x,

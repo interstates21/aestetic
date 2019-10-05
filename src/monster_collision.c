@@ -51,7 +51,7 @@ void	collision_with_monster(t_data *d, short cur_sect)
 							(t_vec2f){d->cam.pos.x, d->cam.pos.z})) <
 					d->monster_type[d->monsters[tmp->id].id_type].hitbox_radius
 					+ MONSTER_MIN_DIST_HITBOX && d->cam.pos.y <
-					get_floorheight_point(d, cur_sect, d->monsters[tmp->id].pos)
+					get_floceiheight(d, cur_sect, d->monsters[tmp->id].pos, 1)
 					+ d->monster_type[d->monsters[tmp->id].id_type].height)
 			{
 				d->cam.pos = update_pos_vec3f(d->cam.pos, d->monsters

@@ -35,10 +35,10 @@ int16_t	update_cursect_proj(int16_t sects[2], t_data *d, int depth,
 	short	ret_value;
 
 	if (inside(d, sects[0], (t_vec2f){pos.x, pos.z}) &&
-			(pos.y < get_ceilheight_point(d, sects[0], v3_to_v2(pos)) +
+			(pos.y < get_floceiheight(d, sects[0], v3_to_v2(pos), 0) +
 			DIST_COLL_PROJ_CEIL_FLOOR || d->sectors[sects[0]].outdoor) &&
-			pos.y > get_floorheight_point(d, sects[0],
-			v3_to_v2(pos)) + DIST_COLL_PROJ_CEIL_FLOOR)
+			pos.y > get_floceiheight(d, sects[0], v3_to_v2(pos), 1)
+			+ DIST_COLL_PROJ_CEIL_FLOOR)
 		return (sects[0]);
 	if (!depth)
 		return (-1);

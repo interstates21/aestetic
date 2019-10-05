@@ -67,9 +67,9 @@ void		m16_shoot(t_data *d)
 	if (inf.id_of_monst != -1)
 	{
 		y_dist = inf.dist * Y_OFFSET_TO_ROT * d->cam.y_offset +
-			d->cam.pos.y - get_floorheight_point(d,
+			d->cam.pos.y - get_floceiheight(d,
 					d->monsters[inf.id_of_monst].cursectnum,
-					d->monsters[inf.id_of_monst].pos);
+					d->monsters[inf.id_of_monst].pos, 1);
 		if (y_dist > -0.1 && y_dist < 1.6)
 		{
 			monster_hit(d, M16_DAMAGE, inf.id_of_monst);

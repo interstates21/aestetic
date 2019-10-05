@@ -70,15 +70,15 @@ bool	can_traverse_monster(t_data *d, int i, t_vec2f *pos, t_sector *sect)
 	t_wall	*wall;
 
 	wall = &d->walls[i];
-	cur_height = get_floorheight_point(d, sect - &d->sectors[0], *pos);
+	cur_height = get_floceiheight(d, sect - &d->sectors[0], *pos, 1);
 	neighbor = wall->neighborsect;
 	return (wall->neighborsect != -1 &&
 			wall->is_transparent == false &&
 			d->doorstate[i] > 0.7 &&
-			cur_height + MIN_HEIGHT_MONSTER_TO_WALK > get_floorheight_point(d,
-			sect - &d->sectors[0], *pos) && (d->sectors[neighbor].outdoor ||
-			get_ceilheight_point(d, sect - &d->sectors[0], *pos) -
-			get_floorheight_point(d, sect - &d->sectors[0], *pos) >
+			cur_height + MIN_HEIGHT_MONSTER_TO_WALK > get_floceiheight(d,
+			sect - &d->sectors[0], *pos, 1) && (d->sectors[neighbor].outdoor ||
+			get_floceiheight(d, sect - &d->sectors[0], *pos, 0) -
+			get_floceiheight(d, sect - &d->sectors[0], *pos, 1) >
 			SMALLEST_HEIGHT_FOR_MONSTERS));
 }
 
