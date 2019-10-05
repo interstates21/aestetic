@@ -18,8 +18,6 @@ void	event_key_up(t_data *d, SDL_KeyboardEvent event)
 	(void)event;
 }
 
-#define MOUSE_SENSITIVTY 1
-
 void	event_mouse_motion(t_data *d, SDL_MouseMotionEvent event)
 {
 	if (SDL_GetRelativeMouseMode() == SDL_FALSE)

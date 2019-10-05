@@ -34,7 +34,6 @@ void	shoot_weapon(t_data *d, uint8_t *w)
 	}
 }
 
-#define TRANSLATE_WEAP_TIME 30
 
 void	change_weap(t_data *d, uint8_t *w)
 {

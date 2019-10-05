@@ -1,17 +1,29 @@
 #include "../includes/doom_nukem.h"
 
-void	print_fps(void)
+void	render(t_data *d)
 {
-	static int		i;
-	static uint32_t	last;
+	t_frustum	fr;
+	int			i;
 
-	if (SDL_GetTicks() - last > 1000)
+	fr.x1 = 0;
+	fr.x2 = WIDTH - 1;
+	ft_memset(fr.visitedportals, 0, sizeof(fr.visitedportals));
+	i = -1;
+	while (++i < WIDTH)
 	{
-		printf("%d fps\n", i);
-		last = SDL_GetTicks();
-		i = 0;
+		fr.ytop[i] = 0;
+		fr.ybottom[i] = HEIGHT - 1;
 	}
-	i++;
+	i = -1;
+	while (++i < WIDTH * HEIGHT)
+		d->zbuffer[i] = INFINITY;
+	precompute_texanim(d);
+	render_sector(d, &d->sectors[d->cursectnum], &fr);
+	draw_weapon(d);
+	color_buffer(d);
+	draw_aim_cross(d);
+	draw_hud(d);
+	SDL_UpdateWindowSurface(d->win);
 }
 
 void	loop(t_data *d)

@@ -1,9 +1,5 @@
 #include "../includes/doom_nukem.h"
 
-#define MINIMUM_HEIGHT_TO_WALK 0.32
-#define MOVE_SPEED 0.02
-#define MINIMUM_HEIGHT_OF_WALKABLE_SECTOR 0.6
-
 void	smooth_movement(t_data *d, short *count, t_vec2f *mvt)
 {
 	if (d->keys[SDL_SCANCODE_W] && ++*count)

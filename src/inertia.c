@@ -1,7 +1,5 @@
 #include "../includes/doom_nukem.h"
 
-#define MAX_INERTIA 0.19
-
 void	inertia(t_data *d, t_vec2f mvt)
 {
 	double	angle;

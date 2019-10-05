@@ -81,8 +81,6 @@ int			contain_map_path(char *path)
 	return (0);
 }
 
-#define NB_TEX (int[3]){13, 15, 3}
-#define NB_PROJECTILE (int[3]){20, 0, 5}
 
 void		load_map(t_data *d, char *map)
 {

@@ -1,6 +1,5 @@
 #include "../includes/doom_nukem.h"
 
-#define CROUCH_SPEED 0.01
 
 void	check_crouch(t_data *d)
 {

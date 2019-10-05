@@ -93,8 +93,6 @@ bool		collision_proj_monster(t_data *d, t_sector *sector,
 	return (false);
 }
 
-#define MIN_DIST_TO_PLAYER 0.15
-
 bool		collision_proj_player(t_data *d, t_projectile *projectile)
 {
 	t_vec3f	newpos;

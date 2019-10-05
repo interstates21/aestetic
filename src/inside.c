@@ -26,7 +26,6 @@ bool	inside(t_data *d, int16_t sectnum, t_vec2f pos)
 	return (n[0]);
 }
 
-#define DIST_COLL_PROJ_CEIL_FLOOR 0.1
 
 int16_t	update_cursect_proj(int16_t sects[2], t_data *d, int depth,
 		t_vec3f pos)

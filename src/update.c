@@ -1,7 +1,5 @@
 #include "../includes/doom_nukem.h"
 
-#define TURN_SPEED 0.02
-
 void	update_doors(t_data *d)
 {
 	int i;
@@ -22,8 +20,6 @@ void	update_doors(t_data *d)
 		}
 	}
 }
-
-#define DEPTH_TO_SCAN 10
 
 void	update(t_data *d)
 {

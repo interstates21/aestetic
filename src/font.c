@@ -1,6 +1,4 @@
 #include "../includes/doom_nukem.h"
-#define CHAR_WIDTH 5
-#define CHAR_HEIGHT 8
 
 bool	is_special_char(char c)
 {

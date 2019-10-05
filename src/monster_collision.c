@@ -1,7 +1,5 @@
 #include "../includes/doom_nukem.h"
 
-#define MONSTER_MIN_DIST_HITBOX 0.15
-#define MINIMUM_SIZE_AROUND_MONSTERS 0.8
 
 t_vec3f	update_pos_vec3f(t_vec3f new_pos, t_vec2f point, double radius)
 {

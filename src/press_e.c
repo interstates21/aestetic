@@ -1,7 +1,5 @@
 #include "../includes/doom_nukem.h"
 
-#define ACTIVATION_DIST 1.5
-
 bool	pickup_asset(t_data *d)
 {
 	int			i;
@@ -12,7 +10,7 @@ bool	pickup_asset(t_data *d)
 	{
 		asset = &d->assets[d->cursectnum][i];
 		if (v2_len(v2_min(v3_to_v2(d->cam.pos), asset->world_pos)) <
-				ACTIVATION_DIST && !asset->used &&
+				1.5 && !asset->used &&
 				(asset->is_interactive || asset->is_autopick ||
 				asset->is_key || asset->is_jetpack))
 		{

@@ -1,8 +1,5 @@
 #include "../includes/doom_nukem.h"
 
-#define COLLISION_DIST 0.3
-#define MINIMUM_HEIGHT_TO_WALK 0.32
-#define MINIMUM_CEIL_DIST 0.1
 
 bool	can_traverse(t_data *d, int i, t_wall *wall)
 {
@@ -65,8 +62,6 @@ bool	collision(t_data *d, t_sector *sect)
 	return (collided + (--recursion ? 0 : 0));
 }
 
-#define MIN_HEIGHT_MONSTER_TO_WALK 1
-#define SMALLEST_HEIGHT_FOR_MONSTERS 1.4
 
 bool	can_traverse_monster(t_data *d, int i, t_vec2f *pos, t_sector *sect)
 {

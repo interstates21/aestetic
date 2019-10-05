@@ -1,7 +1,5 @@
 #include "../includes/doom_nukem.h"
 
-#define MINIMUM_HEIGHT 0.5
-
 void	init_player3(t_data *d, t_player *player)
 {
 	player->speed_anim[M16] = 4;

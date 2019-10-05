@@ -1,9 +1,5 @@
 #include "../includes/doom_nukem.h"
 
-#define BOUNCING_DIST_PROJ 0.12
-#define BOUNCING_DIST_MOTHERDEMON 0.1
-#define BOUCING_DIST_CHARGINGDEMON 0.18
-
 void	player_fell(t_data *d)
 {
 	d->player.gravity = fabs(d->player.gravity);

@@ -1,7 +1,5 @@
 #include "../includes/doom_nukem.h"
 
-#define INCREMENT true
-#define SET false
 
 static void	set_var_reorder_sprite(t_sprite_list **list, t_sector *sec, int *i,
 		bool type)

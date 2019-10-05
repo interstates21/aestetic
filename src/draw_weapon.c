@@ -1,8 +1,5 @@
 #include "../includes/doom_nukem.h"
 
-#define SIZE_OF_WEAP 1.5;
-#define MAX_INERTIA 0.19
-
 void	display_weapon(t_data *d, SDL_Surface *s, t_vec2f start, t_vec2f end)
 {
 	t_vec2f			scale;

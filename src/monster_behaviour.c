@@ -1,9 +1,4 @@
 #include "../includes/doom_nukem.h"
-
-#define ACTIVATION_RADIUS 6
-#define LONG_RANGE 7
-#define COLLISION_DIST_MOTHERDEMON 1.0
-
 bool	motherdemon_behaviour_change_after_attack(t_data *d,
 		t_monster *monster, double rand, t_vec2f tmp)
 {

@@ -1,7 +1,5 @@
 #include "../includes/doom_nukem.h"
 
-#define SLOT_W 64
-
 void	draw_inventory_slot(t_data *d, SDL_Surface *tex, int x1, int y1)
 {
 	uint32_t	px;

@@ -1,11 +1,6 @@
 
 #include "../includes/doom_nukem.h"
 
-#define SPEED_ANIM 10
-#define SPEED_ANIM_CHARG 7
-#define SPEED_ANIM_CHOW 17
-#define MOTHER_DEMON_ATTACK 6
-
 void	anim_id_0(t_monster *monster, t_monster_type *monster_type, t_data *d)
 {
 	monster->anim_time--;

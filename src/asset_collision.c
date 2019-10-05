@@ -1,6 +1,5 @@
 #include "../includes/doom_nukem.h"
 
-#define COLLISION_R 0.8
 
 static bool	check_if_return(t_data *d, t_assets *asset)
 {
@@ -20,8 +19,6 @@ static bool	check_if_return(t_data *d, t_assets *asset)
 	return (false);
 }
 
-#define MAX_FUEL 500
-#define FUEL 300
 
 static bool	check_jetpack(t_data *d, t_assets *asset)
 {

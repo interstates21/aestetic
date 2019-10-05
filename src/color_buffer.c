@@ -57,7 +57,6 @@ void	color_screen(t_args_multi_colo_buf *data)
 	}
 }
 
-#define MAX_THREADS 8
 
 void	color_buffer(t_data *d)
 {

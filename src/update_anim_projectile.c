@@ -1,7 +1,5 @@
 #include "../includes/doom_nukem.h"
 
-#define NB_OF_SECTOR_DEPTH 2
-
 void	update_collided_proj(t_data *d, t_projectile *projectile, bool anim,
 		short id)
 {

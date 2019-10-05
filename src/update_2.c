@@ -1,7 +1,5 @@
 #include "../includes/doom_nukem.h"
 
-#define NB_OF_SECTOR_DEPTH 2
-
 void	update_monsters(uint16_t *nummonsters,
 		t_monster monsters[MAXNUMMONSTERS], t_data *d)
 {

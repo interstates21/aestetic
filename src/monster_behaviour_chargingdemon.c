@@ -1,6 +1,5 @@
 #include "../includes/doom_nukem.h"
 
-#define COLLISION_RANGE_CHARGINGDEMON 0.2
 
 static void	behaviour_update_charge(t_data *d, t_monster *monster)
 {

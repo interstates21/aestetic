@@ -8,20 +8,19 @@ bool	same_pos(t_vec2f v1, t_vec2f v2)
 int		find_nei(t_data *d, t_vec2f v0, t_vec2f v1, int sect)
 {
 	int	s;
-	int	w0;
-	int	w1;
+	int	w[2];
 
 	s = -1;
 	while (++s < d->numsectors)
 	{
-		w0 = d->sectors[s].firstwallnum + d->sectors[s].numwalls - 1;
-		w1 = d->sectors[s].firstwallnum;
-		while (w1 < (d->sectors[s].firstwallnum + d->sectors[s].numwalls))
+		w[0] = d->sectors[s].firstwallnum + d->sectors[s].numwalls - 1;
+		w[1] = d->sectors[s].firstwallnum;
+		while (w[1] < (d->sectors[s].firstwallnum + d->sectors[s].numwalls))
 		{
-			if (same_pos(d->walls[w0].point, v1) &&
-					same_pos(d->walls[w1].point, v0) && (s != sect))
+			if (same_pos(d->walls[w[0]].point, v1) &&
+					same_pos(d->walls[w[1]].point, v0) && (s != sect))
 				return (s);
-			w0 = w1++;
+			w[0] = w[1]++;
 		}
 	}
 	return (-1);
@@ -30,19 +29,18 @@ int		find_nei(t_data *d, t_vec2f v0, t_vec2f v1, int sect)
 void	fix_neighborsects(t_data *d)
 {
 	int	s;
-	int	w0;
-	int	w1;
+	int	w[2];
 
 	s = -1;
 	while (++s < d->numsectors)
 	{
-		w0 = d->sectors[s].firstwallnum + d->sectors[s].numwalls - 1;
-		w1 = d->sectors[s].firstwallnum;
-		while (w1 < (d->sectors[s].firstwallnum + d->sectors[s].numwalls))
+		w[0] = d->sectors[s].firstwallnum + d->sectors[s].numwalls - 1;
+		w[1] = d->sectors[s].firstwallnum;
+		while (w[1] < (d->sectors[s].firstwallnum + d->sectors[s].numwalls))
 		{
-			d->walls[w0].neighborsect = find_nei(d, d->walls[w0].point,
-					d->walls[w1].point, s);
-			w0 = w1++;
+			d->walls[w[0]].neighborsect = find_nei(d, d->walls[w[0]].point,
+					d->walls[w[1]].point, s);
+			w[0] = w[1]++;
 		}
 	}
 }

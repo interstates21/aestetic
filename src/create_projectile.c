@@ -1,7 +1,5 @@
 #include "../includes/doom_nukem.h"
 
-#define Y_OFFSET_TO_ROT -0.00125
-
 void	set_projectile_id(t_data *d, short i, short id_of_proj_type)
 {
 	d->projectiles[i].is_active = true;

@@ -1,8 +1,5 @@
 #include "../includes/doom_nukem.h"
 
-#define M16_DAMAGE 4
-#define Y_OFFSET_TO_ROT -0.00125
-
 void		set_projectile_visual_collided_m16(t_data *d,
 		short i, t_m16_inf inf)
 {
