@@ -160,16 +160,11 @@ void		putpixel2(t_data *d, double z, t_vec2 p, uint32_t color);
 t_vec2f		get_closest(t_vec2f a, t_vec2f b, t_vec2f p);
 void		move_monster(t_data *d, int i);
 void		draw_health(t_data *d);
-void		draw_fuel(t_data *d);
-void		draw_ammo(t_data *d, t_weapon_type weapon_type);
 void		check_dangerous_area(t_data *d);
 void		handle_respawn(t_data *d);
 void		precompute_texanim(t_data *d);
 void		intro_screen(t_data *d);
-void		help_screen(t_data *d);
 void		draw_string_typewriter_effect(t_data *d, t_font f);
-void		difficulty_menu(t_data *d);
-void		pause_menu(t_data *d);
 int			ft_mod(int i, int n);
 void		fix_neighborsects(t_data *d);
 

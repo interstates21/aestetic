@@ -1,6 +1,27 @@
 #include "../includes/doom_nukem.h"
 
-void	draw_inventory_slot(t_data *d, SDL_Surface *tex, int x1, int y1)
+static void	draw_ammo(t_data *d, t_weapon_type weapon_type)
+{
+	static char buf[100] = "Ammo: ";
+	static char buf2[100] = "Health: ";
+
+	ft_strcpy(buf + 6, ft_itoa_static(weapon_type.current_ammo));
+	ft_strcpy(buf + ft_strlen(buf), " / ");
+	ft_strcpy(buf + ft_strlen(buf), ft_itoa_static(weapon_type.max_ammo));
+	draw_string(d, (t_font){buf, 50, 80, 0xffffff, 2});
+	ft_strcpy(buf2 + 8, ft_itoa_static(d->player.health));
+	draw_string(d, (t_font){buf2, 50, 50, 0xffffff, 2});
+}
+
+static void	draw_fuel(t_data *d)
+{
+	static char buf[100] = "Fuel: ";
+
+	ft_strcpy(buf + 6, ft_itoa_static(d->player.is_flying));
+	draw_string(d, (t_font){buf, 50, 110, 0xffffff, 2});
+}
+
+static void	draw_inventory_slot(t_data *d, SDL_Surface *tex, int x1, int y1)
 {
 	uint32_t	px;
 	int			x;
@@ -20,7 +41,7 @@ void	draw_inventory_slot(t_data *d, SDL_Surface *tex, int x1, int y1)
 	}
 }
 
-void	draw_timed_msg(t_data *d)
+static void	draw_timed_msg(t_data *d)
 {
 	if (!d->msg[0])
 		return ;
@@ -41,7 +62,6 @@ void	draw_hud(t_data *d)
 		draw_inventory_slot(d, d->assets_texture[d->slot3->picnum],
 				240, HEIGHT - 100);
 	draw_timed_msg(d);
-	draw_health(d);
 	draw_ammo(d, d->weapon_type[d->player.current_weapon]);
 	if (d->player.is_flying)
 		draw_fuel(d);

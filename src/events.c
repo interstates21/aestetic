@@ -44,9 +44,6 @@ void	event_mouse_button(t_data *d, SDL_MouseButtonEvent event)
 	if (event.button == SDL_BUTTON_RIGHT)
 		d->right_mouse_button = event.state == SDL_PRESSED ?
 			MOUSE_PRESSED : MOUSE_RELEASED;
-	if (event.state == SDL_RELEASED)
-	{
-	}
 }
 
 void	proper_exit(t_data *d)
