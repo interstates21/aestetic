@@ -1,5 +1,6 @@
 #include "../includes/doom_nukem.h"
 
+// походу, это все буквы и символы для отрисовки строк, без этого строк нету
 void	init_font(t_data *d)
 {
 	*d = (t_data){.font = {C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11,

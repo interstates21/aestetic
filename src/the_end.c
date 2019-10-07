@@ -15,17 +15,14 @@ int		rainbow_font(int y)
 void	the_end(t_data *d)
 {
 	int y;
-	int	colo;
 
 	y = HEIGHT - 100;
 	play_music(d, PIKA_SONG);
 	while (y > -1 * HEIGHT)
 	{
-		colo = rainbow_font(y);
 		ft_memset(d->screen->pixels, 0, d->screen->pitch * d->screen->h);
-		draw_string(d, (t_font){"Felicitations, \nyou saved \nPikachu !!\n\
-				Good luck \non your way\nto be the\nvery best"
-				, WIDTH / 50, y, colo, 6});
+		draw_string(d, "Felicitations, \nyou saved \nPikachu !!\nGood luck \non your way\nto be the\nvery best"
+				, (t_vec2){WIDTH / 50, y});
 		SDL_UpdateWindowSurface(d->win);
 		SDL_Delay(10);
 		y -= 1;
