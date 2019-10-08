@@ -21,8 +21,8 @@ void	the_end(t_data *d)
 	while (y > -1 * HEIGHT)
 	{
 		ft_memset(d->screen->pixels, 0, d->screen->pitch * d->screen->h);
-		draw_string(d, "Felicitations, \nyou saved \nPikachu !!\nGood luck \non your way\nto be the\nvery best"
-				, (t_vec2){WIDTH / 50, y});
+		draw_string(d, (t_font){"Felicitations, \nyou saved \nPikachu !!\nGood luck \non your way\nto be the\nvery best"
+				, WIDTH / 50, y, 2, 0});
 		SDL_UpdateWindowSurface(d->win);
 		SDL_Delay(10);
 		y -= 1;
