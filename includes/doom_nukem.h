@@ -232,9 +232,11 @@ void		draw_monster(t_data *d, t_monster monster);
 
 /*
 ** exit.c
+
 */
 
-void		proper_exit(t_data *d);
+void	print_err(const char *err);
+void	print_and_quit(t_data *d, const char *str);
 
 /*
 ** ini

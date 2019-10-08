@@ -1,11 +1,5 @@
 #include "../includes/doom_nukem.h"
 
-static void	err_exit(const char *msg)
-{
-	printf("%s\n", msg);
-	exit(EXIT_FAILURE);
-}
-
 void	fix_picnum(t_data *d)
 {
 	int		i;
@@ -36,15 +30,15 @@ void	fix_picnum(t_data *d)
 void	init_sdl(t_data *d)
 {
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_EVENTS))
-		err_exit(SDL_GetError());
+		print_err(SDL_GetError());
 	if (!(d->win = SDL_CreateWindow("doom-nukem", SDL_WINDOWPOS_CENTERED,
 					SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, 0)))
-		err_exit(SDL_GetError());
+		print_err(SDL_GetError());
 	if (!(d->screen = SDL_GetWindowSurface(d->win)))
-		err_exit(SDL_GetError());
+		print_err(SDL_GetError());
 	if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 1024) == -1)
-		err_exit(SDL_GetError());
+		print_err(SDL_GetError());
 	if (!Mix_AllocateChannels(MAX_CHANNELS))
-		err_exit(SDL_GetError());
+		print_err(SDL_GetError());
 	d->keys = SDL_GetKeyboardState(NULL);
 }

@@ -19,6 +19,7 @@ FILES = main \
 	   init_player \
 	   init_font \
 	   loop \
+	   handlers \
 	   events \
 	   activate_door \
 	   monster_behaviour \

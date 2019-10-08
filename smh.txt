@@ -57,7 +57,6 @@ src/monster_behaviour_chargingdemon.c
 src/monster_collision.c
 src/movement.c
 src/msg.c
-src/pause_menu.c
 src/pixel.c
 src/player_actions.c
 src/player_damage.c
