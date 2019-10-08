@@ -13,6 +13,8 @@
 #define MOD(i, n) (((i) % (n) + (n)) % (n))
 #define LERP(n, min, max) ((min) * (1 - (n)) + (max) * (n))
 #define SPECIAL_CHAR(c) (((c) == 'y') || ((c) == 'p') || ((c) == 'q') || ((c) == ','))
+#define MAX(a, b) (((a) > (b)) ? (a) : (b))
+#define MIN(a, b) (((a) > (b)) ? (b) : (a))
 
 #define INCREMENT true
 #define SET false

@@ -10,8 +10,8 @@ static void	display_sprite_one_point_monst(t_data *d, SDL_Surface *s,
 	x = display_data.cut_start - 1;
 	while (++x <= display_data.cut_end)
 	{
-		y = ft_max(0, display_data.start.y) - 1;
-		while (++y <= ft_min(HEIGHT - 1, display_data.end.y))
+		y = MAX(0, display_data.start.y) - 1;
+		while (++y <= MIN(HEIGHT - 1, display_data.end.y))
 			if (dist < d->zbuffer[x + y * d->screen->w])
 			{
 				colo = getpixel(s, display_data.scale.x *
@@ -40,8 +40,8 @@ static void	display_sprite_one_point_rev(t_data *d, SDL_Surface *s,
 	x = display_data.cut_start - 1;
 	while (++x <= display_data.cut_end)
 	{
-		y = ft_max(0, display_data.start.y) - 1;
-		while (++y <= ft_min(HEIGHT - 1, display_data.end.y))
+		y = MAX(0, display_data.start.y) - 1;
+		while (++y <= MIN(HEIGHT - 1, display_data.end.y))
 			if (dist < d->zbuffer[x + y * d->screen->w])
 			{
 				colo = getpixel(s, 1 - (display_data.scale.x *
@@ -77,8 +77,8 @@ static void	set_display_data_proj_2(t_display_data *display_data,
 {
 	display_data->scale.x = fabs(100.0 / (display_data->start.x
 				- display_data->end.x) * 0.01);
-	display_data->cut_start = ft_max(display_data->start.x, 0);
-	display_data->cut_end = ft_min(display_data->end.x, WIDTH - 1);
+	display_data->cut_start = MAX(display_data->start.x, 0);
+	display_data->cut_end = MIN(display_data->end.x, WIDTH - 1);
 	display_data->scale.y = fabs(100.0 / (display_data->start.y
 				- display_data->end.y) * 0.01);
 	display_data->cursectnum = cursectnum;

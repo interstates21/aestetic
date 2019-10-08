@@ -13,7 +13,7 @@ void	display_weapon(t_data *d, SDL_Surface *s, t_vec2f start, t_vec2f end)
 	while (x < end.x)
 	{
 		y = start.y;
-		while (y < ft_min(HEIGHT, end.y))
+		while (y < MIN(HEIGHT, end.y))
 		{
 			colo = getpixel(s, scale.x *
 					(x - start.x), scale.y * (y - start.y));

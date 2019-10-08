@@ -55,8 +55,6 @@
 
 
 char	*ft_itoa_static(intmax_t n);
-int	ft_max(int a, int b);
-int	ft_min(int a, int b);
 
 void		draw_aim_cross(t_data *d);
 void		m16_shoot(t_data *d);

@@ -2,15 +2,15 @@
 
 void	draw_wall_nei(t_data *d, t_projdata *p, t_frustum *fr)
 {
-	while (++p->y <= ft_min(fr->ybottom[p->x], p->nya))
+	while (++p->y <= MIN(fr->ybottom[p->x], p->nya))
 		putpixel2(d, p->z, (t_vec2){p->x, p->y},
 			shade(p->shadefactor, getpixel4(p->tex, p->u_tex, p->wall->is_door ?
 				NORMALIZE(p->y, p->nya - p->doorheight, p->nya) :
 				NORMALIZE(p->y, p->yc, p->yd) * p->y_scale)));
 	p->tex = d->textures[p->wall->lowerpicnum];
 	p->u_tex = (p->u - floor(p->u)) * p->tex->w;
-	p->y = ft_max(fr->ytop[p->x], p->nyb) - 1;
-	while (++p->y <= ft_min(fr->ybottom[p->x], p->yb))
+	p->y = MAX(fr->ytop[p->x], p->nyb) - 1;
+	while (++p->y <= MIN(fr->ybottom[p->x], p->yb))
 		putpixel2(d, p->z, (t_vec2){p->x, p->y}, shade(p->shadefactor,
 			getpixel4(p->tex, p->u_tex,
 				NORMALIZE(p->y, p->yc, p->yd) * p->y_scale)));
@@ -32,7 +32,7 @@ void	draw_wall2bis(t_data *d, t_projdata *p, t_frustum *fr)
 	}
 	p->tex = d->textures[p->wall->middlepicnum];
 	p->u_tex = (p->u - floor(p->u)) * p->tex->w;
-	p->y = ft_max(fr->ytop[p->x], p->ya) - 1;
+	p->y = MAX(fr->ytop[p->x], p->ya) - 1;
 	p->shadefactor = getshadefactor(d, p, p->z);
 	if (!p->neighbor)
 		draw_wall_no_nei(d, p, fr);
@@ -46,12 +46,12 @@ void	draw_wall4(t_data *d, t_projdata *p, t_frustum *fr, t_frustum *nfr)
 	p->nyb = LERP(p->n, p->ny1b, p->ny2b);
 	if (p->wall->is_door)
 	{
-		p->nya = ft_max(p->nya, p->ya);
-		p->nyb = ft_min(p->nyb, p->yb);
+		p->nya = MAX(p->nya, p->ya);
+		p->nyb = MIN(p->nyb, p->yb);
 	}
-	p->doorbottom = ft_min(p->yb, p->nyb);
+	p->doorbottom = MIN(p->yb, p->nyb);
 	p->doorheight = p->doorbottom - p->yc;
-	p->nya += (p->doorbottom - ft_max(p->yc, p->nya)) *
+	p->nya += (p->doorbottom - MAX(p->yc, p->nya)) *
 		(1 - d->doorstate[p->wall - d->walls]);
 	nfr->ytop[p->x] = CLAMP((p->sector->outdoor && p->neighbor->outdoor) ?
 			0 : p->nya + 1, fr->ytop[p->x], fr->ybottom[p->x]);
@@ -94,16 +94,16 @@ void	draw_wall(t_data *d, t_projdata *p, t_frustum *fr)
 	p->u2 /= p->z2;
 	p->z1 = 1 / p->z1;
 	p->z2 = 1 / p->z2;
-	p->cx1 = ft_max(p->x1, fr->x1);
-	p->cx2 = ft_min(p->x2, fr->x2);
+	p->cx1 = MAX(p->x1, fr->x1);
+	p->cx2 = MIN(p->x2, fr->x2);
 	p->x = p->cx1 - 1;
 	while (++p->x <= p->cx2)
 		draw_wall2(d, p, fr, &nfr);
 	draw_wall3(d, p, &nfr, p->visible);
 	if (p->neighbor && p->wall->is_transparent)
 	{
-		p->x = ft_max(p->x1, nfr.x1);
-		while (++p->x <= ft_min(p->x2, nfr.x2))
+		p->x = MAX(p->x1, nfr.x1);
+		while (++p->x <= MIN(p->x2, nfr.x2))
 			draw_wall_transparent(d, p, &nfr);
 	}
 }

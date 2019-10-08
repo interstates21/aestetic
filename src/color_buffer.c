@@ -84,7 +84,7 @@ void	color_buffer(t_data *d)
 		data->d->color_buf.value -= 6;
 	else
 		data->d->color_buf.value -= 1;
-	data->d->color_buf.value = ft_max(0, data->d->color_buf.value);
+	data->d->color_buf.value = MAX(0, data->d->color_buf.value);
 }
 
 void	change_buf_colo(t_data *d, uint16_t amount, uint32_t colo)

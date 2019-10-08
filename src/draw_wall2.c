@@ -32,9 +32,9 @@ void	draw_wall_transparent(t_data *d, t_projdata *p, t_frustum *fr)
 	{
 		p->nya = LERP(p->n, p->ny1a, p->ny2a);
 		p->nyb = LERP(p->n, p->ny1b, p->ny2b);
-		p->doorbottom = ft_min(p->yd, p->nyb);
+		p->doorbottom = MIN(p->yd, p->nyb);
 		p->doorheight = p->doorbottom - p->yc;
-		p->nya += (p->doorbottom - ft_max(p->yc, p->nya)) *
+		p->nya += (p->doorbottom - MAX(p->yc, p->nya)) *
 			(1 - d->doorstate[p->wall - d->walls]);
 	}
 	draw_wall_transparent2(d, p, fr);
@@ -67,7 +67,7 @@ void	draw_wall_no_nei(t_data *d, t_projdata *p, t_frustum *fr)
 {
 	uint32_t px;
 
-	while (++p->y <= ft_min(fr->ybottom[p->x], p->yb))
+	while (++p->y <= MIN(fr->ybottom[p->x], p->yb))
 		if (p->wall->posterpicnum >= 0 &&
 			p->y > p->ya_poster && p->y < p->yb_poster && (((px =
 			getpixel4(p->poster, p->u_poster, NORMALIZE(p->y, p->ya_poster,

@@ -45,7 +45,7 @@ static bool	check_jetpack(t_data *d, t_assets *asset)
 	else if (asset->is_jetpack)
 		return (false);
 	if (asset->is_jetpack)
-		d->player.is_flying = ft_min(d->player.is_flying + FUEL, MAX_FUEL);
+		d->player.is_flying = MIN(d->player.is_flying + FUEL, MAX_FUEL);
 	return (true);
 }
 
@@ -53,17 +53,17 @@ void		use_asset(t_data *d, t_assets *asset)
 {
 	d->player.health += asset->stat_mod.heal *
 		(d->difficulty == EASY ? 1.5 : 1);
-	d->player.health = ft_min(100, d->player.health);
+	d->player.health = MIN(100, d->player.health);
 	d->player.health -= asset->stat_mod.damage;
 	d->weapon_type[BLASTER].current_ammo += asset->stat_mod.blaster_ammo;
-	d->weapon_type[BLASTER].current_ammo = ft_min(d->weapon_type[BLASTER].
+	d->weapon_type[BLASTER].current_ammo = MIN(d->weapon_type[BLASTER].
 			current_ammo, d->weapon_type[BLASTER].max_ammo);
 	d->weapon_type[CRYO_BALLISTA].current_ammo += asset->stat_mod.ballista_ammo;
-	d->weapon_type[CRYO_BALLISTA].current_ammo = ft_min(d->weapon_type
+	d->weapon_type[CRYO_BALLISTA].current_ammo = MIN(d->weapon_type
 			[CRYO_BALLISTA].current_ammo, d->weapon_type[CRYO_BALLISTA].
 			max_ammo);
 	d->weapon_type[M16].current_ammo += asset->stat_mod.m16_ammo;
-	d->weapon_type[M16].current_ammo = ft_min(d->weapon_type[M16].
+	d->weapon_type[M16].current_ammo = MIN(d->weapon_type[M16].
 			current_ammo, d->weapon_type[M16].max_ammo);
 	if (asset->stat_mod.heal > 0)
 	{
