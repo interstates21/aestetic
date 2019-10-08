@@ -11,11 +11,7 @@
 #define CLAMP(x, a, b) (((x) > (b)) ? (b) : (((x) < (a)) ? (a) : (x)))
 #define NORMALIZE(val, min, max) (((val) - (min)) / ((max) - (min)))
 #define MOD(i, n) (((i) % (n) + (n)) % (n))
-
-double	lerp(double norm, double min, double max)
-{
-	return (min * (1 - norm) + max * norm);
-}
+#define LERP(n, min, max) ((min) * (1 - (n)) + (max) * (n))
 
 
 #define INCREMENT true

@@ -71,7 +71,6 @@ src/shade.c
 src/sound.c
 src/swap_list.c
 src/texanim.c
-src/the_end.c
 src/update.c
 src/update_2.c
 src/update_anim_projectile.c

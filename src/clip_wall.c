@@ -35,7 +35,7 @@ bool	clip_wall(double *x1, double *z1, double x2, double z2)
 
 	p0 = (t_vec2f){*x1, *z1};
 	p1 = (t_vec2f){x2, z2};
-	side = (lerp(NORMALIZE(0, p0.y, p1.y), p0.x, p1.x) < 0) ? -1 : 1;
+	side = (LERP(NORMALIZE(0, p0.y, p1.y), p0.x, p1.x) < 0) ? -1 : 1;
 	inter = intersect(p0, p1, (t_vec2f){((side * WIDTH / 2.0) / WIDTH) *
 			1.0, 1}, (t_vec2f){((side * WIDTH / 2.0) / WIDTH) * 10.0, 10});
 	if (inter.y <= 0)

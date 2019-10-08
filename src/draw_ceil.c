@@ -17,7 +17,7 @@ void	draw_sky(t_data *d, t_projdata *p, t_frustum *fr)
 	{
 		p->u = (unsigned int)(((double)x + d->cam.rot * 1000) /
 				(WIDTH * (h / HEIGHT)) * tex->w) % tex->w;
-		y = ft_min(fr->ybottom[x], lerp(CLAMP(NORMALIZE(x,
+		y = ft_min(fr->ybottom[x], LERP(CLAMP(NORMALIZE(x,
 							p->x1, p->x2), 0, 1), p->y1a, p->y2a)) + 1;
 		while (--y >= fr->ytop[x])
 		{
@@ -57,7 +57,7 @@ void	draw_ceil(t_data *d, t_projdata *p, t_frustum *fr)
 	x = p->cx1 - 1;
 	while (++x <= p->cx2)
 	{
-		y = ft_min(fr->ybottom[x], lerp(CLAMP(NORMALIZE(x,
+		y = ft_min(fr->ybottom[x], LERP(CLAMP(NORMALIZE(x,
 							p->x1, p->x2), 0, 1), p->y1a, p->y2a)) + 1;
 		while (--y >= fr->ytop[x])
 		{

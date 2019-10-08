@@ -141,7 +141,6 @@ void		handle_finish(t_data *d);
 void		play_music(t_data *d, uint8_t id);
 int			load_sound(t_data *d, int f);
 void		play_sound(t_data *d, uint8_t id, t_vec2f pos);
-void		the_end(t_data *d);
 t_vec3f		transform_back(t_data *d, t_vec3f v);
 void		proj_floor(t_data *d, t_projdata *p);
 void		proj_ceil(t_data *d, t_projdata *p);
@@ -234,11 +233,6 @@ void		fly_gravity(t_data *d);
 
 void		draw_monster(t_data *d, t_monster monster);
 
-/*
-** utils.c
-*/
-
-double		lerp(double norm, double min, double max);
 
 /*
 ** exit.c

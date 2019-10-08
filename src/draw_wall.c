@@ -42,8 +42,8 @@ void	draw_wall2bis(t_data *d, t_projdata *p, t_frustum *fr)
 
 void	draw_wall4(t_data *d, t_projdata *p, t_frustum *fr, t_frustum *nfr)
 {
-	p->nya = lerp(p->n, p->ny1a, p->ny2a);
-	p->nyb = lerp(p->n, p->ny1b, p->ny2b);
+	p->nya = LERP(p->n, p->ny1a, p->ny2a);
+	p->nyb = LERP(p->n, p->ny1b, p->ny2b);
 	if (p->wall->is_door)
 	{
 		p->nya = ft_max(p->nya, p->ya);
@@ -64,16 +64,16 @@ void	draw_wall4(t_data *d, t_projdata *p, t_frustum *fr, t_frustum *nfr)
 void	draw_wall2(t_data *d, t_projdata *p, t_frustum *fr, t_frustum *nfr)
 {
 	p->n = CLAMP(NORMALIZE(p->x, p->x1, p->x2), 0, 1);
-	p->z = 1 / lerp(p->n, p->z1, p->z2);
-	p->u = lerp(p->n, p->u1, p->u2) * p->z;
+	p->z = 1 / LERP(p->n, p->z1, p->z2);
+	p->u = LERP(p->n, p->u1, p->u2) * p->z;
 	if (p->z >= p->zbuffer[p->x])
 		return ((void)(p->visible[p->x] = false));
 	p->zbuffer[p->x] = p->z;
 	p->visible[p->x] = true;
-	p->ya = lerp(p->n, p->y1a, p->y2a);
-	p->yb = lerp(p->n, p->y1b, p->y2b);
-	p->yc = lerp(p->n, p->y1c, p->y2c);
-	p->yd = lerp(p->n, p->y1d, p->y2d);
+	p->ya = LERP(p->n, p->y1a, p->y2a);
+	p->yb = LERP(p->n, p->y1b, p->y2b);
+	p->yc = LERP(p->n, p->y1c, p->y2c);
+	p->yd = LERP(p->n, p->y1d, p->y2d);
 	if (p->neighbor)
 		draw_wall4(d, p, fr, nfr);
 	draw_wall2bis(d, p, fr);

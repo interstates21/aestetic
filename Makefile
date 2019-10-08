@@ -10,7 +10,6 @@ FILES = main \
 	   collision \
 	   floceiheight \
 	   floceiheight2 \
-	   the_end \
 	   load_sound \
 	   sound \
 	   handle_finish \
@@ -51,7 +50,6 @@ FILES = main \
 	   player_damage \
 	   load_map load_assets \
 	   inside \
-	   utils \
 	   fly_gravity \
 	   inertia \
 	   monster_collision \
