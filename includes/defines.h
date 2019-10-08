@@ -12,6 +12,12 @@
 #define NORMALIZE(val, min, max) (((val) - (min)) / ((max) - (min)))
 #define MOD(i, n) (((i) % (n) + (n)) % (n))
 
+double	lerp(double norm, double min, double max)
+{
+	return (min * (1 - norm) + max * norm);
+}
+
+
 #define INCREMENT true
 #define SET false
 

@@ -27,9 +27,9 @@ void		pause_menu(t_data *d)
 		if ((e.type != SDL_KEYDOWN) || e.key.repeat)
 			continue ;
 		if (e.key.keysym.sym == SDLK_UP)
-			choice = ft_mod((choice - 1), 2);
+			choice = MOD((choice - 1), 2);
 		if (e.key.keysym.sym == SDLK_DOWN)
-			choice = ft_mod((choice + 1), 2);
+			choice = MOD((choice + 1), 2);
 		if (e.key.keysym.sym == SDLK_RETURN && choice == 0)
 			help_screen(d);
 		if (e.key.keysym.sym == SDLK_RETURN && choice == 1)
