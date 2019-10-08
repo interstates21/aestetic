@@ -13,5 +13,5 @@ void	print_and_quit(t_data *d, const char *str)
 void	print_err(const char *err)
 {
 	ft_putendl((ft_strjoin("Init Error = ", err)));
-	exit(EXIT_FAILURE);
+	exit(1);
 }
