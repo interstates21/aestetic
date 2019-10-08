@@ -5,15 +5,15 @@ void	draw_wall_nei(t_data *d, t_projdata *p, t_frustum *fr)
 	while (++p->y <= ft_min(fr->ybottom[p->x], p->nya))
 		putpixel2(d, p->z, (t_vec2){p->x, p->y},
 			shade(p->shadefactor, getpixel4(p->tex, p->u_tex, p->wall->is_door ?
-				norm(p->y, p->nya - p->doorheight, p->nya) :
-				norm(p->y, p->yc, p->yd) * p->y_scale)));
+				NORMALIZE(p->y, p->nya - p->doorheight, p->nya) :
+				NORMALIZE(p->y, p->yc, p->yd) * p->y_scale)));
 	p->tex = d->textures[p->wall->lowerpicnum];
 	p->u_tex = (p->u - floor(p->u)) * p->tex->w;
 	p->y = ft_max(fr->ytop[p->x], p->nyb) - 1;
 	while (++p->y <= ft_min(fr->ybottom[p->x], p->yb))
 		putpixel2(d, p->z, (t_vec2){p->x, p->y}, shade(p->shadefactor,
 			getpixel4(p->tex, p->u_tex,
-				norm(p->y, p->yc, p->yd) * p->y_scale)));
+				NORMALIZE(p->y, p->yc, p->yd) * p->y_scale)));
 }
 
 void	draw_wall2bis(t_data *d, t_projdata *p, t_frustum *fr)
@@ -24,7 +24,7 @@ void	draw_wall2bis(t_data *d, t_projdata *p, t_frustum *fr)
 			p->u < p->u2_poster)
 	{
 		p->poster = d->posters[p->wall->posterpicnum];
-		p->u_poster = (unsigned int)(norm(p->u, p->u1_poster, p->u2_poster) *
+		p->u_poster = (unsigned int)(NORMALIZE(p->u, p->u1_poster, p->u2_poster) *
 				p->poster->w) % p->poster->w;
 		p->margin = (double)(p->yd - p->yc) * (1.0 - p->poster_h) / 2.0;
 		p->ya_poster = p->yc + p->margin;
@@ -63,7 +63,7 @@ void	draw_wall4(t_data *d, t_projdata *p, t_frustum *fr, t_frustum *nfr)
 
 void	draw_wall2(t_data *d, t_projdata *p, t_frustum *fr, t_frustum *nfr)
 {
-	p->n = CLAMP(norm(p->x, p->x1, p->x2), 0, 1);
+	p->n = CLAMP(NORMALIZE(p->x, p->x1, p->x2), 0, 1);
 	p->z = 1 / lerp(p->n, p->z1, p->z2);
 	p->u = lerp(p->n, p->u1, p->u2) * p->z;
 	if (p->z >= p->zbuffer[p->x])

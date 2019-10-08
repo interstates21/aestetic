@@ -12,7 +12,7 @@ void	draw_wall_transparent2(t_data *d, t_projdata *p, t_frustum *fr)
 	while (++y <= fr->ybottom[p->x])
 	{
 		px = getpixel4(p->tex, p->u_tex,
-				norm(y, p->yc, p->yd) * p->y_scale);
+				NORMALIZE(y, p->yc, p->yd) * p->y_scale);
 		if ((px >> 24) == 0xff)
 			putpixel2(d, p->z, (t_vec2){p->x, y},
 					shade(p->shadefactor, px));
@@ -21,7 +21,7 @@ void	draw_wall_transparent2(t_data *d, t_projdata *p, t_frustum *fr)
 
 void	draw_wall_transparent(t_data *d, t_projdata *p, t_frustum *fr)
 {
-	p->n = CLAMP(norm(p->x, p->x1, p->x2), 0, 1);
+	p->n = CLAMP(NORMALIZE(p->x, p->x1, p->x2), 0, 1);
 	p->z = 1 / lerp(p->n, p->z1, p->z2);
 	p->u = lerp(p->n, p->u1, p->u2) * p->z;
 	p->ya = lerp(p->n, p->y1a, p->y2a);
@@ -70,11 +70,11 @@ void	draw_wall_no_nei(t_data *d, t_projdata *p, t_frustum *fr)
 	while (++p->y <= ft_min(fr->ybottom[p->x], p->yb))
 		if (p->wall->posterpicnum >= 0 &&
 			p->y > p->ya_poster && p->y < p->yb_poster && (((px =
-			getpixel4(p->poster, p->u_poster, norm(p->y, p->ya_poster,
+			getpixel4(p->poster, p->u_poster, NORMALIZE(p->y, p->ya_poster,
 			p->yb_poster))) >> 24) > 128))
 			putpixel2(d, p->z, (t_vec2){p->x, p->y}, shade(p->shadefactor, px));
 		else
 			putpixel2(d, p->z, (t_vec2){p->x, p->y}, shade(p->shadefactor,
 						getpixel4(p->tex, p->u_tex,
-							norm(p->y, p->yc, p->yd) * p->y_scale)));
+							NORMALIZE(p->y, p->yc, p->yd) * p->y_scale)));
 }
