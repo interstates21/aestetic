@@ -30,7 +30,6 @@ src/get_rot_monster.c
 src/getpixel.c
 src/handle_finish.c
 src/handle_respawn.c
-src/help_screen.c
 src/inertia.c
 src/init_font.c
 src/init_monsters.c

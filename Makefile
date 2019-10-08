@@ -2,7 +2,6 @@ NAME = doom_nukem
 CC = clang
 FILES = main \
 	   fix_neighborsects \
-	   help_screen \
 	   draw_hud \
 	   asset_collision \
 	   draw_assets \
