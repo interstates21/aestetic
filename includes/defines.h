@@ -12,7 +12,7 @@
 #define NORMALIZE(val, min, max) (((val) - (min)) / ((max) - (min)))
 #define MOD(i, n) (((i) % (n) + (n)) % (n))
 #define LERP(n, min, max) ((min) * (1 - (n)) + (max) * (n))
-
+#define SPECIAL_CHAR(c) (((c) == 'y') || ((c) == 'p') || ((c) == 'q') || ((c) == ','))
 
 #define INCREMENT true
 #define SET false
