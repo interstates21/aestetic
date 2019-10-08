@@ -56,7 +56,7 @@ int		main(int ac, char **av)
 	init_sdl(&d);
 	if (!(d.zbuffer = malloc(sizeof(double) * WIDTH * HEIGHT)))
 		exit(printf("malloc zbuffer_sprites failed.\n"));
-	ft_strcpy(d.nextmap, (ac == 2) ? av[1] : "newmap.DNMAP");
+	ft_strcpy(d.nextmap, av[1]);
 	// if (ft_strequ(d.nextmap, "./maps/newmap.DNMAP")) ghost#hidden
 	init_everything(&d, d.nextmap);
 

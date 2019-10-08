@@ -51,8 +51,7 @@ static bool	check_jetpack(t_data *d, t_assets *asset)
 
 void		use_asset(t_data *d, t_assets *asset)
 {
-	d->player.health += asset->stat_mod.heal *
-		(d->difficulty == EASY ? 1.5 : 1);
+	d->player.health += asset->stat_mod.heal;
 	d->player.health = ft_min(100, d->player.health);
 	d->player.health -= asset->stat_mod.damage;
 	d->weapon_type[BLASTER].current_ammo += asset->stat_mod.blaster_ammo;
@@ -75,33 +74,29 @@ void		use_asset(t_data *d, t_assets *asset)
 	asset->used = true;
 }
 
-void		asset_collision2(t_data *d, t_assets *asset)
-{
-	t_vec2f	dist;
-	double	dist_len;
-
-	if (asset->used || asset->is_on_ceil)
-		return ;
-	dist = v2_min(v3_to_v2(d->cam.pos), asset->world_pos);
-	dist_len = v2_len(dist);
-	if (dist_len > COLLISION_R)
-		return ;
-	if (asset->collision)
-	{
-		d->cam.pos.x = asset->world_pos.x + dist.x * COLLISION_R / dist_len;
-		d->cam.pos.z = asset->world_pos.y + dist.y * COLLISION_R / dist_len;
-	}
-	if (asset->is_autopick && !check_if_return(d, asset))
-		use_asset(d, asset);
-}
-
 void		asset_collision(t_data *d)
 {
 	int i;
+	t_vec2f	dist;
+	double	dist_len;
+	t_assets *asset;
 
 	i = -1;
 	while (d->nb_assets && ++i < d->assets[d->cursectnum][0].nb_assets)
 	{
-		asset_collision2(d, &d->assets[d->cursectnum][i]);
+		asset = &d->assets[d->cursectnum][i];
+		if (asset->used || asset->is_on_ceil)
+			return ;
+		dist = v2_min(v3_to_v2(d->cam.pos), asset->world_pos);
+		dist_len = v2_len(dist);
+		if (dist_len > COLLISION_R)
+			return ;
+		if (asset->collision)
+		{
+			d->cam.pos.x = asset->world_pos.x + dist.x * COLLISION_R / dist_len;
+			d->cam.pos.z = asset->world_pos.y + dist.y * COLLISION_R / dist_len;
+		}
+		if (asset->is_autopick && !check_if_return(d, asset))
+			use_asset(d, asset);
 	}
 }

@@ -8,9 +8,9 @@ static void	draw_ammo(t_data *d, t_weapon_type weapon_type)
 	ft_strcpy(buf + 6, ft_itoa_static(weapon_type.current_ammo));
 	ft_strcpy(buf + ft_strlen(buf), " / ");
 	ft_strcpy(buf + ft_strlen(buf), ft_itoa_static(weapon_type.max_ammo));
-	draw_string(d, (t_font){buf, 50, 80, 0xffffff, 2});
+	draw_string(d, (t_font){buf, 50, 80, 0, 2});
 	ft_strcpy(buf2 + 8, ft_itoa_static(d->player.health));
-	draw_string(d, (t_font){buf2, 50, 50, 0xffffff, 2});
+	draw_string(d, (t_font){buf2, 50, 50, 0, 2});
 }
 
 static void	draw_fuel(t_data *d)
@@ -18,7 +18,7 @@ static void	draw_fuel(t_data *d)
 	static char buf[100] = "Fuel: ";
 
 	ft_strcpy(buf + 6, ft_itoa_static(d->player.is_flying));
-	draw_string(d, (t_font){buf, 50, 110, 0xffffff, 2});
+	draw_string(d, (t_font){buf, 50, 110, 0, 2});
 }
 
 static void	draw_inventory_slot(t_data *d, SDL_Surface *tex, int x1, int y1)
@@ -45,7 +45,7 @@ static void	draw_timed_msg(t_data *d)
 {
 	if (!d->msg[0])
 		return ;
-	draw_string(d, (t_font){d->msg, 50, HEIGHT - 180, 0xffffff, 4});
+	draw_string(d, (t_font){d->msg, 50, HEIGHT - 180, 0, 2});
 	if (SDL_GetTicks() - d->msg_start > 3000)
 		d->msg[0] = 0;
 }

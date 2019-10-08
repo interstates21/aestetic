@@ -164,7 +164,7 @@ void		check_dangerous_area(t_data *d);
 void		handle_respawn(t_data *d);
 void		precompute_texanim(t_data *d);
 void		intro_screen(t_data *d);
-void		draw_string_typewriter_effect(t_data *d, t_font f);
+//void		draw_string_typewriter_effect(t_data *d, char *s, t_vec2 pos);
 int			ft_mod(int i, int n);
 void		fix_neighborsects(t_data *d);
 
