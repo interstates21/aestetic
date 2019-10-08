@@ -31,15 +31,6 @@ char	*ft_itoa_static(intmax_t n)
 	return (s);
 }
 
-int	ft_max(int a, int b)
-{
-	return ((a > b) ? a : b);
-}
-
-int	ft_min(int a, int b)
-{
-	return ((a > b) ? b : a);
-}
 
 double	get_floorheight_player(t_data *d, int16_t sectnum)
 {

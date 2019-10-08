@@ -6,7 +6,7 @@ void	event_key_down(t_data *d, SDL_KeyboardEvent event)
 	t_assets	*asset;
 
 	if (event.keysym.sym == SDLK_ESCAPE)
-		proper_exit(d);
+		print_and_quit(d, "ESC");
 	if (event.keysym.sym == SDLK_e)
 	{
 		i = -1;
@@ -44,12 +44,5 @@ void	event_mouse_button(t_data *d, SDL_MouseButtonEvent event)
 	if (event.button == SDL_BUTTON_RIGHT)
 		d->right_mouse_button = event.state == SDL_PRESSED ?
 			MOUSE_PRESSED : MOUSE_RELEASED;
-}
-
-void	proper_exit(t_data *d)
-{
-	SDL_DestroyWindow(d->win);
-	SDL_Quit();
-	exit(EXIT_SUCCESS);
 }
 

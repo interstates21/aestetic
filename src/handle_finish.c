@@ -106,8 +106,6 @@ void	handle_finish(t_data *d)
 	i = -1;
 	while (++i < d->numsectors)
 		clear_sector_sprites(d, i);
-	if (!ft_strlen(d->nextmap))
-		the_end(d);
 	free_everything(d);
 	init_everything(d, d->nextmap);
 }

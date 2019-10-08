@@ -19,8 +19,6 @@
 // } bool;
 
 
-#define CLAMP(x, a, b) (((x) > (b)) ? (b) : (((x) < (a)) ? (a) : (x)))
-
 # define MAXNUMSECTORS 1024
 # define MAXNUMMONSTERS 256
 # define MAXNUMWALLS 4096

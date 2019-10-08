@@ -40,7 +40,7 @@ void	draw_floor(t_data *d, t_projdata *p, t_frustum *fr)
 	x = p->cx1 - 1;
 	while (++x <= p->cx2)
 	{
-		y = ft_max(fr->ytop[x], lerp(CLAMP(norm(x,
+		y = MAX(fr->ytop[x], LERP(CLAMP(NORMALIZE(x,
 							p->x1, p->x2), 0, 1), p->y1b, p->y2b)) - 1;
 		while (++y <= fr->ybottom[x])
 		{

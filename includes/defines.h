@@ -8,6 +8,14 @@
 #define MIN_HEIGHT_MONSTER_TO_WALK 1
 #define SMALLEST_HEIGHT_FOR_MONSTERS 1.4
 
+#define CLAMP(x, a, b) (((x) > (b)) ? (b) : (((x) < (a)) ? (a) : (x)))
+#define NORMALIZE(val, min, max) ((((double)val) - ((double)min)) / (((double)max) - ((double)min)))
+#define MOD(i, n) (((i) % (n) + (n)) % (n))
+#define LERP(n, min, max) (((double)min) * (1 - ((double)n)) + ((double)max) * ((double)n))
+#define SPECIAL_CHAR(c) (((c) == 'y') || ((c) == 'p') || ((c) == 'q') || ((c) == ','))
+#define MAX(a, b) (((a) > (b)) ? (a) : (b))
+#define MIN(a, b) (((a) > (b)) ? (b) : (a))
+
 #define INCREMENT true
 #define SET false
 

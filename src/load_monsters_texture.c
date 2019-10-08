@@ -58,7 +58,7 @@ static int	read_anim_texture(t_data *d, int f, int *i, int nb_o)
 	return (0);
 }
 
-int			load_monsters_texture(t_data *d, int f)
+void			load_monsters_texture(t_data *d, int f)
 {
 	int i;
 	int a;
@@ -70,18 +70,17 @@ int			load_monsters_texture(t_data *d, int f)
 	{
 		a = -1;
 		if (read(f, &nb_orientation, sizeof(int)) < 0)
-			return (printf("failed to read nb_orientaiton.\n"));
+			print_err("cannot read num orientation monsters");
 		while (++a < 7)
 			if (read_anim_texture(d, f, (int[2]){i, a}, nb_orientation))
-				return (1);
+				print_err("monst error");
 		if (read(f, &nb_death, sizeof(int)) < 0)
-			return (printf("Failed to read nb_death.\n"));
+				print_err("cannot read num death");
 		a = 18 - nb_death;
 		while (++a < 19)
 			if (read_anim_death_texture(d, f, (int[2]){i, a}, nb_orientation))
-				return (1);
+				print_err("cannot react anim death");
 	}
 	if (read_motherdemon_projectile(d, f))
-		return (1);
-	return (0);
+			print_err("cannot read demon");
 }

@@ -31,16 +31,16 @@ void	blit_asset(t_data *d, t_projdata *p, SDL_Surface *tex)
 
 	if ((p->shadefactor = getshadefactor(d, p, p->z)) <= 0)
 		return ;
-	x = ft_max(p->x1, 0) - 1;
+	x = MAX(p->x1, 0) - 1;
 	while (++x <= p->x2 && x < WIDTH)
 	{
-		u = norm(x, p->x1, p->x2) * tex->w;
-		y = ft_max(p->ya, 0) - 1;
+		u = NORMALIZE(x, p->x1, p->x2) * tex->w;
+		y = MAX(p->ya, 0) - 1;
 		while (++y < p->yb && y < HEIGHT)
 		{
 			if (p->z >= d->zbuffer[x + y * WIDTH])
 				continue ;
-			px = getpixel4(tex, u, norm(y, p->ya, p->yb));
+			px = getpixel4(tex, u, NORMALIZE(y, p->ya, p->yb));
 			if ((px >> 24) > 127)
 				putpixel2(d, p->z, (t_vec2){x, y}, shade(p->shadefactor, px));
 		}

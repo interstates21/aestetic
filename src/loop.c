@@ -44,7 +44,7 @@ void	loop(t_data *d)
 					e.type == SDL_MOUSEBUTTONUP)
 				event_mouse_button(d, e.button);
 			if (e.type == SDL_QUIT)
-				proper_exit(d);
+				print_and_quit(d, "RED CROSS");
 		}
 		update(d);
 		render(d);

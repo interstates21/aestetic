@@ -55,8 +55,6 @@
 
 
 char	*ft_itoa_static(intmax_t n);
-int	ft_max(int a, int b);
-int	ft_min(int a, int b);
 
 void		draw_aim_cross(t_data *d);
 void		m16_shoot(t_data *d);
@@ -141,7 +139,6 @@ void		handle_finish(t_data *d);
 void		play_music(t_data *d, uint8_t id);
 int			load_sound(t_data *d, int f);
 void		play_sound(t_data *d, uint8_t id, t_vec2f pos);
-void		the_end(t_data *d);
 t_vec3f		transform_back(t_data *d, t_vec3f v);
 void		proj_floor(t_data *d, t_projdata *p);
 void		proj_ceil(t_data *d, t_projdata *p);
@@ -235,18 +232,14 @@ void		fly_gravity(t_data *d);
 
 void		draw_monster(t_data *d, t_monster monster);
 
-/*
-** utils.c
-*/
-
-double		lerp(double norm, double min, double max);
-double		norm(double val, double min, double max);
 
 /*
 ** exit.c
+
 */
 
-void		proper_exit(t_data *d);
+void	print_err(const char *err);
+void	print_and_quit(t_data *d, const char *str);
 
 /*
 ** ini
@@ -291,14 +284,14 @@ void		load_map(t_data *d, char *map);
 **	load_assets.c
 */
 
-int			read_posters_data(t_data *d, int f);
-int			read_monsters_data(t_data *d, int f);
-int			read_assets_texture(t_data *d, int f);
-int			read_assets_data(t_data *d, int f);
+void		read_posters_data(t_data *d, int f);
+void		read_monsters_data(t_data *d, int f);
+void		read_assets_texture(t_data *d, int f);
+void		read_assets_data(t_data *d, int f);
 
-int			load_monsters_texture(t_data *d, int f);
+void		load_monsters_texture(t_data *d, int f);
 
-int			load_weapons_texture(t_data *d,
+void		load_weapons_texture(t_data *d,
 		int f, int *nb_tex, int *nb_projectiles);
 
 #endif
