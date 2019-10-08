@@ -64,28 +64,3 @@ void	handle_keypress(int *delay)
 			*delay = 0;
 	}
 }
-
-void	draw_string_typewriter_effect(t_data *d, t_font f)
-{
-	int			x_start;
-	int			delay;
-
-	if (f.scale <= 0)
-		return ((void)printf("bad font scale\n"));
-	x_start = f.x;
-	delay = 30;
-	while (*f.str)
-	{
-		draw_char(d, &f);
-		SDL_UpdateWindowSurface(d->win);
-		f.x += (CHAR_WIDTH + 1) * f.scale;
-		f.str++;
-		if (*f.str == '\n' && ((f.x = x_start) == x_start) && f.str++)
-			f.y += (CHAR_HEIGHT + 10) * f.scale;
-		if (delay)
-		{
-			SDL_Delay(delay);
-			handle_keypress(&delay);
-		}
-	}
-}
