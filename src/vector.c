@@ -90,12 +90,6 @@ t_vec2f	v3_to_v2(t_vec3f a)
 
 bool	is_inside_vec2f(t_vec2f p1, t_vec2f p2, t_vec2f point)
 {
-	point.x *= 100000000;
-	point.x = roundf(point.x);
-	point.x /= 100000000;
-	point.y *= 100000000;
-	point.y = roundf(point.y);
-	point.y /= 100000000;
 	if ((point.x < p1.x && point.x < p2.x) ||
 			(point.x > p1.x && point.x > p2.x))
 		return (false);
