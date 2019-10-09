@@ -8,6 +8,7 @@
 #define MIN_HEIGHT_MONSTER_TO_WALK 1
 #define SMALLEST_HEIGHT_FOR_MONSTERS 1.4
 
+#define ANIMATION_TIME (SDL_GetTicks() / 1000.0)
 #define CLAMP(x, a, b) (((x) > (b)) ? (b) : (((x) < (a)) ? (a) : (x)))
 #define NORMALIZE(val, min, max) ((((double)val) - ((double)min)) / (((double)max) - ((double)min)))
 #define MOD(i, n) (((i) % (n) + (n)) % (n))

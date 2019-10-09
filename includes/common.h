@@ -166,6 +166,8 @@ typedef struct				s_texture_data
 ** vec2.c
 */
 
+t_vec3f						new_v3(double x, double y, double z);
+t_vec2f						new_v2(double x, double y);
 t_vec2f						v2_min(t_vec2f v1, t_vec2f v2);
 t_vec2f						v2_plus(t_vec2f v1, t_vec2f v2);
 void						actualize_dir(double angle, t_vec2f *vec);

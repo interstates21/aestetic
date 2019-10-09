@@ -113,3 +113,31 @@ double	v2_atan(t_vec2f v1, t_vec2f v2)
 {
 	return (atan2(v1.x * v2.y - v1.y * v2.x, v1.x * v2.x + v1.y * v2.y));
 }
+
+
+void	v2_rot(t_vec2f *p, double angle)
+{
+	t_vec2f temp;
+
+	temp = *p;
+	p->x = temp.x * cos(angle) - temp.y * sin(angle);
+	p->y = temp.x * sin(angle) + temp.y * cos(angle);
+}
+
+t_vec2f	new_v2(double x, double y) {
+	t_vec2f v;
+
+	v.x = x;
+	v.y = y;
+	return (v);
+}
+
+
+t_vec3f	new_v3(double x, double y, double z) {
+	t_vec3f v;
+
+	v.x = x;
+	v.y = y;
+	v.z = z;
+	return (v);
+}

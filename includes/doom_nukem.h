@@ -57,7 +57,7 @@
 
 double *getScreenPixels();
 void	initKeys(Uint8 **keys);
-
+void	v2_rot(t_vec2f *p, double angle);
 
 
 char	*ft_itoa_static(intmax_t n);
@@ -134,7 +134,6 @@ uint32_t	alpha(uint32_t	old_colo, uint32_t	new_colo);
 void		draw_string(t_data *d, t_font f);
 void		init_font(t_data *d);
 void		transformvertex(t_data *d, t_vec2f v, double *x, double *z);
-double		get_floceiheight(t_data *d, int16_t sectnum, t_vec2f p, bool is_floor);
 double		get_floorheight_player(t_data *d, int16_t sectnum);
 double		get_floordh(t_data *d, t_sector *sect, t_vec2f v);
 double		get_ceilheight_player(t_data *d, int16_t sectnum);

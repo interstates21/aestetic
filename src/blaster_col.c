@@ -1,6 +1,5 @@
 #include "../includes/doom_nukem.h"
 
-
 bool		should_touch_blaster_hitbox(t_data *d, t_vec2f updated_pos,
 		double dist, uint16_t id_of_monst)
 {

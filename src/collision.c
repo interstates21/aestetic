@@ -65,22 +65,21 @@ bool	collision(t_data *d, t_sector *sect)
 
 bool	can_traverse_monster(t_data *d, int i, t_vec2f *pos, t_sector *sect)
 {
-	int16_t neighbor;
-	double	cur_height;
+	double	floorHeight;
+	double	roofHeight;
 	t_wall	*wall;
+	int16_t	sectNum;
 
 	wall = &d->walls[i];
-	cur_height = get_floceiheight(d, sect - &d->sectors[0], *pos, 1);
-	neighbor = wall->neighborsect;
-	return (wall->neighborsect != -1 &&
-			wall->is_transparent == false &&
-			d->doorstate[i] > 0.7 &&
-			cur_height + MIN_HEIGHT_MONSTER_TO_WALK > get_floceiheight(d,
-			sect - &d->sectors[0], *pos, 1) && (d->sectors[neighbor].outdoor ||
-			get_floceiheight(d, sect - &d->sectors[0], *pos, 0) -
-			get_floceiheight(d, sect - &d->sectors[0], *pos, 1) >
-			SMALLEST_HEIGHT_FOR_MONSTERS));
+	sectNum = sect - &d->sectors[0];
+	floorHeight = getFloorHeight(&d->sectors[sectNum], d->walls, sectNum, *pos);
+	roofHeight = getCeilHeight(&d->sectors[sectNum], d->walls, sectNum, *pos);
+	return (wall->neighborsect != -1 && !(wall->is_transparent) && d->doorstate[i] > 0.7 &&
+			(floorHeight + MIN_HEIGHT_MONSTER_TO_WALK != floorHeight)
+			&& (d->sectors[wall->neighborsect].outdoor ||
+			roofHeight - floorHeight > SMALLEST_HEIGHT_FOR_MONSTERS));
 }
+
 
 bool	collision_monster_wall(t_data *d,
 		t_sector *sect, t_vec2f *pos, double dist_coll)
