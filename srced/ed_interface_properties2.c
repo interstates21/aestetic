@@ -75,7 +75,7 @@ void		show_preview(t_data *d, SDL_Surface *a[3][100])
 		y = d->interface.mouse_pos.y + 10;
 		if (x + a[d->interface.category][n]->w >= W)
 			x = x - (a[d->interface.category][n]->w - (W - x));
-		copy_surface_to_surface(a[d->interface.category][n], d->screen,
+		copy_surface_to_surface(a[d->interface.category][n], d->sdl.screen,
 															(int[2]){x, y}, d);
 	}
 }

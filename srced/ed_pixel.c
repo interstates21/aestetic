@@ -12,10 +12,10 @@ void		putpixel(t_data *d, int x, int y, uint32_t color)
 	if (x >= 0 && y >= 0 && x < W && y < H)
 	{
 		if (!d->interface.prompt_map_open)
-			((uint32_t*)d->screen->pixels)[x + y * W] = color;
+			((uint32_t*)d->sdl.screen->pixels)[x + y * W] = color;
 		else if (d->interface.prompt_map_open &&
 				(x < MAP_PROMPT_X || x > MAP_PROMPT_ENDX ||
 				y < MAP_PROMPT_Y - 25 || y > MAP_PROMPT_ENDY))
-			((uint32_t*)d->screen->pixels)[x + y * W] = color;
+			((uint32_t*)d->sdl.screen->pixels)[x + y * W] = color;
 	}
 }

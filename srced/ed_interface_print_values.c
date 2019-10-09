@@ -23,7 +23,7 @@ static void	print_sector_options_values(t_data *d, int x, int y,
 	v = (t_vec2*[]){&p->cbox_blinking, &p->cbox_harmful,
 					&p->cbox_ceil_animated, &p->cbox_floor_animated};
 	s = &d->sectors[d->selected_sector];
-	copy_surface_to_surface(d->interface.toolbar.properties[19], d->screen,
+	copy_surface_to_surface(d->interface.toolbar.properties[19], d->sdl.screen,
 					(int[2]){p->sector_options.x, p->sector_options.y}, d);
 	x = p->btn_slopeceil_minus.x - 53;
 	y = p->btn_slopeceil_minus.y + 5;
@@ -37,7 +37,7 @@ static void	print_sector_options_values(t_data *d, int x, int y,
 			(i == 2 && s->is_animatedslopeceil) ||
 			(i == 3 && s->is_animatedslope))
 			copy_surface_to_surface(d->interface.toolbar.properties[14],
-						d->screen, (int[2]){v[i]->x, v[i]->y}, d);
+						d->sdl.screen, (int[2]){v[i]->x, v[i]->y}, d);
 }
 
 static void	print_asset_values(t_data *d, t_assets_list *a, t_btn_option_p *p,
@@ -46,7 +46,7 @@ static void	print_asset_values(t_data *d, t_assets_list *a, t_btn_option_p *p,
 	int		x;
 	int		i;
 
-	copy_surface_to_surface(d->interface.toolbar.properties[14], d->screen,
+	copy_surface_to_surface(d->interface.toolbar.properties[14], d->sdl.screen,
 		(a->is_on_floor) ? (int[2]){v[0]->x, v[0]->y - 1} :
 							(int[2]){v[1]->x, v[1]->y - 1}, d);
 	x = p->btn_restorehp_minus.x - 75;
@@ -61,7 +61,7 @@ static void	print_asset_values(t_data *d, t_assets_list *a, t_btn_option_p *p,
 			(i == 9 && a->collision) || (i == 10 && a->is_jetpack) ||
 			(i == 11 && a->is_key))
 			copy_surface_to_surface(d->interface.toolbar.properties[14],
-						d->screen, (int[2]){v[i]->x, v[i]->y - 1}, d);
+						d->sdl.screen, (int[2]){v[i]->x, v[i]->y - 1}, d);
 }
 
 static void	print_next_map_and_asset(t_data *d, int x, int y)
@@ -72,7 +72,7 @@ static void	print_next_map_and_asset(t_data *d, int x, int y)
 	p = &d->interface.btn_option_p;
 	x = d->interface.box_nex_map_p.x;
 	y = d->interface.box_nex_map_p.y;
-	copy_surface_to_surface(d->interface.toolbar.properties[18], d->screen,
+	copy_surface_to_surface(d->interface.toolbar.properties[18], d->sdl.screen,
 														(int[2]){x, y}, d);
 	ft_memset(string, 0, 100);
 	if (d->sectors[d->selected_sector].is_finish && d->next_map[0])

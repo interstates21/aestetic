@@ -7,16 +7,16 @@ static void	draw_rect(t_data *d, int x, int y, int color)
 
 	i = -1;
 	while (++i < 569)
-		((uint32_t *)d->screen->pixels)[x + i + y * W] = color;
+		((uint32_t *)d->sdl.screen->pixels)[x + i + y * W] = color;
 	i = -1;
 	while (++i < 569)
-		((uint32_t *)d->screen->pixels)[x + i + (y + 19) * W] = color;
+		((uint32_t *)d->sdl.screen->pixels)[x + i + (y + 19) * W] = color;
 	i = -1;
 	while (++i < 19)
-		((uint32_t *)d->screen->pixels)[x + (y + i) * W] = color;
+		((uint32_t *)d->sdl.screen->pixels)[x + (y + i) * W] = color;
 	i = -1;
 	while (++i < 19)
-		((uint32_t *)d->screen->pixels)[x + 569 + (y + i) * W] = color;
+		((uint32_t *)d->sdl.screen->pixels)[x + 569 + (y + i) * W] = color;
 }
 
 void		draw_map_list(t_data *d)

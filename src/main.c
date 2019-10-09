@@ -42,23 +42,23 @@ void	init_everything(t_data *d, char *map)
 	loop(d);
 }
 
-int		main(int ac, char **av)
-{
+
+
+void run(char *mapname) {
 	t_data d;
 
-	if (ac != 2)
-	{
-		printf("Usage : ./doom-nukem \"Map_name\"\n");
-		printf("The map must be in the \"maps\" folder.\n");
-		exit(EXIT_FAILURE);
-	}
 	init_font(&d);
-	init_sdl(&d);
-	if (!(d.zbuffer = malloc(sizeof(double) * WIDTH * HEIGHT)))
-		exit(printf("malloc zbuffer_sprites failed.\n"));
-	ft_strcpy(d.nextmap, av[1]);
-	// if (ft_strequ(d.nextmap, "./maps/newmap.DNMAP")) ghost#hidden
+	init_sdl(&(d.sdl));
+	initKeys(&(d.keys));
+	d.zbuffer = getScreenPixels();
+	ft_strncpy(d.nextmap, mapname, 100);
 	init_everything(&d, d.nextmap);
+}
 
-	return (EXIT_SUCCESS);
+int main(int argc, char **argv) {
+	if (argc != 2)
+		print_err("Wrong number of args =(");
+	if (!validateArgv(argv[1]))
+		print_err("Wrong mapname");
+	run(argv[1]);
 }

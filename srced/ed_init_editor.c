@@ -86,10 +86,10 @@ int				init_editor(t_data *d)
 {
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_EVENTS))
 		return (printf("Failed to init SDL.\n"));
-	if (!(d->win = SDL_CreateWindow("editor", SDL_WINDOWPOS_CENTERED,
+	if (!(d->sdl.win = SDL_CreateWindow("editor", SDL_WINDOWPOS_CENTERED,
 					SDL_WINDOWPOS_CENTERED, W, H, 0)))
 		return (printf("Failed to create editor's window.\n"));
-	if (!(d->screen = SDL_GetWindowSurface(d->win)))
+	if (!(d->sdl.screen = SDL_GetWindowSurface(d->sdl.win)))
 		return (printf("Failed to get window's surface.\n"));
 	if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 1024) == -1)
 		return (printf("Failed to init audio Mixer\n"));

@@ -23,7 +23,7 @@ static void	render(t_data *d)
 	color_buffer(d);
 	draw_aim_cross(d);
 	draw_hud(d);
-	SDL_UpdateWindowSurface(d->win);
+	SDL_UpdateWindowSurface(d->sdl.win);
 }
 
 void	loop(t_data *d)

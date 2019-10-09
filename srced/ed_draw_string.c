@@ -19,7 +19,7 @@ void	draw_char(t_data *d, t_font *f)
 		y = SPECIAL_CHAR(*f->str) ? 2 * f->scale : 0;
 		while (++i < CHAR_HEIGHT * f->scale)
 			if (d->font[(int)c][j / f->scale] & (1 << i / f->scale))
-				((uint32_t*)d->screen->pixels)[
+				((uint32_t*)d->sdl.screen->pixels)[
 					f->x + j + (f->y + i + y) * W] = f->color;
 	}
 }

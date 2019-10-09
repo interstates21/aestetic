@@ -12,19 +12,19 @@ static void	display_sprite_one_point_monst(t_data *d, SDL_Surface *s,
 	{
 		y = MAX(0, display_data.start.y) - 1;
 		while (++y <= MIN(HEIGHT - 1, display_data.end.y))
-			if (dist < d->zbuffer[x + y * d->screen->w])
+			if (dist < d->zbuffer[x + y * d->sdl.screen->w])
 			{
 				colo = getpixel(s, display_data.scale.x *
 						(x - display_data.start.x),
 						display_data.scale.y * (y - display_data.start.y));
-				colo = alpha(((uint32_t *)d->screen->pixels)
-						[x + y * d->screen->w], colo);
-				if (colo != getpixel3(d->screen, x, y))
+				colo = alpha(((uint32_t *)d->sdl.screen->pixels)
+						[x + y * d->sdl.screen->w], colo);
+				if (colo != getpixel3(d->sdl.screen, x, y))
 				{
 					colo = sprite_shade(d, &d->sectors[display_data.cursectnum]
 							, dist, colo);
 					putpixel(d, x, y, colo);
-					d->zbuffer[x + y * d->screen->w] = dist;
+					d->zbuffer[x + y * d->sdl.screen->w] = dist;
 				}
 			}
 	}
@@ -42,19 +42,19 @@ static void	display_sprite_one_point_rev(t_data *d, SDL_Surface *s,
 	{
 		y = MAX(0, display_data.start.y) - 1;
 		while (++y <= MIN(HEIGHT - 1, display_data.end.y))
-			if (dist < d->zbuffer[x + y * d->screen->w])
+			if (dist < d->zbuffer[x + y * d->sdl.screen->w])
 			{
 				colo = getpixel(s, 1 - (display_data.scale.x *
 							(x - display_data.start.x)),
 						display_data.scale.y * (y - display_data.start.y));
-				colo = alpha(((uint32_t *)d->screen->pixels)
-						[x + y * d->screen->w], colo);
-				if (colo != getpixel3(d->screen, x, y))
+				colo = alpha(((uint32_t *)d->sdl.screen->pixels)
+						[x + y * d->sdl.screen->w], colo);
+				if (colo != getpixel3(d->sdl.screen, x, y))
 				{
 					colo = sprite_shade(d, &d->sectors[display_data.cursectnum]
 							, dist, colo);
 					putpixel(d, x, y, colo);
-					d->zbuffer[x + y * d->screen->w] = dist;
+					d->zbuffer[x + y * d->sdl.screen->w] = dist;
 				}
 			}
 	}

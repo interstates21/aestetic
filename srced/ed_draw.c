@@ -78,7 +78,7 @@ void		draw_screen(t_data *d)
 {
 	int	s;
 
-	ft_memset(d->screen->pixels, 0, W * H * 4);
+	ft_memset(d->sdl.screen->pixels, 0, W * H * 4);
 	draw_grid(d);
 	s = -1;
 	while (++s < d->numsectors)
@@ -95,5 +95,5 @@ void		draw_screen(t_data *d)
 	}
 	else
 		draw_map_list(d);
-	SDL_UpdateWindowSurface(d->win);
+	SDL_UpdateWindowSurface(d->sdl.win);
 }

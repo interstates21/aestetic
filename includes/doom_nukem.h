@@ -54,6 +54,12 @@
 # define HEALTH_COLO 0xFFFF66
 
 
+
+double *getScreenPixels();
+void	initKeys(Uint8 **keys);
+
+
+
 char	*ft_itoa_static(intmax_t n);
 
 void		draw_aim_cross(t_data *d);
@@ -171,6 +177,8 @@ void		fix_neighborsects(t_data *d);
 
 void		update_2(t_data *d);
 
+
+bool		validateArgv(char *str);
 /*
 ** update.c
 */
@@ -245,7 +253,7 @@ void	print_and_quit(t_data *d, const char *str);
 ** ini
 */
 
-void		init_sdl(t_data *d);
+void		init_sdl(t_sdl *sdl);
 
 /*
 ** loop.c

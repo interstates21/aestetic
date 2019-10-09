@@ -32,7 +32,7 @@ static void	print_assets_toolbar(t_data *d, SDL_Surface **prop)
 
 	x = (W - PROPERTIES_LIMIT * 0.5) - prop[4]->w * 0.5;
 	y = 5;
-	copy_surface_to_surface(prop[4], d->screen, (int[2]){x, y}, d);
+	copy_surface_to_surface(prop[4], d->sdl.screen, (int[2]){x, y}, d);
 	y += prop[4]->h + 5;
 	d->interface.category_pos[0] = (t_vec2){W - PROPERTIES_LIMIT + 7, y + 4};
 	draw_separator(d, W - PROPERTIES_LIMIT, y, 0x008800);
@@ -42,11 +42,11 @@ static void	print_assets_toolbar(t_data *d, SDL_Surface **prop)
 	draw_separator(d, W - PROPERTIES_LIMIT, y, 0x008800);
 	draw_separator(d, W - PROPERTIES_LIMIT, y + prop[5]->h + 10, 0x008800);
 	x = (W - PROPERTIES_LIMIT * 0.5) - prop[5]->w * 0.5;
-	copy_surface_to_surface(prop[5], d->screen, (int[2]){x, y + 5}, d);
+	copy_surface_to_surface(prop[5], d->sdl.screen, (int[2]){x, y + 5}, d);
 	y = PROPERTIES_POS - prop[7]->h - 15;
 	draw_separator(d, W - PROPERTIES_LIMIT, y, 0x008800);
 	x = W - PROPERTIES_LIMIT + MARGIN;
-	copy_surface_to_surface(prop[7], d->screen, (int[2]){x, y + 5}, d);
+	copy_surface_to_surface(prop[7], d->sdl.screen, (int[2]){x, y + 5}, d);
 	d->interface.category_pos[2] = (t_vec2){x + prop[7]->w + 10, y + 5};
 	print_assets(d, d->interface.toolbar.assets);
 }
@@ -86,13 +86,13 @@ void		print_interface(t_data *d)
 	int	i;
 
 	if (d->interface.show_menu)
-		copy_surface_to_surface(d->interface.menu, d->screen, (int[2]){0, 0},
+		copy_surface_to_surface(d->interface.menu, d->sdl.screen, (int[2]){0, 0},
 																		d);
 	i = (!d->interface.select) ? 0 : 1;
-	copy_surface_to_surface(d->interface.toolbar.select[i], d->screen,
+	copy_surface_to_surface(d->interface.toolbar.select[i], d->sdl.screen,
 											(int[2]){0, H * 0.5 - 29}, d);
 	i = (!d->interface.move) ? 0 : 1;
-	copy_surface_to_surface(d->interface.toolbar.move[i], d->screen,
+	copy_surface_to_surface(d->interface.toolbar.move[i], d->sdl.screen,
 											(int[2]){0, H * 0.5}, d);
 	if (d->interface.texture_case_select != -1)
 		print_texture_toolbar(d, d->interface.texture_case_select);

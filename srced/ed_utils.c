@@ -54,8 +54,8 @@ void			cpy_scale_surf(SDL_Surface *src, int p[2], int size, t_data *d)
 					(int)((double)x / size * src->w) +
 					(int)((double)y / size * src->h) * src->w];
 					if (c >> 24 == 255)
-						((uint32_t*)d->screen->pixels)[(x + p[0]) +
-						(y + p[1]) * d->screen->w] = c;
+						((uint32_t*)d->sdl.screen->pixels)[(x + p[0]) +
+						(y + p[1]) * d->sdl.screen->w] = c;
 				}
 }
 

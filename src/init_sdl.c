@@ -27,18 +27,20 @@ void	fix_picnum(t_data *d)
 		}
 }
 
-void	init_sdl(t_data *d)
+void	init_sdl(t_sdl *sdl)
 {
-	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_EVENTS))
+	SDL_Init(SDL_INIT_EVERYTHING);
+	if (!(sdl->win = SDL_CreateWindow("doom-nukem", SDL_WINDOWPOS_UNDEFINED,
+					SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, 0)))
 		print_err(SDL_GetError());
-	if (!(d->win = SDL_CreateWindow("doom-nukem", SDL_WINDOWPOS_CENTERED,
-					SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, 0)))
-		print_err(SDL_GetError());
-	if (!(d->screen = SDL_GetWindowSurface(d->win)))
+	if (!(sdl->screen = SDL_GetWindowSurface(sdl->win)))
 		print_err(SDL_GetError());
 	if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 1024) == -1)
 		print_err(SDL_GetError());
 	if (!Mix_AllocateChannels(MAX_CHANNELS))
 		print_err(SDL_GetError());
-	d->keys = SDL_GetKeyboardState(NULL);
+}
+
+void	initKeys(Uint8 **keys) {
+		*(keys) = (Uint8*)SDL_GetKeyboardState(NULL);
 }

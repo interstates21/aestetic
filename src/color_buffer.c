@@ -52,7 +52,7 @@ void	color_screen(t_args_multi_colo_buf *data)
 						data->d->color_buf.value);
 			colo = data->d->color_buf.colo + (tmp << 24);
 			putpixel(data->d, x, y,
-					alpha(getpixel3(data->d->screen, x, y), colo));
+					alpha(getpixel3(data->d->sdl.screen, x, y), colo));
 		}
 	}
 }

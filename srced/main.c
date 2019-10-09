@@ -78,7 +78,7 @@ int		event_loop(t_data *d)
 		draw_screen(d);
 		SDL_FlushEvent(SDL_MOUSEMOTION);
 	}
-	SDL_DestroyWindow(d->win);
+	SDL_DestroyWindow(d->sdl.win);
 	SDL_Quit();
 	return ((open == -2) ? 1 : 0);
 }

@@ -2,8 +2,8 @@
 
 void	print_and_quit(t_data *d, const char *str)
 {
-	if (d->win)
-		SDL_DestroyWindow(d->win);
+	if (d->sdl.win)
+		SDL_DestroyWindow(d->sdl.win);
 	SDL_Quit();
 	ft_putendl(ft_strjoin(("Good bye!"), str));
 	exit(0);

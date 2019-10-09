@@ -62,6 +62,8 @@ FILES = main \
 	   font \
 	   vector \
 	   load_monsters_texture \
+	   n_validators \
+	   n_allocators \
 
 LIBFT_DIR = libft/
 SRC = $(addprefix src/, $(addsuffix .c, $(FILES)))

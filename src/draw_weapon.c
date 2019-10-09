@@ -17,8 +17,8 @@ void	display_weapon(t_data *d, SDL_Surface *s, t_vec2f start, t_vec2f end)
 		{
 			colo = getpixel(s, scale.x *
 					(x - start.x), scale.y * (y - start.y));
-			colo = alpha(((uint32_t *)d->screen->pixels)
-					[x + y * d->screen->w], colo);
+			colo = alpha(((uint32_t *)d->sdl.screen->pixels)
+					[x + y * d->sdl.screen->w], colo);
 			putpixel(d, x, y, colo);
 			y++;
 		}
