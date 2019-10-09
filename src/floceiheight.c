@@ -20,6 +20,19 @@ t_vec2f	rotate_point(t_vec2f p, t_vec2f center, double angle)
 	return (v2_plus(p, center));
 }
 
+
+double	get_floceiheight(t_data *d, int16_t sectnum, t_vec2f p, bool is_floor)
+{
+	t_sector	*sect;
+
+	if (sectnum < 0)
+		exit(printf("bad sectnum\n"));
+	sect = &d->sectors[sectnum];
+	return (is_floor ? sect->floorheight : sect->ceilheight) + ((is_floor &&
+	sect->is_elevator) ? sin(SDL_GetTicks() / 1000.0) * 0.5 : 0);
+}
+
+/*
 double	get_floceiheight(t_data *d, int16_t sectnum, t_vec2f p, bool is_floor)
 {
 	t_sector	*sect;
@@ -42,3 +55,4 @@ double	get_floceiheight(t_data *d, int16_t sectnum, t_vec2f p, bool is_floor)
 			sect->is_animatedslopeceil)) ? (SDL_GetTicks() / 1000.0) : 0));
 	return (h + tan(slope * M_PI / 180) * (p.x - center.x));
 }
+*/
