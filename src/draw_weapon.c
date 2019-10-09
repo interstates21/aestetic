@@ -30,7 +30,6 @@ void	draw_weapon(t_data *d)
 {
 	t_vec2f			start;
 	t_vec2f			end;
-	t_vec2f			tmp;
 	SDL_Surface		*cur_img;
 
 	if (!d->player.timer_anim_weap)
@@ -43,14 +42,11 @@ void	draw_weapon(t_data *d)
 	cur_img = d->weapon_tex[d->player.current_weapon]
 		[d->player.current_anim_playing];
 	d->player.timer_anim_weap--;
-	start.x = WIDTH * 0.5 + d->player.timer_change_weap * WIDTH * 0.003 -
-	cur_img->w * 0.5 * SIZE_OF_WEAP;
-	tmp = d->inertia;
-	actualize_dir(d->cam.rot, &tmp);
-	start.x -= tmp.x * 150;
+	start.x = (WIDTH >> 1) + d->player.timer_change_weap * WIDTH * 0.003 -
+	(cur_img->w >> 1) * SIZE_OF_WEAP;
 	end.x = start.x + cur_img->w * SIZE_OF_WEAP;
-	end.y = (HEIGHT + d->player.timer_change_weap *
-		HEIGHT * 0.010 + MAX_INERTIA * 50) + tmp.y * 50;
+	end.y = HEIGHT + d->player.timer_change_weap *
+		HEIGHT * 0.010;
 	start.y = end.y - cur_img->h * SIZE_OF_WEAP;
 	display_weapon(d, cur_img, start, end);
 }
