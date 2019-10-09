@@ -42,7 +42,7 @@ void	init_projectiles_fireball_1(t_data *d)
 	d->projectile_type[FIREBALL_1].threat_to_player = true;
 	d->projectile_type[FIREBALL_1].hitbox_radius = 0.5;
 	d->projectile_type[FIREBALL_1].speed = 0.05;
-	d->projectile_type[FIREBALL_1].damage = d->difficulty == HARD ? 20 : 15;
+	d->projectile_type[FIREBALL_1].damage = 15;
 	d->projectile_type[FIREBALL_1].anim_order[0] = 1;
 	d->projectile_type[FIREBALL_1].anim_order[1] = 0;
 	d->projectile_type[FIREBALL_1].anim_order[COLLISION_ID] = 2;

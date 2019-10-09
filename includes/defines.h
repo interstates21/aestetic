@@ -54,7 +54,7 @@
 #define LONG_RANGE 7
 #define COLLISION_DIST_MOTHERDEMON 1.0
 
-#define SIZE_OF_WEAP 1.5;
+#define SIZE_OF_WEAP 1.5
 #define MAX_INERTIA 0.19
 
 #define ACTIVATION_DIST 3.0

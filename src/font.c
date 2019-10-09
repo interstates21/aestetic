@@ -20,8 +20,7 @@ void	draw_char(t_data *d, t_font *f)
 		while (++i < CHAR_HEIGHT * f->scale)
 			if (d->font[(int)c][j / f->scale] & (1 << i / f->scale))
 			{
-				putpixel(d, f->x + j, f->y + i + y, f->color);
-				putpixel(d, f->x + j, f->y + i + y + f->scale, 0x000000);
+				putpixel(d, f->x + j, f->y + i + y, 0xFFFFFF);
 			}
 	}
 }

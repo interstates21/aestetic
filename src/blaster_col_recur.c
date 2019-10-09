@@ -24,9 +24,7 @@ static bool		check_dists(double dist, t_data *d, short i,
 		return (true);
 	tmp_dist = get_dist_to_intersect_wall(d, d->walls[j].point,
 			d->walls[i].point);
-	if (tmp_dist < dist)
-		return (true);
-	return (false);
+	return (tmp_dist < dist);
 }
 
 static bool		check_condition_inside_wall(t_data *d, short i, short j)
@@ -38,10 +36,8 @@ static bool		check_condition_inside_wall(t_data *d, short i, short j)
 		d->cam.pos.z + 1000 * d->cam.cos};
 	tmp = intersect(v3_to_v2(d->cam.pos), tmp2,
 			d->walls[j].point, d->walls[i].point);
-	if (is_inside_vec2f(d->walls[j].point, d->walls[i].point, tmp) &&
-			is_inside_vec2f(v3_to_v2(d->cam.pos), tmp2, tmp))
-		return (true);
-	return (false);
+	return (is_inside_vec2f(d->walls[j].point, d->walls[i].point, tmp) &&
+			is_inside_vec2f(v3_to_v2(d->cam.pos), tmp2, tmp));
 }
 
 int16_t			recur_scan_point_line(t_data *d,

@@ -29,7 +29,7 @@ double	get_floceiheight(t_data *d, int16_t sectnum, t_vec2f p, bool is_floor)
 		exit(printf("bad sectnum\n"));
 	sect = &d->sectors[sectnum];
 	return (is_floor ? sect->floorheight : sect->ceilheight) + ((is_floor &&
-	sect->is_elevator) ? sin(SDL_GetTicks() / 1000.0) * 0.5 : 0);
+	sect->is_elevator) ? sin(SDL_GetTicks() / 2000.0) : 0);
 }
 
 /*
