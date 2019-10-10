@@ -16,19 +16,19 @@
 # define W 1600
 # define H 1200
 # define GRIDSIZE 64
-# define TEXTURE_PATH "./textures/"
-# define POSTERS_PATH "./textures/posters/"
+# define TEXTURE_PATH "../textures/"
+# define POSTERS_PATH "../textures/posters/"
 
 /*
 **	Assets paths
 */
 
-# define PATH_MONSTERS "./textures/assets/monsters/"
-# define PATH_WEAPONS "./textures/assets/weapons/"
-# define PATH_ASSETS "./textures/assets/assets/"
+# define PATH_MONSTERS "../textures/assets/monsters/"
+# define PATH_WEAPONS "../textures/assets/weapons/"
+# define PATH_ASSETS "../textures/assets/assets/"
 
-# define PATH_MONSTER_ED "./textures/assets/editor/monsters/"
-# define PATH_PLAYERSTART_ED "./textures/assets/editor/playerstart/"
+# define PATH_MONSTER_ED "../textures/assets/editor/monsters/"
+# define PATH_PLAYERSTART_ED "../textures/assets/editor/playerstart/"
 
 # define PATH_MAP "./maps/"
 # define MAP_PROMPT_X (W >> 2)
@@ -236,10 +236,16 @@ typedef struct	s_interface
 
 # define MAX_ASSETS 100
 
+
+typedef struct		s_sdl
+{
+	SDL_Window		*win;
+	SDL_Surface		*screen;
+}					t_sdl;
+
 typedef struct	s_data
 {
-	SDL_Window			*win;
-	SDL_Surface			*screen;
+	t_sdl				sdl;
 	SDL_Surface			**textures;
 	int					nb_texture;
 	SDL_Surface			**posters;
@@ -652,5 +658,6 @@ int				add_assets_to_list(t_data *d, t_vec2f *p, int sectn,
 */
 
 void			draw_string(t_data *d, t_font f);
+char	*ft_itoa_static(intmax_t n);
 
 #endif

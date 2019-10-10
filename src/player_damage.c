@@ -42,7 +42,7 @@ void	player_contact_monster_2(t_data *d, t_monster *monster)
 {
 	if (!d->player.can_be_stomped)
 	{
-		d->player.health -= d->difficulty == HARD ? 20 : 15;
+		d->player.health -= 15;
 		d->player.can_be_stomped = 30;
 		change_buf_colo(d, 8, RED);
 		if (d->player.health > 0)

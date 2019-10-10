@@ -9,7 +9,7 @@ int					get_monsterdemon_projectile(t_data *d)
 	int				i;
 	char			*f;
 
-	path = "./textures/assets/monsters/motherdemon/projectiles/";
+	path = "../textures/assets/monsters/motherdemon/projectiles/";
 	if (!(dr = opendir(path)))
 		return (printf("Failed to open %s\n", path));
 	i = 0;

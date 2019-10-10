@@ -1,5 +1,5 @@
 #include "../includes/doom_nukem.h"
-
+/*
 bool	pickup_asset(t_data *d)
 {
 	int			i;
@@ -28,3 +28,4 @@ void	press_e(t_data *d)
 	else if (activate_door(d, &d->sectors[d->cursectnum]))
 		return ;
 }
+*/

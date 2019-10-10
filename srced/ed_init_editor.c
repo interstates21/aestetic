@@ -48,16 +48,16 @@ static int		init_toolbar(t_toolbar *tb)
 	int		i;
 	int		j;
 
-	file = (char*[]){"./Menu/Select_disable.bmp", "./Menu/Select_enable.bmp",
-	"./Menu/Move_disable.bmp", "./Menu/Move_enable.bmp",
-	"./Menu/lblSector.bmp", "./Menu/lblsector_info.bmp", "./Menu/lblWall.bmp",
-	"./Menu/lblTexture.bmp", "./Menu/lblAssets.bmp", "./Menu/lblMonsters.bmp",
-	"./Menu/assetsOptions.bmp", "./Menu/lblPlayerStart.bmp",
-	"./Menu/minus.bmp", "./Menu/plus.bmp", "./Menu/lblLight.bmp",
-	"./Menu/lblSkybox.bmp", "./Menu/lblDoor.bmp", "./Menu/checkBoxEmpty.bmp",
-	"./Menu/checkBox.bmp", "./Menu/lblPoster.bmp", "./Menu/lblEnd.bmp",
-	"./Menu/lblNextmap.bmp", "./Menu/browseBox.bmp",
-	"./Menu/sectorOptions.bmp", "./Menu/lblTransparent.bmp"};
+	file = (char*[]){"../Menu/Select_disable.bmp", "../Menu/Select_enable.bmp",
+	"../Menu/Move_disable.bmp", "../Menu/Move_enable.bmp",
+	"../Menu/lblSector.bmp", "../Menu/lblsector_info.bmp", "../Menu/lblWall.bmp",
+	"../Menu/lblTexture.bmp", "../Menu/lblAssets.bmp", "../Menu/lblMonsters.bmp",
+	"../Menu/assetsOptions.bmp", "../Menu/lblPlayerStart.bmp",
+	"../Menu/minus.bmp", "../Menu/plus.bmp", "../Menu/lblLight.bmp",
+	"../Menu/lblSkybox.bmp", "../Menu/lblDoor.bmp", "../Menu/checkBoxEmpty.bmp",
+	"../Menu/checkBox.bmp", "../Menu/lblPoster.bmp", "../Menu/lblEnd.bmp",
+	"../Menu/lblNextmap.bmp", "../Menu/browseBox.bmp",
+	"../Menu/sectorOptions.bmp", "../Menu/lblTransparent.bmp"};
 	i = -1;
 	if (!(tb->select[0] = load_bmp(file[++i])) ||
 		!(tb->select[1] = load_bmp(file[++i])) ||
@@ -73,7 +73,7 @@ static int		init_toolbar(t_toolbar *tb)
 
 static int		init_interface(t_data *d)
 {
-	if (!(d->interface.menu = load_bmp("./Menu/menu.bmp")))
+	if (!(d->interface.menu = load_bmp("../Menu/menu.bmp")))
 		return (printf("Error when creating escape menu.\n"));
 	if (init_toolbar(&d->interface.toolbar) ||
 		init_assets(d, &d->interface.toolbar))

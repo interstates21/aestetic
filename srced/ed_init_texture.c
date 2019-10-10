@@ -38,7 +38,7 @@ static int	load_texture(t_data *d, SDL_Surface ***s, int nb_tex,
 	i = 0;
 	while (i < nb_tex)
 	{
-		if (ft_strequ(tex_list->name, "./textures/no_texture.bmp"))
+		if (ft_strequ(tex_list->name, "../textures/no_texture.bmp"))
 			d->default_texture = i;
 		if (!((*s)[i] = load_bmp(tex_list->name)))
 			return (printf("Failed to load %s.\n", tex_list->name));
