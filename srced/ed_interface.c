@@ -103,5 +103,5 @@ void		print_interface(t_data *d)
 	print_assets_toolbar(d, d->interface.toolbar.properties);
 	print_interface_values(d, d->interface.btn_ceil_height_pos.x - 70,
 												PROPERTIES_POS, NULL);
-	draw_ligth_bar(d);
+	//draw_ligth_bar(d);
 }

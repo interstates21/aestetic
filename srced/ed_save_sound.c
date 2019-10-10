@@ -29,26 +29,26 @@ int		write_sound2(int f, char *path)
 
 int		write_sound(int f)
 {
-	if (write_sound2(f, "./sounds/music.wav") ||
-			write_sound2(f, "./sounds/blaster.wav") ||
-			write_sound2(f, "sounds/cryo_bal.wav") ||
-			write_sound2(f, "sounds/m16.wav") ||
-			write_sound2(f, "sounds/explosion.wav") ||
-			write_sound2(f, "sounds/player_fell.wav") ||
-			write_sound2(f, "sounds/player_got_hit.wav") ||
-			write_sound2(f, "sounds/player_death.wav") ||
-			write_sound2(f, "sounds/charg_agro.wav") ||
-			write_sound2(f, "sounds/charg_damage.wav") ||
-			write_sound2(f, "sounds/charg_death.wav") ||
-			write_sound2(f, "sounds/mother_agro.wav") ||
-			write_sound2(f, "sounds/mother_attack.wav") ||
-			write_sound2(f, "sounds/mother_death.wav") ||
-			write_sound2(f, "sounds/blaster_2.wav") ||
-			write_sound2(f, "sounds/refill_ammo.wav") ||
-			write_sound2(f, "sounds/health_up.wav") ||
-			write_sound2(f, "sounds/door_open.wav") ||
-			write_sound2(f, "sounds/door_close.wav") ||
-			write_sound2(f, "sounds/the-pikachu-song.wav"))
+	if (write_sound2(f, "../sounds/music.wav") ||
+			write_sound2(f, "../sounds/blaster.wav") ||
+			write_sound2(f, "../sounds/cryo_bal.wav") ||
+			write_sound2(f, "../sounds/m16.wav") ||
+			write_sound2(f, "../sounds/explosion.wav") ||
+			write_sound2(f, "../sounds/player_fell.wav") ||
+			write_sound2(f, "../sounds/player_got_hit.wav") ||
+			write_sound2(f, "../sounds/player_death.wav") ||
+			write_sound2(f, "../sounds/charg_agro.wav") ||
+			write_sound2(f, "../sounds/charg_damage.wav") ||
+			write_sound2(f, "../sounds/charg_death.wav") ||
+			write_sound2(f, "../sounds/mother_agro.wav") ||
+			write_sound2(f, "../sounds/mother_attack.wav") ||
+			write_sound2(f, "../sounds/mother_death.wav") ||
+			write_sound2(f, "../sounds/blaster_2.wav") ||
+			write_sound2(f, "../sounds/refill_ammo.wav") ||
+			write_sound2(f, "../sounds/health_up.wav") ||
+			write_sound2(f, "../sounds/door_open.wav") ||
+			write_sound2(f, "../sounds/door_close.wav") ||
+			write_sound2(f, "../sounds/the-pikachu-song.wav"))
 		return (1);
 	return (0);
 }
