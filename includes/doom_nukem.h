@@ -55,6 +55,10 @@
 
 
 
+double getAngle(double o, bool isAnimated);
+double tanCalculations(double h, double slope, t_vec2f p, t_vec2f c);
+void	get_sector_center(t_vec2f *v, t_wall *walls, int nWalls, int currentWall);
+double calculateMaxFloorH(t_sector *s);
 double *getScreenPixels();
 void	initKeys(Uint8 **keys);
 void	v2_rot(t_vec2f *p, double angle);

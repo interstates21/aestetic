@@ -6,8 +6,6 @@ FILES = main \
 	   asset_collision \
 	   draw_assets \
 	   collision \
-	   floceiheight \
-	   floceiheight2 \
 	   load_sound \
 	   sound \
 	   handle_finish \
@@ -65,6 +63,9 @@ FILES = main \
 	   n_validators \
 	   n_allocators \
 	   atoi \
+	   heightCalculations \
+	   floorHeight \
+	   ceilHeight \
 
 LIBFT_DIR = libft/
 SRC = $(addprefix src/, $(addsuffix .c, $(FILES)))
