@@ -30,7 +30,7 @@
 # define PATH_MONSTER_ED "../textures/assets/editor/monsters/"
 # define PATH_PLAYERSTART_ED "../textures/assets/editor/playerstart/"
 
-# define PATH_MAP "./maps/"
+# define PATH_MAP "../maps/"
 # define MAP_PROMPT_X (W >> 2)
 # define MAP_PROMPT_Y (H >> 1) - 125
 # define MAP_PROMPT_ENDX MAP_PROMPT_X + 575
