@@ -41,17 +41,21 @@ void	collision_monster_monster(t_data *d, short cur_sect, t_monster *monster)
 void	collision_with_monster(t_data *d, short cur_sect)
 {
 	t_sprite_list	*tmp;
+	double			floor_height;
+	t_vec2f			pos;
 
 	tmp = d->sectors[cur_sect].sprite_list;
+	pos = d->monsters[tmp->id].pos;
 	while (tmp)
 	{
+		floor_height = getFloorHeight(&d->sectors[cur_sect], d->walls, cur_sect, pos);
 		if (tmp->type == IS_MONSTER && d->monsters[tmp->id].can_collide)
 		{
 			if (v2_len(v2_min(d->monsters[tmp->id].pos,
 							(t_vec2f){d->cam.pos.x, d->cam.pos.z})) <
 					d->monster_type[d->monsters[tmp->id].id_type].hitbox_radius
 					+ MONSTER_MIN_DIST_HITBOX && d->cam.pos.y <
-					get_floceiheight(d, cur_sect, d->monsters[tmp->id].pos, 1) + d->monster_type[d->monsters[tmp->id].id_type].height)
+					floor_height + d->monster_type[d->monsters[tmp->id].id_type].height)
 			{
 				d->cam.pos = update_pos_vec3f(d->cam.pos, d->monsters
 						[tmp->id].pos, d->monster_type[d->monsters[tmp->id].
@@ -62,3 +66,4 @@ void	collision_with_monster(t_data *d, short cur_sect)
 		tmp = tmp->next;
 	}
 }
+

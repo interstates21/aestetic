@@ -1,6 +1,7 @@
 NAME = editor
 CC = clang
-FILES = main \
+FILES =
+	main \
 	ed_add_protection \
 	ed_bmp_reader \
 	ed_init_structures \

@@ -64,6 +64,7 @@ FILES = main \
 	   load_monsters_texture \
 	   n_validators \
 	   n_allocators \
+	   atoi \
 
 LIBFT_DIR = libft/
 SRC = $(addprefix src/, $(addsuffix .c, $(FILES)))

@@ -69,16 +69,21 @@ void		m16_shoot(t_data *d)
 {
 	t_m16_inf	inf;
 	double		y_dist;
+	double		floor_height;
+	int16_t		sectNum;
+	t_vec2f		pos;
 
+
+	sectNum = d->monsters[inf.id_of_monst].cursectnum;
+	pos = d->monsters[inf.id_of_monst].pos;
 	inf = m16_recur(d, d->cursectnum, -1);
 	if (d->weapon_type[M16].current_ammo)
 		d->weapon_type[M16].current_ammo--;
 	if (inf.id_of_monst != -1)
 	{
+		floor_height = getFloorHeight(&d->sectors[sectNum], d->walls, sectNum, pos);
 		y_dist = inf.dist * Y_OFFSET_TO_ROT * d->cam.y_offset +
-			d->cam.pos.y - get_floceiheight(d,
-					d->monsters[inf.id_of_monst].cursectnum,
-					d->monsters[inf.id_of_monst].pos, 1);
+			d->cam.pos.y - floor_height;
 		if (y_dist > -0.1 && y_dist < 1.6)
 		{
 			monster_hit(d, M16_DAMAGE, inf.id_of_monst);
@@ -87,3 +92,4 @@ void		m16_shoot(t_data *d)
 		}
 	}
 }
+

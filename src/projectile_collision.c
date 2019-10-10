@@ -44,19 +44,20 @@ bool		collision_proj_one_monst(t_data *d, t_monster *monster,
 {
 	double		dist;
 	t_vec2f		vec2f_tmp[2];
+	double		floor_height;
 
+
+	floor_height = getFloorHeight(&d->sectors[monster->cursectnum], d->walls, monster->cursectnum, monster->pos);
 	dist = v2_len(v2_min(v3_to_v2(newpos), monster->pos));
 	if (dist < d->projectile_type[projectile->id_type].hitbox_radius +
 			d->monster_type[monster->id_type].hitbox_radius)
-		if (newpos.y > get_floceiheight(d, monster->cursectnum,
-					monster->pos, 1) && newpos.y <
-				d->monster_type[monster->id_type].height)
+		if (newpos.y > floor_height
+		&& newpos.y < d->monster_type[monster->id_type].height)
 		{
-			vec2f_tmp[0] = v2_min((t_vec2f){projectile->pos.x,
-					projectile->pos.z}, monster->pos);
-			vec2f_tmp[1] = (t_vec2f){d->monster_type[monster->id_type].
-				hitbox_radius +
-					d->projectile_type[projectile->id_type].hitbox_radius, 0.0};
+			vec2f_tmp[0] = v2_min(new_v2(projectile->pos.x, projectile->pos.z), monster->pos);
+			vec2f_tmp[1] =
+			new_v2(d->monster_type[monster->id_type].hitbox_radius +
+			d->projectile_type[projectile->id_type].hitbox_radius, 0.0);
 			actualize_dir(atan2(vec2f_tmp[0].y, vec2f_tmp[0].x), &vec2f_tmp[1]);
 			projectile->pos.x = monster->pos.x + vec2f_tmp[1].x;
 			projectile->pos.z = monster->pos.y + vec2f_tmp[1].y;

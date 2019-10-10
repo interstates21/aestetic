@@ -16,7 +16,7 @@ static void	get_sector_center(t_vec2f *v, t_wall *walls, int nWalls, int current
 	*v = v2_scale(*v, interp);
 }
 static double tanCalculations(double h, double slope, t_vec2f p, t_vec2f c) {
-	return (h + tan(slope) * M_PI / 180) * (p.x - c.x);
+	return(h + tan(slope * M_PI / 180) * (p.x - c.x));
 }
 
 static double getAngle(double o, bool isAnimated) {
@@ -30,18 +30,19 @@ static double getAngle(double o, bool isAnimated) {
 
 double	getCeilHeight(t_sector *sect, t_wall *walls, int16_t sectnum, t_vec2f p)
 {
-	t_sector	*sect;
 	t_vec2f		center;
 	double		angle;
 
 	if (sectnum >= 0) {
-	if (!(sect->slopeceil))
-		return (sect->ceilheight);
+		if (!(sect->slopeceil))
+			return (sect->ceilheight);
 	get_sector_center(&center, walls, sect->numwalls, sect->firstwallnum);
 	angle = getAngle(sect->slopeceil_orientation, sect->is_animatedslopeceil);
 	p = v2_min(p, center);
-	rotate_point(&p, center, angle);
+	v2_rot(&p, angle);
 	p = v2_plus(p, center);
+
+	// return (h + tan(slope * M_PI / 180) * (p.x - center.x));
 	return (tanCalculations(sect->ceilheight, sect->slopeceil, p, center));
 	}
 	print_err("0 sectors");
@@ -50,19 +51,19 @@ double	getCeilHeight(t_sector *sect, t_wall *walls, int16_t sectnum, t_vec2f p)
 
 double	getFloorHeight(t_sector *sect, t_wall *walls, int16_t sectnum, t_vec2f p)
 {
-	t_sector	*sect;
 	t_vec2f		center;
 	double		h;
 	double		angle;
 
 	if (sectnum >= 0) {
-			h = sect->floorheight + sect->is_elevator ? sin(ANIMATION_TIME) * 0.5 : 0;
-	if (!(sect->slope))
-		return (h);
+			h = sect->floorheight + (sect->is_elevator ? sin(ANIMATION_TIME) * 0.5 : 0);
+			if (!(sect->slope))
+				return (h);
+	ft_putendl("1-end");
 	get_sector_center(&center, walls, sect->numwalls, sect->firstwallnum);
 	angle = getAngle(sect->slope_orientation, sect->is_animatedslope);
 	p = v2_min(p, center);
-	rotate_point(&p, center, angle);
+	v2_rot(&p, angle);
 	p = v2_plus(p, center);
 	return (tanCalculations(h, sect->slope, p, center));
 	}

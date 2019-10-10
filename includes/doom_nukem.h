@@ -58,6 +58,8 @@
 double *getScreenPixels();
 void	initKeys(Uint8 **keys);
 void	v2_rot(t_vec2f *p, double angle);
+double	getFloorHeight(t_sector *sect, t_wall *walls, int16_t sectnum, t_vec2f p);
+double	getCeilHeight(t_sector *sect, t_wall *walls, int16_t sectnum, t_vec2f p);
 
 
 char	*ft_itoa_static(intmax_t n);

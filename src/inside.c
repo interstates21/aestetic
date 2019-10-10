@@ -33,12 +33,16 @@ int16_t	update_cursect_proj(int16_t sects[2], t_data *d, int depth,
 	short	i;
 	short	j;
 	short	ret_value;
+	double	floor_height;
+	double	ceil_height;
+
+
+	floor_height = getFloorHeight(&d->sectors[sects[0]], d->walls, sects[0], v3_to_v2(pos));
+	ceil_height = getCeilHeight(&d->sectors[sects[0]], d->walls, sects[0], v3_to_v2(pos));
 
 	if (inside(d, sects[0], (t_vec2f){pos.x, pos.z}) &&
-			(pos.y < get_floceiheight(d, sects[0], v3_to_v2(pos), 0) +
-			DIST_COLL_PROJ_CEIL_FLOOR || d->sectors[sects[0]].outdoor) &&
-			pos.y > get_floceiheight(d, sects[0], v3_to_v2(pos), 1)
-			+ DIST_COLL_PROJ_CEIL_FLOOR)
+			(pos.y < ceil_height || d->sectors[sects[0]].outdoor) &&
+			pos.y > floor_height)
 		return (sects[0]);
 	if (!depth)
 		return (-1);
@@ -56,6 +60,7 @@ int16_t	update_cursect_proj(int16_t sects[2], t_data *d, int depth,
 		return (-2);
 	return (-1);
 }
+
 
 void	set_tab(t_data *d, short sect_to_scan, short *tab, short old_sect)
 {
