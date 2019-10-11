@@ -1,9 +1,9 @@
 #include "../includes/doom_nukem.h"
 
-char	*ft_itoa_static(intmax_t n)
+char	*ft_itoa_static(int n)
 {
-	uintmax_t	tmpn;
-	uintmax_t	div;
+	int		tmpn;
+	int		div;
 	static char	s[42];
 	int			i;
 

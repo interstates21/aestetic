@@ -25,6 +25,17 @@ typedef struct		s_col_inf
 	bool			ok;
 }					t_col_inf;
 
+typedef	struct		s_v2_pair{
+					t_vec2f	v1;
+					t_vec2f	v2;
+}					t_v2_pair;
+
+typedef struct		s_range {
+	int				min;
+	int				max;
+	double			t;
+}					t_range;
+
 typedef struct		s_cam
 {
 	t_vec3f			pos;

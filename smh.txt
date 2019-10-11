@@ -21,7 +21,7 @@ src/draw_weapon.c
 src/events.c
 src/exit.c
 src/find_closest_wall_dist.c
-src/fix_neighborsects.c
+src/nextSectFix.c
 src/floceiheight.c
 src/floceiheight2.c
 src/fly_gravity.c

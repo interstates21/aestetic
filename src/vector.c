@@ -123,21 +123,3 @@ void	v2_rot(t_vec2f *p, double angle)
 	p->x = temp.x * cos(angle) - temp.y * sin(angle);
 	p->y = temp.x * sin(angle) + temp.y * cos(angle);
 }
-
-t_vec2f	new_v2(double x, double y) {
-	t_vec2f v;
-
-	v.x = x;
-	v.y = y;
-	return (v);
-}
-
-
-t_vec3f	new_v3(double x, double y, double z) {
-	t_vec3f v;
-
-	v.x = x;
-	v.y = y;
-	v.z = z;
-	return (v);
-}

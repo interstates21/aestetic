@@ -1,7 +1,7 @@
 NAME = doom_nukem
 CC = clang
 FILES = main \
-	   fix_neighborsects \
+	   nextSectFix \
 	   draw_hud \
 	   asset_collision \
 	   draw_assets \
@@ -66,6 +66,8 @@ FILES = main \
 	   heightCalculations \
 	   floorHeight \
 	   ceilHeight \
+	   range \
+	   vector_constructors \
 
 LIBFT_DIR = libft/
 SRC = $(addprefix src/, $(addsuffix .c, $(FILES)))

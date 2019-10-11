@@ -52,7 +52,7 @@
 # define RED 0xFF0000
 # define GREEN_BLAST 0x5CE26E
 # define HEALTH_COLO 0xFFFF66
-
+#define SAME_POS(v1, v2) (((v1.x) == (v2.x)) && ((v1.y) == (v2.y)))
 
 
 double getAngle(double o, bool isAnimated);
@@ -64,9 +64,11 @@ void	initKeys(Uint8 **keys);
 void	v2_rot(t_vec2f *p, double angle);
 double	getFloorHeight(t_sector *sect, t_wall *walls, int16_t sectnum, t_vec2f p);
 double	getCeilHeight(t_sector *sect, t_wall *walls, int16_t sectnum, t_vec2f p);
+t_range   make_range(int min, int max);
+t_v2_pair new_v2_pair(t_vec2f v1, t_vec2f v2);
 
 
-char	*ft_itoa_static(intmax_t n);
+char	*ft_itoa_static(int n);
 
 void		draw_aim_cross(t_data *d);
 void		m16_shoot(t_data *d);
@@ -174,7 +176,7 @@ void		precompute_texanim(t_data *d);
 void		intro_screen(t_data *d);
 //void		draw_string_typewriter_effect(t_data *d, char *s, t_vec2 pos);
 int			ft_mod(int i, int n);
-void		fix_neighborsects(t_data *d);
+void		nextSectFix(t_data *d);
 
 /*
 ** update_2.c
