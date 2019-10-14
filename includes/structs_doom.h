@@ -257,7 +257,7 @@ typedef struct		s_data
 	t_monster_type	monster_type[MAXTYPEMONSTERS];
 	t_projectile	projectiles[MAX_PROJECTILES];
 	t_proj_type		projectile_type[MAX_KIND_OF_PROJECTILE];
-	t_weapon_type	weapon_type[MAX_KIND_OF_WEAP];
+	t_weapon_type	weapon_type;
 	uint16_t		nummonsters;
 	int16_t			numsectors;
 	int16_t			numwalls;

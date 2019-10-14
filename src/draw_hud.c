@@ -62,7 +62,7 @@ void	draw_hud(t_data *d)
 		draw_inventory_slot(d, d->assets_texture[d->slot3->picnum],
 				240, HEIGHT - 100);
 	draw_timed_msg(d);
-	draw_ammo(d, d->weapon_type[d->player.current_weapon]);
+	draw_ammo(d, d->weapon_type);
 	if (d->player.is_flying)
 		draw_fuel(d);
 }

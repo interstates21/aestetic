@@ -54,15 +54,14 @@ void	init_projectiles_fireball_1(t_data *d)
 
 void	init_weapons(t_data *d)
 {
-	d->weapon_type[CRYO_BALLISTA].rate_of_fire[0] =
+	d->weapon_type.rate_of_fire[0] =
 		d->player.speed_anim[CRYO_BALLISTA] * 11;
-	d->weapon_type[CRYO_BALLISTA].has_alt_fire = false;
-	d->weapon_type[CRYO_BALLISTA].max_ammo = 12;
+	d->weapon_type.has_alt_fire = false;
+	d->weapon_type.max_ammo = 12;
 }
 
 void	init_projectiles(t_data *d)
 {
-	ft_bzero(d->weapon_type, sizeof(t_weapon_type) * MAX_KIND_OF_WEAP);
 	ft_bzero(d->projectile_type, sizeof(t_proj_type) * MAX_KIND_OF_PROJECTILE);
 	ft_bzero(d->projectiles, sizeof(t_projectile) * MAX_PROJECTILES);
 	init_weapons(d);

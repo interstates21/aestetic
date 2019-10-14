@@ -5,8 +5,7 @@ static bool	check_if_return(t_data *d, t_assets *asset)
 {
 	if (d->player.health == 100 && asset->stat_mod.heal)
 		return (true);
-	if (d->weapon_type[CRYO_BALLISTA].current_ammo == d->weapon_type
-			[CRYO_BALLISTA].max_ammo && asset->stat_mod.ballista_ammo)
+	if (d->weapon_type.current_ammo == d->weapon_type.max_ammo && asset->stat_mod.ballista_ammo)
 		return (true);
 	return (false);
 }
@@ -46,9 +45,8 @@ void		use_asset(t_data *d, t_assets *asset)
 	d->player.health = MIN(100, d->player.health);
 
 	d->player.health -= asset->stat_mod.damage;
-	d->weapon_type[CRYO_BALLISTA].current_ammo += asset->stat_mod.ballista_ammo;
-	d->weapon_type[CRYO_BALLISTA].current_ammo = MIN(d->weapon_type
-			[CRYO_BALLISTA].current_ammo, d->weapon_type[CRYO_BALLISTA].
+	d->weapon_type.current_ammo += asset->stat_mod.ballista_ammo;
+	d->weapon_type.current_ammo = MIN(d->weapon_type.current_ammo, d->weapon_type.
 			max_ammo);
 	if (asset->stat_mod.heal > 0)
 	{
