@@ -67,6 +67,14 @@ typedef struct				s_sprite_list
 	uint8_t					type;
 }							t_sprite_list;
 
+
+typedef struct				s_sprite
+{
+	int16_t					id;
+	uint8_t					type;
+}							t_sprite;
+
+
 typedef struct				s_sector
 {
 	int16_t					firstwallnum;

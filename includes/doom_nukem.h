@@ -70,6 +70,7 @@ t_v2_pair new_v2_pair(t_vec2f v1, t_vec2f v2);
 
 char	*ft_itoa_static(int n);
 
+double 		calculateFloorHeightEpsilon(double h);
 void		draw_aim_cross(t_data *d);
 void		m16_shoot(t_data *d);
 int16_t		scan_sect_point_line(t_data *d, uint16_t sect_to_scan, double dist,

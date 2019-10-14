@@ -37,3 +37,7 @@ double getAngle(double o, bool isAnimated) {
 		temp += ANIMATION_TIME;
 	return temp;
 }
+
+double calculateFloorHeightEpsilon(double h) {
+	return (h > 5 ? 1.2 : 1.1);
+}

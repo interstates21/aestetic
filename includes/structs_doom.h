@@ -249,7 +249,7 @@ typedef struct		s_data
 	[MAX_PROJECTILE_TEX_PER_WEAP];
 	SDL_Surface		*weapon_tex[MAX_KIND_OF_WEAP]
 	[MAX_ANIM_PER_WEAP];
-	Uint8		*keys;
+	Uint8			*keys;
 	uint8_t			left_mouse_button;
 	uint8_t			right_mouse_button;
 	t_cam			startcam;
