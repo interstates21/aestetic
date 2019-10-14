@@ -37,8 +37,8 @@ void	init_everything(t_data *d, char *map)
 		printf("SDL_SetRelativeMouseMode error");
 	d->floorheightplayer = get_floorheight_player(d, d->cursectnum);
 	d->ceilheightplayer = get_ceilheight_player(d, d->cursectnum);
-	play_music(d, MAIN_MUSIC);
 	fix_neighborsects(d);
+
 	loop(d);
 }
 

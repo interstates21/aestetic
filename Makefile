@@ -1,6 +1,7 @@
 NAME = doom_nukem
 CC = clang
 FILES = main \
+        loading \
 	   fix_neighborsects \
 	   draw_hud \
 	   asset_collision \

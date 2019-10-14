@@ -27,6 +27,12 @@ void	fix_picnum(t_data *d)
 		}
 }
 
+static void	init_ttf(t_sdl *sdl)
+{
+	if (TTF_Init() == -1)
+		print_err(SDL_GetError());
+}
+
 void	init_sdl(t_sdl *sdl)
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
@@ -35,10 +41,12 @@ void	init_sdl(t_sdl *sdl)
 		print_err(SDL_GetError());
 	if (!(sdl->screen = SDL_GetWindowSurface(sdl->win)))
 		print_err(SDL_GetError());
-	if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 1024) == -1)
+	if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 1024)
+	== -1)
 		print_err(SDL_GetError());
 	if (!Mix_AllocateChannels(MAX_CHANNELS))
 		print_err(SDL_GetError());
+	//init_ttf(sdl);
 }
 
 void	initKeys(Uint8 **keys) {

@@ -137,10 +137,6 @@ typedef struct		s_proj_type
 	bool			threat_to_monster;
 }					t_proj_type;
 
-# define NORMAL 1
-# define CHARGED 2
-# define DELAY 3
-
 typedef struct		s_weapon_type
 {
 	uint8_t			rate_of_fire[2];
@@ -211,6 +207,7 @@ typedef struct		s_color_buf
 typedef struct		s_sdl {
 	SDL_Window		*win;
 	SDL_Surface		*screen;
+	TTF_Font		*font;
 }					t_sdl;
 
 
@@ -219,6 +216,10 @@ typedef struct		s_scene {
 	SDL_Surface		*screen;
 }					t_scene;
 
+typedef struct		s_chars
+{
+	int 			c[28][8];
+}					t_chars;
 
 typedef struct		s_data
 {
@@ -264,6 +265,7 @@ typedef struct		s_data
 	t_color_buf		color_buf;
 	t_vec2f			inertia;
 	unsigned char	font[96][5];
+	int 			used[96];
 	double			*zbuffer;
 	double			floorheightplayer;
 	double			ceilheightplayer;
@@ -276,6 +278,7 @@ typedef struct		s_data
 	uint32_t		msg_start;
 	uint32_t		last_dangerous_area_damage;
 	int				difficulty;
+	t_chars			f;
 }					t_data;
 
 typedef struct		s_thread_arg

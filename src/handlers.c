@@ -12,6 +12,8 @@ void	print_and_quit(t_data *d, const char *str)
 
 void	print_err(const char *err)
 {
-	ft_putendl((ft_strjoin("Init Error = ", err)));
+	ft_putstr("Init Error = ");
+	ft_putendl(err);
+	system("leaks --quiet doom_nukem");
 	exit(1);
 }
