@@ -57,12 +57,6 @@ void	init_weapons(t_data *d)
 	d->weapon_type[CRYO_BALLISTA].rate_of_fire[0] =
 		d->player.speed_anim[CRYO_BALLISTA] * 11;
 	d->weapon_type[CRYO_BALLISTA].has_alt_fire = false;
-	d->weapon_type[BLASTER].rate_of_fire[0] =
-		d->player.speed_anim[BLASTER] * 10;
-	d->weapon_type[BLASTER].has_alt_fire = true;
-	d->weapon_type[BLASTER].rate_of_fire[1] =
-		d->player.speed_anim[BLASTER] * 10;
-	d->weapon_type[BLASTER].max_ammo = 35;
 	d->weapon_type[CRYO_BALLISTA].max_ammo = 12;
 }
 

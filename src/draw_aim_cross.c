@@ -28,31 +28,10 @@ void	load_weapons_texture(t_data *d, int f, int *nb_tex,
 	}
 }
 
-
-void	draw_blaster_aim(t_data *d)
-{
-	short i;
-
-	i = (WIDTH * 0.5) - 10;
-	while (--i > (WIDTH >> 1) - 22)
-		putpixel(d, i, HEIGHT >> 1, GREEN_BLAST);
-	i = (WIDTH * 0.5) + 10;
-	while (++i < (WIDTH >> 1) + 22)
-		putpixel(d, i, HEIGHT >> 1, GREEN_BLAST);
-	putpixel(d, (WIDTH >> 1) + 1, HEIGHT >> 1, GREEN_BLAST);
-	putpixel(d, (WIDTH >> 1) - 1, HEIGHT >> 1, GREEN_BLAST);
-	putpixel(d, WIDTH >> 1, HEIGHT >> 1, GREEN_BLAST);
-}
-
 void	draw_aim_cross(t_data *d)
 {
 	short		i;
 	uint32_t	colo;
-	if (d->player.current_weapon == BLASTER)
-	{
-		draw_blaster_aim(d);
-		return ;
-	}
 	if (d->player.current_weapon == CRYO_BALLISTA)
 		colo = 0xDDFF;
 	i = -1;
