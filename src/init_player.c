@@ -32,6 +32,5 @@ void	init_player(t_data *d, t_player *player)
 	d->slot1 = NULL;
 	d->slot2 = NULL;
 	d->slot3 = NULL;
-	d->weapon_type.current_ammo =
-		d->weapon_type.max_ammo;
+	d->weapon_type.current_ammo = MAX_BULLETS;
 }

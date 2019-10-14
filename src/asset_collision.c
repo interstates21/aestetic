@@ -5,7 +5,7 @@ static bool	check_if_return(t_data *d, t_assets *asset)
 {
 	if (d->player.health == 100 && asset->stat_mod.heal)
 		return (true);
-	if (d->weapon_type.current_ammo == d->weapon_type.max_ammo && asset->stat_mod.ballista_ammo)
+	if (d->weapon_type.current_ammo == MAX_BULLETS && asset->stat_mod.ballista_ammo)
 		return (true);
 	return (false);
 }
@@ -46,8 +46,7 @@ void		use_asset(t_data *d, t_assets *asset)
 
 	d->player.health -= asset->stat_mod.damage;
 	d->weapon_type.current_ammo += asset->stat_mod.ballista_ammo;
-	d->weapon_type.current_ammo = MIN(d->weapon_type.current_ammo, d->weapon_type.
-			max_ammo);
+	d->weapon_type.current_ammo = MIN(d->weapon_type.current_ammo, MAX_BULLETS);
 	if (asset->stat_mod.heal > 0)
 	{
 		play_sound(d, HEALTH_SOUND, v3_to_v2(d->cam.pos));

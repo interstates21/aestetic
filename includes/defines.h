@@ -19,6 +19,7 @@
 #define INCREMENT true
 #define SET false
 
+#define MAX_BULLETS 30
 #define COLLISION_R 0.8
 
 #define MAX_FUEL 500

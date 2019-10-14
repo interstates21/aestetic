@@ -154,7 +154,7 @@ typedef struct		s_weapon_type
 	uint8_t			shooting_type[2];
 	uint8_t			left_projectile;
 	uint8_t			right_projectile;
-	uint16_t		max_ammo;
+	uint16_t		temp; //ghost#tofix must be deleted
 	uint16_t		current_ammo;
 	bool			has_alt_fire;
 }					t_weapon_type;

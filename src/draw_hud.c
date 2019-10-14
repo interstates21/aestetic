@@ -7,7 +7,7 @@ static void	draw_ammo(t_data *d, t_weapon_type weapon_type)
 
 	ft_strcpy(buf + 6, ft_itoa_static(weapon_type.current_ammo));
 	ft_strcpy(buf + ft_strlen(buf), " / ");
-	ft_strcpy(buf + ft_strlen(buf), ft_itoa_static(weapon_type.max_ammo));
+	ft_strcpy(buf + ft_strlen(buf), ft_itoa_static(MAX_BULLETS));
 	draw_string(d, (t_font){buf, 50, 80, 0, 2});
 	ft_strcpy(buf2 + 8, ft_itoa_static(d->player.health));
 	draw_string(d, (t_font){buf2, 50, 50, 0, 2});

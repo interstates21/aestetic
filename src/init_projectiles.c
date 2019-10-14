@@ -57,7 +57,6 @@ void	init_weapons(t_data *d)
 	d->weapon_type.rate_of_fire[0] =
 		d->player.speed_anim[CRYO_BALLISTA] * 11;
 	d->weapon_type.has_alt_fire = false;
-	d->weapon_type.max_ammo = 12;
 }
 
 void	init_projectiles(t_data *d)
