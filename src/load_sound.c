@@ -22,7 +22,6 @@ void		load_sound(t_data *d, int f)
 			print_err("cannot init sdl sound");
 		if (!(d->chunk[i] = Mix_LoadWAV_RW(rWops, 1)))
 			print_err("cannot init sdl sound chank");
-		i++;
 		free(buff);
 	}
 }
