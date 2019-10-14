@@ -57,7 +57,6 @@ typedef struct				s_vec2
 # define IS_MONSTER 1
 # define CRYO_BALLISTA 0
 # define BLASTER 1
-# define M16 2
 # define FIREBALL_1 1
 
 typedef struct				s_sprite_list
@@ -122,8 +121,8 @@ typedef struct				s_stat_modifier
 	int16_t					heal;
 	int16_t					damage;
 	int16_t					ballista_ammo;
-	int16_t					blaster_ammo;
-	int16_t					m16_ammo;
+	int16_t					temp1; // ghost#tofix
+	int16_t					temp2; // segfault on delete
 }							t_stat_modifier;
 
 typedef struct				s_assets

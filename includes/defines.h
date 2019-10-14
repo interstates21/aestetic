@@ -60,7 +60,6 @@
 
 #define ACTIVATION_DIST 3.0
 
-#define M16_DAMAGE 4
 #define Y_OFFSET_TO_ROT -0.00125
 
 #define NB_OF_SECTOR_DEPTH 2

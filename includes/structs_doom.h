@@ -13,11 +13,6 @@ typedef struct		s_display_data
 	uint16_t		cursectnum;
 }					t_display_data;
 
-typedef	struct		s_m16_inf
-{
-	double			dist;
-	int16_t			id_of_monst;
-}					t_m16_inf;
 
 typedef struct		s_col_inf
 {

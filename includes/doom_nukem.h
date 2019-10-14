@@ -23,7 +23,6 @@
 # define MAIN_MUSIC 0
 # define BLASTER_SOUND 1
 # define CRYO_SOUND 2
-# define M16_SOUND 3
 # define EXPLOSION_SOUND 4
 # define PLAYER_FELL_SOUND 5
 # define PLAYER_GOT_HIT_SOUND 6
@@ -45,7 +44,6 @@
 # define MINIMUM_CEIL_DIST 0.1
 # define JUMP_FIX 0.01
 # define JUMP_FORCE 0.08
-# define M16_HITBOX 0.2
 # define EASY 0
 # define NORMAL 1
 # define HARD 2
@@ -73,7 +71,6 @@ char	*ft_itoa_static(int n);
 
 double 		calculateFloorHeightEpsilon(double h);
 void		draw_aim_cross(t_data *d);
-void		m16_shoot(t_data *d);
 int16_t		scan_sect_point_line(t_data *d, uint16_t sect_to_scan, double dist,
 		bool hit_all);
 double		find_closest_wall_dist(t_data *d, uint16_t sect_to_scan);
@@ -193,19 +190,6 @@ bool		validateArgv(char *str);
 */
 
 void		update(t_data *d);
-
-/*
-** m16_util.c
-*/
-
-bool		set_pos_m16_inside_sec(t_data *d, int16_t id, t_vec2f *pos);
-
-/*
-** m16_recur.c
-*/
-
-t_m16_inf	m16_recur(t_data *d, int16_t sect_to_scan,
-		int16_t old_sect);
 
 /*
 ** player_damage.c

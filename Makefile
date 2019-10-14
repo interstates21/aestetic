@@ -27,10 +27,6 @@ FILES = main \
 	   player_actions \
 	   projectile_collision \
 	   find_closest_wall_dist \
-	   blaster_col_recur \
-	   blaster_col \
-	   m16_recur \
-	   m16 \
 	   update_2 \
 	   update \
 	   draw_weapon \

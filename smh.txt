@@ -1,7 +1,5 @@
 src/activate_door.c
 src/asset_collision.c
-src/blaster_col.c
-src/blaster_col_recur.c
 src/clip_wall.c
 src/collision.c
 src/color_buffer.c
@@ -46,9 +44,6 @@ src/load_monsters_texture.c
 src/load_sound.c
 src/load_weapons_texture.c
 src/loop.c
-src/m16.c
-src/m16_recur.c
-src/m16_util.c
 src/main.c
 src/monster_anim_state.c
 src/monster_behaviour.c
