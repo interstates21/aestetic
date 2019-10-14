@@ -48,9 +48,6 @@ void	draw_aim_cross(t_data *d)
 {
 	short		i;
 	uint32_t	colo;
-
-	if (d->player.current_weapon == M16)
-		colo = 0xFF0000;
 	if (d->player.current_weapon == BLASTER)
 	{
 		draw_blaster_aim(d);

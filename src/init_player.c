@@ -2,10 +2,6 @@
 
 void	init_player3(t_data *d, t_player *player)
 {
-	player->speed_anim[M16] = 4;
-	player->weapon_anim[M16][0] = 0;
-	player->weapon_anim[M16][1] = 2;
-	player->weapon_anim[M16][2] = 0;
 	player->is_flying = 0;
 	player->minimum_height = MINIMUM_HEIGHT;
 	player->gravity = 0.0;
@@ -22,8 +18,6 @@ void	init_player3(t_data *d, t_player *player)
 		d->weapon_type[BLASTER].max_ammo;
 	d->weapon_type[CRYO_BALLISTA].current_ammo =
 		d->weapon_type[CRYO_BALLISTA].max_ammo;
-	d->weapon_type[M16].current_ammo =
-		d->weapon_type[M16].max_ammo;
 }
 
 void	init_player2(t_data *d, t_player *player)

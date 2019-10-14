@@ -3,8 +3,7 @@
 
 static bool	check_if_return(t_data *d, t_assets *asset)
 {
-	if (d->player.health == 100 && asset->stat_mod.heal &&
-			!asset->stat_mod.m16_ammo)
+	if (d->player.health == 100 && asset->stat_mod.heal &&!asset->stat_mod.m16_ammo)
 		return (true);
 	if (d->weapon_type[BLASTER].current_ammo == d->weapon_type[BLASTER].max_ammo
 			&& asset->stat_mod.blaster_ammo && !asset->stat_mod.m16_ammo)
@@ -12,9 +11,6 @@ static bool	check_if_return(t_data *d, t_assets *asset)
 	if (d->weapon_type[CRYO_BALLISTA].current_ammo == d->weapon_type
 			[CRYO_BALLISTA].max_ammo && asset->stat_mod.ballista_ammo &&
 			!asset->stat_mod.m16_ammo)
-		return (true);
-	if (d->weapon_type[M16].current_ammo == d->weapon_type[M16].max_ammo &&
-			asset->stat_mod.m16_ammo && !asset->stat_mod.blaster_ammo)
 		return (true);
 	return (false);
 }
@@ -62,9 +58,6 @@ void		use_asset(t_data *d, t_assets *asset)
 	d->weapon_type[CRYO_BALLISTA].current_ammo = MIN(d->weapon_type
 			[CRYO_BALLISTA].current_ammo, d->weapon_type[CRYO_BALLISTA].
 			max_ammo);
-	d->weapon_type[M16].current_ammo += asset->stat_mod.m16_ammo;
-	d->weapon_type[M16].current_ammo = MIN(d->weapon_type[M16].
-			current_ammo, d->weapon_type[M16].max_ammo);
 	if (asset->stat_mod.heal > 0)
 	{
 		play_sound(d, HEALTH_SOUND, v3_to_v2(d->cam.pos));

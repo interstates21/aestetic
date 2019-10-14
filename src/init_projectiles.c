@@ -50,14 +50,6 @@ void	init_projectiles_fireball_1(t_data *d)
 	d->projectile_type[FIREBALL_1].anim_order[3] = 4;
 	d->projectile_type[FIREBALL_1].anim_order[4] = MUST_BE_DESTROYED;
 	d->projectile_type[FIREBALL_1].size = 12;
-	d->projectile_type[M16].size = 3;
-	d->projectile_type[M16].anim_order[COLLISION_ID] = 0;
-	d->projectile_type[M16].anim_order[0] = 1;
-	d->projectile_type[M16].anim_order[1] = 2;
-	d->projectile_type[M16].anim_order[2] = 3;
-	d->projectile_type[M16].anim_order[3] = 4;
-	d->projectile_type[M16].anim_order[4] = MUST_BE_DESTROYED;
-	d->projectile_type[M16].damage = 4;
 }
 
 void	init_weapons(t_data *d)
@@ -70,11 +62,8 @@ void	init_weapons(t_data *d)
 	d->weapon_type[BLASTER].has_alt_fire = true;
 	d->weapon_type[BLASTER].rate_of_fire[1] =
 		d->player.speed_anim[BLASTER] * 10;
-	d->weapon_type[M16].rate_of_fire[0] = d->player.speed_anim[M16] * 2 - 1;
-	d->weapon_type[M16].has_alt_fire = false;
 	d->weapon_type[BLASTER].max_ammo = 35;
 	d->weapon_type[CRYO_BALLISTA].max_ammo = 12;
-	d->weapon_type[M16].max_ammo = 250;
 }
 
 void	init_projectiles(t_data *d)
