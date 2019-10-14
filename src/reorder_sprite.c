@@ -94,8 +94,7 @@ void		reorder_sprite(t_data *d, t_sector *sect)
 	}
 	if (i < 2)
 		return ;
-	if (!(vla = malloc(sizeof(*vla) * i)))
-		exit(EXIT_FAILURE);
+	vla = pureMalloc(sizeof(*vla) * i, "alloc reorder sprites failed");
 	tmp = sect->sprite_list;
 	set_vla(tmp, vla, d);
 	reorder_sprites_algo(d, sect, vla, &list[0]);

@@ -40,11 +40,7 @@ static void		m16_create_projectile(t_data *d, t_m16_inf inf)
 		i++;
 	if (i == MAX_PROJECTILES)
 		return ;
-	if (!(new_projectile = malloc(sizeof(*new_projectile))))
-	{
-		ft_putendl_fd("malloc has failed\n", 2);
-		exit(EXIT_FAILURE);
-	}
+	new_projectile = pureMalloc(sizeof(*new_projectile), "cannot alloc m16");
 	new_projectile->id = i;
 	new_projectile->type = IS_PROJECTILE;
 	set_projectile_visual_collided_m16(d, i, inf);

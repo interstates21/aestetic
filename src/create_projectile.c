@@ -31,11 +31,7 @@ void	create_projectile(t_data *d, short id_of_proj_type)
 		i++;
 	if (i == MAX_PROJECTILES)
 		return ;
-	if (!(new_projectile = malloc(sizeof(*new_projectile))))
-	{
-		ft_putendl_fd("malloc has failed\n", 2);
-		exit(EXIT_FAILURE);
-	}
+		new_projectile = pureMalloc(sizeof(*new_projectile), "Cannot alloc projectiles");
 	new_projectile->next = d->sectors[d->cursectnum].sprite_list;
 	new_projectile->type = IS_PROJECTILE;
 	new_projectile->id = i;
@@ -81,11 +77,7 @@ void	create_projectile_monster(t_data *d, short id_of_proj_type,
 		i++;
 	if (i == MAX_PROJECTILES)
 		return ;
-	if (!(new_projectile = malloc(sizeof(*new_projectile))))
-	{
-		ft_putendl_fd("malloc has failed\n", 2);
-		exit(EXIT_FAILURE);
-	}
+	new_projectile = pureMalloc(sizeof(*new_projectile), "Malloc Error");
 	new_projectile->next = d->sectors[monster->cursectnum].sprite_list;
 	new_projectile->type = IS_PROJECTILE;
 	new_projectile->id = i;

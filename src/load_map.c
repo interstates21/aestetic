@@ -6,10 +6,10 @@ static void	read_texture_data(t_data *d, int f)
 	int	i;
 	int w;
 	int h;
+	size_t texSize;
 
-	if (!(d->textures =
-		(SDL_Surface**)malloc(sizeof(SDL_Surface*) * d->nb_textures)))
-			print_err("cannot allocate texture memory");
+	texSize = sizeof(SDL_Surface*) * d->nb_textures;
+	d->textures = (SDL_Surface**)pureMalloc(texSize, "cannot alloc tex memory");
 	i = -1;
 	while (++i < d->nb_textures)
 	{
@@ -26,16 +26,18 @@ static void	read_texture_data(t_data *d, int f)
 static void	read_textures_name(t_data *d, int f)
 {
 	int		i;
+	size_t	memorySize;
+	size_t	subMemorySize;
 
 	if (read(f, &d->nb_textures, sizeof(int32_t)) < 0)
 		print_err("Cannot read texture nb");
-	if (!(d->tex_name_list = (char**)malloc(sizeof(char*) * d->nb_textures)))
-		print_err("Cannot allocate memory for texture names");
+	memorySize = sizeof(char*) * d->nb_textures;
+	d->tex_name_list = (char**)pureMalloc(memorySize, "cannot alloc texNames");
 	i = -1;
 	while (++i < d->nb_textures)
 	{
-		if (!(d->tex_name_list[i] = (char*)malloc(sizeof(char) * 100)))
-			print_err("Cannot allocate memory for texture names");
+		subMemorySize = sizeof(char) * 100;
+		d->tex_name_list[i] = (char*)pureMalloc(subMemorySize, "cannot alloc subTexNames");
 		if (read(f, d->tex_name_list[i], 100) < 0)
 			print_err("Cannot read texture list");
 	}

@@ -4,12 +4,7 @@ void	add_monster(t_sector *sector, int16_t id_of_monster)
 {
 	t_sprite_list	*new_monster_list;
 	t_sprite_list	*tmp;
-
-	if (!(new_monster_list = malloc(sizeof(*new_monster_list))))
-	{
-		ft_putendl_fd("malloc has failed\n", 2);
-		exit(EXIT_FAILURE);
-	}
+	new_monster_list = pureMalloc(sizeof(*new_monster_list), "Cannot alloc monster");
 	new_monster_list->next = NULL;
 	new_monster_list->id = id_of_monster;
 	new_monster_list->type = IS_MONSTER;

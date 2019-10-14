@@ -66,6 +66,7 @@ double	getFloorHeight(t_sector *sect, t_wall *walls, int16_t sectnum, t_vec2f p)
 double	getCeilHeight(t_sector *sect, t_wall *walls, int16_t sectnum, t_vec2f p);
 t_range   make_range(int min, int max);
 t_v2_pair new_v2_pair(t_vec2f v1, t_vec2f v2);
+void *pureMalloc(size_t size, const char *err);
 
 
 char	*ft_itoa_static(int n);
@@ -151,7 +152,7 @@ void		init_everything(t_data *d, char *map);
 void		fix_picnum(t_data *d);
 void		handle_finish(t_data *d);
 void		play_music(t_data *d, uint8_t id);
-int			load_sound(t_data *d, int f);
+void		load_sound(t_data *d, int f);
 void		play_sound(t_data *d, uint8_t id, t_vec2f pos);
 t_vec3f		transform_back(t_data *d, t_vec3f v);
 void		proj_floor(t_data *d, t_projdata *p);

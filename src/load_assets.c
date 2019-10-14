@@ -6,14 +6,14 @@ void		read_posters_data(t_data *d, int f)
 	int	i;
 	int w;
 	int h;
+	size_t postersSize;
 
 	if (read(f, &d->nb_posters, sizeof(int32_t)) < 0)
 		print_err("Cannot read num posters");
 	if (d->nb_posters <= 0)
 		return ;
-	if (!(d->posters =
-		(SDL_Surface**)malloc(sizeof(SDL_Surface*) * d->nb_posters)))
-		print_err("Cannot allocate posters");
+	postersSize = sizeof(SDL_Surface*) * d->nb_posters;
+	d->posters = (SDL_Surface**)pureMalloc(postersSize, "Cannot alloc posters");
 	i = -1;
 	while (++i < d->nb_posters)
 	{
@@ -30,14 +30,14 @@ void		read_posters_data(t_data *d, int f)
 void		read_monsters_data(t_data *d, int f)
 {
 	int	i;
+	size_t monstersSize;
 
 	if (read(f, &d->nummonsters, sizeof(uint16_t)) < 0)
 		print_err("Cannot read num monsters");
 	if (d->nummonsters > 0)
 	{
-		if (!(d->monsters = (t_monster*)malloc(sizeof(t_monster) *
-														d->nummonsters)))
-			print_err("Cannot allocate monster struct");
+		monstersSize = sizeof(t_monster) * d->nummonsters;
+		d->monsters = (t_monster*)pureMalloc(monstersSize, "cannot alloc monsters");
 		i = -1;
 		while (++i < d->nummonsters)
 			if (read(f, &d->monsters[i], sizeof(t_monster)) < 0)
@@ -50,14 +50,14 @@ void		read_assets_texture(t_data *d, int f)
 	int	i;
 	int	w;
 	int	h;
+	size_t assetsSize;
 
 	if (read(f, &d->nb_assets_texture, sizeof(int16_t)) < 0)
 		print_err("Cannot read num assets");
 	if (d->nb_assets_texture <= 0)
 		return ;
-	if (!(d->assets_texture =
-		(SDL_Surface**)malloc(sizeof(SDL_Surface*) * d->nb_assets_texture)))
-		print_err("Cannot allocate asset texture");
+	assetsSize = sizeof(SDL_Surface*) * d->nb_assets_texture;
+	d->assets_texture = (SDL_Surface**)pureMalloc(assetsSize, "cannot alloc assets");
 	i = -1;
 	while (++i < d->nb_assets_texture)
 	{
@@ -76,18 +76,20 @@ void		read_assets_data(t_data *d, int f)
 {
 	int	i;
 	int	s;
+	size_t assetsSize;
+	size_t subAssetsSize;
 
 	if (read(f, &d->nb_assets, sizeof(int16_t)) < 0)
 		print_err("Cannot read assets num");
-	if (!(d->assets = (t_assets**)malloc(sizeof(t_assets*) * d->numsectors)))
-		print_err("Cannot alloc asset data");
+	assetsSize = sizeof(t_assets*) * d->numsectors;
+	d->assets = (t_assets**)pureMalloc(assetsSize, "cannot alloc assets");
 	if (d->nb_assets > 0)
 	{
 		s = -1;
 		while (++s < d->numsectors)
 		{
-			if (!(d->assets[s] = (t_assets*)malloc(sizeof(t_assets) * 10)))
-				print_err("Cannot alloc asset struct");
+			subAssetsSize = sizeof(t_assets) * 10;
+			d->assets[s] = (t_assets*)pureMalloc(subAssetsSize, "cannot alloc subAssets");
 			if (read(f, &d->assets[s][0].nb_assets, sizeof(int)) < 0)
 				print_err("Cannot read nb asset for sect");
 			i = -1;
