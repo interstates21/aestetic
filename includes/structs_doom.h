@@ -264,6 +264,7 @@ typedef struct		s_chars
 	t_bitmap			n8;
 	t_bitmap			n9;
 	t_bitmap			slh;
+	t_bitmap			prc;
 }					t_chars;
 
 typedef struct		s_data
@@ -324,6 +325,7 @@ typedef struct		s_data
 	uint32_t		last_dangerous_area_damage;
 	int				difficulty;
 	t_chars			chars;
+	int 			loaded;
 }					t_data;
 
 typedef struct		s_thread_arg

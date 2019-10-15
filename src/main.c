@@ -48,6 +48,7 @@ void run(char *mapname) {
 	t_data d;
 
 	init_font(&d);
+	d.loaded = 0;
 	init_sdl(&(d.sdl));
 	initKeys(&(d.keys));
 	d.zbuffer = getScreenPixels();

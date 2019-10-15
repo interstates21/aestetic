@@ -7,6 +7,14 @@ static int	get_col(int p, int s)
 	return (0x333333);
 }
 
+static int	to_percent(int p)
+{
+	int 	r;
+
+	r = (int)((p * 100) / 10000);
+	return (r > 100 ? 100 : r);
+}
+
 static void	draw_bar(t_data *d, int p)
 {
 	int		start;
@@ -23,34 +31,44 @@ static void	draw_bar(t_data *d, int p)
 	while (++i < end && (j = -1))
 		while (++j < 5)
 		{
-			col = get_col(p, i - start);
+			col = get_col(to_percent(p), i - start);
 			putpixel(d, i, j + (HEIGHT >> 1), col);
 		}
 }
 
 void 		loading(t_data *d)
 {
-	int		status;
-	int		i;
-	char	*str;
-	char	*tmp;
+	uint32_t	status[2];
+	char 		*num;
+	char		*str;
+	char		*tmp;
+	SDL_Event	e;
 
-	status = 0;
-	while (status <= 100)
-	{
-		str = ft_strdup("LOADING");
-		i = -1;
-		while (++i <= status % 3)
+	status[0] = SDL_GetTicks();
+
+	status[1] = status[0];
+	if (d->loaded)
+		return ;
+		while (SDL_PollEvent(&e) || status[1] - status[0] < 10000)
 		{
+			status[1] = SDL_GetTicks();
+			if (e.type == SDL_QUIT)
+				print_and_quit(d, "RED CROSS");
+			if (e.key.keysym.sym == SDLK_ESCAPE)
+				print_and_quit(d, "ESC");
+			str = ft_strdup("LOADING ");
 			tmp = str;
-			str = ft_strjoin(str, ".");
+			num = ft_itoa(to_percent(status[1]));
+			str = ft_strjoin(str, num);
 			free(tmp);
+			tmp = str;
+			str = ft_strjoin(str, "%");
+			free(tmp);
+			free(num);
+			draw_bar(d, status[1]);
+			draw_string(d, (t_font){ str, (WIDTH >> 1) - 56, (HEIGHT >> 1) - 42, 0xaaaaaa, 2 });
+			free(str);
+			SDL_UpdateWindowSurface(d->sdl.win);
 		}
-		draw_bar(d, status);
-		draw_string(d, (t_font){ str, (WIDTH >> 1) - 56, (HEIGHT >> 1) - 42, 0xaaaaaa, 2 });
-		free(str);
-		status += 4;
-		SDL_UpdateWindowSurface(d->sdl.win);
-		SDL_Delay(200);
-	}
+		d->loaded = 1;
 }
