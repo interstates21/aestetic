@@ -292,5 +292,6 @@ void		load_monsters_texture(t_data *d, int f);
 
 void		load_weapons_texture(t_data *d,
 		int f, int *nb_tex, int *nb_projectiles);
+void 		loading(t_data *d);
 
 #endif

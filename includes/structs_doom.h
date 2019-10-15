@@ -143,10 +143,6 @@ typedef struct		s_proj_type
 	bool			threat_to_monster;
 }					t_proj_type;
 
-# define NORMAL 1
-# define CHARGED 2
-# define DELAY 3
-
 typedef struct		s_weapon_type
 {
 	uint8_t			rate_of_fire[2];
@@ -217,6 +213,7 @@ typedef struct		s_color_buf
 typedef struct		s_sdl {
 	SDL_Window		*win;
 	SDL_Surface		*screen;
+	TTF_Font		*font;
 }					t_sdl;
 
 
@@ -225,6 +222,56 @@ typedef struct		s_scene {
 	SDL_Surface		*screen;
 }					t_scene;
 
+typedef struct		s_bitmap
+{
+	int				bit[8];
+}					t_bitmap;
+
+typedef struct		s_chars
+{
+	t_bitmap			b;
+	t_bitmap 			a;
+	t_bitmap			c;
+	t_bitmap			d;
+	t_bitmap			e;
+	t_bitmap			f;
+	t_bitmap			g;
+	t_bitmap			h;
+	t_bitmap			i;
+	t_bitmap			j;
+	t_bitmap			k;
+	t_bitmap			l;
+	t_bitmap			m;
+	t_bitmap			n;
+	t_bitmap			o;
+	t_bitmap			p;
+	t_bitmap			q;
+	t_bitmap			r;
+	t_bitmap			s;
+	t_bitmap			t;
+	t_bitmap			u;
+	t_bitmap			v;
+	t_bitmap			w;
+	t_bitmap			x;
+	t_bitmap			y;
+	t_bitmap			z;
+	t_bitmap			dot;
+	t_bitmap			exc;
+	t_bitmap			semi;
+	t_bitmap			spc;
+	t_bitmap			n0;
+	t_bitmap			n1;
+	t_bitmap			n2;
+	t_bitmap			n3;
+	t_bitmap			n4;
+	t_bitmap			n5;
+	t_bitmap			n6;
+	t_bitmap			n7;
+	t_bitmap			n8;
+	t_bitmap			n9;
+	t_bitmap			slh;
+	t_bitmap			prc;
+}					t_chars;
 
 typedef struct		s_data
 {
@@ -270,6 +317,7 @@ typedef struct		s_data
 	t_color_buf		color_buf;
 	t_vec2f			inertia;
 	unsigned char	font[96][5];
+	int 			used[96];
 	double			*zbuffer;
 	double			floorheightplayer;
 	double			ceilheightplayer;
@@ -282,6 +330,8 @@ typedef struct		s_data
 	uint32_t		msg_start;
 	uint32_t		last_dangerous_area_damage;
 	int				difficulty;
+	t_chars			chars;
+	int 			loaded;
 }					t_data;
 
 typedef struct		s_thread_arg

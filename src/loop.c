@@ -31,6 +31,8 @@ void	loop(t_data *d)
 	SDL_Event	e;
 	uint32_t	start;
 
+	loading(d);
+	play_music(d, MAIN_MUSIC);
 	while (1)
 	{
 		start = SDL_GetTicks();

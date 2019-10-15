@@ -10,7 +10,7 @@ void	draw_health(t_data *d)
 
 void	draw_ammo(t_data *d, t_weapon_type weapon_type)
 {
-	static char buf[100] = "Ammo: ";
+	static char buf[100] = "QWERTYUIOPASDFGHJKLZXCVBNM :;.,?!";
 
 	ft_strcpy(buf + 6, ft_itoa_static(weapon_type.current_ammo));
 	ft_strcpy(buf + ft_strlen(buf), " / ");

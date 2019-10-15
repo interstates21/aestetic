@@ -39,6 +39,7 @@ void	init_everything(t_data *d, char *map)
 	d->ceilheightplayer = get_ceilheight_player(d, d->cursectnum);
 	play_music(d, MAIN_MUSIC);
 	nextSectFix(d);
+
 	loop(d);
 }
 
@@ -48,6 +49,7 @@ void run(char *mapname) {
 	t_data d;
 
 	init_font(&d);
+	d.loaded = 0;
 	init_sdl(&(d.sdl));
 	initKeys(&(d.keys));
 	d.zbuffer = getScreenPixels();
