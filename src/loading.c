@@ -11,7 +11,7 @@ static int	to_percent(int p)
 {
 	int 	r;
 
-	r = (int)((p * 100) / 10000);
+	r = (int)(p  / 100);
 	return (r > 100 ? 100 : r);
 }
 
@@ -49,7 +49,7 @@ void 		loading(t_data *d)
 	status[1] = status[0];
 	if (d->loaded)
 		return ;
-		while (SDL_PollEvent(&e) || status[1] - status[0] < 10000)
+	while (status[1] - status[0] < 10000 || SDL_PollEvent(&e))
 		{
 			status[1] = SDL_GetTicks();
 			if (e.type == SDL_QUIT)
