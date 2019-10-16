@@ -1,7 +1,7 @@
 #ifndef DEFINES_H
 # define DEFINES_H
 
-#define COLLISION_DIST 0.3
+#define COLLISION_DIST 0.2
 #define MINIMUM_HEIGHT_TO_WALK 0.32
 #define MINIMUM_CEIL_DIST 0.1
 
