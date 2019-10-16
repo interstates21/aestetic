@@ -74,7 +74,7 @@ void	normal_gravity(t_data *d)
 	check_crouch(d);
 	d->cam.pos.y += d->player.gravity;
 	if (!d->sectors[d->cursectnum].outdoor && d->cam.pos.y > d->ceilheightplayer
-															 - MINIMUM_CEIL_DIST)
+															- MINIMUM_CEIL_DIST)
 	{
 		d->player.gravity = 0.0;
 		d->cam.pos.y = d->ceilheightplayer - MINIMUM_CEIL_DIST;
