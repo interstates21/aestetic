@@ -123,6 +123,1545 @@ doom/fast:
 	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/build
 .PHONY : doom/fast
 
+DELETEDed/ed_add_protection.o: DELETEDed/ed_add_protection.c.o
+
+.PHONY : DELETEDed/ed_add_protection.o
+
+# target to build an object file
+DELETEDed/ed_add_protection.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_add_protection.c.o
+.PHONY : DELETEDed/ed_add_protection.c.o
+
+DELETEDed/ed_add_protection.i: DELETEDed/ed_add_protection.c.i
+
+.PHONY : DELETEDed/ed_add_protection.i
+
+# target to preprocess a source file
+DELETEDed/ed_add_protection.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_add_protection.c.i
+.PHONY : DELETEDed/ed_add_protection.c.i
+
+DELETEDed/ed_add_protection.s: DELETEDed/ed_add_protection.c.s
+
+.PHONY : DELETEDed/ed_add_protection.s
+
+# target to generate assembly for a file
+DELETEDed/ed_add_protection.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_add_protection.c.s
+.PHONY : DELETEDed/ed_add_protection.c.s
+
+DELETEDed/ed_bmp_reader.o: DELETEDed/ed_bmp_reader.c.o
+
+.PHONY : DELETEDed/ed_bmp_reader.o
+
+# target to build an object file
+DELETEDed/ed_bmp_reader.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_bmp_reader.c.o
+.PHONY : DELETEDed/ed_bmp_reader.c.o
+
+DELETEDed/ed_bmp_reader.i: DELETEDed/ed_bmp_reader.c.i
+
+.PHONY : DELETEDed/ed_bmp_reader.i
+
+# target to preprocess a source file
+DELETEDed/ed_bmp_reader.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_bmp_reader.c.i
+.PHONY : DELETEDed/ed_bmp_reader.c.i
+
+DELETEDed/ed_bmp_reader.s: DELETEDed/ed_bmp_reader.c.s
+
+.PHONY : DELETEDed/ed_bmp_reader.s
+
+# target to generate assembly for a file
+DELETEDed/ed_bmp_reader.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_bmp_reader.c.s
+.PHONY : DELETEDed/ed_bmp_reader.c.s
+
+DELETEDed/ed_conversion.o: DELETEDed/ed_conversion.c.o
+
+.PHONY : DELETEDed/ed_conversion.o
+
+# target to build an object file
+DELETEDed/ed_conversion.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_conversion.c.o
+.PHONY : DELETEDed/ed_conversion.c.o
+
+DELETEDed/ed_conversion.i: DELETEDed/ed_conversion.c.i
+
+.PHONY : DELETEDed/ed_conversion.i
+
+# target to preprocess a source file
+DELETEDed/ed_conversion.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_conversion.c.i
+.PHONY : DELETEDed/ed_conversion.c.i
+
+DELETEDed/ed_conversion.s: DELETEDed/ed_conversion.c.s
+
+.PHONY : DELETEDed/ed_conversion.s
+
+# target to generate assembly for a file
+DELETEDed/ed_conversion.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_conversion.c.s
+.PHONY : DELETEDed/ed_conversion.c.s
+
+DELETEDed/ed_detect_assets.o: DELETEDed/ed_detect_assets.c.o
+
+.PHONY : DELETEDed/ed_detect_assets.o
+
+# target to build an object file
+DELETEDed/ed_detect_assets.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_detect_assets.c.o
+.PHONY : DELETEDed/ed_detect_assets.c.o
+
+DELETEDed/ed_detect_assets.i: DELETEDed/ed_detect_assets.c.i
+
+.PHONY : DELETEDed/ed_detect_assets.i
+
+# target to preprocess a source file
+DELETEDed/ed_detect_assets.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_detect_assets.c.i
+.PHONY : DELETEDed/ed_detect_assets.c.i
+
+DELETEDed/ed_detect_assets.s: DELETEDed/ed_detect_assets.c.s
+
+.PHONY : DELETEDed/ed_detect_assets.s
+
+# target to generate assembly for a file
+DELETEDed/ed_detect_assets.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_detect_assets.c.s
+.PHONY : DELETEDed/ed_detect_assets.c.s
+
+DELETEDed/ed_detect_wall.o: DELETEDed/ed_detect_wall.c.o
+
+.PHONY : DELETEDed/ed_detect_wall.o
+
+# target to build an object file
+DELETEDed/ed_detect_wall.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_detect_wall.c.o
+.PHONY : DELETEDed/ed_detect_wall.c.o
+
+DELETEDed/ed_detect_wall.i: DELETEDed/ed_detect_wall.c.i
+
+.PHONY : DELETEDed/ed_detect_wall.i
+
+# target to preprocess a source file
+DELETEDed/ed_detect_wall.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_detect_wall.c.i
+.PHONY : DELETEDed/ed_detect_wall.c.i
+
+DELETEDed/ed_detect_wall.s: DELETEDed/ed_detect_wall.c.s
+
+.PHONY : DELETEDed/ed_detect_wall.s
+
+# target to generate assembly for a file
+DELETEDed/ed_detect_wall.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_detect_wall.c.s
+.PHONY : DELETEDed/ed_detect_wall.c.s
+
+DELETEDed/ed_door_toggle.o: DELETEDed/ed_door_toggle.c.o
+
+.PHONY : DELETEDed/ed_door_toggle.o
+
+# target to build an object file
+DELETEDed/ed_door_toggle.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_door_toggle.c.o
+.PHONY : DELETEDed/ed_door_toggle.c.o
+
+DELETEDed/ed_door_toggle.i: DELETEDed/ed_door_toggle.c.i
+
+.PHONY : DELETEDed/ed_door_toggle.i
+
+# target to preprocess a source file
+DELETEDed/ed_door_toggle.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_door_toggle.c.i
+.PHONY : DELETEDed/ed_door_toggle.c.i
+
+DELETEDed/ed_door_toggle.s: DELETEDed/ed_door_toggle.c.s
+
+.PHONY : DELETEDed/ed_door_toggle.s
+
+# target to generate assembly for a file
+DELETEDed/ed_door_toggle.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_door_toggle.c.s
+.PHONY : DELETEDed/ed_door_toggle.c.s
+
+DELETEDed/ed_draw.o: DELETEDed/ed_draw.c.o
+
+.PHONY : DELETEDed/ed_draw.o
+
+# target to build an object file
+DELETEDed/ed_draw.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_draw.c.o
+.PHONY : DELETEDed/ed_draw.c.o
+
+DELETEDed/ed_draw.i: DELETEDed/ed_draw.c.i
+
+.PHONY : DELETEDed/ed_draw.i
+
+# target to preprocess a source file
+DELETEDed/ed_draw.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_draw.c.i
+.PHONY : DELETEDed/ed_draw.c.i
+
+DELETEDed/ed_draw.s: DELETEDed/ed_draw.c.s
+
+.PHONY : DELETEDed/ed_draw.s
+
+# target to generate assembly for a file
+DELETEDed/ed_draw.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_draw.c.s
+.PHONY : DELETEDed/ed_draw.c.s
+
+DELETEDed/ed_draw_assets.o: DELETEDed/ed_draw_assets.c.o
+
+.PHONY : DELETEDed/ed_draw_assets.o
+
+# target to build an object file
+DELETEDed/ed_draw_assets.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_draw_assets.c.o
+.PHONY : DELETEDed/ed_draw_assets.c.o
+
+DELETEDed/ed_draw_assets.i: DELETEDed/ed_draw_assets.c.i
+
+.PHONY : DELETEDed/ed_draw_assets.i
+
+# target to preprocess a source file
+DELETEDed/ed_draw_assets.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_draw_assets.c.i
+.PHONY : DELETEDed/ed_draw_assets.c.i
+
+DELETEDed/ed_draw_assets.s: DELETEDed/ed_draw_assets.c.s
+
+.PHONY : DELETEDed/ed_draw_assets.s
+
+# target to generate assembly for a file
+DELETEDed/ed_draw_assets.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_draw_assets.c.s
+.PHONY : DELETEDed/ed_draw_assets.c.s
+
+DELETEDed/ed_draw_string.o: DELETEDed/ed_draw_string.c.o
+
+.PHONY : DELETEDed/ed_draw_string.o
+
+# target to build an object file
+DELETEDed/ed_draw_string.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_draw_string.c.o
+.PHONY : DELETEDed/ed_draw_string.c.o
+
+DELETEDed/ed_draw_string.i: DELETEDed/ed_draw_string.c.i
+
+.PHONY : DELETEDed/ed_draw_string.i
+
+# target to preprocess a source file
+DELETEDed/ed_draw_string.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_draw_string.c.i
+.PHONY : DELETEDed/ed_draw_string.c.i
+
+DELETEDed/ed_draw_string.s: DELETEDed/ed_draw_string.c.s
+
+.PHONY : DELETEDed/ed_draw_string.s
+
+# target to generate assembly for a file
+DELETEDed/ed_draw_string.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_draw_string.c.s
+.PHONY : DELETEDed/ed_draw_string.c.s
+
+DELETEDed/ed_editor.o: DELETEDed/ed_editor.c.o
+
+.PHONY : DELETEDed/ed_editor.o
+
+# target to build an object file
+DELETEDed/ed_editor.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_editor.c.o
+.PHONY : DELETEDed/ed_editor.c.o
+
+DELETEDed/ed_editor.i: DELETEDed/ed_editor.c.i
+
+.PHONY : DELETEDed/ed_editor.i
+
+# target to preprocess a source file
+DELETEDed/ed_editor.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_editor.c.i
+.PHONY : DELETEDed/ed_editor.c.i
+
+DELETEDed/ed_editor.s: DELETEDed/ed_editor.c.s
+
+.PHONY : DELETEDed/ed_editor.s
+
+# target to generate assembly for a file
+DELETEDed/ed_editor.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_editor.c.s
+.PHONY : DELETEDed/ed_editor.c.s
+
+DELETEDed/ed_editor_assets_handler.o: DELETEDed/ed_editor_assets_handler.c.o
+
+.PHONY : DELETEDed/ed_editor_assets_handler.o
+
+# target to build an object file
+DELETEDed/ed_editor_assets_handler.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_editor_assets_handler.c.o
+.PHONY : DELETEDed/ed_editor_assets_handler.c.o
+
+DELETEDed/ed_editor_assets_handler.i: DELETEDed/ed_editor_assets_handler.c.i
+
+.PHONY : DELETEDed/ed_editor_assets_handler.i
+
+# target to preprocess a source file
+DELETEDed/ed_editor_assets_handler.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_editor_assets_handler.c.i
+.PHONY : DELETEDed/ed_editor_assets_handler.c.i
+
+DELETEDed/ed_editor_assets_handler.s: DELETEDed/ed_editor_assets_handler.c.s
+
+.PHONY : DELETEDed/ed_editor_assets_handler.s
+
+# target to generate assembly for a file
+DELETEDed/ed_editor_assets_handler.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_editor_assets_handler.c.s
+.PHONY : DELETEDed/ed_editor_assets_handler.c.s
+
+DELETEDed/ed_editor_assets_handler2.o: DELETEDed/ed_editor_assets_handler2.c.o
+
+.PHONY : DELETEDed/ed_editor_assets_handler2.o
+
+# target to build an object file
+DELETEDed/ed_editor_assets_handler2.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_editor_assets_handler2.c.o
+.PHONY : DELETEDed/ed_editor_assets_handler2.c.o
+
+DELETEDed/ed_editor_assets_handler2.i: DELETEDed/ed_editor_assets_handler2.c.i
+
+.PHONY : DELETEDed/ed_editor_assets_handler2.i
+
+# target to preprocess a source file
+DELETEDed/ed_editor_assets_handler2.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_editor_assets_handler2.c.i
+.PHONY : DELETEDed/ed_editor_assets_handler2.c.i
+
+DELETEDed/ed_editor_assets_handler2.s: DELETEDed/ed_editor_assets_handler2.c.s
+
+.PHONY : DELETEDed/ed_editor_assets_handler2.s
+
+# target to generate assembly for a file
+DELETEDed/ed_editor_assets_handler2.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_editor_assets_handler2.c.s
+.PHONY : DELETEDed/ed_editor_assets_handler2.c.s
+
+DELETEDed/ed_editor_functions.o: DELETEDed/ed_editor_functions.c.o
+
+.PHONY : DELETEDed/ed_editor_functions.o
+
+# target to build an object file
+DELETEDed/ed_editor_functions.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_editor_functions.c.o
+.PHONY : DELETEDed/ed_editor_functions.c.o
+
+DELETEDed/ed_editor_functions.i: DELETEDed/ed_editor_functions.c.i
+
+.PHONY : DELETEDed/ed_editor_functions.i
+
+# target to preprocess a source file
+DELETEDed/ed_editor_functions.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_editor_functions.c.i
+.PHONY : DELETEDed/ed_editor_functions.c.i
+
+DELETEDed/ed_editor_functions.s: DELETEDed/ed_editor_functions.c.s
+
+.PHONY : DELETEDed/ed_editor_functions.s
+
+# target to generate assembly for a file
+DELETEDed/ed_editor_functions.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_editor_functions.c.s
+.PHONY : DELETEDed/ed_editor_functions.c.s
+
+DELETEDed/ed_editor_sector.o: DELETEDed/ed_editor_sector.c.o
+
+.PHONY : DELETEDed/ed_editor_sector.o
+
+# target to build an object file
+DELETEDed/ed_editor_sector.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_editor_sector.c.o
+.PHONY : DELETEDed/ed_editor_sector.c.o
+
+DELETEDed/ed_editor_sector.i: DELETEDed/ed_editor_sector.c.i
+
+.PHONY : DELETEDed/ed_editor_sector.i
+
+# target to preprocess a source file
+DELETEDed/ed_editor_sector.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_editor_sector.c.i
+.PHONY : DELETEDed/ed_editor_sector.c.i
+
+DELETEDed/ed_editor_sector.s: DELETEDed/ed_editor_sector.c.s
+
+.PHONY : DELETEDed/ed_editor_sector.s
+
+# target to generate assembly for a file
+DELETEDed/ed_editor_sector.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_editor_sector.c.s
+.PHONY : DELETEDed/ed_editor_sector.c.s
+
+DELETEDed/ed_editor_wall.o: DELETEDed/ed_editor_wall.c.o
+
+.PHONY : DELETEDed/ed_editor_wall.o
+
+# target to build an object file
+DELETEDed/ed_editor_wall.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_editor_wall.c.o
+.PHONY : DELETEDed/ed_editor_wall.c.o
+
+DELETEDed/ed_editor_wall.i: DELETEDed/ed_editor_wall.c.i
+
+.PHONY : DELETEDed/ed_editor_wall.i
+
+# target to preprocess a source file
+DELETEDed/ed_editor_wall.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_editor_wall.c.i
+.PHONY : DELETEDed/ed_editor_wall.c.i
+
+DELETEDed/ed_editor_wall.s: DELETEDed/ed_editor_wall.c.s
+
+.PHONY : DELETEDed/ed_editor_wall.s
+
+# target to generate assembly for a file
+DELETEDed/ed_editor_wall.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_editor_wall.c.s
+.PHONY : DELETEDed/ed_editor_wall.c.s
+
+DELETEDed/ed_event.o: DELETEDed/ed_event.c.o
+
+.PHONY : DELETEDed/ed_event.o
+
+# target to build an object file
+DELETEDed/ed_event.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_event.c.o
+.PHONY : DELETEDed/ed_event.c.o
+
+DELETEDed/ed_event.i: DELETEDed/ed_event.c.i
+
+.PHONY : DELETEDed/ed_event.i
+
+# target to preprocess a source file
+DELETEDed/ed_event.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_event.c.i
+.PHONY : DELETEDed/ed_event.c.i
+
+DELETEDed/ed_event.s: DELETEDed/ed_event.c.s
+
+.PHONY : DELETEDed/ed_event.s
+
+# target to generate assembly for a file
+DELETEDed/ed_event.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_event.c.s
+.PHONY : DELETEDed/ed_event.c.s
+
+DELETEDed/ed_event_assets_options.o: DELETEDed/ed_event_assets_options.c.o
+
+.PHONY : DELETEDed/ed_event_assets_options.o
+
+# target to build an object file
+DELETEDed/ed_event_assets_options.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_event_assets_options.c.o
+.PHONY : DELETEDed/ed_event_assets_options.c.o
+
+DELETEDed/ed_event_assets_options.i: DELETEDed/ed_event_assets_options.c.i
+
+.PHONY : DELETEDed/ed_event_assets_options.i
+
+# target to preprocess a source file
+DELETEDed/ed_event_assets_options.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_event_assets_options.c.i
+.PHONY : DELETEDed/ed_event_assets_options.c.i
+
+DELETEDed/ed_event_assets_options.s: DELETEDed/ed_event_assets_options.c.s
+
+.PHONY : DELETEDed/ed_event_assets_options.s
+
+# target to generate assembly for a file
+DELETEDed/ed_event_assets_options.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_event_assets_options.c.s
+.PHONY : DELETEDed/ed_event_assets_options.c.s
+
+DELETEDed/ed_event_functions.o: DELETEDed/ed_event_functions.c.o
+
+.PHONY : DELETEDed/ed_event_functions.o
+
+# target to build an object file
+DELETEDed/ed_event_functions.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_event_functions.c.o
+.PHONY : DELETEDed/ed_event_functions.c.o
+
+DELETEDed/ed_event_functions.i: DELETEDed/ed_event_functions.c.i
+
+.PHONY : DELETEDed/ed_event_functions.i
+
+# target to preprocess a source file
+DELETEDed/ed_event_functions.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_event_functions.c.i
+.PHONY : DELETEDed/ed_event_functions.c.i
+
+DELETEDed/ed_event_functions.s: DELETEDed/ed_event_functions.c.s
+
+.PHONY : DELETEDed/ed_event_functions.s
+
+# target to generate assembly for a file
+DELETEDed/ed_event_functions.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_event_functions.c.s
+.PHONY : DELETEDed/ed_event_functions.c.s
+
+DELETEDed/ed_event_functions2.o: DELETEDed/ed_event_functions2.c.o
+
+.PHONY : DELETEDed/ed_event_functions2.o
+
+# target to build an object file
+DELETEDed/ed_event_functions2.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_event_functions2.c.o
+.PHONY : DELETEDed/ed_event_functions2.c.o
+
+DELETEDed/ed_event_functions2.i: DELETEDed/ed_event_functions2.c.i
+
+.PHONY : DELETEDed/ed_event_functions2.i
+
+# target to preprocess a source file
+DELETEDed/ed_event_functions2.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_event_functions2.c.i
+.PHONY : DELETEDed/ed_event_functions2.c.i
+
+DELETEDed/ed_event_functions2.s: DELETEDed/ed_event_functions2.c.s
+
+.PHONY : DELETEDed/ed_event_functions2.s
+
+# target to generate assembly for a file
+DELETEDed/ed_event_functions2.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_event_functions2.c.s
+.PHONY : DELETEDed/ed_event_functions2.c.s
+
+DELETEDed/ed_event_keyboard.o: DELETEDed/ed_event_keyboard.c.o
+
+.PHONY : DELETEDed/ed_event_keyboard.o
+
+# target to build an object file
+DELETEDed/ed_event_keyboard.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_event_keyboard.c.o
+.PHONY : DELETEDed/ed_event_keyboard.c.o
+
+DELETEDed/ed_event_keyboard.i: DELETEDed/ed_event_keyboard.c.i
+
+.PHONY : DELETEDed/ed_event_keyboard.i
+
+# target to preprocess a source file
+DELETEDed/ed_event_keyboard.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_event_keyboard.c.i
+.PHONY : DELETEDed/ed_event_keyboard.c.i
+
+DELETEDed/ed_event_keyboard.s: DELETEDed/ed_event_keyboard.c.s
+
+.PHONY : DELETEDed/ed_event_keyboard.s
+
+# target to generate assembly for a file
+DELETEDed/ed_event_keyboard.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_event_keyboard.c.s
+.PHONY : DELETEDed/ed_event_keyboard.c.s
+
+DELETEDed/ed_event_mouse_button.o: DELETEDed/ed_event_mouse_button.c.o
+
+.PHONY : DELETEDed/ed_event_mouse_button.o
+
+# target to build an object file
+DELETEDed/ed_event_mouse_button.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_event_mouse_button.c.o
+.PHONY : DELETEDed/ed_event_mouse_button.c.o
+
+DELETEDed/ed_event_mouse_button.i: DELETEDed/ed_event_mouse_button.c.i
+
+.PHONY : DELETEDed/ed_event_mouse_button.i
+
+# target to preprocess a source file
+DELETEDed/ed_event_mouse_button.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_event_mouse_button.c.i
+.PHONY : DELETEDed/ed_event_mouse_button.c.i
+
+DELETEDed/ed_event_mouse_button.s: DELETEDed/ed_event_mouse_button.c.s
+
+.PHONY : DELETEDed/ed_event_mouse_button.s
+
+# target to generate assembly for a file
+DELETEDed/ed_event_mouse_button.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_event_mouse_button.c.s
+.PHONY : DELETEDed/ed_event_mouse_button.c.s
+
+DELETEDed/ed_event_sector_options.o: DELETEDed/ed_event_sector_options.c.o
+
+.PHONY : DELETEDed/ed_event_sector_options.o
+
+# target to build an object file
+DELETEDed/ed_event_sector_options.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_event_sector_options.c.o
+.PHONY : DELETEDed/ed_event_sector_options.c.o
+
+DELETEDed/ed_event_sector_options.i: DELETEDed/ed_event_sector_options.c.i
+
+.PHONY : DELETEDed/ed_event_sector_options.i
+
+# target to preprocess a source file
+DELETEDed/ed_event_sector_options.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_event_sector_options.c.i
+.PHONY : DELETEDed/ed_event_sector_options.c.i
+
+DELETEDed/ed_event_sector_options.s: DELETEDed/ed_event_sector_options.c.s
+
+.PHONY : DELETEDed/ed_event_sector_options.s
+
+# target to generate assembly for a file
+DELETEDed/ed_event_sector_options.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_event_sector_options.c.s
+.PHONY : DELETEDed/ed_event_sector_options.c.s
+
+DELETEDed/ed_fix_data_to_save.o: DELETEDed/ed_fix_data_to_save.c.o
+
+.PHONY : DELETEDed/ed_fix_data_to_save.o
+
+# target to build an object file
+DELETEDed/ed_fix_data_to_save.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_fix_data_to_save.c.o
+.PHONY : DELETEDed/ed_fix_data_to_save.c.o
+
+DELETEDed/ed_fix_data_to_save.i: DELETEDed/ed_fix_data_to_save.c.i
+
+.PHONY : DELETEDed/ed_fix_data_to_save.i
+
+# target to preprocess a source file
+DELETEDed/ed_fix_data_to_save.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_fix_data_to_save.c.i
+.PHONY : DELETEDed/ed_fix_data_to_save.c.i
+
+DELETEDed/ed_fix_data_to_save.s: DELETEDed/ed_fix_data_to_save.c.s
+
+.PHONY : DELETEDed/ed_fix_data_to_save.s
+
+# target to generate assembly for a file
+DELETEDed/ed_fix_data_to_save.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_fix_data_to_save.c.s
+.PHONY : DELETEDed/ed_fix_data_to_save.c.s
+
+DELETEDed/ed_get_animation_files.o: DELETEDed/ed_get_animation_files.c.o
+
+.PHONY : DELETEDed/ed_get_animation_files.o
+
+# target to build an object file
+DELETEDed/ed_get_animation_files.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_get_animation_files.c.o
+.PHONY : DELETEDed/ed_get_animation_files.c.o
+
+DELETEDed/ed_get_animation_files.i: DELETEDed/ed_get_animation_files.c.i
+
+.PHONY : DELETEDed/ed_get_animation_files.i
+
+# target to preprocess a source file
+DELETEDed/ed_get_animation_files.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_get_animation_files.c.i
+.PHONY : DELETEDed/ed_get_animation_files.c.i
+
+DELETEDed/ed_get_animation_files.s: DELETEDed/ed_get_animation_files.c.s
+
+.PHONY : DELETEDed/ed_get_animation_files.s
+
+# target to generate assembly for a file
+DELETEDed/ed_get_animation_files.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_get_animation_files.c.s
+.PHONY : DELETEDed/ed_get_animation_files.c.s
+
+DELETEDed/ed_get_monster_files.o: DELETEDed/ed_get_monster_files.c.o
+
+.PHONY : DELETEDed/ed_get_monster_files.o
+
+# target to build an object file
+DELETEDed/ed_get_monster_files.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_get_monster_files.c.o
+.PHONY : DELETEDed/ed_get_monster_files.c.o
+
+DELETEDed/ed_get_monster_files.i: DELETEDed/ed_get_monster_files.c.i
+
+.PHONY : DELETEDed/ed_get_monster_files.i
+
+# target to preprocess a source file
+DELETEDed/ed_get_monster_files.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_get_monster_files.c.i
+.PHONY : DELETEDed/ed_get_monster_files.c.i
+
+DELETEDed/ed_get_monster_files.s: DELETEDed/ed_get_monster_files.c.s
+
+.PHONY : DELETEDed/ed_get_monster_files.s
+
+# target to generate assembly for a file
+DELETEDed/ed_get_monster_files.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_get_monster_files.c.s
+.PHONY : DELETEDed/ed_get_monster_files.c.s
+
+DELETEDed/ed_get_weapon_list.o: DELETEDed/ed_get_weapon_list.c.o
+
+.PHONY : DELETEDed/ed_get_weapon_list.o
+
+# target to build an object file
+DELETEDed/ed_get_weapon_list.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_get_weapon_list.c.o
+.PHONY : DELETEDed/ed_get_weapon_list.c.o
+
+DELETEDed/ed_get_weapon_list.i: DELETEDed/ed_get_weapon_list.c.i
+
+.PHONY : DELETEDed/ed_get_weapon_list.i
+
+# target to preprocess a source file
+DELETEDed/ed_get_weapon_list.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_get_weapon_list.c.i
+.PHONY : DELETEDed/ed_get_weapon_list.c.i
+
+DELETEDed/ed_get_weapon_list.s: DELETEDed/ed_get_weapon_list.c.s
+
+.PHONY : DELETEDed/ed_get_weapon_list.s
+
+# target to generate assembly for a file
+DELETEDed/ed_get_weapon_list.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_get_weapon_list.c.s
+.PHONY : DELETEDed/ed_get_weapon_list.c.s
+
+DELETEDed/ed_init_assets.o: DELETEDed/ed_init_assets.c.o
+
+.PHONY : DELETEDed/ed_init_assets.o
+
+# target to build an object file
+DELETEDed/ed_init_assets.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_init_assets.c.o
+.PHONY : DELETEDed/ed_init_assets.c.o
+
+DELETEDed/ed_init_assets.i: DELETEDed/ed_init_assets.c.i
+
+.PHONY : DELETEDed/ed_init_assets.i
+
+# target to preprocess a source file
+DELETEDed/ed_init_assets.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_init_assets.c.i
+.PHONY : DELETEDed/ed_init_assets.c.i
+
+DELETEDed/ed_init_assets.s: DELETEDed/ed_init_assets.c.s
+
+.PHONY : DELETEDed/ed_init_assets.s
+
+# target to generate assembly for a file
+DELETEDed/ed_init_assets.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_init_assets.c.s
+.PHONY : DELETEDed/ed_init_assets.c.s
+
+DELETEDed/ed_init_editor.o: DELETEDed/ed_init_editor.c.o
+
+.PHONY : DELETEDed/ed_init_editor.o
+
+# target to build an object file
+DELETEDed/ed_init_editor.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_init_editor.c.o
+.PHONY : DELETEDed/ed_init_editor.c.o
+
+DELETEDed/ed_init_editor.i: DELETEDed/ed_init_editor.c.i
+
+.PHONY : DELETEDed/ed_init_editor.i
+
+# target to preprocess a source file
+DELETEDed/ed_init_editor.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_init_editor.c.i
+.PHONY : DELETEDed/ed_init_editor.c.i
+
+DELETEDed/ed_init_editor.s: DELETEDed/ed_init_editor.c.s
+
+.PHONY : DELETEDed/ed_init_editor.s
+
+# target to generate assembly for a file
+DELETEDed/ed_init_editor.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_init_editor.c.s
+.PHONY : DELETEDed/ed_init_editor.c.s
+
+DELETEDed/ed_init_structures.o: DELETEDed/ed_init_structures.c.o
+
+.PHONY : DELETEDed/ed_init_structures.o
+
+# target to build an object file
+DELETEDed/ed_init_structures.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_init_structures.c.o
+.PHONY : DELETEDed/ed_init_structures.c.o
+
+DELETEDed/ed_init_structures.i: DELETEDed/ed_init_structures.c.i
+
+.PHONY : DELETEDed/ed_init_structures.i
+
+# target to preprocess a source file
+DELETEDed/ed_init_structures.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_init_structures.c.i
+.PHONY : DELETEDed/ed_init_structures.c.i
+
+DELETEDed/ed_init_structures.s: DELETEDed/ed_init_structures.c.s
+
+.PHONY : DELETEDed/ed_init_structures.s
+
+# target to generate assembly for a file
+DELETEDed/ed_init_structures.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_init_structures.c.s
+.PHONY : DELETEDed/ed_init_structures.c.s
+
+DELETEDed/ed_init_texture.o: DELETEDed/ed_init_texture.c.o
+
+.PHONY : DELETEDed/ed_init_texture.o
+
+# target to build an object file
+DELETEDed/ed_init_texture.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_init_texture.c.o
+.PHONY : DELETEDed/ed_init_texture.c.o
+
+DELETEDed/ed_init_texture.i: DELETEDed/ed_init_texture.c.i
+
+.PHONY : DELETEDed/ed_init_texture.i
+
+# target to preprocess a source file
+DELETEDed/ed_init_texture.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_init_texture.c.i
+.PHONY : DELETEDed/ed_init_texture.c.i
+
+DELETEDed/ed_init_texture.s: DELETEDed/ed_init_texture.c.s
+
+.PHONY : DELETEDed/ed_init_texture.s
+
+# target to generate assembly for a file
+DELETEDed/ed_init_texture.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_init_texture.c.s
+.PHONY : DELETEDed/ed_init_texture.c.s
+
+DELETEDed/ed_interface.o: DELETEDed/ed_interface.c.o
+
+.PHONY : DELETEDed/ed_interface.o
+
+# target to build an object file
+DELETEDed/ed_interface.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_interface.c.o
+.PHONY : DELETEDed/ed_interface.c.o
+
+DELETEDed/ed_interface.i: DELETEDed/ed_interface.c.i
+
+.PHONY : DELETEDed/ed_interface.i
+
+# target to preprocess a source file
+DELETEDed/ed_interface.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_interface.c.i
+.PHONY : DELETEDed/ed_interface.c.i
+
+DELETEDed/ed_interface.s: DELETEDed/ed_interface.c.s
+
+.PHONY : DELETEDed/ed_interface.s
+
+# target to generate assembly for a file
+DELETEDed/ed_interface.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_interface.c.s
+.PHONY : DELETEDed/ed_interface.c.s
+
+DELETEDed/ed_interface_functions.o: DELETEDed/ed_interface_functions.c.o
+
+.PHONY : DELETEDed/ed_interface_functions.o
+
+# target to build an object file
+DELETEDed/ed_interface_functions.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_interface_functions.c.o
+.PHONY : DELETEDed/ed_interface_functions.c.o
+
+DELETEDed/ed_interface_functions.i: DELETEDed/ed_interface_functions.c.i
+
+.PHONY : DELETEDed/ed_interface_functions.i
+
+# target to preprocess a source file
+DELETEDed/ed_interface_functions.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_interface_functions.c.i
+.PHONY : DELETEDed/ed_interface_functions.c.i
+
+DELETEDed/ed_interface_functions.s: DELETEDed/ed_interface_functions.c.s
+
+.PHONY : DELETEDed/ed_interface_functions.s
+
+# target to generate assembly for a file
+DELETEDed/ed_interface_functions.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_interface_functions.c.s
+.PHONY : DELETEDed/ed_interface_functions.c.s
+
+DELETEDed/ed_interface_map_list.o: DELETEDed/ed_interface_map_list.c.o
+
+.PHONY : DELETEDed/ed_interface_map_list.o
+
+# target to build an object file
+DELETEDed/ed_interface_map_list.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_interface_map_list.c.o
+.PHONY : DELETEDed/ed_interface_map_list.c.o
+
+DELETEDed/ed_interface_map_list.i: DELETEDed/ed_interface_map_list.c.i
+
+.PHONY : DELETEDed/ed_interface_map_list.i
+
+# target to preprocess a source file
+DELETEDed/ed_interface_map_list.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_interface_map_list.c.i
+.PHONY : DELETEDed/ed_interface_map_list.c.i
+
+DELETEDed/ed_interface_map_list.s: DELETEDed/ed_interface_map_list.c.s
+
+.PHONY : DELETEDed/ed_interface_map_list.s
+
+# target to generate assembly for a file
+DELETEDed/ed_interface_map_list.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_interface_map_list.c.s
+.PHONY : DELETEDed/ed_interface_map_list.c.s
+
+DELETEDed/ed_interface_print_values.o: DELETEDed/ed_interface_print_values.c.o
+
+.PHONY : DELETEDed/ed_interface_print_values.o
+
+# target to build an object file
+DELETEDed/ed_interface_print_values.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_interface_print_values.c.o
+.PHONY : DELETEDed/ed_interface_print_values.c.o
+
+DELETEDed/ed_interface_print_values.i: DELETEDed/ed_interface_print_values.c.i
+
+.PHONY : DELETEDed/ed_interface_print_values.i
+
+# target to preprocess a source file
+DELETEDed/ed_interface_print_values.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_interface_print_values.c.i
+.PHONY : DELETEDed/ed_interface_print_values.c.i
+
+DELETEDed/ed_interface_print_values.s: DELETEDed/ed_interface_print_values.c.s
+
+.PHONY : DELETEDed/ed_interface_print_values.s
+
+# target to generate assembly for a file
+DELETEDed/ed_interface_print_values.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_interface_print_values.c.s
+.PHONY : DELETEDed/ed_interface_print_values.c.s
+
+DELETEDed/ed_interface_properties.o: DELETEDed/ed_interface_properties.c.o
+
+.PHONY : DELETEDed/ed_interface_properties.o
+
+# target to build an object file
+DELETEDed/ed_interface_properties.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_interface_properties.c.o
+.PHONY : DELETEDed/ed_interface_properties.c.o
+
+DELETEDed/ed_interface_properties.i: DELETEDed/ed_interface_properties.c.i
+
+.PHONY : DELETEDed/ed_interface_properties.i
+
+# target to preprocess a source file
+DELETEDed/ed_interface_properties.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_interface_properties.c.i
+.PHONY : DELETEDed/ed_interface_properties.c.i
+
+DELETEDed/ed_interface_properties.s: DELETEDed/ed_interface_properties.c.s
+
+.PHONY : DELETEDed/ed_interface_properties.s
+
+# target to generate assembly for a file
+DELETEDed/ed_interface_properties.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_interface_properties.c.s
+.PHONY : DELETEDed/ed_interface_properties.c.s
+
+DELETEDed/ed_interface_properties2.o: DELETEDed/ed_interface_properties2.c.o
+
+.PHONY : DELETEDed/ed_interface_properties2.o
+
+# target to build an object file
+DELETEDed/ed_interface_properties2.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_interface_properties2.c.o
+.PHONY : DELETEDed/ed_interface_properties2.c.o
+
+DELETEDed/ed_interface_properties2.i: DELETEDed/ed_interface_properties2.c.i
+
+.PHONY : DELETEDed/ed_interface_properties2.i
+
+# target to preprocess a source file
+DELETEDed/ed_interface_properties2.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_interface_properties2.c.i
+.PHONY : DELETEDed/ed_interface_properties2.c.i
+
+DELETEDed/ed_interface_properties2.s: DELETEDed/ed_interface_properties2.c.s
+
+.PHONY : DELETEDed/ed_interface_properties2.s
+
+# target to generate assembly for a file
+DELETEDed/ed_interface_properties2.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_interface_properties2.c.s
+.PHONY : DELETEDed/ed_interface_properties2.c.s
+
+DELETEDed/ed_interface_select_map.o: DELETEDed/ed_interface_select_map.c.o
+
+.PHONY : DELETEDed/ed_interface_select_map.o
+
+# target to build an object file
+DELETEDed/ed_interface_select_map.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_interface_select_map.c.o
+.PHONY : DELETEDed/ed_interface_select_map.c.o
+
+DELETEDed/ed_interface_select_map.i: DELETEDed/ed_interface_select_map.c.i
+
+.PHONY : DELETEDed/ed_interface_select_map.i
+
+# target to preprocess a source file
+DELETEDed/ed_interface_select_map.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_interface_select_map.c.i
+.PHONY : DELETEDed/ed_interface_select_map.c.i
+
+DELETEDed/ed_interface_select_map.s: DELETEDed/ed_interface_select_map.c.s
+
+.PHONY : DELETEDed/ed_interface_select_map.s
+
+# target to generate assembly for a file
+DELETEDed/ed_interface_select_map.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_interface_select_map.c.s
+.PHONY : DELETEDed/ed_interface_select_map.c.s
+
+DELETEDed/ed_list_manager_assets.o: DELETEDed/ed_list_manager_assets.c.o
+
+.PHONY : DELETEDed/ed_list_manager_assets.o
+
+# target to build an object file
+DELETEDed/ed_list_manager_assets.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_list_manager_assets.c.o
+.PHONY : DELETEDed/ed_list_manager_assets.c.o
+
+DELETEDed/ed_list_manager_assets.i: DELETEDed/ed_list_manager_assets.c.i
+
+.PHONY : DELETEDed/ed_list_manager_assets.i
+
+# target to preprocess a source file
+DELETEDed/ed_list_manager_assets.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_list_manager_assets.c.i
+.PHONY : DELETEDed/ed_list_manager_assets.c.i
+
+DELETEDed/ed_list_manager_assets.s: DELETEDed/ed_list_manager_assets.c.s
+
+.PHONY : DELETEDed/ed_list_manager_assets.s
+
+# target to generate assembly for a file
+DELETEDed/ed_list_manager_assets.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_list_manager_assets.c.s
+.PHONY : DELETEDed/ed_list_manager_assets.c.s
+
+DELETEDed/ed_list_manager_monster.o: DELETEDed/ed_list_manager_monster.c.o
+
+.PHONY : DELETEDed/ed_list_manager_monster.o
+
+# target to build an object file
+DELETEDed/ed_list_manager_monster.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_list_manager_monster.c.o
+.PHONY : DELETEDed/ed_list_manager_monster.c.o
+
+DELETEDed/ed_list_manager_monster.i: DELETEDed/ed_list_manager_monster.c.i
+
+.PHONY : DELETEDed/ed_list_manager_monster.i
+
+# target to preprocess a source file
+DELETEDed/ed_list_manager_monster.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_list_manager_monster.c.i
+.PHONY : DELETEDed/ed_list_manager_monster.c.i
+
+DELETEDed/ed_list_manager_monster.s: DELETEDed/ed_list_manager_monster.c.s
+
+.PHONY : DELETEDed/ed_list_manager_monster.s
+
+# target to generate assembly for a file
+DELETEDed/ed_list_manager_monster.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_list_manager_monster.c.s
+.PHONY : DELETEDed/ed_list_manager_monster.c.s
+
+DELETEDed/ed_pixel.o: DELETEDed/ed_pixel.c.o
+
+.PHONY : DELETEDed/ed_pixel.o
+
+# target to build an object file
+DELETEDed/ed_pixel.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_pixel.c.o
+.PHONY : DELETEDed/ed_pixel.c.o
+
+DELETEDed/ed_pixel.i: DELETEDed/ed_pixel.c.i
+
+.PHONY : DELETEDed/ed_pixel.i
+
+# target to preprocess a source file
+DELETEDed/ed_pixel.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_pixel.c.i
+.PHONY : DELETEDed/ed_pixel.c.i
+
+DELETEDed/ed_pixel.s: DELETEDed/ed_pixel.c.s
+
+.PHONY : DELETEDed/ed_pixel.s
+
+# target to generate assembly for a file
+DELETEDed/ed_pixel.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_pixel.c.s
+.PHONY : DELETEDed/ed_pixel.c.s
+
+DELETEDed/ed_read_map.o: DELETEDed/ed_read_map.c.o
+
+.PHONY : DELETEDed/ed_read_map.o
+
+# target to build an object file
+DELETEDed/ed_read_map.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_read_map.c.o
+.PHONY : DELETEDed/ed_read_map.c.o
+
+DELETEDed/ed_read_map.i: DELETEDed/ed_read_map.c.i
+
+.PHONY : DELETEDed/ed_read_map.i
+
+# target to preprocess a source file
+DELETEDed/ed_read_map.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_read_map.c.i
+.PHONY : DELETEDed/ed_read_map.c.i
+
+DELETEDed/ed_read_map.s: DELETEDed/ed_read_map.c.s
+
+.PHONY : DELETEDed/ed_read_map.s
+
+# target to generate assembly for a file
+DELETEDed/ed_read_map.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_read_map.c.s
+.PHONY : DELETEDed/ed_read_map.c.s
+
+DELETEDed/ed_read_map_assets.o: DELETEDed/ed_read_map_assets.c.o
+
+.PHONY : DELETEDed/ed_read_map_assets.o
+
+# target to build an object file
+DELETEDed/ed_read_map_assets.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_read_map_assets.c.o
+.PHONY : DELETEDed/ed_read_map_assets.c.o
+
+DELETEDed/ed_read_map_assets.i: DELETEDed/ed_read_map_assets.c.i
+
+.PHONY : DELETEDed/ed_read_map_assets.i
+
+# target to preprocess a source file
+DELETEDed/ed_read_map_assets.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_read_map_assets.c.i
+.PHONY : DELETEDed/ed_read_map_assets.c.i
+
+DELETEDed/ed_read_map_assets.s: DELETEDed/ed_read_map_assets.c.s
+
+.PHONY : DELETEDed/ed_read_map_assets.s
+
+# target to generate assembly for a file
+DELETEDed/ed_read_map_assets.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_read_map_assets.c.s
+.PHONY : DELETEDed/ed_read_map_assets.c.s
+
+DELETEDed/ed_read_map_fix.o: DELETEDed/ed_read_map_fix.c.o
+
+.PHONY : DELETEDed/ed_read_map_fix.o
+
+# target to build an object file
+DELETEDed/ed_read_map_fix.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_read_map_fix.c.o
+.PHONY : DELETEDed/ed_read_map_fix.c.o
+
+DELETEDed/ed_read_map_fix.i: DELETEDed/ed_read_map_fix.c.i
+
+.PHONY : DELETEDed/ed_read_map_fix.i
+
+# target to preprocess a source file
+DELETEDed/ed_read_map_fix.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_read_map_fix.c.i
+.PHONY : DELETEDed/ed_read_map_fix.c.i
+
+DELETEDed/ed_read_map_fix.s: DELETEDed/ed_read_map_fix.c.s
+
+.PHONY : DELETEDed/ed_read_map_fix.s
+
+# target to generate assembly for a file
+DELETEDed/ed_read_map_fix.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_read_map_fix.c.s
+.PHONY : DELETEDed/ed_read_map_fix.c.s
+
+DELETEDed/ed_save_assets.o: DELETEDed/ed_save_assets.c.o
+
+.PHONY : DELETEDed/ed_save_assets.o
+
+# target to build an object file
+DELETEDed/ed_save_assets.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_save_assets.c.o
+.PHONY : DELETEDed/ed_save_assets.c.o
+
+DELETEDed/ed_save_assets.i: DELETEDed/ed_save_assets.c.i
+
+.PHONY : DELETEDed/ed_save_assets.i
+
+# target to preprocess a source file
+DELETEDed/ed_save_assets.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_save_assets.c.i
+.PHONY : DELETEDed/ed_save_assets.c.i
+
+DELETEDed/ed_save_assets.s: DELETEDed/ed_save_assets.c.s
+
+.PHONY : DELETEDed/ed_save_assets.s
+
+# target to generate assembly for a file
+DELETEDed/ed_save_assets.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_save_assets.c.s
+.PHONY : DELETEDed/ed_save_assets.c.s
+
+DELETEDed/ed_save_file.o: DELETEDed/ed_save_file.c.o
+
+.PHONY : DELETEDed/ed_save_file.o
+
+# target to build an object file
+DELETEDed/ed_save_file.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_save_file.c.o
+.PHONY : DELETEDed/ed_save_file.c.o
+
+DELETEDed/ed_save_file.i: DELETEDed/ed_save_file.c.i
+
+.PHONY : DELETEDed/ed_save_file.i
+
+# target to preprocess a source file
+DELETEDed/ed_save_file.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_save_file.c.i
+.PHONY : DELETEDed/ed_save_file.c.i
+
+DELETEDed/ed_save_file.s: DELETEDed/ed_save_file.c.s
+
+.PHONY : DELETEDed/ed_save_file.s
+
+# target to generate assembly for a file
+DELETEDed/ed_save_file.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_save_file.c.s
+.PHONY : DELETEDed/ed_save_file.c.s
+
+DELETEDed/ed_save_monster.o: DELETEDed/ed_save_monster.c.o
+
+.PHONY : DELETEDed/ed_save_monster.o
+
+# target to build an object file
+DELETEDed/ed_save_monster.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_save_monster.c.o
+.PHONY : DELETEDed/ed_save_monster.c.o
+
+DELETEDed/ed_save_monster.i: DELETEDed/ed_save_monster.c.i
+
+.PHONY : DELETEDed/ed_save_monster.i
+
+# target to preprocess a source file
+DELETEDed/ed_save_monster.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_save_monster.c.i
+.PHONY : DELETEDed/ed_save_monster.c.i
+
+DELETEDed/ed_save_monster.s: DELETEDed/ed_save_monster.c.s
+
+.PHONY : DELETEDed/ed_save_monster.s
+
+# target to generate assembly for a file
+DELETEDed/ed_save_monster.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_save_monster.c.s
+.PHONY : DELETEDed/ed_save_monster.c.s
+
+DELETEDed/ed_save_posters.o: DELETEDed/ed_save_posters.c.o
+
+.PHONY : DELETEDed/ed_save_posters.o
+
+# target to build an object file
+DELETEDed/ed_save_posters.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_save_posters.c.o
+.PHONY : DELETEDed/ed_save_posters.c.o
+
+DELETEDed/ed_save_posters.i: DELETEDed/ed_save_posters.c.i
+
+.PHONY : DELETEDed/ed_save_posters.i
+
+# target to preprocess a source file
+DELETEDed/ed_save_posters.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_save_posters.c.i
+.PHONY : DELETEDed/ed_save_posters.c.i
+
+DELETEDed/ed_save_posters.s: DELETEDed/ed_save_posters.c.s
+
+.PHONY : DELETEDed/ed_save_posters.s
+
+# target to generate assembly for a file
+DELETEDed/ed_save_posters.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_save_posters.c.s
+.PHONY : DELETEDed/ed_save_posters.c.s
+
+DELETEDed/ed_save_sound.o: DELETEDed/ed_save_sound.c.o
+
+.PHONY : DELETEDed/ed_save_sound.o
+
+# target to build an object file
+DELETEDed/ed_save_sound.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_save_sound.c.o
+.PHONY : DELETEDed/ed_save_sound.c.o
+
+DELETEDed/ed_save_sound.i: DELETEDed/ed_save_sound.c.i
+
+.PHONY : DELETEDed/ed_save_sound.i
+
+# target to preprocess a source file
+DELETEDed/ed_save_sound.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_save_sound.c.i
+.PHONY : DELETEDed/ed_save_sound.c.i
+
+DELETEDed/ed_save_sound.s: DELETEDed/ed_save_sound.c.s
+
+.PHONY : DELETEDed/ed_save_sound.s
+
+# target to generate assembly for a file
+DELETEDed/ed_save_sound.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_save_sound.c.s
+.PHONY : DELETEDed/ed_save_sound.c.s
+
+DELETEDed/ed_save_weapons.o: DELETEDed/ed_save_weapons.c.o
+
+.PHONY : DELETEDed/ed_save_weapons.o
+
+# target to build an object file
+DELETEDed/ed_save_weapons.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_save_weapons.c.o
+.PHONY : DELETEDed/ed_save_weapons.c.o
+
+DELETEDed/ed_save_weapons.i: DELETEDed/ed_save_weapons.c.i
+
+.PHONY : DELETEDed/ed_save_weapons.i
+
+# target to preprocess a source file
+DELETEDed/ed_save_weapons.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_save_weapons.c.i
+.PHONY : DELETEDed/ed_save_weapons.c.i
+
+DELETEDed/ed_save_weapons.s: DELETEDed/ed_save_weapons.c.s
+
+.PHONY : DELETEDed/ed_save_weapons.s
+
+# target to generate assembly for a file
+DELETEDed/ed_save_weapons.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_save_weapons.c.s
+.PHONY : DELETEDed/ed_save_weapons.c.s
+
+DELETEDed/ed_utils.o: DELETEDed/ed_utils.c.o
+
+.PHONY : DELETEDed/ed_utils.o
+
+# target to build an object file
+DELETEDed/ed_utils.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_utils.c.o
+.PHONY : DELETEDed/ed_utils.c.o
+
+DELETEDed/ed_utils.i: DELETEDed/ed_utils.c.i
+
+.PHONY : DELETEDed/ed_utils.i
+
+# target to preprocess a source file
+DELETEDed/ed_utils.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_utils.c.i
+.PHONY : DELETEDed/ed_utils.c.i
+
+DELETEDed/ed_utils.s: DELETEDed/ed_utils.c.s
+
+.PHONY : DELETEDed/ed_utils.s
+
+# target to generate assembly for a file
+DELETEDed/ed_utils.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/ed_utils.c.s
+.PHONY : DELETEDed/ed_utils.c.s
+
+DELETEDed/main.o: DELETEDed/main.c.o
+
+.PHONY : DELETEDed/main.o
+
+# target to build an object file
+DELETEDed/main.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/main.c.o
+.PHONY : DELETEDed/main.c.o
+
+DELETEDed/main.i: DELETEDed/main.c.i
+
+.PHONY : DELETEDed/main.i
+
+# target to preprocess a source file
+DELETEDed/main.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/main.c.i
+.PHONY : DELETEDed/main.c.i
+
+DELETEDed/main.s: DELETEDed/main.c.s
+
+.PHONY : DELETEDed/main.s
+
+# target to generate assembly for a file
+DELETEDed/main.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/DELETEDed/main.c.s
+.PHONY : DELETEDed/main.c.s
+
+editor/bmp_reader.o: editor/bmp_reader.c.o
+
+.PHONY : editor/bmp_reader.o
+
+# target to build an object file
+editor/bmp_reader.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/bmp_reader.c.o
+.PHONY : editor/bmp_reader.c.o
+
+editor/bmp_reader.i: editor/bmp_reader.c.i
+
+.PHONY : editor/bmp_reader.i
+
+# target to preprocess a source file
+editor/bmp_reader.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/bmp_reader.c.i
+.PHONY : editor/bmp_reader.c.i
+
+editor/bmp_reader.s: editor/bmp_reader.c.s
+
+.PHONY : editor/bmp_reader.s
+
+# target to generate assembly for a file
+editor/bmp_reader.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/bmp_reader.c.s
+.PHONY : editor/bmp_reader.c.s
+
+editor/init_monsters.o: editor/init_monsters.c.o
+
+.PHONY : editor/init_monsters.o
+
+# target to build an object file
+editor/init_monsters.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/init_monsters.c.o
+.PHONY : editor/init_monsters.c.o
+
+editor/init_monsters.i: editor/init_monsters.c.i
+
+.PHONY : editor/init_monsters.i
+
+# target to preprocess a source file
+editor/init_monsters.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/init_monsters.c.i
+.PHONY : editor/init_monsters.c.i
+
+editor/init_monsters.s: editor/init_monsters.c.s
+
+.PHONY : editor/init_monsters.s
+
+# target to generate assembly for a file
+editor/init_monsters.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/init_monsters.c.s
+.PHONY : editor/init_monsters.c.s
+
+editor/init_sdl.o: editor/init_sdl.c.o
+
+.PHONY : editor/init_sdl.o
+
+# target to build an object file
+editor/init_sdl.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/init_sdl.c.o
+.PHONY : editor/init_sdl.c.o
+
+editor/init_sdl.i: editor/init_sdl.c.i
+
+.PHONY : editor/init_sdl.i
+
+# target to preprocess a source file
+editor/init_sdl.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/init_sdl.c.i
+.PHONY : editor/init_sdl.c.i
+
+editor/init_sdl.s: editor/init_sdl.c.s
+
+.PHONY : editor/init_sdl.s
+
+# target to generate assembly for a file
+editor/init_sdl.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/init_sdl.c.s
+.PHONY : editor/init_sdl.c.s
+
+editor/init_textures.o: editor/init_textures.c.o
+
+.PHONY : editor/init_textures.o
+
+# target to build an object file
+editor/init_textures.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/init_textures.c.o
+.PHONY : editor/init_textures.c.o
+
+editor/init_textures.i: editor/init_textures.c.i
+
+.PHONY : editor/init_textures.i
+
+# target to preprocess a source file
+editor/init_textures.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/init_textures.c.i
+.PHONY : editor/init_textures.c.i
+
+editor/init_textures.s: editor/init_textures.c.s
+
+.PHONY : editor/init_textures.s
+
+# target to generate assembly for a file
+editor/init_textures.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/init_textures.c.s
+.PHONY : editor/init_textures.c.s
+
+editor/load_anims.o: editor/load_anims.c.o
+
+.PHONY : editor/load_anims.o
+
+# target to build an object file
+editor/load_anims.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/load_anims.c.o
+.PHONY : editor/load_anims.c.o
+
+editor/load_anims.i: editor/load_anims.c.i
+
+.PHONY : editor/load_anims.i
+
+# target to preprocess a source file
+editor/load_anims.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/load_anims.c.i
+.PHONY : editor/load_anims.c.i
+
+editor/load_anims.s: editor/load_anims.c.s
+
+.PHONY : editor/load_anims.s
+
+# target to generate assembly for a file
+editor/load_anims.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/load_anims.c.s
+.PHONY : editor/load_anims.c.s
+
+editor/main.o: editor/main.c.o
+
+.PHONY : editor/main.o
+
+# target to build an object file
+editor/main.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/main.c.o
+.PHONY : editor/main.c.o
+
+editor/main.i: editor/main.c.i
+
+.PHONY : editor/main.i
+
+# target to preprocess a source file
+editor/main.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/main.c.i
+.PHONY : editor/main.c.i
+
+editor/main.s: editor/main.c.s
+
+.PHONY : editor/main.s
+
+# target to generate assembly for a file
+editor/main.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/main.c.s
+.PHONY : editor/main.c.s
+
 src/activate_door.o: src/activate_door.c.o
 
 .PHONY : src/activate_door.o
@@ -2238,6 +3777,177 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... doom"
+	@echo "... DELETEDed/ed_add_protection.o"
+	@echo "... DELETEDed/ed_add_protection.i"
+	@echo "... DELETEDed/ed_add_protection.s"
+	@echo "... DELETEDed/ed_bmp_reader.o"
+	@echo "... DELETEDed/ed_bmp_reader.i"
+	@echo "... DELETEDed/ed_bmp_reader.s"
+	@echo "... DELETEDed/ed_conversion.o"
+	@echo "... DELETEDed/ed_conversion.i"
+	@echo "... DELETEDed/ed_conversion.s"
+	@echo "... DELETEDed/ed_detect_assets.o"
+	@echo "... DELETEDed/ed_detect_assets.i"
+	@echo "... DELETEDed/ed_detect_assets.s"
+	@echo "... DELETEDed/ed_detect_wall.o"
+	@echo "... DELETEDed/ed_detect_wall.i"
+	@echo "... DELETEDed/ed_detect_wall.s"
+	@echo "... DELETEDed/ed_door_toggle.o"
+	@echo "... DELETEDed/ed_door_toggle.i"
+	@echo "... DELETEDed/ed_door_toggle.s"
+	@echo "... DELETEDed/ed_draw.o"
+	@echo "... DELETEDed/ed_draw.i"
+	@echo "... DELETEDed/ed_draw.s"
+	@echo "... DELETEDed/ed_draw_assets.o"
+	@echo "... DELETEDed/ed_draw_assets.i"
+	@echo "... DELETEDed/ed_draw_assets.s"
+	@echo "... DELETEDed/ed_draw_string.o"
+	@echo "... DELETEDed/ed_draw_string.i"
+	@echo "... DELETEDed/ed_draw_string.s"
+	@echo "... DELETEDed/ed_editor.o"
+	@echo "... DELETEDed/ed_editor.i"
+	@echo "... DELETEDed/ed_editor.s"
+	@echo "... DELETEDed/ed_editor_assets_handler.o"
+	@echo "... DELETEDed/ed_editor_assets_handler.i"
+	@echo "... DELETEDed/ed_editor_assets_handler.s"
+	@echo "... DELETEDed/ed_editor_assets_handler2.o"
+	@echo "... DELETEDed/ed_editor_assets_handler2.i"
+	@echo "... DELETEDed/ed_editor_assets_handler2.s"
+	@echo "... DELETEDed/ed_editor_functions.o"
+	@echo "... DELETEDed/ed_editor_functions.i"
+	@echo "... DELETEDed/ed_editor_functions.s"
+	@echo "... DELETEDed/ed_editor_sector.o"
+	@echo "... DELETEDed/ed_editor_sector.i"
+	@echo "... DELETEDed/ed_editor_sector.s"
+	@echo "... DELETEDed/ed_editor_wall.o"
+	@echo "... DELETEDed/ed_editor_wall.i"
+	@echo "... DELETEDed/ed_editor_wall.s"
+	@echo "... DELETEDed/ed_event.o"
+	@echo "... DELETEDed/ed_event.i"
+	@echo "... DELETEDed/ed_event.s"
+	@echo "... DELETEDed/ed_event_assets_options.o"
+	@echo "... DELETEDed/ed_event_assets_options.i"
+	@echo "... DELETEDed/ed_event_assets_options.s"
+	@echo "... DELETEDed/ed_event_functions.o"
+	@echo "... DELETEDed/ed_event_functions.i"
+	@echo "... DELETEDed/ed_event_functions.s"
+	@echo "... DELETEDed/ed_event_functions2.o"
+	@echo "... DELETEDed/ed_event_functions2.i"
+	@echo "... DELETEDed/ed_event_functions2.s"
+	@echo "... DELETEDed/ed_event_keyboard.o"
+	@echo "... DELETEDed/ed_event_keyboard.i"
+	@echo "... DELETEDed/ed_event_keyboard.s"
+	@echo "... DELETEDed/ed_event_mouse_button.o"
+	@echo "... DELETEDed/ed_event_mouse_button.i"
+	@echo "... DELETEDed/ed_event_mouse_button.s"
+	@echo "... DELETEDed/ed_event_sector_options.o"
+	@echo "... DELETEDed/ed_event_sector_options.i"
+	@echo "... DELETEDed/ed_event_sector_options.s"
+	@echo "... DELETEDed/ed_fix_data_to_save.o"
+	@echo "... DELETEDed/ed_fix_data_to_save.i"
+	@echo "... DELETEDed/ed_fix_data_to_save.s"
+	@echo "... DELETEDed/ed_get_animation_files.o"
+	@echo "... DELETEDed/ed_get_animation_files.i"
+	@echo "... DELETEDed/ed_get_animation_files.s"
+	@echo "... DELETEDed/ed_get_monster_files.o"
+	@echo "... DELETEDed/ed_get_monster_files.i"
+	@echo "... DELETEDed/ed_get_monster_files.s"
+	@echo "... DELETEDed/ed_get_weapon_list.o"
+	@echo "... DELETEDed/ed_get_weapon_list.i"
+	@echo "... DELETEDed/ed_get_weapon_list.s"
+	@echo "... DELETEDed/ed_init_assets.o"
+	@echo "... DELETEDed/ed_init_assets.i"
+	@echo "... DELETEDed/ed_init_assets.s"
+	@echo "... DELETEDed/ed_init_editor.o"
+	@echo "... DELETEDed/ed_init_editor.i"
+	@echo "... DELETEDed/ed_init_editor.s"
+	@echo "... DELETEDed/ed_init_structures.o"
+	@echo "... DELETEDed/ed_init_structures.i"
+	@echo "... DELETEDed/ed_init_structures.s"
+	@echo "... DELETEDed/ed_init_texture.o"
+	@echo "... DELETEDed/ed_init_texture.i"
+	@echo "... DELETEDed/ed_init_texture.s"
+	@echo "... DELETEDed/ed_interface.o"
+	@echo "... DELETEDed/ed_interface.i"
+	@echo "... DELETEDed/ed_interface.s"
+	@echo "... DELETEDed/ed_interface_functions.o"
+	@echo "... DELETEDed/ed_interface_functions.i"
+	@echo "... DELETEDed/ed_interface_functions.s"
+	@echo "... DELETEDed/ed_interface_map_list.o"
+	@echo "... DELETEDed/ed_interface_map_list.i"
+	@echo "... DELETEDed/ed_interface_map_list.s"
+	@echo "... DELETEDed/ed_interface_print_values.o"
+	@echo "... DELETEDed/ed_interface_print_values.i"
+	@echo "... DELETEDed/ed_interface_print_values.s"
+	@echo "... DELETEDed/ed_interface_properties.o"
+	@echo "... DELETEDed/ed_interface_properties.i"
+	@echo "... DELETEDed/ed_interface_properties.s"
+	@echo "... DELETEDed/ed_interface_properties2.o"
+	@echo "... DELETEDed/ed_interface_properties2.i"
+	@echo "... DELETEDed/ed_interface_properties2.s"
+	@echo "... DELETEDed/ed_interface_select_map.o"
+	@echo "... DELETEDed/ed_interface_select_map.i"
+	@echo "... DELETEDed/ed_interface_select_map.s"
+	@echo "... DELETEDed/ed_list_manager_assets.o"
+	@echo "... DELETEDed/ed_list_manager_assets.i"
+	@echo "... DELETEDed/ed_list_manager_assets.s"
+	@echo "... DELETEDed/ed_list_manager_monster.o"
+	@echo "... DELETEDed/ed_list_manager_monster.i"
+	@echo "... DELETEDed/ed_list_manager_monster.s"
+	@echo "... DELETEDed/ed_pixel.o"
+	@echo "... DELETEDed/ed_pixel.i"
+	@echo "... DELETEDed/ed_pixel.s"
+	@echo "... DELETEDed/ed_read_map.o"
+	@echo "... DELETEDed/ed_read_map.i"
+	@echo "... DELETEDed/ed_read_map.s"
+	@echo "... DELETEDed/ed_read_map_assets.o"
+	@echo "... DELETEDed/ed_read_map_assets.i"
+	@echo "... DELETEDed/ed_read_map_assets.s"
+	@echo "... DELETEDed/ed_read_map_fix.o"
+	@echo "... DELETEDed/ed_read_map_fix.i"
+	@echo "... DELETEDed/ed_read_map_fix.s"
+	@echo "... DELETEDed/ed_save_assets.o"
+	@echo "... DELETEDed/ed_save_assets.i"
+	@echo "... DELETEDed/ed_save_assets.s"
+	@echo "... DELETEDed/ed_save_file.o"
+	@echo "... DELETEDed/ed_save_file.i"
+	@echo "... DELETEDed/ed_save_file.s"
+	@echo "... DELETEDed/ed_save_monster.o"
+	@echo "... DELETEDed/ed_save_monster.i"
+	@echo "... DELETEDed/ed_save_monster.s"
+	@echo "... DELETEDed/ed_save_posters.o"
+	@echo "... DELETEDed/ed_save_posters.i"
+	@echo "... DELETEDed/ed_save_posters.s"
+	@echo "... DELETEDed/ed_save_sound.o"
+	@echo "... DELETEDed/ed_save_sound.i"
+	@echo "... DELETEDed/ed_save_sound.s"
+	@echo "... DELETEDed/ed_save_weapons.o"
+	@echo "... DELETEDed/ed_save_weapons.i"
+	@echo "... DELETEDed/ed_save_weapons.s"
+	@echo "... DELETEDed/ed_utils.o"
+	@echo "... DELETEDed/ed_utils.i"
+	@echo "... DELETEDed/ed_utils.s"
+	@echo "... DELETEDed/main.o"
+	@echo "... DELETEDed/main.i"
+	@echo "... DELETEDed/main.s"
+	@echo "... editor/bmp_reader.o"
+	@echo "... editor/bmp_reader.i"
+	@echo "... editor/bmp_reader.s"
+	@echo "... editor/init_monsters.o"
+	@echo "... editor/init_monsters.i"
+	@echo "... editor/init_monsters.s"
+	@echo "... editor/init_sdl.o"
+	@echo "... editor/init_sdl.i"
+	@echo "... editor/init_sdl.s"
+	@echo "... editor/init_textures.o"
+	@echo "... editor/init_textures.i"
+	@echo "... editor/init_textures.s"
+	@echo "... editor/load_anims.o"
+	@echo "... editor/load_anims.i"
+	@echo "... editor/load_anims.s"
+	@echo "... editor/main.o"
+	@echo "... editor/main.i"
+	@echo "... editor/main.s"
 	@echo "... src/activate_door.o"
 	@echo "... src/activate_door.i"
 	@echo "... src/activate_door.s"

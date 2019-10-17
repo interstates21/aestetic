@@ -207,7 +207,6 @@ typedef struct		s_color_buf
 typedef struct		s_sdl {
 	SDL_Window		*win;
 	SDL_Surface		*screen;
-	TTF_Font		*font;
 }					t_sdl;
 
 

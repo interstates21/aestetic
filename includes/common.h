@@ -23,7 +23,6 @@
 # define MAXNUMMONSTERS 256
 # define MAXNUMWALLS 4096
 # define MAXTYPEMONSTERS 2
-#define SPECIAL_CHAR(c) (((c) == 'y') || ((c) == 'p') || ((c) == 'q') || ((c) == ','))
 
 typedef struct				s_font
 {

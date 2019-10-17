@@ -11,7 +11,7 @@ static void	prompt_asset_option(t_data *d, t_assets_list *lst)
 	d->interface.prompt_asset_option = 1;
 	copy_surface_to_surface(d->interface.toolbar.properties[6], d->sdl.screen,
 														(int[2]){0, y}, d);
-	string = ft_itoa_static(lst->num_asset);
+	//string = ft_itoa_static(lst->num_asset);
 	draw_string(d, (t_font){string, x - 40, y + 8, 0x008800, 2});
 	d->interface.current_selected_asset = lst;
 }

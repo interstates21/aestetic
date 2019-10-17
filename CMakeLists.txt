@@ -82,4 +82,61 @@ includes/common.h
 includes/defines.h
 includes/doom_nukem.h
 includes/structs_doom.h
-        src/loading.c)
+        src/loading.c
+        editor/main.c
+        editor/init_sdl.c
+        editor/init_textures.c
+        editor/init_monsters.c
+        editor/load_anims.c
+        editor/bmp_reader.c
+DELETEDed/ed_add_protection.c
+DELETEDed/ed_bmp_reader.c
+DELETEDed/ed_conversion.c
+DELETEDed/ed_detect_assets.c
+DELETEDed/ed_detect_wall.c
+DELETEDed/ed_door_toggle.c
+DELETEDed/ed_draw.c
+DELETEDed/ed_draw_assets.c
+DELETEDed/ed_draw_string.c
+DELETEDed/ed_editor.c
+DELETEDed/ed_editor_assets_handler.c
+DELETEDed/ed_editor_assets_handler2.c
+DELETEDed/ed_editor_functions.c
+DELETEDed/ed_editor_sector.c
+DELETEDed/ed_editor_wall.c
+DELETEDed/ed_event.c
+DELETEDed/ed_event_assets_options.c
+DELETEDed/ed_event_functions.c
+DELETEDed/ed_event_functions2.c
+DELETEDed/ed_event_keyboard.c
+DELETEDed/ed_event_mouse_button.c
+DELETEDed/ed_event_sector_options.c
+DELETEDed/ed_fix_data_to_save.c
+DELETEDed/ed_get_animation_files.c
+DELETEDed/ed_get_monster_files.c
+DELETEDed/ed_get_weapon_list.c
+DELETEDed/ed_init_assets.c
+DELETEDed/ed_init_editor.c
+DELETEDed/ed_init_structures.c
+DELETEDed/ed_init_texture.c
+DELETEDed/ed_interface.c
+DELETEDed/ed_interface_functions.c
+DELETEDed/ed_interface_map_list.c
+DELETEDed/ed_interface_print_values.c
+DELETEDed/ed_interface_properties.c
+DELETEDed/ed_interface_properties2.c
+DELETEDed/ed_interface_select_map.c
+DELETEDed/ed_list_manager_assets.c
+DELETEDed/ed_list_manager_monster.c
+DELETEDed/ed_pixel.c
+DELETEDed/ed_read_map.c
+DELETEDed/ed_read_map_assets.c
+DELETEDed/ed_read_map_fix.c
+DELETEDed/ed_save_assets.c
+DELETEDed/ed_save_file.c
+DELETEDed/ed_save_monster.c
+DELETEDed/ed_save_posters.c
+DELETEDed/ed_save_sound.c
+DELETEDed/ed_save_weapons.c
+DELETEDed/ed_utils.c
+DELETEDed/main.c)

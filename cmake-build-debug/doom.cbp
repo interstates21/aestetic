@@ -82,6 +82,177 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_add_protection.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_bmp_reader.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_conversion.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_detect_assets.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_detect_wall.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_door_toggle.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_draw.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_draw_assets.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_draw_string.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_editor.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_editor_assets_handler.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_editor_assets_handler2.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_editor_functions.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_editor_sector.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_editor_wall.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_event.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_event_assets_options.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_event_functions.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_event_functions2.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_event_keyboard.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_event_mouse_button.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_event_sector_options.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_fix_data_to_save.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_get_animation_files.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_get_monster_files.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_get_weapon_list.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_init_assets.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_init_editor.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_init_structures.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_init_texture.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_interface.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_interface_functions.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_interface_map_list.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_interface_print_values.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_interface_properties.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_interface_properties2.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_interface_select_map.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_list_manager_assets.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_list_manager_monster.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_pixel.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_read_map.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_read_map_assets.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_read_map_fix.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_save_assets.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_save_file.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_save_monster.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_save_posters.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_save_sound.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_save_weapons.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_utils.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/main.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/editor/bmp_reader.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/editor/init_monsters.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/editor/init_sdl.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/editor/init_textures.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/editor/load_anims.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/floor/editor/main.c">
+			<Option target="doom"/>
+		</Unit>
 		<Unit filename="/Users/akolomoi/Desktop/floor/includes/common.h">
 			<Option target="doom"/>
 		</Unit>
