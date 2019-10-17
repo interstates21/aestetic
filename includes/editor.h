@@ -19,6 +19,7 @@
 # include <fcntl.h>
 # include <dirent.h>
 # include <pthread.h>
+# include <math.h>
 # include "../frameworks/SDL2/SDL.h"
 # include "../frameworks/SDL2/SDL_render.h"
 # include "../frameworks/SDL2_image.framework/Headers/SDL_image.h"
@@ -38,6 +39,9 @@
 
 # define TEXT_DIR	"../textures"
 # define MONSTERS	"../textures/assets/monsters"
+
+#define MAX(a, b) (((a) > (b)) ? (a) : (b))
+#define MIN(a, b) (((a) > (b)) ? (b) : (a))
 
 typedef enum		e_hight
 {
@@ -60,6 +64,14 @@ typedef enum		e_mns
 	M_MELEE,
 	M_TOTAL
 }					t_mns;
+
+typedef enum 		e_anims
+{
+	A_ATTACK,
+	A_WALK,
+	A_DIE,
+	A_TOTAL
+}					t_anims;
 
 typedef enum		e_type
 {
@@ -158,11 +170,8 @@ typedef struct		s_texlist
 typedef struct		s_monsters
 {
 	char 			*name;
-	int 			walk;
-	int 			attack;
-	int 			die;
-	int 			w_side;
-	int 			a_side;
+	int 			anim[A_TOTAL];
+	int 			a_rot[A_TOTAL];
 	SDL_Surface		**walking;
 	SDL_Surface		**attacking;
 	SDL_Surface		**dying;
@@ -175,6 +184,7 @@ typedef struct		s_ed
 	t_texlist		*texlist;
 	t_monsters		monster[M_TOTAL];
 	//t_stats			info;
+	int 			curr_m;
 	int 			fd;
 	int 			n_tex;
 }					t_ed;
@@ -188,6 +198,6 @@ void 				init_monsters(t_ed *e);
 int					bmp_check(struct dirent *data);
 void				read_bmp(t_ed *e, int i);
 void				loop(t_ed *e);
-void				load_names(t_ed *e, char *p, char ***names);
+void				load_names(t_ed *e, char *p, char ***names, int i);
 
 #endif
