@@ -16,6 +16,8 @@ static void	ground(t_ed *e)
 {
 	e->seclist = NULL;
 	e->texlist = NULL;
+	e->n_sprites = 0;
+	e->n_sprites = 0;
 }
 
 static void	do_magic(int fd)
@@ -28,9 +30,9 @@ static void	do_magic(int fd)
 	init_textures(&ed);
 	init_monsters(&ed);
 	init_sprites(&ed);
-	loop(&ed);
-	saving_screen();
-	save();
+	//loop(&ed);
+	//saving_screen();
+	//save();
 }
 
 static void	run(char *mapname)

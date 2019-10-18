@@ -66,5 +66,5 @@ void				init_textures(t_ed *e)
 	closedir(dir);
 	i = -1;
 	while (++i < e->n_tex)
-		read_bmp(e, i);
+		read_bmp(&e->texlist[i].tex, e->texlist[i].name);
 }
