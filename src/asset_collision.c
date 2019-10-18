@@ -1,15 +1,14 @@
 #include "../includes/doom_nukem.h"
 
-
 static bool	check_if_return(t_data *d, t_assets *asset)
 {
 	if (d->player.health == 100 && asset->stat_mod.heal)
 		return (true);
-	if (d->weapon_type.current_ammo == MAX_BULLETS && asset->stat_mod.ballista_ammo)
+	if (d->weapon_type.current_ammo == MAX_BULLETS &&
+										asset->stat_mod.ballista_ammo)
 		return (true);
 	return (false);
 }
-
 
 static bool	check_jetpack(t_data *d, t_assets *asset)
 {
@@ -59,10 +58,10 @@ void		use_asset(t_data *d, t_assets *asset)
 
 void		asset_collision(t_data *d)
 {
-	int i;
-	t_vec2f	dist;
-	double	dist_len;
-	t_assets *asset;
+	int			i;
+	t_vec2f		dist;
+	double		dist_len;
+	t_assets	*asset;
 
 	i = -1;
 	while (d->nb_assets && ++i < d->assets[d->cursectnum][0].nb_assets)

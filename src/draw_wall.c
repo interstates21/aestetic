@@ -24,8 +24,8 @@ void	draw_wall2bis(t_data *d, t_projdata *p, t_frustum *fr)
 			p->u < p->u2_poster)
 	{
 		p->poster = d->posters[p->wall->posterpicnum];
-		p->u_poster = (unsigned int)(NORMALIZE(p->u, p->u1_poster, p->u2_poster) *
-				p->poster->w) % p->poster->w;
+		p->u_poster = (unsigned int)(NORMALIZE(p->u, p->u1_poster,
+								p->u2_poster) * p->poster->w) % p->poster->w;
 		p->margin = (double)(p->yd - p->yc) * (1.0 - p->poster_h) / 2.0;
 		p->ya_poster = p->yc + p->margin;
 		p->yb_poster = p->yd - p->margin;

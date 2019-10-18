@@ -5,7 +5,7 @@ static void	check_crouch(t_data *d)
 	if (d->cam.pos.y <= d->floorheightplayer + d->player.minimum_height)
 	{
 		if (d->keys[SDL_SCANCODE_LCTRL] && d->player.minimum_height >
-										   MINIMUM_CROUCH_HEIGHT + CROUCH_SPEED)
+										MINIMUM_CROUCH_HEIGHT + CROUCH_SPEED)
 			d->player.minimum_height -= CROUCH_SPEED;
 		if (!d->keys[SDL_SCANCODE_LCTRL] && d->player.minimum_height
 											< MINIMUM_HEIGHT)
@@ -18,7 +18,7 @@ static void	check_crouch(t_data *d)
 		if (d->ceilheightplayer - d->floorheightplayer - MINIMUM_CEIL_DIST <=
 			MINIMUM_HEIGHT)
 			d->player.minimum_height = d->ceilheightplayer -
-									   d->floorheightplayer - MINIMUM_CEIL_DIST - CROUCH_SPEED;
+						d->floorheightplayer - MINIMUM_CEIL_DIST - CROUCH_SPEED;
 		else
 			d->player.minimum_height = MINIMUM_HEIGHT;
 	}
@@ -74,7 +74,7 @@ void	normal_gravity(t_data *d)
 	check_crouch(d);
 	d->cam.pos.y += d->player.gravity;
 	if (!d->sectors[d->cursectnum].outdoor && d->cam.pos.y > d->ceilheightplayer
-															 - MINIMUM_CEIL_DIST)
+															- MINIMUM_CEIL_DIST)
 	{
 		d->player.gravity = 0.0;
 		d->cam.pos.y = d->ceilheightplayer - MINIMUM_CEIL_DIST;

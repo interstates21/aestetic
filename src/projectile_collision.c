@@ -46,15 +46,16 @@ bool		collision_proj_one_monst(t_data *d, t_monster *monster,
 	t_vec2f		vec2f_tmp[2];
 	double		floor_height;
 
-
-	floor_height = getFloorHeight(&d->sectors[monster->cursectnum], d->walls, monster->cursectnum, monster->pos);
+	floor_height = get_floor_height(&d->sectors[monster->cursectnum],
+								d->walls, monster->cursectnum, monster->pos);
 	dist = v2_len(v2_min(v3_to_v2(newpos), monster->pos));
 	if (dist < d->projectile_type[projectile->id_type].hitbox_radius +
 			d->monster_type[monster->id_type].hitbox_radius)
 		if (newpos.y > floor_height
 		&& newpos.y < d->monster_type[monster->id_type].height)
 		{
-			vec2f_tmp[0] = v2_min(new_v2(projectile->pos.x, projectile->pos.z), monster->pos);
+			vec2f_tmp[0] = v2_min(new_v2(projectile->pos.x,
+											projectile->pos.z), monster->pos);
 			vec2f_tmp[1] =
 			new_v2(d->monster_type[monster->id_type].hitbox_radius +
 			d->projectile_type[projectile->id_type].hitbox_radius, 0.0);

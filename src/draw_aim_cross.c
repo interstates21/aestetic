@@ -32,6 +32,7 @@ void	draw_aim_cross(t_data *d)
 {
 	short		i;
 	uint32_t	colo;
+
 	if (d->player.current_weapon == CRYO_BALLISTA)
 		colo = 0xDDFF;
 	i = -1;

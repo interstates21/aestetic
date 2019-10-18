@@ -38,29 +38,28 @@ void	init_everything(t_data *d, char *map)
 	d->floorheightplayer = get_floorheight_player(d, d->cursectnum);
 	d->ceilheightplayer = get_ceilheight_player(d, d->cursectnum);
 	play_music(d, MAIN_MUSIC);
-	nextSectFix(d);
-
+	next_sect_fix(d);
 	loop(d);
 }
 
-
-
-void run(char *mapname) {
+void	run(char *mapname)
+{
 	t_data d;
 
 	init_font(&d);
 	d.loaded = 0;
 	init_sdl(&(d.sdl));
-	initKeys(&(d.keys));
-	d.zbuffer = getScreenPixels();
+	init_keys(&(d.keys));
+	d.zbuffer = get_screen_pixels();
 	ft_strncpy(d.nextmap, mapname, 100);
 	init_everything(&d, d.nextmap);
 }
 
-int main(int argc, char **argv) {
+int		main(int argc, char **argv)
+{
 	if (argc != 2)
 		print_err("Wrong number of args =(");
-	if (!validateArgv(argv[1]))
+	if (!validate_argv(argv[1]))
 		print_err("Wrong mapname");
 	run(argv[1]);
 }

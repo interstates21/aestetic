@@ -54,5 +54,4 @@ void	swap_list(uint8_t type, uint16_t id, t_data *d, int sectnum[2])
 	}
 	tmp[0]->next = tmp[1];
 	d->sectors[sectnum[1]].sprite_list = tmp[0];
-
 }

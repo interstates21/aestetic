@@ -1,8 +1,7 @@
 #include "../includes/doom_nukem.h"
 
-
 static void	update_collided_proj(t_data *d, t_projectile *projectile, bool anim,
-							 short id)
+																	short id)
 {
 	int16_t		update_sec;
 
@@ -17,21 +16,20 @@ static void	update_collided_proj(t_data *d, t_projectile *projectile, bool anim,
 	if (projectile->target)
 	{
 		projectile->pos = v3_plus(v2_to_v3(projectile->target->pos),
-								  projectile->dir);
+									projectile->dir);
 		if ((update_sec = update_cursect_proj((int16_t[2]){projectile->
-													  cursectnum, -1}, d, NB_OF_SECTOR_DEPTH,
-											  projectile->pos)) != -1)
+			cursectnum, -1}, d, NB_OF_SECTOR_DEPTH, projectile->pos)) != -1)
 		{
 			if (update_sec != projectile->cursectnum)
 				swap_list(IS_PROJECTILE, id, d,
-						  (int[2]){projectile->cursectnum, update_sec});
+						(int[2]){projectile->cursectnum, update_sec});
 			projectile->cursectnum = update_sec;
 		}
 	}
 }
 
 void	update_anim_projectile(t_projectile *projectile, t_data *d, short id,
-							   bool has_collided)
+															bool has_collided)
 {
 	if (has_collided)
 	{
@@ -39,7 +37,7 @@ void	update_anim_projectile(t_projectile *projectile, t_data *d, short id,
 			projectile->dir = (t_vec3f){0.0, 0.0, 0.0};
 		projectile->has_collided = true;
 		projectile->current_anim_playing =
-				d->projectile_type[projectile->id_type].anim_order[COLLISION_ID];
+			d->projectile_type[projectile->id_type].anim_order[COLLISION_ID];
 		projectile->time_remaining_anim = 5;
 		play_sound(d, EXPLOSION_SOUND, v3_to_v2(projectile->pos));
 		return ;

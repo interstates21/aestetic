@@ -1,6 +1,7 @@
 #include "../includes/common.h"
 
-t_vec2f v2_min(t_vec2f a, t_vec2f b) {
+t_vec2f	v2_min(t_vec2f a, t_vec2f b)
+{
 	t_vec2f c;
 
 	c.x = a.x - b.x;
@@ -8,7 +9,8 @@ t_vec2f v2_min(t_vec2f a, t_vec2f b) {
 	return (c);
 }
 
-t_vec2f v2_plus(t_vec2f a, t_vec2f b) {
+t_vec2f	v2_plus(t_vec2f a, t_vec2f b)
+{
 	t_vec2f c;
 
 	c.x = a.x + b.x;
@@ -16,16 +18,18 @@ t_vec2f v2_plus(t_vec2f a, t_vec2f b) {
 	return (c);
 }
 
-t_vec3f v3_min(t_vec3f a, t_vec3f b) {
+t_vec3f	v3_min(t_vec3f a, t_vec3f b)
+{
 	t_vec3f c;
 
 	c.x = a.x - b.x;
 	c.y = a.y - b.y;
-	c.z = a.z - b.z;;
+	c.z = a.z - b.z;
 	return (c);
 }
 
-t_vec3f v3_plus(t_vec3f a, t_vec3f b) {
+t_vec3f	v3_plus(t_vec3f a, t_vec3f b)
+{
 	t_vec3f c;
 
 	c.x = a.x + b.x;
@@ -34,7 +38,8 @@ t_vec3f v3_plus(t_vec3f a, t_vec3f b) {
 	return (c);
 }
 
-t_vec3f v3_scale(t_vec3f a, double n) {
+t_vec3f	v3_scale(t_vec3f a, double n)
+{
 	t_vec3f c;
 
 	c.x = a.x * n;
@@ -43,7 +48,8 @@ t_vec3f v3_scale(t_vec3f a, double n) {
 	return (c);
 }
 
-t_vec2f v2_scale(t_vec2f a, double n) {
+t_vec2f	v2_scale(t_vec2f a, double n)
+{
 	t_vec2f c;
 
 	c.x = a.x * n;
@@ -77,7 +83,6 @@ t_vec3f	v2_to_v3(t_vec2f a)
 	return (c);
 }
 
-
 t_vec2f	v3_to_v2(t_vec3f a)
 {
 	t_vec2f c;
@@ -86,7 +91,6 @@ t_vec2f	v3_to_v2(t_vec3f a)
 	c.y = a.z;
 	return (c);
 }
-
 
 bool	is_inside_vec2f(t_vec2f p1, t_vec2f p2, t_vec2f point)
 {
@@ -113,7 +117,6 @@ double	v2_atan(t_vec2f v1, t_vec2f v2)
 {
 	return (atan2(v1.x * v2.y - v1.y * v2.x, v1.x * v2.x + v1.y * v2.y));
 }
-
 
 void	v2_rot(t_vec2f *p, double angle)
 {

@@ -3,13 +3,14 @@
 
 static void	read_texture_data(t_data *d, int f)
 {
-	int	i;
-	int w;
-	int h;
-	size_t texSize;
+	int		i;
+	int		w;
+	int		h;
+	size_t	tex_size;
 
-	texSize = sizeof(SDL_Surface*) * d->nb_textures;
-	d->textures = (SDL_Surface**)pureMalloc(texSize, "cannot alloc tex memory");
+	tex_size = sizeof(SDL_Surface*) * d->nb_textures;
+	d->textures = (SDL_Surface**)pure_malloc(tex_size,
+											"cannot alloc tex memory");
 	i = -1;
 	while (++i < d->nb_textures)
 	{
@@ -26,18 +27,19 @@ static void	read_texture_data(t_data *d, int f)
 static void	read_textures_name(t_data *d, int f)
 {
 	int		i;
-	size_t	memorySize;
-	size_t	subMemorySize;
+	size_t	memory_size;
+	size_t	sub_memory_size;
 
 	if (read(f, &d->nb_textures, sizeof(int32_t)) < 0)
 		print_err("Cannot read texture nb");
-	memorySize = sizeof(char*) * d->nb_textures;
-	d->tex_name_list = (char**)pureMalloc(memorySize, "cannot alloc texNames");
+	memory_size = sizeof(char*) * d->nb_textures;
+	d->tex_name_list = (char**)pure_malloc(memory_size, "cannot alloc texNames");
 	i = -1;
 	while (++i < d->nb_textures)
 	{
-		subMemorySize = sizeof(char) * 100;
-		d->tex_name_list[i] = (char*)pureMalloc(subMemorySize, "cannot alloc subTexNames");
+		sub_memory_size = sizeof(char) * 100;
+		d->tex_name_list[i] = (char*)pure_malloc(sub_memory_size,
+													"cannot alloc subTexNames");
 		if (read(f, d->tex_name_list[i], 100) < 0)
 			print_err("Cannot read texture list");
 	}
@@ -61,7 +63,7 @@ static void	read_wall_n_sector_data(t_data *d, int f)
 			read(f, d->sectors[i].ceil_texture_name, 100) < 0)
 			print_err("Cannot read sector struct");
 	if (read(f, &d->numwalls, sizeof(int16_t)) < 0)
-			print_err("Cannot read numwwalls");
+		print_err("Cannot read numwwalls");
 	i = -1;
 	while (++i < d->numwalls)
 		if (read(f, &d->walls[i], sizeof(t_wall)) < 0 ||
@@ -80,7 +82,6 @@ int			contain_map_path(char *path)
 	return (0);
 }
 
-
 void		load_map(t_data *d, char *map)
 {
 	int		f;
@@ -94,17 +95,16 @@ void		load_map(t_data *d, char *map)
 		read(f, &d->startsectnum, sizeof(int16_t)) == -1 ||
 		read(f, d->nextmap, 100) < 0)
 		exit(printf("Doom : Map error\n"));
-
-		read_wall_n_sector_data(d, f);
-		read_monsters_data(d, f);
-		read_assets_data(d, f);
-		read_textures_name(d, f);
-		read_texture_data(d, f);
-		read_posters_data(d, f);
-		load_weapons_texture(d, f, NB_TEX, NB_PROJECTILE);
-		load_monsters_texture(d, f);
-		read_assets_texture(d, f);
-		load_sound(d, f);
+	read_wall_n_sector_data(d, f);
+	read_monsters_data(d, f);
+	read_assets_data(d, f);
+	read_textures_name(d, f);
+	read_texture_data(d, f);
+	read_posters_data(d, f);
+	load_weapons_texture(d, f, NB_TEX, NB_PROJECTILE);
+	load_monsters_texture(d, f);
+	read_assets_texture(d, f);
+	load_sound(d, f);
 	close(f);
 	free(map_path);
 }

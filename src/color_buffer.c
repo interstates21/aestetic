@@ -57,7 +57,6 @@ void	color_screen(t_args_multi_colo_buf *data)
 	}
 }
 
-
 void	color_buffer(t_data *d)
 {
 	pthread_t				threads[MAX_THREADS];

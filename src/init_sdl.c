@@ -19,10 +19,10 @@ void	fix_picnum(t_data *d)
 		while (++name_i < d->nb_textures)
 		{
 			if (ft_strequ(d->sectors[i].floor_texture_name,
-						  d->tex_name_list[name_i]))
+													d->tex_name_list[name_i]))
 				d->sectors[i].floorpicnum = name_i;
 			if (ft_strequ(d->sectors[i].ceil_texture_name,
-						  d->tex_name_list[name_i]))
+													d->tex_name_list[name_i]))
 				d->sectors[i].ceilpicnum = name_i;
 		}
 }
@@ -49,6 +49,7 @@ void	init_sdl(t_sdl *sdl)
 	//init_ttf(sdl);
 }
 
-void	initKeys(Uint8 **keys) {
-		*(keys) = (Uint8*)SDL_GetKeyboardState(NULL);
+void	init_keys(Uint8 **keys)
+{
+	*(keys) = (Uint8*)SDL_GetKeyboardState(NULL);
 }

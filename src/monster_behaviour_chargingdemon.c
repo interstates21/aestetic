@@ -1,6 +1,5 @@
 #include "../includes/doom_nukem.h"
 
-
 static void	behaviour_update_charge(t_data *d, t_monster *monster)
 {
 	t_vec2f	tmp;

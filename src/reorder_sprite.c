@@ -1,6 +1,5 @@
 #include "../includes/doom_nukem.h"
 
-
 static void	set_var_reorder_sprite(t_sprite_list **list, t_sector *sec, int *i,
 		bool type)
 {
@@ -94,7 +93,7 @@ void		reorder_sprite(t_data *d, t_sector *sect)
 	}
 	if (i < 2)
 		return ;
-	vla = pureMalloc(sizeof(*vla) * i, "alloc reorder sprites failed");
+	vla = pure_malloc(sizeof(*vla) * i, "alloc reorder sprites failed");
 	tmp = sect->sprite_list;
 	set_vla(tmp, vla, d);
 	reorder_sprites_algo(d, sect, vla, &list[0]);

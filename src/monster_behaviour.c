@@ -1,4 +1,5 @@
 #include "../includes/doom_nukem.h"
+
 bool	motherdemon_behaviour_change_after_attack(t_data *d,
 		t_monster *monster, double rand, t_vec2f tmp)
 {

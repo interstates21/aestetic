@@ -51,23 +51,23 @@
 #define SAME_POS(v1, v2) (((v1.x) == (v2.x)) && ((v1.y) == (v2.y)))
 
 
-double getAngle(double o, bool isAnimated);
-double tanCalculations(double h, double slope, t_vec2f p, t_vec2f c);
+double get_angle(double o, bool isAnimated);
+double tan_calculations(double h, double slope, t_vec2f p, t_vec2f c);
 void	get_sector_center(t_vec2f *v, t_wall *walls, int nWalls, int currentWall);
-double calculateMaxFloorH(t_sector *s);
-double *getScreenPixels();
-void	initKeys(Uint8 **keys);
+double calculate_max_floor_h(t_sector *s);
+double *get_screen_pixels();
+void	init_keys(Uint8 **keys);
 void	v2_rot(t_vec2f *p, double angle);
-double	getFloorHeight(t_sector *sect, t_wall *walls, int16_t sectnum, t_vec2f p);
-double	getCeilHeight(t_sector *sect, t_wall *walls, int16_t sectnum, t_vec2f p);
+double	get_floor_height(t_sector *sect, t_wall *walls, int16_t sectnum, t_vec2f p);
+double	get_ceil_height(t_sector *sect, t_wall *walls, int16_t sectnum, t_vec2f p);
 t_range   make_range(int min, int max);
 t_v2_pair new_v2_pair(t_vec2f v1, t_vec2f v2);
-void *pureMalloc(size_t size, const char *err);
+void *pure_malloc(size_t size, const char *err);
 
 
 char	*ft_itoa_static(int n);
 
-double 		calculateFloorHeightEpsilon(double h);
+double 		calculate_floor_height_epsilon(double h);
 void		draw_aim_cross(t_data *d);
 int16_t		scan_sect_point_line(t_data *d, uint16_t sect_to_scan, double dist,
 		bool hit_all);
@@ -173,7 +173,7 @@ void		precompute_texanim(t_data *d);
 void		intro_screen(t_data *d);
 //void		draw_string_typewriter_effect(t_data *d, char *s, t_vec2 pos);
 int			ft_mod(int i, int n);
-void		nextSectFix(t_data *d);
+void		next_sect_fix(t_data *d);
 
 /*
 ** update_2.c
@@ -182,7 +182,7 @@ void		nextSectFix(t_data *d);
 void		update_2(t_data *d);
 
 
-bool		validateArgv(char *str);
+bool		validate_argv(char *str);
 /*
 ** update.c
 */

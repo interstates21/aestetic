@@ -16,7 +16,7 @@ void	event_key_down(t_data *d, SDL_KeyboardEvent event)
 			if (v2_len(v2_min(v3_to_v2(d->cam.pos), asset->world_pos)) <
 				1.5 && !asset->used &&
 				(asset->is_interactive || asset->is_autopick ||
-				 asset->is_key || asset->is_jetpack))
+									asset->is_key || asset->is_jetpack))
 			{
 				use_asset(d, asset);
 				return ;

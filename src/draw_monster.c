@@ -84,6 +84,17 @@ static void	set_display_data_proj_2(t_display_data *display_data,
 	display_data->cursectnum = cursectnum;
 }
 
+short		*operation_with_nb_of_anim(t_data *d, t_monster monster,
+													short *nb_of_anim)
+{
+	nb_of_anim[1] = get_nb_anim_from_rot(monster.rot,
+			monster.pos, v3_to_v2(d->cam.pos));
+	nb_of_anim[0] = nb_of_anim[1];
+	if (nb_of_anim[1] > 4)
+		nb_of_anim[0] = 8 - nb_of_anim[0];
+	return (nb_of_anim);
+}
+
 void		draw_monster(t_data *d, t_monster monster)
 {
 	t_display_data	a;
@@ -92,16 +103,13 @@ void		draw_monster(t_data *d, t_monster monster)
 	double			h;
 	short			nb_of_anim[2];
 
-	h = getFloorHeight(&d->sectors[monster.cursectnum],d->walls, monster.cursectnum, monster.pos);
+	h = get_floor_height(&d->sectors[monster.cursectnum], d->walls,
+									monster.cursectnum, monster.pos);
 	monsterpos = new_v3(monster.pos.x, h, monster.pos.y);
 	point_in_screen = transform_vec3f_to_screen(d, monsterpos);
 	if (point_in_screen.z <= 0)
 		return ;
-	nb_of_anim[1] = get_nb_anim_from_rot(monster.rot,
-			monster.pos, v3_to_v2(d->cam.pos));
-	nb_of_anim[0] = nb_of_anim[1];
-	if (nb_of_anim[1] > 4)
-		nb_of_anim[0] = 8 - nb_of_anim[0];
+	nb_of_anim[0] = *operation_with_nb_of_anim(d, monster, nb_of_anim);
 	set_display_data_proj_1(&a, d->monster_text[monster.id_type][monster.
 			anim_state][nb_of_anim[0]], point_in_screen,
 			d->monster_type[monster.id_type].size);

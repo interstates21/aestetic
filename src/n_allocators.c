@@ -1,19 +1,24 @@
 #include "../includes/doom_nukem.h"
 
-double *getScreenPixels() {
-    double *arr;
-    size_t memorySize;
+double	*get_screen_pixels(void)
+{
+	double	*arr;
+	size_t	memory_size;
 
-    memorySize = sizeof(double) * WIDTH * HEIGHT;
-    arr = (double*)pureMalloc(memorySize, "pixels allocation failed");
-    return (arr);
+	memory_size = sizeof(double) * WIDTH * HEIGHT;
+	arr = (double*)pure_malloc(memory_size, "pixels allocation failed");
+	return (arr);
 }
 
-void *pureMalloc(size_t size, const char *err) {
-    void *data = malloc(size);
-    if (!data) {
-        ft_putendl_fd("malloc has failed\n", 2);
-        exit(1);
-    }
-    return(data);
+void	*pure_malloc(size_t size, const char *err)
+{
+	void	*data;
+
+	data = malloc(size);
+	if (!data)
+	{
+		ft_putendl_fd("malloc has failed\n", 2);
+		exit(1);
+	}
+	return (data);
 }

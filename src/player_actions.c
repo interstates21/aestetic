@@ -1,7 +1,5 @@
 #include "../includes/doom_nukem.h"
 
-
-
 void	shoot_weapon(t_data *d, uint8_t *w)
 {
 	if (d->left_mouse_button == MOUSE_PRESSED)

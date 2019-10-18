@@ -75,12 +75,12 @@ void			load_monsters_texture(t_data *d, int f)
 			if (read_anim_texture(d, f, (int[2]){i, a}, nb_orientation))
 				print_err("monst error");
 		if (read(f, &nb_death, sizeof(int)) < 0)
-				print_err("cannot read num death");
+			print_err("cannot read num death");
 		a = 18 - nb_death;
 		while (++a < 19)
 			if (read_anim_death_texture(d, f, (int[2]){i, a}, nb_orientation))
 				print_err("cannot react anim death");
 	}
 	if (read_motherdemon_projectile(d, f))
-			print_err("cannot read demon");
+		print_err("cannot read demon");
 }

@@ -1,6 +1,5 @@
 #include "../includes/doom_nukem.h"
 
-
 static void	decrease_fuel(t_data *d)
 {
 	d->player.is_flying -= 1;

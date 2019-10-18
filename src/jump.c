@@ -1,6 +1,5 @@
 #include "../includes/doom_nukem.h"
 
-
 void	check_crouch(t_data *d)
 {
 	if (d->cam.pos.y <= d->floorheightplayer + d->player.minimum_height)

@@ -1,4 +1,3 @@
-
 #include "../includes/doom_nukem.h"
 
 void	precompute_texanim(t_data *d)

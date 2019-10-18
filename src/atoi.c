@@ -2,8 +2,8 @@
 
 char	*ft_itoa_static(int n)
 {
-	int		tmpn;
-	int		div;
+	int			tmpn;
+	int			div;
 	static char	s[42];
 	int			i;
 

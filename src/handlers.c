@@ -9,7 +9,6 @@ void	print_and_quit(t_data *d, const char *str)
 	exit(0);
 }
 
-
 void	print_err(const char *err)
 {
 	ft_putstr("Init Error = ");
