@@ -1,10 +1,27 @@
 #include "../includes/doom_nukem.h"
 
+void	set_assets_value(t_projdata *p, t_vec3f v, int w, int h)
+{
+	p->x1 = v.x - w / 2;
+	p->x2 = p->x1 + w;
+	if (p->is_on_floor)
+	{
+		p->ya = v.y - h;
+		p->yb = v.y;
+	}
+	else
+	{
+		p->ya = v.y;
+		p->yb = v.y + h;
+	}
+	p->z = v.z;
+}
+
 void	proj_asset(t_data *d, t_projdata *p, t_vec3f v, SDL_Surface *tex)
 {
 	double	scale;
-	int		w;
-	int		h;
+	int		width;
+	int		height;
 
 	v.x -= d->cam.pos.x;
 	v.z -= d->cam.pos.z;
@@ -13,13 +30,9 @@ void	proj_asset(t_data *d, t_projdata *p, t_vec3f v, SDL_Surface *tex)
 	scale = (1.0 / v.z) * WIDTH;
 	v.x = v.x * scale + WIDTH / 2;
 	v.y = v.y * -scale + HEIGHT / 2 - d->cam.y_offset;
-	w = scale * tex->w * 0.01;
-	h = scale * tex->h * 0.01;
-	p->x1 = v.x - w / 2;
-	p->x2 = p->x1 + w;
-	p->ya = (p->is_on_floor) ? v.y - h : v.y;
-	p->yb = (p->is_on_floor) ? v.y : v.y + h;
-	p->z = v.z;
+	width = scale * tex->w * 0.01;
+	height = scale * tex->h * 0.01;
+	set_assets_value(p, v, width, height);
 }
 
 void	blit_asset(t_data *d, t_projdata *p, SDL_Surface *tex)
