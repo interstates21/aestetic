@@ -58,7 +58,7 @@ static void			get_ranged_files(t_ed *e)
 	reopen(&dir, tmp[0]);
 	i = 0;
 	while ((data = readdir(dir)))
-		if (bmp_check(data))
+		if (bmp_check(data) && i < 5)
 		{
 			tmp[1] = ft_strjoin(tmp[0], data->d_name);
 			read_bmp(&e->m_projec[i++], tmp[1]);

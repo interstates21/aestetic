@@ -17,7 +17,6 @@ static void	ground(t_ed *e)
 	e->seclist = NULL;
 	e->texlist = NULL;
 	e->n_sprites = 0;
-	e->n_sprites = 0;
 }
 
 static void	do_magic(int fd)
@@ -25,7 +24,7 @@ static void	do_magic(int fd)
 	t_ed	ed;
 
 	ed.fd = fd;
-	// init_sdl(&ed.sdl);
+	//init_sdl(&ed.sdl);
 	ground(&ed);
 	init_textures(&ed);
 	init_monsters(&ed);

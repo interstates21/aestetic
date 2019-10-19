@@ -39,8 +39,8 @@
 # define M_NAME_1	"motherdemon"
 # define M_NAME_2	"chargingdemon"
 
-# define TEXT_DIR	"../textures"
-# define MONSTERS	"../textures/assets/monsters"
+# define TEXT_DIR	"../textures/"
+# define MONSTERS	"../textures/assets/monsters/"
 
 typedef enum
 {
@@ -83,7 +83,7 @@ typedef enum 		e_anims
 
 typedef enum		e_type
 {
-	S_BARREL = 2,
+	S_BARREL = 3,
 	S_LAMP,
 	S_AMMO,
 	S_HEAL,
@@ -183,9 +183,7 @@ typedef struct		s_monsters
 	char 			*name;
 	int 			anim[A_TOTAL];
 	int 			a_rot[A_TOTAL];
-	SDL_Surface		**walking;
-	SDL_Surface		**attacking;
-	SDL_Surface		**dying;
+	SDL_Surface		**acting[A_TOTAL];
 }					t_monsters;
 
 typedef struct		s_ed
@@ -194,11 +192,14 @@ typedef struct		s_ed
 	t_seclist		*seclist;
 	t_texlist		*texlist;
 	t_monsters		monster[M_TOTAL];
+	SDL_Surface		**sprites;
+	SDL_Surface		*m_projec[5];
 	Uint32			*pixels;
 	//t_stats			info;
 	int 			curr_m;
 	int 			fd;
 	int 			n_tex;
+	int 			n_sprites;
 }					t_ed;
 
 void 				sdl_print_pix(Uint32 **pixels, int x, int y);
@@ -207,8 +208,9 @@ void				reopen(DIR **dir, const char *path);
 void				reopen_fd(int *fd, const char *path);
 void				init_textures(t_ed *e);
 void 				init_monsters(t_ed *e);
+void				init_sprites(t_ed *e);
 int					bmp_check(struct dirent *data);
-void				read_bmp(t_ed *e, int i);
+void				read_bmp(SDL_Surface **s, char *p);
 void				loop(t_ed *e);
 void				listen_controls(bool *end);
 void				print_err(const char *err);
@@ -218,6 +220,6 @@ void sdl_clean(t_sdl *sdl);
 void    sdl_init_renderer(t_sdl *sdl);
 void sdl_clear_texture(Uint32 **pixels);
 Uint32 *get_screen_pixels(void);
-void				load_names(t_ed *e, char *p, char ***names, int i);
+void				load_names(t_ed *e, char *p, int i);
 
 #endif
