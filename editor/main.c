@@ -20,16 +20,14 @@ static void	ground(t_ed *e)
 	e->n_sprites = 0;
 }
 
-static void	do_magic(int fd)
+static void	do_magic(t_ed *ed, int fd)
 {
-	t_ed	ed;
-
-	ed.fd = fd;
+	ed->fd = fd;
 	// init_sdl(&ed.sdl);
-	ground(&ed);
-	init_textures(&ed);
-	init_monsters(&ed);
-	init_sprites(&ed);
+	ground(ed);
+	init_textures(ed);
+	init_monsters(ed);
+	init_sprites(ed);
 	//loop(&ed);
 	//saving_screen();
 	//save();
@@ -38,19 +36,19 @@ static void	do_magic(int fd)
 static void	run(char *mapname)
 {
 	int 	fd;
+    t_ed    ed;
+    t_sdl   sdl;
+
+    sdl_init(&sdl);
+    sdl_init_renderer(&sdl);
 
 	//if (open(mapname, O_RDONLY) != -1)
 	//	print_err("Map already exists");
 	//fd = open(mapname, O_CREAT | O_RDWR);
-	do_magic(2);
+	do_magic(&ed, 2);
+    render_manager(&sdl, &ed);
+	//todo sdl clean
 	close(2);
-}
-
-void	print_err(const char *err)
-{
-	ft_putstr("Init Error = ");
-	ft_putendl(err);
-	exit(1);
 }
 
 int			main(int argc, char **argv) {

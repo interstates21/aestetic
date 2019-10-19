@@ -2,12 +2,17 @@
 NAME = dm_editor
 CC = clang
 FILES = bmp_reader \
-					r_main r_helpers r_sdl r_controls init_sdl
-                    # init_monsters \
-                    # init_sprites \
-                    # init_textures \
-                    # load_anims \
-                    # main 
+					r_helpers \
+					r_sdl \
+					r_sdl2 \
+					r_controls \
+					reopen \
+                    init_monsters \
+                    init_sprites \
+                    init_textures \
+                    load_anims \
+                    main \
+					loop 
 LIBFT_DIR = ../libft/
 SRC = $(addsuffix .c, $(FILES))
 OBJ = $(addprefix obj/, $(addsuffix .o, $(FILES)))
