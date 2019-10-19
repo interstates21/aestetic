@@ -12,22 +12,21 @@
 
 #include "../includes/editor.h"
 
-static void			fetch_f(DIR *dir, struct dirent *data, char *f, t_ed *e)
+static void			fetch_f(struct dirent *data, char *f, t_ed *e)
 {
-	char 			**names;
 	char 			*p;
+	int 			flag;
 
-	p = NULL;
-	if (ft_strequ(data->d_name, "walk"))
+	if (ft_strequ(data->d_name, "walk") && (flag = A_WALK))
 		p = ft_strjoin(f, "/walk/");
-	else if (ft_strequ(data->d_name, "attack"))
+	else if (ft_strequ(data->d_name, "attack") && !(flag = A_ATTACK))
 		p = ft_strjoin(f, "/attack/");
-	else if (ft_strequ(data->d_name, "death"))
+	else if (ft_strequ(data->d_name, "death") && (flag = A_DIE))
 		p = ft_strjoin(f, "/death/");
-	if (!p)
-		print_err("dir not found");
-	load_names(e, p, &names);
-	load_anims(e, p, names);
+	else
+		return ;
+	load_names(e, p, flag);
+	free(p);
 }
 
 static void			get_files(t_ed *e, int type, char *name)
@@ -37,12 +36,34 @@ static void			get_files(t_ed *e, int type, char *name)
 	char 			*f;
 
 	dir = NULL;
+	e->curr_m = type;
 	f = ft_strjoin(MONSTERS, name);
 	reopen(&dir, f);
 	while ((data = readdir(dir)))
 		if (data->d_type == DT_DIR)
-			fetch_f(dir, data, f, e);
+			fetch_f(data, f, e);
 	free(f);
+	closedir(dir);
+}
+
+static void			get_ranged_files(t_ed *e)
+{
+	DIR				*dir;
+	struct dirent	*data;
+	int 			i;
+	char 			*tmp[2];
+
+	tmp[0] = "../textures/assets/monsters/motherdemon/projectiles/";
+	dir = NULL;
+	reopen(&dir, tmp[0]);
+	i = 0;
+	while ((data = readdir(dir)))
+		if (bmp_check(data))
+		{
+			tmp[1] = ft_strjoin(tmp[0], data->d_name);
+			read_bmp(&e->m_projec[i++], tmp[1]);
+			free(tmp[1]);
+		}
 	closedir(dir);
 }
 
@@ -56,4 +77,5 @@ void 				init_monsters(t_ed *e)
 	i = -1;
 	while (++i < M_TOTAL)
 		get_files(e, i, names[i]);
+	get_ranged_files(e);
 }

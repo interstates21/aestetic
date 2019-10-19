@@ -13,13 +13,13 @@
 #include "../includes/editor.h"
 
 
-static void			count_tex(DIR *dir, int *i)
+static void			count_tex(DIR **dir, int *i)
 {
 	struct dirent	*data;
 
-	reopen(&dir, TEXT_DIR);
+	reopen(dir, TEXT_DIR);
 	*i = 0;
-	while ((data = readdir(dir)))
+	while ((data = readdir(*dir)))
 	{
 		if (bmp_check(data))
 			*i += 1;
@@ -39,14 +39,14 @@ static void			init_tex(char *name, t_texlist *tex, int i)
 	tex->tex = NULL;
 }
 
-static void			get_tex_names(t_ed *e, DIR *dir)
+static void			get_tex_names(t_ed *e, DIR **dir)
 {
 	struct dirent	*data;
 	int 			i;
 
-	reopen(&dir, TEXT_DIR);
+	reopen(dir, TEXT_DIR);
 	i = 0;
-	while ((data = readdir(dir)))
+	while ((data = readdir(*dir)))
 		if (bmp_check(data))
 		{
 			init_tex(data->d_name, &e->texlist[i], i);
@@ -60,11 +60,11 @@ void				init_textures(t_ed *e)
 	int 			i;
 
 	dir = NULL;
-	count_tex(dir, &e->n_tex);
+	count_tex(&dir, &e->n_tex);
 	e->texlist = (t_texlist*)malloc(sizeof(t_texlist) * e->n_tex);
-	get_tex_names(e, dir);
+	get_tex_names(e, &dir);
 	closedir(dir);
 	i = -1;
 	while (++i < e->n_tex)
-		read_bmp(e, i);
+		read_bmp(&e->texlist[i].tex, e->texlist[i].name);
 }

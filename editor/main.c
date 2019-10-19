@@ -16,6 +16,8 @@ static void	ground(t_ed *e)
 {
 	e->seclist = NULL;
 	e->texlist = NULL;
+	e->n_sprites = 0;
+	e->n_sprites = 0;
 }
 
 static void	do_magic(int fd)
@@ -23,25 +25,25 @@ static void	do_magic(int fd)
 	t_ed	ed;
 
 	ed.fd = fd;
-	init_sdl(&ed.sdl);
+	// init_sdl(&ed.sdl);
 	ground(&ed);
 	init_textures(&ed);
 	init_monsters(&ed);
 	init_sprites(&ed);
-	loop(&ed);
-	saving_screen();
-	save();
+	//loop(&ed);
+	//saving_screen();
+	//save();
 }
 
 static void	run(char *mapname)
 {
 	int 	fd;
 
-	if (open(mapname, O_RDONLY) != -1)
-		print_err("Map already exists");
-	fd = open(mapname, O_CREAT | O_RDWR);
-	do_magic(fd);
-	close(fd);
+	//if (open(mapname, O_RDONLY) != -1)
+	//	print_err("Map already exists");
+	//fd = open(mapname, O_CREAT | O_RDWR);
+	do_magic(2);
+	close(2);
 }
 
 void	print_err(const char *err)
@@ -52,8 +54,9 @@ void	print_err(const char *err)
 }
 
 int			main(int argc, char **argv) {
-	if (argc != 2)
-		print_err("Usage: ./editor [map_name]");
+	//if (argc != 2)
+	//	print_err("Usage: ./editor [map_name]");
 	run(argv[1]);
+	system("leaks --quiet dm_editor");
 	return (0);
 }

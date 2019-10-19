@@ -1,7 +1,13 @@
-NAME = render
-CC = clang
-FILES = r_main r_controls r_helpers r_sdl
 
+NAME = dm_editor
+CC = clang
+FILES = bmp_reader \
+					r_main r_helpers r_sdl r_controls init_sdl
+                    # init_monsters \
+                    # init_sprites \
+                    # init_textures \
+                    # load_anims \
+                    # main 
 LIBFT_DIR = ../libft/
 SRC = $(addsuffix .c, $(FILES))
 OBJ = $(addprefix obj/, $(addsuffix .o, $(FILES)))
@@ -21,7 +27,7 @@ INCLUDES	=	-I../frameworks/SDL2.framework/Versions/A/Headers \
 				-I../frameworks/SDL2_ttf.framework/Versions/A/Headers \
 				-I../frameworks/SDL2_image.framework/Versions/A/Headers \
 				-I../frameworks/SDL2_mixer.framework/Headers \
-				-F../frameworks/ 
+				-F../frameworks
 FRAMEWORKS	=	-F../frameworks \
 				-rpath ../frameworks \
 				-framework OpenGL -framework AppKit -framework OpenCl \

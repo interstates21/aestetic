@@ -19,7 +19,7 @@ void			reopen(DIR **dir, const char *path)
 		closedir(*dir);
 		*dir = NULL;
 	}
-	if ((*dir = opendir(path)))
+	if (!(*dir = opendir(path)))
 		print_err("opening textures dir failed");
 }
 
