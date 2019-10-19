@@ -6,7 +6,6 @@ void	listen_controls(bool *end)
 
 	while (SDL_PollEvent(&event))
 	{
-		// SDL_SetRelativeMouseMode(SDL_TRUE);
 		if (event.type == SDL_QUIT)
 			*end = true;
 		if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP) {

@@ -22,11 +22,11 @@ static void	ground(t_ed *e)
 static void	do_magic(t_ed *ed, int fd)
 {
 	ed->fd = fd;
-	// init_sdl(&ed.sdl);
 	ground(ed);
 	init_textures(ed);
 	init_monsters(ed);
 	init_sprites(ed);
+	init_sector(ed);
 	//loop(&ed);
 	//saving_screen();
 	//save();
