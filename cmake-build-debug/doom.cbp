@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/Users/akolomoi/Desktop/floor/cmake-build-debug"/>
+				<Option working_dir="/Users/akolomoi/Desktop/notfred/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/floor/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/floor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/floor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/floor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/notfred/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/notfred/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/notfred/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/notfred/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/Users/akolomoi/Desktop/floor/cmake-build-debug"/>
+				<Option working_dir="/Users/akolomoi/Desktop/notfred/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/floor/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/floor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/floor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/floor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/notfred/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/notfred/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/notfred/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/notfred/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/Users/akolomoi/Desktop/floor/cmake-build-debug"/>
+				<Option working_dir="/Users/akolomoi/Desktop/notfred/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/floor/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/floor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/floor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/floor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/notfred/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/notfred/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/notfred/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/notfred/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="doom">
-				<Option output="/Users/akolomoi/Desktop/floor/cmake-build-debug/doom" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/akolomoi/Desktop/floor/cmake-build-debug"/>
+				<Option output="/Users/akolomoi/Desktop/notfred/cmake-build-debug/doom" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/akolomoi/Desktop/notfred/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="clang"/>
@@ -53,15 +53,15 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/floor/cmake-build-debug/Makefile&quot;  VERBOSE=1 doom"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/floor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/floor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/floor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/notfred/cmake-build-debug/Makefile&quot;  VERBOSE=1 doom"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/notfred/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/notfred/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/notfred/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="doom/fast">
-				<Option output="/Users/akolomoi/Desktop/floor/cmake-build-debug/doom" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/akolomoi/Desktop/floor/cmake-build-debug"/>
+				<Option output="/Users/akolomoi/Desktop/notfred/cmake-build-debug/doom" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/akolomoi/Desktop/notfred/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="clang"/>
@@ -75,431 +75,455 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/floor/cmake-build-debug/Makefile&quot;  VERBOSE=1 doom/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/floor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/floor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/floor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/notfred/cmake-build-debug/Makefile&quot;  VERBOSE=1 doom/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/notfred/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/notfred/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/akolomoi/Desktop/notfred/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_add_protection.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_add_protection.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_bmp_reader.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_bmp_reader.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_conversion.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_conversion.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_detect_assets.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_detect_assets.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_detect_wall.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_detect_wall.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_door_toggle.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_door_toggle.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_draw.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_draw.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_draw_assets.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_draw_assets.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_draw_string.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_draw_string.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_editor.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_editor.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_editor_assets_handler.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_editor_assets_handler.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_editor_assets_handler2.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_editor_assets_handler2.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_editor_functions.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_editor_functions.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_editor_sector.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_editor_sector.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_editor_wall.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_editor_wall.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_event.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_event.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_event_assets_options.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_event_assets_options.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_event_functions.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_event_functions.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_event_functions2.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_event_functions2.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_event_keyboard.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_event_keyboard.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_event_mouse_button.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_event_mouse_button.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_event_sector_options.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_event_sector_options.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_fix_data_to_save.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_fix_data_to_save.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_get_animation_files.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_get_animation_files.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_get_monster_files.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_get_monster_files.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_get_weapon_list.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_get_weapon_list.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_init_assets.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_init_assets.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_init_editor.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_init_editor.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_init_structures.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_init_structures.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_init_texture.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_init_texture.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_interface.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_interface.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_interface_functions.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_interface_functions.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_interface_map_list.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_interface_map_list.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_interface_print_values.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_interface_print_values.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_interface_properties.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_interface_properties.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_interface_properties2.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_interface_properties2.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_interface_select_map.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_interface_select_map.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_list_manager_assets.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_list_manager_assets.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_list_manager_monster.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_list_manager_monster.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_pixel.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_pixel.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_read_map.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_read_map.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_read_map_assets.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_read_map_assets.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_read_map_fix.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_read_map_fix.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_save_assets.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_save_assets.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_save_file.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_save_file.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_save_monster.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_save_monster.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_save_posters.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_save_posters.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_save_sound.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_save_sound.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_save_weapons.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_save_weapons.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/ed_utils.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/ed_utils.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/DELETEDed/main.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/DELETEDed/main.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/editor/bmp_reader.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/editor/bmp_reader.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/editor/init_monsters.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/editor/draw_sector.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/editor/init_sdl.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/editor/init_monsters.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/editor/init_textures.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/editor/init_sector.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/editor/load_anims.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/editor/init_sprites.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/editor/main.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/editor/init_textures.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/includes/common.h">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/editor/load_anims.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/includes/defines.h">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/editor/loop.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/includes/doom_nukem.h">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/editor/main.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/includes/structs_doom.h">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/editor/r_controls.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/activate_door.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/editor/r_helpers.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/asset_collision.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/editor/r_sdl.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/atoi.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/editor/r_sdl2.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/blaster_col.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/editor/reopen.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/blaster_col_recur.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/includes/common.h">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/ceilHeight.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/includes/defines.h">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/clip_wall.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/includes/doom_nukem.h">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/collision.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/includes/structs_doom.h">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/color_buffer.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/activate_door.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/create_projectile.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/asset_collision.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/draw_aim_cross.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/atoi.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/draw_assets.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/blaster_col.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/draw_ceil.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/blaster_col_recur.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/draw_floor.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/ceilHeight.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/draw_hud.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/clip_wall.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/draw_hud2.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/collision.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/draw_monster.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/color_buffer.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/draw_sprite.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/create_projectile.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/draw_wall.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/draw_aim_cross.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/draw_wall2.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/draw_assets.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/draw_weapon.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/draw_ceil.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/events.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/draw_floor.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/find_closest_wall_dist.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/draw_hud.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/fix_neighborsects.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/draw_hud2.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/floorHeight.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/draw_monster.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/fly_gravity.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/draw_sprite.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/font.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/draw_wall.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/get_rot_monster.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/draw_wall2.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/getpixel.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/draw_weapon.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/handle_finish.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/events.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/handle_respawn.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/find_closest_wall_dist.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/handlers.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/fix_neighborsects.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/heightCalculations.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/floorHeight.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/inertia.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/fly_gravity.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/init_font.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/font.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/init_monsters.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/get_rot_monster.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/init_player.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/getpixel.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/init_projectiles.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/handle_finish.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/init_sdl.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/handle_respawn.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/inside.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/handlers.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/jetpack.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/heightCalculations.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/jump.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/inertia.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/load_assets.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/init_font.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/load_map.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/init_monsters.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/load_monsters_texture.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/init_player.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/load_sound.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/init_projectiles.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/loading.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/init_sdl.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/loop.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/inside.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/m16.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/jetpack.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/m16_recur.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/jump.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/m16_util.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/load_assets.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/main.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/load_map.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/main_n.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/load_monsters_texture.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/monster_anim_state.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/load_sound.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/monster_behaviour.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/loading.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/monster_behaviour_chargingdemon.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/loop.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/monster_collision.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/m16.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/movement.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/m16_recur.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/msg.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/m16_util.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/n_allocators.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/main.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/n_validators.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/main_n.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/pixel.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/monster_anim_state.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/player_actions.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/monster_behaviour.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/player_damage.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/monster_behaviour_chargingdemon.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/press_e.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/monster_collision.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/proj_wall.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/movement.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/projectile_collision.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/msg.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/render.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/n_allocators.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/render_sector.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/n_validators.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/reorder_sprite.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/pixel.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/shade.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/player_actions.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/sound.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/player_damage.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/swap_list.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/press_e.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/texanim.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/proj_wall.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/update.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/projectile_collision.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/update_2.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/render.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/update_anim_projectile.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/render_sector.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/src/vector.c">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/reorder_sprite.c">
 			<Option target="doom"/>
 		</Unit>
-		<Unit filename="/Users/akolomoi/Desktop/floor/CMakeLists.txt">
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/shade.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/sound.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/swap_list.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/texanim.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/update.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/update_2.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/update_anim_projectile.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/notfred/src/vector.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/notfred/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

@@ -32,7 +32,7 @@
 # define MAX_SECT	128
 # define MAX_SPRT	64
 # define MAX_WALL	32
-# define GRID_GAP	16
+# define GRID_GAP	40
 # define MAX_NAME	100
 # define M_NAME_1	"motherdemon"
 # define M_NAME_2	"chargingdemon"
@@ -55,6 +55,13 @@ typedef enum		e_hight
 	H_CEIL,
 	H_TOTAL
 }					t_hight;
+
+typedef enum		e_col
+{
+	C_WALL		= 0xffaa33,
+	C_PORTAL	= 0x33ffaa,
+	C_DOOR		= 0x71324d
+}					t_col;
 
 typedef enum		e_tex
 {
@@ -111,10 +118,10 @@ typedef struct		s_bmp
 
 typedef struct		s_wall
 {
-	int 			n_points;
-	t_v2			*points;
-	char 			*portals;
-	char			is_door;
+	t_v2			v1;
+	t_v2			v2;
+	bool			is_portal;
+	bool			is_door;
 }					t_wall;
 
 typedef struct		s_spite
@@ -146,13 +153,6 @@ typedef struct		s_sdl
 	SDL_Event event;
 	SDL_Surface *screen;
 }					t_sdl;
-
-typedef	struct		s_seclist
-{
-	t_sect			*sect;
-	t_sect			*next;
-	t_sect			*prev;
-}					t_seclist;
 
 typedef struct		s_stats
 {
@@ -187,7 +187,7 @@ typedef struct		s_monsters
 typedef struct		s_ed
 {
 	t_sdl			sdl;
-	t_seclist		*seclist;
+	t_sect			*seclist;
 	t_texlist		*texlist;
 	t_monsters		monster[M_TOTAL];
 	SDL_Surface		**sprites;
@@ -197,6 +197,7 @@ typedef struct		s_ed
 	int 			curr_m;
 	int 			fd;
 	int 			n_tex;
+	int 			n_sect;
 	int 			n_sprites;
 }					t_ed;
 
@@ -207,8 +208,10 @@ void				reopen_fd(int *fd, const char *path);
 void				init_textures(t_ed *e);
 void 				init_monsters(t_ed *e);
 void				init_sprites(t_ed *e);
+void				init_sector(t_ed *e);
 int					bmp_check(struct dirent *data);
 void				read_bmp(SDL_Surface **s, char *p);
+int 				trim(int point, int inc);
 void				loop(t_ed *e);
 void				listen_controls(bool *end);
 void				print_err(const char *err);
