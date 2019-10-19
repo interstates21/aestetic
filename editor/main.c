@@ -39,11 +39,11 @@ static void	run(char *mapname)
 {
 	int 	fd;
 
-	if (open(mapname, O_RDONLY) != -1)
-		print_err("Map already exists");
-	fd = open(mapname, O_CREAT | O_RDWR);
-	do_magic(fd);
-	close(fd);
+	//if (open(mapname, O_RDONLY) != -1)
+	//	print_err("Map already exists");
+	//fd = open(mapname, O_CREAT | O_RDWR);
+	do_magic(2);
+	close(2);
 }
 
 void	print_err(const char *err)
@@ -54,8 +54,9 @@ void	print_err(const char *err)
 }
 
 int			main(int argc, char **argv) {
-	if (argc != 2)
-		print_err("Usage: ./editor [map_name]");
+	//if (argc != 2)
+	//	print_err("Usage: ./editor [map_name]");
 	run(argv[1]);
+	system("leaks --quiet dm_editor");
 	return (0);
 }

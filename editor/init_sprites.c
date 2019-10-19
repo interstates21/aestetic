@@ -20,7 +20,7 @@ void				init_sprites(t_ed *e)
 	int 			i;
 
 	dir = NULL;
-	tmp[0] = "./textures/assets/assets/";
+	tmp[0] = "../textures/assets/assets/";
 	reopen(&dir, tmp[0]);
 	while ((data = readdir(dir)))
 		if (bmp_check(data))
@@ -33,5 +33,7 @@ void				init_sprites(t_ed *e)
 		{
 			tmp[1] = ft_strjoin(tmp[0], data->d_name);
 			read_bmp(&e->sprites[i++], tmp[1]);
+			free(tmp[1]);
 		}
+	closedir(dir);
 }

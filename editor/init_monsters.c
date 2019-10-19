@@ -12,42 +12,20 @@
 
 #include "../includes/editor.h"
 
-static void			load_anims(t_ed *e, char *p, char **names, int flag)
-{
-	int 			i;
-	char 			*f;
-
-	if (!(e->monster[e->curr_m].acting[flag] = (SDL_Surface**)malloc(
-	sizeof(SDL_Surface*) * e->monster[e->curr_m].anim[flag])))
-		print_err("malloc failed");
-	i = -1;
-	while (++i < e->monster[e->curr_m].anim[flag])
-	{
-		f = ft_strjoin(p, names[i]);
-		read_bmp(&e->monster[e->curr_m].acting[flag][i], f);
-		free(f);
-		free(names[i]);
-	}
-}
-
 static void			fetch_f(struct dirent *data, char *f, t_ed *e)
 {
-	char 			**names;
 	char 			*p;
 	int 			flag;
 
-	p = NULL;
 	if (ft_strequ(data->d_name, "walk") && (flag = A_WALK))
 		p = ft_strjoin(f, "/walk/");
 	else if (ft_strequ(data->d_name, "attack") && !(flag = A_ATTACK))
 		p = ft_strjoin(f, "/attack/");
 	else if (ft_strequ(data->d_name, "death") && (flag = A_DIE))
 		p = ft_strjoin(f, "/death/");
-	if (!p)
-		print_err("dir not found");
-	load_names(e, p, &names, flag);
-	load_anims(e, p, names, flag);
-	free(names);
+	else
+		return ;
+	load_names(e, p, flag);
 	free(p);
 }
 

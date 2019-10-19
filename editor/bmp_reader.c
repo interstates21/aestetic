@@ -24,7 +24,8 @@ static void	check_header(t_bmp *data, char *s, int *fd)
 		read(*fd, &data->height, 4) < 0 ||
 		read(*fd, &data->planes, 2) < 0 ||
 		read(*fd, &data->bpp, 2) < 0 ||
-		!ft_strequ(data->signature, "BM") ||
+		data->signature[0] != 'B' ||
+		data->signature[1] != 'M' ||
 		data->width < 1 || data->height < 1 ||
 		data->bpp ^ 32)
 		print_err("bmp file is corrupted");
@@ -51,7 +52,7 @@ void		read_bmp(SDL_Surface **s, char *p)
 	data.height, 32, SDL_PIXELFORMAT_ABGR8888)))
 		print_err("creating texture failed");
 	reopen_fd(&fd, p);
-	buf_init(&buf, &data, &fd);
+	buf_init(&buf, &data, fd);
 	k = 0;
 	while (data.size > data.offset)
 	{
