@@ -17,7 +17,6 @@ static void	ground(t_ed *e)
 	e->seclist = NULL;
 	e->texlist = NULL;
 	e->n_sprites = 0;
-	e->n_sprites = 0;
 }
 
 static void	do_magic(t_ed *ed, int fd)

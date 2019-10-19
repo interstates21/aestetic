@@ -1,13 +1,13 @@
 #include "../includes/editor.h"
 
-static void render(t_ed *ed) {
-     for (int i = 0; i < 500; i++) {
-        for (int j = 0; j < 500; j++) {
-            sdl_put_pix(&(ed->pixels), i , j, 0xff0000);
+static void niceGrid(t_ed *ed) {
+     for (int i = 0; i < ED_W; i++) {
+        for (int j = 0; j < ED_H; j++) {
+            if (j % 40 && i % 40)  
+                sdl_put_pix(&(ed->pixels), i , j, 0xa4a4a4);
         }
     }
 }
-
 
 void render_manager(t_sdl *sdl, t_ed *ed)
 {
@@ -19,7 +19,7 @@ void render_manager(t_sdl *sdl, t_ed *ed)
     while (!end)
     {
         listen_controls(&end);
-        render(ed);
+        niceGrid(ed);
         sdl_apply_renderer(sdl, ed);
 
     }

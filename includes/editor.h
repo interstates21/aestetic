@@ -26,10 +26,8 @@
 # include "../frameworks/SDL2_mixer.framework/Headers/SDL_mixer.h"
 # include "../frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h"
 
-// #define 500 1200
-// #define 500 600
-# define WIN_W		1200
-# define WIN_H		800
+#define ED_W 1200
+#define ED_H 700
 # define MAX_MONS	256
 # define MAX_SECT	128
 # define MAX_SPRT	64

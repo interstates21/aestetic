@@ -2,20 +2,20 @@
 
 void sdl_print_pix(Uint32 **pixels, int x, int y)
 {
-     ft_putnbr((*pixels)[x + (y * 500)]);
+     ft_putnbr((*pixels)[x + (y * ED_W)]);
      ft_putchar('\n');
     
 }
 
 void sdl_clear_texture(Uint32 **pixels)
 {
-    ft_bzero(*pixels, 500 * 500 * 4);
+    ft_bzero(*pixels, ED_W * ED_H * 4);
 }
 
 void	sdl_init(t_sdl *sdl)
 {
     SDL_Init(SDL_INIT_VIDEO);
-	if (!(sdl->win = SDL_CreateWindow("doom_nukem editor", 0,0, 500, 500, 0)))
+	if (!(sdl->win = SDL_CreateWindow("doom_nukem editor",SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, ED_W, ED_H, 0)))
 		print_err(SDL_GetError());
 
 }
@@ -26,7 +26,7 @@ void    sdl_init_renderer(t_sdl *sdl)
     sdl->renderer = SDL_CreateRenderer(sdl->win, -1, SDL_RENDERER_ACCELERATED);
     if (!sdl->renderer)
        	print_err(SDL_GetError());
-    sdl->texture = SDL_CreateTexture(sdl->renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STATIC, 500, 500);
+    sdl->texture = SDL_CreateTexture(sdl->renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STATIC, ED_W, ED_H);
     if (!sdl->texture)
        	print_err(SDL_GetError());
 
