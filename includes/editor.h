@@ -25,6 +25,8 @@
 # include "../frameworks/SDL2_mixer.framework/Headers/SDL_mixer.h"
 # include "../frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h"
 
+// #define 500 1200
+// #define 500 600
 # define WIN_W		1200
 # define WIN_H		800
 # define MAX_MONS	256
@@ -38,6 +40,14 @@
 
 # define TEXT_DIR	"../textures"
 # define MONSTERS	"../textures/assets/monsters"
+
+
+typedef enum
+{
+	false,
+	true
+} bool;
+
 
 typedef enum		e_hight
 {
@@ -122,8 +132,11 @@ typedef struct		s_sect
 
 typedef struct		s_sdl
 {
-	SDL_Window		*win;
-	SDL_Surface		*screen;
+	SDL_Window *win;
+	SDL_Renderer *renderer;
+	SDL_Texture *texture;
+	SDL_Event event;
+	SDL_Surface *screen;
 }					t_sdl;
 
 typedef	struct		s_seclist
@@ -174,12 +187,13 @@ typedef struct		s_ed
 	t_seclist		*seclist;
 	t_texlist		*texlist;
 	t_monsters		monster[M_TOTAL];
+	Uint32			*pixels;
 	//t_stats			info;
 	int 			fd;
 	int 			n_tex;
 }					t_ed;
 
-void				print_err(const char *err);
+void 				sdl_print_pix(Uint32 **pixels, int x, int y);
 void				init_sdl(t_sdl *sdl);
 void				reopen(DIR **dir, const char *path);
 void				reopen_fd(int *fd, const char *path);
@@ -189,5 +203,12 @@ int					bmp_check(struct dirent *data);
 void				read_bmp(t_ed *e, int i);
 void				loop(t_ed *e);
 void				load_names(t_ed *e, char *p, char ***names);
-
+void				listen_controls(bool *end);
+void				print_err(const char *err);
+void	sdl_init(t_sdl *sdl);
+void sdl_put_pix(Uint32 **pixels, int x, int y, Uint32 color);
+void sdl_clean(t_sdl *sdl);
+void    sdl_init_renderer(t_sdl *sdl);
+void sdl_clear_texture(Uint32 **pixels);
+Uint32 *get_screen_pixels(void);
 #endif
