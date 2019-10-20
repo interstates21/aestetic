@@ -24,6 +24,8 @@ void sdl_apply_renderer(t_sdl *sdl, t_ed *ed)
 
 void sdl_put_pix(Uint32 **pixels, int x, int y, Uint32 color)
 {
+    if (x < 0 || y < 0 || x > ED_W - 1 || y > ED_H - 1)
+        return;
      (*pixels)[x + (y * ED_W)] = color;
     
 }

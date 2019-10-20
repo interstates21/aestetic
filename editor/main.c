@@ -54,6 +54,6 @@ int			main(int argc, char **argv) {
 	//if (argc != 2)
 	//	print_err("Usage: ./editor [map_name]");
 	run(argv[1]);
-	system("leaks --quiet dm_editor");
+	// system("leaks --quiet dm_editor");
 	return (0);
 }

@@ -12,7 +12,10 @@ FILES = bmp_reader \
                     init_textures \
                     load_anims \
                     main \
-					loop 
+					loop \
+					r_line \
+					r_vector \
+					r_mouse_controller 
 LIBFT_DIR = ../libft/
 SRC = $(addsuffix .c, $(FILES))
 OBJ = $(addprefix obj/, $(addsuffix .o, $(FILES)))
