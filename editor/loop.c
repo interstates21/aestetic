@@ -46,6 +46,8 @@ void render_sector(t_ed *ed, t_wall *walls) {
 }
 
 
+
+
 void render_manager(t_sdl *sdl, t_ed *ed)
 {
     bool end;

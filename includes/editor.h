@@ -32,8 +32,13 @@
 # define MAX_SECT	128
 # define MAX_SPRT	64
 # define MAX_WALL	32
-# define GRID_GAP	16
+# define GRID_GAP	100
 # define MAX_NAME	100
+# define BLUE		0x6666FF
+# define RED		0xFF6666
+# define GRID_COL_2 0xa4b60d
+# define GRID_COL_1 0x111111
+# define SELECTION_FIELD 5
 # define M_NAME_1	"motherdemon"
 # define M_NAME_2	"chargingdemon"
 
@@ -95,6 +100,13 @@ typedef	struct		s_v2
 	int 			y;
 }					t_v2;
 
+
+typedef struct 		s_controller
+{
+	bool			mouse_is_pressed;
+	t_v2			mouse;
+}					t_controller;
+
 typedef struct		s_bmp
 {
 	char			signature[2];
@@ -111,10 +123,10 @@ typedef struct		s_bmp
 
 typedef struct		s_wall
 {
-	int 			n_points;
-	t_v2			*points;
-	char 			*portals;
-	char			is_door;
+	t_v2			v1;
+	t_v2			v2;
+	bool 			is_portal;
+	bool			is_door;
 }					t_wall;
 
 typedef struct		s_spite
@@ -127,7 +139,7 @@ typedef struct		s_sect
 {
 	int 			num;
 	short			n_walls;
-	t_sprite		*sprites;
+	// t_sprite		*sprites;
 	t_wall			*walls;
 	short			height[H_TOTAL];
 	short			tex[T_TOTAL];
@@ -176,6 +188,12 @@ typedef struct		s_texlist
 	char 			name[MAX_NAME];
 }					t_texlist;
 
+typedef struct		s_selection
+{
+	t_wall			*selected_wall;
+	t_v2			*selected_vertex;
+}					t_selection;
+
 typedef struct		s_monsters
 {
 	char 			*name;
@@ -198,6 +216,9 @@ typedef struct		s_ed
 	int 			fd;
 	int 			n_tex;
 	int 			n_sprites;
+	t_selection		selection;
+	t_controller	controller;
+	t_wall			*initial_walls;
 }					t_ed;
 
 void 				sdl_print_pix(Uint32 **pixels, int x, int y);
@@ -210,7 +231,7 @@ void				init_sprites(t_ed *e);
 int					bmp_check(struct dirent *data);
 void				read_bmp(SDL_Surface **s, char *p);
 void				loop(t_ed *e);
-void				listen_controls(bool *end);
+void				listen_controls(bool *end, t_ed *ed);
 void				print_err(const char *err);
 void	sdl_init(t_sdl *sdl);
 void sdl_put_pix(Uint32 **pixels, int x, int y, Uint32 color);
@@ -221,4 +242,11 @@ Uint32 *get_screen_pixels(void);
 void				load_names(t_ed *e, char *p, int i);
 void render_manager(t_sdl *sdl, t_ed *ed);
 void sdl_apply_renderer(t_sdl *sdl, t_ed *ed);
+void line(t_v2 p1, t_v2 p2, t_ed *ed, Uint32 color);
+void bold_line(t_v2 p1, t_v2 p2, t_ed *ed, Uint32 color);
+t_v2 new_v2(int a, int b);
+bool v2_compare(t_v2 a, t_v2 b, int r);
+int			mouse_controller(t_ed *ed, SDL_Event *event);
+bool		corner_selected(t_ed *ed);
+bool		sector_selected(t_ed *ed);
 #endif
