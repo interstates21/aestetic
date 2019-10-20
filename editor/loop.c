@@ -68,16 +68,7 @@ void render_manager(t_sdl *sdl, t_ed *ed)
     init_render(ed);
     SDL_Event e;
     end = false;
-/*
-    t_wall walls[4] = {
-        new_wall(100, 100, 200, 100),
-        new_wall(200, 100, 200, 200),
-        new_wall(200, 200, 100, 200),
-        new_wall(100, 200, 100, 100),
-    };
-
-    ed->initial_walls = walls;
-*/
+    
     while (!end)
     {
         listen_controls(&end, ed);
