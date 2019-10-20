@@ -83,13 +83,27 @@ includes/defines.h
 includes/doom_nukem.h
 includes/structs_doom.h
         src/loading.c
-        editor/main.c
-        editor/init_sdl.c
-        editor/init_textures.c
-        editor/init_monsters.c
-        editor/load_anims.c
         editor/bmp_reader.c
-DELETEDed/ed_add_protection.c
+        editor/init_monsters.c
+        editor/init_sector.c
+        editor/init_sprites.c
+        editor/init_textures.c
+        editor/load_anims.c
+        editor/loop.c
+        editor/main.c
+        editor/r_bold_line.c
+        editor/r_controls.c
+        editor/r_helpers.c
+        editor/r_line.c
+        editor/r_mouse_controller.c
+        editor/r_push.c
+        editor/r_sdl.c
+        editor/r_sdl2.c
+        editor/r_selectors.c
+        editor/r_vector.c
+        editor/reopen.c
+
+        DELETEDed/ed_add_protection.c
 DELETEDed/ed_bmp_reader.c
 DELETEDed/ed_conversion.c
 DELETEDed/ed_detect_assets.c

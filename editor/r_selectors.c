@@ -1,6 +1,7 @@
 #include "../includes/editor.h"
 
-void		store_selected(t_ed *ed, t_wall *w, t_v2 *v) {
+void		store_selected(t_ed *ed, t_wall *w, t_v2 *v)
+{
 	ed->selection.selected_vertex = v;
 	ed->selection.selected_wall = w;
 }
@@ -45,12 +46,43 @@ void		store_selected(t_ed *ed, t_wall *w, t_v2 *v) {
 // }
 
 
-bool		sector_selected(t_ed *ed) {
+bool		sector_selected(t_ed *ed)
+{
+	int		i;
+	int 	k;
+
+	i = -1;
+	while (++i < ed->n_sect && (k = -1))
+		while (++k < ed->seclist[i].n_walls)
+			if (v2_compare(ed->seclist[i].walls[k].v1,
+			ed->controller.mouse, SELECTION_FIELD))
+			{
+				store_selected(ed, &(ed->seclist[i].walls[k]),
+				&(ed->seclist[i].walls[k].v1));
+				return (true);
+			}
+			else if (v2_compare(ed->seclist[i].walls[k].v2,
+			ed->controller.mouse, SELECTION_FIELD))
+				store_selected(ed, &(ed->seclist[i].walls[k]),
+				&(ed->seclist[i].walls[k].v2));
+	return (false);
+}
+
+bool		corner_selected(t_ed *ed)
+{
+	return sector_selected(ed);
+}
+
+/*
+bool		sector_selected(t_ed *ed)
+ {
 	int i;
 
 	i = 0;
-	while (i < 4) {
-		if (v2_compare(ed->initial_walls[i].v1, ed->controller.mouse, SELECTION_FIELD)) {
+	while (i < 4)
+ 	{
+		if (v2_compare(ed->initial_walls[i].v1, ed->controller.mouse, SELECTION_FIELD))
+		{
 			store_selected(ed, &(ed->initial_walls[i]), &(ed->initial_walls[i].v1));
 			return (true);
 		}
@@ -78,3 +110,4 @@ bool		corner_selected(t_ed *ed) {
 	}
 	return (false);
 }
+*/

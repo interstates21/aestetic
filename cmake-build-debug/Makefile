@@ -48,10 +48,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/akolomoi/Desktop/floor
+CMAKE_SOURCE_DIR = /Users/akolomoi/Desktop/notfred
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/akolomoi/Desktop/floor/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/akolomoi/Desktop/notfred/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/akolomoi/Desktop/floor/cmake-build-debug/CMakeFiles /Users/akolomoi/Desktop/floor/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles /Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/akolomoi/Desktop/floor/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -1554,32 +1554,59 @@ editor/init_monsters.c.s:
 	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/init_monsters.c.s
 .PHONY : editor/init_monsters.c.s
 
-editor/init_sdl.o: editor/init_sdl.c.o
+editor/init_sector.o: editor/init_sector.c.o
 
-.PHONY : editor/init_sdl.o
+.PHONY : editor/init_sector.o
 
 # target to build an object file
-editor/init_sdl.c.o:
-	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/init_sdl.c.o
-.PHONY : editor/init_sdl.c.o
+editor/init_sector.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/init_sector.c.o
+.PHONY : editor/init_sector.c.o
 
-editor/init_sdl.i: editor/init_sdl.c.i
+editor/init_sector.i: editor/init_sector.c.i
 
-.PHONY : editor/init_sdl.i
+.PHONY : editor/init_sector.i
 
 # target to preprocess a source file
-editor/init_sdl.c.i:
-	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/init_sdl.c.i
-.PHONY : editor/init_sdl.c.i
+editor/init_sector.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/init_sector.c.i
+.PHONY : editor/init_sector.c.i
 
-editor/init_sdl.s: editor/init_sdl.c.s
+editor/init_sector.s: editor/init_sector.c.s
 
-.PHONY : editor/init_sdl.s
+.PHONY : editor/init_sector.s
 
 # target to generate assembly for a file
-editor/init_sdl.c.s:
-	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/init_sdl.c.s
-.PHONY : editor/init_sdl.c.s
+editor/init_sector.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/init_sector.c.s
+.PHONY : editor/init_sector.c.s
+
+editor/init_sprites.o: editor/init_sprites.c.o
+
+.PHONY : editor/init_sprites.o
+
+# target to build an object file
+editor/init_sprites.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/init_sprites.c.o
+.PHONY : editor/init_sprites.c.o
+
+editor/init_sprites.i: editor/init_sprites.c.i
+
+.PHONY : editor/init_sprites.i
+
+# target to preprocess a source file
+editor/init_sprites.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/init_sprites.c.i
+.PHONY : editor/init_sprites.c.i
+
+editor/init_sprites.s: editor/init_sprites.c.s
+
+.PHONY : editor/init_sprites.s
+
+# target to generate assembly for a file
+editor/init_sprites.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/init_sprites.c.s
+.PHONY : editor/init_sprites.c.s
 
 editor/init_textures.o: editor/init_textures.c.o
 
@@ -1635,6 +1662,33 @@ editor/load_anims.c.s:
 	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/load_anims.c.s
 .PHONY : editor/load_anims.c.s
 
+editor/loop.o: editor/loop.c.o
+
+.PHONY : editor/loop.o
+
+# target to build an object file
+editor/loop.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/loop.c.o
+.PHONY : editor/loop.c.o
+
+editor/loop.i: editor/loop.c.i
+
+.PHONY : editor/loop.i
+
+# target to preprocess a source file
+editor/loop.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/loop.c.i
+.PHONY : editor/loop.c.i
+
+editor/loop.s: editor/loop.c.s
+
+.PHONY : editor/loop.s
+
+# target to generate assembly for a file
+editor/loop.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/loop.c.s
+.PHONY : editor/loop.c.s
+
 editor/main.o: editor/main.c.o
 
 .PHONY : editor/main.o
@@ -1661,6 +1715,303 @@ editor/main.s: editor/main.c.s
 editor/main.c.s:
 	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/main.c.s
 .PHONY : editor/main.c.s
+
+editor/r_bold_line.o: editor/r_bold_line.c.o
+
+.PHONY : editor/r_bold_line.o
+
+# target to build an object file
+editor/r_bold_line.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_bold_line.c.o
+.PHONY : editor/r_bold_line.c.o
+
+editor/r_bold_line.i: editor/r_bold_line.c.i
+
+.PHONY : editor/r_bold_line.i
+
+# target to preprocess a source file
+editor/r_bold_line.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_bold_line.c.i
+.PHONY : editor/r_bold_line.c.i
+
+editor/r_bold_line.s: editor/r_bold_line.c.s
+
+.PHONY : editor/r_bold_line.s
+
+# target to generate assembly for a file
+editor/r_bold_line.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_bold_line.c.s
+.PHONY : editor/r_bold_line.c.s
+
+editor/r_controls.o: editor/r_controls.c.o
+
+.PHONY : editor/r_controls.o
+
+# target to build an object file
+editor/r_controls.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_controls.c.o
+.PHONY : editor/r_controls.c.o
+
+editor/r_controls.i: editor/r_controls.c.i
+
+.PHONY : editor/r_controls.i
+
+# target to preprocess a source file
+editor/r_controls.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_controls.c.i
+.PHONY : editor/r_controls.c.i
+
+editor/r_controls.s: editor/r_controls.c.s
+
+.PHONY : editor/r_controls.s
+
+# target to generate assembly for a file
+editor/r_controls.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_controls.c.s
+.PHONY : editor/r_controls.c.s
+
+editor/r_helpers.o: editor/r_helpers.c.o
+
+.PHONY : editor/r_helpers.o
+
+# target to build an object file
+editor/r_helpers.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_helpers.c.o
+.PHONY : editor/r_helpers.c.o
+
+editor/r_helpers.i: editor/r_helpers.c.i
+
+.PHONY : editor/r_helpers.i
+
+# target to preprocess a source file
+editor/r_helpers.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_helpers.c.i
+.PHONY : editor/r_helpers.c.i
+
+editor/r_helpers.s: editor/r_helpers.c.s
+
+.PHONY : editor/r_helpers.s
+
+# target to generate assembly for a file
+editor/r_helpers.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_helpers.c.s
+.PHONY : editor/r_helpers.c.s
+
+editor/r_line.o: editor/r_line.c.o
+
+.PHONY : editor/r_line.o
+
+# target to build an object file
+editor/r_line.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_line.c.o
+.PHONY : editor/r_line.c.o
+
+editor/r_line.i: editor/r_line.c.i
+
+.PHONY : editor/r_line.i
+
+# target to preprocess a source file
+editor/r_line.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_line.c.i
+.PHONY : editor/r_line.c.i
+
+editor/r_line.s: editor/r_line.c.s
+
+.PHONY : editor/r_line.s
+
+# target to generate assembly for a file
+editor/r_line.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_line.c.s
+.PHONY : editor/r_line.c.s
+
+editor/r_mouse_controller.o: editor/r_mouse_controller.c.o
+
+.PHONY : editor/r_mouse_controller.o
+
+# target to build an object file
+editor/r_mouse_controller.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_mouse_controller.c.o
+.PHONY : editor/r_mouse_controller.c.o
+
+editor/r_mouse_controller.i: editor/r_mouse_controller.c.i
+
+.PHONY : editor/r_mouse_controller.i
+
+# target to preprocess a source file
+editor/r_mouse_controller.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_mouse_controller.c.i
+.PHONY : editor/r_mouse_controller.c.i
+
+editor/r_mouse_controller.s: editor/r_mouse_controller.c.s
+
+.PHONY : editor/r_mouse_controller.s
+
+# target to generate assembly for a file
+editor/r_mouse_controller.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_mouse_controller.c.s
+.PHONY : editor/r_mouse_controller.c.s
+
+editor/r_push.o: editor/r_push.c.o
+
+.PHONY : editor/r_push.o
+
+# target to build an object file
+editor/r_push.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_push.c.o
+.PHONY : editor/r_push.c.o
+
+editor/r_push.i: editor/r_push.c.i
+
+.PHONY : editor/r_push.i
+
+# target to preprocess a source file
+editor/r_push.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_push.c.i
+.PHONY : editor/r_push.c.i
+
+editor/r_push.s: editor/r_push.c.s
+
+.PHONY : editor/r_push.s
+
+# target to generate assembly for a file
+editor/r_push.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_push.c.s
+.PHONY : editor/r_push.c.s
+
+editor/r_sdl.o: editor/r_sdl.c.o
+
+.PHONY : editor/r_sdl.o
+
+# target to build an object file
+editor/r_sdl.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_sdl.c.o
+.PHONY : editor/r_sdl.c.o
+
+editor/r_sdl.i: editor/r_sdl.c.i
+
+.PHONY : editor/r_sdl.i
+
+# target to preprocess a source file
+editor/r_sdl.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_sdl.c.i
+.PHONY : editor/r_sdl.c.i
+
+editor/r_sdl.s: editor/r_sdl.c.s
+
+.PHONY : editor/r_sdl.s
+
+# target to generate assembly for a file
+editor/r_sdl.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_sdl.c.s
+.PHONY : editor/r_sdl.c.s
+
+editor/r_sdl2.o: editor/r_sdl2.c.o
+
+.PHONY : editor/r_sdl2.o
+
+# target to build an object file
+editor/r_sdl2.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_sdl2.c.o
+.PHONY : editor/r_sdl2.c.o
+
+editor/r_sdl2.i: editor/r_sdl2.c.i
+
+.PHONY : editor/r_sdl2.i
+
+# target to preprocess a source file
+editor/r_sdl2.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_sdl2.c.i
+.PHONY : editor/r_sdl2.c.i
+
+editor/r_sdl2.s: editor/r_sdl2.c.s
+
+.PHONY : editor/r_sdl2.s
+
+# target to generate assembly for a file
+editor/r_sdl2.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_sdl2.c.s
+.PHONY : editor/r_sdl2.c.s
+
+editor/r_selectors.o: editor/r_selectors.c.o
+
+.PHONY : editor/r_selectors.o
+
+# target to build an object file
+editor/r_selectors.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_selectors.c.o
+.PHONY : editor/r_selectors.c.o
+
+editor/r_selectors.i: editor/r_selectors.c.i
+
+.PHONY : editor/r_selectors.i
+
+# target to preprocess a source file
+editor/r_selectors.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_selectors.c.i
+.PHONY : editor/r_selectors.c.i
+
+editor/r_selectors.s: editor/r_selectors.c.s
+
+.PHONY : editor/r_selectors.s
+
+# target to generate assembly for a file
+editor/r_selectors.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_selectors.c.s
+.PHONY : editor/r_selectors.c.s
+
+editor/r_vector.o: editor/r_vector.c.o
+
+.PHONY : editor/r_vector.o
+
+# target to build an object file
+editor/r_vector.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_vector.c.o
+.PHONY : editor/r_vector.c.o
+
+editor/r_vector.i: editor/r_vector.c.i
+
+.PHONY : editor/r_vector.i
+
+# target to preprocess a source file
+editor/r_vector.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_vector.c.i
+.PHONY : editor/r_vector.c.i
+
+editor/r_vector.s: editor/r_vector.c.s
+
+.PHONY : editor/r_vector.s
+
+# target to generate assembly for a file
+editor/r_vector.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/r_vector.c.s
+.PHONY : editor/r_vector.c.s
+
+editor/reopen.o: editor/reopen.c.o
+
+.PHONY : editor/reopen.o
+
+# target to build an object file
+editor/reopen.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/reopen.c.o
+.PHONY : editor/reopen.c.o
+
+editor/reopen.i: editor/reopen.c.i
+
+.PHONY : editor/reopen.i
+
+# target to preprocess a source file
+editor/reopen.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/reopen.c.i
+.PHONY : editor/reopen.c.i
+
+editor/reopen.s: editor/reopen.c.s
+
+.PHONY : editor/reopen.s
+
+# target to generate assembly for a file
+editor/reopen.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/reopen.c.s
+.PHONY : editor/reopen.c.s
 
 src/activate_door.o: src/activate_door.c.o
 
@@ -3936,18 +4287,57 @@ help:
 	@echo "... editor/init_monsters.o"
 	@echo "... editor/init_monsters.i"
 	@echo "... editor/init_monsters.s"
-	@echo "... editor/init_sdl.o"
-	@echo "... editor/init_sdl.i"
-	@echo "... editor/init_sdl.s"
+	@echo "... editor/init_sector.o"
+	@echo "... editor/init_sector.i"
+	@echo "... editor/init_sector.s"
+	@echo "... editor/init_sprites.o"
+	@echo "... editor/init_sprites.i"
+	@echo "... editor/init_sprites.s"
 	@echo "... editor/init_textures.o"
 	@echo "... editor/init_textures.i"
 	@echo "... editor/init_textures.s"
 	@echo "... editor/load_anims.o"
 	@echo "... editor/load_anims.i"
 	@echo "... editor/load_anims.s"
+	@echo "... editor/loop.o"
+	@echo "... editor/loop.i"
+	@echo "... editor/loop.s"
 	@echo "... editor/main.o"
 	@echo "... editor/main.i"
 	@echo "... editor/main.s"
+	@echo "... editor/r_bold_line.o"
+	@echo "... editor/r_bold_line.i"
+	@echo "... editor/r_bold_line.s"
+	@echo "... editor/r_controls.o"
+	@echo "... editor/r_controls.i"
+	@echo "... editor/r_controls.s"
+	@echo "... editor/r_helpers.o"
+	@echo "... editor/r_helpers.i"
+	@echo "... editor/r_helpers.s"
+	@echo "... editor/r_line.o"
+	@echo "... editor/r_line.i"
+	@echo "... editor/r_line.s"
+	@echo "... editor/r_mouse_controller.o"
+	@echo "... editor/r_mouse_controller.i"
+	@echo "... editor/r_mouse_controller.s"
+	@echo "... editor/r_push.o"
+	@echo "... editor/r_push.i"
+	@echo "... editor/r_push.s"
+	@echo "... editor/r_sdl.o"
+	@echo "... editor/r_sdl.i"
+	@echo "... editor/r_sdl.s"
+	@echo "... editor/r_sdl2.o"
+	@echo "... editor/r_sdl2.i"
+	@echo "... editor/r_sdl2.s"
+	@echo "... editor/r_selectors.o"
+	@echo "... editor/r_selectors.i"
+	@echo "... editor/r_selectors.s"
+	@echo "... editor/r_vector.o"
+	@echo "... editor/r_vector.i"
+	@echo "... editor/r_vector.s"
+	@echo "... editor/reopen.o"
+	@echo "... editor/reopen.i"
+	@echo "... editor/reopen.s"
 	@echo "... src/activate_door.o"
 	@echo "... src/activate_door.i"
 	@echo "... src/activate_door.s"

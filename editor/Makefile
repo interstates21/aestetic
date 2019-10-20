@@ -5,8 +5,10 @@ FILES = bmp_reader \
 					r_helpers \
 					r_sdl \
 					r_sdl2 \
+					r_push \
 					r_controls \
 					reopen \
+                    init_sector \
                     init_monsters \
                     init_sprites \
                     init_textures \

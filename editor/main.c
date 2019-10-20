@@ -17,6 +17,8 @@ static void	ground(t_ed *e)
 	e->seclist = NULL;
 	e->texlist = NULL;
 	e->n_sprites = 0;
+	e->n_walls = 0;
+	e->n_sect = 0;
 }
 
 static void	do_magic(t_ed *ed, int fd)
@@ -27,6 +29,7 @@ static void	do_magic(t_ed *ed, int fd)
 	init_textures(ed);
 	init_monsters(ed);
 	init_sprites(ed);
+	init_default_sect(ed);
 	//loop(&ed);
 	//saving_screen();
 	//save();
@@ -54,6 +57,6 @@ int			main(int argc, char **argv) {
 	//if (argc != 2)
 	//	print_err("Usage: ./editor [map_name]");
 	run(argv[1]);
-	// system("leaks --quiet dm_editor");
+	//system("leaks --quiet dm_editor");
 	return (0);
 }

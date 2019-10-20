@@ -11,7 +11,8 @@ void	listen_controls(bool *end, t_ed *ed)
 		if (event.type == SDL_QUIT)
 			*end = true;
 		mouse_controller(ed, &event);
-		if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP) {
+		if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
+		{
 				if (event.key.keysym.sym == SDLK_ESCAPE)
 				    *end = true;
 				if (event.key.keysym.sym == SDLK_w)
