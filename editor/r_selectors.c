@@ -3,6 +3,7 @@
 void		store_selected(t_ed *ed, t_wall *w, t_v2 *v)
 {
 	ed->selection.selected_vertex = v;
+	ed->selection.val = *v;
 	ed->selection.selected_wall = w;
 }
 

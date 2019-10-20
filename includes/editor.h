@@ -186,6 +186,7 @@ typedef struct		s_selection
 {
 	t_wall			*selected_wall;
 	t_v2			*selected_vertex;
+	t_v2			val;
 }					t_selection;
 
 typedef struct		s_monsters

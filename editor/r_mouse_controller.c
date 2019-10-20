@@ -6,9 +6,10 @@ void		handle_left_click(t_ed *ed)
 
 	if (corner_selected(ed))
 		ft_putendl("vertex selected");
-//	tmp = new_wall(ed->selection.selected_vertex->x, ed->selection.selected_vertex->y,
-//	ed->controller.mouse.x, ed->controller.mouse.y);
-//	wall_push(ed, tmp.v1, tmp.v2);
+	tmp = new_wall(ed->selection.val.x, ed->selection.val.y,
+	ed->controller.mouse.x, ed->controller.mouse.y);
+	wall_push(ed, tmp.v1, tmp.v2);
+	ed->selection.val = ed->controller.mouse;
 }
 
 int			mouse_controller(t_ed *ed, SDL_Event *event)
