@@ -16,6 +16,8 @@ static void init_render(t_ed *ed) {
     ed->pixels = get_screen_pixels();
     ed->controller.mouse = new_v2(0, 0);
     ed->controller.mouse_is_pressed = false;
+    ed->selection.selected_wall = NULL;
+    ed->selection.selected_vertex = NULL;
 }
 
 
@@ -30,23 +32,19 @@ t_wall new_wall(int x1, int y1, int x2, int y2) {
     return (wall);
 }
 
-void render_sector(t_ed *ed) {
-    const t_wall walls[3] = {
-        new_wall(10, 10, 10, ed->controller.mouse.x),
-        new_wall(10, 20, 15, ed->controller.mouse.x),
-        new_wall(15, 30, 20, ed->controller.mouse.x),
-    };
-
+void render_sector(t_ed *ed, t_wall *walls) {
+    Uint32 color;
     int i = 0;
-    while (i < 3) {
-        line(walls[i].v1, walls[i].v2, ed, BLUE);
+    while (i < 4) {
+        if (ed->selection.selected_wall == &walls[i])
+            color = RED;
+        else
+            color = BLUE;
+        bold_line(walls[i].v1, walls[i].v2, ed, color);
         i++;
     }
 }
 
-void render_map() {
-    
-}
 
 void render_manager(t_sdl *sdl, t_ed *ed)
 {
@@ -55,12 +53,21 @@ void render_manager(t_sdl *sdl, t_ed *ed)
     init_render(ed);
     SDL_Event e;
     end = false;
+
+    t_wall walls[4] = {
+        new_wall(100, 100, 200, 100),
+        new_wall(200, 100, 200, 200),
+        new_wall(200, 200, 100, 200),
+        new_wall(100, 200, 100, 100),
+    };
+
+    ed->initial_walls = walls;
     while (!end)
     {
         listen_controls(&end, ed);
         niceGrid(ed);
         // render_map(ed);
-        render_sector(ed);
+        render_sector(ed, walls);
         sdl_apply_renderer(sdl, ed);
 
     }
