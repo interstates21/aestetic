@@ -6,6 +6,7 @@ FILES = bmp_reader \
 					r_sdl \
 					r_sdl2 \
 					r_push \
+					loop_creation \
 					r_controls \
 					reopen \
                     init_sector \

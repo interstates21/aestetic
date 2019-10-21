@@ -32,11 +32,13 @@
 # define MAX_SECT	128
 # define MAX_SPRT	64
 # define MAX_WALL	32
-# define GRID_GAP	42
+# define GRID_GAP	21
 # define MAX_NAME	100
 # define BLUE		0x6666FF
 # define RED		0xFF6666
 # define GRN		0x66FF66
+# define DOOR		0x22aF11
+# define MGN		0x662266
 # define GRID_COL_2 0xa4b60d
 # define GRID_COL_1 0x111111
 # define SELECTION_FIELD 5
@@ -126,7 +128,7 @@ typedef struct		s_wall
 {
 	t_v2			v1;
 	t_v2			v2;
-	bool 			is_portal;
+	int 			is_portal;
 	bool			is_door;
 }					t_wall;
 
@@ -186,7 +188,10 @@ typedef struct		s_selection
 {
 	t_wall			*selected_wall;
 	t_v2			*selected_vertex;
+	t_v2			*other_vertex;
 	t_v2			val;
+	int 			port;
+	short			drawing;
 }					t_selection;
 
 typedef struct		s_monsters
@@ -226,19 +231,24 @@ void				reopen_fd(int *fd, const char *path);
 void				init_textures(t_ed *e);
 void 				init_monsters(t_ed *e);
 void				init_sprites(t_ed *e);
-t_sect				init_sector(t_wall **walls, int n_walls);
+t_sect				init_sector(t_wall **walls, int n_walls, int n_s);
 int					bmp_check(struct dirent *data);
 void				read_bmp(SDL_Surface **s, char *p);
 void				loop(t_ed *e);
 void				listen_controls(bool *end, t_ed *ed);
 void				print_err(const char *err);
-void				finish_sector(t_ed *e);
+void				finish_sector(t_ed *e, int sn);
 void				wall_push(t_ed *e, t_v2 v1, t_v2 v2);
 void 				init_default_sect(t_ed *e);
 int					trim(int v, int inc);
+t_v2				trim_v2(t_v2 v);
 t_wall				new_wall(int x1, int y1, int x2, int y2);
+int					wall_eq(t_wall a, t_wall b);
+int					v2_cmp(t_v2 a, t_v2 b);
 void				wall_push(t_ed *e, t_v2 v1, t_v2 v2);
-void				finish_sector(t_ed *e);
+void				finish_sector(t_ed *e, int sn);
+void 				render_map(t_ed *ed);
+void				loop_creation(t_ed *e);
 void	sdl_init(t_sdl *sdl);
 void sdl_put_pix(Uint32 **pixels, int x, int y, Uint32 color);
 void sdl_clean(t_sdl *sdl);

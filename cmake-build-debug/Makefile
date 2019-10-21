@@ -1689,6 +1689,33 @@ editor/loop.c.s:
 	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/loop.c.s
 .PHONY : editor/loop.c.s
 
+editor/loop_creation.o: editor/loop_creation.c.o
+
+.PHONY : editor/loop_creation.o
+
+# target to build an object file
+editor/loop_creation.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/loop_creation.c.o
+.PHONY : editor/loop_creation.c.o
+
+editor/loop_creation.i: editor/loop_creation.c.i
+
+.PHONY : editor/loop_creation.i
+
+# target to preprocess a source file
+editor/loop_creation.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/loop_creation.c.i
+.PHONY : editor/loop_creation.c.i
+
+editor/loop_creation.s: editor/loop_creation.c.s
+
+.PHONY : editor/loop_creation.s
+
+# target to generate assembly for a file
+editor/loop_creation.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/loop_creation.c.s
+.PHONY : editor/loop_creation.c.s
+
 editor/main.o: editor/main.c.o
 
 .PHONY : editor/main.o
@@ -4302,6 +4329,9 @@ help:
 	@echo "... editor/loop.o"
 	@echo "... editor/loop.i"
 	@echo "... editor/loop.s"
+	@echo "... editor/loop_creation.o"
+	@echo "... editor/loop_creation.i"
+	@echo "... editor/loop_creation.s"
 	@echo "... editor/main.o"
 	@echo "... editor/main.i"
 	@echo "... editor/main.s"

@@ -9,8 +9,25 @@ t_v2 new_v2(int a, int b) {
     return (v);
 }
 
+int		wall_eq(t_wall a, t_wall b)
+{
+	return ((a.v1.x == b.v1.x &&
+	a.v1.y == b.v1.y &&
+	a.v2.x == b.v2.x &&
+	a.v2.y == b.v2.y) ||
+	(a.v2.x == b.v1.x &&
+	a.v2.y == b.v1.y &&
+	a.v1.x == b.v2.x &&
+	a.v1.y == b.v2.y));
+}
 
-bool v2_compare(t_v2 a, t_v2 b, int r) {
+int		v2_cmp(t_v2 a, t_v2 b)
+{
+	return (a.x == b.x && a.y == b.y);
+}
+
+bool v2_compare(t_v2 a, t_v2 b, int r)
+{
     if (a.y - r <= b.y && a.y + r >= b.y)
         if (a.x - r <= b.x && a.x + r >= b.x)
             return (true);

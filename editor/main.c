@@ -19,6 +19,7 @@ static void	ground(t_ed *e)
 	e->n_sprites = 0;
 	e->n_walls = 0;
 	e->n_sect = 0;
+	e->selection.drawing = 0;
 }
 
 static void	do_magic(t_ed *ed, int fd)
@@ -57,6 +58,6 @@ int			main(int argc, char **argv) {
 	//if (argc != 2)
 	//	print_err("Usage: ./editor [map_name]");
 	run(argv[1]);
-	//system("leaks --quiet dm_editor");
+	system("leaks --quiet dm_editor");
 	return (0);
 }

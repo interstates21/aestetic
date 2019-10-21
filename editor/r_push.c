@@ -32,10 +32,14 @@ static void	realloc_sectors(t_ed *e)
 	e->n_sect += 1;
 }
 
-void		finish_sector(t_ed *e)
+void		finish_sector(t_ed *e, int sn)
 {
 	realloc_sectors(e);
-	e->seclist[e->n_sect - 1] = init_sector(&e->walls, e->n_walls);
+	e->seclist[e->n_sect - 1] = init_sector(&e->walls, e->n_walls, e->n_sect - 1);
+	e->selection.selected_wall->is_portal = e->n_sect - 1;
+	e->seclist[e->n_sect - 1].walls[e->seclist[e->n_sect - 1].n_walls
+	- 1].is_portal = sn;
+	e->selection = (t_selection){.selected_wall = NULL, .selected_vertex = NULL};
 	e->walls = NULL;
 	e->n_walls = 0;
 }
@@ -43,6 +47,6 @@ void		finish_sector(t_ed *e)
 void		wall_push(t_ed *e, t_v2 v1, t_v2 v2)
 {
 	realloc_walls(e);
-	e->walls[e->n_walls - 1] = (t_wall){.is_door = 0, .is_portal = 0,
+	e->walls[e->n_walls - 1] = (t_wall){.is_door = 0, .is_portal = -1,
 	.v1 = v1, .v2 = v2};
 }
