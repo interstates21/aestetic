@@ -37,7 +37,7 @@
 # define BLUE		0x6666FF
 # define RED		0xFF6666
 # define GRN		0x66FF66
-# define DOOR		0x22aF11
+# define DOOR		0x2244aa
 # define MGN		0x662266
 # define GRID_COL_2 0xa4b60d
 # define GRID_COL_1 0x111111
@@ -192,6 +192,7 @@ typedef struct		s_selection
 	t_v2			val;
 	int 			port;
 	short			drawing;
+	short			sector;
 }					t_selection;
 
 typedef struct		s_monsters
@@ -249,6 +250,8 @@ void				wall_push(t_ed *e, t_v2 v1, t_v2 v2);
 void				finish_sector(t_ed *e, int sn);
 void 				render_map(t_ed *ed);
 void				loop_creation(t_ed *e);
+int 				intersects(t_v2 l[2], t_sect *s);
+int					in_range(double t);
 void	sdl_init(t_sdl *sdl);
 void sdl_put_pix(Uint32 **pixels, int x, int y, Uint32 color);
 void sdl_clean(t_sdl *sdl);

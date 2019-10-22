@@ -46,11 +46,35 @@ void		store_selected(t_ed *ed, t_wall *w, t_v2 *v)
 // 			return (s);
 // 	return (-1);
 // }
+static void	tell_em_im_here(t_ed *e)
+{
+	int 	i;
+	int 	j;
+
+	i = -1;
+	while (++i < e->selection.selected_wall->is_portal)
+		;
+	j = -1;
+	while (++j < e->seclist[i].n_walls)
+		if (e->seclist[i].walls[j].is_portal == e->selection.sector)
+		{
+			e->seclist[i].walls[j].is_door =
+			e->seclist[i].walls[j].is_door ? 0 : 1;
+			return ;
+		}
+}
+
 static int	gut_check(t_ed *e)
 {
+	int 	i;
+
+	i = -1;
 	if (e->selection.selected_wall->is_portal > -1)
 	{
-		e->selection.selected_wall->is_door = e->selection.selected_wall->is_door ? 0 : 1;
+		e->selection.selected_wall->is_door =
+		e->selection.selected_wall->is_door ? 0 : 1;
+		while (++i < e->n_sect)
+			tell_em_im_here(e);
 		e->selection = (t_selection){ .selected_vertex = NULL,
 		.selected_wall = NULL, .drawing = 0};
 		return (0);

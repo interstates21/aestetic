@@ -1,8 +1,24 @@
 #include "../includes/editor.h"
 
-static int in_range(double t)
+int			in_range(double t)
 {
 	return (t >= 0.0 && t <= 1.0);
+}
+
+void		get_sect_info(int i, t_ed *e)
+{
+	printf("sector %d:\n", i);
+	if (i == -1)
+	{
+		printf("\ttakogo netu\n");
+		return;
+	}
+	printf("\twalls: %d\n", e->seclist[i].n_walls);
+	int k = -1;
+	while (++k < e->seclist[i].n_walls)
+	{
+		printf("\t\twall %d : door - %d, portal - %d\n", k, e->seclist[i].walls[k].is_door, e->seclist[i].walls[k].is_portal);
+	}
 }
 
 int 		intersects(t_v2 l[2], t_sect *s)
@@ -19,14 +35,14 @@ int 		intersects(t_v2 l[2], t_sect *s)
 		det = (s->walls[i].v2.x - s->walls[i].v1.x) * (l[0].y - l[1].y) -
 				(l[0].x - l[1].x) * (s->walls[i].v2.y - s->walls[i].v1.y);
 		if (!det)
-			return (1);
+			return (0);
 		tmp[0] = (s->walls[i].v1.y - s->walls[i].v2.y) *
 		(l[0].x - s->walls[i].v1.x) + (s->walls[i].v2.x - s->walls[i].v1.x) *
 		(l[0].y - s->walls[i].v1.y);
 		tmp[1] = (l[0].y - l[1].y) * (l[0].x - s->walls[i].v1.x) +
 		(l[1].x - l[0].x) * (l[0].y - s->walls[i].v1.y);
-		if (in_range(tmp[0] / det) && in_range(tmp[1] / det))
-			res += 1;
+		if (in_range(tmp[0] / det) && in_range(tmp[1] / det)){printf(" s%d ", i);
+			res += 1;}
 	}
 	return (res);
 }
@@ -42,7 +58,8 @@ char		in_sector(t_ed *e)
 		line[1] = new_v2(0, 0);
 		line[0] = e->controller.mouse;
 		if (intersects(line, &e->seclist[i]) & 1)
-			return (i);
+		{printf(" %d", i);
+			return (i);}
 	}
 	return (-1);
 }
@@ -51,7 +68,8 @@ void		handle_left_click(t_ed *ed)
 {
 	int k;
 	k = in_sector(ed);
-		printf("sectror = %d\n", k);
+	//get_sect_info(k, ed);
+	ed->selection.sector = k;
 	if (ed->selection.drawing)
 		loop_creation(ed);
 	else
