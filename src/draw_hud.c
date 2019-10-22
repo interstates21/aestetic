@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_hud.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/22 23:10:02 by bdeomin           #+#    #+#             */
+/*   Updated: 2019/10/22 23:12:41 by bdeomin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/doom_nukem.h"
 
 static void	draw_ammo(t_data *d, t_weapon_type weapon_type)
@@ -24,20 +36,22 @@ static void	draw_fuel(t_data *d)
 static void	draw_inventory_slot(t_data *d, SDL_Surface *tex, int x1, int y1)
 {
 	uint32_t	px;
-	int			x;
-	int			y;
-	int			h;
-	int			u;
+	t_vec2		x_y;
+	t_vec2		h_u;
+	double		pix_yh;
 
-	h = SLOT_W * (double)tex->h / tex->w;
-	x = -1;
-	while (++x < SLOT_W)
+	h_u.x = SLOT_W * (double)tex->h / tex->w;
+	x_y.x = -1;
+	while (++x_y.x < SLOT_W)
 	{
-		u = ((double)x / SLOT_W) * tex->w;
-		y = -1;
-		while (++y < h)
-			if (((px = getpixel4(tex, u, (double)y / h)) >> 24) > 127)
-				putpixel(d, x1 + x, y1 + y, px);
+		h_u.y = ((double)x_y.x / SLOT_W) * tex->w;
+		x_y.y = -1;
+		while (++x_y.y < h_u.x)
+		{
+			pix_yh = (double)x_y.y / h_u.x;
+			if (((px = getpixel4(tex, h_u.y, pix_yh)) >> 24) > 127)
+				putpixel(d, x1 + x_y.x, y1 + x_y.y, px);
+		}
 	}
 }
 
@@ -50,7 +64,7 @@ static void	draw_timed_msg(t_data *d)
 		d->msg[0] = 0;
 }
 
-void	draw_hud(t_data *d)
+void		draw_hud(t_data *d)
 {
 	if (d->slot1)
 		draw_inventory_slot(d, d->assets_texture[d->slot1->picnum],

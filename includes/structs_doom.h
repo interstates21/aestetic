@@ -1,5 +1,6 @@
-#ifndef STRUCTS_DOOM_H
+#ifndef	STRUCTS_DOOM_H
 # define STRUCTS_DOOM_H
+#include "common.h"
 
 typedef struct		s_display_data
 {
@@ -209,13 +210,11 @@ typedef struct		s_color_buf
 # define MOUSE_NO_ACTION 3
 # define NB_OF_SOUNDS 20
 
-
 typedef struct		s_sdl {
 	SDL_Window		*win;
 	SDL_Surface		*screen;
 	TTF_Font		*font;
 }					t_sdl;
-
 
 typedef struct		s_scene {
 	SDL_Window		*win;
@@ -230,7 +229,7 @@ typedef struct		s_bitmap
 typedef struct		s_chars
 {
 	t_bitmap			b;
-	t_bitmap 			a;
+	t_bitmap			a;
 	t_bitmap			c;
 	t_bitmap			d;
 	t_bitmap			e;
@@ -317,7 +316,7 @@ typedef struct		s_data
 	t_color_buf		color_buf;
 	t_vec2f			inertia;
 	unsigned char	font[96][5];
-	int 			used[96];
+	int				used[96];
 	double			*zbuffer;
 	double			floorheightplayer;
 	double			ceilheightplayer;
@@ -331,7 +330,7 @@ typedef struct		s_data
 	uint32_t		last_dangerous_area_damage;
 	int				difficulty;
 	t_chars			chars;
-	int 			loaded;
+	int				loaded;
 }					t_data;
 
 typedef struct		s_thread_arg
@@ -347,5 +346,15 @@ typedef	struct		s_args_multi_colo_buf
 	short			start_x;
 	short			max_x;
 }					t_args_multi_colo_buf;
+
+/*
+**	Uses in draw_aim_cross.c load_weapons_texture
+*/
+typedef	struct		s_three_val
+{
+	int				one;
+	int				two;
+	int				three;
+}					t_three_val;
 
 #endif
