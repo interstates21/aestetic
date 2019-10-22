@@ -45,10 +45,10 @@ void 		loading(t_data *d)
 	SDL_Event	e;
 
 	status[0] = SDL_GetTicks();
-
 	status[1] = status[0];
 	if (d->loaded)
 		return ;
+	SDL_UpdateWindowSurface(d->sdl.win);
 	while (status[1] - status[0] < 10000 || SDL_PollEvent(&e))
 		{
 			status[1] = SDL_GetTicks();

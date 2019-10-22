@@ -74,6 +74,7 @@ void	free_everything(t_data *d)
 	free(d->assets);
 	d->tex_name_list = NULL;
 	d->assets = NULL;
+	system("leaks --quiet doom_nukem");
 }
 
 void	clear_sector_sprites(t_data *d, short i)
@@ -106,6 +107,7 @@ void	handle_finish(t_data *d)
 	i = -1;
 	while (++i < d->numsectors)
 		clear_sector_sprites(d, i);
+	system("leaks --quiet doom_nukem");
 	free_everything(d);
-	init_everything(d, d->nextmap);
+	exit(1);
 }

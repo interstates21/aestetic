@@ -1,36 +1,61 @@
 #include "../includes/editor.h"
 
-void		handle_left_click(t_ed *ed)
+static int in_range(double t)
 {
-	if (ed->selection.drawing)
-		loop_creation(ed);
-	else
-		corner_selected(ed);
+	return (t >= 0.0 && t <= 1.0);
 }
 
-int 		intersects(t_v2 line[2], t_sect *s)
+int 		intersects(t_v2 l[2], t_sect *s)
 {
+	double	det;
+	double	tmp[2];
+	int 	res;
+	int 	i;
 
+	i = -1;
+	res = 0;
+	while (++i < s->n_walls)
+	{
+		det = (s->walls[i].v2.x - s->walls[i].v1.x) * (l[0].y - l[1].y) -
+				(l[0].x - l[1].x) * (s->walls[i].v2.y - s->walls[i].v1.y);
+		if (!det)
+			return (1);
+		tmp[0] = (s->walls[i].v1.y - s->walls[i].v2.y) *
+		(l[0].x - s->walls[i].v1.x) + (s->walls[i].v2.x - s->walls[i].v1.x) *
+		(l[0].y - s->walls[i].v1.y);
+		tmp[1] = (l[0].y - l[1].y) * (l[0].x - s->walls[i].v1.x) +
+		(l[1].x - l[0].x) * (l[0].y - s->walls[i].v1.y);
+		if (in_range(tmp[0] / det) && in_range(tmp[1] / det))
+			res += 1;
+	}
+	return (res);
 }
-
 // возвращает номер сектора ели внутри него кликнули или -1
 char		in_sector(t_ed *e)
 {
 	int 	i;
 	t_v2	line[2];
-	int 	j;
 
 	i = -1;
-	while (++i < e->n_sect && (j = -1))
+	while (++i < e->n_sect)
 	{
-		line[1] = new_v2(
-		(e->seclist[i].walls[0].v1.x + e->seclist[i].walls[0].v2.x) >> 1,
-		(e->seclist[i].walls[0].v1.y + e->seclist[i].walls[0].v2.y) >> 1);
+		line[1] = new_v2(0, 0);
 		line[0] = e->controller.mouse;
 		if (intersects(line, &e->seclist[i]) & 1)
 			return (i);
 	}
 	return (-1);
+}
+
+void		handle_left_click(t_ed *ed)
+{
+	int k;
+	k = in_sector(ed);
+		printf("sectror = %d\n", k);
+	if (ed->selection.drawing)
+		loop_creation(ed);
+	else
+		corner_selected(ed);
 }
 
 int			mouse_controller(t_ed *ed, SDL_Event *event)
