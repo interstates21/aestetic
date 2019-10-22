@@ -1,8 +1,8 @@
 #include "../includes/editor.h"
 
 static void niceGrid(t_ed *ed) {
-     for (int i = 0; i < ED_W; i++) {
-        for (int j = 0; j < ED_H; j++) {
+     for (int i = 0; i < ED_FIELD_W; i++) {
+        for (int j = 0; j < ED_FIELD_H; j++) {
             if (j % GRID_GAP && i % GRID_GAP)  
                 sdl_put_pix(&(ed->pixels), i , j, GRID_COL_1);
             else
@@ -11,6 +11,13 @@ static void niceGrid(t_ed *ed) {
     }
 }
 
+static void render_menu(t_ed *ed) {
+     for (int i = ED_FIELD_W; i < ED_W; i++) {
+        for (int j = 0; j < ED_FIELD_H; j++) {
+            sdl_put_pix(&(ed->pixels), i , j, 0);
+        }
+    }
+}
 
 static void init_render(t_ed *ed) {
     ed->pixels = get_screen_pixels();
@@ -68,11 +75,12 @@ void render_manager(t_sdl *sdl, t_ed *ed)
     init_render(ed);
     SDL_Event e;
     end = false;
-    
+
     while (!end)
     {
         listen_controls(&end, ed);
         niceGrid(ed);
+        render_menu(ed);
 		render_map(ed);
         sdl_apply_renderer(sdl, ed);
 

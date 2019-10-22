@@ -28,6 +28,10 @@
 
 #define ED_W 1200
 #define ED_H 700
+#define MENU_W 400
+#define MENU_H 700
+# define ED_FIELD_W 1200 - 400
+# define ED_FIELD_H 700
 # define MAX_MONS	256
 # define MAX_SECT	128
 # define MAX_SPRT	64
@@ -94,6 +98,59 @@ typedef enum		e_type
 	S_JETPACK,
 	S_TOTAL
 }					t_type;
+
+
+typedef struct		s_bitmap
+{
+	int				bit[8];
+}					t_bitmap;
+
+
+typedef struct		s_chars
+{
+	t_bitmap			b;
+	t_bitmap 			a;
+	t_bitmap			c;
+	t_bitmap			d;
+	t_bitmap			e;
+	t_bitmap			f;
+	t_bitmap			g;
+	t_bitmap			h;
+	t_bitmap			i;
+	t_bitmap			j;
+	t_bitmap			k;
+	t_bitmap			l;
+	t_bitmap			m;
+	t_bitmap			n;
+	t_bitmap			o;
+	t_bitmap			p;
+	t_bitmap			q;
+	t_bitmap			r;
+	t_bitmap			s;
+	t_bitmap			t;
+	t_bitmap			u;
+	t_bitmap			v;
+	t_bitmap			w;
+	t_bitmap			x;
+	t_bitmap			y;
+	t_bitmap			z;
+	t_bitmap			dot;
+	t_bitmap			exc;
+	t_bitmap			semi;
+	t_bitmap			spc;
+	t_bitmap			n0;
+	t_bitmap			n1;
+	t_bitmap			n2;
+	t_bitmap			n3;
+	t_bitmap			n4;
+	t_bitmap			n5;
+	t_bitmap			n6;
+	t_bitmap			n7;
+	t_bitmap			n8;
+	t_bitmap			n9;
+	t_bitmap			slh;
+	t_bitmap			prc;
+}					t_chars;
 
 typedef	struct		s_v2
 {
