@@ -1,91 +1,47 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_monster.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/23 19:45:21 by bdeomin           #+#    #+#             */
+/*   Updated: 2019/10/23 22:58:54 by bdeomin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/doom_nukem.h"
 
-static void	display_sprite_one_point_monst(t_data *d, SDL_Surface *s,
-		t_display_data display_data, double dist)
+static void	new_disp_data_1(t_display_data *disp_data,
+		SDL_Surface *s, t_vec3f p_in_scr, double size)
 {
-	int			x;
-	int			y;
-	uint32_t	colo;
+	double	start_x;
+	double	start_y;
 
-	x = display_data.cut_start - 1;
-	while (++x <= display_data.cut_end)
-	{
-		y = MAX(0, display_data.start.y) - 1;
-		while (++y <= MIN(HEIGHT - 1, display_data.end.y))
-			if (dist < d->zbuffer[x + y * d->sdl.screen->w])
-			{
-				colo = getpixel(s, display_data.scale.x *
-						(x - display_data.start.x),
-						display_data.scale.y * (y - display_data.start.y));
-				colo = alpha(((uint32_t *)d->sdl.screen->pixels)
-						[x + y * d->sdl.screen->w], colo);
-				if (colo != getpixel3(d->sdl.screen, x, y))
-				{
-					colo = sprite_shade(d, &d->sectors[display_data.cursectnum]
-							, dist, colo);
-					putpixel(d, x, y, colo);
-					d->zbuffer[x + y * d->sdl.screen->w] = dist;
-				}
-			}
-	}
+	start_x = (s->w) / p_in_scr.z * size;
+	start_y = (s->h * 2) / p_in_scr.z * size;
+	disp_data->start.x = p_in_scr.x - start_x;
+	disp_data->end.x = p_in_scr.x + start_x;
+	disp_data->start.y = p_in_scr.y - start_y;
+	disp_data->end.y = p_in_scr.y;
 }
 
-static void	display_sprite_one_point_rev(t_data *d, SDL_Surface *s,
-		t_display_data display_data, double dist)
-{
-	int			x;
-	int			y;
-	uint32_t	colo;
-
-	x = display_data.cut_start - 1;
-	while (++x <= display_data.cut_end)
-	{
-		y = MAX(0, display_data.start.y) - 1;
-		while (++y <= MIN(HEIGHT - 1, display_data.end.y))
-			if (dist < d->zbuffer[x + y * d->sdl.screen->w])
-			{
-				colo = getpixel(s, 1 - (display_data.scale.x *
-							(x - display_data.start.x)),
-						display_data.scale.y * (y - display_data.start.y));
-				colo = alpha(((uint32_t *)d->sdl.screen->pixels)
-						[x + y * d->sdl.screen->w], colo);
-				if (colo != getpixel3(d->sdl.screen, x, y))
-				{
-					colo = sprite_shade(d, &d->sectors[display_data.cursectnum]
-							, dist, colo);
-					putpixel(d, x, y, colo);
-					d->zbuffer[x + y * d->sdl.screen->w] = dist;
-				}
-			}
-	}
-}
-
-static void	set_display_data_proj_1(t_display_data *display_data,
-		SDL_Surface *s, t_vec3f point_in_screen, double size)
-{
-	display_data->start.x = point_in_screen.x - (s->w) / point_in_screen.z *
-		size;
-	display_data->end.x = point_in_screen.x + (s->w) / point_in_screen.z *
-		size;
-	display_data->start.y = point_in_screen.y - (s->h * 2) / point_in_screen.z *
-		size;
-	display_data->end.y = point_in_screen.y;
-}
-
-static void	set_display_data_proj_2(t_display_data *display_data,
+static void	new_disp_data_2(t_display_data *disp_data,
 		uint16_t cursectnum)
 {
-	display_data->scale.x = fabs(100.0 / (display_data->start.x
-				- display_data->end.x) * 0.01);
-	display_data->cut_start = MAX(display_data->start.x, 0);
-	display_data->cut_end = MIN(display_data->end.x, WIDTH - 1);
-	display_data->scale.y = fabs(100.0 / (display_data->start.y
-				- display_data->end.y) * 0.01);
-	display_data->cursectnum = cursectnum;
+	double large_x;
+	double large_y;
+
+	large_x = disp_data->start.x - disp_data->end.x;
+	large_y = disp_data->start.y - disp_data->end.y;
+	disp_data->scale.x = fabs(100.0 / large_x * 0.01);
+	disp_data->cut_start = MAX(disp_data->start.x, 0);
+	disp_data->cut_end = MIN(disp_data->end.x, WIDTH - 1);
+	disp_data->scale.y = fabs(100.0 / large_y * 0.01);
+	disp_data->cursectnum = cursectnum;
 }
 
-short		*operation_with_nb_of_anim(t_data *d, t_monster monster,
-													short *nb_of_anim)
+short		*mont_anim(t_data *d, t_monster monster, short *nb_of_anim)
 {
 	nb_of_anim[1] = get_nb_anim_from_rot(monster.rot,
 			monster.pos, v3_to_v2(d->cam.pos));
@@ -95,29 +51,36 @@ short		*operation_with_nb_of_anim(t_data *d, t_monster monster,
 	return (nb_of_anim);
 }
 
+void		new_zbuffer_and_put_collor(t_data *d, t_vec2 x_y, uint32_t colo,
+															t_vec2f dist_mod)
+{
+	putpixel(d, x_y.x, x_y.y, colo);
+	d->zbuffer[x_y.x + x_y.y * d->sdl.screen->w] = dist_mod.x;
+}
+
 void		draw_monster(t_data *d, t_monster monster)
 {
 	t_display_data	a;
 	t_vec3f			point_in_screen;
-	t_vec3f			monsterpos;
+	t_vec3f			position_monstr;
 	double			h;
 	short			nb_of_anim[2];
 
 	h = get_floor_height(&d->sectors[monster.cursectnum], d->walls,
 									monster.cursectnum, monster.pos);
-	monsterpos = new_v3(monster.pos.x, h, monster.pos.y);
-	point_in_screen = transform_vec3f_to_screen(d, monsterpos);
+	position_monstr = new_v3(monster.pos.x, h, monster.pos.y);
+	point_in_screen = trans_v3f_in_scr(d, position_monstr);
 	if (point_in_screen.z <= 0)
 		return ;
-	nb_of_anim[0] = *operation_with_nb_of_anim(d, monster, nb_of_anim);
-	set_display_data_proj_1(&a, d->monster_text[monster.id_type][monster.
+	nb_of_anim[0] = *mont_anim(d, monster, nb_of_anim);
+	new_disp_data_1(&a, d->monster_text[monster.id_type][monster.
 			anim_state][nb_of_anim[0]], point_in_screen,
 			d->monster_type[monster.id_type].size);
-	set_display_data_proj_2(&a, monster.cursectnum);
+	new_disp_data_2(&a, monster.cursectnum);
 	if (nb_of_anim[1] < 4 && monster.anim_state < 10)
-		display_sprite_one_point_rev(d, d->monster_text[monster.id_type]
-				[monster.anim_state][nb_of_anim[0]], a, point_in_screen.z);
+		disp_sprite(d, d->monster_text[monster.id_type]
+	[monster.anim_state][nb_of_anim[0]], a, (t_vec2f){point_in_screen.z, 0});
 	else
-		display_sprite_one_point_monst(d, d->monster_text[monster.id_type]
-				[monster.anim_state][nb_of_anim[0]], a, point_in_screen.z);
+		disp_sprite(d, d->monster_text[monster.id_type]
+	[monster.anim_state][nb_of_anim[0]], a, (t_vec2f){point_in_screen.z, 1});
 }

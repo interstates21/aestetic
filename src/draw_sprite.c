@@ -1,35 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_sprite.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/23 21:07:52 by bdeomin           #+#    #+#             */
+/*   Updated: 2019/10/23 23:02:00 by bdeomin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/doom_nukem.h"
 
-void		display_sprite_one_point_proj(t_data *d, SDL_Surface *s,
-		t_display_data display_data, double dist)
-{
-	int			x;
-	int			y;
-	uint32_t	colo;
-
-	x = display_data.cut_start - 1;
-	while (++x <= display_data.cut_end)
-	{
-		y = MAX(display_data.ytop[x], display_data.start.y) - 1;
-		while (++y <= MIN(display_data.ybot[x], display_data.end.y))
-		{
-			colo = getpixel(s, display_data.scale.x *
-					(x - display_data.start.x),
-					display_data.scale.y * (y - display_data.start.y));
-			colo = alpha(((uint32_t *)d->sdl.screen->pixels)
-					[x + y * d->sdl.screen->w], colo);
-			if (colo != getpixel3(d->sdl.screen, x, y))
-			{
-				colo = sprite_shade(d, &d->sectors[display_data.cursectnum]
-						, dist, colo);
-				putpixel(d, x, y, colo);
-				d->zbuffer[x + y * d->sdl.screen->w] = dist;
-			}
-		}
-	}
-}
-
-t_vec3f		transform_vec3f_to_screen(t_data *d, t_vec3f v)
+t_vec3f		trans_v3f_in_scr(t_data *d, t_vec3f v)
 {
 	t_vec3f	new;
 
@@ -46,18 +29,21 @@ t_vec3f		transform_vec3f_to_screen(t_data *d, t_vec3f v)
 	return (new);
 }
 
-static void	set_display_data_proj(t_frustum *fr, t_display_data *display_data,
+static void	new_disp_data(t_frustum *fr, t_display_data *disp_data,
 		uint16_t cursectnum)
 {
-	display_data->scale.x = fabs(100.0 / (display_data->start.x
-				- display_data->end.x) * 0.01);
-	display_data->cut_start = MAX(display_data->start.x, fr->x1);
-	display_data->cut_end = MIN(display_data->end.x, fr->x2);
-	display_data->scale.y = fabs(100.0 / (display_data->start.y
-				- display_data->end.y) * 0.01);
-	display_data->ytop = &fr->ytop[0];
-	display_data->ybot = &fr->ybottom[0];
-	display_data->cursectnum = cursectnum;
+	double large_x;
+	double large_y;
+
+	large_x = disp_data->start.x - disp_data->end.x;
+	large_y = disp_data->start.y - disp_data->end.y;
+	disp_data->scale.x = fabs(100.0 / large_x * 0.01);
+	disp_data->cut_start = MAX(disp_data->start.x, fr->x1);
+	disp_data->cut_end = MIN(disp_data->end.x, fr->x2);
+	disp_data->scale.y = fabs(100.0 / large_y * 0.01);
+	disp_data->ytop = &fr->ytop[0];
+	disp_data->ybot = &fr->ybottom[0];
+	disp_data->cursectnum = cursectnum;
 }
 
 void		draw_projectile(t_data *d, t_frustum *fr,
@@ -67,7 +53,7 @@ void		draw_projectile(t_data *d, t_frustum *fr,
 	t_display_data	a;
 	t_vec3f			point_in_screen;
 
-	point_in_screen = transform_vec3f_to_screen(d, proj.pos);
+	point_in_screen = trans_v3f_in_scr(d, proj.pos);
 	if (point_in_screen.z <= 0)
 		return ;
 	dist = vec3f_length(v3_min(proj.pos, d->cam.pos));
@@ -83,9 +69,39 @@ void		draw_projectile(t_data *d, t_frustum *fr,
 	a.end.y = point_in_screen.y + (d->projectile_tex[proj.weapon_id]
 			[proj.current_anim_playing]->h *
 			d->projectile_type[proj.id_type].size) / dist;
-	set_display_data_proj(fr, &a, proj.cursectnum);
-	display_sprite_one_point_proj(d, d->projectile_tex[proj.id_type]
-			[proj.current_anim_playing], a, point_in_screen.z);
+	new_disp_data(fr, &a, proj.cursectnum);
+	disp_sprite(d, d->projectile_tex[proj.id_type]
+			[proj.current_anim_playing], a, (t_vec2f){point_in_screen.z, 2});
+}
+
+void		disp_sprite(t_data *d, SDL_Surface *s,
+		t_display_data disp_data, t_vec2f dist_mod)
+{
+	t_vec2		x_y;
+	uint32_t	colo;
+
+	x_y.x = disp_data.cut_start - 1;
+	while (++x_y.x <= disp_data.cut_end)
+	{
+		x_y.y = dist_mod.y == 2 ? MAX(disp_data.ytop[x_y.x],
+			disp_data.start.y) - 1 : MAX(0, disp_data.start.y) - 1;
+		while (++x_y.y <= MIN(dist_mod.y == 2 ? disp_data.ybot[x_y.x] :
+												HEIGHT - 1, disp_data.end.y))
+		{
+			if (dist_mod.x >= d->zbuffer[x_y.x + x_y.y * d->sdl.screen->w]
+														&& dist_mod.y < 2)
+				continue;
+			colo = getpixel(s, dist_mod.y == 0 ?
+				1 - (disp_data.scale.x * (x_y.x - disp_data.start.x)) :
+					disp_data.scale.x * (x_y.x - disp_data.start.x),
+			disp_data.scale.y * (x_y.y - disp_data.start.y));
+			colo = alpha(((uint32_t *)d->sdl.screen->pixels)
+					[x_y.x + x_y.y * d->sdl.screen->w], colo);
+			if (colo != getpixel3(d->sdl.screen, x_y.x, x_y.y))
+				new_zbuffer_and_put_collor(d, x_y, sprite_shade(d,
+				&d->sectors[disp_data.cursectnum], dist_mod.x, colo), dist_mod);
+		}
+	}
 }
 
 void		draw_sprite(t_data *d, t_frustum *fr, t_sprite_list *sprite)

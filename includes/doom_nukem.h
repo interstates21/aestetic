@@ -117,7 +117,7 @@ void		collision_with_monster(t_data *d, short cur_sect);
 bool		collision_proj_monster(t_data *d,
 		t_sector *sector, t_projectile *projectile);
 bool		collision_proj_player(t_data *d, t_projectile *projectile);
-t_vec3f		transform_vec3f_to_screen(t_data *d, t_vec3f v);
+t_vec3f		trans_v3f_in_scr(t_data *d, t_vec3f v);
 void		check_activation(t_data *d, t_monster *monster, t_vec2f pos,
 		bool recur);
 void		monster_behaviour(t_data *d, t_monster *monster, uint16_t id);
@@ -232,7 +232,10 @@ void		fly_gravity(t_data *d);
 */
 
 void		draw_monster(t_data *d, t_monster monster);
-
+void		disp_sprite(t_data *d, SDL_Surface *s,
+					t_display_data disp_data, t_vec2f dist_mod);
+void		new_zbuffer_and_put_collor(t_data *d, t_vec2 x_y, uint32_t colo,
+															t_vec2f dist_mod);
 
 /*
 ** exit.c
