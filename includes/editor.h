@@ -368,4 +368,5 @@ void 				render_picker(t_ed *ed, t_sdl *sdl);
 int					circle(t_ed *ed, t_v2 c, int r, Uint32 color);
 int					picking_monster(t_v2 mouse);
 int					picking_sprite(t_v2 mouse, int n);
+int  				pickers(t_ed *ed);
 #endif

@@ -62,31 +62,13 @@ char		in_sector(t_ed *e)
 	}
 	return (-1);
 }
-
 void		handle_left_click(t_ed *ed)
 {
 	int k;
-	k = in_sector(ed);
 	//get_sect_info(k, ed);
-	ed->selection.monster = -1;
-	ed->selection.sprite = -1;
-	if (picking_monster(ed->controller.mouse) == 1) {
-		ft_putendl("Picking monster one");
-		ed->selection.monster = 0;
-		return ;
-	}
-	else if (picking_monster(ed->controller.mouse) == 2) {
-		ft_putendl("Picking monster two");
-		ed->selection.monster = 1;
-		return ;
-	}
-	else if (picking_sprite(ed->controller.mouse, ed->n_sprites) != -1) {
-		ed->selection.sprite = picking_sprite(ed->controller.mouse, ed->n_sprites);
-		ft_putstr("Picking sprite ");
-		ft_putnbr(ed->selection.sprite);
-		ft_putchar('\n');
-		return ;
-	}
+	if (pickers(ed))
+		return;
+	k = in_sector(ed);
 	ed->selection.sector = k;
 	if (ed->selection.drawing)
 		loop_creation(ed);

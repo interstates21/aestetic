@@ -48,10 +48,36 @@ void render_sprites(t_ed *ed, t_sdl *sdl) {
     offset  = 0;
     while (i < ed->n_sprites) {
         tex = SDL_CreateTextureFromSurface(sdl->renderer, ed->sprites[i].texture);
-        init_texure_picker_rect(&SrcR, &DestR, new_v2(600 - offset, 700), 40);
+        init_texure_picker_rect(&SrcR, &DestR, new_v2(600 - offset, 700), 30);
         SDL_RenderCopy(sdl->renderer, tex, &SrcR, &DestR);
         i++;
         offset += 80;
     }
+}
 
+int  pickers(t_ed *ed) {
+    ed->selection.monster = -1;
+	ed->selection.sprite = -1;
+    if (ed->selection.sector == -1)
+        return (0);
+	if (picking_monster(ed->controller.mouse) == 1) {
+		ft_putendl("Picking monster one");
+		ed->selection.monster = 0;
+		ed->selection.sprite = -1;
+		return (1);
+	}
+	else if (picking_monster(ed->controller.mouse) == 2) {
+		ft_putendl("Picking monster two");
+		ed->selection.monster = 1;
+		return (1);
+	}
+	else if (picking_sprite(ed->controller.mouse, ed->n_sprites) != -1) {
+		ed->selection.sprite = picking_sprite(ed->controller.mouse, ed->n_sprites);
+		ft_putstr("Picking sprite ");
+		ft_putnbr(ed->selection.sprite);
+		ft_putchar('\n');
+		ed->selection.monster = -1;
+		return (1);
+	}
+    return (0);
 }
