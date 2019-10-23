@@ -21,6 +21,7 @@ static void	ground(t_ed *e)
 	e->n_sect = 0;
 	e->selection.drawing = 0;
 	e->selection.sector = -1;
+	e->selection.select = 2;
 }
 
 static void	do_magic(t_ed *ed, int fd)

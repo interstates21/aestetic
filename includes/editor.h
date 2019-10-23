@@ -79,6 +79,20 @@ typedef enum		e_mns
 	M_TOTAL
 }					t_mns;
 
+typedef enum		e_edit
+{
+	E_SLOPE = 2,
+	E_SLOPE_ROT,
+	E_FLOOR,
+	E_CEIL,
+	E_FLOOR_TEX,
+	E_WALL_TEX,
+	E_CEIL_TEX,
+	E_DANGER,
+	E_ELEVATOR,
+	E_EXIT
+}					t_edit;
+
 typedef enum 		e_anims
 {
 	A_ATTACK,
@@ -251,6 +265,7 @@ typedef struct		s_selection
 	int 			port;
 	short			drawing;
 	short			sector;
+	int 			select;
 }					t_selection;
 
 typedef struct		s_monsters
@@ -267,6 +282,7 @@ typedef struct		s_font
 	int 			y;
 	char 			*str;
 	int 			col;
+	int 			n;
 }					t_font;
 
 typedef struct		s_ed

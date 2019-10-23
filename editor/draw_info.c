@@ -15,13 +15,19 @@
 static void draw_element(t_ed *e, t_font *f, int n, char *word)
 {
 	char 	*tmp;
+	int 	c;
 
 	tmp = ft_itoa(n);
 	f->y += 20;
 	f->str = ft_strjoin(word, tmp);
+	c = f->col;
+	if (f->n == e->selection.select)
+		f->col = 0xf9a602;
 	draw_string(e, *f);
 	free(f->str);
 	free(tmp);
+	f->n += 1;
+	f->col = c;
 }
 
 static void	draw_background(t_ed *e, int n, int x, int y)
@@ -34,15 +40,6 @@ static void	draw_background(t_ed *e, int n, int x, int y)
 	while (++i < 205 && (j = -1))
 		while (++j < n)
 			sdl_put_pix(&e->pixels, i + x, j + y, 0x111111);
-}
-
-static void	draw_nothing(t_ed *e, t_font f)
-{
-	draw_background(e, 1, f.x - 5, f.y + 15);
-	f.y += 20;
-	f.col = 0xffaaaa;
-	f.str = "Sector: not selected.";
-	draw_string(e, f);
 }
 
 
@@ -70,6 +67,15 @@ void		draw_info(t_ed *e)
 
 	tmp.x = ED_W - 200;
 	tmp.y = 50;
-	e->selection.sector == -1 ? draw_nothing(e, tmp)
-	: draw_sectinfo(e, tmp, e->selection.sector);
+	tmp.n = 1;
+	if (e->selection.sector == -1)
+	{
+		draw_background(e, 1, tmp.x - 5, tmp.y + 15);
+		tmp.y += 20;
+		tmp.col = 0xffaaaa;
+		tmp.str = "Sector: not selected.";
+		draw_string(e, tmp);
+	}
+	else
+		draw_sectinfo(e, tmp, e->selection.sector);
 }
