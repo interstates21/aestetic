@@ -24,7 +24,8 @@ FILES = bmp_reader \
 					r_bold_line \
 					r_selectors \
 					r_texture_picker \
-					r_circle
+					r_circle \
+					r_pickers
 LIBFT_DIR = ../libft/
 SRC = $(addsuffix .c, $(FILES))
 OBJ = $(addprefix obj/, $(addsuffix .o, $(FILES)))

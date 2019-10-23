@@ -44,6 +44,30 @@ static int	gut_check(t_ed *e)
 	return (1);
 }
 
+int		picking_sprite(t_v2 mouse, int n)
+{
+	int i;
+	int offset;
+
+	i = 0;
+	while (i < n) {
+		offset = i * 36;
+		if (v2_compare(mouse, new_v2(FIRST_SPRITE_W + offset, FIRST_SPRITE_H), 28))
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
+int		picking_monster(t_v2 mouse)
+{
+	if (v2_compare(mouse, new_v2(MOSTER_1_PICKER_W, MOSTER_PICKER_H), 65))
+		return (1);
+	if (v2_compare(mouse, new_v2(MOSTER_2_PICKER_W, MOSTER_PICKER_H), 65))
+		return (2);
+	return (0);
+}
+
 bool		sector_selected(t_ed *ed)
 {
 	int		i;
@@ -73,42 +97,3 @@ bool		corner_selected(t_ed *ed)
 {
 	return sector_selected(ed);
 }
-
-/*
-bool		sector_selected(t_ed *ed)
- {
-	int i;
-
-	i = 0;
-	while (i < 4)
- 	{
-		if (v2_compare(ed->initial_walls[i].v1, ed->controller.mouse, SELECTION_FIELD))
-		{
-			store_selected(ed, &(ed->initial_walls[i]), &(ed->initial_walls[i].v1));
-			return (true);
-		}
-		else if (v2_compare(ed->initial_walls[i].v2, ed->controller.mouse, SELECTION_FIELD)) {
-			store_selected(ed, &(ed->initial_walls[i]), &(ed->initial_walls[i].v2));
-		}
-		i++;
-	}
-	return (false);
-}
-
-bool		corner_selected(t_ed *ed) {
-	int i;
-
-	i = 0;
-	while (i < 4) {
-		if (v2_compare(ed->initial_walls[i].v1, ed->controller.mouse, SELECTION_FIELD)) {
-			store_selected(ed, &(ed->initial_walls[i]), &(ed->initial_walls[i].v1));
-			return (true);
-		}
-		else if (v2_compare(ed->initial_walls[i].v2, ed->controller.mouse, SELECTION_FIELD)) {
-			store_selected(ed, &(ed->initial_walls[i]), &(ed->initial_walls[i].v2));
-		}
-		i++;
-	}
-	return (false);
-}
-*/

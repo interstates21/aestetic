@@ -19,6 +19,8 @@ static void init_render(t_ed *ed) {
     ed->selection.selected_wall = NULL;
     ed->selection.selected_vertex = NULL;
     ed->texture_picker = NULL;
+    ed->selection.monster = -1;
+    ed->selection.sprite = -1;
 }
 
 
@@ -68,6 +70,41 @@ void render_map(t_ed *ed)
     }
 }
 
+void draw_mouse_highlight(t_ed *ed, t_v2 mouse) {
+    int i;
+    int j;
+    int size;
+
+    size = 8;
+    i = -size;
+    while (i < size) {
+        j = -size;
+        while (j < size) {
+            sdl_put_pix(&(ed->pixels), mouse.x + j, mouse.y + i, 0xffff66);
+            j++;
+        }
+        i++;
+    }
+}
+
+void draw_selection(t_ed *ed) {
+    int offset;
+
+    if (ed->selection.sprite == -1 && ed->selection.monster == -1)
+        return ;
+    draw_mouse_highlight(ed, ed->controller.mouse);
+    if (ed->selection.sprite != -1) {
+        offset = ed->selection.sprite * 36;
+        circle(ed, new_v2(FIRST_SPRITE_W + offset, FIRST_SPRITE_H), 28, 0xff00ff);
+    }
+    if (ed->selection.monster == 0) {
+        circle(ed, new_v2(MOSTER_1_PICKER_W, MOSTER_PICKER_H), 65, 0xff00ff);
+    }
+    else if (ed->selection.monster == 1) {
+        circle(ed, new_v2(MOSTER_2_PICKER_W, MOSTER_PICKER_H), 65, 0xff00ff);
+    }
+}
+
 void render_manager(t_sdl *sdl, t_ed *ed)
 {
     bool end;
@@ -83,7 +120,15 @@ void render_manager(t_sdl *sdl, t_ed *ed)
         niceGrid(ed);
         render_map(ed);
         draw_info(ed);
+        draw_selection(ed);
         sdl_apply_renderer(sdl, ed);
+        if (ed->selection.sector != -1) {
+            render_monsters(ed, sdl);
+            render_sprites(ed, sdl);
+            render_picker(ed, sdl);
+        }
+        SDL_RenderPresent(sdl->renderer);
+        sdl_clear_texture(&(ed->pixels));
     }
     SDL_Delay(2000);
     SDL_Quit();

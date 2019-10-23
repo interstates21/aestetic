@@ -42,6 +42,11 @@
 # define MGN		0x662266
 # define GRID_COL_2 0xa4b60d
 # define GRID_COL_1 0x111111
+# define MOSTER_1_PICKER_W	1000 
+# define FIRST_SPRITE_W		900 
+# define FIRST_SPRITE_H		350 
+# define MOSTER_2_PICKER_W	1120
+# define MOSTER_PICKER_H 	450
 # define SHAPE_SIZE 50
 # define SELECTION_FIELD 5
 # define M_NAME_1	"motherdemon"
@@ -267,7 +272,9 @@ typedef struct		s_selection
 	int 			port;
 	short			drawing;
 	short			sector;
+	int				monster;
 	int 			select;
+	int				sprite;
 }					t_selection;
 
 typedef struct		s_monsters
@@ -355,5 +362,10 @@ int					mouse_controller(t_ed *ed, SDL_Event *event);
 bool				corner_selected(t_ed *ed);
 bool				sector_selected(t_ed *ed);
 void 				render_texture_picker(t_ed *ed);
+void 				render_monsters(t_ed *ed, t_sdl *sdl);
+void 				render_sprites(t_ed *ed, t_sdl *sdl);
+void 				render_picker(t_ed *ed, t_sdl *sdl);
 int					circle(t_ed *ed, t_v2 c, int r, Uint32 color);
+int					picking_monster(t_v2 mouse);
+int					picking_sprite(t_v2 mouse, int n);
 #endif
