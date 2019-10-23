@@ -41,8 +41,8 @@ int 		intersects(t_v2 l[2], t_sect *s)
 		(l[0].y - s->walls[i].v1.y);
 		tmp[1] = (l[0].y - l[1].y) * (l[0].x - s->walls[i].v1.x) +
 		(l[1].x - l[0].x) * (l[0].y - s->walls[i].v1.y);
-		if (in_range(tmp[0] / det) && in_range(tmp[1] / det)){printf(" s%d ", i);
-			res += 1;}
+		if (in_range(tmp[0] / det) && in_range(tmp[1] / det))
+			res += 1;
 	}
 	return (res);
 }

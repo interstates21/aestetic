@@ -26,8 +26,8 @@
 # include "../frameworks/SDL2_mixer.framework/Headers/SDL_mixer.h"
 # include "../frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h"
 
-#define ED_W 1200
-#define ED_H 700
+# define ED_W		1200
+# define ED_H		700
 # define MAX_MONS	256
 # define MAX_SECT	128
 # define MAX_SPRT	64
@@ -87,15 +87,11 @@ typedef enum 		e_anims
 	A_TOTAL
 }					t_anims;
 
-typedef enum		e_type
+typedef enum		e_pos
 {
-	S_BARREL = 3,
-	S_LAMP,
-	S_AMMO,
-	S_HEAL,
-	S_JETPACK,
-	S_TOTAL
-}					t_type;
+	P_FLOOR,
+	P_CEIL
+}					t_pos;
 
 typedef	struct		s_v2
 {
@@ -124,6 +120,57 @@ typedef struct		s_bmp
 	unsigned char	*pixels;
 }					t_bmp;
 
+typedef struct		s_bitmap
+{
+	int				bit[8];
+}					t_bitmap;
+
+typedef struct		s_chars
+{
+	t_bitmap			b;
+	t_bitmap 			a;
+	t_bitmap			c;
+	t_bitmap			d;
+	t_bitmap			e;
+	t_bitmap			f;
+	t_bitmap			g;
+	t_bitmap			h;
+	t_bitmap			i;
+	t_bitmap			j;
+	t_bitmap			k;
+	t_bitmap			l;
+	t_bitmap			m;
+	t_bitmap			n;
+	t_bitmap			o;
+	t_bitmap			p;
+	t_bitmap			q;
+	t_bitmap			r;
+	t_bitmap			s;
+	t_bitmap			t;
+	t_bitmap			u;
+	t_bitmap			v;
+	t_bitmap			w;
+	t_bitmap			x;
+	t_bitmap			y;
+	t_bitmap			z;
+	t_bitmap			dot;
+	t_bitmap			exc;
+	t_bitmap			semi;
+	t_bitmap			spc;
+	t_bitmap			n0;
+	t_bitmap			n1;
+	t_bitmap			n2;
+	t_bitmap			n3;
+	t_bitmap			n4;
+	t_bitmap			n5;
+	t_bitmap			n6;
+	t_bitmap			n7;
+	t_bitmap			n8;
+	t_bitmap			n9;
+	t_bitmap			slh;
+	t_bitmap			prc;
+}					t_chars;
+
 typedef struct		s_wall
 {
 	t_v2			v1;
@@ -132,10 +179,21 @@ typedef struct		s_wall
 	bool			is_door;
 }					t_wall;
 
-typedef struct		s_spite
+typedef struct		s_sprite
 {
-	char 			type;
-	struct s_sprite *next;
+	char			name[MAX_NAME];
+	SDL_Surface		*texture;
+	t_v2			pos;
+	char 			sect;
+	char 			interactive;
+	char 			autopick;
+	char 			collision;
+	char 			jetpack;
+	char 			key;
+	int 			k_num;
+	short 			heal;
+	short 			dmg;
+	short 			ammo;
 }					t_sprite;
 
 typedef struct		s_sect
@@ -203,6 +261,14 @@ typedef struct		s_monsters
 	SDL_Surface		**acting[A_TOTAL];
 }					t_monsters;
 
+typedef struct		s_font
+{
+	int 			x;
+	int 			y;
+	char 			*str;
+	int 			col;
+}					t_font;
+
 typedef struct		s_ed
 {
 	t_sdl			sdl;
@@ -210,10 +276,11 @@ typedef struct		s_ed
 	t_texlist		*texlist;
 	t_wall			*walls;
 	t_monsters		monster[M_TOTAL];
-	SDL_Surface		**sprites;
+	t_sprite		*sprites;
 	SDL_Surface		*m_projec[5];
 	Uint32			*pixels;
 	//t_stats			info;
+	t_chars			chars;
 	int 			curr_m;
 	int 			fd;
 	int 			n_tex;
@@ -222,7 +289,6 @@ typedef struct		s_ed
 	int 			n_walls;
 	t_selection		selection;
 	t_controller	controller;
-	t_wall			*initial_walls;
 }					t_ed;
 
 void 				sdl_print_pix(Uint32 **pixels, int x, int y);
@@ -246,26 +312,28 @@ t_v2				trim_v2(t_v2 v);
 t_wall				new_wall(int x1, int y1, int x2, int y2);
 int					wall_eq(t_wall a, t_wall b);
 int					v2_cmp(t_v2 a, t_v2 b);
-void				wall_push(t_ed *e, t_v2 v1, t_v2 v2);
-void				finish_sector(t_ed *e, int sn);
 void 				render_map(t_ed *ed);
 void				loop_creation(t_ed *e);
 int 				intersects(t_v2 l[2], t_sect *s);
 int					in_range(double t);
-void	sdl_init(t_sdl *sdl);
-void sdl_put_pix(Uint32 **pixels, int x, int y, Uint32 color);
-void sdl_clean(t_sdl *sdl);
-void    sdl_init_renderer(t_sdl *sdl);
-void sdl_clear_texture(Uint32 **pixels);
-Uint32 *get_screen_pixels(void);
+void				sdl_init(t_sdl *sdl);
+void				sdl_put_pix(Uint32 **pixels, int x, int y, Uint32 color);
+void				sdl_clean(t_sdl *sdl);
+void				sdl_init_renderer(t_sdl *sdl);
+void				sdl_clear_texture(Uint32 **pixels);
+Uint32				*get_screen_pixels(void);
 void				load_names(t_ed *e, char *p, int i);
-void render_manager(t_sdl *sdl, t_ed *ed);
-void sdl_apply_renderer(t_sdl *sdl, t_ed *ed);
-void line(t_v2 p1, t_v2 p2, t_ed *ed, Uint32 color);
-void bold_line(t_v2 p1, t_v2 p2, t_ed *ed, Uint32 color);
-t_v2 new_v2(int a, int b);
-bool v2_compare(t_v2 a, t_v2 b, int r);
-int			mouse_controller(t_ed *ed, SDL_Event *event);
-bool		corner_selected(t_ed *ed);
-bool		sector_selected(t_ed *ed);
+void				render_manager(t_sdl *sdl, t_ed *ed);
+void				sdl_apply_renderer(t_sdl *sdl, t_ed *ed);
+void				line(t_v2 p1, t_v2 p2, t_ed *ed, Uint32 color);
+void				bold_line(t_v2 p1, t_v2 p2, t_ed *ed, Uint32 color);
+t_v2				new_v2(int a, int b);
+void				init_font(t_ed *d);
+void				draw_info(t_ed *e);
+void				draw_string(t_ed *d, t_font f);
+bool				v2_compare(t_v2 a, t_v2 b, int r);
+int					mouse_controller(t_ed *ed, SDL_Event *event);
+bool				corner_selected(t_ed *ed);
+bool				sector_selected(t_ed *ed);
+
 #endif

@@ -43,8 +43,8 @@ static int 		interwl(t_v2 l[2], t_ed *e)
 											   (l[0].y - e->walls[i].v1.y);
 		tmp[1] = (l[0].y - l[1].y) * (l[0].x - e->walls[i].v1.x) +
 				 (l[1].x - l[0].x) * (l[0].y - e->walls[i].v1.y);
-		if (in_range(tmp[0] / det) && in_range(tmp[1] / det)){printf(" w%d ", i);
-			res += 1;}
+		if (in_range(tmp[0] / det) && in_range(tmp[1] / det))
+			res += 1;
 	}
 	return (res);
 }
@@ -63,7 +63,6 @@ static int 		intrs(t_wall w, t_ed *e)
 	while (++i < e->n_sect)
 		sum += intersects(coords, &e->seclist[i]);
 	wal = interwl(coords, e) - 1;
-	printf("intersections: %d - %d\n", wal, sum);
 	if (v2_cmp(*e->selection.other_vertex, w.v2) || e->n_walls == 0)
 		return (0);
 	return (sum + wal);

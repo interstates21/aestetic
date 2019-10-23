@@ -2,6 +2,8 @@
 NAME = dm_editor
 CC = clang
 FILES = bmp_reader \
+                    draw_info \
+                    font \
 					r_helpers \
 					r_sdl \
 					r_sdl2 \

@@ -84,6 +84,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/doom.dir/editor/init_textures.c.o"
   "CMakeFiles/doom.dir/editor/load_anims.c.o"
   "CMakeFiles/doom.dir/editor/loop.c.o"
+  "CMakeFiles/doom.dir/editor/draw_info.c.o"
+  "CMakeFiles/doom.dir/editor/font.c.o"
   "CMakeFiles/doom.dir/editor/main.c.o"
   "CMakeFiles/doom.dir/editor/r_bold_line.c.o"
   "CMakeFiles/doom.dir/editor/r_controls.c.o"

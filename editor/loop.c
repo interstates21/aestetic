@@ -76,8 +76,8 @@ void render_manager(t_sdl *sdl, t_ed *ed)
         listen_controls(&end, ed);
         niceGrid(ed);
 		render_map(ed);
+		draw_string(ed, (t_font){.str = "abcdefgxyz", .x = 100, .y = 100, .col = 0x111111});
         sdl_apply_renderer(sdl, ed);
-
     }
     SDL_Delay(2000);
     SDL_Quit();

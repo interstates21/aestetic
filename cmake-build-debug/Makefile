@@ -1527,6 +1527,60 @@ editor/bmp_reader.c.s:
 	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/bmp_reader.c.s
 .PHONY : editor/bmp_reader.c.s
 
+editor/draw_info.o: editor/draw_info.c.o
+
+.PHONY : editor/draw_info.o
+
+# target to build an object file
+editor/draw_info.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/draw_info.c.o
+.PHONY : editor/draw_info.c.o
+
+editor/draw_info.i: editor/draw_info.c.i
+
+.PHONY : editor/draw_info.i
+
+# target to preprocess a source file
+editor/draw_info.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/draw_info.c.i
+.PHONY : editor/draw_info.c.i
+
+editor/draw_info.s: editor/draw_info.c.s
+
+.PHONY : editor/draw_info.s
+
+# target to generate assembly for a file
+editor/draw_info.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/draw_info.c.s
+.PHONY : editor/draw_info.c.s
+
+editor/font.o: editor/font.c.o
+
+.PHONY : editor/font.o
+
+# target to build an object file
+editor/font.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/font.c.o
+.PHONY : editor/font.c.o
+
+editor/font.i: editor/font.c.i
+
+.PHONY : editor/font.i
+
+# target to preprocess a source file
+editor/font.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/font.c.i
+.PHONY : editor/font.c.i
+
+editor/font.s: editor/font.c.s
+
+.PHONY : editor/font.s
+
+# target to generate assembly for a file
+editor/font.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/font.c.s
+.PHONY : editor/font.c.s
+
 editor/init_monsters.o: editor/init_monsters.c.o
 
 .PHONY : editor/init_monsters.o
@@ -4311,6 +4365,12 @@ help:
 	@echo "... editor/bmp_reader.o"
 	@echo "... editor/bmp_reader.i"
 	@echo "... editor/bmp_reader.s"
+	@echo "... editor/draw_info.o"
+	@echo "... editor/draw_info.i"
+	@echo "... editor/draw_info.s"
+	@echo "... editor/font.o"
+	@echo "... editor/font.i"
+	@echo "... editor/font.s"
 	@echo "... editor/init_monsters.o"
 	@echo "... editor/init_monsters.i"
 	@echo "... editor/init_monsters.s"

@@ -90,6 +90,8 @@ includes/structs_doom.h
         editor/init_textures.c
         editor/load_anims.c
         editor/loop.c
+        editor/draw_info.c
+        editor/font.c
         editor/main.c
         editor/r_bold_line.c
         editor/r_controls.c

@@ -56,6 +56,8 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/akolomoi/Desktop/notfred/DELETEDed/ed_utils.c" "/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles/doom.dir/DELETEDed/ed_utils.c.o"
   "/Users/akolomoi/Desktop/notfred/DELETEDed/main.c" "/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles/doom.dir/DELETEDed/main.c.o"
   "/Users/akolomoi/Desktop/notfred/editor/bmp_reader.c" "/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles/doom.dir/editor/bmp_reader.c.o"
+  "/Users/akolomoi/Desktop/notfred/editor/draw_info.c" "/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles/doom.dir/editor/draw_info.c.o"
+  "/Users/akolomoi/Desktop/notfred/editor/font.c" "/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles/doom.dir/editor/font.c.o"
   "/Users/akolomoi/Desktop/notfred/editor/init_monsters.c" "/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles/doom.dir/editor/init_monsters.c.o"
   "/Users/akolomoi/Desktop/notfred/editor/init_sector.c" "/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles/doom.dir/editor/init_sector.c.o"
   "/Users/akolomoi/Desktop/notfred/editor/init_sprites.c" "/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles/doom.dir/editor/init_sprites.c.o"
