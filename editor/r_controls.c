@@ -32,11 +32,11 @@ static void pt2(t_ed *e, int inc)
 			e->seclist[e->selection.sector].height[H_CEIL] - 10, 0, inc);
 	}
 	else if (e->selection.select == E_FLOOR_TEX)
-		sng(&e->seclist[e->selection.sector].tex[T_FLOOR], e->n_tex, 0, inc);
+		sng(&e->seclist[e->selection.sector].tex[T_FLOOR], e->n_tex - 1, 0, inc);
 	else if (e->selection.select == E_WALL_TEX)
-		sng(&e->seclist[e->selection.sector].tex[T_WALL], e->n_tex, 0, inc);
+		sng(&e->seclist[e->selection.sector].tex[T_WALL], e->n_tex - 1, 0, inc);
 	else if (e->selection.select == E_CEIL_TEX)
-		sng(&e->seclist[e->selection.sector].tex[T_CEIL], e->n_tex, 0, inc);
+		sng(&e->seclist[e->selection.sector].tex[T_CEIL], e->n_tex - 1, 0, inc);
 	else if (e->selection.select == E_DANGER)
 		e->seclist[e->selection.sector].is_dmg ^= 1;
 	else if (e->selection.select == E_ELEVATOR)

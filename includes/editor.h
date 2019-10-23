@@ -34,6 +34,7 @@
 # define MAX_WALL	32
 # define GRID_GAP	21
 # define MAX_NAME	100
+# define PICKER_SIZE 100
 # define BLUE		0x6666FF
 # define RED		0xFF6666
 # define GRN		0x66FF66
@@ -41,6 +42,7 @@
 # define MGN		0x662266
 # define GRID_COL_2 0xa4b60d
 # define GRID_COL_1 0x111111
+# define SHAPE_SIZE 50
 # define SELECTION_FIELD 5
 # define M_NAME_1	"motherdemon"
 # define M_NAME_2	"chargingdemon"
@@ -303,6 +305,7 @@ typedef struct		s_ed
 	int 			n_sprites;
 	int 			n_sect;
 	int 			n_walls;
+	SDL_Surface		*texture_picker;
 	t_selection		selection;
 	t_controller	controller;
 }					t_ed;
@@ -351,5 +354,5 @@ bool				v2_compare(t_v2 a, t_v2 b, int r);
 int					mouse_controller(t_ed *ed, SDL_Event *event);
 bool				corner_selected(t_ed *ed);
 bool				sector_selected(t_ed *ed);
-
+void 				render_texture_picker(t_ed *ed);
 #endif

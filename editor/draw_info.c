@@ -43,14 +43,19 @@ static void	draw_background(t_ed *e, int n, int x, int y)
 }
 
 static SDL_Surface *pick_texture(t_ed *e, int selected, int n) {
+	int index;
+
 	if(selected == 6) {
-		return (e->texlist[e->seclist[n].tex[T_FLOOR]].tex);
+		index = e->seclist[n].tex[T_FLOOR];
+		return (e->texlist[index].tex);
 	}
 	else if(selected == 7) {
-		return (e->texlist[e->seclist[n].tex[T_WALL]].tex);
+		index = e->seclist[n].tex[T_WALL];
+		return (e->texlist[index].tex);
 	}
 	else if(selected == 8) {
-		return (e->texlist[e->seclist[n].tex[T_CEIL]].tex);
+		index = e->seclist[n].tex[T_CEIL];
+		return (e->texlist[index].tex);
 	}
 	return (NULL);
 }

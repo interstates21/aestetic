@@ -1,11 +1,8 @@
 #include "../includes/doom_nukem.h"
 
-void	init_player3(t_data *d, t_player *player)
+void	init_player_2(t_data *d, t_player *player)
 {
-	player->speed_anim[M16] = 4;
-	player->weapon_anim[M16][0] = 0;
-	player->weapon_anim[M16][1] = 2;
-	player->weapon_anim[M16][2] = 0;
+	d->color_buf.value = 0;
 	player->is_flying = 0;
 	player->minimum_height = MINIMUM_HEIGHT;
 	player->gravity = 0.0;
@@ -18,34 +15,7 @@ void	init_player3(t_data *d, t_player *player)
 	d->slot1 = NULL;
 	d->slot2 = NULL;
 	d->slot3 = NULL;
-	d->weapon_type[BLASTER].current_ammo =
-		d->weapon_type[BLASTER].max_ammo;
-	d->weapon_type[CRYO_BALLISTA].current_ammo =
-		d->weapon_type[CRYO_BALLISTA].max_ammo;
-	d->weapon_type[M16].current_ammo =
-		d->weapon_type[M16].max_ammo;
-}
-
-void	init_player2(t_data *d, t_player *player)
-{
-	player->speed_anim[BLASTER] = 6;
-	player->weapon_anim[BLASTER][0] = 3;
-	player->weapon_anim[BLASTER][1] = 2;
-	player->weapon_anim[BLASTER][2] = 4;
-	player->weapon_anim[BLASTER][3] = 0;
-	player->weapon_anim[BLASTER][4] = 5;
-	player->weapon_anim[BLASTER][5] = 6;
-	player->weapon_anim[BLASTER][6] = 7;
-	player->weapon_anim[BLASTER][7] = 8;
-	player->weapon_anim[BLASTER][8] = 9;
-	player->weapon_anim[BLASTER][9] = 10;
-	player->weapon_anim[BLASTER][10] = 11;
-	player->weapon_anim[BLASTER][11] = 12;
-	player->weapon_anim[BLASTER][12] = 13;
-	player->weapon_anim[BLASTER][13] = 14;
-	player->weapon_anim[BLASTER][14] = 0;
-	d->color_buf.value = 0;
-	init_player3(d, player);
+	d->weapon_type.current_ammo = MAX_BULLETS;
 }
 
 void	init_player(t_data *d, t_player *player)
@@ -67,5 +37,5 @@ void	init_player(t_data *d, t_player *player)
 	player->weapon_anim[CRYO_BALLISTA][10] = 11;
 	player->weapon_anim[CRYO_BALLISTA][11] = 12;
 	player->weapon_anim[CRYO_BALLISTA][12] = 0;
-	init_player2(d, player);
+	init_player_2(d, player);
 }
