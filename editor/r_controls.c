@@ -1,18 +1,66 @@
 #include "../includes/editor.h"
 
-
-static void	do_select(t_ed *e, int inc)
+static void	rng(int *val, int big, int low, int inc)
 {
-	e->selection.select += inc;
-	if (e->selection.select < 2)
-		e->selection.select = 11;
-	if (e->selection.select > 11)
-		e->selection.select = 2;
+	*val += inc;
+	if (*val < low)
+		*val = big;
+	else if (*val > big)
+		*val = low;
+}
+
+static void	sng(short *val, int big, int low, int inc)
+{
+	*val += inc;
+	if (*val < low)
+		*val = big;
+	else if (*val > big)
+		*val = low;
+}
+
+static void pt2(t_ed *e, int inc)
+{
+	if (e->selection.select == E_FLOOR)
+		sng(&e->seclist[e->selection.sector].height[H_FLOOR],
+		e->seclist[e->selection.sector].height[H_CEIL] - 10, 0, inc);
+	else if (e->selection.select == E_CEIL)
+	{
+		sng(&e->seclist[e->selection.sector].height[H_CEIL], 200, 20, inc);
+		if (e->seclist[e->selection.sector].height[H_CEIL] - 10 <=
+		e->seclist[e->selection.sector].height[H_FLOOR])
+			sng(&e->seclist[e->selection.sector].height[H_FLOOR],
+			e->seclist[e->selection.sector].height[H_CEIL] - 10, 0, inc);
+	}
+	else if (e->selection.select == E_FLOOR_TEX)
+		sng(&e->seclist[e->selection.sector].tex[T_FLOOR], e->n_tex, 0, inc);
+	else if (e->selection.select == E_WALL_TEX)
+		sng(&e->seclist[e->selection.sector].tex[T_WALL], e->n_tex, 0, inc);
+	else if (e->selection.select == E_CEIL_TEX)
+		sng(&e->seclist[e->selection.sector].tex[T_CEIL], e->n_tex, 0, inc);
+	else if (e->selection.select == E_DANGER)
+		e->seclist[e->selection.sector].is_dmg ^= 1;
+	else if (e->selection.select == E_ELEVATOR)
+		e->seclist[e->selection.sector].is_elev ^= 1;
+	else if (e->selection.select == E_EXIT)
+		e->seclist[e->selection.sector].is_finish ^= 1;
 }
 
 static void	affect(t_ed *e, int inc)
 {
-
+	if (e->selection.select == E_SLOPE)
+	{
+		sng(&e->seclist[e->selection.sector].slope[H_FLOOR], 30, 0, inc);
+		e->seclist[e->selection.sector].slope[H_CEIL] =
+		e->seclist[e->selection.sector].slope[H_FLOOR];
+	}
+	else if (e->selection.select == E_SLOPE_ROT)
+	{
+		sng(&e->seclist[e->selection.sector].slope_rot[H_FLOOR],
+		360, 0, inc * 15);
+		e->seclist[e->selection.sector].slope_rot[H_CEIL] =
+		e->seclist[e->selection.sector].slope_rot[H_FLOOR];
+	}
+	else pt2(e, inc);
 }
 
 
@@ -37,9 +85,9 @@ void		listen_controls(bool *end, t_ed *ed)
 			if (event.key.keysym.sym == SDLK_ESCAPE)
 			    *end = true;
 			if (event.key.keysym.sym == SDLK_UP)
-				do_select(ed, -1);
+				rng(&ed->selection.select, 11, 2, -1);
 			if (event.key.keysym.sym == SDLK_DOWN)
-				do_select(ed, 1);
+				rng(&ed->selection.select, 11, 2, 1);
 		}
 		   
 	}
