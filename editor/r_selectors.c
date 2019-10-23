@@ -5,6 +5,7 @@ void		store_selected(t_ed *ed, t_wall *w, t_v2 *v)
 	ed->selection.selected_vertex = v;
 	ed->selection.val = *v;
 	ed->selection.selected_wall = w;
+	ed->selection.other_vertex = v == &w->v1 ? &w->v2 : &w->v1;
 }
 
 // bool		inside(t_data *d, int16_t sectnum, t_vec2f p)
@@ -45,7 +46,17 @@ void		store_selected(t_ed *ed, t_wall *w, t_v2 *v)
 // 			return (s);
 // 	return (-1);
 // }
-
+static int	gut_check(t_ed *e)
+{
+	if (e->selection.selected_wall->is_portal > -1)
+	{
+		e->selection.selected_wall->is_door = e->selection.selected_wall->is_door ? 0 : 1;
+		e->selection = (t_selection){ .selected_vertex = NULL,
+		.selected_wall = NULL, .drawing = 0};
+		return (0);
+	}
+	return (1);
+}
 
 bool		sector_selected(t_ed *ed)
 {
@@ -60,12 +71,15 @@ bool		sector_selected(t_ed *ed)
 			{
 				store_selected(ed, &(ed->seclist[i].walls[k]),
 				&(ed->seclist[i].walls[k].v1));
-				return (true);
+				ed->selection.drawing = 1;
+				ed->selection.port = i;
+				return (gut_check(ed));
 			}
 			else if (v2_compare(ed->seclist[i].walls[k].v2,
 			ed->controller.mouse, SELECTION_FIELD))
 				store_selected(ed, &(ed->seclist[i].walls[k]),
 				&(ed->seclist[i].walls[k].v2));
+	ed->selection.drawing = 0;
 	return (false);
 }
 

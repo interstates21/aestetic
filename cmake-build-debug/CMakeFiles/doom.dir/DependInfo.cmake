@@ -62,6 +62,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/akolomoi/Desktop/notfred/editor/init_textures.c" "/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles/doom.dir/editor/init_textures.c.o"
   "/Users/akolomoi/Desktop/notfred/editor/load_anims.c" "/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles/doom.dir/editor/load_anims.c.o"
   "/Users/akolomoi/Desktop/notfred/editor/loop.c" "/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles/doom.dir/editor/loop.c.o"
+  "/Users/akolomoi/Desktop/notfred/editor/loop_creation.c" "/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles/doom.dir/editor/loop_creation.c.o"
   "/Users/akolomoi/Desktop/notfred/editor/main.c" "/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles/doom.dir/editor/main.c.o"
   "/Users/akolomoi/Desktop/notfred/editor/r_bold_line.c" "/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles/doom.dir/editor/r_bold_line.c.o"
   "/Users/akolomoi/Desktop/notfred/editor/r_controls.c" "/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles/doom.dir/editor/r_controls.c.o"

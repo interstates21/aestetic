@@ -6,6 +6,7 @@ FILES = bmp_reader \
 					r_sdl \
 					r_sdl2 \
 					r_push \
+					loop_creation \
 					r_controls \
 					reopen \
                     init_sector \
@@ -20,7 +21,10 @@ FILES = bmp_reader \
 					r_mouse_controller \
 					r_bold_line \
 					r_selectors \
-					r_font
+					r_font_chars \
+					r_font_renderer \
+					r_font_utils \
+					r_menu
 LIBFT_DIR = ../libft/
 SRC = $(addsuffix .c, $(FILES))
 OBJ = $(addprefix obj/, $(addsuffix .o, $(FILES)))

@@ -96,6 +96,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/doom.dir/editor/r_selectors.c.o"
   "CMakeFiles/doom.dir/editor/r_vector.c.o"
   "CMakeFiles/doom.dir/editor/reopen.c.o"
+  "CMakeFiles/doom.dir/editor/loop_creation.c.o"
   "CMakeFiles/doom.dir/DELETEDed/ed_add_protection.c.o"
   "CMakeFiles/doom.dir/DELETEDed/ed_bmp_reader.c.o"
   "CMakeFiles/doom.dir/DELETEDed/ed_conversion.c.o"

@@ -11,14 +11,6 @@ static void niceGrid(t_ed *ed) {
     }
 }
 
-static void render_menu(t_ed *ed) {
-     for (int i = ED_FIELD_W; i < ED_W; i++) {
-        for (int j = 0; j < ED_FIELD_H; j++) {
-            sdl_put_pix(&(ed->pixels), i , j, 0);
-        }
-    }
-}
-
 static void init_render(t_ed *ed) {
     ed->pixels = get_screen_pixels();
     ed->controller.mouse = new_v2(0, 0);
@@ -34,8 +26,8 @@ t_wall new_wall(int x1, int y1, int x2, int y2)
 
     wall.v1 = new_v2(x1, y1);
     wall.v2 = new_v2(x2, y2);
-    wall.is_door = false;
-    wall.is_portal = false;
+    wall.is_door = 0;
+    wall.is_portal = -1;
     return (wall);
 }
 
@@ -47,15 +39,17 @@ void render_sector(t_ed *ed, t_sect *s)
     {
         if (ed->selection.selected_wall == &s->walls[i])
             color = RED;
+        else if (s->walls[i].is_door)
+			color = DOOR;
         else
-            color = BLUE;
+            color = s->walls[i].is_portal > -1 ? MGN : BLUE;
         bold_line(s->walls[i].v1, s->walls[i].v2, ed, color);
         i++;
     }
 }
 
 
-static void render_map(t_ed *ed)
+void render_map(t_ed *ed)
 {
 	int 	i;
 

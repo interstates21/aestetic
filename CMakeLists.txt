@@ -102,7 +102,7 @@ includes/structs_doom.h
         editor/r_selectors.c
         editor/r_vector.c
         editor/reopen.c
-
+        editor/loop_creation.c
         DELETEDed/ed_add_protection.c
 DELETEDed/ed_bmp_reader.c
 DELETEDed/ed_conversion.c
