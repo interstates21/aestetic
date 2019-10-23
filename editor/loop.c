@@ -54,6 +54,7 @@ void render_sector(t_ed *ed, t_sect *s)
 void render_map(t_ed *ed)
 {
 	int 	i;
+    t_v2    sv;
 
 	i = -1;
 	while (++i < ed->n_sect)
@@ -61,6 +62,10 @@ void render_map(t_ed *ed)
 	i = -1;
 	while (++i < ed->n_walls)
 		bold_line(ed->walls[i].v1, ed->walls[i].v2, ed, GRN);
+    if (ed->selection.selected_vertex) {
+        sv = *ed->selection.selected_vertex;
+        circle(ed, new_v2(sv.x, sv.y), 10, 0xffff55);
+    }
 }
 
 void render_manager(t_sdl *sdl, t_ed *ed)
@@ -78,7 +83,6 @@ void render_manager(t_sdl *sdl, t_ed *ed)
         niceGrid(ed);
         render_map(ed);
         draw_info(ed);
-        
         sdl_apply_renderer(sdl, ed);
     }
     SDL_Delay(2000);

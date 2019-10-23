@@ -355,4 +355,5 @@ int					mouse_controller(t_ed *ed, SDL_Event *event);
 bool				corner_selected(t_ed *ed);
 bool				sector_selected(t_ed *ed);
 void 				render_texture_picker(t_ed *ed);
+int					circle(t_ed *ed, t_v2 c, int r, Uint32 color);
 #endif
