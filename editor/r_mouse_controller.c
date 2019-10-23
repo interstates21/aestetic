@@ -58,8 +58,7 @@ char		in_sector(t_ed *e)
 		line[1] = new_v2(0, 0);
 		line[0] = e->controller.mouse;
 		if (intersects(line, &e->seclist[i]) & 1)
-		{printf(" %d", i);
-			return (i);}
+			return (i);
 	}
 	return (-1);
 }

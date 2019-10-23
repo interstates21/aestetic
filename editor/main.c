@@ -20,21 +20,18 @@ static void	ground(t_ed *e)
 	e->n_walls = 0;
 	e->n_sect = 0;
 	e->selection.drawing = 0;
+	e->selection.sector = -1;
 }
 
 static void	do_magic(t_ed *ed, int fd)
 {
 	ed->fd = fd;
-	// init_sdl(&ed.sdl);
 	ground(ed);
 	init_font(ed);
 	init_textures(ed);
 	init_monsters(ed);
 	init_sprites(ed);
 	init_default_sect(ed);
-	//loop(&ed);
-	//saving_screen();
-	//save();
 }
 
 static void	run(char *mapname)
@@ -52,6 +49,8 @@ static void	run(char *mapname)
 	do_magic(&ed, 2);
     render_manager(&sdl, &ed);
 	//todo sdl clean
+	//saving_screen();
+	//save();
 	close(2);
 }
 

@@ -49,6 +49,7 @@ static char	*rev(char *str, int len)
 		j--;
 		i++;
 	}
+	free(str);
 	return (res);
 }
 
