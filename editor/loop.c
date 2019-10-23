@@ -18,6 +18,7 @@ static void init_render(t_ed *ed) {
     ed->controller.mouse_is_pressed = false;
     ed->selection.selected_wall = NULL;
     ed->selection.selected_vertex = NULL;
+    ed->texture_picker = NULL;
 }
 
 
@@ -77,6 +78,7 @@ void render_manager(t_sdl *sdl, t_ed *ed)
         niceGrid(ed);
         render_map(ed);
         draw_info(ed);
+        
         sdl_apply_renderer(sdl, ed);
     }
     SDL_Delay(2000);

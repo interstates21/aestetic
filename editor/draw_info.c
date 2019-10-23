@@ -42,6 +42,18 @@ static void	draw_background(t_ed *e, int n, int x, int y)
 			sdl_put_pix(&e->pixels, i + x, j + y, 0x111111);
 }
 
+static SDL_Surface *pick_texture(t_ed *e, int selected, int n) {
+	if(selected == 6) {
+		return (e->texlist[e->seclist[n].tex[T_FLOOR]].tex);
+	}
+	else if(selected == 7) {
+		return (e->texlist[e->seclist[n].tex[T_WALL]].tex);
+	}
+	else if(selected == 8) {
+		return (e->texlist[e->seclist[n].tex[T_CEIL]].tex);
+	}
+	return (NULL);
+}
 
 static void	draw_sectinfo(t_ed *e, t_font f, int n)
 {
@@ -49,6 +61,7 @@ static void	draw_sectinfo(t_ed *e, t_font f, int n)
 	draw_background(e, 11, f.x - 5, f.y + 15);
 	draw_element(e, &f, n, "Sector: ");
 	f.x += 15;
+	e->texture_picker = pick_texture(e, e->selection.select, n);
 	draw_element(e, &f, e->seclist[n].slope[H_FLOOR], "Slope: ");
 	draw_element(e, &f, e->seclist[n].slope_rot[H_FLOOR], "Slope ang: ");
 	draw_element(e, &f, e->seclist[n].height[H_FLOOR], "FLOOR: ");
@@ -74,8 +87,13 @@ void		draw_info(t_ed *e)
 		tmp.y += 20;
 		tmp.col = 0xffaaaa;
 		tmp.str = "Sector: not selected.";
+		e->texture_picker = NULL;
 		draw_string(e, tmp);
+		
 	}
 	else
+	{
 		draw_sectinfo(e, tmp, e->selection.sector);
+		render_texture_picker(e);
+	}
 }
