@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inside.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 09:18:24 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/24 20:06:16 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/24 22:56:17 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ bool	inside(t_data *d, int16_t sectnum, t_vec2f pos)
 		bon0 = d->walls[d->sectors[sectnum].firstwallnum + rz[2]].point;
 		bon2 = d->walls[d->sectors[sectnum].firstwallnum + rz[3]].point;
 		if (((bon0.y > pos.y) != (bon2.y > pos.y)) &&
-				(pos.x < (bon2.x - bon0.x) * (pos.y - bon0.y) / (bon2.y - bon0.y) + bon0.x))
+			(pos.x < (bon2.x - bon0.x) * (pos.y - bon0.y) / (bon2.y - bon0.y)
+																	+ bon0.x))
 			rz[0] = !rz[0];
 		rz[3] = rz[2]++;
 	}

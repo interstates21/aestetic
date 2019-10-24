@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asset_collision.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 21:43:27 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/24 12:25:00 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/24 22:53:12 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void		use_asset(t_data *d, t_assets *asset)
 {
 	d->player.health += asset->stat_mod.heal;
 	d->player.health = MIN(100, d->player.health);
-
 	d->player.health -= asset->stat_mod.damage;
 	d->weapon_type.current_ammo += asset->stat_mod.ballista_ammo;
 	d->weapon_type.current_ammo = MIN(d->weapon_type.current_ammo, MAX_BULLETS);
