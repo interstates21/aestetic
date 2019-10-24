@@ -5,8 +5,6 @@ static void	decrease_fuel(t_data *d)
 	d->player.is_flying -= 1;
 	if (!d->player.is_flying)
 	{
-		if (d->slot1 && d->slot1->is_jetpack)
-			d->slot1 = NULL;
 		if (d->slot2 && d->slot2->is_jetpack)
 			d->slot2 = NULL;
 		if (d->slot3 && d->slot3->is_jetpack)
@@ -25,7 +23,7 @@ static void	fly_gravity_3(t_data *d)
 			- MINIMUM_CEIL_DIST)
 	{
 		d->player.gravity = 0.0;
-		d->cam.pos.y = d->ceilheightplayer - MINIMUM_CEIL_DIST;
+		d->cam.pos.y = (d->ceilheightplayer - MINIMUM_CEIL_DIST);
 	}
 }
 

@@ -34,7 +34,9 @@ void	init_everything(t_data *d, char *map)
 	if (d->startsectnum < 0)
 		exit(printf("bad startsectnum\n"));
 	if (SDL_SetRelativeMouseMode(SDL_TRUE) == -1)
+	{
 		printf("SDL_SetRelativeMouseMode error");
+	}
 	d->floorheightplayer = get_floorheight_player(d, d->cursectnum);
 	d->ceilheightplayer = get_ceilheight_player(d, d->cursectnum);
 	play_music(d, MAIN_MUSIC);

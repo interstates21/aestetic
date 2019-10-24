@@ -50,6 +50,13 @@
 # define HEALTH_COLO 0xFFFF66
 #define SAME_POS(v1, v2) (((v1.x) == (v2.x)) && ((v1.y) == (v2.y)))
 
+void	change_buf_colo(t_data *d, uint16_t amount, uint32_t colo);
+double	get_dist(t_vec2f a, t_vec2f b, t_vec2f p);
+void	invoke_msg(t_data *d, char *msg);
+void	br_msg(t_data *d, t_wall *w, int *n);
+void	whi_le(t_data *d, t_sector *sect, int *n, double *m);
+void	alpha_y(double *sl_y);
+
 
 double get_angle(double o, bool isAnimated);
 double tan_calculations(double h, double slope, t_vec2f p, t_vec2f c);

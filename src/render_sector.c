@@ -45,8 +45,8 @@ void		render_sector(t_data *d, t_sector *sect, t_frustum *fr)
 	int				i;
 
 	p.sector = sect;
-	proj_ceil_or_floor(d, &p, 0);
-	proj_ceil_or_floor(d, &p, 1);
+	proj_floor(d, &p);
+	proj_ceil(d, &p);
 	i = -1;
 	while (++i < WIDTH)
 		p.zbuffer[i] = INFINITY;

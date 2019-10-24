@@ -1,34 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   color_buffer.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/22 09:18:24 by vslutiak          #+#    #+#             */
+/*   Updated: 2019/10/24 14:35:50 by vslutiak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/doom_nukem.h"
 
-void	set_find_alpha(double *scale_x, double *scale_y)
+void	set_find_alpha(double *sl_x, double *sl_y)
 {
 	short	x;
-	short	y;
 
 	x = -1;
 	while (++x < WIDTH)
-		scale_x[x] = fabs(x - WIDTH * 0.5) / (WIDTH * 0.5);
-	y = -1;
-	while (++y < HEIGHT)
-		scale_y[y] = fabs(y - HEIGHT * 0.5) / (HEIGHT * 0.5);
+		sl_x[x] = fabs(x - WIDTH * 0.5) / (WIDTH * 0.5);
+	alpha_y(sl_y);
 }
 
 double	find_alpha(short x, short y, uint32_t which_ret)
 {
 	static bool		set;
-	static double	scale_x[WIDTH];
-	static double	scale_y[HEIGHT];
+	static double	sl_x[WIDTH];
+	static double	sl_y[HEIGHT];
 
 	if (!set)
 	{
-		set_find_alpha(&scale_x[0], &scale_y[0]);
+		set_find_alpha(&sl_x[0], &sl_y[0]);
 		set = true;
 	}
 	if (which_ret == GREEN_BLAST)
-		return ((scale_x[x] + scale_y[y]) * 0.5);
-	if (scale_x[x] > scale_y[y])
-		return (scale_x[x]);
-	return (scale_y[y]);
+		return ((sl_x[x] + sl_y[y]) * 0.5);
+	if (sl_x[x] > sl_y[y])
+		return (sl_x[x]);
+	return (sl_y[y]);
 }
 
 void	color_screen(t_args_multi_colo_buf *data)
@@ -57,43 +66,36 @@ void	color_screen(t_args_multi_colo_buf *data)
 	}
 }
 
+void	color_wl(t_data *d, t_args_multi_colo_buf *col, short i,  pthread_t *sp)
+{
+	while (i < MAX_THREADS)
+	{
+		col[i].d = d;
+		if (i == 0)
+			col[i].start_x = -1;
+		else
+			col[i].start_x = col[i - 1].max_x - 1;
+		col[i].max_x = WIDTH / MAX_THREADS * (i + 1);
+		pthread_create(&sp[i], NULL, (void *)color_screen, &col[i]);
+		i++;
+	}
+	while (--i >= 0)
+		pthread_join(sp[i], NULL);
+}
+
 void	color_buffer(t_data *d)
 {
-	pthread_t				threads[MAX_THREADS];
-	t_args_multi_colo_buf	data[MAX_THREADS];
+	pthread_t				sp[MAX_THREADS];
+	t_args_multi_colo_buf	col[MAX_THREADS];
 	short					i;
 
 	if (!d->color_buf.value)
 		return ;
 	i = 0;
-	while (i < MAX_THREADS)
-	{
-		data[i].d = d;
-		if (i == 0)
-			data[i].start_x = -1;
-		else
-			data[i].start_x = data[i - 1].max_x - 1;
-		data[i].max_x = WIDTH / MAX_THREADS * (i + 1);
-		pthread_create(&threads[i], NULL, (void *)color_screen, &data[i]);
-		i++;
-	}
-	while (--i >= 0)
-		pthread_join(threads[i], NULL);
-	if (data->d->color_buf.colo == GREEN_BLAST)
-		data->d->color_buf.value -= 6;
+	color_wl(d, col, i, sp);
+	if (col->d->color_buf.colo == GREEN_BLAST)
+		col->d->color_buf.value -= 6;
 	else
-		data->d->color_buf.value -= 1;
-	data->d->color_buf.value = MAX(0, data->d->color_buf.value);
-}
-
-void	change_buf_colo(t_data *d, uint16_t amount, uint32_t colo)
-{
-	if (d->color_buf.colo != colo)
-	{
-		d->color_buf.value = 0;
-		d->color_buf.colo = colo;
-	}
-	d->color_buf.value += amount * 18;
-	if (d->color_buf.value > MAX_BUF_VALUE)
-		d->color_buf.value = MAX_BUF_VALUE;
+		col->d->color_buf.value -= 1;
+	col->d->color_buf.value = MAX(0, col->d->color_buf.value);
 }

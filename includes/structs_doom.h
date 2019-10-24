@@ -322,7 +322,6 @@ typedef struct		s_data
 	double			ceilheightplayer;
 	char			nextmap[100];
 	Mix_Chunk		*chunk[NB_OF_SOUNDS];
-	t_assets		*slot1;
 	t_assets		*slot2;
 	t_assets		*slot3;
 	char			msg[100];

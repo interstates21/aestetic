@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   asset_collision.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/23 21:43:27 by vslutiak          #+#    #+#             */
+/*   Updated: 2019/10/24 12:25:00 by vslutiak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/doom_nukem.h"
 
 static bool	check_if_return(t_data *d, t_assets *asset)
@@ -16,21 +28,13 @@ static bool	check_jetpack(t_data *d, t_assets *asset)
 		play_sound(d, AMMO_SOUND, v3_to_v2(d->cam.pos));
 	if (asset->is_key)
 	{
-		if (!d->slot1)
-			d->slot1 = asset;
-		else if (!d->slot2)
+		if (!d->slot2)
 			d->slot2 = asset;
-		else if (!d->slot3)
-			d->slot3 = asset;
 		else
 			return (false);
 	}
-	if (asset->is_jetpack && (!d->slot1 || d->slot1->is_jetpack))
-		d->slot1 = asset;
 	else if (asset->is_jetpack && (!d->slot2 || d->slot2->is_jetpack))
 		d->slot2 = asset;
-	else if (asset->is_jetpack && (!d->slot3 || d->slot3->is_jetpack))
-		d->slot3 = asset;
 	else if (asset->is_jetpack)
 		return (false);
 	if (asset->is_jetpack)

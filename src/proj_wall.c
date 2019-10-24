@@ -16,7 +16,7 @@ void	proj_wall2(t_data *d, t_projdata *p, t_frustum *fr)
 	t = (t_thread_arg){d, p, fr};
 	if (pthread_create(&thread, NULL, draw_ceil_thread, &t))
 		exit(printf("pthread_create error\n"));
-	draw_ceil_floor(d, p, fr, 1);
+	draw_floor(d, p, fr);
 	if (pthread_join(thread, NULL))
 		exit(printf("pthread_join error\n"));
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   create_projectile.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/24 13:34:05 by vslutiak          #+#    #+#             */
+/*   Updated: 2019/10/24 15:35:28 by vslutiak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/doom_nukem.h"
 
 void	set_projectile_id(t_data *d, short i, short id_of_proj_type)
@@ -23,7 +35,7 @@ void	set_projectile_id(t_data *d, short i, short id_of_proj_type)
 
 void	create_projectile(t_data *d, short id_of_proj_type)
 {
-	t_sprite_list	*new_projectile;
+	t_sprite_list	*nw;
 	short			i;
 
 	i = 0;
@@ -31,13 +43,12 @@ void	create_projectile(t_data *d, short id_of_proj_type)
 		i++;
 	if (i == MAX_PROJECTILES)
 		return ;
-	new_projectile = pure_malloc(sizeof(*new_projectile),
-										"Cannot alloc projectiles");
-	new_projectile->next = d->sectors[d->cursectnum].sprite_list;
-	new_projectile->type = IS_PROJECTILE;
-	new_projectile->id = i;
+	nw = pure_malloc(sizeof(*nw), "ERROR");
+	nw->next = d->sectors[d->cursectnum].sprite_list;
+	nw->type = IS_PROJECTILE;
+	nw->id = i;
 	set_projectile_id(d, i, id_of_proj_type);
-	d->sectors[d->cursectnum].sprite_list = new_projectile;
+	d->sectors[d->cursectnum].sprite_list = nw;
 }
 
 void	set_projectile_id_monster(t_data *d, short i,
@@ -70,7 +81,7 @@ void	set_projectile_id_monster(t_data *d, short i,
 void	create_projectile_monster(t_data *d, short id_of_proj_type,
 		t_monster *monster)
 {
-	t_sprite_list	*new_projectile;
+	t_sprite_list	*nw;
 	short			i;
 
 	i = 0;
@@ -78,10 +89,10 @@ void	create_projectile_monster(t_data *d, short id_of_proj_type,
 		i++;
 	if (i == MAX_PROJECTILES)
 		return ;
-	new_projectile = pure_malloc(sizeof(*new_projectile), "Malloc Error");
-	new_projectile->next = d->sectors[monster->cursectnum].sprite_list;
-	new_projectile->type = IS_PROJECTILE;
-	new_projectile->id = i;
+	nw = pure_malloc(sizeof(*nw), "ERROR");
+	nw->next = d->sectors[monster->cursectnum].sprite_list;
+	nw->type = IS_PROJECTILE;
+	nw->id = i;
 	set_projectile_id_monster(d, i, id_of_proj_type, monster);
-	d->sectors[monster->cursectnum].sprite_list = new_projectile;
+	d->sectors[monster->cursectnum].sprite_list = nw;
 }

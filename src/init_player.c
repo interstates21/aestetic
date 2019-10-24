@@ -12,30 +12,25 @@ void	init_player_2(t_data *d, t_player *player)
 	d->cursectnum = d->startsectnum;
 	d->cam = d->startcam;
 	d->cam.rot += 0.001;
-	d->slot1 = NULL;
 	d->slot2 = NULL;
-	d->slot3 = NULL;
 	d->weapon_type.current_ammo = MAX_BULLETS;
 }
 
 void	init_player(t_data *d, t_player *player)
 {
+	int i;
 	(void)d;
+
+	i = 1;
 	ft_bzero(player, sizeof(*player));
 	player->current_weapon = CRYO_BALLISTA;
 	player->speed_anim[CRYO_BALLISTA] = 4;
 	player->weapon_anim[CRYO_BALLISTA][0] = 0;
-	player->weapon_anim[CRYO_BALLISTA][1] = 2;
-	player->weapon_anim[CRYO_BALLISTA][2] = 3;
-	player->weapon_anim[CRYO_BALLISTA][3] = 4;
-	player->weapon_anim[CRYO_BALLISTA][4] = 5;
-	player->weapon_anim[CRYO_BALLISTA][5] = 6;
-	player->weapon_anim[CRYO_BALLISTA][6] = 7;
-	player->weapon_anim[CRYO_BALLISTA][7] = 8;
-	player->weapon_anim[CRYO_BALLISTA][8] = 9;
-	player->weapon_anim[CRYO_BALLISTA][9] = 10;
-	player->weapon_anim[CRYO_BALLISTA][10] = 11;
-	player->weapon_anim[CRYO_BALLISTA][11] = 12;
+	while (i < 12)
+	{
+		player->weapon_anim[CRYO_BALLISTA][i] = i + 1;
+		i++;
+	}
 	player->weapon_anim[CRYO_BALLISTA][12] = 0;
 	init_player_2(d, player);
 }

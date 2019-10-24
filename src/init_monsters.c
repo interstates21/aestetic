@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_monsters.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/22 09:18:24 by vslutiak          #+#    #+#             */
+/*   Updated: 2019/10/24 16:54:35 by vslutiak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/doom_nukem.h"
 
 void	add_monster(t_sector *sector, int16_t id_of_monster)
@@ -37,23 +49,22 @@ void	initialize_all_monster(t_data *d,
 
 void	init_monster_type_2(t_data *d)
 {
+	int i;
+
+	i = 0;
 	d->monster_type[CHARGINGDEMON].height = 1.5;
 	d->monster_type[CHARGINGDEMON].floating = 0.1;
 	d->monster_type[CHARGINGDEMON].size = 6.0;
 	d->monster_type[CHARGINGDEMON].health = d->difficulty == HARD ? 110 : 70;
 	d->monster_type[CHARGINGDEMON].hitbox_radius = 0.6;
-	d->monster_type[CHARGINGDEMON].anim_order[0] = 1;
-	d->monster_type[CHARGINGDEMON].anim_order[1] = 2;
-	d->monster_type[CHARGINGDEMON].anim_order[2] = 3;
-	d->monster_type[CHARGINGDEMON].anim_order[3] = 0;
-	d->monster_type[CHARGINGDEMON].anim_order[4] = 5;
-	d->monster_type[CHARGINGDEMON].anim_order[5] = 6;
-	d->monster_type[CHARGINGDEMON].anim_order[6] = 4;
-	d->monster_type[CHARGINGDEMON].anim_order[13] = 14;
-	d->monster_type[CHARGINGDEMON].anim_order[14] = 15;
-	d->monster_type[CHARGINGDEMON].anim_order[15] = 16;
-	d->monster_type[CHARGINGDEMON].anim_order[16] = 17;
-	d->monster_type[CHARGINGDEMON].anim_order[17] = 18;
+	while (i < 18)
+	{
+		(i == 3) ? d->monster_type[CHARGINGDEMON].anim_order[i++] = 0 : 0;
+		(i == 6) ? d->monster_type[CHARGINGDEMON].anim_order[6] = 4 : 0;
+		(i == 6) ? i = 13 : 0;
+		d->monster_type[CHARGINGDEMON].anim_order[i] = (i + 1);
+		i++;
+	}	
 	d->monster_type[CHARGINGDEMON].anim_order[18] = 18;
 }
 
@@ -66,16 +77,12 @@ void	init_monster_type(t_data *d)
 	d->monster_type[MOTHERDEMON].size = 7.0;
 	d->monster_type[MOTHERDEMON].health = d->difficulty == HARD ? 80 : 50;
 	d->monster_type[MOTHERDEMON].hitbox_radius = 0.7;
-	d->monster_type[MOTHERDEMON].anim_order[0] = 1;
-	d->monster_type[MOTHERDEMON].anim_order[1] = 2;
-	d->monster_type[MOTHERDEMON].anim_order[2] = 3;
-	d->monster_type[MOTHERDEMON].anim_order[3] = 0;
-	d->monster_type[MOTHERDEMON].anim_order[4] = 5;
-	d->monster_type[MOTHERDEMON].anim_order[5] = 6;
-	d->monster_type[MOTHERDEMON].anim_order[6] = 0;
-	i = 10;
+	i = 0;
 	while (i < 18)
 	{
+		(i == 3) ? d->monster_type[MOTHERDEMON].anim_order[i++] = 0 : 0;
+		(i == 6) ? d->monster_type[MOTHERDEMON].anim_order[6] = 0 : 0;
+		(i == 6) ? i = 10 : 0;
 		d->monster_type[MOTHERDEMON].anim_order[i] = i + 1;
 		i++;
 	}

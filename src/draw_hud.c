@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_hud.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 23:10:02 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/22 23:12:41 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/24 17:05:20 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,9 @@ static void	draw_timed_msg(t_data *d)
 
 void		draw_hud(t_data *d)
 {
-	if (d->slot1)
-		draw_inventory_slot(d, d->assets_texture[d->slot1->picnum],
-				40, HEIGHT - 100);
 	if (d->slot2)
 		draw_inventory_slot(d, d->assets_texture[d->slot2->picnum],
 				140, HEIGHT - 100);
-	if (d->slot3)
-		draw_inventory_slot(d, d->assets_texture[d->slot3->picnum],
-				240, HEIGHT - 100);
 	draw_timed_msg(d);
 	draw_ammo(d, d->weapon_type);
 	if (d->player.is_flying)

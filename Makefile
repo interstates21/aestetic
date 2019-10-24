@@ -3,6 +3,7 @@ CC = clang
 FILES = main \
     	loading \
 		nextSectFix \
+		atoi \
 	   draw_hud \
 	   asset_collision \
 	   draw_assets \
@@ -15,7 +16,6 @@ FILES = main \
 	   init_monsters \
 	   init_projectiles \
 	   init_player \
-	   init_font \
 	   loop \
 	   handlers \
 	   events \
@@ -59,11 +59,11 @@ FILES = main \
 	   load_monsters_texture \
 	   n_validators \
 	   n_allocators \
-	   atoi \
 	   heightCalculations \
 	   floorHeight \
 	   ceilHeight \
 	   range \
+	   msg \
 	   vector_constructors \
 
 LIBFT_DIR = libft/
