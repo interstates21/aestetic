@@ -6,7 +6,7 @@
 /*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 09:18:24 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/24 16:54:35 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/24 18:03:16 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,23 @@
 
 void	add_monster(t_sector *sector, int16_t id_of_monster)
 {
-	t_sprite_list	*new_monster_list;
-	t_sprite_list	*tmp;
+	t_sprite_list	*new;
+	t_sprite_list	*buff;
 
-	new_monster_list = pure_malloc(sizeof(*new_monster_list),
-										"Cannot alloc monster");
-	new_monster_list->next = NULL;
-	new_monster_list->id = id_of_monster;
-	new_monster_list->type = IS_MONSTER;
-	if (!(tmp = sector->sprite_list))
+	new = pure_malloc(sizeof(*new), "ERROR");
+	new->next = NULL;
+	new->id = id_of_monster;
+	new->type = IS_MONSTER;
+	if (!(buff = sector->sprite_list))
 	{
-		sector->sprite_list = new_monster_list;
+		sector->sprite_list = new;
 		return ;
 	}
-	while (tmp->next)
+	while (buff->next)
 	{
-		tmp = tmp->next;
+		buff = buff->next;
 	}
-	tmp->next = new_monster_list;
+	buff->next = new;
 }
 
 void	initialize_all_monster(t_data *d,
@@ -52,11 +51,6 @@ void	init_monster_type_2(t_data *d)
 	int i;
 
 	i = 0;
-	d->monster_type[CHARGINGDEMON].height = 1.5;
-	d->monster_type[CHARGINGDEMON].floating = 0.1;
-	d->monster_type[CHARGINGDEMON].size = 6.0;
-	d->monster_type[CHARGINGDEMON].health = d->difficulty == HARD ? 110 : 70;
-	d->monster_type[CHARGINGDEMON].hitbox_radius = 0.6;
 	while (i < 18)
 	{
 		(i == 3) ? d->monster_type[CHARGINGDEMON].anim_order[i++] = 0 : 0;
@@ -68,15 +62,25 @@ void	init_monster_type_2(t_data *d)
 	d->monster_type[CHARGINGDEMON].anim_order[18] = 18;
 }
 
-void	init_monster_type(t_data *d)
+void	init_monst(t_data *d)
 {
-	short	i;
-
+	d->monster_type[CHARGINGDEMON].height = 1.5;
+	d->monster_type[CHARGINGDEMON].floating = 0.1;
+	d->monster_type[CHARGINGDEMON].size = 6.0;
+	d->monster_type[CHARGINGDEMON].health = 110;
+	d->monster_type[CHARGINGDEMON].hitbox_radius = 0.6;
 	d->monster_type[MOTHERDEMON].height = 2.0;
 	d->monster_type[MOTHERDEMON].floating = 0.1;
 	d->monster_type[MOTHERDEMON].size = 7.0;
-	d->monster_type[MOTHERDEMON].health = d->difficulty == HARD ? 80 : 50;
+	d->monster_type[MOTHERDEMON].health = 80;
 	d->monster_type[MOTHERDEMON].hitbox_radius = 0.7;
+	d->monster_type[MOTHERDEMON].id_of_proj = FIREBALL_1;
+}
+
+void	init_monster_type(t_data *d)
+{
+	short	i;
+	
 	i = 0;
 	while (i < 18)
 	{
@@ -87,7 +91,6 @@ void	init_monster_type(t_data *d)
 		i++;
 	}
 	d->monster_type[MOTHERDEMON].anim_order[18] = 18;
-	d->monster_type[MOTHERDEMON].id_of_proj = FIREBALL_1;
 }
 
 void	init_monsters(t_data *d)
@@ -96,6 +99,7 @@ void	init_monsters(t_data *d)
 
 	init_monster_type(d);
 	init_monster_type_2(d);
+	init_monst(d);
 	i = 0;
 	while (i < d->nummonsters)
 	{
