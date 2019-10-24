@@ -1,37 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_weapon.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/24 22:08:20 by bdeomin           #+#    #+#             */
+/*   Updated: 2019/10/24 22:35:33 by bdeomin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/doom_nukem.h"
 
 void	display_weapon(t_data *d, SDL_Surface *s, t_vec2f start, t_vec2f end)
 {
-	t_vec2f			scale;
-	short			x;
-	short			y;
-	uint32_t		colo;
+	t_vec2f		x_y;
+	uint32_t	colo;
 
-	scale.x = 100.0 / (end.x - start.x) * 0.01;
-	scale.y = 100.0 / (end.y - start.y) * 0.01;
-	x = start.x;
-	while (x < end.x)
+	x_y.x = start.x;
+	while (x_y.x < end.x)
 	{
-		y = start.y;
-		while (y < MIN(HEIGHT, end.y))
+		x_y.y = start.y;
+		while (x_y.y < MIN(HEIGHT, end.y))
 		{
-			colo = getpixel(s, scale.x *
-					(x - start.x), scale.y * (y - start.y));
+			colo = getpixel(s, 100.0 / (end.x - start.x) * 0.01 *
+				(x_y.x - start.x), 100.0 / (end.y - start.y) * 0.01 *
+														(x_y.y - start.y));
 			colo = alpha(((uint32_t *)d->sdl.screen->pixels)
-					[x + y * d->sdl.screen->w], colo);
-			putpixel(d, x, y, colo);
-			y++;
+					[(short)x_y.x + (short)x_y.y * d->sdl.screen->w], colo);
+			putpixel(d, x_y.x, x_y.y, colo);
+			x_y.y++;
 		}
-		x++;
+		x_y.x++;
 	}
+}
+
+void	draw_weapon2(t_data *d, t_vec2f start, t_vec2f tmp, t_vec2 weap_size)
+{
+	t_vec2f			end;
+
+	end.x = start.x + weap_size.x * SIZE_OF_WEAP;
+	end.y = (HEIGHT + d->player.timer_change_weap *
+		HEIGHT * 0.010 + MAX_INERTIA * 50) + tmp.y * 50;
+	start.y = end.y - weap_size.y * SIZE_OF_WEAP;
+	display_weapon(d, d->weapon_tex[d->player.current_weapon]
+		[d->player.current_anim_playing], start, end);
 }
 
 void	draw_weapon(t_data *d)
 {
 	t_vec2f			start;
-	t_vec2f			end;
 	t_vec2f			tmp;
-	SDL_Surface		*cur_img;
+	int				weap_w;
+	int				weap_h;
 
 	if (!d->player.timer_anim_weap)
 	{
@@ -40,17 +61,15 @@ void	draw_weapon(t_data *d)
 		d->player.timer_anim_weap =
 			d->player.speed_anim[d->player.current_weapon];
 	}
-	cur_img = d->weapon_tex[d->player.current_weapon]
-		[d->player.current_anim_playing];
+	weap_w = d->weapon_tex[d->player.current_weapon]
+		[d->player.current_anim_playing]->w;
+	weap_h = d->weapon_tex[d->player.current_weapon]
+		[d->player.current_anim_playing]->h;
 	d->player.timer_anim_weap--;
 	start.x = WIDTH * 0.5 + d->player.timer_change_weap * WIDTH * 0.003 -
-	cur_img->w * 0.5 * SIZE_OF_WEAP;
+	weap_w * 0.5 * SIZE_OF_WEAP;
 	tmp = d->inertia;
 	actualize_dir(d->cam.rot, &tmp);
 	start.x -= tmp.x * 150;
-	end.x = start.x + cur_img->w * SIZE_OF_WEAP;
-	end.y = (HEIGHT + d->player.timer_change_weap *
-		HEIGHT * 0.010 + MAX_INERTIA * 50) + tmp.y * 50;
-	start.y = end.y - cur_img->h * SIZE_OF_WEAP;
-	display_weapon(d, cur_img, start, end);
+	draw_weapon2(d, start, tmp, (t_vec2){weap_w, weap_h});
 }

@@ -1,43 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_wall2.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/24 20:04:06 by bdeomin           #+#    #+#             */
+/*   Updated: 2019/10/24 21:19:53 by bdeomin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/doom_nukem.h"
-
-void	draw_wall_transparent2(t_data *d, t_projdata *p, t_frustum *fr)
-{
-	int			y;
-	uint32_t	px;
-
-	p->tex = d->textures[p->wall->middlepicnum];
-	p->u_tex = (p->u - floor(p->u)) * p->tex->w;
-	y = fr->ytop[p->x];
-	p->shadefactor = getshadefactor(d, p, p->z);
-	while (++y <= fr->ybottom[p->x])
-	{
-		px = getpixel4(p->tex, p->u_tex,
-				NORMALIZE(y, p->yc, p->yd) * p->y_scale);
-		if ((px >> 24) == 0xff)
-			putpixel2(d, p->z, (t_vec2){p->x, y},
-					shade(p->shadefactor, px));
-	}
-}
 
 void	draw_wall_transparent(t_data *d, t_projdata *p, t_frustum *fr)
 {
-	p->n = CLAMP(NORMALIZE(p->x, p->x1, p->x2), 0, 1);
-	p->z = 1 / LERP(p->n, p->z1, p->z2);
-	p->u = LERP(p->n, p->u1, p->u2) * p->z;
-	p->ya = LERP(p->n, p->y1a, p->y2a);
-	p->yb = LERP(p->n, p->y1b, p->y2b);
-	p->yc = LERP(p->n, p->y1c, p->y2c);
-	p->yd = LERP(p->n, p->y1d, p->y2d);
+	new_proj_data(p, fr, 2);
 	if (p->neighbor)
-	{
-		p->nya = LERP(p->n, p->ny1a, p->ny2a);
-		p->nyb = LERP(p->n, p->ny1b, p->ny2b);
-		p->doorbottom = MIN(p->yd, p->nyb);
-		p->doorheight = p->doorbottom - p->yc;
-		p->nya += (p->doorbottom - MAX(p->yc, p->nya)) *
-			(1 - d->doorstate[p->wall - d->walls]);
-	}
-	draw_wall_transparent2(d, p, fr);
+		new_proj_data2(d, p, fr, 1);
+	drawing_wall((t_vec2){new_proj_data2(d, p, fr, 3), fr->ybottom[p->x]},
+																	d, p, 1);
 }
 
 void	draw_wall3(t_data *d, t_projdata *p, t_frustum *nfr, bool *visible)
@@ -77,4 +58,47 @@ void	draw_wall_no_nei(t_data *d, t_projdata *p, t_frustum *fr)
 			putpixel2(d, p->z, (t_vec2){p->x, p->y}, shade(p->shadefactor,
 						getpixel4(p->tex, p->u_tex,
 							NORMALIZE(p->y, p->yc, p->yd) * p->y_scale)));
+}
+
+void	drawing_wall(t_vec2 y_value, t_data *d, t_projdata *p, int mode)
+{
+	uint32_t	pix;
+
+	while (++y_value.x <= y_value.y)
+	{
+		pix = getpixel4(p->tex, p->u_tex, (!p->wall->is_door || mode == 1) ?
+				NORMALIZE(y_value.x, p->yc, p->yd) * p->y_scale :
+				NORMALIZE(y_value.x, p->nya - p->doorheight, p->nya));
+		if (mode == 0 || (pix >> 24) == 0xff)
+			putpixel2(d, p->z, (t_vec2){p->x, y_value.x},
+					shade(p->shadefactor, pix));
+	}
+}
+
+int		new_proj_data2(t_data *d, t_projdata *p, t_frustum *fr, int mode)
+{
+	if (mode <= 1)
+	{
+		p->nya = LERP(p->n, p->ny1a, p->ny2a);
+		p->nyb = LERP(p->n, p->ny1b, p->ny2b);
+		(p->wall->is_door && mode == 0) ?
+			((p->nya = MAX(p->nya, p->ya)) &&
+			(p->nyb = MIN(p->nyb, p->yb))) : true;
+		p->doorbottom = MIN(mode == 0 ? p->yb : p->yd, p->nyb);
+		p->doorheight = p->doorbottom - p->yc;
+		p->nya += (p->doorbottom - MAX(p->yc, p->nya)) *
+			(1 - d->doorstate[p->wall - d->walls]);
+	}
+	else
+	{
+		p->tex = d->textures[mode == 4 ? p->wall->lowerpicnum :
+											p->wall->middlepicnum];
+		p->u_tex = (p->u - floor(p->u)) * p->tex->w;
+		mode < 4 ? p->shadefactor = getshadefactor(d, p, p->z) : true;
+		if (mode == 2 || mode == 4)
+			p->y = MAX(fr->ytop[p->x], mode == 4 ? p->nyb : p->ya) - 1;
+		else
+			return (fr->ytop[p->x]);
+	}
+	return (0);
 }
