@@ -56,6 +56,8 @@ void	invoke_msg(t_data *d, char *msg);
 void	br_msg(t_data *d, t_wall *w, int *n);
 void	whi_le(t_data *d, t_sector *sect, int *n, double *m);
 void	alpha_y(double *sl_y);
+void	swap_tabs(short *tab, short *tmp_tab);
+void	set_tab(t_data *d, short sect_to_scan, short *tab, short old_sect);
 
 
 double get_angle(double o, bool isAnimated);

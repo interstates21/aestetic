@@ -1,29 +1,37 @@
-#include "../includes/doom_nukem.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   inside.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/22 09:18:24 by vslutiak          #+#    #+#             */
+/*   Updated: 2019/10/24 20:06:16 by vslutiak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-/*
-**	Used to detect the current sector at each frame.
-*/
+#include "../includes/doom_nukem.h"
 
 bool	inside(t_data *d, int16_t sectnum, t_vec2f pos)
 {
-	int		n[5];
-	t_vec2f	p0;
-	t_vec2f	p1;
+	int		rz[5];
+	t_vec2f	bon0;
+	t_vec2f	bon2;
 
-	n[0] = 0;
-	n[1] = d->sectors[sectnum].numwalls;
-	n[2] = 0;
-	n[3] = n[1] - 1;
-	while (n[2] < n[1])
+	rz[0] = 0;
+	rz[1] = d->sectors[sectnum].numwalls;
+	rz[2] = 0;
+	rz[3] = rz[1] - 1;
+	while (rz[2] < rz[1])
 	{
-		p0 = d->walls[d->sectors[sectnum].firstwallnum + n[2]].point;
-		p1 = d->walls[d->sectors[sectnum].firstwallnum + n[3]].point;
-		if (((p0.y > pos.y) != (p1.y > pos.y)) &&
-				(pos.x < (p1.x - p0.x) * (pos.y - p0.y) / (p1.y - p0.y) + p0.x))
-			n[0] = !n[0];
-		n[3] = n[2]++;
+		bon0 = d->walls[d->sectors[sectnum].firstwallnum + rz[2]].point;
+		bon2 = d->walls[d->sectors[sectnum].firstwallnum + rz[3]].point;
+		if (((bon0.y > pos.y) != (bon2.y > pos.y)) &&
+				(pos.x < (bon2.x - bon0.x) * (pos.y - bon0.y) / (bon2.y - bon0.y) + bon0.x))
+			rz[0] = !rz[0];
+		rz[3] = rz[2]++;
 	}
-	return (n[0]);
+	return (rz[0]);
 }
 
 int16_t	search_other_sectors(int16_t sects[2], t_data *d, int depth,
@@ -65,53 +73,6 @@ int16_t	update_cursect_proj(int16_t sects[2], t_data *d, int depth,
 	if (!depth)
 		return (-1);
 	return (search_other_sectors(sects, d, depth, pos));
-}
-
-void	set_tab(t_data *d, short sect_to_scan, short *tab, short old_sect)
-{
-	short	i;
-	short	j;
-	short	k;
-	short	l;
-
-	k = 0;
-	while (tab[k] != -1)
-		k++;
-	i = d->sectors[sect_to_scan].firstwallnum - 1;
-	j = d->sectors[sect_to_scan].firstwallnum +
-		d->sectors[sect_to_scan].numwalls;
-	while (++i < j)
-		if (d->walls[i].neighborsect != -1 &&
-				d->walls[i].neighborsect != old_sect)
-		{
-			l = -1;
-			while (tab[++l] != -1)
-				if (tab[l] == d->walls[i].neighborsect)
-					break ;
-			if (tab[l] == -1)
-			{
-				tab[k] = d->walls[i].neighborsect;
-				k++;
-			}
-		}
-}
-
-void	swap_tabs(short *tab, short *tmp_tab)
-{
-	short	i;
-
-	i = 0;
-	while (tmp_tab[i] != -1)
-	{
-		tab[i] = tmp_tab[i];
-		tmp_tab[i] = -1;
-		i++;
-	}
-	while (tab[i] != -1)
-	{
-		tab[i] = -1;
-		i++;
-	}
 }
 
 int16_t	update_cursect_smart(t_data *d, short depth, t_vec2f pos,

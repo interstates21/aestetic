@@ -1,36 +1,49 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_sdl.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/22 09:18:24 by vslutiak          #+#    #+#             */
+/*   Updated: 2019/10/24 19:57:14 by vslutiak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/doom_nukem.h"
+
+void	x_cm(t_data *d, int pos_r)
+{
+	int		i;
+
+	i = -1;
+	while (++i < d->numsectors && (pos_r = -1))
+		while (++pos_r < d->nb_textures)
+		{
+			if (ft_strequ(d->sectors[i].floor_texture_name,
+													d->tex_name_list[pos_r]))
+				d->sectors[i].floorpicnum = pos_r;
+			if (ft_strequ(d->sectors[i].ceil_texture_name,
+													d->tex_name_list[pos_r]))
+				d->sectors[i].ceilpicnum = pos_r;
+		}
+}
 
 void	fix_picnum(t_data *d)
 {
 	int		i;
-	int		name_i;
+	int		pos_r;
 
 	i = -1;
-	while (++i < d->numwalls && (name_i = -1))
-		while (++name_i < d->nb_textures)
-			if (ft_strequ(d->walls[i].texture_name, d->tex_name_list[name_i]))
+	while (++i < d->numwalls && (pos_r = -1))
+		while (++pos_r < d->nb_textures)
+			if (ft_strequ(d->walls[i].texture_name, d->tex_name_list[pos_r]))
 			{
-				d->walls[i].lowerpicnum = name_i;
-				d->walls[i].middlepicnum = name_i;
-				d->walls[i].upperpicnum = name_i;
+				d->walls[i].lowerpicnum = pos_r;
+				d->walls[i].middlepicnum = pos_r;
+				d->walls[i].upperpicnum = pos_r;
 			}
-	i = -1;
-	while (++i < d->numsectors && (name_i = -1))
-		while (++name_i < d->nb_textures)
-		{
-			if (ft_strequ(d->sectors[i].floor_texture_name,
-													d->tex_name_list[name_i]))
-				d->sectors[i].floorpicnum = name_i;
-			if (ft_strequ(d->sectors[i].ceil_texture_name,
-													d->tex_name_list[name_i]))
-				d->sectors[i].ceilpicnum = name_i;
-		}
-}
-
-static void	init_ttf(t_sdl *sdl)
-{
-	if (TTF_Init() == -1)
-		print_err(SDL_GetError());
+	x_cm(d, pos_r);
 }
 
 void	init_sdl(t_sdl *sdl)
@@ -46,7 +59,6 @@ void	init_sdl(t_sdl *sdl)
 		print_err(SDL_GetError());
 	if (!Mix_AllocateChannels(MAX_CHANNELS))
 		print_err(SDL_GetError());
-	//init_ttf(sdl);
 }
 
 void	init_keys(Uint8 **keys)
