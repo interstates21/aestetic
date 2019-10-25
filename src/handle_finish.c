@@ -1,93 +1,109 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handle_finish.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/25 22:58:36 by bdeomin           #+#    #+#             */
+/*   Updated: 2019/10/25 23:07:52 by bdeomin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/doom_nukem.h"
 
-void	free_monsters_and_assets(t_data *d, int i)
+void	monst_free(t_data *d, int i, int j, int k)
+{
+	if (d->monster_text[i][j][k])
+		SDL_FreeSurface(d->monster_text[i][j][k]);
+	d->monster_text[i][j][k] = NULL;
+}
+
+void	monst_and_assets_free(t_data *d, int i)
 {
 	int	j;
 	int	k;
 
-	i = -1;
-	while (++i < MAXTYPEMONSTERS && (j = -1))
+	j = -1;
+	while (++i < MAXTYPEMONSTERS)
 	{
-		while (++j < 10 && (k = -1))
+		k = -1;
+		while (++j < 10)
 			while (++k < MAXNBOFANIMATION)
-			{
-				if (d->monster_text[i][j][k])
-					SDL_FreeSurface(d->monster_text[i][j][k]);
-				d->monster_text[i][j][k] = NULL;
-			}
+				monst_free(d, i, j, k);
 		k = 9;
 		while (++k < 19)
-		{
-			if (d->monster_text[i][k][0])
-				SDL_FreeSurface(d->monster_text[i][k][0]);
-			d->monster_text[i][k][0] = NULL;
-		}
+			monst_free(d, i, k, 0);
 	}
-	if (d->nb_assets_texture > 0 && (i = -1))
+	i = -1;
+	if (d->nb_assets_texture > 0)
 		while (++i < d->nb_assets_texture)
 			SDL_FreeSurface(d->assets_texture[i]);
 	free(d->assets_texture);
 }
 
-void	free_weapons(t_data *d)
+void	weap_free(t_data *d)
 {
 	int			i;
 	int			j;
-	int			*nb_tex;
-	int			*nb_projectiles;
+	int			*numb_texturs;
+	int			*numb_proj;
 
-	nb_tex = (int[3]){13, 15, 3};
-	nb_projectiles = (int[3]){20, 5, 5};
+	numb_texturs = (int[3]){13, 15, 3};
+	numb_proj = (int[3]){20, 5, 5};
 	i = -1;
 	while (++i < 3)
 	{
 		j = -1;
-		while (++j < nb_tex[i])
+		while (++j < numb_texturs[i])
 			SDL_FreeSurface(d->weapon_tex[i][j]);
 		j = -1;
-		while (++j < nb_projectiles[i])
+		while (++j < numb_proj[i])
 			SDL_FreeSurface(d->projectile_tex[i][j]);
 	}
 }
 
-void	free_everything(t_data *d)
+void	all_free(t_data *d)
 {
 	int	i;
 
-	if (d->nummonsters > 0)
-		free(d->monsters);
-	if (d->nb_assets > 0 && (i = -1) != 0)
+	i = -1;
+	if (d->nb_assets > 0)
 		while (++i < d->numsectors)
 			free(d->assets[i]);
-	if (d->nb_textures > 0 && (i = -1) != 0)
+	if (d->nummonsters > 0)
+		free(d->monsters);
+	i = -1;
+	if (d->nb_textures > 0)
 		while (++i < d->nb_textures)
 			free(d->tex_name_list[i]);
-	if ((intptr_t)d->posters > 0 && (i = -1) != 0)
+	i = -1;
+	if ((intptr_t)d->posters > 0)
 	{
 		while (++i < d->nb_posters)
 			SDL_FreeSurface(d->posters[i]);
 		free(d->posters);
 	}
-	free_weapons(d);
-	free_monsters_and_assets(d, 0);
+	weap_free(d);
+	monst_and_assets_free(d, -1);
 	free(d->tex_name_list);
 	free(d->assets);
 	d->tex_name_list = NULL;
 	d->assets = NULL;
 }
 
-void	clear_sector_sprites(t_data *d, short i)
+void	free_sectors_sprites(t_data *d, short i)
 {
-	t_sprite_list	*to_free;
-	t_sprite_list	*tmp;
+	t_sprite_list	*list;
+	t_sprite_list	*need_free;
 
-	to_free = d->sectors[i].sprite_list;
+	list = d->sectors[i].sprite_list;
 	d->sectors[i].sprite_list = NULL;
-	while (to_free)
+	while (list)
 	{
-		tmp = to_free->next;
-		free(to_free);
-		to_free = tmp;
+		need_free = list->next;
+		free(list);
+		list = need_free;
 	}
 }
 
@@ -105,7 +121,7 @@ void	handle_finish(t_data *d)
 		d->projectiles[i].is_active = false;
 	i = -1;
 	while (++i < d->numsectors)
-		clear_sector_sprites(d, i);
-	free_everything(d);
+		free_sectors_sprites(d, i);
+	all_free(d);
 	init_everything(d, d->nextmap);
 }
