@@ -61,7 +61,7 @@ FILES = main \
 	   n_allocators \
 	   heightCalculations \
 	   floorHeight \
-	   ceilHeight \
+	   ceil_height \
 	   range \
 	   msg \
 	   vector_constructors \
