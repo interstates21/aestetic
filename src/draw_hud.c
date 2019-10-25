@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_hud.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 23:10:02 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/24 17:05:20 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/25 22:23:43 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	draw_inventory_slot(t_data *d, SDL_Surface *tex, int x1, int y1)
 		while (++x_y.y < h_u.x)
 		{
 			pix_yh = (double)x_y.y / h_u.x;
-			if (((px = getpixel4(tex, h_u.y, pix_yh)) >> 24) > 127)
+			if (((px = pixel_pls(tex, h_u.y, pix_yh, 3)) >> 24) > 127)
 				putpixel(d, x1 + x_y.x, y1 + x_y.y, px);
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 09:18:24 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/24 22:55:05 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/25 22:14:31 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	color_screen(t_args_multi_colo_buf *data)
 						data->d->color_buf.value);
 			colo = data->d->color_buf.colo + (tmp << 24);
 			putpixel(data->d, x, y,
-					alpha(getpixel3(data->d->sdl.screen, x, y), colo));
+					alpha(pixel_pls(data->d->sdl.screen, x, y, 2), colo));
 		}
 	}
 }

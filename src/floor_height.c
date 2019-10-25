@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   floor_height.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/25 20:00:42 by bdeomin           #+#    #+#             */
+/*   Updated: 2019/10/25 20:03:04 by bdeomin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/doom_nukem.h"
 
 double	get_floorheight_player(t_data *d, int16_t sectnum)
@@ -51,4 +63,3 @@ double	get_floor_height(t_sector *sect, t_wall *walls, int16_t sectnum,
 	print_err("0 sectors");
 	return (1);
 }
-

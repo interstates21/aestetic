@@ -85,10 +85,11 @@ int16_t		recur_scan_point_line(t_data *d,
 		int16_t sect_to_scan, int16_t old_sect, bool hit_all);
 double		get_dist_to_intersect_wall(t_data *d, t_vec2f wall1, t_vec2f wall2);
 void		putpixel(t_data *d, int x, int y, uint32_t color);
-uint32_t	getpixel(SDL_Surface *s, double x, double y);
-uint32_t	getpixel2(SDL_Surface *s, double x, double y);
-uint32_t	getpixel3(SDL_Surface *s, short x, short y);
-uint32_t	getpixel4(SDL_Surface *s, int u, double y);
+uint32_t	pixel_pls(SDL_Surface *s, double x, double y, int mode);
+//uint32_t	getpixel(SDL_Surface *s, double x, double y);
+//uint32_t	getpixel2(SDL_Surface *s, double x, double y);
+//uint32_t	getpixel3(SDL_Surface *s, short x, short y);
+//uint32_t	getpixel4(SDL_Surface *s, int u, double y);
 bool		inside(t_data *d, int16_t sectnum, t_vec2f pos);
 bool		clip_wall(double *x1, double *z1, double x2, double z2);
 void		proj_wall(t_data *d, t_projdata *p, t_frustum *fr, t_vec2f v[2]);
@@ -229,7 +230,7 @@ void		create_projectile(t_data *d, short id_of_proj_type);
 ** get_rot_monster.c
 */
 
-uint8_t		get_nb_anim_from_rot(double monster_rot,
+uint8_t		get_nb_anim_from_rotation(double monster_rot,
 		t_vec2f monster_pos, t_vec2f player_pos);
 /*
 ** fly_gravity.c

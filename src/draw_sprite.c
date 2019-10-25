@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 21:07:52 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/23 23:02:00 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/25 22:14:51 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,13 @@ void		disp_sprite(t_data *d, SDL_Surface *s,
 			if (dist_mod.x >= d->zbuffer[x_y.x + x_y.y * d->sdl.screen->w]
 														&& dist_mod.y < 2)
 				continue;
-			colo = getpixel(s, dist_mod.y == 0 ?
+			colo = pixel_pls(s, dist_mod.y == 0 ?
 				1 - (disp_data.scale.x * (x_y.x - disp_data.start.x)) :
 					disp_data.scale.x * (x_y.x - disp_data.start.x),
-			disp_data.scale.y * (x_y.y - disp_data.start.y));
+			disp_data.scale.y * (x_y.y - disp_data.start.y), 0);
 			colo = alpha(((uint32_t *)d->sdl.screen->pixels)
 					[x_y.x + x_y.y * d->sdl.screen->w], colo);
-			if (colo != getpixel3(d->sdl.screen, x_y.x, x_y.y))
+			if (colo != pixel_pls(d->sdl.screen, x_y.x, x_y.y, 2))
 				new_zbuffer_and_put_collor(d, x_y, sprite_shade(d,
 				&d->sectors[disp_data.cursectnum], dist_mod.x, colo), dist_mod);
 		}

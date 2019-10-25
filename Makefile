@@ -60,7 +60,7 @@ FILES = main \
 	   n_validators \
 	   n_allocators \
 	   heightCalculations \
-	   floorHeight \
+	   floor_height \
 	   ceil_height \
 	   range \
 	   msg \

@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 20:04:06 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/24 21:19:53 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/25 22:25:35 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ void	draw_wall_no_nei(t_data *d, t_projdata *p, t_frustum *fr)
 	while (++p->y <= MIN(fr->ybottom[p->x], p->yb))
 		if (p->wall->posterpicnum >= 0 &&
 			p->y > p->ya_poster && p->y < p->yb_poster && (((px =
-			getpixel4(p->poster, p->u_poster, NORMALIZE(p->y, p->ya_poster,
-			p->yb_poster))) >> 24) > 128))
+			pixel_pls(p->poster, p->u_poster, NORMALIZE(p->y, p->ya_poster,
+			p->yb_poster), 3)) >> 24) > 128))
 			putpixel2(d, p->z, (t_vec2){p->x, p->y}, shade(p->shadefactor, px));
 		else
 			putpixel2(d, p->z, (t_vec2){p->x, p->y}, shade(p->shadefactor,
-						getpixel4(p->tex, p->u_tex,
-							NORMALIZE(p->y, p->yc, p->yd) * p->y_scale)));
+						pixel_pls(p->tex, p->u_tex,
+							NORMALIZE(p->y, p->yc, p->yd) * p->y_scale, 3)));
 }
 
 void	drawing_wall(t_vec2 y_value, t_data *d, t_projdata *p, int mode)
@@ -66,9 +66,9 @@ void	drawing_wall(t_vec2 y_value, t_data *d, t_projdata *p, int mode)
 
 	while (++y_value.x <= y_value.y)
 	{
-		pix = getpixel4(p->tex, p->u_tex, (!p->wall->is_door || mode == 1) ?
+		pix = pixel_pls(p->tex, p->u_tex, (!p->wall->is_door || mode == 1) ?
 				NORMALIZE(y_value.x, p->yc, p->yd) * p->y_scale :
-				NORMALIZE(y_value.x, p->nya - p->doorheight, p->nya));
+				NORMALIZE(y_value.x, p->nya - p->doorheight, p->nya), 3);
 		if (mode == 0 || (pix >> 24) == 0xff)
 			putpixel2(d, p->z, (t_vec2){p->x, y_value.x},
 					shade(p->shadefactor, pix));
