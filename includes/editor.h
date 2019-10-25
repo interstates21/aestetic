@@ -28,7 +28,7 @@
 
 # define ED_W		1200
 # define ED_H		700
-# define MAX_MONS	256
+# define MAX_MONS	32
 # define MAX_SECT	128
 # define MAX_SPRT	64
 # define MAX_WALL	32
@@ -198,6 +198,7 @@ typedef struct		s_wall
 	t_v2			v2;
 	int 			is_portal;
 	bool			is_door;
+	int 			tex[T_TOTAL];
 }					t_wall;
 
 typedef struct		s_sprite
@@ -278,37 +279,37 @@ typedef struct		s_selection
 	int				sprite;
 }					t_selection;
 
-typedef struct				s_sprite_list
+typedef struct		s_spl
 {
-	int16_t					id;
-	struct s_sprite_list	*next;
-	uint8_t					type;
-}							t_sprite_list;
+	int16_t			id;
+	struct s_spl	*next;
+	uint8_t			type;
+}					t_sprite_list;
 
-typedef struct				s_stdsector
+typedef struct		s_stdsector
 {
-	int16_t					firstwallnum;
-	int16_t					numwalls;
-	float					floorheight;
-	float					ceilheight;
-	int16_t					floorpicnum;
-	int16_t					ceilpicnum;
-	float					light;
-	bool					blinking;
-	char					floor_texture_name[100];
-	char					ceil_texture_name[100];
-	bool					outdoor;
-	t_sprite_list			*sprite_list;
-	int16_t					slope;
-	int16_t					slope_orientation;
-	int16_t					slopeceil;
-	int16_t					slopeceil_orientation;
-	bool					is_animatedslope;
-	bool					is_animatedslopeceil;
-	bool					is_elevator;
-	bool					is_finish;
-	bool					is_harmful;
-}							t_sdtsector;
+	int16_t			firstwallnum;
+	int16_t			numwalls;
+	float			floorheight;
+	float			ceilheight;
+	int16_t			floorpicnum;
+	int16_t			ceilpicnum;
+	float			light;
+	bool			blinking;
+	char			floor_texture_name[100];
+	char			ceil_texture_name[100];
+	bool			outdoor;
+	t_sprite_list	*sprite_list;
+	int16_t			slope;
+	int16_t			slope_orientation;
+	int16_t			slopeceil;
+	int16_t			slopeceil_orientation;
+	bool			is_animatedslope;
+	bool			is_animatedslopeceil;
+	bool			is_elevator;
+	bool			is_finish;
+	bool			is_harmful;
+}					t_sdtsector;
 
 typedef struct		s_monsters
 {
@@ -318,6 +319,29 @@ typedef struct		s_monsters
 	SDL_Surface		**acting[A_TOTAL];
 }					t_monsters;
 
+typedef struct		s_v2f
+{
+	double			a;
+	double			b;
+}					t_v2f;
+
+typedef struct		s_stdwall
+{
+	t_v2f			point;
+	int16_t			upperpicnum;
+	int16_t			middlepicnum;
+	int16_t			lowerpicnum;
+	int16_t			flags;
+	int16_t			neighborsect;
+	char			texture_name[100];
+	char			poster_name[100];
+	bool			is_door;
+	int				door_num;
+	int				key_num;
+	int16_t			posterpicnum;
+	bool			is_transparent;
+}					t_stdwall;
+
 typedef struct		s_font
 {
 	int 			x;
@@ -326,6 +350,36 @@ typedef struct		s_font
 	int 			col;
 	int 			n;
 }					t_font;
+
+typedef struct		s_mnst
+{
+	t_v2			pos;
+	int 			n_sect;
+	int 			type;
+}					t_mnst;
+
+typedef struct		s_sprt
+{
+	t_v2			pos;
+	int 			n_sect;
+	int 			type;
+}					t_sprt;
+
+
+typedef struct		s_stdmonster
+{
+	t_v2f			pos;
+	t_v2f			dir;
+	double			rot;
+	int16_t			cursectnum;
+	uint8_t			id_type;
+	uint8_t			anim_state;
+	uint8_t			anim_time;
+	uint8_t			timer;
+	int16_t			life;
+	bool			can_collide;
+	bool			activated;
+}					t_stdmonster;
 
 typedef struct		s_ed
 {
@@ -355,6 +409,10 @@ typedef struct		s_ed
 	SDL_Surface		*texture_picker;
 	t_selection		selection;
 	t_controller	controller;
+	int 			n_mns;
+	t_mnst			monst[MAX_MONS];
+	int 			n_sprt;
+	t_sprt			sprt[MAX_SPRT];
 }					t_ed;
 
 void 				sdl_print_pix(Uint32 **pixels, int x, int y);
@@ -410,6 +468,7 @@ int					circle(t_ed *ed, t_v2 c, int r, Uint32 color);
 int					picking_monster(t_v2 mouse);
 int					picking_sprite(t_v2 mouse, int n);
 int  				pickers(t_ed *ed);
-int					write_secors(t_ed *e);
+void				write_secors(t_ed *e);
+void				write_monsters(t_ed *e);
 
 #endif
