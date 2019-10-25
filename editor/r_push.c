@@ -32,6 +32,24 @@ static void	realloc_sectors(t_ed *e)
 	e->n_sect += 1;
 }
 
+static void	append_all_walls(t_ed *e)
+{
+	t_wall	*tmp;
+	int 	i;
+	int 	j;
+
+	tmp = (t_wall*)malloc(sizeof(t_wall) * (e->n_all_w + e->n_walls));
+	i = -1;
+	while (++i < e->n_all_w)
+		tmp[i] = e->all_walls[i];
+	j = -1;
+	while (++j < e->n_walls)
+		tmp[i + j] = e->walls[j];
+	if (e->all_walls)
+		free(e->all_walls);
+	e->all_walls = tmp;
+}
+
 void		finish_sector(t_ed *e, int sn)
 {
 	realloc_sectors(e);
@@ -39,7 +57,9 @@ void		finish_sector(t_ed *e, int sn)
 	e->selection.selected_wall->is_portal = e->n_sect - 1;
 	e->seclist[e->n_sect - 1].walls[e->seclist[e->n_sect - 1].n_walls
 	- 1].is_portal = sn;
+	e->seclist[e->n_sect - 1].start_wall = e->n_all_w - 1;
 	e->selection = (t_selection){.selected_wall = NULL, .selected_vertex = NULL};
+	append_all_walls(e);
 	e->walls = NULL;
 	e->n_walls = 0;
 }

@@ -22,6 +22,10 @@ static void	ground(t_ed *e)
 	e->selection.drawing = 0;
 	e->selection.sector = -1;
 	e->selection.select = 2;
+	e->p_ang = 0.0;
+	e->start = 0;
+	e->all_walls = NULL;
+	e->n_all_w = 0;
 }
 
 static void	do_magic(t_ed *ed, int fd)
@@ -51,6 +55,8 @@ static void	run(char *mapname)
     render_manager(&sdl, &ed);
 	//todo sdl clean
 	//saving_screen();
+	ed.player = (t_v3){ED_W >> 1, ed.seclist[0].height[H_FLOOR], ED_W >> 1};
+	find_used_tex(&ed);
 	//save();
 	close(2);
 }

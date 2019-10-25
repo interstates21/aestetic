@@ -19,7 +19,8 @@ t_sect		init_sector(t_wall **walls, int n_walls, int n_s)
 	res = (t_sect){.num = n_s - 1, .height[H_CEIL] = 40, .height[H_FLOOR] = 10,
 			.tex[T_FLOOR] = 0, .tex[T_WALL] = 0, .tex[T_CEIL] = 0, .n_walls = n_walls,
 			.is_dmg = 0, .is_elev = 0, .is_finish = 0, .slope[H_FLOOR] = 0,
-			.slope[H_CEIL] = 0, .slope_rot[H_FLOOR] = 0, .slope_rot[H_CEIL] = 0,};
+			.slope[H_CEIL] = 0, .slope_rot[H_FLOOR] = 0, .slope_rot[H_CEIL] = 0,
+			.start_wall = 0};
 	res.walls = *walls;
 	return(res);
 }
@@ -43,5 +44,7 @@ void 		init_default_sect(t_ed *e)
 	walls[3] = (t_wall){.is_door = 0, .is_portal = -1,
 	.v1 = (t_v2){ trim(ED_W >> 1, -1), trim(ED_H >> 1, 1) },
 	.v2 = (t_v2){ trim(ED_W >> 1, 1), trim(ED_H >> 1, 1) }};
+	e->n_all_w = 4;
+	e->all_walls = walls;
 	e->seclist[0] = init_sector(&walls, 4, e->n_sect - 1);
 }

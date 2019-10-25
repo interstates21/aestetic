@@ -222,6 +222,7 @@ typedef struct		s_sect
 	int 			num;
 	short			n_walls;
 	// t_sprite		*sprites;
+	int 			start_wall;
 	t_wall			*walls;
 	short			height[H_TOTAL];
 	short			tex[T_TOTAL];
@@ -277,6 +278,38 @@ typedef struct		s_selection
 	int				sprite;
 }					t_selection;
 
+typedef struct				s_sprite_list
+{
+	int16_t					id;
+	struct s_sprite_list	*next;
+	uint8_t					type;
+}							t_sprite_list;
+
+typedef struct				s_stdsector
+{
+	int16_t					firstwallnum;
+	int16_t					numwalls;
+	float					floorheight;
+	float					ceilheight;
+	int16_t					floorpicnum;
+	int16_t					ceilpicnum;
+	float					light;
+	bool					blinking;
+	char					floor_texture_name[100];
+	char					ceil_texture_name[100];
+	bool					outdoor;
+	t_sprite_list			*sprite_list;
+	int16_t					slope;
+	int16_t					slope_orientation;
+	int16_t					slopeceil;
+	int16_t					slopeceil_orientation;
+	bool					is_animatedslope;
+	bool					is_animatedslopeceil;
+	bool					is_elevator;
+	bool					is_finish;
+	bool					is_harmful;
+}							t_sdtsector;
+
 typedef struct		s_monsters
 {
 	char 			*name;
@@ -299,7 +332,11 @@ typedef struct		s_ed
 	t_sdl			sdl;
 	t_sect			*seclist;
 	t_texlist		*texlist;
+	int 			n_tex;
+	char 			*used_tex;
 	t_wall			*walls;
+	t_wall			*all_walls;
+	int 			n_all_w;
 	t_monsters		monster[M_TOTAL];
 	t_sprite		*sprites;
 	SDL_Surface		*m_projec[5];
@@ -308,10 +345,13 @@ typedef struct		s_ed
 	t_chars			chars;
 	int 			curr_m;
 	int 			fd;
-	int 			n_tex;
 	int 			n_sprites;
 	int 			n_sect;
 	int 			n_walls;
+	char 			*path;
+	t_v3			player;
+	double			p_ang;
+	uint16_t		start;
 	SDL_Surface		*texture_picker;
 	t_selection		selection;
 	t_controller	controller;
@@ -325,6 +365,7 @@ void				init_textures(t_ed *e);
 void 				init_monsters(t_ed *e);
 void				init_sprites(t_ed *e);
 t_sect				init_sector(t_wall **walls, int n_walls, int n_s);
+void				find_used_tex(t_ed *e);
 int					bmp_check(struct dirent *data);
 void				read_bmp(SDL_Surface **s, char *p);
 void				loop(t_ed *e);
@@ -369,4 +410,6 @@ int					circle(t_ed *ed, t_v2 c, int r, Uint32 color);
 int					picking_monster(t_v2 mouse);
 int					picking_sprite(t_v2 mouse, int n);
 int  				pickers(t_ed *ed);
+int					write_secors(t_ed *e);
+
 #endif
