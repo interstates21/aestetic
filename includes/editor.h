@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   editor.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akolomoi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:17:14 by akolomoi          #+#    #+#             */
-/*   Updated: 2019/10/15 17:17:17 by akolomoi         ###   ########.fr       */
+/*   Updated: 2019/10/27 02:15:41 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@
 # define MGN		0x662266
 # define GRID_COL_2 0xa4b60d
 # define GRID_COL_1 0x111111
-# define MOSTER_1_PICKER_W	1000 
-# define FIRST_SPRITE_W		900 
-# define FIRST_SPRITE_H		350 
+# define MOSTER_1_PICKER_W	1000
+# define FIRST_SPRITE_W		900
+# define FIRST_SPRITE_H		350
 # define MOSTER_2_PICKER_W	1120
 # define MOSTER_PICKER_H 	450
 # define SHAPE_SIZE 50
@@ -413,6 +413,7 @@ typedef struct		s_ed
 	t_mnst			monst[MAX_MONS];
 	int 			n_sprt;
 	t_sprt			sprt[MAX_SPRT];
+	Uint32			color;
 }					t_ed;
 
 void 				sdl_print_pix(Uint32 **pixels, int x, int y);
