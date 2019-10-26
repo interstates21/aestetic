@@ -71,7 +71,7 @@ void		draw_projectile(t_data *d, t_frustum *fr,
 			d->projectile_type[proj.id_type].size) / dist;
 	new_disp_data(fr, &a, proj.cursectnum);
 	disp_sprite(d, d->projectile_tex[proj.id_type]
-			[proj.current_anim_playing], a, (t_vec2f){point_in_screen.z, 2});
+			[proj.current_anim_playing], a, new_v2(point_in_screen.z, 2));
 }
 
 void		disp_sprite(t_data *d, SDL_Surface *s,

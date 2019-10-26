@@ -79,8 +79,8 @@ void		draw_monster(t_data *d, t_monster monster)
 	new_disp_data_2(&a, monster.cursectnum);
 	if (nb_of_anim[1] < 4 && monster.anim_state < 10)
 		disp_sprite(d, d->monster_text[monster.id_type]
-	[monster.anim_state][nb_of_anim[0]], a, (t_vec2f){point_in_screen.z, 0});
+	[monster.anim_state][nb_of_anim[0]], a, new_v2(point_in_screen.z, 0));
 	else
 		disp_sprite(d, d->monster_text[monster.id_type]
-	[monster.anim_state][nb_of_anim[0]], a, (t_vec2f){point_in_screen.z, 1});
+	[monster.anim_state][nb_of_anim[0]], a, new_v2(point_in_screen.z, 1));
 }
