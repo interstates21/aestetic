@@ -40,12 +40,12 @@ t_vec2f	get_closest(t_vec2f a, t_vec2f b, t_vec2f p)
 	double	atp_dot_atb;
 	double	plane;
 
-	a_to_p = (t_vec2f){p.x - a.x, p.y - a.y};
-	a_to_b = (t_vec2f){b.x - a.x, b.y - a.y};
+	a_to_p = new_v2(p.x - a.x, p.y - a.y);
+	a_to_b = new_v2(b.x - a.x, b.y - a.y);
 	plane = (a_to_p.x * a_to_b.x + a_to_p.y * a_to_b.y) /
 			(a_to_b.x * a_to_b.x + a_to_b.y * a_to_b.y);
 	plane = CLAMP(plane, 0, 1);
-	return ((t_vec2f){a.x + plane * a_to_b.x, a.y + plane * a_to_b.y});
+	return (new_v2(a.x + plane * a_to_b.x, a.y + plane * a_to_b.y));
 }
 
 bool	collided_v(t_vec2f *v, int *nw, t_data *d)

@@ -24,18 +24,18 @@ void		render_wall(t_data *d, t_projdata *p, t_frustum *fr, int i)
 	transformvertex(d, p->wall2->point, &p->x2, &p->z2);
 	p->neighbor = check_neighbor(d, p->wall->neighborsect);
 	p->wall->lowerpicnum = p->wall2->middlepicnum;
-	p->len = v2_len((t_vec2f){p->x2 - p->x1, p->z2 - p->z1});
+	p->len = v2_len(new_v2(p->x2 - p->x1, p->z2 - p->z1));
 	p->u1 = 0;
 	p->u2 = p->len;
 	if ((p->z1 <= 0 && p->z2 <= 0) || ((p->z1 <= 0) &&
 			!(clip_wall(&p->x1, &p->z1, p->x2, p->z2) && (p->u1 = p->u2 -
-			v2_len((t_vec2f){p->x2 - p->x1, p->z2 - p->z1})))) ||
+			v2_len(new_v2(p->x2 - p->x1, p->z2 - p->z1))))) ||
 			((p->z2 <= 0) && !(clip_wall(&p->x2, &p->z2, p->x1, p->z1) &&
-			(p->u2 = v2_len((t_vec2f){p->x2 - p->x1, p->z2 - p->z1})))))
+			(p->u2 = v2_len(new_v2(p->x2 - p->x1, p->z2 - p->z1))))))
 		return ;
 	proj_wall(d, p, fr, (t_vec2f[2]){
-			v3_to_v2(transform_back(d, (t_vec3f){p->x1, 0, p->z1})),
-			v3_to_v2(transform_back(d, (t_vec3f){p->x2, 0, p->z2}))});
+			v3_to_v2(transform_back(d, new_v3(p->x1, 0, p->z1))),
+			v3_to_v2(transform_back(d, new_v3(p->x2, 0, p->z2)))});
 }
 
 void		render_sector(t_data *d, t_sector *sect, t_frustum *fr)

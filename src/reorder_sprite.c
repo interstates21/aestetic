@@ -65,10 +65,10 @@ void		set_vla(t_sprite_list *tmp, double *vla, t_data *d)
 	{
 		if (tmp->type == IS_MONSTER)
 			vla[i] = vec3f_length(v3_min(d->cam.pos,
-						(t_vec3f){d->monsters[tmp->id].pos.x,
+						new_v3(d->monsters[tmp->id].pos.x,
 						0.0,
 						d->monsters[tmp->id].pos.y
-						}));
+						)));
 		if (tmp->type == IS_PROJECTILE)
 			vla[i] = vec3f_length(v3_min(d->cam.pos,
 						d->projectiles[tmp->id].pos));

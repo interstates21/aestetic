@@ -62,22 +62,22 @@ void	drawing(t_data *d, uint32_t colo, int mode)
 	{
 		i = -1;
 		while (++i < 10)
-			pixel_put(d, (t_vec3f){(WIDTH >> 1) - 16 + i, HEIGHT >> 1, 0},
+			pixel_put(d, new_v3((WIDTH / 2) - 16 + i, HEIGHT / 2, 0),
 																	colo, 0);
 		i += 12;
 		while (++i < 32)
-			pixel_put(d, (t_vec3f){(WIDTH >> 1) - 16 + i, HEIGHT >> 1, 0},
+			pixel_put(d, new_v3((WIDTH / 2) - 16 + i, HEIGHT / 2, 0),
 																	colo, 0);
 	}
 	else
 	{
 		i = -1;
 		while (++i < 10)
-			pixel_put(d, (t_vec3f){WIDTH >> 1, (HEIGHT >> 1) - 16 + i, 0},
+			pixel_put(d, new_v3(WIDTH / 2, (HEIGHT / 2) - 16 + i, 0),
 																	colo, 0);
 		i += 12;
 		while (++i < 32)
-			pixel_put(d, (t_vec3f){WIDTH >> 1, (HEIGHT >> 1) - 16 + i, 0},
+			pixel_put(d, new_v3(WIDTH / 2, (HEIGHT / 2) - 16 + i, 0),
 																	colo, 0);
 	}
 }
@@ -89,5 +89,5 @@ void	draw_aim_cross(t_data *d)
 	if (d->player.current_weapon == CRYO_BALLISTA)
 		colo = 0xDDFF;
 	drawing(d, colo, 0);
-	pixel_put(d, (t_vec3f){WIDTH >> 1, HEIGHT >> 1, 0}, colo, 0);
+	pixel_put(d, new_v3(WIDTH / 2, HEIGHT / 2, 0), colo, 0);
 }

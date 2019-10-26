@@ -28,13 +28,13 @@ static bool	check_jetpack(t_data *d, t_assets *asset)
 		play_sound(d, AMMO_SOUND, v3_to_v2(d->cam.pos));
 	if (asset->is_key)
 	{
-		if (!d->slot2)
-			d->slot2 = asset;
+		if (!d->slot3)
+			d->slot3 = asset;
 		else
 			return (false);
 	}
-	else if (asset->is_jetpack && (!d->slot2 || d->slot2->is_jetpack))
-		d->slot2 = asset;
+	else if (asset->is_jetpack && (!d->slot3 || d->slot3->is_jetpack))
+		d->slot3 = asset;
 	else if (asset->is_jetpack)
 		return (false);
 	if (asset->is_jetpack)

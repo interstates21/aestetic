@@ -53,10 +53,10 @@ void	draw_wall_no_nei(t_data *d, t_projdata *p, t_frustum *fr)
 			p->y > p->ya_poster && p->y < p->yb_poster && (((px =
 			pixel_pls(p->poster, p->u_poster, NORMALIZE(p->y, p->ya_poster,
 			p->yb_poster), 3)) >> 24) > 128))
-			pixel_put(d, (t_vec3f){p->x, p->y, p->z},
+			pixel_put(d, new_v3(p->x, p->y, p->z),
 												shade(p->shadefactor, px), 1);
 		else
-			pixel_put(d, (t_vec3f){p->x, p->y, p->z}, shade(p->shadefactor,
+			pixel_put(d, new_v3(p->x, p->y, p->z), shade(p->shadefactor,
 						pixel_pls(p->tex, p->u_tex,
 							NORMALIZE(p->y, p->yc, p->yd) * p->y_scale, 3)), 1);
 }
@@ -71,7 +71,7 @@ void	drawing_wall(t_vec2 y_value, t_data *d, t_projdata *p, int mode)
 				NORMALIZE(y_value.x, p->yc, p->yd) * p->y_scale :
 				NORMALIZE(y_value.x, p->nya - p->doorheight, p->nya), 3);
 		if (mode == 0 || (pix >> 24) == 0xff)
-			pixel_put(d, (t_vec3f){p->x, y_value.x, p->z},
+			pixel_put(d, new_v3(p->x, y_value.x, p->z),
 					shade(p->shadefactor, pix), 1);
 	}
 }

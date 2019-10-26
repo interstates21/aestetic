@@ -33,7 +33,7 @@ void	draw_sky(t_data *d, t_projdata *p, t_frustum *fr)
 		{
 			v_h.x = ((double)x_y.y + d->cam.y_offset + MAX_Y_OFFSET) /
 															v_h.y * textures->h;
-			pixel_put(d, (t_vec3f){x_y.x, x_y.y, 0}, ((uint32_t*)textures->
+			pixel_put(d, new_v3(x_y.x, x_y.y, 0), ((uint32_t*)textures->
 				pixels)[(int)p->u + v_h.x * textures->w], 0);
 		}
 	}
@@ -41,25 +41,25 @@ void	draw_sky(t_data *d, t_projdata *p, t_frustum *fr)
 
 void	proj_ceil_or_floor(t_data *d, t_projdata *p, int mode)
 {
-	mode == 0 ? (p->b[0] = transform_back(d, (t_vec3f){-1, 0, 1})) :
-				(p->c[0] = transform_back(d, (t_vec3f){-1, 0, 1}));
-	mode == 0 ? (p->b[1] = transform_back(d, (t_vec3f){1, 0, 1})) :
-				(p->c[1] = transform_back(d, (t_vec3f){1, 0, 1}));
-	mode == 0 ? (p->b[2] = transform_back(d, (t_vec3f){0, 0, 2})) :
-				(p->c[2] = transform_back(d, (t_vec3f){0, 0, 2}));
-	mode == 0 ? (p->a[0] = (t_vec3f){-WIDTH + WIDTH / 2, get_ceildh(d,
+	mode == 0 ? (p->b[0] = transform_back(d, new_v3(-1, 0, 1))) :
+				(p->c[0] = transform_back(d, new_v3(-1, 0, 1)));
+	mode == 0 ? (p->b[1] = transform_back(d, new_v3(1, 0, 1))) :
+				(p->c[1] = transform_back(d, new_v3(1, 0, 1)));
+	mode == 0 ? (p->b[2] = transform_back(d, new_v3z(2))) :
+				(p->c[2] = transform_back(d, new_v3z(2)));
+	mode == 0 ? (p->a[0] = new_v3(-WIDTH + WIDTH / 2, get_ceildh(d,
 		p->sector, v3_to_v2(p->b[0])) * -WIDTH + (HEIGHT / 2 - d->cam.y_offset),
-		1}) : (p->v[0] = (t_vec3f){-WIDTH + WIDTH / 2, get_floordh(d, p->sector,
-		v3_to_v2(p->c[0])) * -WIDTH + (HEIGHT / 2 - d->cam.y_offset), 1});
-	mode == 0 ? (p->a[1] = (t_vec3f){WIDTH + WIDTH / 2, get_ceildh(d,
+		1)) : (p->v[0] = new_v3(-WIDTH + WIDTH / 2, get_floordh(d, p->sector,
+		v3_to_v2(p->c[0])) * -WIDTH + (HEIGHT / 2 - d->cam.y_offset), 1));
+	mode == 0 ? (p->a[1] = new_v3(WIDTH + WIDTH / 2, get_ceildh(d,
 		p->sector, v3_to_v2(p->b[1])) * -WIDTH + (HEIGHT / 2 - d->cam.y_offset),
-		1}) : (p->v[1] = (t_vec3f){WIDTH + WIDTH / 2, get_floordh(d, p->sector,
-		v3_to_v2(p->c[1])) * -WIDTH + (HEIGHT / 2 - d->cam.y_offset), 1});
-	mode == 0 ? (p->a[2] = (t_vec3f){WIDTH / 2, get_ceildh(d, p->sector,
+		1)) : (p->v[1] = new_v3(WIDTH + WIDTH / 2, get_floordh(d, p->sector,
+		v3_to_v2(p->c[1])) * -WIDTH + (HEIGHT / 2 - d->cam.y_offset), 1));
+	mode == 0 ? (p->a[2] = new_v3(WIDTH / 2, get_ceildh(d, p->sector,
 		v3_to_v2(p->b[2])) * -WIDTH * 0.5 + (HEIGHT / 2 - d->cam.y_offset),
-		0.5}) : (p->v[2] = (t_vec3f){WIDTH / 2, get_floordh(d, p->sector,
+		0.5)) : (p->v[2] = new_v3(WIDTH / 2, get_floordh(d, p->sector,
 		v3_to_v2(p->c[2])) * -WIDTH * 0.5 + (HEIGHT / 2 - d->cam.y_offset),
-		0.5});
+		0.5));
 	mode == 0 ? (p->b[2].x /= 2) : (p->c[2].x /= 2);
 	mode == 0 ? (p->b[2].z /= 2) : (p->c[2].z /= 2);
 	mode == 0 ? (p->areaa = edge_function(p->a[0], p->a[1],

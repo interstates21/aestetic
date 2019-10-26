@@ -30,5 +30,5 @@ void	play_music(t_data *d, uint8_t id)
 	if (id == 0 && Mix_Playing(99))
 		return ;
 	if (Mix_PlayChannel(99, d->chunk[id], -1) == -1)
-		printf("play_music: %s\n", SDL_GetError());
+		ft_putendl(" ");
 }

@@ -15,8 +15,8 @@
 static void	new_closest_wall(t_data *d, t_vec2f *position, short *j,
 		uint16_t sect_to_scan)
 {
-	*position = (t_vec2f){d->cam.pos.x + 100000 * d->cam.sin,
-		d->cam.pos.z + 100000 * d->cam.cos};
+	*position = new_v2(d->cam.pos.x + 100000 * d->cam.sin,
+		d->cam.pos.z + 100000 * d->cam.cos);
 	*j = d->sectors[sect_to_scan].firstwallnum +
 		d->sectors[sect_to_scan].numwalls - 1;
 }
@@ -39,9 +39,9 @@ t_vec2f		checking_walls(t_data *d, t_vec2 i_j, t_vec2f position,
 		if (sector.x != -1 && sector.y != -1 && is_inside_vec2f(
 						d->walls[i_j.y].point, d->walls[i_j.x].point, sector)
 				&& is_inside_vec2f(v3_to_v2(d->cam.pos), position, sector))
-			return ((t_vec2f){sector.x, sector.y});
+			return (new_v2(sector.x, sector.y));
 	}
-	return ((t_vec2f){-1, -1});
+	return (new_v2(-1, -1));
 }
 
 double		find_closest_wall_dist(t_data *d, uint16_t sect_to_scan)

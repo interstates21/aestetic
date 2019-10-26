@@ -34,7 +34,7 @@ void	update_anim_projectile(t_projectile *projectile, t_data *d, short id,
 	if (has_collided)
 	{
 		if (d->projectile_type[projectile->id_type].threat_to_player)
-			projectile->dir = (t_vec3f){0.0, 0.0, 0.0};
+			projectile->dir = new_v3zero();
 		projectile->has_collided = true;
 		projectile->current_anim_playing =
 			d->projectile_type[projectile->id_type].anim_order[COLLISION_ID];

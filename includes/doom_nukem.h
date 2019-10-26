@@ -311,4 +311,9 @@ void		load_weapons_texture(t_data *d,
 		int f, int *nb_tex, int *nb_projectiles);
 void 		loading(t_data *d);
 
+t_vec3f new_v3_projection(double x, double y);
+t_vec3f new_v3zero();
+t_vec3f	new_v3z(double z);
+t_vec2f	new_v2zero();
+
 #endif

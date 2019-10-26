@@ -36,8 +36,8 @@ void	proj_asset(t_data *d, t_projdata *p, t_vec3f vect, SDL_Surface *tex)
 
 	vect.x -= d->cam.pos.x;
 	vect.z -= d->cam.pos.z;
-	vect = (t_vec3f){vect.x * d->cam.cos - vect.z * d->cam.sin, vect.y,
-		vect.x * d->cam.sin + vect.z * d->cam.cos};
+	vect = new_v3(vect.x * d->cam.cos - vect.z * d->cam.sin, vect.y,
+		vect.x * d->cam.sin + vect.z * d->cam.cos);
 	scale = (1.0 / vect.z) * WIDTH;
 	vect.x = vect.x * scale + WIDTH / 2;
 	vect.y = vect.y * -scale + HEIGHT / 2 - d->cam.y_offset;
@@ -65,7 +65,7 @@ void	blit_asset(t_data *d, t_projdata *p, SDL_Surface *tex)
 				px = pixel_pls(tex, container.three,
 								NORMALIZE(container.two, p->ya, p->yb), 3);
 				if ((px >> 24) > 127)
-					pixel_put(d, (t_vec3f){container.one, container.two, p->z},
+					pixel_put(d, new_v3(container.one, container.two, p->z),
 										shade(p->shadefactor, px), 1);
 			}
 		}

@@ -94,7 +94,7 @@ void		load_map(t_data *d, char *map)
 		read(f, &d->startcam.rot, sizeof(double)) == -1 ||
 		read(f, &d->startsectnum, sizeof(int16_t)) == -1 ||
 		read(f, d->nextmap, 100) < 0)
-		exit(printf("Doom : Map error\n"));
+		print_err("map error");
 	read_wall_n_sector_data(d, f);
 	read_monsters_data(d, f);
 	read_assets_data(d, f);

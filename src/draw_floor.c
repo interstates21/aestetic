@@ -14,8 +14,8 @@
 
 t_vec3f	transform_back(t_data *d, t_vec3f v)
 {
-	return ((t_vec3f){v.x * d->cam.cos + v.z * d->cam.sin + d->cam.pos.x, v.y,
-			v.x * -d->cam.sin + v.z * d->cam.cos + d->cam.pos.z});
+	return (new_v3(v.x * d->cam.cos + v.z * d->cam.sin + d->cam.pos.x, v.y,
+			v.x * -d->cam.sin + v.z * d->cam.cos + d->cam.pos.z));
 }
 
 double	edge_function(t_vec3f a, t_vec3f b, int x, int y)
@@ -41,7 +41,7 @@ void	drawing_c_f(t_data *d, t_projdata *p, int mode, t_vec2 x_y)
 																p->a[2].z)) :
 			(z = 1 / (w[0] * p->v[0].z + w[1] * p->v[1].z + w[2] * p->v[2].z));
 	if (z <= d->zbuffer[x_y.x + x_y.y * WIDTH])
-		pixel_put(d, (t_vec3f){x_y.x, x_y.y, z}, shade(getshadefactor(d, p, z),
+		pixel_put(d, new_v3(x_y.x, x_y.y, z), shade(getshadefactor(d, p, z),
 			pixel_pls(d->textures[mode == 0 ? p->sector->ceilpicnum :
 				p->sector->floorpicnum], mode == 0 ?
 				((w[0] * p->b[0].x + w[1] * p->b[1].x + w[2] * p->b[2].x) * z) :

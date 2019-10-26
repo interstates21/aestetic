@@ -54,7 +54,7 @@ short		*mont_anim(t_data *d, t_monster monster, short *nb_of_anim)
 void		new_zbuffer_and_put_collor(t_data *d, t_vec2 x_y, uint32_t colo,
 															t_vec2f dist_mod)
 {
-	pixel_put(d, (t_vec3f){x_y.x, x_y.y, 0}, colo, 0);
+	pixel_put(d, new_v3(x_y.x, x_y.y, 0), colo, 0);
 	d->zbuffer[x_y.x + x_y.y * d->sdl.screen->w] = dist_mod.x;
 }
 
@@ -79,8 +79,8 @@ void		draw_monster(t_data *d, t_monster monster)
 	new_disp_data_2(&a, monster.cursectnum);
 	if (nb_of_anim[1] < 4 && monster.anim_state < 10)
 		disp_sprite(d, d->monster_text[monster.id_type]
-	[monster.anim_state][nb_of_anim[0]], a, (t_vec2f){point_in_screen.z, 0});
+	[monster.anim_state][nb_of_anim[0]], a, new_v2(point_in_screen.z, 0));
 	else
 		disp_sprite(d, d->monster_text[monster.id_type]
-	[monster.anim_state][nb_of_anim[0]], a, (t_vec2f){point_in_screen.z, 1});
+	[monster.anim_state][nb_of_anim[0]], a, new_v2(point_in_screen.z, 1));
 }

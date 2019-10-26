@@ -16,9 +16,11 @@ void	set_find_alpha(double *sl_x, double *sl_y)
 {
 	short	x;
 
-	x = -1;
-	while (++x < WIDTH)
+	x = 0;
+	while (x < WIDTH) {
 		sl_x[x] = fabs(x - WIDTH * 0.5) / (WIDTH * 0.5);
+		x++;
+	}
 	alpha_y(sl_y);
 }
 
@@ -60,7 +62,7 @@ void	color_screen(t_args_multi_colo_buf *data)
 				tmp = (uint8_t)((find_alpha(x, y, data->d->color_buf.colo)) *
 						data->d->color_buf.value);
 			colo = data->d->color_buf.colo + (tmp << 24);
-			pixel_put(data->d, (t_vec3f){x, y, 0},
+			pixel_put(data->d, new_v3(x, y, 0),
 					alpha(pixel_pls(data->d->sdl.screen, x, y, 2), colo), 0);
 		}
 	}
