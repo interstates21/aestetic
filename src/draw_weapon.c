@@ -28,7 +28,7 @@ void	display_weapon(t_data *d, SDL_Surface *s, t_vec2f start, t_vec2f end)
 														(x_y.y - start.y), 0);
 			colo = alpha(((uint32_t *)d->sdl.screen->pixels)
 					[(short)x_y.x + (short)x_y.y * d->sdl.screen->w], colo);
-			pixel_put(d, (t_vec3f){x_y.x, x_y.y, 0}, colo, 0);
+			pixel_put(d, new_v3_projection(x_y.x, x_y.y), colo, 0);
 			x_y.y++;
 		}
 		x_y.x++;

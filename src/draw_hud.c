@@ -50,7 +50,7 @@ static void	draw_inventory_slot(t_data *d, SDL_Surface *tex, int x1, int y1)
 		{
 			pix_yh = (double)x_y.y / h_u.x;
 			if (((px = pixel_pls(tex, h_u.y, pix_yh, 3)) >> 24) > 127)
-				pixel_put(d, (t_vec3f){x1 + x_y.x, y1 + x_y.y, 0}, px, 0);
+				pixel_put(d, new_v3(x1 + x_y.x, y1 + x_y.y, 0), px, 0);
 		}
 	}
 }

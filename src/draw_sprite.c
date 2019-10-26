@@ -17,11 +17,11 @@ t_vec3f		trans_v3f_in_scr(t_data *d, t_vec3f v)
 	t_vec3f	new;
 
 	new = v3_min(v, d->cam.pos);
-	new = (t_vec3f){
+	new = new_v3(
 		new.x * d->cam.cos - new.z * d->cam.sin,
 			new.y,
 			new.x * d->cam.sin + new.z * d->cam.cos
-	};
+	);
 	new.x /= new.z;
 	new.y /= new.z;
 	new.x = new.x * WIDTH + WIDTH * 0.5;

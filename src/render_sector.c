@@ -34,8 +34,8 @@ void		render_wall(t_data *d, t_projdata *p, t_frustum *fr, int i)
 			(p->u2 = v2_len((t_vec2f){p->x2 - p->x1, p->z2 - p->z1})))))
 		return ;
 	proj_wall(d, p, fr, (t_vec2f[2]){
-			v3_to_v2(transform_back(d, (t_vec3f){p->x1, 0, p->z1})),
-			v3_to_v2(transform_back(d, (t_vec3f){p->x2, 0, p->z2}))});
+			v3_to_v2(transform_back(d, new_v3(p->x1, 0, p->z1))),
+			v3_to_v2(transform_back(d, new_v3(p->x2, 0, p->z2)))});
 }
 
 void		render_sector(t_data *d, t_sector *sect, t_frustum *fr)

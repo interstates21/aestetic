@@ -7,7 +7,7 @@ t_vec3f	update_pos_vec3f(t_vec3f new_pos, t_vec2f point, double radius)
 	tmp[0] = (t_vec2f){ new_pos.x - point.x, new_pos.z - point.y };
 	tmp[1] = (t_vec2f){ radius, 0.0 };
 	actualize_dir(atan2(tmp[0].y, tmp[0].x), &tmp[1]);
-	return ((t_vec3f){ tmp[1].x + point.x, new_pos.y, tmp[1].y + point.y });
+	return (new_v3(tmp[1].x + point.x, new_pos.y, tmp[1].y + point.y));
 }
 
 t_vec2f	update_pos_vec2f(t_vec2f pos, t_vec2f point)

@@ -126,3 +126,34 @@ void	v2_rot(t_vec2f *p, double angle)
 	p->x = temp.x * cos(angle) - temp.y * sin(angle);
 	p->y = temp.x * sin(angle) + temp.y * cos(angle);
 }
+
+
+t_vec3f new_v3_projection(double x, double y)
+{
+	t_vec3f v;
+
+	v.x = x;
+	v.y = y;
+	v.z = 0;
+	return (v);
+}
+
+t_vec3f new_v3zero()
+{
+	t_vec3f v;
+
+	v.x = 0.0;
+	v.y = 0.0;
+	v.z = 0.0;
+	return (v);
+}
+
+t_vec3f	new_v3z(double z)
+{
+	t_vec3f v;
+
+	v.x = 0.0;
+	v.y = 0.0;
+	v.z = z;
+	return (v);
+}

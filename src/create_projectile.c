@@ -56,10 +56,10 @@ void	set_projectile_id_monster(t_data *d, short i,
 {
 	d->projectiles[i].is_active = true;
 	d->projectiles[i].id_type = id_of_proj_type;
-	d->projectiles[i].pos = (t_vec3f){
+	d->projectiles[i].pos = new_v3(
 		monster->pos.x,
 		d->sectors[monster->cursectnum].floorheight + 0.8,
-		monster->pos.y};
+		monster->pos.y);
 	d->projectiles[i].dir.z = sin(monster->rot) *
 		d->projectile_type[id_of_proj_type].speed;
 	d->projectiles[i].dir.y = (d->cam.pos.y -

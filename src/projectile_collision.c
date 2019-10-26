@@ -111,10 +111,10 @@ bool		collision_proj_player(t_data *d, t_projectile *projectile)
 		tmp = (t_vec2f){MIN_DIST_TO_PLAYER, 0.0};
 		player_hit_projectile(d, projectile);
 		actualize_dir(atan2(tmp_pos.y, tmp_pos.x) - M_PI_2, &tmp);
-		projectile->pos = (t_vec3f){
+		projectile->pos =new_v3(
 			tmp.x + d->cam.pos.x,
 				d->cam.pos.y,
-				tmp.y + d->cam.pos.z};
+				tmp.y + d->cam.pos.z);
 		projectile->pos = newpos;
 		return (true);
 	}

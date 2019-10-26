@@ -86,7 +86,7 @@ void	draw_bitmap(t_data *d, t_bitmap bitmap, int x, int y)
 		{
 			if ((bitmap.bit[j] >> (8 - i)) & 1)
 			{
-				pixel_put(d, (t_vec3f){x + i, y + j, 0}, 0xffffff, 0);
+				pixel_put(d, new_v3(x + i, y + j, 0), 0xffffff, 0);
 			}
 		}
 	}
