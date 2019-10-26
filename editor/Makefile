@@ -25,7 +25,10 @@ FILES = bmp_reader \
 					r_selectors \
 					r_texture_picker \
 					r_circle \
-					r_pickers
+					r_pickers \
+					r_put_sprite \
+					r_render_shit \
+					r_render_sector_sprites 
 LIBFT_DIR = ../libft/
 SRC = $(addsuffix .c, $(FILES))
 OBJ = $(addprefix obj/, $(addsuffix .o, $(FILES)))

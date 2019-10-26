@@ -19,6 +19,7 @@ static void	ground(t_ed *e)
 	e->n_sprites = 0;
 	e->n_walls = 0;
 	e->n_sect = 0;
+	e->n_mns = 0;
 	e->selection.drawing = 0;
 	e->selection.sector = -1;
 	e->selection.select = 2;
@@ -56,7 +57,7 @@ static void	run(char *mapname)
 	//todo sdl clean
 	//saving_screen();
 	ed.player = (t_v3){ED_W >> 1, ed.seclist[0].height[H_FLOOR], ED_W >> 1};
-	find_used_tex(&ed);
+	// find_used_tex(&ed);
 	//save();
 	close(2);
 }

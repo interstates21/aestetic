@@ -33,3 +33,12 @@ bool v2_compare(t_v2 a, t_v2 b, int r)
             return (true);
     return (false);
 }
+
+void print_v(t_v2 v, const char *s) {
+	ft_putstr(s);
+	ft_putstr(" -- x: ");
+	ft_putnbr(v.x);
+	ft_putstr(" y: ");
+	ft_putnbr(v.y);
+	ft_putchar('\n');
+}

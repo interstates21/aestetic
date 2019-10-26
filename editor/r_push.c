@@ -45,8 +45,9 @@ static void	append_all_walls(t_ed *e)
 	j = -1;
 	while (++j < e->n_walls)
 		tmp[i + j] = e->walls[j];
-	if (e->all_walls)
-		free(e->all_walls);
+	// if (e->all_walls)
+	// 	free(e->all_walls); leaks
+	e->n_all_w = e->n_walls;
 	e->all_walls = tmp;
 }
 

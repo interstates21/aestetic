@@ -56,8 +56,6 @@ void render_sprites(t_ed *ed, t_sdl *sdl) {
 }
 
 int  pickers(t_ed *ed) {
-    ed->selection.monster = -1;
-	ed->selection.sprite = -1;
     if (ed->selection.sector == -1)
         return (0);
 	if (picking_monster(ed->controller.mouse) == 1) {
