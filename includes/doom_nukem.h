@@ -314,5 +314,6 @@ void 		loading(t_data *d);
 t_vec3f new_v3_projection(double x, double y);
 t_vec3f new_v3zero();
 t_vec3f	new_v3z(double z);
+t_vec2f	new_v2zero();
 
 #endif

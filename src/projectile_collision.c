@@ -108,7 +108,7 @@ bool		collision_proj_player(t_data *d, t_projectile *projectile)
 			id_type].hitbox_radius + PLAYER_HITBOX)
 	{
 		tmp_pos = v3_min(projectile->pos, d->cam.pos);
-		tmp = (t_vec2f){MIN_DIST_TO_PLAYER, 0.0};
+		tmp = new_v2(MIN_DIST_TO_PLAYER, 0.0);
 		player_hit_projectile(d, projectile);
 		actualize_dir(atan2(tmp_pos.y, tmp_pos.x) - M_PI_2, &tmp);
 		projectile->pos =new_v3(

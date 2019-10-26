@@ -17,7 +17,7 @@ void	in_perk1(t_data *d, t_vec2f mvt, double perk1)
 	if (v2_len(d->inertia) > MAX_INERTIA)
 	{
 		perk1 = atan2(d->inertia.y, d->inertia.x) - M_PI_2;
-		d->inertia = (t_vec2f){ 0.0, MAX_INERTIA };
+		d->inertia = new_v2(0.0, MAX_INERTIA);
 		actualize_dir(perk1, &d->inertia);
 	}
 }
@@ -40,6 +40,6 @@ void	inertia(t_data *d, t_vec2f mvt)
 
 void	change_inertia(t_data *d, double perk1, double length)
 {
-	d->inertia = (t_vec2f){ length, 0.0 };
+	d->inertia = new_v2(length, 0.0);
 	actualize_dir(perk1, &d->inertia);
 }

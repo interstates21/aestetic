@@ -18,7 +18,7 @@ static void	behaviour_update_charge(t_data *d, t_monster *monster)
 
 void		charging_demon_wait(t_monster *monster)
 {
-	monster->dir = (t_vec2f){0.0, 0.0};
+	monster->dir = new_v2zero();
 	monster->timer = 30;
 	if (monster->anim_state < 4)
 	{

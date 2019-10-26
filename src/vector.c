@@ -157,3 +157,13 @@ t_vec3f	new_v3z(double z)
 	v.z = z;
 	return (v);
 }
+
+
+t_vec2f	new_v2zero()
+{
+	t_vec2f v;
+
+	v.x = 0.0;
+	v.y = 0.0;
+	return (v);
+}

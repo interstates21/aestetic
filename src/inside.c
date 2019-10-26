@@ -67,7 +67,7 @@ int16_t	update_cursect_proj(int16_t sects[2], t_data *d, int depth,
 													sects[0], v3_to_v2(pos));
 	ceil_height = get_ceil_height(&d->sectors[sects[0]], d->walls,
 													sects[0], v3_to_v2(pos));
-	if (inside(d, sects[0], (t_vec2f){pos.x, pos.z}) &&
+	if (inside(d, sects[0], new_v2(pos.x, pos.z)) &&
 			(pos.y < ceil_height || d->sectors[sects[0]].outdoor) &&
 			pos.y > floor_height)
 		return (sects[0]);
