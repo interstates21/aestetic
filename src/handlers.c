@@ -6,13 +6,11 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 20:07:46 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/26 20:09:54 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/26 20:29:51 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
-
-//its our function?
 
 void	print_and_quit(t_data *d, const char *str)
 {

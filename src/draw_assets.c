@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 18:26:21 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/25 22:23:17 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/26 22:12:06 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ void	blit_asset(t_data *d, t_projdata *p, SDL_Surface *tex)
 				px = pixel_pls(tex, container.three,
 								NORMALIZE(container.two, p->ya, p->yb), 3);
 				if ((px >> 24) > 127)
-					putpixel2(d, p->z, (t_vec2){container.one, container.two},
-										shade(p->shadefactor, px));
+					pixel_put(d, (t_vec3f){container.one, container.two, p->z},
+										shade(p->shadefactor, px), 1);
 			}
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 19:45:21 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/25 22:11:33 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/26 21:42:32 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ short		*mont_anim(t_data *d, t_monster monster, short *nb_of_anim)
 void		new_zbuffer_and_put_collor(t_data *d, t_vec2 x_y, uint32_t colo,
 															t_vec2f dist_mod)
 {
-	putpixel(d, x_y.x, x_y.y, colo);
+	pixel_put(d, (t_vec3f){x_y.x, x_y.y, 0}, colo, 0);
 	d->zbuffer[x_y.x + x_y.y * d->sdl.screen->w] = dist_mod.x;
 }
 

@@ -84,7 +84,8 @@ double		find_closest_wall_dist(t_data *d, uint16_t sect_to_scan);
 int16_t		recur_scan_point_line(t_data *d,
 		int16_t sect_to_scan, int16_t old_sect, bool hit_all);
 double		get_dist_to_intersect_wall(t_data *d, t_vec2f wall1, t_vec2f wall2);
-void		putpixel(t_data *d, int x, int y, uint32_t color);
+void		pixel_put(t_data *d, t_vec3f p, uint32_t color, int mode);
+//void		putpixel(t_data *d, int x, int y, uint32_t color);
 uint32_t	pixel_pls(SDL_Surface *s, double x, double y, int mode);
 //uint32_t	getpixel(SDL_Surface *s, double x, double y);
 //uint32_t	getpixel2(SDL_Surface *s, double x, double y);
@@ -176,7 +177,7 @@ void		use_asset(t_data *d, t_assets *asset);
 void		draw_hud(t_data *d);
 void		invoke_msg(t_data *d, char *msg);
 bool		activate_door(t_data *d, t_sector *sect);
-void		putpixel2(t_data *d, double z, t_vec2 p, uint32_t color);
+//void		putpixel2(t_data *d, double z, t_vec2 p, uint32_t color);
 t_vec2f		get_closest(t_vec2f a, t_vec2f b, t_vec2f p);
 void		move_monster(t_data *d, int i);
 void		draw_health(t_data *d);

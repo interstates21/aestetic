@@ -1,8 +1,8 @@
 NAME = doom_nukem
 CC = clang
 FILES = main \
-    	loading \
-		nextSectFix \
+		loading \
+		next_sect_fix \
 		atoi \
 	   draw_hud \
 	   asset_collision \

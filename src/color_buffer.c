@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 09:18:24 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/25 22:14:31 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/26 21:28:14 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ void	color_screen(t_args_multi_colo_buf *data)
 				tmp = (uint8_t)((find_alpha(x, y, data->d->color_buf.colo)) *
 						data->d->color_buf.value);
 			colo = data->d->color_buf.colo + (tmp << 24);
-			putpixel(data->d, x, y,
-					alpha(pixel_pls(data->d->sdl.screen, x, y, 2), colo));
+			pixel_put(data->d, (t_vec3f){x, y, 0},
+					alpha(pixel_pls(data->d->sdl.screen, x, y, 2), colo), 0);
 		}
 	}
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   next_sect_fix.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/26 21:08:42 by bdeomin           #+#    #+#             */
+/*   Updated: 2019/10/26 21:09:47 by bdeomin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/doom_nukem.h"
 
 static bool	is_part(t_v2_pair wall_vects, t_v2_pair vects, bool not_itself)
@@ -39,7 +51,7 @@ static int	calculate_next_sect(t_data *d, t_range old_range, int old_current)
 	return (-1);
 }
 
-void	next_sect_fix(t_data *d)
+void		next_sect_fix(t_data *d)
 {
 	int		current;
 	int		min;

@@ -32,7 +32,7 @@ static void	draw_bar(t_data *d, int p)
 		while (++j < 5)
 		{
 			col = get_col(to_percent(p), i - start);
-			putpixel(d, i, j + (HEIGHT >> 1), col);
+			pixel_put(d, (t_vec3f){i, j + (HEIGHT >> 1), 0}, col, 0);
 		}
 }
 

@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 17:25:37 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/22 21:24:49 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/26 21:31:32 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,19 +62,23 @@ void	drawing(t_data *d, uint32_t colo, int mode)
 	{
 		i = -1;
 		while (++i < 10)
-			putpixel(d, (WIDTH >> 1) - 16 + i, HEIGHT >> 1, colo);
+			pixel_put(d, (t_vec3f){(WIDTH >> 1) - 16 + i, HEIGHT >> 1, 0},
+																	colo, 0);
 		i += 12;
 		while (++i < 32)
-			putpixel(d, (WIDTH >> 1) - 16 + i, HEIGHT >> 1, colo);
+			pixel_put(d, (t_vec3f){(WIDTH >> 1) - 16 + i, HEIGHT >> 1, 0},
+																	colo, 0);
 	}
 	else
 	{
 		i = -1;
 		while (++i < 10)
-			putpixel(d, WIDTH >> 1, (HEIGHT >> 1) - 16 + i, colo);
+			pixel_put(d, (t_vec3f){WIDTH >> 1, (HEIGHT >> 1) - 16 + i, 0},
+																	colo, 0);
 		i += 12;
 		while (++i < 32)
-			putpixel(d, WIDTH >> 1, (HEIGHT >> 1) - 16 + i, colo);
+			pixel_put(d, (t_vec3f){WIDTH >> 1, (HEIGHT >> 1) - 16 + i, 0},
+																	colo, 0);
 	}
 }
 
@@ -85,5 +89,5 @@ void	draw_aim_cross(t_data *d)
 	if (d->player.current_weapon == CRYO_BALLISTA)
 		colo = 0xDDFF;
 	drawing(d, colo, 0);
-	putpixel(d, WIDTH >> 1, HEIGHT >> 1, colo);
+	pixel_put(d, (t_vec3f){WIDTH >> 1, HEIGHT >> 1, 0}, colo, 0);
 }

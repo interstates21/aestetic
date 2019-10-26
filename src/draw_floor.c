@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 21:25:05 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/25 22:13:27 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/26 22:13:33 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	drawing_c_f(t_data *d, t_projdata *p, int mode, t_vec2 x_y)
 																p->a[2].z)) :
 			(z = 1 / (w[0] * p->v[0].z + w[1] * p->v[1].z + w[2] * p->v[2].z));
 	if (z <= d->zbuffer[x_y.x + x_y.y * WIDTH])
-		putpixel2(d, z, x_y, shade(getshadefactor(d, p, z),
+		pixel_put(d, (t_vec3f){x_y.x, x_y.y, z}, shade(getshadefactor(d, p, z),
 			pixel_pls(d->textures[mode == 0 ? p->sector->ceilpicnum :
 				p->sector->floorpicnum], mode == 0 ?
 				((w[0] * p->b[0].x + w[1] * p->b[1].x + w[2] * p->b[2].x) * z) :
@@ -49,7 +49,7 @@ void	drawing_c_f(t_data *d, t_projdata *p, int mode, t_vec2 x_y)
 				mode == 0 ? ((w[0] * p->b[0].z + w[1] * p->b[1].z + w[2] *
 					p->b[2].z) * z) :
 					((w[0] * p->c[0].z + w[1] * p->c[1].z + w[2] *
-					p->c[2].z) * z), 1)));
+					p->c[2].z) * z), 1)), 1);
 }
 
 void	draw_ceil_floor(t_data *d, t_projdata *p, t_frustum *fr, int mode)

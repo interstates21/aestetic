@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 19:08:35 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/22 22:58:21 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/26 21:40:35 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	draw_sky(t_data *d, t_projdata *p, t_frustum *fr)
 		{
 			v_h.x = ((double)x_y.y + d->cam.y_offset + MAX_Y_OFFSET) /
 															v_h.y * textures->h;
-			putpixel(d, x_y.x, x_y.y, ((uint32_t*)textures->pixels)[
-					(int)p->u + v_h.x * textures->w]);
+			pixel_put(d, (t_vec3f){x_y.x, x_y.y, 0}, ((uint32_t*)textures->
+				pixels)[(int)p->u + v_h.x * textures->w], 0);
 		}
 	}
 }
