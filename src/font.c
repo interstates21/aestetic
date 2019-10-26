@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 09:18:24 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/26 22:41:46 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/26 23:47:38 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,7 @@ void	draw_bitmap(t_data *d, t_bitmap bitmap, int x, int y)
 		while (++i < 9)
 		{
 			if ((bitmap.bit[j] >> (8 - i)) & 1)
-			{
 				pixel_put(d, (t_vec3f){x + i, y + j, 0}, 0xffffff, 0);
-			}
 		}
 	}
 }

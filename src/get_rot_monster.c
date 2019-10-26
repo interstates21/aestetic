@@ -6,53 +6,50 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 21:48:59 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/25 22:10:09 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/26 23:57:38 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
 
-//not_glob_refact
-
-uint8_t	get_nb_anim_from_rotation_2(double rotation)
+static uint8_t	get_option(double r)
 {
-	if (rotation > 0.75 * M_PI)
+	if (r > M_PI)
+	{
+		if (r < 1.25 * M_PI)
+			return (1);
+		if (r < 1.5 * M_PI)
+			return (0);
+		if (r < 1.75 * M_PI)
+			return (7);
+		if (r < DOUBLE_PI)
+			return (6);
+	}
+	if (r > 0.75 * M_PI)
 		return (2);
-	if (rotation > M_PI_2)
+	if (r > M_PI_2)
 		return (3);
-	if (rotation > M_PI_4)
+	if (r > M_PI_4)
 		return (4);
-	if (rotation < 0)
+	if (r < 0)
 		return (6);
 	return (5);
 }
 
-uint8_t	get_nb_anim_from_rotation(double monster_rotation,
-		t_vec2f monster_pos, t_vec2f player_pos)
+uint8_t	get_nb_anim_from_rotation(double m_rotation,
+		t_vec2f mon_pos, t_vec2f p_pos)
 {
-	double	rotation;
-	double	vision_rotation;
-	t_vec2f	vision;
+	double	r;
+	t_vec2f	vs;
+	double	vr;
 
-	vision = v2_min(monster_pos, player_pos);
-	vision_rotation = atan2(vision.y, vision.x);
-	rotation = vision_rotation - monster_rotation;
-	rotation += M_PI_2;
-	if (rotation > 2 * M_PI)
-		rotation -= 2 * M_PI;
-	if (rotation < 0)
-		rotation += 2 * M_PI;
-	rotation = rotation - 0.125 * M_PI;
-	if (rotation > M_PI)
-	{
-		if (rotation < 1.25 * M_PI)
-			return (1);
-		if (rotation < 1.5 * M_PI)
-			return (0);
-		if (rotation < 1.75 * M_PI)
-			return (7);
-		if (rotation < 2 * M_PI)
-			return (6);
-	}
-	return (get_nb_anim_from_rotation_2(rotation));
+	vs = v2_min(mon_pos, p_pos);
+	vr = atan2(vs.y, vs.x);
+	r = (vr - m_rotation) + M_PI_2;
+	if (r > DOUBLE_PI)
+		r -= DOUBLE_PI;
+	if (r < 0)
+		r += DOUBLE_PI;
+	r = r - 0.125 * M_PI;
+	return (get_option(r));
 }

@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 20:07:46 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/26 20:29:51 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/26 23:59:08 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	print_and_quit(t_data *d, const char *str)
 		SDL_DestroyWindow(d->sdl.win);
 	SDL_Quit();
 	ft_putendl(ft_strjoin(("Good bye!"), str));
+	system("leaks --quiet doom_nukem");
 	exit(0);
 }
 
