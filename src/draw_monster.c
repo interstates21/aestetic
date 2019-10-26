@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 19:45:21 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/23 22:58:54 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/25 22:11:33 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	new_disp_data_2(t_display_data *disp_data,
 
 short		*mont_anim(t_data *d, t_monster monster, short *nb_of_anim)
 {
-	nb_of_anim[1] = get_nb_anim_from_rot(monster.rot,
+	nb_of_anim[1] = get_nb_anim_from_rotation(monster.rot,
 			monster.pos, v3_to_v2(d->cam.pos));
 	nb_of_anim[0] = nb_of_anim[1];
 	if (nb_of_anim[1] > 4)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:17:11 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/24 18:04:16 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/24 22:55:44 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	init_player_2(t_data *d, t_player *player)
 void	init_player(t_data *d, t_player *player)
 {
 	int i;
-	
+
 	i = 1;
 	ft_bzero(player, sizeof(*player));
 	player->current_weapon = CRYO_BALLISTA;

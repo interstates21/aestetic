@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_projectiles.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:30:39 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/24 18:14:59 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/24 22:55:50 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	init_projectiles_type_cryo_bow(t_data *d)
 }
 
 void	init_projectiles_fireball_1(t_data *d)
-{	
+{
 	d->projectile_type[FIREBALL_1].anim_order[0] = 1;
 	d->projectile_type[FIREBALL_1].anim_order[1] = 0;
 	d->projectile_type[FIREBALL_1].anim_order[COLLISION_ID] = 2;
@@ -55,7 +55,7 @@ void	init_projectiles_fireball_1(t_data *d)
 
 void	init_weapons(t_data *d)
 {
-	d->weapon_type.rate_of_fire[0] = 
+	d->weapon_type.rate_of_fire[0] =
 		d->player.speed_anim[CRYO_BALLISTA] * 11;
 	d->weapon_type.has_alt_fire = false;
 }

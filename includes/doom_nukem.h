@@ -50,6 +50,9 @@
 # define HEALTH_COLO 0xFFFF66
 #define SAME_POS(v1, v2) (((v1.x) == (v2.x)) && ((v1.y) == (v2.y)))
 
+TTF_Font *gFont;
+unsigned int 	tick;
+
 void	change_buf_colo(t_data *d, uint16_t amount, uint32_t colo);
 double	get_dist(t_vec2f a, t_vec2f b, t_vec2f p);
 void	invoke_msg(t_data *d, char *msg);
@@ -58,6 +61,7 @@ void	whi_le(t_data *d, t_sector *sect, int *n, double *m);
 void	alpha_y(double *sl_y);
 void	swap_tabs(short *tab, short *tmp_tab);
 void	set_tab(t_data *d, short sect_to_scan, short *tab, short old_sect);
+int		draw_background(t_data *d, SDL_Event e);
 
 
 double get_angle(double o, bool isAnimated);
@@ -85,20 +89,22 @@ int16_t		recur_scan_point_line(t_data *d,
 		int16_t sect_to_scan, int16_t old_sect, bool hit_all);
 double		get_dist_to_intersect_wall(t_data *d, t_vec2f wall1, t_vec2f wall2);
 void		putpixel(t_data *d, int x, int y, uint32_t color);
-uint32_t	getpixel(SDL_Surface *s, double x, double y);
-uint32_t	getpixel2(SDL_Surface *s, double x, double y);
-uint32_t	getpixel3(SDL_Surface *s, short x, short y);
-uint32_t	getpixel4(SDL_Surface *s, int u, double y);
+uint32_t	pixel_pls(SDL_Surface *s, double x, double y, int mode);
+//uint32_t	getpixel(SDL_Surface *s, double x, double y);
+//uint32_t	getpixel2(SDL_Surface *s, double x, double y);
+//uint32_t	getpixel3(SDL_Surface *s, short x, short y);
+//uint32_t	getpixel4(SDL_Surface *s, int u, double y);
 bool		inside(t_data *d, int16_t sectnum, t_vec2f pos);
 bool		clip_wall(double *x1, double *z1, double x2, double z2);
 void		proj_wall(t_data *d, t_projdata *p, t_frustum *fr, t_vec2f v[2]);
+int			new_proj_data(t_projdata *p, t_frustum *fr, int mode);
+int			new_proj_data2(t_data *d, t_projdata *p, t_frustum *fr, int mode);
+void		drawing_wall(t_vec2 y_value, t_data *d, t_projdata *p, int mode);
 void		draw_wall(t_data *d, t_projdata *p, t_frustum *fr);
 void		draw_wall_no_nei(t_data *d, t_projdata *p, t_frustum *fr);
 void		draw_wall3(t_data *d, t_projdata *p, t_frustum *nfr, bool *visible);
 void		draw_wall_transparent(t_data *d, t_projdata *p, t_frustum *fr);
 void		draw_ceil_floor(t_data *d, t_projdata *p, t_frustum *fr, int mode);
-//void		draw_floor(t_data *d, t_projdata *p, t_frustum *fr);
-//void		draw_ceil(t_data *d, t_projdata *p, t_frustum *fr);
 void		*draw_ceil_thread(void *arg);
 void		player_actions(t_data *d);
 void		draw_weapon(t_data *d);
@@ -228,7 +234,7 @@ void		create_projectile(t_data *d, short id_of_proj_type);
 ** get_rot_monster.c
 */
 
-uint8_t		get_nb_anim_from_rot(double monster_rot,
+uint8_t		get_nb_anim_from_rotation(double monster_rot,
 		t_vec2f monster_pos, t_vec2f player_pos);
 /*
 ** fly_gravity.c

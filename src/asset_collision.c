@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asset_collision.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 21:43:27 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/24 12:25:00 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/24 22:53:12 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ static bool	check_jetpack(t_data *d, t_assets *asset)
 		play_sound(d, AMMO_SOUND, v3_to_v2(d->cam.pos));
 	if (asset->is_key)
 	{
-		if (!d->slot2)
+		if (d->slot2 == NULL)
 			d->slot2 = asset;
 		else
 			return (false);
 	}
-	else if (asset->is_jetpack && (!d->slot2 || d->slot2->is_jetpack))
+	else if (asset->is_jetpack && (d->slot2 == NULL || d->slot2->is_jetpack))
 		d->slot2 = asset;
 	else if (asset->is_jetpack)
 		return (false);
@@ -46,7 +46,6 @@ void		use_asset(t_data *d, t_assets *asset)
 {
 	d->player.health += asset->stat_mod.heal;
 	d->player.health = MIN(100, d->player.health);
-
 	d->player.health -= asset->stat_mod.damage;
 	d->weapon_type.current_ammo += asset->stat_mod.ballista_ammo;
 	d->weapon_type.current_ammo = MIN(d->weapon_type.current_ammo, MAX_BULLETS);

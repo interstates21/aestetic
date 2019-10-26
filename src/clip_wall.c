@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   clip_wall.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 12:54:20 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/24 13:22:26 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/24 22:54:50 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
 
-static void set_1(t_vec2f p0, t_vec2f p1, double *arr)
+static void	set_1(t_vec2f p0, t_vec2f p1, double *arr)
 {
 	arr[0] = p1.y - p0.y;
 	arr[2] = p0.x - p1.x;
 	arr[4] = arr[0] * p0.x + arr[2] * p0.y;
 }
 
-static void set_2(t_vec2f p2, t_vec2f p3, double *arr)
+static void	set_2(t_vec2f p2, t_vec2f p3, double *arr)
 {
 	arr[1] = p3.y - p2.y;
 	arr[3] = p2.x - p3.x;
@@ -44,19 +44,19 @@ bool		clip_wall(double *x1, double *z1, double x2, double z2)
 {
 	t_vec2f	p0;
 	t_vec2f p1;
-	t_vec2f pAll;
+	t_vec2f p_all;
 	double	rez;
 
 	p0 = (t_vec2f){*x1, *z1};
 	p1 = (t_vec2f){x2, z2};
 	rez = (LERP(NORMALIZE(0, p0.y, p1.y), p0.x, p1.x) < 0) ? -1 : 1;
-	pAll = intersect(p0, p1, (t_vec2f){((rez * WIDTH / 2.0) / WIDTH) *
+	p_all = intersect(p0, p1, (t_vec2f){((rez * WIDTH / 2.0) / WIDTH) *
 			1.0, 1}, (t_vec2f){((rez * WIDTH / 2.0) / WIDTH) * 10.0, 10});
-	if (pAll.y <= 0)
+	if (p_all.y <= 0)
 		return (false);
-	if (((p0.x - p1.x) < 0) != ((pAll.x - p1.x) < 0))
+	if (((p0.x - p1.x) < 0) != ((p_all.x - p1.x) < 0))
 		return (false);
-	*x1 = pAll.x;
-	*z1 = pAll.y;
+	*x1 = p_all.x;
+	*z1 = p_all.y;
 	return (true);
 }

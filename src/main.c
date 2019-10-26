@@ -30,7 +30,6 @@ void	init_everything(t_data *d, char *map)
 	init_player(d, &d->player);
 	init_monsters(d);
 	init_projectiles(d);
-	init_player(d, &d->player);
 	if (d->startsectnum < 0)
 		exit(printf("bad startsectnum\n"));
 	if (SDL_SetRelativeMouseMode(SDL_TRUE) == -1)
@@ -47,11 +46,18 @@ void	init_everything(t_data *d, char *map)
 void	run(char *mapname)
 {
 	t_data d;
+	SDL_Event e;
+	int z;
 
+	z = 0;
 	init_font(&d);
 	d.loaded = 0;
 	init_sdl(&(d.sdl));
+	TTF_Init();
+	d.gFont = TTF_OpenFont("/Library/Fonts/Arial.ttf", 25);
 	init_keys(&(d.keys));
+	while (z == 0)
+			z = draw_background(&d, e);
 	d.zbuffer = get_screen_pixels();
 	ft_strncpy(d.nextmap, mapname, 100);
 	init_everything(&d, d.nextmap);

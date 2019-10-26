@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 23:02:51 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/23 23:03:22 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/24 21:19:29 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,9 @@
 
 void	draw_wall_nei(t_data *d, t_projdata *p, t_frustum *fr)
 {
-	while (++p->y <= MIN(fr->ybottom[p->x], p->nya))
-		putpixel2(d, p->z, (t_vec2){p->x, p->y},
-			shade(p->shadefactor, getpixel4(p->tex, p->u_tex, p->wall->is_door ?
-				NORMALIZE(p->y, p->nya - p->doorheight, p->nya) :
-				NORMALIZE(p->y, p->yc, p->yd) * p->y_scale)));
-	p->tex = d->textures[p->wall->lowerpicnum];
-	p->u_tex = (p->u - floor(p->u)) * p->tex->w;
-	p->y = MAX(fr->ytop[p->x], p->nyb) - 1;
-	while (++p->y <= MIN(fr->ybottom[p->x], p->yb))
-		putpixel2(d, p->z, (t_vec2){p->x, p->y}, shade(p->shadefactor,
-			getpixel4(p->tex, p->u_tex,
-				NORMALIZE(p->y, p->yc, p->yd) * p->y_scale)));
+	drawing_wall((t_vec2){p->y, MIN(fr->ybottom[p->x], p->nya)}, d, p, 0);
+	new_proj_data2(d, p, fr, 4);
+	drawing_wall((t_vec2){p->y, MIN(fr->ybottom[p->x], p->yb)}, d, p, 1);
 }
 
 void	draw_wall2bis(t_data *d, t_projdata *p, t_frustum *fr)
@@ -42,10 +33,7 @@ void	draw_wall2bis(t_data *d, t_projdata *p, t_frustum *fr)
 		p->ya_poster = p->yc + p->margin;
 		p->yb_poster = p->yd - p->margin;
 	}
-	p->tex = d->textures[p->wall->middlepicnum];
-	p->u_tex = (p->u - floor(p->u)) * p->tex->w;
-	p->y = MAX(fr->ytop[p->x], p->ya) - 1;
-	p->shadefactor = getshadefactor(d, p, p->z);
+	new_proj_data2(d, p, fr, 2);
 	if (!p->neighbor)
 		draw_wall_no_nei(d, p, fr);
 	else if (p->neighbor)
@@ -54,17 +42,7 @@ void	draw_wall2bis(t_data *d, t_projdata *p, t_frustum *fr)
 
 void	draw_wall4(t_data *d, t_projdata *p, t_frustum *fr, t_frustum *nfr)
 {
-	p->nya = LERP(p->n, p->ny1a, p->ny2a);
-	p->nyb = LERP(p->n, p->ny1b, p->ny2b);
-	if (p->wall->is_door)
-	{
-		p->nya = MAX(p->nya, p->ya);
-		p->nyb = MIN(p->nyb, p->yb);
-	}
-	p->doorbottom = MIN(p->yb, p->nyb);
-	p->doorheight = p->doorbottom - p->yc;
-	p->nya += (p->doorbottom - MAX(p->yc, p->nya)) *
-		(1 - d->doorstate[p->wall - d->walls]);
+	new_proj_data2(d, p, fr, 0);
 	nfr->ytop[p->x] = CLAMP((p->sector->outdoor && p->neighbor->outdoor) ?
 			0 : p->nya + 1, fr->ytop[p->x], fr->ybottom[p->x]);
 	nfr->ybottom[p->x] = CLAMP(p->nyb, fr->ytop[p->x],
@@ -75,47 +53,61 @@ void	draw_wall4(t_data *d, t_projdata *p, t_frustum *fr, t_frustum *nfr)
 
 void	draw_wall2(t_data *d, t_projdata *p, t_frustum *fr, t_frustum *nfr)
 {
-	p->n = CLAMP(NORMALIZE(p->x, p->x1, p->x2), 0, 1);
-	p->z = 1 / LERP(p->n, p->z1, p->z2);
-	p->u = LERP(p->n, p->u1, p->u2) * p->z;
-	if (p->z >= p->zbuffer[p->x])
+	if (new_proj_data(p, fr, 1))
 		return ((void)(p->visible[p->x] = false));
-	p->zbuffer[p->x] = p->z;
-	p->visible[p->x] = true;
-	p->ya = LERP(p->n, p->y1a, p->y2a);
-	p->yb = LERP(p->n, p->y1b, p->y2b);
-	p->yc = LERP(p->n, p->y1c, p->y2c);
-	p->yd = LERP(p->n, p->y1d, p->y2d);
 	if (p->neighbor)
 		draw_wall4(d, p, fr, nfr);
 	draw_wall2bis(d, p, fr);
 }
 
+int		new_proj_data(t_projdata *p, t_frustum *fr, int mode)
+{
+	if (mode == 0)
+	{
+		p->u1 /= p->z1;
+		p->u2 /= p->z2;
+		p->z1 = 1 / p->z1;
+		p->z2 = 1 / p->z2;
+		p->cx1 = MAX(p->x1, fr->x1);
+		p->cx2 = MIN(p->x2, fr->x2);
+		p->x = p->cx1 - 1;
+	}
+	else
+	{
+		p->n = CLAMP(NORMALIZE(p->x, p->x1, p->x2), 0, 1);
+		p->z = 1 / LERP(p->n, p->z1, p->z2);
+		p->u = LERP(p->n, p->u1, p->u2) * p->z;
+		if (p->z >= p->zbuffer[p->x] && mode == 1)
+			return (1);
+		mode == 1 ? ((p->zbuffer[p->x] = p->z) &&
+				(p->visible[p->x] = true)) : true;
+		p->ya = LERP(p->n, p->y1a, p->y2a);
+		p->yb = LERP(p->n, p->y1b, p->y2b);
+		p->yc = LERP(p->n, p->y1c, p->y2c);
+		p->yd = LERP(p->n, p->y1d, p->y2d);
+	}
+	return (0);
+}
+
 void	draw_wall(t_data *d, t_projdata *p, t_frustum *fr)
 {
-	t_frustum	nfr;
+	t_frustum	new_fr;
 
 	if (p->neighbor && fr->visitedportals[p->wall - d->walls])
 		return ;
 	if (p->neighbor)
 	{
-		nfr = *fr;
-		nfr.visitedportals[p->wall - d->walls] = true;
+		new_fr = *fr;
+		new_fr.visitedportals[p->wall - d->walls] = true;
 	}
-	p->u1 /= p->z1;
-	p->u2 /= p->z2;
-	p->z1 = 1 / p->z1;
-	p->z2 = 1 / p->z2;
-	p->cx1 = MAX(p->x1, fr->x1);
-	p->cx2 = MIN(p->x2, fr->x2);
-	p->x = p->cx1 - 1;
+	new_proj_data(p, fr, 0);
 	while (++p->x <= p->cx2)
-		draw_wall2(d, p, fr, &nfr);
-	draw_wall3(d, p, &nfr, p->visible);
+		draw_wall2(d, p, fr, &new_fr);
+	draw_wall3(d, p, &new_fr, p->visible);
 	if (p->neighbor && p->wall->is_transparent)
 	{
-		p->x = MAX(p->x1, nfr.x1);
-		while (++p->x <= MIN(p->x2, nfr.x2))
-			draw_wall_transparent(d, p, &nfr);
+		p->x = MAX(p->x1, new_fr.x1);
+		while (++p->x <= MIN(p->x2, new_fr.x2))
+			draw_wall_transparent(d, p, &new_fr);
 	}
 }

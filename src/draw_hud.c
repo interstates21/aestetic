@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_hud.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 23:10:02 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/24 17:05:20 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/25 22:23:43 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,28 +33,6 @@ static void	draw_fuel(t_data *d)
 	draw_string(d, (t_font){buf, 50, 110, 0, 2});
 }
 
-static void	draw_inventory_slot(t_data *d, SDL_Surface *tex, int x1, int y1)
-{
-	uint32_t	px;
-	t_vec2		x_y;
-	t_vec2		h_u;
-	double		pix_yh;
-
-	h_u.x = SLOT_W * (double)tex->h / tex->w;
-	x_y.x = -1;
-	while (++x_y.x < SLOT_W)
-	{
-		h_u.y = ((double)x_y.x / SLOT_W) * tex->w;
-		x_y.y = -1;
-		while (++x_y.y < h_u.x)
-		{
-			pix_yh = (double)x_y.y / h_u.x;
-			if (((px = getpixel4(tex, h_u.y, pix_yh)) >> 24) > 127)
-				putpixel(d, x1 + x_y.x, y1 + x_y.y, px);
-		}
-	}
-}
-
 static void	draw_timed_msg(t_data *d)
 {
 	if (!d->msg[0])
@@ -66,9 +44,6 @@ static void	draw_timed_msg(t_data *d)
 
 void		draw_hud(t_data *d)
 {
-	if (d->slot2)
-		draw_inventory_slot(d, d->assets_texture[d->slot2->picnum],
-				140, HEIGHT - 100);
 	draw_timed_msg(d);
 	draw_ammo(d, d->weapon_type);
 	if (d->player.is_flying)

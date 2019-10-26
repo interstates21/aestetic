@@ -60,8 +60,8 @@ FILES = main \
 	   n_validators \
 	   n_allocators \
 	   heightCalculations \
-	   floorHeight \
-	   ceilHeight \
+	   floor_height \
+	   ceil_height \
 	   range \
 	   msg \
 	   vector_constructors \

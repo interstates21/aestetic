@@ -1,11 +1,47 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   load_assets.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/26 11:41:36 by vslutiak          #+#    #+#             */
+/*   Updated: 2019/10/27 02:00:55 by vslutiak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
 
-void		read_posters_data(t_data *d, int f)
+void		post_whi_le(t_data *d, int f, int b)
 {
 	int		i;
-	int		w;
-	int		h;
+	int		wid;
+	int		heig;
+
+	i = -1;
+	if (b == 1)
+	{
+		while (++i < d->nb_posters)
+		{
+			if (read(f, &wid, sizeof(int)) < 0 || read(f, &heig, sizeof(int)) < 0)
+				print_err("Cannot read posters size");
+			if (!(d->posters[i] = SDL_CreateRGBSurfaceWithFormat(
+				0, wid, heig, 32, SDL_PIXELFORMAT_ARGB8888)))
+				print_err("Cannot allocate posters");
+			if ((read(f, d->posters[i]->pixels, wid * heig * 4)) < 0)
+				print_err("Cannot read poster data");
+		}
+	}
+	else if (b == 2)
+	{
+		while (++i < d->nummonsters)
+			if (read(f, &d->monsters[i], sizeof(t_monster)) < 0)
+				print_err("Cannot read monsters data");
+	}
+}
+
+void		read_posters_data(t_data *d, int f)
+{
 	size_t	posters_size;
 
 	if (read(f, &d->nb_posters, sizeof(int32_t)) < 0)
@@ -15,17 +51,7 @@ void		read_posters_data(t_data *d, int f)
 	posters_size = sizeof(SDL_Surface*) * d->nb_posters;
 	d->posters = (SDL_Surface**)pure_malloc(posters_size,
 												"Cannot alloc posters");
-	i = -1;
-	while (++i < d->nb_posters)
-	{
-		if (read(f, &w, sizeof(int)) < 0 || read(f, &h, sizeof(int)) < 0)
-			print_err("Cannot read posters size");
-		if (!(d->posters[i] = SDL_CreateRGBSurfaceWithFormat(
-								0, w, h, 32, SDL_PIXELFORMAT_ARGB8888)))
-			print_err("Cannot allocate posters");
-		if ((read(f, d->posters[i]->pixels, w * h * 4)) < 0)
-			print_err("Cannot read poster data");
-	}
+	post_whi_le(d, f, 1);
 }
 
 void		read_monsters_data(t_data *d, int f)
@@ -41,9 +67,7 @@ void		read_monsters_data(t_data *d, int f)
 		d->monsters = (t_monster*)pure_malloc(monsters_size,
 												"cannot alloc monsters");
 		i = -1;
-		while (++i < d->nummonsters)
-			if (read(f, &d->monsters[i], sizeof(t_monster)) < 0)
-				print_err("Cannot read monsters data");
+		post_whi_le(d, f, 2);
 	}
 }
 
