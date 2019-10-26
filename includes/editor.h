@@ -470,5 +470,13 @@ int					picking_sprite(t_v2 mouse, int n);
 int  				pickers(t_ed *ed);
 void				write_secors(t_ed *e);
 void				write_monsters(t_ed *e);
-
+void				put_monster(t_ed *ed, int n_sect);
+void				draw_mouse_highlight(t_ed *ed, t_v2 mouse);
+void				niceGrid(t_ed *ed);
+void				draw_selection(t_ed *ed);
+void				render_sector_mosters(t_ed *ed);
+void				print_v(t_v2 v, const char *s);
+void 				draw_square(t_ed *ed, t_v2 c, int r, Uint32 col);
+void 				render_sector_sprites(t_ed *ed);
+void				put_sprite(t_ed *ed, int n_sect);
 #endif
