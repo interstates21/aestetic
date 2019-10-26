@@ -1,4 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handle_respawn.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/26 20:03:40 by bdeomin           #+#    #+#             */
+/*   Updated: 2019/10/26 20:05:56 by bdeomin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/doom_nukem.h"
+
+//notrefact
 
 static void	blackout(t_data *d)
 {
@@ -20,7 +34,7 @@ static void	blackout(t_data *d)
 	}
 }
 
-void	handle_respawn(t_data *d)
+void		handle_respawn(t_data *d)
 {
 	int i;
 	int j;

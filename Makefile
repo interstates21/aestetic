@@ -59,7 +59,7 @@ FILES = main \
 	   load_monsters_texture \
 	   n_validators \
 	   n_allocators \
-	   heightCalculations \
+	   height_calculations \
 	   floor_height \
 	   ceil_height \
 	   range \
