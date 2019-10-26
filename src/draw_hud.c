@@ -66,8 +66,8 @@ static void	draw_timed_msg(t_data *d)
 
 void		draw_hud(t_data *d)
 {
-	if (d->slot2)
-		draw_inventory_slot(d, d->assets_texture[d->slot2->picnum],
+	if (d->slot3)
+		draw_inventory_slot(d, d->assets_texture[d->slot3->picnum],
 				140, HEIGHT - 100);
 	draw_timed_msg(d);
 	draw_ammo(d, d->weapon_type);
