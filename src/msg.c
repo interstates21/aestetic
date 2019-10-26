@@ -53,7 +53,9 @@ void	alpha_y(double *sl_y)
 {
 	short y;
 
-	y = -1;
-	while (++y < HEIGHT)
-		sl_y[y] = fabs(y - HEIGHT * 0.5) / (HEIGHT * 0.5);
+	y = 0;
+	while (y < HEIGHT) {
+		sl_y[y] = fabs(y - (double)(HEIGHT >> 1)) / (double)((HEIGHT >> 1));
+		y++;
+	}
 }

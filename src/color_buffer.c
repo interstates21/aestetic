@@ -16,9 +16,11 @@ void	set_find_alpha(double *sl_x, double *sl_y)
 {
 	short	x;
 
-	x = -1;
-	while (++x < WIDTH)
+	x = 0;
+	while (x < WIDTH) {
 		sl_x[x] = fabs(x - WIDTH * 0.5) / (WIDTH * 0.5);
+		x++;
+	}
 	alpha_y(sl_y);
 }
 
