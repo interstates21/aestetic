@@ -39,7 +39,7 @@ void	player_actions(t_data *e)
 {
     int ammo = e->weapon_type.current_ammo;
 	if (shoot(e))
-		ft_putstr("shoot ");
+		ft_putstr("");
 	else
         handle_click(e);
 	if (check_last_anim(e))

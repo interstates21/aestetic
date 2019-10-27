@@ -66,7 +66,8 @@ FILES = main \
 		msg \
 		vector_constructors \
 		r_shoot \
-		r_shoot2 
+		r_shoot2 \
+		r_activate
 
 LIBFT_DIR = libft/
 SRC = $(addprefix src/, $(addsuffix .c, $(FILES)))

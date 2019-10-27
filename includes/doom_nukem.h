@@ -50,6 +50,7 @@
 # define HEALTH_COLO 0xFFFF66
 # define SAME_POS(v1, v2) (((v1.x) == (v2.x)) && ((v1.y) == (v2.y)))
 # define F_ANIM 1
+# define PICKUP_RANGE 2
 
 void	change_buf_colo(t_data *d, uint16_t amount, uint32_t colo);
 double	get_dist(t_vec2f a, t_vec2f b, t_vec2f p);
@@ -181,6 +182,7 @@ void		intro_screen(t_data *d);
 int			ft_mod(int i, int n);
 void		next_sect_fix(t_data *d);
 void		handle_click(t_data *e);
+void 		pickup_asset(t_data *d);
 
 /*
 ** update_2.c

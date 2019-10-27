@@ -23,7 +23,6 @@ t_range	make_range(int min, int max)
 	return (r);
 }
 
-
 t_range	add_range(t_range a, t_range b)
 {
 	t_range r;

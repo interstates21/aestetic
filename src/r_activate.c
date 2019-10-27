@@ -12,33 +12,45 @@
 
 #include "../includes/doom_nukem.h"
 
-// not refact
-
-bool	pickup_asset(t_data *d)
-{
-	int			i;
-	t_assets	*assets;
-
-	i = -1;
-	while (d->nb_assets && ++i < d->assets[d->cursectnum][0].nb_assets)
-	{
-		assets = &d->assets[d->cursectnum][i];
-		if (v2_len(v2_min(v3_to_v2(d->cam.pos), assets->world_pos)) <
-				1.5 && !assets->used &&
-				(assets->is_interactive || assets->is_autopick ||
-				assets->is_key || assets->is_jetpack))
-		{
-			use_asset(d, assets);
-			return (true);
-		}
-	}
+bool	is_usable(t_assets *assets) {
+	if (assets->is_interactive)
+		return (true);
+	if (assets->is_autopick)
+		return (true);
+	if (assets->is_jetpack)
+		return (true);
 	return (false);
 }
 
-void	press_e(t_data *d)
+bool	is_in_range(t_data *d, t_assets *assets) {
+	t_vec2f cam_proj;
+	double	len;
+
+	cam_proj = v3_to_v2(d->cam.pos);
+	len = v2_len(v2_min(cam_proj, assets->world_pos));
+	if (len < PICKUP_RANGE )
+		return (true);
+	return (false);
+}
+
+void 	pickup_asset(t_data *d)
 {
-	if (pickup_asset(d))
-		return ;
-	else if (door_use(d, &d->sectors[d->cursectnum]))
-		return ;
+	int			i;
+	t_assets	*assets;
+	bool		picked;
+
+	i = -1;
+	picked = false;
+	while (d->nb_assets && ++i < d->assets[d->cursectnum][0].nb_assets)
+	{
+		assets = &d->assets[d->cursectnum][i];
+		if (is_in_range(d, assets) && !assets->used && is_usable(assets))
+		{
+			picked = true;
+			break ;
+			use_asset(d, assets);
+		}
+	}
+	if (!picked)
+		door_use(d, &d->sectors[d->cursectnum]);
 }
