@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render_sector.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/27 22:23:12 by vslutiak          #+#    #+#             */
+/*   Updated: 2019/10/27 22:52:58 by vslutiak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/doom_nukem.h"
 
 t_vec3f	transform_back(t_data *d, t_vec3f v)
@@ -72,28 +84,35 @@ void	proj_ceil_or_floor(t_data *d, t_projdata *p, int mode)
 		(p->area = edge_function(p->v[0], p->v[1], p->v[2].x, p->v[2].y));
 }
 
-void		render_sector(t_data *d, t_sector *sect, t_frustum *fr)
+static void	rend_while(t_data *d, t_sector *sect, t_frustum *fr, t_projdata p)
 {
-	t_sprite_list	*sprite_list_tmp;
-	t_projdata		p;
 	int				i;
 
-	p.sector = sect;
-	proj_ceil_or_floor(d, &p, 0);
-	proj_ceil_or_floor(d, &p, 1);
 	i = -1;
 	while (++i < WIDTH)
 		p.zbuffer[i] = INFINITY;
 	i = -1;
 	while (++i < sect->numwalls)
 		render_wall(d, &p, fr, i);
+}
+
+void		render_sector(t_data *d, t_sector *sect, t_frustum *fr)
+{
+	t_sprite_list	*lst_tmp;
+	t_projdata		p;
+	
+
+	p.sector = sect;
+	proj_ceil_or_floor(d, &p, 0);
+	proj_ceil_or_floor(d, &p, 1);
+	rend_while(d, sect, fr, p);
 	if (sect->sprite_list)
 		reorder_sprite(d, sect);
-	sprite_list_tmp = sect->sprite_list;
-	while (sprite_list_tmp)
+	lst_tmp = sect->sprite_list;
+	while (lst_tmp)
 	{
-		draw_sprite(d, fr, sprite_list_tmp);
-		sprite_list_tmp = sprite_list_tmp->next;
+		draw_sprite(d, fr, lst_tmp);
+		lst_tmp = lst_tmp->next;
 	}
 	d_asseting(d, &p, sect - d->sectors);
 }
