@@ -6,13 +6,13 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 04:20:43 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 04:56:49 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/27 22:02:32 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
 
-double		shade_factor(t_data *d, t_sector *sector, double dist, int mode)
+double		shd_fct(t_data *d, t_sector *sector, double dist, int mode)
 {
 	double	factor;
 

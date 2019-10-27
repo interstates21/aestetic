@@ -1,5 +1,11 @@
 #include "../includes/doom_nukem.h"
 
+t_vec3f	transform_back(t_data *d, t_vec3f v)
+{
+	return (new_v3(v.x * d->cam.cos + v.z * d->cam.sin + d->cam.pos.x, v.y,
+			v.x * -d->cam.sin + v.z * d->cam.cos + d->cam.pos.z));
+}
+
 void		transformvertex(t_data *d, t_vec2f v, double *x, double *z)
 {
 	v.x -= d->cam.pos.x;
@@ -38,6 +44,34 @@ void		render_wall(t_data *d, t_projdata *p, t_frustum *fr, int i)
 			v3_to_v2(transform_back(d, new_v3(p->x2, 0, p->z2)))});
 }
 
+void	proj_ceil_or_floor(t_data *d, t_projdata *p, int mode)
+{
+	mode == 0 ? (p->b[0] = transform_back(d, new_v3(-1, 0, 1))) :
+				(p->c[0] = transform_back(d, new_v3(-1, 0, 1)));
+	mode == 0 ? (p->b[1] = transform_back(d, new_v3(1, 0, 1))) :
+				(p->c[1] = transform_back(d, new_v3(1, 0, 1)));
+	mode == 0 ? (p->b[2] = transform_back(d, new_v3z(2))) :
+				(p->c[2] = transform_back(d, new_v3z(2)));
+	mode == 0 ? (p->a[0] = new_v3(-WIDTH + WIDTH / 2, get_ceildh(d,
+		p->sector, v3_to_v2(p->b[0])) * -WIDTH + (HEIGHT / 2 - d->cam.y_offset),
+		1)) : (p->v[0] = new_v3(-WIDTH + WIDTH / 2, get_floordh(d, p->sector,
+		v3_to_v2(p->c[0])) * -WIDTH + (HEIGHT / 2 - d->cam.y_offset), 1));
+	mode == 0 ? (p->a[1] = new_v3(WIDTH + WIDTH / 2, get_ceildh(d,
+		p->sector, v3_to_v2(p->b[1])) * -WIDTH + (HEIGHT / 2 - d->cam.y_offset),
+		1)) : (p->v[1] = new_v3(WIDTH + WIDTH / 2, get_floordh(d, p->sector,
+		v3_to_v2(p->c[1])) * -WIDTH + (HEIGHT / 2 - d->cam.y_offset), 1));
+	mode == 0 ? (p->a[2] = new_v3(WIDTH / 2, get_ceildh(d, p->sector,
+		v3_to_v2(p->b[2])) * -WIDTH * 0.5 + (HEIGHT / 2 - d->cam.y_offset),
+		0.5)) : (p->v[2] = new_v3(WIDTH / 2, get_floordh(d, p->sector,
+		v3_to_v2(p->c[2])) * -WIDTH * 0.5 + (HEIGHT / 2 - d->cam.y_offset),
+		0.5));
+	mode == 0 ? (p->b[2].x /= 2) : (p->c[2].x /= 2);
+	mode == 0 ? (p->b[2].z /= 2) : (p->c[2].z /= 2);
+	mode == 0 ? (p->areaa = edge_function(p->a[0], p->a[1],
+												p->a[2].x, p->a[2].y)) :
+		(p->area = edge_function(p->v[0], p->v[1], p->v[2].x, p->v[2].y));
+}
+
 void		render_sector(t_data *d, t_sector *sect, t_frustum *fr)
 {
 	t_sprite_list	*sprite_list_tmp;
@@ -61,5 +95,5 @@ void		render_sector(t_data *d, t_sector *sect, t_frustum *fr)
 		draw_sprite(d, fr, sprite_list_tmp);
 		sprite_list_tmp = sprite_list_tmp->next;
 	}
-	draw_assets(d, &p, sect - d->sectors);
+	d_asseting(d, &p, sect - d->sectors);
 }

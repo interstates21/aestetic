@@ -6,7 +6,10 @@ FILES = main \
 		atoi \
 		draw_hud \
 		interact_with_assets \
-		draw_assets \
+		d_asseting \
+		d_asseting2 \
+		d_ceil_floor \
+		d_sky \
 		collision_player \
 		collision_monster \
 		load_sound \
@@ -34,8 +37,6 @@ FILES = main \
 		draw_weapon \
 		color_buffer \
 		render_sector \
-		draw_floor \
-		draw_ceil \
 		draw_wall \
 		draw_wall2 \
 		clip_wall \
