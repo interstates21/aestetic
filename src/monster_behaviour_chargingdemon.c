@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   monster_behaviour_chargingdemon.c                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/27 21:39:48 by vslutiak          #+#    #+#             */
+/*   Updated: 2019/10/27 22:19:38 by vslutiak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/doom_nukem.h"
 
 static void	behaviour_update_charge(t_data *d, t_monster *monster)
@@ -40,23 +52,26 @@ static void	update_cursect_chargingdemon(t_data *d, t_monster *monster,
 	}
 }
 
+static void init_load_monst(t_data *d, t_monster *monster, t_vec2f tmp)
+{
+	tmp = v2_min(monster->pos, v3_to_v2(d->cam.pos));
+	monster->rot = atan2(tmp.y, tmp.x) + M_PI;
+	tmp.x = 0.02;
+	tmp.y = 0.0;
+	actualize_dir(monster->rot, &tmp);
+	monster->dir = tmp;
+	monster->timer = 0xFF;
+	monster->anim_state = 0;
+	monster->anim_time = 7;
+}
+
 void		monster_behaviour_chargingdemon(t_data *d, t_monster *monster,
 		uint16_t id)
 {
 	t_vec2f		tmp;
 
 	if (monster->timer == 0 && monster->dir.x == 0.0)
-	{
-		tmp = v2_min(monster->pos, v3_to_v2(d->cam.pos));
-		monster->rot = atan2(tmp.y, tmp.x) + M_PI;
-		tmp.x = 0.02;
-		tmp.y = 0.0;
-		actualize_dir(monster->rot, &tmp);
-		monster->dir = tmp;
-		monster->timer = 0xFF;
-		monster->anim_state = 0;
-		monster->anim_time = 7;
-	}
+		init_load_monst(d, monster, tmp);
 	if (monster->timer && monster->dir.x != 0)
 		behaviour_update_charge(d, monster);
 	collision_monster_monster(d, monster->cursectnum, monster);

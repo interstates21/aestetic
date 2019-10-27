@@ -1,4 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   monster_behaviour.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/27 21:39:48 by vslutiak          #+#    #+#             */
+/*   Updated: 2019/10/27 22:19:21 by vslutiak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/doom_nukem.h"
+void	month_ini(double rand, t_vec2f tmp, t_vec2f tmp2, t_monster *monster)
+{
+	monster->rot = rand;
+	monster->dir = tmp;
+	monster->timer = 100;
+}
 
 bool	motherdemon_behaviour_change_after_attack(t_data *d,
 		t_monster *monster, double rand, t_vec2f tmp)
@@ -9,13 +27,11 @@ bool	motherdemon_behaviour_change_after_attack(t_data *d,
 			< LONG_RANGE)
 	{
 		rand = ((abs((int)(monster->pos.x * 1000)) % 63) + 1);
-		if (!(SDL_GetTicks() % (d->difficulty == HARD ? 4 : 6)))
+		if (!(SDL_GetTicks()))
 			return (false);
 		rand = rand - (int)(rand / (2 * M_PI)) * 2 * M_PI;
 		actualize_dir(rand, &tmp);
-		monster->rot = rand;
-		monster->dir = tmp;
-		monster->timer = 100;
+		month_ini(rand, tmp, tmp2, monster);
 	}
 	else
 	{
@@ -23,9 +39,7 @@ bool	motherdemon_behaviour_change_after_attack(t_data *d,
 		rand = atan2(tmp2.y, tmp2.x) + M_PI;
 		actualize_dir(rand, &tmp);
 		tmp = v2_scale(tmp, 1.5);
-		monster->dir = tmp;
-		monster->rot = rand;
-		monster->timer = 100;
+		month_ini(rand, tmp, tmp2, monster);
 	}
 	return (true);
 }
