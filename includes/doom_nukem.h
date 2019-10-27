@@ -101,8 +101,8 @@ void		draw_wall(t_data *d, t_projdata *p, t_frustum *fr);
 void		draw_wall_no_nei(t_data *d, t_projdata *p, t_frustum *fr);
 void		draw_wall3(t_data *d, t_projdata *p, t_frustum *nfr, bool *visible);
 void		draw_wall_transparent(t_data *d, t_projdata *p, t_frustum *fr);
-void		draw_ceil_floor(t_data *d, t_projdata *p, t_frustum *fr, int mode);
-void		*draw_ceil_thread(void *arg);
+void		draw_sky(t_data *d, t_projdata *p, t_frustum *fr);//bdeomin
+void		draw_ceil_floor(t_data *d, t_projdata *p, t_frustum *fr, int mode);//bdeomin
 void		player_actions(t_data *d);
 void		draw_weapon(t_data *d);
 void		blaster_shot(t_data *d);
@@ -135,7 +135,7 @@ void		monster_behaviour(t_data *d, t_monster *monster, uint16_t id);
 void		monster_behaviour_chargingdemon(
 		t_data *d, t_monster *monster, uint16_t id);
 void		charging_demon_wait(t_monster *monster);
-double		shade_factor(t_data *d, t_sector *sector, double dist, int mode);
+double		shd_fct(t_data *d, t_sector *sector, double dist, int mode);
 uint32_t	shade(double factor, uint32_t c);
 void		reorder_sprite(t_data *d, t_sector *sect);
 t_vec3f		v2_to_v3(t_vec2f v);
@@ -148,7 +148,6 @@ t_vec2f		intersect(t_vec2f p0, t_vec2f p1, t_vec2f p2, t_vec2f p3);
 uint32_t	alpha(uint32_t	old_colo, uint32_t	new_colo);
 void		draw_string(t_data *d, t_font f);
 void		init_font(t_data *d);
-void		transformvertex(t_data *d, t_vec2f v, double *x, double *z);
 double		get_floorheight_player(t_data *d, int16_t sectnum);
 double		get_floordh(t_data *d, t_sector *sect, t_vec2f v);
 double		get_ceilheight_player(t_data *d, int16_t sectnum);
@@ -159,16 +158,17 @@ void		handle_finish(t_data *d);
 void		play_music(t_data *d, uint8_t id);
 void		load_sound(t_data *d, int f);
 void		play_sound(t_data *d, uint8_t id, t_vec2f pos);
-t_vec3f		transform_back(t_data *d, t_vec3f v);
-void		proj_ceil_or_floor(t_data *d, t_projdata *p, int mode);
-double		edge_function(t_vec3f a, t_vec3f b, int x, int y);
+double		edge_function(t_vec3f a, t_vec3f b, int x, int y);//bdeomin
 bool		collision_player(t_data *d, t_sector *sect);//bdeomin
 bool		collision_monster(t_data *d,
 		t_sector *sect, t_vec2f *pos, double dist_coll);//bdeomin
-void		draw_assets(t_data *d,
-		t_projdata *p, int16_t sectnum);
+void		d_asseting(t_data *d,
+		t_projdata *p, int16_t sectnum);//bdeomin
+void		proj_to_asset(t_data *d, t_projdata *p, t_vec3f vect, SDL_Surface *tex);//bdeomin
+void		liting_assets(t_data *d, t_projdata *p, SDL_Surface *tex);//bdeomin
+void		assets_to_draw(t_data *d, t_projdata *p, int16_t sectnum, int i);//bdeomin
 void		interact_with_assets(t_data *d);//bdeomin
-void		use_asset(t_data *d, t_assets *asset);
+void		use_asset(t_data *d, t_assets *asset);//bdeomin
 void		draw_hud(t_data *d);
 void		invoke_msg(t_data *d, char *msg);
 bool		door_use(t_data *d, t_sector *sect);

@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_assets.c                                      :+:      :+:    :+:   */
+/*   d_asseting2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/22 18:26:21 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 04:22:17 by bdeomin          ###   ########.fr       */
+/*   Created: 2019/10/27 21:43:58 by bdeomin           #+#    #+#             */
+/*   Updated: 2019/10/27 22:02:32 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
 
-void	set_assets_value(t_projdata *p, t_vec3f vect, t_three_val container)
+/*
+** bdeomin
+*/
+
+void	new_assets_p(t_projdata *p, t_vec3f vect, t_three_val container)
 {
 	p->x1 = vect.x - container.one / 2;
 	p->x2 = p->x1 + container.one;
@@ -29,7 +33,7 @@ void	set_assets_value(t_projdata *p, t_vec3f vect, t_three_val container)
 	p->z = vect.z;
 }
 
-void	proj_asset(t_data *d, t_projdata *p, t_vec3f vect, SDL_Surface *tex)
+void	proj_to_asset(t_data *d, t_projdata *p, t_vec3f vect, SDL_Surface *tex)
 {
 	double		scale;
 	t_three_val	container;
@@ -43,15 +47,15 @@ void	proj_asset(t_data *d, t_projdata *p, t_vec3f vect, SDL_Surface *tex)
 	vect.y = vect.y * -scale + HEIGHT / 2 - d->cam.y_offset;
 	container.one = scale * tex->w * 0.01;
 	container.two = scale * tex->h * 0.01;
-	set_assets_value(p, vect, container);
+	new_assets_p(p, vect, container);
 }
 
-void	blit_asset(t_data *d, t_projdata *p, SDL_Surface *tex)
+void	liting_assets(t_data *d, t_projdata *p, SDL_Surface *tex)
 {
 	t_three_val	container;
 	uint32_t	px;
 
-	if ((p->shadefactor = shade_factor(d, p->sector, p->z, 1)) <= 0)
+	if ((p->shadefactor = shd_fct(d, p->sector, p->z, 1)) <= 0)
 		return ;
 	container.one = MAX(p->x1, 0) - 1;
 	while (++container.one <= p->x2 && container.one < WIDTH)
@@ -70,32 +74,4 @@ void	blit_asset(t_data *d, t_projdata *p, SDL_Surface *tex)
 			}
 		}
 	}
-}
-
-void	drawing_assets(t_data *d, t_projdata *p, int16_t sectnum, int i)
-{
-	t_assets	*asset;
-	t_vec3f		vect;
-
-	asset = &d->assets[sectnum][i];
-	if (!asset->used)
-	{
-		vect = v2_to_v3(asset->world_pos);
-		vect.y = (asset->is_on_floor) ?
-			get_floordh(d, p->sector, v3_to_v2(vect)) :
-			get_ceildh(d, p->sector, v3_to_v2(vect));
-		p->is_on_floor = asset->is_on_floor;
-		proj_asset(d, p, vect, d->assets_texture[asset->picnum]);
-		blit_asset(d, p, d->assets_texture[asset->picnum]);
-	}
-}
-
-void	draw_assets(t_data *d, t_projdata *p, int16_t sectnum)
-{
-	int			i;
-
-	sectnum = p->sector - d->sectors;
-	i = -1;
-	while (d->nb_assets && ++i < d->assets[sectnum][0].nb_assets)
-		drawing_assets(d, p, sectnum, i);
 }

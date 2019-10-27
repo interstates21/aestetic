@@ -6,13 +6,25 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 03:12:36 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 03:16:16 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/27 22:10:54 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
 
 //not_refact
+
+void	*draw_ceil_thread(void *void_arg)
+{
+	t_thread_arg	*arg;
+
+	arg = (t_thread_arg*)void_arg;
+	if (!arg->p->sector->outdoor)
+		draw_ceil_floor(arg->d, arg->p, arg->fr, 0);
+	else
+		draw_sky(arg->d, arg->p, arg->fr);
+	return (NULL);
+}
 
 void	proj_wall2(t_data *d, t_projdata *p, t_frustum *fr)
 {

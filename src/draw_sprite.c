@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 21:07:52 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 04:17:53 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/27 22:02:32 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void		disp_sprite(t_data *d, SDL_Surface *s,
 			colo = alpha(((uint32_t *)d->sdl.screen->pixels)
 					[x_y.x + x_y.y * d->sdl.screen->w], colo);
 			if (colo != pixel_pls(d->sdl.screen, x_y.x, x_y.y, 2))
-				new_zbuffer_and_put_collor(d, x_y, shade(shade_factor(d, &d->sectors[disp_data.cursectnum], dist_mod.x, 0), colo), dist_mod);
+				new_zbuffer_and_put_collor(d, x_y, shade(shd_fct(d, &d->sectors[disp_data.cursectnum], dist_mod.x, 0), colo), dist_mod);
 		}
 	}
 }
