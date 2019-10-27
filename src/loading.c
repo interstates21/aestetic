@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   loading.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/27 17:59:42 by vslutiak          #+#    #+#             */
+/*   Updated: 2019/10/27 18:41:28 by vslutiak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/doom_nukem.h"
 
 static int	get_col(int p, int s)
@@ -42,11 +54,14 @@ void		correct_loading(t_data *d, uint32_t *status, SDL_Event e)
 	char		*str;
 	char		*tmp;
 
-	status[1] = SDL_GetTicks();
+	status[1] = SDL_GetTicks() - d->tick;
+	while (SDL_PollEvent(&e))
+	{
 	if (e.type == SDL_QUIT)
 		print_and_quit(d, "RED CROSS");
 	if (e.key.keysym.sym == SDLK_ESCAPE)
 		print_and_quit(d, "ESC");
+	}
 	str = ft_strdup("LOADING ");
 	tmp = str;
 	num = ft_itoa(to_percent(status[1]));
@@ -68,7 +83,7 @@ void		loading(t_data *d)
 	uint32_t	status[2];
 	SDL_Event	e;
 
-	status[0] = SDL_GetTicks();
+	status[0] = 0;
 	status[1] = status[0];
 	if (d->loaded)
 		return ;

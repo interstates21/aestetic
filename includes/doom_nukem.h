@@ -58,6 +58,9 @@ void	whi_le(t_data *d, t_sector *sect, int *n, double *m);
 void	alpha_y(double *sl_y);
 void	swap_tabs(short *tab, short *tmp_tab);
 void	set_tab(t_data *d, short sect_to_scan, short *tab, short old_sect);
+int		draw_background(t_data *d, SDL_Event e);
+void 	draw_message(t_data *d, char *message, int color, SDL_Rect rect);
+
 
 
 double get_angle(double o, bool isAnimated);
