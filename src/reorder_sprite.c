@@ -6,11 +6,13 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 03:53:07 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 03:54:56 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/27 05:31:18 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
+
+//not refact
 
 static void	set_var_reorder_sprite(t_sprite_list **list, t_sector *sec, int *i,
 		bool type)

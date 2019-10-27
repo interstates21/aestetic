@@ -117,9 +117,8 @@ int16_t		update_cursect_smart(t_data *d,
 int16_t		update_cursect_proj(int16_t sects[2],
 		t_data *d, int depth, t_vec3f pos);
 void		destroy_mail(short id, t_sector *sector, uint8_t type_to_destroy);
-void		update_anim_projectile(
-		t_projectile *projectile, t_data *d, short id,
-			bool has_collided);
+void		update_anim_projectile(t_projectile *proj, t_data *d, short id,
+			bool collided);
 void		monster_anim_state(t_monster *monster,
 		t_monster_type *monster_type, t_data *d);
 void		monster_hit(t_data *d, uint16_t damage, uint16_t id_monster);

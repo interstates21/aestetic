@@ -1,23 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   update_2.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/27 05:25:27 by bdeomin           #+#    #+#             */
+/*   Updated: 2019/10/27 05:29:36 by bdeomin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/doom_nukem.h"
+
+//not refact
 
 void	update_monsters(uint16_t *nummonsters,
 		t_monster monsters[MAXNUMMONSTERS], t_data *d)
 {
 	short	i;
 
-	i = 0;
+	i = -1;
 	(void)d;
 	(void)monsters;
-	while (i < *nummonsters)
+	while (++i < *nummonsters)
 	{
 		if (monsters[i].can_collide)
 			monster_behaviour(d, &monsters[i], i);
 		monster_anim_state(&monsters[i], d->monster_type, d);
-		i++;
 	}
 }
 
-void	update_projectile_2(t_data *d, short i, bool coll)
+void	new_proj_2(t_data *d, short i, bool coll)
 {
 	int16_t	update_sect;
 
@@ -44,15 +57,14 @@ void	update_projectile_2(t_data *d, short i, bool coll)
 		update_anim_projectile(&d->projectiles[i], d, i, true);
 }
 
-void	update_projectiles(t_data *d)
+void	new_proj(t_data *d)
 {
 	short	i;
 	bool	coll;
 
-	i = 0;
+	i = -1;
 	coll = false;
-	while (i < MAX_PROJECTILES)
-	{
+	while (++i < MAX_PROJECTILES)
 		if (d->projectiles[i].is_active)
 		{
 			if (d->projectiles[i].has_collided)
@@ -66,10 +78,8 @@ void	update_projectiles(t_data *d)
 						cursectnum], &d->projectiles[i]);
 			if (d->projectile_type[d->projectiles[i].id_type].threat_to_player)
 				coll = collision_proj_player(d, &d->projectiles[i]);
-			update_projectile_2(d, i, coll);
+			new_proj_2(d, i, coll);
 		}
-		i++;
-	}
 }
 
 void	update_2(t_data *d)
@@ -79,7 +89,7 @@ void	update_2(t_data *d)
 	jump(d);
 	player_actions(d);
 	update_monsters(&d->nummonsters, d->monsters, d);
-	update_projectiles(d);
+	new_proj(d);
 	d->lightblink = sin((double)SDL_GetTicks() / 200) * 0.3 + 0.6;
 	check_dangerous_area(d);
 }
