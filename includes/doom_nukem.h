@@ -169,7 +169,10 @@ void		liting_assets(t_data *d, t_projdata *p, SDL_Surface *tex);//bdeomin
 void		assets_to_draw(t_data *d, t_projdata *p, int16_t sectnum, int i);//bdeomin
 void		interact_with_assets(t_data *d);//bdeomin
 void		use_asset(t_data *d, t_assets *asset);//bdeomin
-void		draw_hud(t_data *d);
+void		draw_hud(t_data *d);//bdeomin
+void		draw_inventory_slot(t_data *d, SDL_Surface *tex, int x1, int y1);//bdeomin
+void		draw_ammo(t_data *d, t_weapon_type weapon_type);//bdeomin
+void		draw_fuel(t_data *d);//bdeomin
 void		invoke_msg(t_data *d, char *msg);
 bool		door_use(t_data *d, t_sector *sect);
 t_vec2f		get_closest(t_vec2f a, t_vec2f b, t_vec2f p);

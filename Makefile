@@ -4,12 +4,14 @@ FILES = main \
 		loading \
 		next_sect_fix \
 		atoi \
-		draw_hud \
 		interact_with_assets \
 		d_asseting \
 		d_asseting2 \
 		d_ceil_floor \
 		d_sky \
+		d_huds \
+		d_jetp_hud \
+		d_ammo_hud \
 		collision_player \
 		collision_monster \
 		load_sound \
