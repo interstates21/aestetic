@@ -237,6 +237,10 @@ void		fly_gravity(t_data *d);
 ** draw_monster.c
 */
 
+void	new_disp_data_1(t_display_data *disp_data,
+	SDL_Surface *s, t_vec3f p_in_scr, double size);
+void	new_disp_data_2(t_display_data *disp_data,
+		uint16_t cursectnum);
 void		draw_monster(t_data *d, t_monster monster);
 void		disp_sprite(t_data *d, SDL_Surface *s,
 					t_display_data disp_data, t_vec2f dist_mod);

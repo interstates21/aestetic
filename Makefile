@@ -12,6 +12,8 @@ FILES = main \
 		d_huds \
 		d_jetp_hud \
 		d_ammo_hud \
+		dr_monster \
+		display_data \
 		collision_player \
 		collision_monster \
 		load_sound \
@@ -53,8 +55,7 @@ FILES = main \
 		monster_collision \
 		movement \
 		draw_sprite \
-			get_rot_monster \
-		draw_monster \
+		get_rot_monster \
 		shade \
 		swap_list \
 		aiming_draw \
