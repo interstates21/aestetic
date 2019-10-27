@@ -303,9 +303,13 @@ void		load_weapons_texture(t_data *d,
 		int f, int *nb_tex, int *nb_projectiles);
 void		loading(t_data *d);
 
-t_vec3f new_v3_projection(double x, double y);
-t_vec3f new_v3zero();
-t_vec3f	new_v3z(double z);
-t_vec2f	new_v2zero();
+t_vec3f		new_v3_projection(double x, double y);
+t_vec3f		new_v3zero();
+t_vec3f		new_v3z(double z);
+t_vec2f		new_v2zero();
+t_range		add_range(t_range a, t_range b);
+t_range		minus_range(t_range a, t_range b);
+t_range		mult_range(t_range a, t_range b);
+t_range		div_range(t_range a, t_range b);
 
 #endif
