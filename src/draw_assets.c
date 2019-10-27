@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 18:26:21 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/26 22:12:06 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/27 04:22:17 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	blit_asset(t_data *d, t_projdata *p, SDL_Surface *tex)
 	t_three_val	container;
 	uint32_t	px;
 
-	if ((p->shadefactor = getshadefactor(d, p, p->z)) <= 0)
+	if ((p->shadefactor = shade_factor(d, p->sector, p->z, 1)) <= 0)
 		return ;
 	container.one = MAX(p->x1, 0) - 1;
 	while (++container.one <= p->x2 && container.one < WIDTH)

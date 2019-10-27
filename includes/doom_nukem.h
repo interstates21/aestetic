@@ -136,9 +136,10 @@ void		monster_behaviour(t_data *d, t_monster *monster, uint16_t id);
 void		monster_behaviour_chargingdemon(
 		t_data *d, t_monster *monster, uint16_t id);
 void		charging_demon_wait(t_monster *monster);
-double		getshadefactor(t_data *d, t_projdata *p, double dist);
-uint32_t	sprite_shade(t_data *d, t_sector *sector, double dist,
-		uint32_t img);
+//double		getshadefactor(t_data *d, t_projdata *p, double dist);
+double		shade_factor(t_data *d, t_sector *sector, double dist, int mode);
+//uint32_t	sprite_shade(t_data *d, t_sector *sector, double dist,
+//		uint32_t img);
 uint32_t	shade(double factor, uint32_t c);
 void		reorder_sprite(t_data *d, t_sector *sect);
 t_vec3f		v2_to_v3(t_vec2f v);
@@ -206,9 +207,9 @@ void		update(t_data *d);
 /*
 ** player_damage.c
 */
-void		player_hit_projectile(t_data *d, t_projectile *projectile);
+void		player_hit_proj(t_data *d, t_projectile *projectile);
 void		player_fell(t_data *d);
-void		player_contact_monster(t_data *d, t_monster *monster);
+void		contact_with_monster(t_data *d, t_monster *monster);
 /*
 ** color_buffer.c
 */

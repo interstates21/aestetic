@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   reorder_sprite.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/27 03:53:07 by bdeomin           #+#    #+#             */
+/*   Updated: 2019/10/27 03:54:56 by bdeomin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/doom_nukem.h"
 
 static void	set_var_reorder_sprite(t_sprite_list **list, t_sector *sec, int *i,
@@ -29,7 +41,7 @@ void		change_list(t_sprite_list *one, t_sprite_list *two,
 void		reorder_sprites_algo(t_data *d, t_sector *sec, double *vla,
 		t_sprite_list **list)
 {
-	double		tmp_dist;
+	double		distance;
 	int			i;
 
 	set_var_reorder_sprite(list, sec, &i, SET);
@@ -37,18 +49,18 @@ void		reorder_sprites_algo(t_data *d, t_sector *sec, double *vla,
 	{
 		if (vla[i] < vla[i + 1])
 		{
-			tmp_dist = vla[i];
+			distance = vla[i];
 			vla[i] = vla[i + 1];
-			vla[i + 1] = tmp_dist;
-			if (i == 0)
+			vla[i + 1] = distance;
+			if (i != 0)
 			{
-				list[1]->next = list[2]->next;
-				list[2]->next = sec->sprite_list;
-				sec->sprite_list = list[2];
+				change_list(list[1], list[2], list[0]);
 				reorder_sprites_algo(d, sec, vla, list);
 				return ;
 			}
-			change_list(list[1], list[2], list[0]);
+			list[1]->next = list[2]->next;
+			list[2]->next = sec->sprite_list;
+			sec->sprite_list = list[2];
 			reorder_sprites_algo(d, sec, vla, list);
 			return ;
 		}
@@ -60,19 +72,16 @@ void		set_vla(t_sprite_list *tmp, double *vla, t_data *d)
 {
 	short	i;
 
-	i = 0;
-	while (tmp)
+	i = -1;
+	while (tmp && (++i))
 	{
-		if (tmp->type == IS_MONSTER)
-			vla[i] = vec3f_length(v3_min(d->cam.pos,
-						new_v3(d->monsters[tmp->id].pos.x,
-						0.0,
-						d->monsters[tmp->id].pos.y
-						)));
 		if (tmp->type == IS_PROJECTILE)
 			vla[i] = vec3f_length(v3_min(d->cam.pos,
 						d->projectiles[tmp->id].pos));
-		i++;
+		if (tmp->type == IS_MONSTER)
+			vla[i] = vec3f_length(v3_min(d->cam.pos,
+				new_v3(d->monsters[tmp->id].pos.x,
+					0.0, d->monsters[tmp->id].pos.y)));
 		tmp = tmp->next;
 	}
 }
@@ -84,18 +93,17 @@ void		reorder_sprite(t_data *d, t_sector *sect)
 	double			*vla;
 	t_sprite_list	*list[3];
 
-	i = 0;
+	i = -1;
 	tmp = sect->sprite_list;
-	while (tmp)
-	{
+	while (tmp && (++i))
 		tmp = tmp->next;
-		i++;
+	if (i > 1)
+	{
+		vla = pure_malloc(sizeof(*vla) * i, "alloc reorder sprites failed");
+		tmp = sect->sprite_list;
+		set_vla(tmp, vla, d);
+		reorder_sprites_algo(d, sect, vla, &list[0]);
+		free(vla);
 	}
-	if (i < 2)
-		return ;
-	vla = pure_malloc(sizeof(*vla) * i, "alloc reorder sprites failed");
-	tmp = sect->sprite_list;
-	set_vla(tmp, vla, d);
-	reorder_sprites_algo(d, sect, vla, &list[0]);
-	free(vla);
 }
+

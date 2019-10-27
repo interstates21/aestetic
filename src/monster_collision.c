@@ -60,7 +60,7 @@ void	collision_with_monster(t_data *d, short cur_sect)
 				d->cam.pos = update_pos_vec3f(d->cam.pos, d->monsters
 						[tmp->id].pos, d->monster_type[d->monsters[tmp->id].
 						id_type].hitbox_radius + MONSTER_MIN_DIST_HITBOX);
-				player_contact_monster(d, &(d->monsters[tmp->id]));
+				contact_with_monster(d, &(d->monsters[tmp->id]));
 			}
 		tmp = tmp->next;
 	}
