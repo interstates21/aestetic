@@ -313,5 +313,7 @@ t_range		add_range(t_range a, t_range b);
 t_range		minus_range(t_range a, t_range b);
 t_range		mult_range(t_range a, t_range b);
 t_range		div_range(t_range a, t_range b);
+t_vec2		new_v2int(int x, int y);
+int			circle(t_data *e, t_vec2 c, int r, Uint32 color);
 
 #endif
