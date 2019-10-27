@@ -71,7 +71,10 @@ FILES = main \
 		r_shoot \
 		r_shoot2 \
 		r_activate \
-		circle
+		circle \
+		new_font \
+		loading2 \
+		move_down_vector
 
 LIBFT_DIR = libft/
 SRC = $(addprefix src/, $(addsuffix .c, $(FILES)))

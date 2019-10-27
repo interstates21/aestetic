@@ -82,7 +82,6 @@ void		loading(t_data *d)
 {
 	uint32_t	status[2];
 	SDL_Event	e;
-
 	status[0] = 0;
 	status[1] = status[0];
 	if (d->loaded)
