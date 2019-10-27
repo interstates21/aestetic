@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 03:50:07 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 03:08:25 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/27 22:39:52 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ void	contact_with_monster(t_data *d, t_monster *monster)
 		if (!d->player.can_be_stomped)
 		{
 			if (monster->id_type == MOTHERDEMON)
-				d->player.health -= d->difficulty == HARD ? 10 : 5;
+				d->player.health -= 10;
 			else if (monster->id_type == CHARGINGDEMON)
-				d->player.health -= d->difficulty == HARD ? 20 : 15;
+				d->player.health -= 20;
 			d->player.can_be_stomped = 30;
 			monster->id_type == MOTHERDEMON ? change_buf_colo(d, 5, RED) :
 												change_buf_colo(d, 8, RED);
