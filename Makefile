@@ -26,7 +26,6 @@ FILES = main \
 		monster_anim_state \
 		reorder_sprite \
 		create_projectile \
-		player_actions \
 		projectile_collision \
 		find_closest_wall_dist \
 		update_2 \
@@ -66,6 +65,8 @@ FILES = main \
 		range \
 		msg \
 		vector_constructors \
+		r_shoot \
+		r_shoot2 
 
 LIBFT_DIR = libft/
 SRC = $(addprefix src/, $(addsuffix .c, $(FILES)))
