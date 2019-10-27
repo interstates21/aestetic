@@ -46,9 +46,12 @@
 # define NORMAL 1
 # define HARD 2
 # define RED 0xFF0000
+# define PURPLE 0x800080
 # define GREEN_BLAST 0x5CE26E
 # define HEALTH_COLO 0xFFFF66
-#define SAME_POS(v1, v2) (((v1.x) == (v2.x)) && ((v1.y) == (v2.y)))
+# define SAME_POS(v1, v2) (((v1.x) == (v2.x)) && ((v1.y) == (v2.y)))
+# define F_ANIM 1
+# define PICKUP_RANGE 2
 
 void	change_buf_colo(t_data *d, uint16_t amount, uint32_t colo);
 double	get_dist(t_vec2f a, t_vec2f b, t_vec2f p);
@@ -182,6 +185,8 @@ void		precompute_texanim(t_data *d);
 void		intro_screen(t_data *d);
 int			ft_mod(int i, int n);
 void		next_sect_fix(t_data *d);
+void		handle_click(t_data *e);
+void 		pickup_asset(t_data *d);
 
 /*
 ** update_2.c
@@ -308,9 +313,19 @@ void		load_weapons_texture(t_data *d,
 		int f, int *nb_tex, int *nb_projectiles);
 void		loading(t_data *d);
 
-t_vec3f new_v3_projection(double x, double y);
-t_vec3f new_v3zero();
-t_vec3f	new_v3z(double z);
-t_vec2f	new_v2zero();
+t_vec3f		new_v3_projection(double x, double y);
+t_vec3f		new_v3zero();
+t_vec3f		new_v3z(double z);
+t_vec2f		new_v2zero();
+t_range		add_range(t_range a, t_range b);
+t_range		minus_range(t_range a, t_range b);
+t_range		mult_range(t_range a, t_range b);
+t_range		div_range(t_range a, t_range b);
+t_vec2		new_v2int(int x, int y);
+int			circle(t_data *e, t_vec2 c, int r, Uint32 color);
+t_font		new_font(char *str, t_vec2 v, Uint32 color, int scale);
+void      	print_loading_ascii(t_data *d);
+t_vec3f		move_down_vector3(t_vec3f v);
+t_vec2		move_down_vector2(t_vec2 v);
 
 #endif

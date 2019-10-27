@@ -167,3 +167,12 @@ t_vec2f	new_v2zero()
 	v.y = 0.0;
 	return (v);
 }
+
+t_vec2	new_v2int(int x, int y)
+{
+	t_vec2 v;
+
+	v.x = 0;
+	v.y = 0;
+	return (v);
+}
