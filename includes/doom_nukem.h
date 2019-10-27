@@ -80,7 +80,7 @@ void *pure_malloc(size_t size, const char *err);
 char	*ft_itoa_static(int n);
 
 double 		calculate_floor_height_epsilon(double h);
-void		draw_aim_cross(t_data *d);
+void		aiming_draw(t_data *d);
 int16_t		scan_sect_point_line(t_data *d, uint16_t sect_to_scan, double dist,
 		bool hit_all);
 double		find_closest_wall_dist(t_data *d, uint16_t sect_to_scan);
@@ -88,12 +88,7 @@ int16_t		recur_scan_point_line(t_data *d,
 		int16_t sect_to_scan, int16_t old_sect, bool hit_all);
 double		get_dist_to_intersect_wall(t_data *d, t_vec2f wall1, t_vec2f wall2);
 void		pixel_put(t_data *d, t_vec3f p, uint32_t color, int mode);
-//void		putpixel(t_data *d, int x, int y, uint32_t color);
 uint32_t	pixel_pls(SDL_Surface *s, double x, double y, int mode);
-//uint32_t	getpixel(SDL_Surface *s, double x, double y);
-//uint32_t	getpixel2(SDL_Surface *s, double x, double y);
-//uint32_t	getpixel3(SDL_Surface *s, short x, short y);
-//uint32_t	getpixel4(SDL_Surface *s, int u, double y);
 bool		inside(t_data *d, int16_t sectnum, t_vec2f pos);
 bool		clip_wall(double *x1, double *z1, double x2, double z2);
 void		proj_wall(t_data *d, t_projdata *p, t_frustum *fr, t_vec2f v[2]);
@@ -138,10 +133,7 @@ void		monster_behaviour(t_data *d, t_monster *monster, uint16_t id);
 void		monster_behaviour_chargingdemon(
 		t_data *d, t_monster *monster, uint16_t id);
 void		charging_demon_wait(t_monster *monster);
-//double		getshadefactor(t_data *d, t_projdata *p, double dist);
 double		shade_factor(t_data *d, t_sector *sector, double dist, int mode);
-//uint32_t	sprite_shade(t_data *d, t_sector *sector, double dist,
-//		uint32_t img);
 uint32_t	shade(double factor, uint32_t c);
 void		reorder_sprite(t_data *d, t_sector *sect);
 t_vec3f		v2_to_v3(t_vec2f v);
@@ -167,20 +159,17 @@ void		load_sound(t_data *d, int f);
 void		play_sound(t_data *d, uint8_t id, t_vec2f pos);
 t_vec3f		transform_back(t_data *d, t_vec3f v);
 void		proj_ceil_or_floor(t_data *d, t_projdata *p, int mode);
-//void		proj_floor(t_data *d, t_projdata *p);
-//void		proj_ceil(t_data *d, t_projdata *p);
 double		edge_function(t_vec3f a, t_vec3f b, int x, int y);
-bool		collision(t_data *d, t_sector *sect);
-bool		collision_monster_wall(t_data *d,
-		t_sector *sect, t_vec2f *pos, double dist_coll);
+bool		collision_player(t_data *d, t_sector *sect);//bdeomin
+bool		collision_monster(t_data *d,
+		t_sector *sect, t_vec2f *pos, double dist_coll);//bdeomin
 void		draw_assets(t_data *d,
 		t_projdata *p, int16_t sectnum);
-void		asset_collision(t_data *d);
+void		interact_with_assets(t_data *d);//bdeomin
 void		use_asset(t_data *d, t_assets *asset);
 void		draw_hud(t_data *d);
 void		invoke_msg(t_data *d, char *msg);
-bool		activate_door(t_data *d, t_sector *sect);
-//void		putpixel2(t_data *d, double z, t_vec2 p, uint32_t color);
+bool		door_use(t_data *d, t_sector *sect);
 t_vec2f		get_closest(t_vec2f a, t_vec2f b, t_vec2f p);
 void		move_monster(t_data *d, int i);
 void		draw_health(t_data *d);
@@ -188,7 +177,6 @@ void		check_dangerous_area(t_data *d);
 void		handle_respawn(t_data *d);
 void		precompute_texanim(t_data *d);
 void		intro_screen(t_data *d);
-//void		draw_string_typewriter_effect(t_data *d, char *s, t_vec2 pos);
 int			ft_mod(int i, int n);
 void		next_sect_fix(t_data *d);
 
@@ -254,7 +242,6 @@ void		new_zbuffer_and_put_collor(t_data *d, t_vec2 x_y, uint32_t colo,
 
 /*
 ** exit.c
-
 */
 
 void	print_err(const char *err);
@@ -312,7 +299,7 @@ void		load_monsters_texture(t_data *d, int f);
 
 void		load_weapons_texture(t_data *d,
 		int f, int *nb_tex, int *nb_projectiles);
-void 		loading(t_data *d);
+void		loading(t_data *d);
 
 t_vec3f new_v3_projection(double x, double y);
 t_vec3f new_v3zero();

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   activate_door.c                                    :+:      :+:    :+:   */
+/*   door_use.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 21:22:56 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/24 14:13:12 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/27 21:09:03 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	br_msg(t_data *d, t_wall *w, int *n)
 			&d->sectors[d->walls[n[0]].neighborsect]);
 }
 
-bool	activate_door2(t_data *d, t_wall *w, int n[4])
+bool	door_use2(t_data *d, t_wall *w, int n[4])
 {
 	if (d->slot2 && d->slot2->key_num == w->key_num && !(w->key_num = 0))
 		d->slot2 = NULL;
@@ -61,7 +61,11 @@ bool	activate_door2(t_data *d, t_wall *w, int n[4])
 	return (true);
 }
 
-bool	activate_door(t_data *d, t_sector *sect)
+/*
+** bdeomin
+*/
+
+bool	door_use(t_data *d, t_sector *sect)
 {
 	int		n[4];
 	double	m[2];
@@ -69,9 +73,8 @@ bool	activate_door(t_data *d, t_sector *sect)
 	m[1] = INFINITY;
 	n[2] = sect->firstwallnum + sect->numwalls - 1;
 	n[3] = sect->firstwallnum;
-
 	whi_le(d, sect, n, m);
 	if (m[1] == INFINITY)
 		return (false);
-	return (activate_door2(d, &d->walls[n[0]], n));
+	return (door_use2(d, &d->walls[n[0]], n));
 }

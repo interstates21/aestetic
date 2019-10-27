@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 05:22:33 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 05:22:42 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/27 21:05:04 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	update(t_data *d)
 	d->cam.sin = sin(d->cam.rot);
 	d->cam.cos = cos(d->cam.rot);
 	movement(d);
-	asset_collision(d);
+	interact_with_assets(d);
 	if ((sect = update_cursect_smart(d, DEPTH_TO_SCAN, v3_to_v2(d->cam.pos),
 					d->cursectnum)) != -1)
 	{

@@ -108,7 +108,7 @@ void	movement(t_data *d)
 	else
 		d->player.can_move--;
 	protection = 0;
-	while (collision(d, &d->sectors[d->cursectnum]))
+	while (collision_player(d, &d->sectors[d->cursectnum]))
 		if (++protection > 6)
 			break ;
 	collision_with_monster(d, d->cursectnum);

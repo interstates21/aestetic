@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 19:03:55 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/25 19:28:56 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/27 20:58:12 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	event_key_down(t_data *d, SDL_KeyboardEvent event)
 			if (pick_up(d, assets))
 				return ;
 		}
-		activate_door(d, &d->sectors[d->cursectnum]);
+		door_use(d, &d->sectors[d->cursectnum]);
 	}
 }
 

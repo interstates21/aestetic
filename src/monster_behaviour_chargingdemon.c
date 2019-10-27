@@ -60,7 +60,7 @@ void		monster_behaviour_chargingdemon(t_data *d, t_monster *monster,
 	if (monster->timer && monster->dir.x != 0)
 		behaviour_update_charge(d, monster);
 	collision_monster_monster(d, monster->cursectnum, monster);
-	while (collision_monster_wall(d, &d->sectors[monster->cursectnum],
+	while (collision_monster(d, &d->sectors[monster->cursectnum],
 				&monster->pos, COLLISION_RANGE_CHARGINGDEMON))
 		if (monster->timer < 240)
 			charging_demon_wait(monster);

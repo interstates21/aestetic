@@ -21,7 +21,7 @@ void	render(t_data *d)
 	render_sector(d, &d->sectors[d->cursectnum], &fr);
 	draw_weapon(d);
 	color_buffer(d);
-	draw_aim_cross(d);
+	aiming_draw(d);
 	draw_hud(d);
 	SDL_UpdateWindowSurface(d->sdl.win);
 }

@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 03:08:45 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 03:12:27 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/27 20:58:24 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ void	press_e(t_data *d)
 {
 	if (pickup_asset(d))
 		return ;
-	else if (activate_door(d, &d->sectors[d->cursectnum]))
+	else if (door_use(d, &d->sectors[d->cursectnum]))
 		return ;
 }

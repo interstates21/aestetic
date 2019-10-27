@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   asset_collision.c                                  :+:      :+:    :+:   */
+/*   interact_with_assets.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 21:43:27 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/24 22:53:12 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/27 21:08:42 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,11 @@ void		use_asset(t_data *d, t_assets *asset)
 	asset->used = true;
 }
 
-void		asset_collision(t_data *d)
+/*
+** bdeomin
+*/
+
+void		interact_with_assets(t_data *d)
 {
 	int			i;
 	t_vec2f		dist;

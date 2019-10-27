@@ -1,14 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   collision.c                                        :+:      :+:    :+:   */
+/*   collision_player.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 20:59:00 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/24 22:50:50 by bdeomin          ###   ########.fr       */
+/*   Created: 2019/10/27 21:11:09 by bdeomin           #+#    #+#             */
+/*   Updated: 2019/10/27 21:13:22 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+** bdeomin
+*/
 
 #include "../includes/doom_nukem.h"
 
@@ -53,7 +57,7 @@ bool	collided_v(t_vec2f *v, int *nw, t_data *d)
 	if (v2_len(v[1]) < COLLISION_DIST)
 	{
 		if (can_traverse(d, nw[0], &d->walls[nw[0]]))
-			return (collision(d, &d->sectors[d->walls[nw[0]].neighborsect]));
+			return (collision_player(d, &d->sectors[d->walls[nw[0]].neighborsect]));
 		else
 		{
 			d->cam.pos.x = v[0].x + v[1].x * COLLISION_DIST * 1.001 /
@@ -66,7 +70,7 @@ bool	collided_v(t_vec2f *v, int *nw, t_data *d)
 	return (false);
 }
 
-bool	collision(t_data *d, t_sector *sect)
+bool	collision_player(t_data *d, t_sector *sect)
 {
 	static int	recursion;
 	t_vec2f		vect[2];
@@ -89,63 +93,6 @@ bool	collision(t_data *d, t_sector *sect)
 		vect[1] = v2_min(v3_to_v2(d->cam.pos), vect[0]);
 		collided_v(vect, num_wall, d);
 		num_wall[0] = num_wall[1]++;
-	}
-	--recursion;
-	return (collided);
-}
-
-bool	can_traverse_monster(t_data *d, int i, t_vec2f *pos, t_sector *sect)
-{
-	t_wall	*wall;
-	int16_t	num_sec;
-
-	wall = &d->walls[i];
-	num_sec = sect - &d->sectors[0];
-	if (wall->neighborsect != -1 && !(wall->is_transparent) &&
-		d->doorstate[i] > 0.7 &&
-		(get_floor_height(&d->sectors[num_sec], d->walls, num_sec, *pos) +
-			MIN_HEIGHT_MONSTER_TO_WALK != get_floor_height(&d->sectors[num_sec],
-				d->walls, num_sec, *pos))
-		&& (d->sectors[wall->neighborsect].outdoor ||
-		get_ceil_height(&d->sectors[num_sec], d->walls, num_sec, *pos) -
-			get_floor_height(&d->sectors[num_sec], d->walls, num_sec, *pos) >
-				SMALLEST_HEIGHT_FOR_MONSTERS))
-		return (true);
-	return (false);
-}
-
-bool	collided_value_one(t_vec2f *pos, t_vec2f *v, double dist_coll)
-{
-	pos->x = v[0].x + v[1].x * dist_coll * 1.001 / v2_len(v[1]);
-	pos->y = v[0].y + v[1].y * dist_coll * 1.002 / v2_len(v[1]);
-	return (true);
-}
-
-bool	collision_monster_wall(t_data *d, t_sector *sect, t_vec2f *pos,
-															double dist_coll)
-{
-	static int	recursion;
-	t_vec2f		vect[2];
-	bool		collided;
-	int			w[2];
-
-	if (!(collided = false) && ++recursion > 3)
-		return (false + (--recursion ? 0 : 0));
-	w[0] = sect->firstwallnum + sect->numwalls - 1;
-	w[1] = sect->firstwallnum;
-	while (w[1] < sect->firstwallnum + sect->numwalls)
-	{
-		vect[0] = get_closest(d->walls[w[0]].point, d->walls[w[1]].point, *pos);
-		vect[1] = v2_min(*pos, vect[0]);
-		if (v2_len(vect[1]) < dist_coll)
-		{
-			if (can_traverse_monster(d, w[0], pos, sect))
-				collided = collision_monster_wall(d,
-					&d->sectors[d->walls[w[0]].neighborsect], pos, dist_coll);
-			else
-				collided = collided_value_one(pos, vect, dist_coll);
-		}
-		w[0] = w[1]++;
 	}
 	--recursion;
 	return (collided);

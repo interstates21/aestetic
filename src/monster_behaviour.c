@@ -61,7 +61,7 @@ void	motherdemon_behaviour(t_data *d, t_monster *monster, uint16_t id)
 	{
 		monster->pos = v2_plus(monster->pos, monster->dir);
 		collision_monster_monster(d, monster->cursectnum, monster);
-		while (collision_monster_wall(d, &d->sectors[monster->cursectnum],
+		while (collision_monster(d, &d->sectors[monster->cursectnum],
 					&monster->pos, COLLISION_DIST_MOTHERDEMON))
 			if (++protection > 6)
 				break ;
