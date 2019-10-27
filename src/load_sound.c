@@ -1,27 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   load_sound.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/27 02:27:59 by vslutiak          #+#    #+#             */
+/*   Updated: 2019/10/27 02:28:54 by vslutiak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
 
 void		load_sound(t_data *d, int f)
 {
 	int			i;
-	int			size;
-	uint8_t		*buff;
-	SDL_RWops	*r_wops;
+	int			rozm;
+	uint8_t		*cache;
+	SDL_RWops	*yyps;
 
 	i = 0;
 	if (d->chunk[0])
 		return ;
 	while (i++ < NB_OF_SOUNDS)
 	{
-		if (read(f, &size, sizeof(int)) < 0)
+		if (read(f, &rozm, sizeof(int)) < 0)
 			print_err("cannot read sound data");
-		buff = pure_malloc(size, "cannot alloc sound");
-		if (read(f, buff, size) < 0)
+		cache = pure_malloc(rozm, "cannot alloc sound");
+		if (read(f, cache, rozm) < 0)
 			print_err("cannot read sound data");
-		if (!(r_wops = SDL_RWFromMem(buff, size)))
+		if (!(yyps = SDL_RWFromMem(cache, rozm)))
 			print_err("cannot init sdl sound");
-		if (!(d->chunk[i] = Mix_LoadWAV_RW(r_wops, 1)))
+		if (!(d->chunk[i] = Mix_LoadWAV_RW(yyps, 1)))
 			print_err("cannot init sdl sound chank");
-		free(buff);
+		free(cache);
 	}
 }

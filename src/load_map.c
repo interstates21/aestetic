@@ -1,27 +1,50 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   load_map.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/26 11:41:36 by vslutiak          #+#    #+#             */
+/*   Updated: 2019/10/27 02:27:42 by vslutiak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
 
-static void	read_texture_data(t_data *d, int f)
+static void	text_whi_le(t_data *d, int f, int num)
 {
 	int		i;
-	int		w;
-	int		h;
+	int		wid;
+	int		heig;
+
+	i = -1;
+	if (num == 1)
+	{
+		while (++i < d->nb_textures)
+		{
+			if (read(f, &wid, sizeof(int)) < 0)
+				print_err("Cannot read texture size");
+			if (read(f, &heig, sizeof(int)) < 0)
+				print_err("Cannot read texture size");
+			if (!(d->textures[i] = SDL_CreateRGBSurfaceWithFormat(
+									0, wid, heig, 32, SDL_PIXELFORMAT_ARGB8888)))
+				print_err("Cannot create texture surface");
+			if ((read(f, d->textures[i]->pixels, wid * heig * 4)) < 0)
+				print_err("Cannot read textures");
+		}
+	}
+}
+
+static void	read_texture_data(t_data *d, int f)
+{
+	
 	size_t	tex_size;
 
 	tex_size = sizeof(SDL_Surface*) * d->nb_textures;
 	d->textures = (SDL_Surface**)pure_malloc(tex_size,
 											"cannot alloc tex memory");
-	i = -1;
-	while (++i < d->nb_textures)
-	{
-		if (read(f, &w, sizeof(int)) < 0 || read(f, &h, sizeof(int)) < 0)
-			print_err("Cannot read texture size");
-		if (!(d->textures[i] = SDL_CreateRGBSurfaceWithFormat(
-								0, w, h, 32, SDL_PIXELFORMAT_ARGB8888)))
-			print_err("Cannot create texture surface");
-		if ((read(f, d->textures[i]->pixels, w * h * 4)) < 0)
-			print_err("Cannot read textures");
-	}
+	text_whi_le(d, f, 1);
 }
 
 static void	read_textures_name(t_data *d, int f)
@@ -44,11 +67,6 @@ static void	read_textures_name(t_data *d, int f)
 			print_err("Cannot read texture list");
 	}
 }
-
-/*
-**	Read the number of sectors and walls
-**	And get all the data structure
-*/
 
 static void	read_wall_n_sector_data(t_data *d, int f)
 {
@@ -94,7 +112,7 @@ void		load_map(t_data *d, char *map)
 		read(f, &d->startcam.rot, sizeof(double)) == -1 ||
 		read(f, &d->startsectnum, sizeof(int16_t)) == -1 ||
 		read(f, d->nextmap, 100) < 0)
-		print_err("map error");
+		print_err("Doom : Map error\n");
 	read_wall_n_sector_data(d, f);
 	read_monsters_data(d, f);
 	read_assets_data(d, f);
