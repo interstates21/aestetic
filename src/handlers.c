@@ -17,7 +17,8 @@ void	print_and_quit(t_data *d, const char *str)
 	if (d->sdl.win)
 		SDL_DestroyWindow(d->sdl.win);
 	SDL_Quit();
-	ft_putendl(ft_strjoin(("Good bye!"), str));
+	ft_putstr("Good Bye = ");
+	ft_putendl(str);
 	system("leaks --quiet doom_nukem");
 	exit(0);
 }

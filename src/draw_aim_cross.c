@@ -18,8 +18,8 @@ void	load_tex(t_data *d, t_three_val cont, int *tex)
 	int	w;
 	int	h;
 
-	j = -1;
-	while (++j < tex[cont.two])
+	j = 0;
+	while (j < tex[cont.two])
 	{
 		if (read(cont.one, &w, sizeof(int)) < 0 ||
 			read(cont.one, &h, sizeof(int)) < 0 ||
@@ -35,6 +35,7 @@ void	load_tex(t_data *d, t_three_val cont, int *tex)
 				d->projectile_tex[cont.two][j]->pixels, w * h * 4) < 0)
 			cont.three == 0 ? print_err("cannot read num weapon") :
 								print_err("cannot read texture projectile");
+		j++;
 	}
 }
 
