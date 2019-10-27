@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_finish.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 22:58:36 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/25 23:07:52 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/27 18:41:37 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,10 +106,24 @@ void	free_sectors_sprites(t_data *d, short i)
 		list = need_free;
 	}
 }
+void	finish(t_data *d)
+{
+	SDL_Rect	rect;
+
+	rect.x = 0;
+	rect.y = 0;
+	rect.h = HEIGHT;
+	rect.w = WIDTH;
+
+	SDL_FillRect(d->sdl.screen, NULL, 0x000000);
+	draw_message(d, "FINISH", 0xFFFFFF, (SDL_Rect){.x = WIDTH / 2, .y = HEIGHT / 2 - 30});
+	SDL_UpdateWindowSurface(d->sdl.win);
+}
 
 void	handle_finish(t_data *d)
 {
 	int i;
+	int		f;
 
 	i = -1;
 	while (++i < d->nb_textures)
@@ -122,6 +136,9 @@ void	handle_finish(t_data *d)
 	i = -1;
 	while (++i < d->numsectors)
 		free_sectors_sprites(d, i);
+	finish(d);
+	SDL_Delay(500);
 	all_free(d);
-	init_everything(d, d->nextmap);
+	system("leaks doom_nukem");
+	exit(1);
 }

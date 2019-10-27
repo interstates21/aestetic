@@ -1,4 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   projectile_collision.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/27 03:16:36 by bdeomin           #+#    #+#             */
+/*   Updated: 2019/10/27 04:25:27 by bdeomin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/doom_nukem.h"
+
+//not_refact
 
 static void	monster_hit_2(t_data *d, uint16_t damage, uint16_t id_monster)
 {
@@ -108,10 +122,10 @@ bool		collision_proj_player(t_data *d, t_projectile *projectile)
 			id_type].hitbox_radius + PLAYER_HITBOX)
 	{
 		tmp_pos = v3_min(projectile->pos, d->cam.pos);
-		tmp = (t_vec2f){MIN_DIST_TO_PLAYER, 0.0};
-		player_hit_projectile(d, projectile);
+		tmp = new_v2(MIN_DIST_TO_PLAYER, 0.0);
+		player_hit_proj(d, projectile);
 		actualize_dir(atan2(tmp_pos.y, tmp_pos.x) - M_PI_2, &tmp);
-		projectile->pos =new_v3(
+		projectile->pos = new_v3(
 			tmp.x + d->cam.pos.x,
 				d->cam.pos.y,
 				tmp.y + d->cam.pos.z);

@@ -1,60 +1,69 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   update.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/27 05:22:33 by bdeomin           #+#    #+#             */
+/*   Updated: 2019/10/27 05:22:42 by bdeomin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/doom_nukem.h"
 
-static void	update_collided_proj(t_data *d, t_projectile *projectile, bool anim,
-																	short id)
+void	new_collided_proj(t_data *d, t_projectile *proj, bool anim,
+		short id)
 {
-	int16_t		update_sec;
+	int16_t		new_sectors;
 
-	if (anim)
-		projectile->time_remaining_anim--;
-	if (!anim)
+	anim ? (proj->time_remaining_anim--) :
+		((proj->current_anim_playing = d->projectile_type[proj->
+			id_type].anim_order[proj->current_anim_playing]) &&
+		(proj->time_remaining_anim = 2));
+	if (proj->target)
 	{
-		projectile->current_anim_playing = d->projectile_type[projectile->
-				id_type].anim_order[projectile->current_anim_playing];
-		projectile->time_remaining_anim = 2;
-	}
-	if (projectile->target)
-	{
-		projectile->pos = v3_plus(v2_to_v3(projectile->target->pos),
-									projectile->dir);
-		if ((update_sec = update_cursect_proj((int16_t[2]){projectile->
-			cursectnum, -1}, d, NB_OF_SECTOR_DEPTH, projectile->pos)) != -1)
+		proj->pos = v3_plus(v2_to_v3(proj->target->pos),
+				proj->dir);
+		if ((new_sectors = update_cursect_proj((int16_t[2]){proj->
+						cursectnum, -1}, d, NB_OF_SECTOR_DEPTH,
+						proj->pos)) != -1)
 		{
-			if (update_sec != projectile->cursectnum)
+			if (new_sectors != proj->cursectnum)
 				swap_list(IS_PROJECTILE, id, d,
-						(int[2]){projectile->cursectnum, update_sec});
-			projectile->cursectnum = update_sec;
+								(int[2]){proj->cursectnum, new_sectors});
+			proj->cursectnum = new_sectors;
 		}
 	}
 }
 
-void	update_anim_projectile(t_projectile *projectile, t_data *d, short id,
-															bool has_collided)
+void	update_anim_projectile(t_projectile *proj, t_data *d, short id,
+		bool collided)
 {
-	if (has_collided)
+	if (collided)
 	{
-		if (d->projectile_type[projectile->id_type].threat_to_player)
-			projectile->dir = new_v3zero();
-		projectile->has_collided = true;
-		projectile->current_anim_playing =
-			d->projectile_type[projectile->id_type].anim_order[COLLISION_ID];
-		projectile->time_remaining_anim = 5;
-		play_sound(d, EXPLOSION_SOUND, v3_to_v2(projectile->pos));
+		if (d->projectile_type[proj->id_type].threat_to_player)
+			proj->dir = new_v3zero();
+		proj->current_anim_playing =
+			d->projectile_type[proj->id_type].anim_order[COLLISION_ID];
+		proj->time_remaining_anim = 5;
+		proj->has_collided = true;
+		play_sound(d, EXPLOSION_SOUND, v3_to_v2(proj->pos));
 		return ;
 	}
-	if (projectile->time_remaining_anim)
+	if (proj->time_remaining_anim)
 	{
-		update_collided_proj(d, projectile, true, id);
+		new_collided_proj(d, proj, true, id);
 		return ;
 	}
-	if (d->projectile_type[projectile->id_type].anim_order[
-				projectile->current_anim_playing] == MUST_BE_DESTROYED)
+	if (d->projectile_type[proj->id_type].anim_order[
+			proj->current_anim_playing] == MUST_BE_DESTROYED)
 	{
-		projectile->is_active = false;
-		destroy_mail(id, &d->sectors[projectile->cursectnum], IS_PROJECTILE);
+		proj->is_active = false;
+		destroy_mail(id, &d->sectors[proj->cursectnum], IS_PROJECTILE);
 		return ;
 	}
-	update_collided_proj(d, projectile, false, id);
+	new_collided_proj(d, proj, false, id);
 }
 
 void	update_doors(t_data *d)
@@ -63,7 +72,6 @@ void	update_doors(t_data *d)
 
 	i = -1;
 	while (++i < MAXNUMWALLS)
-	{
 		if (!d->walls[i].is_door || d->walls[i].neighborsect == -1)
 			d->doorstate[i] = 1;
 		else
@@ -75,7 +83,6 @@ void	update_doors(t_data *d)
 				d->dooranimstep[i] = 0;
 			}
 		}
-	}
 }
 
 void	update(t_data *d)

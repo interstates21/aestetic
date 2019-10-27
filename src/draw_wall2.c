@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 20:04:06 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/26 22:15:49 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/27 04:22:49 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int		new_proj_data2(t_data *d, t_projdata *p, t_frustum *fr, int mode)
 		p->tex = d->textures[mode == 4 ? p->wall->lowerpicnum :
 											p->wall->middlepicnum];
 		p->u_tex = (p->u - floor(p->u)) * p->tex->w;
-		mode < 4 ? p->shadefactor = getshadefactor(d, p, p->z) : true;
+		mode < 4 ? p->shadefactor = shade_factor(d, p->sector, p->z, 1) : true;
 		if (mode == 2 || mode == 4)
 			p->y = MAX(fr->ytop[p->x], mode == 4 ? p->nyb : p->ya) - 1;
 		else

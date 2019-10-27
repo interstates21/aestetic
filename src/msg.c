@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 21:21:44 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/24 22:57:31 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/27 02:47:52 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ void	alpha_y(double *sl_y)
 {
 	short y;
 
-	y = -1;
-	while (++y < HEIGHT)
-		sl_y[y] = fabs(y - HEIGHT * 0.5) / (HEIGHT * 0.5);
+	y = 0;
+	while (y < HEIGHT)
+	{
+		sl_y[y] = fabs(y - (double)(HEIGHT >> 1)) / (double)((HEIGHT >> 1));
+		y++;
+	}
 }

@@ -330,6 +330,8 @@ typedef struct		s_data
 	int				difficulty;
 	t_chars			chars;
 	int				loaded;
+	TTF_Font 		*gFont;
+	unsigned int 	tick;
 }					t_data;
 
 typedef struct		s_thread_arg

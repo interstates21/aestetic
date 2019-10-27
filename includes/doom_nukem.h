@@ -58,6 +58,9 @@ void	whi_le(t_data *d, t_sector *sect, int *n, double *m);
 void	alpha_y(double *sl_y);
 void	swap_tabs(short *tab, short *tmp_tab);
 void	set_tab(t_data *d, short sect_to_scan, short *tab, short old_sect);
+int		draw_background(t_data *d, SDL_Event e);
+void 	draw_message(t_data *d, char *message, int color, SDL_Rect rect);
+
 
 
 double get_angle(double o, bool isAnimated);
@@ -117,9 +120,8 @@ int16_t		update_cursect_smart(t_data *d,
 int16_t		update_cursect_proj(int16_t sects[2],
 		t_data *d, int depth, t_vec3f pos);
 void		destroy_mail(short id, t_sector *sector, uint8_t type_to_destroy);
-void		update_anim_projectile(
-		t_projectile *projectile, t_data *d, short id,
-			bool has_collided);
+void		update_anim_projectile(t_projectile *proj, t_data *d, short id,
+			bool collided);
 void		monster_anim_state(t_monster *monster,
 		t_monster_type *monster_type, t_data *d);
 void		monster_hit(t_data *d, uint16_t damage, uint16_t id_monster);
@@ -136,9 +138,10 @@ void		monster_behaviour(t_data *d, t_monster *monster, uint16_t id);
 void		monster_behaviour_chargingdemon(
 		t_data *d, t_monster *monster, uint16_t id);
 void		charging_demon_wait(t_monster *monster);
-double		getshadefactor(t_data *d, t_projdata *p, double dist);
-uint32_t	sprite_shade(t_data *d, t_sector *sector, double dist,
-		uint32_t img);
+//double		getshadefactor(t_data *d, t_projdata *p, double dist);
+double		shade_factor(t_data *d, t_sector *sector, double dist, int mode);
+//uint32_t	sprite_shade(t_data *d, t_sector *sector, double dist,
+//		uint32_t img);
 uint32_t	shade(double factor, uint32_t c);
 void		reorder_sprite(t_data *d, t_sector *sect);
 t_vec3f		v2_to_v3(t_vec2f v);
@@ -206,9 +209,9 @@ void		update(t_data *d);
 /*
 ** player_damage.c
 */
-void		player_hit_projectile(t_data *d, t_projectile *projectile);
+void		player_hit_proj(t_data *d, t_projectile *projectile);
 void		player_fell(t_data *d);
-void		player_contact_monster(t_data *d, t_monster *monster);
+void		contact_with_monster(t_data *d, t_monster *monster);
 /*
 ** color_buffer.c
 */
@@ -314,5 +317,6 @@ void 		loading(t_data *d);
 t_vec3f new_v3_projection(double x, double y);
 t_vec3f new_v3zero();
 t_vec3f	new_v3z(double z);
+t_vec2f	new_v2zero();
 
 #endif
