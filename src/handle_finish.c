@@ -111,6 +111,5 @@ void	handle_finish(t_data *d)
 	finish(d);
 	SDL_Delay(500);
 	all_free(d);
-	system("leaks doom_nukem");
 	exit(1);
 }

@@ -43,5 +43,4 @@ void	init_player(t_data *d, t_player *player)
 	}
 	player->weapon_anim[CRYO_BALLISTA][12] = 0;
 	init_player_2(d, player);
-	system("leaks --quiet doom_nukem");
 }

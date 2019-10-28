@@ -19,7 +19,6 @@ void	print_and_quit(t_data *d, const char *str)
 	SDL_Quit();
 	ft_putstr("Good Bye = ");
 	ft_putendl(str);
-	system("leaks --quiet doom_nukem");
 	exit(0);
 }
 
@@ -27,7 +26,6 @@ void	print_err(const char *err)
 {
 	ft_putstr("Init Error = ");
 	ft_putendl(err);
-	system("leaks --quiet doom_nukem");
 	exit(1);
 }
 
