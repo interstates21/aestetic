@@ -20,6 +20,7 @@ FILES = main \
 		d_wall2 \
 		d_proj \
 		wall_proj_data \
+		d_weapon \
 		collision_player \
 		collision_monster \
 		load_sound \
@@ -43,7 +44,6 @@ FILES = main \
 		find_closest_wall_dist \
 		update_2 \
 		update \
-		draw_weapon \
 		color_buffer \
 		render_sector \
 		clip_wall \
@@ -53,7 +53,7 @@ FILES = main \
 		player_damage \
 		load_map load_assets \
 		inside \
-		fly_gravity \
+		fly_mode \
 		inertia \
 		monster_collision \
 		movement \

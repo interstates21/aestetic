@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   jump.c                                             :+:      :+:    :+:   */
+/*   jumping.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 04:52:13 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 04:52:24 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/28 19:55:23 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	normal_gravity(t_data *d)
 void	jump(t_data *d)
 {
 	if (d->player.is_flying)
-		fly_gravity(d);
+		fly_mode(d);
 	else
 		normal_gravity(d);
 }

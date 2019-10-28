@@ -233,7 +233,7 @@ uint8_t		get_nb_anim_from_rotation(double monster_rot,
 ** fly_gravity.c
 */
 
-void		fly_gravity(t_data *d);
+void		fly_mode(t_data *d);
 
 /*
 ** draw_monster.c

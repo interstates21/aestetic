@@ -84,7 +84,7 @@ void	normal_gravity(t_data *d)
 void	jump(t_data *d)
 {
 	if (d->player.is_flying)
-		fly_gravity(d);
+		fly_mode(d);
 	else
 		normal_gravity(d);
 }
