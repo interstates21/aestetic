@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:17:14 by akolomoi          #+#    #+#             */
-/*   Updated: 2019/10/28 23:00:23 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/28 23:09:06 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -513,5 +513,10 @@ void				load_wp_tex(t_ed *e, const int n_tex[3], const int n_p[3]);
 void				save_wp_tex(t_ed *e, int n_tex[3], int n_p[3]);
 void				write_mons_tex(t_ed *e);
 void				write_sprt_tex(t_ed *e);
-
+void			put_monster(t_ed *ed, int n_sect);
+void			put_sprite(t_ed *ed, int n_sect);
+void	render_sector_sprites(t_ed *ed);
+void	render_sector_mosters(t_ed *ed);
+void	nice_grid(t_ed *ed);
+void	draw_square(t_ed *ed, t_v2 c, int r, Uint32 col);
 #endif

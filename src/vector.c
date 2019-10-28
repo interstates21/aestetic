@@ -205,3 +205,14 @@ t_vec2	mult_v2int(t_vec2 a, t_vec2 b)
 	v.y = a.y * b.y;
 	return (v);
 }
+
+
+void print_v(t_vec2 v, const char *s)
+{
+	ft_putstr(s);
+	ft_putstr(" -- x: ");
+	ft_putnbr(v.x);
+	ft_putstr(" y: ");
+	ft_putnbr(v.y);
+	ft_putchar('\n');
+}

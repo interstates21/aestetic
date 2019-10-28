@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 21:39:38 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/28 22:59:39 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/28 23:05:29 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@
 # include <fcntl.h>
 # include <pthread.h>
 # include <limits.h>
+# include "../libft/libft.h"
+# include <dirent.h>
+# include <math.h>
 
 # define MAXNUMSECTORS 1024
 # define MAXNUMMONSTERS 256

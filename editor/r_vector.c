@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   r_vector.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akolomoi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 18:45:09 by akolomoi          #+#    #+#             */
-/*   Updated: 2019/10/28 18:45:09 by akolomoi         ###   ########.fr       */
+/*   Updated: 2019/10/28 22:33:19 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,14 @@ t_bool	v2_compare(t_v2 a, t_v2 b, int r)
 		if (a.x - r <= b.x && a.x + r >= b.x)
 			return (true);
 	return (false);
+}
+
+void	print_v(t_v2 v, const char *s)
+{
+	ft_putstr(s);
+	ft_putstr(" -- x: ");
+	ft_putnbr(v.x);
+	ft_putstr(" y: ");
+	ft_putnbr(v.y);
+	ft_putchar('\n');
 }

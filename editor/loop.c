@@ -3,28 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akolomoi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 18:10:27 by akolomoi          #+#    #+#             */
-/*   Updated: 2019/10/28 18:10:28 by akolomoi         ###   ########.fr       */
+/*   Updated: 2019/10/28 22:09:03 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/editor.h"
-
-static void	nice_grid(t_ed *ed)
-{
-	int		i;
-	int		j;
-
-	i = -1;
-	while (++i < ED_W && (j = -1))
-		while (++j < ED_H)
-			if (j % GRID_GAP && i % GRID_GAP)
-				sdl_put_pix(&(ed->pixels), i, j, GRID_COL_1);
-			else
-				sdl_put_pix(&(ed->pixels), i, j, GRID_COL_2);
-}
 
 static void	init_render(t_ed *ed)
 {
@@ -81,6 +67,8 @@ void		render_manager(t_sdl *sdl, t_ed *ed)
 		render_map(ed);
 		draw_info(ed);
 		draw_selection(ed);
+		render_sector_mosters(ed);
+		render_sector_sprites(ed);
 		sdl_apply_renderer(sdl, ed);
 		if (ed->selection.sector != -1)
 		{
