@@ -327,5 +327,6 @@ t_font		new_font(char *str, t_vec2 v, Uint32 color, int scale);
 void      	print_loading_ascii(t_data *d);
 t_vec3f		move_down_vector3(t_vec3f v);
 t_vec2		move_down_vector2(t_vec2 v);
+void		merge_vector_arr(t_vec3f **a, t_vec3f **b, int ia, int *ib);
 
 #endif

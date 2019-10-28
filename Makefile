@@ -75,7 +75,9 @@ FILES = main \
 		circle \
 		new_font \
 		loading2 \
-		move_down_vector
+		move_down_vector \
+		arrays \
+		util_funcs
 
 LIBFT_DIR = libft/
 SRC = $(addprefix src/, $(addsuffix .c, $(FILES)))

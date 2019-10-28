@@ -176,3 +176,32 @@ t_vec2	new_v2int(int x, int y)
 	v.y = 0;
 	return (v);
 }
+
+
+t_vec2	add_v2int(t_vec2 a, t_vec2 b)
+{
+	t_vec2 v;
+
+	v.x = a.x + b.x;
+	v.y = a.y + b.y;
+	return (v);
+}
+
+t_vec2	min_v2int(t_vec2 a, t_vec2 b)
+{
+	t_vec2 v;
+
+	v.x = a.x - b.x;
+	v.y = a.y - b.y;
+	return (v);
+}
+
+
+t_vec2	mult_v2int(t_vec2 a, t_vec2 b)
+{
+	t_vec2 v;
+
+	v.x = a.x * b.x;
+	v.y = a.y * b.y;
+	return (v);
+}
