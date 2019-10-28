@@ -53,7 +53,7 @@ static void	smooth_movement(t_data *d, short *count, t_vec2f *mvt)
 	inertia(d, *mvt);
 }
 
-void	normal_gravity(t_data *d)
+void	normal_mode(t_data *d)
 {
 	if (d->cam.pos.y < d->floorheightplayer + d->player.minimum_height)
 	{
@@ -86,7 +86,7 @@ void	jump(t_data *d)
 	if (d->player.is_flying)
 		fly_mode(d);
 	else
-		normal_gravity(d);
+		normal_mode(d);
 }
 
 void	movement(t_data *d)

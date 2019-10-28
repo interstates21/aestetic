@@ -279,7 +279,7 @@ void		event_key_down(t_data *d, SDL_KeyboardEvent event);
 ** jump.c
 */
 
-void		normal_gravity(t_data *d);
+void		normal_mode(t_data *d);
 void		jump(t_data *d);
 
 /*

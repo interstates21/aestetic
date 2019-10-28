@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 20:03:13 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/28 19:56:47 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/28 20:00:14 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void		fly_mode(t_data *d)
 	if (!d->keys[SDL_SCANCODE_SPACE] && d->cam.pos.y <= d->floorheightplayer +
 			JUMP_FIX + d->player.minimum_height)
 	{
-		normal_gravity(d);
+		normal_mode(d);
 		return ;
 	}
 	if (d->cam.pos.y > pos_heigh && !d->keys[SDL_SCANCODE_SPACE])
