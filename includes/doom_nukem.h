@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 21:39:38 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/28 23:05:29 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/28 23:19:43 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -549,10 +549,11 @@ typedef	struct				s_three_val
 # define SMALLEST_HEIGHT_FOR_MONSTERS 1.4
 
 # define ANIMATION_TIME (SDL_GetTicks() / 1000.0)
+# define D double
 # define CLAMP(x, a, b) (((x) > (b)) ? (b) : (((x) < (a)) ? (a) : (x)))
-# define NORMALIZE(val, min, max) ((((double)val) - ((double)min)) / (((double)max) - ((double)min)))
+# define NORMALIZE(v, m, x) ((((D)v) - ((D)m)) / (((D)x) - ((D)m)))
 # define MOD(i, n) (((i) % (n) + (n)) % (n))
-# define LERP(n, min, max) (((double)min) * (1 - ((double)n)) + ((double)max) * ((double)n))
+# define LERP(n, m, x) (((D)m) * (1 - ((D)n)) + ((D)x) * ((D)n))
 # define MAX(a, b) (((a) > (b)) ? (a) : (b))
 # define MIN(a, b) (((a) > (b)) ? (b) : (a))
 
