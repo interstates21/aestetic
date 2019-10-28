@@ -31,10 +31,10 @@ void	init_everything(t_data *d, char *map)
 	init_monsters(d);
 	init_projectiles(d);
 	if (d->startsectnum < 0)
-		exit(printf("bad startsectnum\n"));
+		print_err("error");
 	if (SDL_SetRelativeMouseMode(SDL_TRUE) == -1)
 	{
-		printf("SDL_SetRelativeMouseMode error");
+		print_err("error");
 	}
 	d->floorheightplayer = get_floorheight_player(d, d->cursectnum);
 	d->ceilheightplayer = get_ceilheight_player(d, d->cursectnum);
