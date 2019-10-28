@@ -54,6 +54,7 @@ FILES = main \
 		load_map load_assets \
 		inside \
 		fly_mode \
+		jumping \
 		inertia \
 		monster_collision \
 		movement \
