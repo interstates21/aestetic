@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-static int	read_motherdemon_projectile(t_data *d, int f)
+static void	read_motherdemon_projectile(t_data *d, int f)
 {
 	int		i;
 	int		wid;
@@ -25,9 +25,8 @@ static int	read_motherdemon_projectile(t_data *d, int f)
 			!(d->projectile_tex[1][i] = SDL_CreateRGBSurfaceWithFormat(
 									0, wid, heig, 32, SDL_PIXELFORMAT_ARGB8888)) ||
 			read(f, d->projectile_tex[1][i]->pixels, wid * heig * 4) < 0)
-			return (printf("Failed to read motherdemon projectile\n"));
+			print_err("Failed to read motherdemon projectile\n");
 	}
-	return (0);
 }
 
 static int	read_anim_death_texture(t_data *d, int f, int *i, int nb_o)
@@ -37,6 +36,7 @@ static int	read_anim_death_texture(t_data *d, int f, int *i, int nb_o)
 	int	h;
 
 	if (read(f, &w, sizeof(int)) < 0 || read(f, &h, sizeof(int)) < 0)
+		print_err("Some Error");
 		return (printf("Failed to read death texture size.\n"));
 	if (!(d->monster_text[i[0]][i[1]][0] = SDL_CreateRGBSurfaceWithFormat(
 								0, w, h, 32, SDL_PIXELFORMAT_ARGB8888)))
@@ -99,6 +99,6 @@ void			load_monsters_texture(t_data *d, int f)
 			if (read_anim_death_texture(d, f, (int[2]){i, a}, nb_orientation))
 				print_err("cannot react anim death");
 	}
-	if (read_motherdemon_projectile(d, f))
-		print_err("cannot read demon");
+	read_motherdemon_projectile(d, f);
+	print_err("cannot read demon");
 }
