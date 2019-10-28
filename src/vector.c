@@ -207,7 +207,7 @@ t_vec2	mult_v2int(t_vec2 a, t_vec2 b)
 }
 
 
-void print_v(t_v2 v, const char *s)
+void print_v(t_vec2 v, const char *s)
 {
 	ft_putstr(s);
 	ft_putstr(" -- x: ");
