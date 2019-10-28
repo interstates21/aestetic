@@ -30,7 +30,7 @@ void			reopen_fd(int *fd, const char *path)
 		close(*fd);
 		*fd = -1;
 	}
-	if ((*fd = open(path, O_RDONLY)) == -1)
-		print_err("opening file failed");
+	if ((*fd = open(path, O_RDONLY)) == -1){printf("%s - path\n", path);
+		print_err("opening file failed");}
 }
 

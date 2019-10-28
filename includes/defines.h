@@ -22,6 +22,7 @@
 #define COLLISION_R 0.8
 
 #define MAX_FUEL 500
+#define MAX_BULLETS  30
 #define FUEL 300
 
 #define BLASTER_HITBOX 0.4

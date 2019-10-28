@@ -9,6 +9,7 @@ void		read_posters_data(t_data *d, int f)
 
 	if (read(f, &d->nb_posters, sizeof(int32_t)) < 0)
 		print_err("Cannot read num posters");
+	printf("poser = %d\n", d->nb_posters);
 	if (d->nb_posters <= 0)
 		return ;
 	if (!(d->posters =
@@ -30,8 +31,9 @@ void		read_posters_data(t_data *d, int f)
 void		read_monsters_data(t_data *d, int f)
 {
 	int	i;
+	int t = 0;
 
-	if (read(f, &d->nummonsters, sizeof(uint16_t)) < 0)
+	if ((t += read(f, &d->nummonsters, sizeof(uint16_t))) < 0)
 		print_err("Cannot read num monsters");
 	if (d->nummonsters > 0)
 	{
@@ -40,7 +42,7 @@ void		read_monsters_data(t_data *d, int f)
 			print_err("Cannot allocate monster struct");
 		i = -1;
 		while (++i < d->nummonsters)
-			if (read(f, &d->monsters[i], sizeof(t_monster)) < 0)
+			if ((t += read(f, &d->monsters[i], sizeof(t_monster))) < 0)
 			print_err("Cannot read monsters data");
 	}
 }
@@ -50,8 +52,8 @@ void		read_assets_texture(t_data *d, int f)
 	int	i;
 	int	w;
 	int	h;
-
-	if (read(f, &d->nb_assets_texture, sizeof(int16_t)) < 0)
+int t = 0;
+	if ((t += read(f, &d->nb_assets_texture, sizeof(int16_t))) < 0)
 		print_err("Cannot read num assets");
 	if (d->nb_assets_texture <= 0)
 		return ;
@@ -61,14 +63,15 @@ void		read_assets_texture(t_data *d, int f)
 	i = -1;
 	while (++i < d->nb_assets_texture)
 	{
-		if (read(f, &w, sizeof(int)) < 0 || read(f, &h, sizeof(int)) < 0)
+		if ((t += read(f, &w, sizeof(int))) < 0 || (t += read(f, &h, sizeof(int))) < 0)
 			print_err("Cannot read asset size");
 		if (!(d->assets_texture[i] = SDL_CreateRGBSurfaceWithFormat(
 								0, w, h, 32, SDL_PIXELFORMAT_ARGB8888)))
 			print_err("Cannot alloc assets");
-		if ((read(f, d->assets_texture[i]->pixels, w * h * 4)) < 0)
+		if (((t += read(f, d->assets_texture[i]->pixels, w * h * 4))) < 0)
 			print_err("Cannot read asset texture");
 	}
+	printf("sprite_tex total read: %d\n", t);
 }
 
 
@@ -76,9 +79,11 @@ void		read_assets_data(t_data *d, int f)
 {
 	int	i;
 	int	s;
+	int t = 0;
 
-	if (read(f, &d->nb_assets, sizeof(int16_t)) < 0)
+	if ((t += read(f, &d->nb_assets, sizeof(int16_t))) < 0)
 		print_err("Cannot read assets num");
+	printf("n_asset = %d\n", d->nb_assets);
 	if (!(d->assets = (t_assets**)malloc(sizeof(t_assets*) * d->numsectors)))
 		print_err("Cannot alloc asset data");
 	if (d->nb_assets > 0)
@@ -88,12 +93,13 @@ void		read_assets_data(t_data *d, int f)
 		{
 			if (!(d->assets[s] = (t_assets*)malloc(sizeof(t_assets) * 10)))
 				print_err("Cannot alloc asset struct");
-			if (read(f, &d->assets[s][0].nb_assets, sizeof(int)) < 0)
+			if ((t += read(f, &d->assets[s][0].nb_assets, sizeof(int))) < 0)
 				print_err("Cannot read nb asset for sect");
 			i = -1;
 			while (++i < d->assets[s][0].nb_assets)
-				if (read(f, &d->assets[s][i], sizeof(t_assets)) < 0)
+				if ((t += read(f, &d->assets[s][i], sizeof(t_assets))) < 0)
 					print_err("Cannot read asset[][]");
 		}
 	}
+	printf("total read: %d\n", t);
 }

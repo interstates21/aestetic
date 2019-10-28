@@ -81,7 +81,8 @@ int		write_assets_texture(t_data *d, int f)
 	{
 		w = d->interface.toolbar.assets[0][i]->w;
 		h = d->interface.toolbar.assets[0][i]->h;
-		if (write(f, &w, sizeof(int)) < 0 || write(f, &h, sizeof(int)) < 0 ||
+		if (write(f, &w, sizeof(int)) < 0
+		|| write(f, &h, sizeof(int)) < 0 ||
 			write(f, d->interface.toolbar.assets[0][i]->pixels, w * h * 4) < 0)
 			return (printf("Failed to write asset texture %d.\n", i));
 	}

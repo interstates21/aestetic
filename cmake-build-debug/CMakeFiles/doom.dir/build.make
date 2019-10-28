@@ -1097,9 +1097,35 @@ CMakeFiles/doom.dir/editor/init_monsters.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/doom.dir/editor/init_monsters.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/akolomoi/Desktop/notfred/editor/init_monsters.c -o CMakeFiles/doom.dir/editor/init_monsters.c.s
 
+CMakeFiles/doom.dir/editor/tex_finder.c.o: CMakeFiles/doom.dir/flags.make
+CMakeFiles/doom.dir/editor/tex_finder.c.o: ../editor/tex_finder.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/doom.dir/editor/tex_finder.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/editor/tex_finder.c.o   -c /Users/akolomoi/Desktop/notfred/editor/tex_finder.c
+
+CMakeFiles/doom.dir/editor/tex_finder.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/doom.dir/editor/tex_finder.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/akolomoi/Desktop/notfred/editor/tex_finder.c > CMakeFiles/doom.dir/editor/tex_finder.c.i
+
+CMakeFiles/doom.dir/editor/tex_finder.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/doom.dir/editor/tex_finder.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/akolomoi/Desktop/notfred/editor/tex_finder.c -o CMakeFiles/doom.dir/editor/tex_finder.c.s
+
+CMakeFiles/doom.dir/editor/save_sectors.c.o: CMakeFiles/doom.dir/flags.make
+CMakeFiles/doom.dir/editor/save_sectors.c.o: ../editor/save_sectors.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building C object CMakeFiles/doom.dir/editor/save_sectors.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/editor/save_sectors.c.o   -c /Users/akolomoi/Desktop/notfred/editor/save_sectors.c
+
+CMakeFiles/doom.dir/editor/save_sectors.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/doom.dir/editor/save_sectors.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/akolomoi/Desktop/notfred/editor/save_sectors.c > CMakeFiles/doom.dir/editor/save_sectors.c.i
+
+CMakeFiles/doom.dir/editor/save_sectors.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/doom.dir/editor/save_sectors.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/akolomoi/Desktop/notfred/editor/save_sectors.c -o CMakeFiles/doom.dir/editor/save_sectors.c.s
+
 CMakeFiles/doom.dir/editor/init_sector.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/editor/init_sector.c.o: ../editor/init_sector.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/doom.dir/editor/init_sector.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object CMakeFiles/doom.dir/editor/init_sector.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/editor/init_sector.c.o   -c /Users/akolomoi/Desktop/notfred/editor/init_sector.c
 
 CMakeFiles/doom.dir/editor/init_sector.c.i: cmake_force
@@ -1110,9 +1136,74 @@ CMakeFiles/doom.dir/editor/init_sector.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/doom.dir/editor/init_sector.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/akolomoi/Desktop/notfred/editor/init_sector.c -o CMakeFiles/doom.dir/editor/init_sector.c.s
 
+CMakeFiles/doom.dir/editor/save_monsters.c.o: CMakeFiles/doom.dir/flags.make
+CMakeFiles/doom.dir/editor/save_monsters.c.o: ../editor/save_monsters.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building C object CMakeFiles/doom.dir/editor/save_monsters.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/editor/save_monsters.c.o   -c /Users/akolomoi/Desktop/notfred/editor/save_monsters.c
+
+CMakeFiles/doom.dir/editor/save_monsters.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/doom.dir/editor/save_monsters.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/akolomoi/Desktop/notfred/editor/save_monsters.c > CMakeFiles/doom.dir/editor/save_monsters.c.i
+
+CMakeFiles/doom.dir/editor/save_monsters.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/doom.dir/editor/save_monsters.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/akolomoi/Desktop/notfred/editor/save_monsters.c -o CMakeFiles/doom.dir/editor/save_monsters.c.s
+
+CMakeFiles/doom.dir/editor/load_weapon.c.o: CMakeFiles/doom.dir/flags.make
+CMakeFiles/doom.dir/editor/load_weapon.c.o: ../editor/load_weapon.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building C object CMakeFiles/doom.dir/editor/load_weapon.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/editor/load_weapon.c.o   -c /Users/akolomoi/Desktop/notfred/editor/load_weapon.c
+
+CMakeFiles/doom.dir/editor/load_weapon.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/doom.dir/editor/load_weapon.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/akolomoi/Desktop/notfred/editor/load_weapon.c > CMakeFiles/doom.dir/editor/load_weapon.c.i
+
+CMakeFiles/doom.dir/editor/load_weapon.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/doom.dir/editor/load_weapon.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/akolomoi/Desktop/notfred/editor/load_weapon.c -o CMakeFiles/doom.dir/editor/load_weapon.c.s
+
+CMakeFiles/doom.dir/editor/save_tex.c.o: CMakeFiles/doom.dir/flags.make
+CMakeFiles/doom.dir/editor/save_tex.c.o: ../editor/save_tex.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building C object CMakeFiles/doom.dir/editor/save_tex.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/editor/save_tex.c.o   -c /Users/akolomoi/Desktop/notfred/editor/save_tex.c
+
+CMakeFiles/doom.dir/editor/save_tex.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/doom.dir/editor/save_tex.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/akolomoi/Desktop/notfred/editor/save_tex.c > CMakeFiles/doom.dir/editor/save_tex.c.i
+
+CMakeFiles/doom.dir/editor/save_tex.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/doom.dir/editor/save_tex.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/akolomoi/Desktop/notfred/editor/save_tex.c -o CMakeFiles/doom.dir/editor/save_tex.c.s
+
+CMakeFiles/doom.dir/editor/save_weapon.c.o: CMakeFiles/doom.dir/flags.make
+CMakeFiles/doom.dir/editor/save_weapon.c.o: ../editor/save_weapon.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building C object CMakeFiles/doom.dir/editor/save_weapon.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/editor/save_weapon.c.o   -c /Users/akolomoi/Desktop/notfred/editor/save_weapon.c
+
+CMakeFiles/doom.dir/editor/save_weapon.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/doom.dir/editor/save_weapon.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/akolomoi/Desktop/notfred/editor/save_weapon.c > CMakeFiles/doom.dir/editor/save_weapon.c.i
+
+CMakeFiles/doom.dir/editor/save_weapon.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/doom.dir/editor/save_weapon.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/akolomoi/Desktop/notfred/editor/save_weapon.c -o CMakeFiles/doom.dir/editor/save_weapon.c.s
+
+CMakeFiles/doom.dir/editor/save_mnst_tex.c.o: CMakeFiles/doom.dir/flags.make
+CMakeFiles/doom.dir/editor/save_mnst_tex.c.o: ../editor/save_mnst_tex.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building C object CMakeFiles/doom.dir/editor/save_mnst_tex.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/editor/save_mnst_tex.c.o   -c /Users/akolomoi/Desktop/notfred/editor/save_mnst_tex.c
+
+CMakeFiles/doom.dir/editor/save_mnst_tex.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/doom.dir/editor/save_mnst_tex.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/akolomoi/Desktop/notfred/editor/save_mnst_tex.c > CMakeFiles/doom.dir/editor/save_mnst_tex.c.i
+
+CMakeFiles/doom.dir/editor/save_mnst_tex.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/doom.dir/editor/save_mnst_tex.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/akolomoi/Desktop/notfred/editor/save_mnst_tex.c -o CMakeFiles/doom.dir/editor/save_mnst_tex.c.s
+
 CMakeFiles/doom.dir/editor/init_sprites.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/editor/init_sprites.c.o: ../editor/init_sprites.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building C object CMakeFiles/doom.dir/editor/init_sprites.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building C object CMakeFiles/doom.dir/editor/init_sprites.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/editor/init_sprites.c.o   -c /Users/akolomoi/Desktop/notfred/editor/init_sprites.c
 
 CMakeFiles/doom.dir/editor/init_sprites.c.i: cmake_force
@@ -1125,7 +1216,7 @@ CMakeFiles/doom.dir/editor/init_sprites.c.s: cmake_force
 
 CMakeFiles/doom.dir/editor/init_textures.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/editor/init_textures.c.o: ../editor/init_textures.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object CMakeFiles/doom.dir/editor/init_textures.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building C object CMakeFiles/doom.dir/editor/init_textures.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/editor/init_textures.c.o   -c /Users/akolomoi/Desktop/notfred/editor/init_textures.c
 
 CMakeFiles/doom.dir/editor/init_textures.c.i: cmake_force
@@ -1138,7 +1229,7 @@ CMakeFiles/doom.dir/editor/init_textures.c.s: cmake_force
 
 CMakeFiles/doom.dir/editor/load_anims.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/editor/load_anims.c.o: ../editor/load_anims.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building C object CMakeFiles/doom.dir/editor/load_anims.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building C object CMakeFiles/doom.dir/editor/load_anims.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/editor/load_anims.c.o   -c /Users/akolomoi/Desktop/notfred/editor/load_anims.c
 
 CMakeFiles/doom.dir/editor/load_anims.c.i: cmake_force
@@ -1151,7 +1242,7 @@ CMakeFiles/doom.dir/editor/load_anims.c.s: cmake_force
 
 CMakeFiles/doom.dir/editor/loop.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/editor/loop.c.o: ../editor/loop.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building C object CMakeFiles/doom.dir/editor/loop.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building C object CMakeFiles/doom.dir/editor/loop.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/editor/loop.c.o   -c /Users/akolomoi/Desktop/notfred/editor/loop.c
 
 CMakeFiles/doom.dir/editor/loop.c.i: cmake_force
@@ -1164,7 +1255,7 @@ CMakeFiles/doom.dir/editor/loop.c.s: cmake_force
 
 CMakeFiles/doom.dir/editor/draw_info.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/editor/draw_info.c.o: ../editor/draw_info.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building C object CMakeFiles/doom.dir/editor/draw_info.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building C object CMakeFiles/doom.dir/editor/draw_info.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/editor/draw_info.c.o   -c /Users/akolomoi/Desktop/notfred/editor/draw_info.c
 
 CMakeFiles/doom.dir/editor/draw_info.c.i: cmake_force
@@ -1177,7 +1268,7 @@ CMakeFiles/doom.dir/editor/draw_info.c.s: cmake_force
 
 CMakeFiles/doom.dir/editor/font.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/editor/font.c.o: ../editor/font.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building C object CMakeFiles/doom.dir/editor/font.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building C object CMakeFiles/doom.dir/editor/font.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/editor/font.c.o   -c /Users/akolomoi/Desktop/notfred/editor/font.c
 
 CMakeFiles/doom.dir/editor/font.c.i: cmake_force
@@ -1190,7 +1281,7 @@ CMakeFiles/doom.dir/editor/font.c.s: cmake_force
 
 CMakeFiles/doom.dir/editor/main.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/editor/main.c.o: ../editor/main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building C object CMakeFiles/doom.dir/editor/main.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building C object CMakeFiles/doom.dir/editor/main.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/editor/main.c.o   -c /Users/akolomoi/Desktop/notfred/editor/main.c
 
 CMakeFiles/doom.dir/editor/main.c.i: cmake_force
@@ -1203,7 +1294,7 @@ CMakeFiles/doom.dir/editor/main.c.s: cmake_force
 
 CMakeFiles/doom.dir/editor/r_bold_line.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/editor/r_bold_line.c.o: ../editor/r_bold_line.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building C object CMakeFiles/doom.dir/editor/r_bold_line.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building C object CMakeFiles/doom.dir/editor/r_bold_line.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/editor/r_bold_line.c.o   -c /Users/akolomoi/Desktop/notfred/editor/r_bold_line.c
 
 CMakeFiles/doom.dir/editor/r_bold_line.c.i: cmake_force
@@ -1214,9 +1305,22 @@ CMakeFiles/doom.dir/editor/r_bold_line.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/doom.dir/editor/r_bold_line.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/akolomoi/Desktop/notfred/editor/r_bold_line.c -o CMakeFiles/doom.dir/editor/r_bold_line.c.s
 
+CMakeFiles/doom.dir/editor/savior.c.o: CMakeFiles/doom.dir/flags.make
+CMakeFiles/doom.dir/editor/savior.c.o: ../editor/savior.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building C object CMakeFiles/doom.dir/editor/savior.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/editor/savior.c.o   -c /Users/akolomoi/Desktop/notfred/editor/savior.c
+
+CMakeFiles/doom.dir/editor/savior.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/doom.dir/editor/savior.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/akolomoi/Desktop/notfred/editor/savior.c > CMakeFiles/doom.dir/editor/savior.c.i
+
+CMakeFiles/doom.dir/editor/savior.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/doom.dir/editor/savior.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/akolomoi/Desktop/notfred/editor/savior.c -o CMakeFiles/doom.dir/editor/savior.c.s
+
 CMakeFiles/doom.dir/editor/r_controls.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/editor/r_controls.c.o: ../editor/r_controls.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building C object CMakeFiles/doom.dir/editor/r_controls.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building C object CMakeFiles/doom.dir/editor/r_controls.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/editor/r_controls.c.o   -c /Users/akolomoi/Desktop/notfred/editor/r_controls.c
 
 CMakeFiles/doom.dir/editor/r_controls.c.i: cmake_force
@@ -1229,7 +1333,7 @@ CMakeFiles/doom.dir/editor/r_controls.c.s: cmake_force
 
 CMakeFiles/doom.dir/editor/r_helpers.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/editor/r_helpers.c.o: ../editor/r_helpers.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building C object CMakeFiles/doom.dir/editor/r_helpers.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building C object CMakeFiles/doom.dir/editor/r_helpers.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/editor/r_helpers.c.o   -c /Users/akolomoi/Desktop/notfred/editor/r_helpers.c
 
 CMakeFiles/doom.dir/editor/r_helpers.c.i: cmake_force
@@ -1242,7 +1346,7 @@ CMakeFiles/doom.dir/editor/r_helpers.c.s: cmake_force
 
 CMakeFiles/doom.dir/editor/r_line.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/editor/r_line.c.o: ../editor/r_line.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building C object CMakeFiles/doom.dir/editor/r_line.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building C object CMakeFiles/doom.dir/editor/r_line.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/editor/r_line.c.o   -c /Users/akolomoi/Desktop/notfred/editor/r_line.c
 
 CMakeFiles/doom.dir/editor/r_line.c.i: cmake_force
@@ -1255,7 +1359,7 @@ CMakeFiles/doom.dir/editor/r_line.c.s: cmake_force
 
 CMakeFiles/doom.dir/editor/r_mouse_controller.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/editor/r_mouse_controller.c.o: ../editor/r_mouse_controller.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building C object CMakeFiles/doom.dir/editor/r_mouse_controller.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Building C object CMakeFiles/doom.dir/editor/r_mouse_controller.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/editor/r_mouse_controller.c.o   -c /Users/akolomoi/Desktop/notfred/editor/r_mouse_controller.c
 
 CMakeFiles/doom.dir/editor/r_mouse_controller.c.i: cmake_force
@@ -1268,7 +1372,7 @@ CMakeFiles/doom.dir/editor/r_mouse_controller.c.s: cmake_force
 
 CMakeFiles/doom.dir/editor/r_push.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/editor/r_push.c.o: ../editor/r_push.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building C object CMakeFiles/doom.dir/editor/r_push.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_102) "Building C object CMakeFiles/doom.dir/editor/r_push.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/editor/r_push.c.o   -c /Users/akolomoi/Desktop/notfred/editor/r_push.c
 
 CMakeFiles/doom.dir/editor/r_push.c.i: cmake_force
@@ -1281,7 +1385,7 @@ CMakeFiles/doom.dir/editor/r_push.c.s: cmake_force
 
 CMakeFiles/doom.dir/editor/r_sdl.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/editor/r_sdl.c.o: ../editor/r_sdl.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building C object CMakeFiles/doom.dir/editor/r_sdl.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_103) "Building C object CMakeFiles/doom.dir/editor/r_sdl.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/editor/r_sdl.c.o   -c /Users/akolomoi/Desktop/notfred/editor/r_sdl.c
 
 CMakeFiles/doom.dir/editor/r_sdl.c.i: cmake_force
@@ -1294,7 +1398,7 @@ CMakeFiles/doom.dir/editor/r_sdl.c.s: cmake_force
 
 CMakeFiles/doom.dir/editor/r_sdl2.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/editor/r_sdl2.c.o: ../editor/r_sdl2.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building C object CMakeFiles/doom.dir/editor/r_sdl2.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_104) "Building C object CMakeFiles/doom.dir/editor/r_sdl2.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/editor/r_sdl2.c.o   -c /Users/akolomoi/Desktop/notfred/editor/r_sdl2.c
 
 CMakeFiles/doom.dir/editor/r_sdl2.c.i: cmake_force
@@ -1307,7 +1411,7 @@ CMakeFiles/doom.dir/editor/r_sdl2.c.s: cmake_force
 
 CMakeFiles/doom.dir/editor/r_selectors.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/editor/r_selectors.c.o: ../editor/r_selectors.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building C object CMakeFiles/doom.dir/editor/r_selectors.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_105) "Building C object CMakeFiles/doom.dir/editor/r_selectors.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/editor/r_selectors.c.o   -c /Users/akolomoi/Desktop/notfred/editor/r_selectors.c
 
 CMakeFiles/doom.dir/editor/r_selectors.c.i: cmake_force
@@ -1320,7 +1424,7 @@ CMakeFiles/doom.dir/editor/r_selectors.c.s: cmake_force
 
 CMakeFiles/doom.dir/editor/r_vector.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/editor/r_vector.c.o: ../editor/r_vector.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building C object CMakeFiles/doom.dir/editor/r_vector.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_106) "Building C object CMakeFiles/doom.dir/editor/r_vector.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/editor/r_vector.c.o   -c /Users/akolomoi/Desktop/notfred/editor/r_vector.c
 
 CMakeFiles/doom.dir/editor/r_vector.c.i: cmake_force
@@ -1333,7 +1437,7 @@ CMakeFiles/doom.dir/editor/r_vector.c.s: cmake_force
 
 CMakeFiles/doom.dir/editor/reopen.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/editor/reopen.c.o: ../editor/reopen.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building C object CMakeFiles/doom.dir/editor/reopen.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_107) "Building C object CMakeFiles/doom.dir/editor/reopen.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/editor/reopen.c.o   -c /Users/akolomoi/Desktop/notfred/editor/reopen.c
 
 CMakeFiles/doom.dir/editor/reopen.c.i: cmake_force
@@ -1346,7 +1450,7 @@ CMakeFiles/doom.dir/editor/reopen.c.s: cmake_force
 
 CMakeFiles/doom.dir/editor/loop_creation.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/editor/loop_creation.c.o: ../editor/loop_creation.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building C object CMakeFiles/doom.dir/editor/loop_creation.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_108) "Building C object CMakeFiles/doom.dir/editor/loop_creation.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/editor/loop_creation.c.o   -c /Users/akolomoi/Desktop/notfred/editor/loop_creation.c
 
 CMakeFiles/doom.dir/editor/loop_creation.c.i: cmake_force
@@ -1359,7 +1463,7 @@ CMakeFiles/doom.dir/editor/loop_creation.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_add_protection.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_add_protection.c.o: ../DELETEDed/ed_add_protection.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_add_protection.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_109) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_add_protection.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_add_protection.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_add_protection.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_add_protection.c.i: cmake_force
@@ -1372,7 +1476,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_add_protection.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_bmp_reader.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_bmp_reader.c.o: ../DELETEDed/ed_bmp_reader.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_102) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_bmp_reader.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_110) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_bmp_reader.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_bmp_reader.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_bmp_reader.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_bmp_reader.c.i: cmake_force
@@ -1385,7 +1489,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_bmp_reader.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_conversion.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_conversion.c.o: ../DELETEDed/ed_conversion.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_103) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_conversion.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_111) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_conversion.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_conversion.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_conversion.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_conversion.c.i: cmake_force
@@ -1398,7 +1502,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_conversion.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_detect_assets.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_detect_assets.c.o: ../DELETEDed/ed_detect_assets.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_104) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_detect_assets.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_112) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_detect_assets.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_detect_assets.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_detect_assets.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_detect_assets.c.i: cmake_force
@@ -1411,7 +1515,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_detect_assets.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_detect_wall.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_detect_wall.c.o: ../DELETEDed/ed_detect_wall.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_105) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_detect_wall.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_113) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_detect_wall.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_detect_wall.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_detect_wall.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_detect_wall.c.i: cmake_force
@@ -1424,7 +1528,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_detect_wall.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_door_toggle.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_door_toggle.c.o: ../DELETEDed/ed_door_toggle.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_106) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_door_toggle.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_114) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_door_toggle.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_door_toggle.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_door_toggle.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_door_toggle.c.i: cmake_force
@@ -1437,7 +1541,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_door_toggle.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_draw.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_draw.c.o: ../DELETEDed/ed_draw.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_107) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_draw.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_115) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_draw.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_draw.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_draw.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_draw.c.i: cmake_force
@@ -1450,7 +1554,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_draw.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_draw_assets.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_draw_assets.c.o: ../DELETEDed/ed_draw_assets.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_108) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_draw_assets.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_116) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_draw_assets.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_draw_assets.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_draw_assets.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_draw_assets.c.i: cmake_force
@@ -1463,7 +1567,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_draw_assets.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_draw_string.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_draw_string.c.o: ../DELETEDed/ed_draw_string.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_109) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_draw_string.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_117) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_draw_string.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_draw_string.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_draw_string.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_draw_string.c.i: cmake_force
@@ -1476,7 +1580,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_draw_string.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_editor.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_editor.c.o: ../DELETEDed/ed_editor.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_110) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_editor.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_118) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_editor.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_editor.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_editor.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_editor.c.i: cmake_force
@@ -1489,7 +1593,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_editor.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_editor_assets_handler.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_editor_assets_handler.c.o: ../DELETEDed/ed_editor_assets_handler.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_111) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_editor_assets_handler.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_119) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_editor_assets_handler.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_editor_assets_handler.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_editor_assets_handler.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_editor_assets_handler.c.i: cmake_force
@@ -1502,7 +1606,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_editor_assets_handler.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_editor_assets_handler2.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_editor_assets_handler2.c.o: ../DELETEDed/ed_editor_assets_handler2.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_112) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_editor_assets_handler2.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_120) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_editor_assets_handler2.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_editor_assets_handler2.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_editor_assets_handler2.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_editor_assets_handler2.c.i: cmake_force
@@ -1515,7 +1619,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_editor_assets_handler2.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_editor_functions.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_editor_functions.c.o: ../DELETEDed/ed_editor_functions.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_113) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_editor_functions.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_121) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_editor_functions.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_editor_functions.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_editor_functions.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_editor_functions.c.i: cmake_force
@@ -1528,7 +1632,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_editor_functions.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_editor_sector.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_editor_sector.c.o: ../DELETEDed/ed_editor_sector.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_114) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_editor_sector.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_122) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_editor_sector.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_editor_sector.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_editor_sector.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_editor_sector.c.i: cmake_force
@@ -1541,7 +1645,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_editor_sector.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_editor_wall.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_editor_wall.c.o: ../DELETEDed/ed_editor_wall.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_115) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_editor_wall.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_123) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_editor_wall.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_editor_wall.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_editor_wall.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_editor_wall.c.i: cmake_force
@@ -1554,7 +1658,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_editor_wall.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_event.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_event.c.o: ../DELETEDed/ed_event.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_116) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_event.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_124) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_event.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_event.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_event.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_event.c.i: cmake_force
@@ -1567,7 +1671,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_event.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_event_assets_options.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_event_assets_options.c.o: ../DELETEDed/ed_event_assets_options.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_117) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_event_assets_options.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_125) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_event_assets_options.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_event_assets_options.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_event_assets_options.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_event_assets_options.c.i: cmake_force
@@ -1580,7 +1684,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_event_assets_options.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_event_functions.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_event_functions.c.o: ../DELETEDed/ed_event_functions.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_118) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_event_functions.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_126) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_event_functions.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_event_functions.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_event_functions.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_event_functions.c.i: cmake_force
@@ -1593,7 +1697,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_event_functions.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_event_functions2.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_event_functions2.c.o: ../DELETEDed/ed_event_functions2.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_119) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_event_functions2.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_127) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_event_functions2.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_event_functions2.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_event_functions2.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_event_functions2.c.i: cmake_force
@@ -1606,7 +1710,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_event_functions2.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_event_keyboard.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_event_keyboard.c.o: ../DELETEDed/ed_event_keyboard.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_120) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_event_keyboard.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_128) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_event_keyboard.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_event_keyboard.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_event_keyboard.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_event_keyboard.c.i: cmake_force
@@ -1619,7 +1723,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_event_keyboard.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_event_mouse_button.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_event_mouse_button.c.o: ../DELETEDed/ed_event_mouse_button.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_121) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_event_mouse_button.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_129) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_event_mouse_button.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_event_mouse_button.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_event_mouse_button.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_event_mouse_button.c.i: cmake_force
@@ -1632,7 +1736,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_event_mouse_button.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_event_sector_options.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_event_sector_options.c.o: ../DELETEDed/ed_event_sector_options.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_122) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_event_sector_options.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_130) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_event_sector_options.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_event_sector_options.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_event_sector_options.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_event_sector_options.c.i: cmake_force
@@ -1645,7 +1749,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_event_sector_options.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_fix_data_to_save.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_fix_data_to_save.c.o: ../DELETEDed/ed_fix_data_to_save.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_123) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_fix_data_to_save.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_131) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_fix_data_to_save.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_fix_data_to_save.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_fix_data_to_save.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_fix_data_to_save.c.i: cmake_force
@@ -1658,7 +1762,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_fix_data_to_save.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_get_animation_files.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_get_animation_files.c.o: ../DELETEDed/ed_get_animation_files.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_124) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_get_animation_files.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_132) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_get_animation_files.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_get_animation_files.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_get_animation_files.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_get_animation_files.c.i: cmake_force
@@ -1671,7 +1775,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_get_animation_files.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_get_monster_files.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_get_monster_files.c.o: ../DELETEDed/ed_get_monster_files.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_125) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_get_monster_files.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_133) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_get_monster_files.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_get_monster_files.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_get_monster_files.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_get_monster_files.c.i: cmake_force
@@ -1684,7 +1788,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_get_monster_files.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_get_weapon_list.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_get_weapon_list.c.o: ../DELETEDed/ed_get_weapon_list.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_126) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_get_weapon_list.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_134) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_get_weapon_list.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_get_weapon_list.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_get_weapon_list.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_get_weapon_list.c.i: cmake_force
@@ -1697,7 +1801,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_get_weapon_list.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_init_assets.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_init_assets.c.o: ../DELETEDed/ed_init_assets.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_127) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_init_assets.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_135) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_init_assets.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_init_assets.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_init_assets.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_init_assets.c.i: cmake_force
@@ -1710,7 +1814,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_init_assets.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_init_editor.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_init_editor.c.o: ../DELETEDed/ed_init_editor.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_128) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_init_editor.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_136) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_init_editor.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_init_editor.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_init_editor.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_init_editor.c.i: cmake_force
@@ -1723,7 +1827,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_init_editor.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_init_structures.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_init_structures.c.o: ../DELETEDed/ed_init_structures.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_129) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_init_structures.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_137) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_init_structures.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_init_structures.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_init_structures.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_init_structures.c.i: cmake_force
@@ -1736,7 +1840,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_init_structures.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_init_texture.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_init_texture.c.o: ../DELETEDed/ed_init_texture.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_130) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_init_texture.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_138) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_init_texture.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_init_texture.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_init_texture.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_init_texture.c.i: cmake_force
@@ -1749,7 +1853,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_init_texture.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_interface.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_interface.c.o: ../DELETEDed/ed_interface.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_131) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_interface.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_139) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_interface.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_interface.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_interface.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_interface.c.i: cmake_force
@@ -1762,7 +1866,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_interface.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_interface_functions.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_interface_functions.c.o: ../DELETEDed/ed_interface_functions.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_132) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_interface_functions.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_140) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_interface_functions.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_interface_functions.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_interface_functions.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_interface_functions.c.i: cmake_force
@@ -1775,7 +1879,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_interface_functions.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_interface_map_list.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_interface_map_list.c.o: ../DELETEDed/ed_interface_map_list.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_133) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_interface_map_list.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_141) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_interface_map_list.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_interface_map_list.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_interface_map_list.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_interface_map_list.c.i: cmake_force
@@ -1788,7 +1892,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_interface_map_list.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_interface_print_values.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_interface_print_values.c.o: ../DELETEDed/ed_interface_print_values.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_134) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_interface_print_values.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_142) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_interface_print_values.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_interface_print_values.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_interface_print_values.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_interface_print_values.c.i: cmake_force
@@ -1801,7 +1905,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_interface_print_values.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_interface_properties.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_interface_properties.c.o: ../DELETEDed/ed_interface_properties.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_135) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_interface_properties.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_143) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_interface_properties.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_interface_properties.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_interface_properties.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_interface_properties.c.i: cmake_force
@@ -1814,7 +1918,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_interface_properties.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_interface_properties2.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_interface_properties2.c.o: ../DELETEDed/ed_interface_properties2.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_136) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_interface_properties2.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_144) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_interface_properties2.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_interface_properties2.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_interface_properties2.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_interface_properties2.c.i: cmake_force
@@ -1827,7 +1931,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_interface_properties2.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_interface_select_map.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_interface_select_map.c.o: ../DELETEDed/ed_interface_select_map.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_137) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_interface_select_map.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_145) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_interface_select_map.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_interface_select_map.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_interface_select_map.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_interface_select_map.c.i: cmake_force
@@ -1840,7 +1944,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_interface_select_map.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_list_manager_assets.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_list_manager_assets.c.o: ../DELETEDed/ed_list_manager_assets.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_138) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_list_manager_assets.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_146) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_list_manager_assets.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_list_manager_assets.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_list_manager_assets.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_list_manager_assets.c.i: cmake_force
@@ -1853,7 +1957,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_list_manager_assets.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_list_manager_monster.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_list_manager_monster.c.o: ../DELETEDed/ed_list_manager_monster.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_139) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_list_manager_monster.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_147) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_list_manager_monster.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_list_manager_monster.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_list_manager_monster.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_list_manager_monster.c.i: cmake_force
@@ -1866,7 +1970,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_list_manager_monster.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_pixel.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_pixel.c.o: ../DELETEDed/ed_pixel.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_140) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_pixel.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_148) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_pixel.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_pixel.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_pixel.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_pixel.c.i: cmake_force
@@ -1879,7 +1983,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_pixel.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_read_map.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_read_map.c.o: ../DELETEDed/ed_read_map.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_141) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_read_map.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_149) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_read_map.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_read_map.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_read_map.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_read_map.c.i: cmake_force
@@ -1892,7 +1996,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_read_map.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_read_map_assets.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_read_map_assets.c.o: ../DELETEDed/ed_read_map_assets.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_142) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_read_map_assets.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_150) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_read_map_assets.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_read_map_assets.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_read_map_assets.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_read_map_assets.c.i: cmake_force
@@ -1905,7 +2009,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_read_map_assets.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_read_map_fix.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_read_map_fix.c.o: ../DELETEDed/ed_read_map_fix.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_143) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_read_map_fix.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_151) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_read_map_fix.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_read_map_fix.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_read_map_fix.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_read_map_fix.c.i: cmake_force
@@ -1918,7 +2022,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_read_map_fix.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_save_assets.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_save_assets.c.o: ../DELETEDed/ed_save_assets.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_144) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_save_assets.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_152) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_save_assets.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_save_assets.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_save_assets.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_save_assets.c.i: cmake_force
@@ -1931,7 +2035,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_save_assets.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_save_file.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_save_file.c.o: ../DELETEDed/ed_save_file.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_145) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_save_file.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_153) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_save_file.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_save_file.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_save_file.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_save_file.c.i: cmake_force
@@ -1944,7 +2048,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_save_file.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_save_monster.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_save_monster.c.o: ../DELETEDed/ed_save_monster.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_146) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_save_monster.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_154) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_save_monster.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_save_monster.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_save_monster.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_save_monster.c.i: cmake_force
@@ -1957,7 +2061,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_save_monster.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_save_posters.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_save_posters.c.o: ../DELETEDed/ed_save_posters.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_147) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_save_posters.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_155) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_save_posters.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_save_posters.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_save_posters.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_save_posters.c.i: cmake_force
@@ -1970,7 +2074,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_save_posters.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_save_sound.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_save_sound.c.o: ../DELETEDed/ed_save_sound.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_148) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_save_sound.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_156) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_save_sound.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_save_sound.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_save_sound.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_save_sound.c.i: cmake_force
@@ -1983,7 +2087,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_save_sound.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_save_weapons.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_save_weapons.c.o: ../DELETEDed/ed_save_weapons.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_149) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_save_weapons.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_157) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_save_weapons.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_save_weapons.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_save_weapons.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_save_weapons.c.i: cmake_force
@@ -1996,7 +2100,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_save_weapons.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/ed_utils.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/ed_utils.c.o: ../DELETEDed/ed_utils.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_150) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_utils.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_158) "Building C object CMakeFiles/doom.dir/DELETEDed/ed_utils.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/ed_utils.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/ed_utils.c
 
 CMakeFiles/doom.dir/DELETEDed/ed_utils.c.i: cmake_force
@@ -2009,7 +2113,7 @@ CMakeFiles/doom.dir/DELETEDed/ed_utils.c.s: cmake_force
 
 CMakeFiles/doom.dir/DELETEDed/main.c.o: CMakeFiles/doom.dir/flags.make
 CMakeFiles/doom.dir/DELETEDed/main.c.o: ../DELETEDed/main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_151) "Building C object CMakeFiles/doom.dir/DELETEDed/main.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_159) "Building C object CMakeFiles/doom.dir/DELETEDed/main.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom.dir/DELETEDed/main.c.o   -c /Users/akolomoi/Desktop/notfred/DELETEDed/main.c
 
 CMakeFiles/doom.dir/DELETEDed/main.c.i: cmake_force
@@ -2102,7 +2206,14 @@ doom_OBJECTS = \
 "CMakeFiles/doom.dir/src/loading.c.o" \
 "CMakeFiles/doom.dir/editor/bmp_reader.c.o" \
 "CMakeFiles/doom.dir/editor/init_monsters.c.o" \
+"CMakeFiles/doom.dir/editor/tex_finder.c.o" \
+"CMakeFiles/doom.dir/editor/save_sectors.c.o" \
 "CMakeFiles/doom.dir/editor/init_sector.c.o" \
+"CMakeFiles/doom.dir/editor/save_monsters.c.o" \
+"CMakeFiles/doom.dir/editor/load_weapon.c.o" \
+"CMakeFiles/doom.dir/editor/save_tex.c.o" \
+"CMakeFiles/doom.dir/editor/save_weapon.c.o" \
+"CMakeFiles/doom.dir/editor/save_mnst_tex.c.o" \
 "CMakeFiles/doom.dir/editor/init_sprites.c.o" \
 "CMakeFiles/doom.dir/editor/init_textures.c.o" \
 "CMakeFiles/doom.dir/editor/load_anims.c.o" \
@@ -2111,6 +2222,7 @@ doom_OBJECTS = \
 "CMakeFiles/doom.dir/editor/font.c.o" \
 "CMakeFiles/doom.dir/editor/main.c.o" \
 "CMakeFiles/doom.dir/editor/r_bold_line.c.o" \
+"CMakeFiles/doom.dir/editor/savior.c.o" \
 "CMakeFiles/doom.dir/editor/r_controls.c.o" \
 "CMakeFiles/doom.dir/editor/r_helpers.c.o" \
 "CMakeFiles/doom.dir/editor/r_line.c.o" \
@@ -2257,7 +2369,14 @@ doom: CMakeFiles/doom.dir/src/vector.c.o
 doom: CMakeFiles/doom.dir/src/loading.c.o
 doom: CMakeFiles/doom.dir/editor/bmp_reader.c.o
 doom: CMakeFiles/doom.dir/editor/init_monsters.c.o
+doom: CMakeFiles/doom.dir/editor/tex_finder.c.o
+doom: CMakeFiles/doom.dir/editor/save_sectors.c.o
 doom: CMakeFiles/doom.dir/editor/init_sector.c.o
+doom: CMakeFiles/doom.dir/editor/save_monsters.c.o
+doom: CMakeFiles/doom.dir/editor/load_weapon.c.o
+doom: CMakeFiles/doom.dir/editor/save_tex.c.o
+doom: CMakeFiles/doom.dir/editor/save_weapon.c.o
+doom: CMakeFiles/doom.dir/editor/save_mnst_tex.c.o
 doom: CMakeFiles/doom.dir/editor/init_sprites.c.o
 doom: CMakeFiles/doom.dir/editor/init_textures.c.o
 doom: CMakeFiles/doom.dir/editor/load_anims.c.o
@@ -2266,6 +2385,7 @@ doom: CMakeFiles/doom.dir/editor/draw_info.c.o
 doom: CMakeFiles/doom.dir/editor/font.c.o
 doom: CMakeFiles/doom.dir/editor/main.c.o
 doom: CMakeFiles/doom.dir/editor/r_bold_line.c.o
+doom: CMakeFiles/doom.dir/editor/savior.c.o
 doom: CMakeFiles/doom.dir/editor/r_controls.c.o
 doom: CMakeFiles/doom.dir/editor/r_helpers.c.o
 doom: CMakeFiles/doom.dir/editor/r_line.c.o
@@ -2330,7 +2450,7 @@ doom: CMakeFiles/doom.dir/DELETEDed/ed_utils.c.o
 doom: CMakeFiles/doom.dir/DELETEDed/main.c.o
 doom: CMakeFiles/doom.dir/build.make
 doom: CMakeFiles/doom.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_152) "Linking C executable doom"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/akolomoi/Desktop/notfred/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_160) "Linking C executable doom"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/doom.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -5,22 +5,6 @@ int			in_range(double t)
 	return (t >= 0.0 && t <= 1.0);
 }
 
-void		get_sect_info(int i, t_ed *e)
-{
-	printf("sector %d:\n", i);
-	if (i == -1)
-	{
-		printf("\ttakogo netu\n");
-		return;
-	}
-	printf("\twalls: %d\n", e->seclist[i].n_walls);
-	int k = -1;
-	while (++k < e->seclist[i].n_walls)
-	{
-		printf("\t\twall %d : door - %d, portal - %d\n", k, e->seclist[i].walls[k].is_door, e->seclist[i].walls[k].is_portal);
-	}
-}
-
 int 		intersects(t_v2 l[2], t_sect *s)
 {
 	double	det;
@@ -46,7 +30,7 @@ int 		intersects(t_v2 l[2], t_sect *s)
 	}
 	return (res);
 }
-// возвращает номер сектора ели внутри него кликнули или -1
+
 char		in_sector(t_ed *e)
 {
 	int 	i;

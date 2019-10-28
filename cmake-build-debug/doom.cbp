@@ -259,6 +259,9 @@
 		<Unit filename="/Users/akolomoi/Desktop/notfred/editor/load_anims.c">
 			<Option target="doom"/>
 		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/notfred/editor/load_weapon.c">
+			<Option target="doom"/>
+		</Unit>
 		<Unit filename="/Users/akolomoi/Desktop/notfred/editor/loop.c">
 			<Option target="doom"/>
 		</Unit>
@@ -299,6 +302,27 @@
 			<Option target="doom"/>
 		</Unit>
 		<Unit filename="/Users/akolomoi/Desktop/notfred/editor/reopen.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/notfred/editor/save_mnst_tex.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/notfred/editor/save_monsters.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/notfred/editor/save_sectors.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/notfred/editor/save_tex.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/notfred/editor/save_weapon.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/notfred/editor/savior.c">
+			<Option target="doom"/>
+		</Unit>
+		<Unit filename="/Users/akolomoi/Desktop/notfred/editor/tex_finder.c">
 			<Option target="doom"/>
 		</Unit>
 		<Unit filename="/Users/akolomoi/Desktop/notfred/includes/common.h">

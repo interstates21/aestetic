@@ -16,8 +16,8 @@
 # include "../libft/libft.h"
 # include <stdlib.h>
 # include <errno.h>
-# include <fcntl.h>
 # include <dirent.h>
+# include <fcntl.h>
 # include <pthread.h>
 # include <math.h>
 # include "../frameworks/SDL2/SDL.h"
@@ -31,7 +31,7 @@
 # define MAX_MONS	32
 # define MAX_SECT	128
 # define MAX_SPRT	64
-# define MAX_WALL	32
+# define MAX_WALL	512
 # define GRID_GAP	21
 # define MAX_NAME	100
 # define PICKER_SIZE 100
@@ -47,10 +47,11 @@
 # define FIRST_SPRITE_H		350 
 # define MOSTER_2_PICKER_W	1120
 # define MOSTER_PICKER_H 	450
-# define SHAPE_SIZE 50
-# define SELECTION_FIELD 5
-# define M_NAME_1	"motherdemon"
-# define M_NAME_2	"chargingdemon"
+# define SHAPE_SIZE			50
+# define SELECTION_FIELD	5
+# define MAX_SOUND			5000000
+# define M_NAME_1			"motherdemon"
+# define M_NAME_2			"chargingdemon"
 
 # define TEXT_DIR	"../textures/"
 # define MONSTERS	"../textures/assets/monsters/"
@@ -205,7 +206,7 @@ typedef struct		s_sprite
 {
 	char			name[MAX_NAME];
 	SDL_Surface		*texture;
-	t_v2			pos;
+	char			pos;
 	char 			sect;
 	char 			interactive;
 	char 			autopick;
@@ -223,6 +224,7 @@ typedef struct		s_sect
 	int 			num;
 	short			n_walls;
 	// t_sprite		*sprites;
+	int 			n_sprt;
 	int 			start_wall;
 	t_wall			*walls;
 	short			height[H_TOTAL];
@@ -295,20 +297,20 @@ typedef struct		s_stdsector
 	int16_t			floorpicnum;
 	int16_t			ceilpicnum;
 	float			light;
-	bool			blinking;
+	char			blinking;
 	char			floor_texture_name[100];
 	char			ceil_texture_name[100];
-	bool			outdoor;
+	char			outdoor;
 	t_sprite_list	*sprite_list;
 	int16_t			slope;
 	int16_t			slope_orientation;
 	int16_t			slopeceil;
 	int16_t			slopeceil_orientation;
-	bool			is_animatedslope;
-	bool			is_animatedslopeceil;
-	bool			is_elevator;
-	bool			is_finish;
-	bool			is_harmful;
+	char			is_animatedslope;
+	char			is_animatedslopeceil;
+	char			is_elevator;
+	char			is_finish;
+	char			is_harmful;
 }					t_sdtsector;
 
 typedef struct		s_monsters
@@ -335,11 +337,11 @@ typedef struct		s_stdwall
 	int16_t			neighborsect;
 	char			texture_name[100];
 	char			poster_name[100];
-	bool			is_door;
+	char			is_door;
 	int				door_num;
 	int				key_num;
 	int16_t			posterpicnum;
-	bool			is_transparent;
+	char			is_transparent;
 }					t_stdwall;
 
 typedef struct		s_font
@@ -377,9 +379,35 @@ typedef struct		s_stdmonster
 	uint8_t			anim_time;
 	uint8_t			timer;
 	int16_t			life;
-	bool			can_collide;
-	bool			activated;
+	char			can_collide;
+	char			activated;
 }					t_stdmonster;
+
+typedef struct		s_smd
+{
+	int16_t			heal;
+	int16_t			damage;
+	int16_t			ballista_ammo;
+	int16_t			blaster_ammo;
+	int16_t			m16_ammo;
+}					t_smd;
+
+typedef struct		s_stdast
+{
+	int				nb_assets;
+	int				picnum;
+	t_v2f			world_pos;
+	char			is_on_floor;
+	char			is_on_ceil;
+	t_smd			stat_mod;
+	char			is_interactive;
+	char			is_autopick;
+	char			collision;
+	char			is_jetpack;
+	char			is_key;
+	int				key_num;
+	char			used;
+}					t_stdast;
 
 typedef struct		s_ed
 {
@@ -413,6 +441,10 @@ typedef struct		s_ed
 	t_mnst			monst[MAX_MONS];
 	int 			n_sprt;
 	t_sprt			sprt[MAX_SPRT];
+	int 			n_used_tex;
+	char			*weapon[3][2][20];
+	SDL_Surface		*wp_tex[3][20];
+	SDL_Surface		*wp_p[3][20];
 }					t_ed;
 
 void 				sdl_print_pix(Uint32 **pixels, int x, int y);
@@ -429,9 +461,10 @@ void				read_bmp(SDL_Surface **s, char *p);
 void				loop(t_ed *e);
 void				listen_controls(bool *end, t_ed *ed);
 void				print_err(const char *err);
-void				finish_sector(t_ed *e, int sn);
-void				wall_push(t_ed *e, t_v2 v1, t_v2 v2);
+void				finish_sector(t_ed *e);
+void				wall_push(t_ed *e, t_v2 v1, t_v2 v2, short port);
 void 				init_default_sect(t_ed *e);
+char				*add_path(char *p);
 int					trim(int v, int inc);
 t_v2				trim_v2(t_v2 v);
 t_wall				new_wall(int x1, int y1, int x2, int y2);
@@ -468,7 +501,17 @@ int					circle(t_ed *ed, t_v2 c, int r, Uint32 color);
 int					picking_monster(t_v2 mouse);
 int					picking_sprite(t_v2 mouse, int n);
 int  				pickers(t_ed *ed);
+void				save_world(t_ed *e, char *path);
 void				write_secors(t_ed *e);
 void				write_monsters(t_ed *e);
+void				write_sprites(t_ed *e);
+void				write_tex_list(t_ed *e);
+void				write_tex_data(t_ed *e);
+void				write_posters(t_ed *e);
+void				write_weapon(t_ed *e);
+void				load_wp_tex(t_ed *e, const int n_tex[3], const int n_p[3]);
+void				save_wp_tex(t_ed *e, int n_tex[3], int n_p[3]);
+void				write_mons_tex(t_ed *e);
+void				write_sprt_tex(t_ed *e);
 
 #endif

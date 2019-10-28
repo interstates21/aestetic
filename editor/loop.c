@@ -28,10 +28,10 @@ t_wall new_wall(int x1, int y1, int x2, int y2)
 {
     t_wall wall;
 
-    wall.v1 = new_v2(x1, y1);
-    wall.v2 = new_v2(x2, y2);
-    wall.is_door = 0;
-    wall.is_portal = -1;
+	wall.v1 = new_v2(x1, y1);
+	wall.v2 = new_v2(x2, y2);
+	wall.is_door = 0;
+	wall.is_portal = -1;
     return (wall);
 }
 
@@ -46,7 +46,7 @@ void render_sector(t_ed *ed, t_sect *s)
         else if (s->walls[i].is_door)
 			color = DOOR;
         else
-            color = s->walls[i].is_portal > -1 ? MGN : BLUE;
+            color = BLUE;
         bold_line(s->walls[i].v1, s->walls[i].v2, ed, color);
         i++;
     }

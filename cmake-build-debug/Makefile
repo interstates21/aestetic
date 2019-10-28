@@ -1716,6 +1716,33 @@ editor/load_anims.c.s:
 	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/load_anims.c.s
 .PHONY : editor/load_anims.c.s
 
+editor/load_weapon.o: editor/load_weapon.c.o
+
+.PHONY : editor/load_weapon.o
+
+# target to build an object file
+editor/load_weapon.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/load_weapon.c.o
+.PHONY : editor/load_weapon.c.o
+
+editor/load_weapon.i: editor/load_weapon.c.i
+
+.PHONY : editor/load_weapon.i
+
+# target to preprocess a source file
+editor/load_weapon.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/load_weapon.c.i
+.PHONY : editor/load_weapon.c.i
+
+editor/load_weapon.s: editor/load_weapon.c.s
+
+.PHONY : editor/load_weapon.s
+
+# target to generate assembly for a file
+editor/load_weapon.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/load_weapon.c.s
+.PHONY : editor/load_weapon.c.s
+
 editor/loop.o: editor/loop.c.o
 
 .PHONY : editor/loop.o
@@ -2093,6 +2120,195 @@ editor/reopen.s: editor/reopen.c.s
 editor/reopen.c.s:
 	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/reopen.c.s
 .PHONY : editor/reopen.c.s
+
+editor/save_mnst_tex.o: editor/save_mnst_tex.c.o
+
+.PHONY : editor/save_mnst_tex.o
+
+# target to build an object file
+editor/save_mnst_tex.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/save_mnst_tex.c.o
+.PHONY : editor/save_mnst_tex.c.o
+
+editor/save_mnst_tex.i: editor/save_mnst_tex.c.i
+
+.PHONY : editor/save_mnst_tex.i
+
+# target to preprocess a source file
+editor/save_mnst_tex.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/save_mnst_tex.c.i
+.PHONY : editor/save_mnst_tex.c.i
+
+editor/save_mnst_tex.s: editor/save_mnst_tex.c.s
+
+.PHONY : editor/save_mnst_tex.s
+
+# target to generate assembly for a file
+editor/save_mnst_tex.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/save_mnst_tex.c.s
+.PHONY : editor/save_mnst_tex.c.s
+
+editor/save_monsters.o: editor/save_monsters.c.o
+
+.PHONY : editor/save_monsters.o
+
+# target to build an object file
+editor/save_monsters.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/save_monsters.c.o
+.PHONY : editor/save_monsters.c.o
+
+editor/save_monsters.i: editor/save_monsters.c.i
+
+.PHONY : editor/save_monsters.i
+
+# target to preprocess a source file
+editor/save_monsters.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/save_monsters.c.i
+.PHONY : editor/save_monsters.c.i
+
+editor/save_monsters.s: editor/save_monsters.c.s
+
+.PHONY : editor/save_monsters.s
+
+# target to generate assembly for a file
+editor/save_monsters.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/save_monsters.c.s
+.PHONY : editor/save_monsters.c.s
+
+editor/save_sectors.o: editor/save_sectors.c.o
+
+.PHONY : editor/save_sectors.o
+
+# target to build an object file
+editor/save_sectors.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/save_sectors.c.o
+.PHONY : editor/save_sectors.c.o
+
+editor/save_sectors.i: editor/save_sectors.c.i
+
+.PHONY : editor/save_sectors.i
+
+# target to preprocess a source file
+editor/save_sectors.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/save_sectors.c.i
+.PHONY : editor/save_sectors.c.i
+
+editor/save_sectors.s: editor/save_sectors.c.s
+
+.PHONY : editor/save_sectors.s
+
+# target to generate assembly for a file
+editor/save_sectors.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/save_sectors.c.s
+.PHONY : editor/save_sectors.c.s
+
+editor/save_tex.o: editor/save_tex.c.o
+
+.PHONY : editor/save_tex.o
+
+# target to build an object file
+editor/save_tex.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/save_tex.c.o
+.PHONY : editor/save_tex.c.o
+
+editor/save_tex.i: editor/save_tex.c.i
+
+.PHONY : editor/save_tex.i
+
+# target to preprocess a source file
+editor/save_tex.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/save_tex.c.i
+.PHONY : editor/save_tex.c.i
+
+editor/save_tex.s: editor/save_tex.c.s
+
+.PHONY : editor/save_tex.s
+
+# target to generate assembly for a file
+editor/save_tex.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/save_tex.c.s
+.PHONY : editor/save_tex.c.s
+
+editor/save_weapon.o: editor/save_weapon.c.o
+
+.PHONY : editor/save_weapon.o
+
+# target to build an object file
+editor/save_weapon.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/save_weapon.c.o
+.PHONY : editor/save_weapon.c.o
+
+editor/save_weapon.i: editor/save_weapon.c.i
+
+.PHONY : editor/save_weapon.i
+
+# target to preprocess a source file
+editor/save_weapon.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/save_weapon.c.i
+.PHONY : editor/save_weapon.c.i
+
+editor/save_weapon.s: editor/save_weapon.c.s
+
+.PHONY : editor/save_weapon.s
+
+# target to generate assembly for a file
+editor/save_weapon.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/save_weapon.c.s
+.PHONY : editor/save_weapon.c.s
+
+editor/savior.o: editor/savior.c.o
+
+.PHONY : editor/savior.o
+
+# target to build an object file
+editor/savior.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/savior.c.o
+.PHONY : editor/savior.c.o
+
+editor/savior.i: editor/savior.c.i
+
+.PHONY : editor/savior.i
+
+# target to preprocess a source file
+editor/savior.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/savior.c.i
+.PHONY : editor/savior.c.i
+
+editor/savior.s: editor/savior.c.s
+
+.PHONY : editor/savior.s
+
+# target to generate assembly for a file
+editor/savior.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/savior.c.s
+.PHONY : editor/savior.c.s
+
+editor/tex_finder.o: editor/tex_finder.c.o
+
+.PHONY : editor/tex_finder.o
+
+# target to build an object file
+editor/tex_finder.c.o:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/tex_finder.c.o
+.PHONY : editor/tex_finder.c.o
+
+editor/tex_finder.i: editor/tex_finder.c.i
+
+.PHONY : editor/tex_finder.i
+
+# target to preprocess a source file
+editor/tex_finder.c.i:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/tex_finder.c.i
+.PHONY : editor/tex_finder.c.i
+
+editor/tex_finder.s: editor/tex_finder.c.s
+
+.PHONY : editor/tex_finder.s
+
+# target to generate assembly for a file
+editor/tex_finder.c.s:
+	$(MAKE) -f CMakeFiles/doom.dir/build.make CMakeFiles/doom.dir/editor/tex_finder.c.s
+.PHONY : editor/tex_finder.c.s
 
 src/activate_door.o: src/activate_door.c.o
 
@@ -4386,6 +4602,9 @@ help:
 	@echo "... editor/load_anims.o"
 	@echo "... editor/load_anims.i"
 	@echo "... editor/load_anims.s"
+	@echo "... editor/load_weapon.o"
+	@echo "... editor/load_weapon.i"
+	@echo "... editor/load_weapon.s"
 	@echo "... editor/loop.o"
 	@echo "... editor/loop.i"
 	@echo "... editor/loop.s"
@@ -4428,6 +4647,27 @@ help:
 	@echo "... editor/reopen.o"
 	@echo "... editor/reopen.i"
 	@echo "... editor/reopen.s"
+	@echo "... editor/save_mnst_tex.o"
+	@echo "... editor/save_mnst_tex.i"
+	@echo "... editor/save_mnst_tex.s"
+	@echo "... editor/save_monsters.o"
+	@echo "... editor/save_monsters.i"
+	@echo "... editor/save_monsters.s"
+	@echo "... editor/save_sectors.o"
+	@echo "... editor/save_sectors.i"
+	@echo "... editor/save_sectors.s"
+	@echo "... editor/save_tex.o"
+	@echo "... editor/save_tex.i"
+	@echo "... editor/save_tex.s"
+	@echo "... editor/save_weapon.o"
+	@echo "... editor/save_weapon.i"
+	@echo "... editor/save_weapon.s"
+	@echo "... editor/savior.o"
+	@echo "... editor/savior.i"
+	@echo "... editor/savior.s"
+	@echo "... editor/tex_finder.o"
+	@echo "... editor/tex_finder.i"
+	@echo "... editor/tex_finder.s"
 	@echo "... src/activate_door.o"
 	@echo "... src/activate_door.i"
 	@echo "... src/activate_door.s"

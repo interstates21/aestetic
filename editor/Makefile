@@ -18,6 +18,7 @@ FILES = bmp_reader \
                     load_anims \
                     main \
 					loop \
+                    savior \
 					r_line \
 					r_vector \
 					r_mouse_controller \
@@ -25,6 +26,13 @@ FILES = bmp_reader \
 					r_selectors \
 					r_texture_picker \
 					r_circle \
+                    save_mnst_tex \
+                    load_weapon \
+                    save_monsters \
+                    save_sectors \
+                    save_tex \
+                    tex_finder \
+                    save_weapon \
 					r_pickers
 LIBFT_DIR = ../libft/
 SRC = $(addsuffix .c, $(FILES))

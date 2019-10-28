@@ -1,78 +1,1811 @@
-src/activate_door.c
-src/asset_collision.c
-src/blaster_col.c
-src/blaster_col_recur.c
-src/clip_wall.c
-src/collision.c
-src/color_buffer.c
-src/create_projectile.c
-src/difficulty_menu.c
-src/draw_aim_cross.c
-src/draw_assets.c
-src/draw_ceil.c
-src/draw_floor.c
-src/draw_hud.c
-src/draw_hud2.c
-src/draw_monster.c
-src/draw_sprite.c
-src/draw_wall.c
-src/draw_wall2.c
-src/draw_weapon.c
-src/events.c
-src/exit.c
-src/find_closest_wall_dist.c
-src/fix_neighborsects.c
-src/floceiheight.c
-src/floceiheight2.c
-src/fly_gravity.c
-src/font.c
-src/get_rot_monster.c
-src/getpixel.c
-src/handle_finish.c
-src/handle_respawn.c
-src/inertia.c
-src/init_font.c
-src/init_monsters.c
-src/init_player.c
-src/init_projectiles.c
-src/init_sdl.c
-src/inside.c
-src/intro_screen.c
-src/jetpack.c
-src/jump.c
-src/load_assets.c
-src/load_map.c
-src/load_monsters_texture.c
-src/load_sound.c
-src/load_weapons_texture.c
-src/loop.c
-src/m16.c
-src/m16_recur.c
-src/m16_util.c
-src/main.c
-src/monster_anim_state.c
-src/monster_behaviour.c
-src/monster_behaviour_chargingdemon.c
-src/monster_collision.c
-src/movement.c
-src/msg.c
-src/pixel.c
-src/player_actions.c
-src/player_damage.c
-src/press_e.c
-src/proj_wall.c
-src/projectile_collision.c
-src/render.c
-src/render_sector.c
-src/reorder_sprite.c
-src/shade.c
-src/sound.c
-src/swap_list.c
-src/texanim.c
-src/update.c
-src/update_2.c
-src/update_anim_projectile.c
-src/utils.c
-src/vector.c
-src/vector2.c
-src/vector3.c
+
+1 - wall data:
+	-0.999373 - 4.476844
+	 19, 19, 19, 0, 8
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+3 - wall data:
+	2.501487 - 4.003076
+	 19, 19, 19, 0, 4
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+4 - wall data:
+	-1.469712 - 1.012190
+	 19, 19, 19, 0, 9
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+6 - wall data:
+	-1.000000 - 4.000000
+	 19, 19, 19, 0, 4
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+9 - wall data:
+	-1.000000 - 1.000000
+	 19, 19, 19, 0, 4
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+11 - wall data:
+	2.584218 - 0.513214
+	 19, 19, 19, 0, 3
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+12 - wall data:
+	-7.000000 - 0.000000
+	 13, 13, 13, 0, 9
+	../textures/WALL03_7.bmp
+	
+	0 - -1, 0 - -1, 0
+
+14 - wall data:
+	-1.002894 - 0.494446
+	 13, 13, 13, 0, 2
+	../textures/WALL03_7.bmp
+	
+	0 - -1, 0 - -1, 0
+
+16 - wall data:
+	2.979518 - 0.489961
+	 19, 19, 19, 0, 4
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+24 - wall data:
+	-1.000000 - 1.000000
+	 19, 19, 19, 0, 1
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+25 - wall data:
+	-1.000000 - 4.000000
+	 19, 19, 19, 0, 0
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+28 - wall data:
+	2.984380 - 4.475488
+	 19, 19, 19, 0, 8
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+29 - wall data:
+	6.000000 - 4.000000
+	 8, 8, 8, 0, 6
+	../textures/MWALL3_1.bmp
+	
+	0 - -1, 0 - -1, 0
+
+31 - wall data:
+	6.029801 - 2.222037
+	 8, 8, 8, 0, 5
+	../textures/MWALL3_1.bmp
+	
+	0 - -1, 0 - -1, 0
+
+32 - wall data:
+	6.000000 - 1.000000
+	 8, 8, 8, 0, 3
+	../textures/MWALL3_1.bmp
+	
+	0 - -1, 0 - -1, 0
+
+35 - wall data:
+	2.568716 - 0.986023
+	 19, 19, 19, 0, 2
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+36 - wall data:
+	6.000000 - 1.000000
+	 19, 19, 19, 0, 4
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+38 - wall data:
+	6.469567 - 2.201583
+	 19, 19, 19, 0, 28
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+40 - wall data:
+	6.040028 - 2.845891
+	 19, 19, 19, 0, 4
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+42 - wall data:
+	6.438885 - 3.981101
+	 19, 19, 19, 0, 28
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+48 - wall data:
+	3.000000 - 10.000000
+	 8, 8, 8, 0, 37
+	../textures/MWALL3_1.bmp
+	
+	0 - -1, 0 - -1, 0
+
+50 - wall data:
+	6.000000 - 4.000000
+	 19, 19, 19, 0, 4
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+52 - wall data:
+	2.501487 - 4.478382
+	 19, 19, 19, 0, 0
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+54 - wall data:
+	-1.517117 - 4.476844
+	 19, 19, 19, 0, 8
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+56 - wall data:
+	-1.508630 - 3.993050
+	 19, 19, 19, 0, 1
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+58 - wall data:
+	-1.478200 - 0.494446
+	 13, 13, 13, 0, 3
+	../textures/WALL03_7.bmp
+	
+	0 - -1, 0 - -1, 0
+
+60 - wall data:
+	-7.000000 - 1.000000
+	 19, 19, 19, 0, 9
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+62 - wall data:
+	-7.000000 - 5.000000
+	 19, 19, 19, 0, 7
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+63 - wall data:
+	-7.000000 - 4.000000
+	 19, 19, 19, 0, 8
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+65 - wall data:
+	-8.986163 - 1.365373
+	 19, 19, 19, 0, 12
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+69 - wall data:
+	-10.960588 - 6.639521
+	 19, 19, 19, 0, 12
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+71 - wall data:
+	-12.015418 - -1.717976
+	 19, 19, 19, 0, 18
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+73 - wall data:
+	-11.000000 - 0.000000
+	 8, 8, 8, 0, 12
+	../textures/MWALL3_1.bmp
+	
+	0 - -1, 0 - -1, 0
+
+75 - wall data:
+	-11.014682 - -1.690929
+	 19, 19, 19, 0, 11
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+77 - wall data:
+	-11.000000 - 1.000000
+	 8, 8, 8, 0, 14
+	../textures/MWALL3_1.bmp
+	
+	0 - -1, 0 - -1, 0
+
+78 - wall data:
+	-11.000000 - 2.000000
+	 19, 19, 19, 0, 13
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+79 - wall data:
+	-11.000000 - 3.000000
+	 19, 19, 19, 0, 15
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+81 - wall data:
+	-11.000000 - 5.000000
+	 19, 19, 19, 0, 10
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+84 - wall data:
+	-9.013210 - 3.637314
+	 19, 19, 19, 0, 9
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+87 - wall data:
+	-14.000000 - 2.000000
+	 19, 19, 19, 0, 16
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+89 - wall data:
+	-12.000000 - 3.000000
+	 19, 19, 19, 0, 15
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+90 - wall data:
+	-11.000000 - 3.000000
+	 19, 19, 19, 0, 12
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+91 - wall data:
+	-11.000000 - 2.000000
+	 19, 19, 19, 0, 14
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+92 - wall data:
+	-12.000000 - 2.000000
+	 19, 19, 19, 0, 18
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+93 - wall data:
+	-12.000000 - 1.000000
+	 8, 8, 8, 0, 18
+	../textures/MWALL3_1.bmp
+	
+	0 - -1, 0 - -1, 0
+
+94 - wall data:
+	-12.000000 - 2.000000
+	 19, 19, 19, 0, 13
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+95 - wall data:
+	-11.000000 - 2.000000
+	 8, 8, 8, 0, 12
+	../textures/MWALL3_1.bmp
+	
+	0 - -1, 0 - -1, 0
+
+99 - wall data:
+	-11.000000 - 4.000000
+	 19, 19, 19, 0, 12
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+100 - wall data:
+	-11.000000 - 3.000000
+	 8, 8, 8, 0, 13
+	../textures/MWALL3_1.bmp
+	
+	0 - -1, 0 - -1, 0
+
+102 - wall data:
+	-14.000000 - 3.000000
+	 19, 19, 19, 0, 13
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+103 - wall data:
+	-14.000000 - 2.000000
+	 19, 19, 19, 0, 18
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+105 - wall data:
+	-17.000000 - 1.000000
+	 19, 19, 19, 0, 22
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+107 - wall data:
+	-15.152860 - -1.636835
+	 26, 26, 26, 0, 16
+	../textures/zzwolf11.bmp
+	
+	0 - -1, 0 - -1, 0
+
+108 - wall data:
+	-14.000000 - 2.000000
+	 19, 19, 19, 0, 13
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+109 - wall data:
+	-12.000000 - 2.000000
+	 8, 8, 8, 0, 14
+	../textures/MWALL3_1.bmp
+	
+	0 - -1, 0 - -1, 0
+
+111 - wall data:
+	-12.000000 - 0.000000
+	 8, 8, 8, 0, 11
+	../textures/MWALL3_1.bmp
+	
+	0 - -1, 0 - -1, 0
+
+113 - wall data:
+	-14.000000 - 3.000000
+	 8, 8, 8, 0, 16
+	../textures/MWALL3_1.bmp
+	
+	0 - -1, 0 - -1, 0
+
+115 - wall data:
+	-11.988371 - 6.693615
+	 19, 19, 19, 0, 10
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+117 - wall data:
+	-12.000000 - 4.000000
+	 19, 19, 19, 0, 15
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+118 - wall data:
+	-12.000000 - 3.000000
+	 8, 8, 8, 0, 13
+	../textures/MWALL3_1.bmp
+	
+	0 - -1, 0 - -1, 0
+
+119 - wall data:
+	-23.000000 - 1.000000
+	 19, 19, 19, 0, 25
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+121 - wall data:
+	-22.000000 - 4.000000
+	 19, 19, 19, 0, 22
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+124 - wall data:
+	-21.000000 - 5.000000
+	 19, 19, 19, 0, 23
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+126 - wall data:
+	-18.023550 - 4.389682
+	 19, 19, 19, 0, 22
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+128 - wall data:
+	-20.975044 - 0.580489
+	 19, 19, 19, 0, 22
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+130 - wall data:
+	-18.000000 - 0.000000
+	 19, 19, 19, 0, 27
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+132 - wall data:
+	-22.000000 - 1.000000
+	 19, 19, 19, 0, 19
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+134 - wall data:
+	-21.000270 - 4.364456
+	 19, 19, 19, 0, 20
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+136 - wall data:
+	-17.000000 - 4.000000
+	 19, 19, 19, 0, 16
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+138 - wall data:
+	-18.048776 - 0.530037
+	 19, 19, 19, 0, 21
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+139 - wall data:
+	-18.000000 - 5.000000
+	 19, 19, 19, 0, 20
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+140 - wall data:
+	-21.000000 - 5.000000
+	 19, 19, 19, 0, 24
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+145 - wall data:
+	-28.000000 - 5.000000
+	 19, 19, 19, 0, 23
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+147 - wall data:
+	-23.000000 - 4.000000
+	 19, 19, 19, 0, 25
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+150 - wall data:
+	-28.000000 - 4.000000
+	 19, 19, 19, 0, 24
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+151 - wall data:
+	-23.000000 - 4.000000
+	 19, 19, 19, 0, 19
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+152 - wall data:
+	-23.000000 - 1.000000
+	 19, 19, 19, 0, 26
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+153 - wall data:
+	-28.000000 - 1.000000
+	 19, 19, 19, 0, 25
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+155 - wall data:
+	-21.000000 - 0.000000
+	 19, 19, 19, 0, 27
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+157 - wall data:
+	-28.000000 - 0.000000
+	 19, 19, 19, 0, 26
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+158 - wall data:
+	-21.000000 - 0.000000
+	 19, 19, 19, 0, 21
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+164 - wall data:
+	6.510475 - 1.005010
+	 16, 16, 16, 0, 5
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+166 - wall data:
+	6.428658 - 2.845891
+	 16, 16, 16, 0, 6
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+169 - wall data:
+	9.000000 - 10.000000
+	 16, 16, 16, 0, 30
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+170 - wall data:
+	9.000000 - 4.000000
+	 16, 16, 16, 0, 29
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+171 - wall data:
+	9.000000 - 1.000000
+	 16, 16, 16, 0, 36
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+173 - wall data:
+	9.000000 - 1.000000
+	 16, 16, 16, 0, 28
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+174 - wall data:
+	9.000000 - 4.000000
+	 16, 16, 16, 0, 30
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+175 - wall data:
+	11.000000 - 5.000000
+	 16, 16, 16, 0, 31
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+176 - wall data:
+	14.000000 - 5.000000
+	 16, 16, 16, 0, 32
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+177 - wall data:
+	17.000000 - 4.000000
+	 16, 16, 16, 0, 34
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+178 - wall data:
+	16.000000 - 0.000000
+	 16, 16, 16, 0, 35
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+179 - wall data:
+	11.000000 - 0.000000
+	 16, 16, 16, 0, 36
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+181 - wall data:
+	11.000000 - 10.000000
+	 16, 16, 16, 0, 31
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+182 - wall data:
+	11.000000 - 5.000000
+	 16, 16, 16, 0, 29
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+183 - wall data:
+	9.000000 - 4.000000
+	 16, 16, 16, 0, 28
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+185 - wall data:
+	14.000000 - 10.000000
+	 16, 16, 16, 0, 32
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+186 - wall data:
+	14.000000 - 5.000000
+	 16, 16, 16, 0, 29
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+187 - wall data:
+	11.000000 - 5.000000
+	 16, 16, 16, 0, 30
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+189 - wall data:
+	17.000000 - 9.000000
+	 16, 16, 16, 0, 33
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+190 - wall data:
+	17.000000 - 4.000000
+	 16, 16, 16, 0, 29
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+191 - wall data:
+	14.000000 - 5.000000
+	 16, 16, 16, 0, 31
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+194 - wall data:
+	20.000000 - 4.000000
+	 16, 16, 16, 0, 34
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+195 - wall data:
+	17.000000 - 4.000000
+	 16, 16, 16, 0, 32
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+196 - wall data:
+	17.000000 - 4.000000
+	 16, 16, 16, 0, 33
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+199 - wall data:
+	16.000000 - -4.000000
+	 16, 16, 16, 0, 35
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+200 - wall data:
+	16.000000 - 0.000000
+	 16, 16, 16, 0, 29
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+201 - wall data:
+	11.000000 - -4.000000
+	 16, 16, 16, 0, 36
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+202 - wall data:
+	11.000000 - 0.000000
+	 16, 16, 16, 0, 29
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+203 - wall data:
+	16.000000 - 0.000000
+	 16, 16, 16, 0, 34
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+206 - wall data:
+	9.000000 - -4.000000
+	 16, 16, 16, 0, 28
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+207 - wall data:
+	9.000000 - 1.000000
+	 16, 16, 16, 0, 29
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+208 - wall data:
+	11.000000 - 0.000000
+	 16, 16, 16, 0, 35
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+211 - wall data:
+	9.618948 - 17.030003
+	 5, 5, 5, 0, 78
+	../textures/DOOR2_4.bmp
+	
+	1 - 8, 0 - -1, 0
+
+214 - wall data:
+	6.000000 - 10.000000
+	 8, 8, 8, 0, 7
+	../textures/MWALL3_1.bmp
+	
+	0 - -1, 0 - -1, 0
+
+217 - wall data:
+	12.000000 - 19.000000
+	 19, 19, 19, 0, 41
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+218 - wall data:
+	12.000000 - 18.000000
+	 8, 8, 8, 0, 47
+	../textures/MWALL3_1.bmp
+	
+	0 - -1, 0 - -1, 0
+
+219 - wall data:
+	12.000000 - 17.000000
+	 19, 19, 19, 0, 42
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+220 - wall data:
+	12.000000 - 13.000000
+	 8, 8, 8, 0, 48
+	../textures/MWALL3_1.bmp
+	
+	0 - -1, 0 - -1, 0
+
+224 - wall data:
+	10.000000 - 14.000000
+	 19, 19, 19, 0, 78
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+225 - wall data:
+	12.000000 - 18.000000
+	 19, 19, 19, 0, 38
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+227 - wall data:
+	14.000000 - 19.000000
+	 19, 19, 19, 0, 42
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+228 - wall data:
+	14.000000 - 18.000000
+	 8, 8, 8, 0, 47
+	../textures/MWALL3_1.bmp
+	
+	0 - -1, 0 - -1, 0
+
+229 - wall data:
+	12.000000 - 17.000000
+	 8, 8, 8, 0, 47
+	../textures/MWALL3_1.bmp
+	
+	0 - -1, 0 - -1, 0
+
+230 - wall data:
+	14.000000 - 17.000000
+	 19, 19, 19, 0, 42
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+231 - wall data:
+	14.000000 - 13.000000
+	 8, 8, 8, 0, 48
+	../textures/MWALL3_1.bmp
+	
+	0 - -1, 0 - -1, 0
+
+232 - wall data:
+	12.000000 - 13.000000
+	 19, 19, 19, 0, 38
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+233 - wall data:
+	12.000000 - 12.000000
+	 8, 8, 8, 0, 48
+	../textures/MWALL3_1.bmp
+	
+	0 - -1, 0 - -1, 0
+
+234 - wall data:
+	14.000000 - 12.000000
+	 19, 19, 19, 0, 42
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+236 - wall data:
+	12.000000 - 11.000000
+	 19, 19, 19, 0, 38
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+238 - wall data:
+	16.000000 - 19.000000
+	 19, 19, 19, 0, 47
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+240 - wall data:
+	15.995514 - 16.582010
+	 19, 19, 19, 0, 43
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+241 - wall data:
+	16.020723 - 13.443396
+	 19, 19, 19, 0, 44
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+242 - wall data:
+	16.000000 - 13.000000
+	 19, 19, 19, 0, 48
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+244 - wall data:
+	14.000000 - 11.000000
+	 19, 19, 19, 0, 41
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+245 - wall data:
+	14.000000 - 12.000000
+	 8, 8, 8, 0, 48
+	../textures/MWALL3_1.bmp
+	
+	0 - -1, 0 - -1, 0
+
+246 - wall data:
+	14.000000 - 13.000000
+	 19, 19, 19, 0, 40
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+247 - wall data:
+	14.000000 - 17.000000
+	 8, 8, 8, 0, 47
+	../textures/MWALL3_1.bmp
+	
+	0 - -1, 0 - -1, 0
+
+248 - wall data:
+	14.000000 - 18.000000
+	 19, 19, 19, 0, 39
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+250 - wall data:
+	16.638362 - 16.518985
+	 19, 19, 19, 0, 49
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+252 - wall data:
+	16.020723 - 13.443396
+	 19, 19, 19, 0, 42
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+254 - wall data:
+	20.000000 - 19.000000
+	 19, 19, 19, 0, 46
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+256 - wall data:
+	16.000000 - 17.000000
+	 19, 19, 19, 0, 42
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+258 - wall data:
+	20.000000 - 13.000000
+	 19, 19, 19, 0, 46
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+260 - wall data:
+	16.000000 - 11.000000
+	 19, 19, 19, 0, 42
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+263 - wall data:
+	22.000000 - 14.000000
+	 19, 19, 19, 0, 51
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+266 - wall data:
+	20.000000 - 11.000000
+	 19, 19, 19, 0, 45
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+268 - wall data:
+	20.000000 - 17.000000
+	 19, 19, 19, 0, 44
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+269 - wall data:
+	12.000000 - 17.000000
+	 19, 19, 19, 0, 38
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+270 - wall data:
+	12.000000 - 18.000000
+	 19, 19, 19, 0, 39
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+271 - wall data:
+	14.000000 - 18.000000
+	 19, 19, 19, 0, 42
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+272 - wall data:
+	14.000000 - 17.000000
+	 19, 19, 19, 0, 40
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+273 - wall data:
+	12.000000 - 12.000000
+	 19, 19, 19, 0, 38
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+274 - wall data:
+	12.000000 - 13.000000
+	 19, 19, 19, 0, 40
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+275 - wall data:
+	14.000000 - 13.000000
+	 19, 19, 19, 0, 42
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+276 - wall data:
+	14.000000 - 12.000000
+	 19, 19, 19, 0, 41
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+277 - wall data:
+	16.613152 - 13.443396
+	 19, 19, 19, 0, 43
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+279 - wall data:
+	17.281211 - 16.493775
+	 19, 19, 19, 0, 50
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+281 - wall data:
+	17.306420 - 13.456001
+	 19, 19, 19, 0, 49
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+286 - wall data:
+	24.000000 - 14.000000
+	 19, 19, 19, 0, 52
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+288 - wall data:
+	22.000000 - 12.000000
+	 19, 19, 19, 0, 46
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+290 - wall data:
+	26.000000 - 13.000000
+	 19, 19, 19, 0, 53
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+292 - wall data:
+	23.238360 - 11.757834
+	 19, 19, 19, 0, 51
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+293 - wall data:
+	24.433762 - 11.074747
+	 19, 19, 19, 0, 52
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+295 - wall data:
+	27.000000 - 10.000000
+	 19, 19, 19, 0, 54
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+298 - wall data:
+	31.000000 - 9.000000
+	 19, 19, 19, 0, 59
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+299 - wall data:
+	27.000000 - 8.000000
+	 19, 19, 19, 0, 55
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+300 - wall data:
+	25.000000 - 8.000000
+	 19, 19, 19, 0, 62
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+303 - wall data:
+	25.000000 - 10.000000
+	 19, 19, 19, 0, 53
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+304 - wall data:
+	25.000000 - 8.000000
+	 19, 19, 19, 0, 54
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+305 - wall data:
+	27.000000 - 8.000000
+	 19, 19, 19, 0, 59
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+306 - wall data:
+	25.000000 - 5.000000
+	 19, 19, 19, 0, 56
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+307 - wall data:
+	23.000000 - 5.000000
+	 19, 19, 19, 0, 62
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+308 - wall data:
+	25.000000 - 5.000000
+	 19, 19, 19, 0, 59
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+309 - wall data:
+	29.000000 - 3.000000
+	 19, 19, 19, 0, 57
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+310 - wall data:
+	27.000000 - 2.000000
+	 19, 19, 19, 0, 63
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+311 - wall data:
+	23.000000 - 5.000000
+	 19, 19, 19, 0, 55
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+312 - wall data:
+	27.000000 - 2.000000
+	 19, 19, 19, 0, 56
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+313 - wall data:
+	29.000000 - 3.000000
+	 19, 19, 19, 0, 60
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+314 - wall data:
+	28.000000 - -1.000000
+	 19, 19, 19, 0, 58
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+315 - wall data:
+	26.000000 - -1.000000
+	 19, 19, 19, 0, 64
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+316 - wall data:
+	23.000000 - -2.000000
+	 19, 19, 19, 0, 64
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+317 - wall data:
+	26.000000 - -1.000000
+	 19, 19, 19, 0, 57
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+318 - wall data:
+	28.000000 - -1.000000
+	 19, 19, 19, 0, 60
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+320 - wall data:
+	28.000000 - -3.000000
+	 19, 19, 19, 0, 66
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+322 - wall data:
+	25.000000 - 5.000000
+	 19, 19, 19, 0, 55
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+323 - wall data:
+	27.000000 - 8.000000
+	 19, 19, 19, 0, 54
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+324 - wall data:
+	31.000000 - 9.000000
+	 19, 19, 19, 0, 61
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+325 - wall data:
+	30.000000 - 3.000000
+	 19, 19, 19, 0, 60
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+326 - wall data:
+	29.000000 - 3.000000
+	 19, 19, 19, 0, 56
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+327 - wall data:
+	29.000000 - 3.000000
+	 19, 19, 19, 0, 59
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+328 - wall data:
+	30.000000 - 3.000000
+	 19, 19, 19, 0, 61
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+329 - wall data:
+	30.000000 - -2.000000
+	 19, 19, 19, 0, 58
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+330 - wall data:
+	28.000000 - -1.000000
+	 19, 19, 19, 0, 57
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+331 - wall data:
+	31.000000 - 9.000000
+	 19, 19, 19, 0, 65
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+334 - wall data:
+	30.000000 - -2.000000
+	 19, 19, 19, 0, 60
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+335 - wall data:
+	30.000000 - 3.000000
+	 19, 19, 19, 0, 59
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+336 - wall data:
+	22.000000 - 8.000000
+	 19, 19, 19, 0, 54
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+337 - wall data:
+	25.000000 - 8.000000
+	 19, 19, 19, 0, 55
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+338 - wall data:
+	23.000000 - 5.000000
+	 19, 19, 19, 0, 63
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+340 - wall data:
+	22.000000 - 5.000000
+	 19, 19, 19, 0, 62
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+341 - wall data:
+	23.000000 - 5.000000
+	 19, 19, 19, 0, 56
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+342 - wall data:
+	27.000000 - 2.000000
+	 19, 19, 19, 0, 64
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+344 - wall data:
+	22.000000 - 2.000000
+	 19, 19, 19, 0, 63
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+345 - wall data:
+	27.000000 - 2.000000
+	 19, 19, 19, 0, 57
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+346 - wall data:
+	26.000000 - -1.000000
+	 19, 19, 19, 0, 58
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+352 - wall data:
+	31.745818 - 6.462375
+	 19, 19, 19, 0, 61
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+353 - wall data:
+	26.000000 - -3.000000
+	 19, 19, 19, 0, 58
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+355 - wall data:
+	28.013603 - -5.787187
+	 5, 5, 5, 0, 80
+	../textures/DOOR2_4.bmp
+	
+	1 - 9, 0 - -1, 0
+
+357 - wall data:
+	25.000000 - -8.000000
+	 19, 19, 19, 0, 80
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+359 - wall data:
+	29.000000 - -11.000000
+	 19, 19, 19, 0, 76
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+361 - wall data:
+	26.220792 - -13.032592
+	 19, 19, 19, 0, 76
+	../textures/no_texture.bmp
+	
+	1 - 1, 0 - -1, 0
+
+363 - wall data:
+	27.682439 - -13.682439
+	 19, 19, 19, 0, 69
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+366 - wall data:
+	26.241060 - -13.669569
+	 19, 19, 19, 0, 68
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+369 - wall data:
+	29.000000 - -16.000000
+	 19, 19, 19, 0, 80
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+371 - wall data:
+	29.000000 - -11.000000
+	 25, 25, 25, 0, 67
+	../textures/wiremesh.bmp
+	
+	0 - -1, 0 - -1, 1
+
+373 - wall data:
+	29.542262 - -8.006786
+	 19, 19, 19, 0, 71
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+378 - wall data:
+	29.560015 - -13.001481
+	 19, 19, 19, 0, 72
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+380 - wall data:
+	29.542262 - -11.012738
+	 16, 16, 16, 0, 70
+	../textures/east.bmp
+	
+	0 - -1, 0 - -1, 0
+
+382 - wall data:
+	29.512500 - -11.518691
+	 19, 19, 19, 0, 71
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+384 - wall data:
+	29.000000 - -13.000000
+	 19, 19, 19, 0, 76
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+385 - wall data:
+	24.492262 - -12.997381
+	 19, 19, 19, 0, 74
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+387 - wall data:
+	25.007471 - -11.497793
+	 19, 19, 19, 0, 76
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+392 - wall data:
+	24.477381 - -7.997381
+	 19, 19, 19, 0, 75
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+394 - wall data:
+	24.477381 - -11.479524
+	 19, 19, 19, 0, 73
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+395 - wall data:
+	24.462500 - -11.018214
+	 19, 19, 19, 0, 74
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+397 - wall data:
+	25.000000 - -8.000000
+	 25, 25, 25, 0, 67
+	../textures/wiremesh.bmp
+	
+	0 - -1, 0 - -1, 1
+
+399 - wall data:
+	25.000000 - -13.000000
+	 19, 19, 19, 0, 73
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+401 - wallInit Error = Cannot read monsters data
+Process 36221: 14309 nodes malloced for 10884 KB
+Process 36221: 0 leaks for 0 total leaked bytes.
+ data:
+	25.000000 - -11.000000
+	 19, 19, 19, 0, 67
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+403 - wall data:
+	29.010391 - -11.487423
+	 19, 19, 19, 0, 72
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+405 - wall data:
+	27.656303 - -13.022237
+	 5, 5, 5, 0, 68
+	../textures/DOOR2_4.bmp
+	
+	1 - 1, 0 - -1, 0
+
+408 - wall data:
+	10.000000 - 17.000000
+	 5, 5, 5, 0, 38
+	../textures/DOOR2_4.bmp
+	
+	0 - -1, 0 - -1, 0
+
+410 - wall data:
+	9.636861 - 14.003582
+	 5, 5, 5, 0, 37
+	../textures/DOOR2_4.bmp
+	
+	1 - 8, 0 - -1, 0
+
+412 - wall data:
+	26.009276 - -5.792173
+	 19, 19, 19, 0, 66
+	../textures/no_texture.bmp
+	
+	1 - 9, 0 - -1, 0
+
+414 - wall data:
+	28.000000 - -6.000000
+	 19, 19, 19, 0, 79
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+416 - wall data:
+	26.000000 - -6.000000
+	 19, 19, 19, 0, 78
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+418 - wall data:
+	29.000000 - -8.000000
+	 19, 19, 19, 0, 67
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+419 - wall data:
+	25.000000 - -16.000000
+	 19, 19, 19, 0, 69
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+421 - wall data:
+	29.000000 - -18.000000
+	 19, 19, 19, 0, 81
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+422 - wall data:
+	28.000000 - -18.000000
+	 19, 19, 19, 0, 84
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+423 - wall data:
+	26.000000 - -18.000000
+	 19, 19, 19, 0, 82
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+425 - wall data:
+	28.000000 - -18.000000
+	 19, 19, 19, 0, 80
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+428 - wall data:
+	28.000000 - -21.000000
+	 19, 19, 19, 0, 83
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+429 - wall data:
+	28.000000 - -20.000000
+	 19, 19, 19, 0, 84
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+430 - wall data:
+	25.000000 - -18.000000
+	 19, 19, 19, 0, 80
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+431 - wall data:
+	26.000000 - -18.000000
+	 19, 19, 19, 0, 84
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+432 - wall data:
+	26.000000 - -20.000000
+	 19, 19, 19, 0, 83
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+435 - wall data:
+	26.000000 - -20.000000
+	 19, 19, 19, 0, 84
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+436 - wall data:
+	28.000000 - -20.000000
+	 19, 19, 19, 0, 81
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+438 - wall data:
+	26.000000 - -21.000000
+	 19, 19, 19, 0, 82
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+439 - wall data:
+	26.000000 - -18.000000
+	 13, 13, 13, 0, 80
+	../textures/WALL03_7.bmp
+	
+	0 - -1, 0 - -1, 0
+
+440 - wall data:
+	28.000000 - -18.000000
+	 13, 13, 13, 0, 81
+	../textures/WALL03_7.bmp
+	
+	0 - -1, 0 - -1, 0
+
+441 - wall data:
+	28.000000 - -20.000000
+	 13, 13, 13, 0, 83
+	../textures/WALL03_7.bmp
+	
+	0 - -1, 0 - -1, 0
+
+442 - wall data:
+	26.000000 - -20.000000
+	 13, 13, 13, 0, 82
+	../textures/WALL03_7.bmp
+	
+	0 - -1, 0 - -1, 0
+---------------------------------------------------
+
+24 - wall data:
+	-1.000000 - 1.000000
+	 19, 19, 19, 0, 1
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+25 - wall data:
+	-1.000000 - 4.000000
+	 19, 19, 19, 0, 0
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+52 - wall data:
+	2.501487 - 4.478382
+	 19, 19, 19, 0, 0
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+
+56 - wall data:
+	-1.508630 - 3.993050
+	 19, 19, 19, 0, 1
+	../textures/no_texture.bmp
+	
+	0 - -1, 0 - -1, 0
+

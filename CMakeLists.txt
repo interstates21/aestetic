@@ -85,7 +85,14 @@ includes/structs_doom.h
         src/loading.c
         editor/bmp_reader.c
         editor/init_monsters.c
+        editor/tex_finder.c
+        editor/save_sectors.c
         editor/init_sector.c
+        editor/save_monsters.c
+        editor/load_weapon.c
+        editor/save_tex.c
+        editor/save_weapon.c
+        editor/save_mnst_tex.c
         editor/init_sprites.c
         editor/init_textures.c
         editor/load_anims.c
@@ -94,6 +101,7 @@ includes/structs_doom.h
         editor/font.c
         editor/main.c
         editor/r_bold_line.c
+        editor/savior.c
         editor/r_controls.c
         editor/r_helpers.c
         editor/r_line.c

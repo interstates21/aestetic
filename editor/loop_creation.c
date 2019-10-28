@@ -79,13 +79,13 @@ void		loop_creation(t_ed *e)
 	if ((exists(tmp, e) || intrs(tmp, e)) && e->n_walls > 1)
 		return;
 	render_map(e);
-	wall_push(e, tmp.v1, tmp.v2);
+	wall_push(e, tmp.v1, tmp.v2, -1);
 	if (v2_cmp(trm, *e->selection.other_vertex))
 	{
-		tmp = new_wall(tmp.v2.x, tmp.v2.y, e->selection.selected_vertex->x,
-					   e->selection.selected_vertex->y);
-		wall_push(e, tmp.v1, tmp.v2);
-		finish_sector(e, e->selection.port);
+		tmp = (t_wall){.v1 = (t_v2){tmp.v2.x, tmp.v2.y}, .v2 = (t_v2){e->selection.selected_vertex->x,
+					   e->selection.selected_vertex->y}, .is_portal = e->selection.sector, .is_door = 0 };
+		wall_push(e, tmp.v1, tmp.v2, e->selection.sector);
+		finish_sector(e);
 		e->selection.drawing = 0;
 		return ;
 	}

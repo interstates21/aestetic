@@ -25,6 +25,7 @@ static void			fetch_f(struct dirent *data, char *f, t_ed *e)
 		p = ft_strjoin(f, "/death/");
 	else
 		return ;
+	printf("%s\n", p);
 	load_names(e, p, flag);
 	free(p);
 }
