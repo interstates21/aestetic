@@ -6,20 +6,19 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 21:39:38 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/28 22:55:44 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/28 22:59:39 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DOOM_NUKEM_H
 # define DOOM_NUKEM_H
 
-#include "../frameworks/SDL2/SDL.h"
-#include "../frameworks/SDL2/SDL_render.h"
-#include "../libft/libft.h"
-
-#include "../frameworks/SDL2_image.framework/Headers/SDL_image.h"
-#include "../frameworks/SDL2_mixer.framework/Headers/SDL_mixer.h"
-#include "../frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h"
+# include "../frameworks/SDL2/SDL.h"
+# include "../frameworks/SDL2/SDL_render.h"
+# include "../libft/libft.h"
+# include "../frameworks/SDL2_image.framework/Headers/SDL_image.h"
+# include "../frameworks/SDL2_mixer.framework/Headers/SDL_mixer.h"
+# include "../frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h"
 
 # include <stdbool.h>
 # include <stdlib.h>
