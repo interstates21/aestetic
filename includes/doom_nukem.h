@@ -98,20 +98,19 @@ uint32_t	pixel_pls(SDL_Surface *s, double x, double y, int mode);
 bool		inside(t_data *d, int16_t sectnum, t_vec2f pos);
 bool		clip_wall(double *x1, double *z1, double x2, double z2);
 void		proj_wall(t_data *d, t_projdata *p, t_frustum *fr, t_vec2f v[2]);
-int			new_proj_data(t_projdata *p, t_frustum *fr, int mode);
-int			new_proj_data2(t_data *d, t_projdata *p, t_frustum *fr, int mode);
-void		drawing_wall(t_vec2 y_value, t_data *d, t_projdata *p, int mode);
-void		draw_wall(t_data *d, t_projdata *p, t_frustum *fr);
-void		draw_wall_no_nei(t_data *d, t_projdata *p, t_frustum *fr);
-void		draw_wall3(t_data *d, t_projdata *p, t_frustum *nfr, bool *visible);
-void		draw_wall_transparent(t_data *d, t_projdata *p, t_frustum *fr);
+int			new_proj_data(t_projdata *p, t_frustum *fr, int mode);//bdeomin
+int			new_proj_data2(t_data *d, t_projdata *p, t_frustum *fr, int mode);//bdeomin
+void		draw_wall(t_data *d, t_projdata *p, t_frustum *fr);//bdeomin
+void		draw_wall_nei(t_data *d, t_projdata *p, t_frustum *fr);//bdeomin
+void		draw_wall_no_nei(t_data *d, t_projdata *p, t_frustum *fr);//bdeomin
+void		draw_wall_transparent(t_data *d, t_projdata *p, t_frustum *fr);//bdeomin
 void		draw_sky(t_data *d, t_projdata *p, t_frustum *fr);//bdeomin
 void		draw_ceil_floor(t_data *d, t_projdata *p, t_frustum *fr, int mode);//bdeomin
 void		player_actions(t_data *d);
 void		draw_weapon(t_data *d);
 void		blaster_shot(t_data *d);
 void		render_sector(t_data *d, t_sector *sect, t_frustum *fr);
-void		draw_sprite(t_data *d, t_frustum *fr, t_sprite_list *sprite);
+void		draw_sprite(t_data *d, t_frustum *fr, t_sprite_list *sprite);//bdeomin
 void		init_player(t_data *d, t_player *player);
 void		init_monsters(t_data *d);
 void		init_projectiles(t_data *d);
@@ -164,10 +163,8 @@ void		load_sound(t_data *d, int f);
 void		play_sound(t_data *d, uint8_t id, t_vec2f pos);
 double		edge_function(t_vec3f a, t_vec3f b, int x, int y);//bdeomin
 bool		collision_player(t_data *d, t_sector *sect);//bdeomin
-bool		collision_monster(t_data *d,
-		t_sector *sect, t_vec2f *pos, double dist_coll);//bdeomin
-void		d_asseting(t_data *d,
-		t_projdata *p, int16_t sectnum);//bdeomin
+bool		collision_monster(t_data *d, t_sector *sect, t_vec2f *pos, double dist_coll);//bdeomin
+void		d_asseting(t_data *d, t_projdata *p, int16_t sectnum);//bdeomin
 void		proj_to_asset(t_data *d, t_projdata *p, t_vec3f vect, SDL_Surface *tex);//bdeomin
 void		liting_assets(t_data *d, t_projdata *p, SDL_Surface *tex);//bdeomin
 void		assets_to_draw(t_data *d, t_projdata *p, int16_t sectnum, int i);//bdeomin
@@ -239,22 +236,21 @@ uint8_t		get_nb_anim_from_rotation(double monster_rot,
 ** fly_gravity.c
 */
 
-void		fly_gravity(t_data *d);
+void		fly_mode(t_data *d);
 
 /*
 ** draw_monster.c
 */
-
-void	new_disp_data_1(t_display_data *disp_data,
-	SDL_Surface *s, t_vec3f p_in_scr, double size);
-void	new_disp_data_2(t_display_data *disp_data,
+void		draw_proj(t_data *d, t_frustum *fr, t_projectile proj);//bdeomin
+void		new_disp_data(t_frustum *fr, t_display_data *disp_data,
+		uint16_t cursectnum);//bdeomin
+void		new_disp_data_1(t_display_data *disp_data,
+	SDL_Surface *s, t_vec3f p_in_scr, double size);//bdeomin
+void		new_disp_data_2(t_display_data *disp_data,
 		uint16_t cursectnum);
-void		draw_monster(t_data *d, t_monster monster);
+void		draw_monster(t_data *d, t_monster monster);//bdeomin
 void		disp_sprite(t_data *d, SDL_Surface *s,
-					t_display_data disp_data, t_vec2f dist_mod);
-void		new_zbuffer_and_put_collor(t_data *d, t_vec2 x_y, uint32_t colo,
-															t_vec2f dist_mod);
-
+					t_display_data disp_data, t_vec2f dist_mod);//bdeomin
 /*
 ** exit.c
 */
@@ -286,7 +282,7 @@ void		event_key_down(t_data *d, SDL_KeyboardEvent event);
 ** jump.c
 */
 
-void		normal_gravity(t_data *d);
+void		normal_mode(t_data *d);
 void		jump(t_data *d);
 
 /*

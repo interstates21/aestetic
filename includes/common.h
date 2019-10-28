@@ -10,15 +10,6 @@
 #include "../frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h"
 
 # include <stdbool.h>
-
-
-// typedef enum
-// {
-// 	false,
-// 	true
-// } bool;
-
-
 # define MAXNUMSECTORS 1024
 # define MAXNUMMONSTERS 256
 # define MAXNUMWALLS 4096

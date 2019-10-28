@@ -6,11 +6,28 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 23:03:43 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 23:40:05 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/28 18:40:23 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
+
+void	new_disp_data(t_frustum *fr, t_display_data *disp_data,
+		uint16_t cursectnum)
+{
+	double large_x;
+	double large_y;
+
+	large_x = disp_data->start.x - disp_data->end.x;
+	large_y = disp_data->start.y - disp_data->end.y;
+	disp_data->scale.x = fabs(100.0 / large_x * 0.01);
+	disp_data->cut_start = MAX(disp_data->start.x, fr->x1);
+	disp_data->cut_end = MIN(disp_data->end.x, fr->x2);
+	disp_data->scale.y = fabs(100.0 / large_y * 0.01);
+	disp_data->ytop = &fr->ytop[0];
+	disp_data->ybot = &fr->ybottom[0];
+	disp_data->cursectnum = cursectnum;
+}
 
 void	new_disp_data_1(t_display_data *disp_data,
 	SDL_Surface *s, t_vec3f p_in_scr, double size)

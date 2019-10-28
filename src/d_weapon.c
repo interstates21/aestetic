@@ -1,16 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_weapon.c                                      :+:      :+:    :+:   */
+/*   d_weapon.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 22:08:20 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/26 21:41:57 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/28 19:51:05 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
+
+/*
+** bdeomin
+*/
 
 void	display_weapon(t_data *d, SDL_Surface *s, t_vec2f start, t_vec2f end)
 {
@@ -35,41 +39,31 @@ void	display_weapon(t_data *d, SDL_Surface *s, t_vec2f start, t_vec2f end)
 	}
 }
 
-void	draw_weapon2(t_data *d, t_vec2f start, t_vec2f tmp, t_vec2 weap_size)
-{
-	t_vec2f			end;
-
-	end.x = start.x + weap_size.x * SIZE_OF_WEAP;
-	end.y = (HEIGHT + d->player.timer_change_weap *
-		HEIGHT * 0.010 + MAX_INERTIA * 50) + tmp.y * 50;
-	start.y = end.y - weap_size.y * SIZE_OF_WEAP;
-	display_weapon(d, d->weapon_tex[d->player.current_weapon]
-		[d->player.current_anim_playing], start, end);
-}
-
 void	draw_weapon(t_data *d)
 {
-	t_vec2f			start;
-	t_vec2f			tmp;
-	int				weap_w;
-	int				weap_h;
+	t_vec2f	start;
+	t_vec2f	tmp;
+	t_vec2	weap;
+	t_vec2f	end;
 
 	if (!d->player.timer_anim_weap)
-	{
-		d->player.current_anim_playing = d->player.weapon_anim
-		[d->player.current_weapon][d->player.current_anim_playing];
-		d->player.timer_anim_weap =
-			d->player.speed_anim[d->player.current_weapon];
-	}
-	weap_w = d->weapon_tex[d->player.current_weapon]
+		(d->player.current_anim_playing = d->player.weapon_anim[d->player.
+		current_weapon][d->player.current_anim_playing]) && (d->player.
+		timer_anim_weap = d->player.speed_anim[d->player.current_weapon]);
+	weap.x = d->weapon_tex[d->player.current_weapon]
 		[d->player.current_anim_playing]->w;
-	weap_h = d->weapon_tex[d->player.current_weapon]
+	weap.y = d->weapon_tex[d->player.current_weapon]
 		[d->player.current_anim_playing]->h;
 	d->player.timer_anim_weap--;
 	start.x = WIDTH * 0.5 + d->player.timer_change_weap * WIDTH * 0.003 -
-	weap_w * 0.5 * SIZE_OF_WEAP;
+	weap.x * 0.5 * SIZE_OF_WEAP;
 	tmp = d->inertia;
 	actualize_dir(d->cam.rot, &tmp);
 	start.x -= tmp.x * 150;
-	draw_weapon2(d, start, tmp, (t_vec2){weap_w, weap_h});
+	end.x = start.x + weap.x * SIZE_OF_WEAP;
+	end.y = (HEIGHT + d->player.timer_change_weap *
+		HEIGHT * 0.010 + MAX_INERTIA * 50) + tmp.y * 50;
+	start.y = end.y - weap.y * SIZE_OF_WEAP;
+	display_weapon(d, d->weapon_tex[d->player.current_weapon]
+		[d->player.current_anim_playing], start, end);
 }
