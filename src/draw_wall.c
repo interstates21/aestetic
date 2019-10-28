@@ -3,21 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_wall.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 23:02:51 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/24 21:19:29 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/28 18:26:50 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
-
-void	draw_wall_nei(t_data *d, t_projdata *p, t_frustum *fr)
-{
-	drawing_wall((t_vec2){p->y, MIN(fr->ybottom[p->x], p->nya)}, d, p, 0);
-	new_proj_data2(d, p, fr, 4);
-	drawing_wall((t_vec2){p->y, MIN(fr->ybottom[p->x], p->yb)}, d, p, 1);
-}
 
 void	draw_wall2bis(t_data *d, t_projdata *p, t_frustum *fr)
 {

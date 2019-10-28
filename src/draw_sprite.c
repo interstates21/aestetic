@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_sprite.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 21:07:52 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 22:02:32 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/28 18:29:44 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ t_vec3f		trans_v3f_in_scr(t_data *d, t_vec3f v)
 	new = new_v3(
 		new.x * d->cam.cos - new.z * d->cam.sin,
 			new.y,
-			new.x * d->cam.sin + new.z * d->cam.cos
-	);
+			new.x * d->cam.sin + new.z * d->cam.cos);
 	new.x /= new.z;
 	new.y /= new.z;
 	new.x = new.x * WIDTH + WIDTH * 0.5;
@@ -98,7 +97,8 @@ void		disp_sprite(t_data *d, SDL_Surface *s,
 			colo = alpha(((uint32_t *)d->sdl.screen->pixels)
 					[x_y.x + x_y.y * d->sdl.screen->w], colo);
 			if (colo != pixel_pls(d->sdl.screen, x_y.x, x_y.y, 2))
-				new_zbuffer_and_put_collor(d, x_y, shade(shd_fct(d, &d->sectors[disp_data.cursectnum], dist_mod.x, 0), colo), dist_mod);
+				new_zbuffer_and_put_collor(d, x_y, shade(shd_fct(d,
+&d->sectors[disp_data.cursectnum], dist_mod.x, 0), colo), dist_mod);
 		}
 	}
 }

@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   proj_wall.c                                        :+:      :+:    :+:   */
+/*   circle.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Create: 2019/10/27 03:12:36 by bdeomin           #+#    #+#              */
-/*   Update: 2019/10/27 22:10:54 by bdeomin          ###   ########.fr        */
+/*   Created: 2019/10/27 03:12:36 by bdeomin           #+#    #+#             */
+/*   Updated: 2019/10/28 18:28:16 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../includes/doom_nukem.h"
 
-static void circle_pix(t_data *e, t_vec2 c, t_vec2 v, Uint32 color)
+static void	circle_pix(t_data *e, t_vec2 c, t_vec2 v, Uint32 color)
 {
 	pixel_put(e, new_v3(c.x + v.x, c.y + v.y, 0), color, 0);
 	pixel_put(e, new_v3(c.x - v.x, c.y - v.y, 0), color, 0);
@@ -25,20 +24,19 @@ static void circle_pix(t_data *e, t_vec2 c, t_vec2 v, Uint32 color)
 	pixel_put(e, new_v3(c.x - v.y, c.y - v.x, 0), color, 0);
 }
 
-int circle(t_data *e, t_vec2 c, int r, Uint32 color)
+int			circle(t_data *e, t_vec2 c, int r, Uint32 color)
 {
+	int	j;
+	int	i;
+	int	p;
 
-    int j;
-    int i;
-    int p;
-	
 	j = 0;
 	i = r;
 	p = 3 - 2 * r;
 	circle_pix(e, c, new_v2int(j, i), color);
-	while(j < i )
+	while (j < i)
 	{
-		if( p < 0 )
+		if (p < 0)
 		{
 			j++;
 			p = p + 4 * j + 6;
@@ -47,9 +45,16 @@ int circle(t_data *e, t_vec2 c, int r, Uint32 color)
 		{
 			j++;
 			i--;
-			p = p + 4 * (j - i ) + 10;
+			p = p + 4 * (j - i) + 10;
 		}
 		circle_pix(e, c, new_v2int(j, i), color);
 	}
-	return 0;
+	return (0);
+}
+
+void		draw_wall_nei(t_data *d, t_projdata *p, t_frustum *fr)
+{
+	drawing_wall((t_vec2){p->y, MIN(fr->ybottom[p->x], p->nya)}, d, p, 0);
+	new_proj_data2(d, p, fr, 4);
+	drawing_wall((t_vec2){p->y, MIN(fr->ybottom[p->x], p->yb)}, d, p, 1);
 }

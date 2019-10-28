@@ -6,7 +6,7 @@
 /*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 17:59:42 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/27 18:41:28 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/28 18:40:46 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@ static int	get_col(int p, int s)
 
 static int	to_percent(int p)
 {
-	int 	r;
+	int		r;
 
-	r = (int)(p  / 100);
+	r = (int)(p / 100);
 	return (r > 100 ? 100 : r);
 }
 
 static void	draw_bar(t_data *d, int p)
 {
 	int		start;
-	int 	end;
-	int 	i;
-	int 	j;
+	int		end;
+	int		i;
+	int		j;
 	int		col;
 
 	ft_memset(d->sdl.screen->pixels, 0,
@@ -56,12 +56,10 @@ void		correct_loading(t_data *d, uint32_t *status, SDL_Event e)
 
 	status[1] = SDL_GetTicks() - d->tick;
 	while (SDL_PollEvent(&e))
-	{
-	if (e.type == SDL_QUIT)
-		print_and_quit(d, "RED CROSS");
-	if (e.key.keysym.sym == SDLK_ESCAPE)
-		print_and_quit(d, "ESC");
-	}
+		if (e.type == SDL_QUIT)
+			print_and_quit(d, "RED CROSS");
+		else if (e.key.keysym.sym == SDLK_ESCAPE)
+			print_and_quit(d, "ESC");
 	str = ft_strdup("LOADING ");
 	tmp = str;
 	num = ft_itoa(to_percent(status[1]));
@@ -82,6 +80,7 @@ void		loading(t_data *d)
 {
 	uint32_t	status[2];
 	SDL_Event	e;
+
 	status[0] = 0;
 	status[1] = status[0];
 	if (d->loaded)

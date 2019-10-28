@@ -6,7 +6,7 @@
 /*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 11:41:36 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/27 02:00:55 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/28 20:22:10 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void		post_whi_le(t_data *d, int f, int b)
 	{
 		while (++i < d->nb_posters)
 		{
-			if (read(f, &wid, sizeof(int)) < 0 || read(f, &heig, sizeof(int)) < 0)
+			if (read(f, &wid, sizeof(int)) < 0 || read(f, &heig,
+				sizeof(int)) < 0)
 				print_err("Cannot read posters size");
 			if (!(d->posters[i] = SDL_CreateRGBSurfaceWithFormat(
 				0, wid, heig, 32, SDL_PIXELFORMAT_ARGB8888)))

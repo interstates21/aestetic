@@ -63,6 +63,9 @@ void	swap_tabs(short *tab, short *tmp_tab);
 void	set_tab(t_data *d, short sect_to_scan, short *tab, short old_sect);
 int		draw_background(t_data *d, SDL_Event e);
 void 	draw_message(t_data *d, char *message, int color, SDL_Rect rect);
+void	draw_wall_nei(t_data *d, t_projdata *p, t_frustum *fr);
+void	free_sectors_sprites(t_data *d, short i);
+void	finish(t_data *d);
 
 
 

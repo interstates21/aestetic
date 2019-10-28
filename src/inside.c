@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   inside.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 09:18:24 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/24 22:56:17 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/28 18:32:37 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
+
+void	free_sectors_sprites(t_data *d, short i)
+{
+	t_sprite_list	*list;
+	t_sprite_list	*need_free;
+
+	list = d->sectors[i].sprite_list;
+	d->sectors[i].sprite_list = NULL;
+	while (list)
+	{
+		need_free = list->next;
+		free(list);
+		list = need_free;
+	}
+}
 
 bool	inside(t_data *d, int16_t sectnum, t_vec2f pos)
 {

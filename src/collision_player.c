@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   collision_player.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 21:11:09 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 21:13:22 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/28 18:25:53 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ bool	collided_v(t_vec2f *v, int *nw, t_data *d)
 	if (v2_len(v[1]) < COLLISION_DIST)
 	{
 		if (can_traverse(d, nw[0], &d->walls[nw[0]]))
-			return (collision_player(d, &d->sectors[d->walls[nw[0]].neighborsect]));
+			return (collision_player(d,
+				&d->sectors[d->walls[nw[0]].neighborsect]));
 		else
 		{
 			d->cam.pos.x = v[0].x + v[1].x * COLLISION_DIST * 1.001 /

@@ -1,54 +1,73 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   loop.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/28 20:11:45 by vslutiak          #+#    #+#             */
+/*   Updated: 2019/10/28 20:17:05 by vslutiak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/doom_nukem.h"
 
-void draw_message(t_data *d, char *message, int color, SDL_Rect rect)
+void		draw_message(t_data *d, char *message, int color, SDL_Rect rect)
 {
-	SDL_Surface *textSurface;
+	SDL_Surface *txtsurf;
 	SDL_Color	c;
 
 	c.b = color & 0xFF;
 	c.g = (color >> 8) & 0xFF;
 	c.r = (color >> 16) & 0xFF;
-	textSurface = TTF_RenderText_Solid(d->gFont, message , c);
-	rect.x -= textSurface->w / 2;
-	rect.y -= textSurface->h / 2;
-	SDL_BlitSurface(textSurface, NULL, d->sdl.screen, &rect);
-	SDL_FreeSurface(textSurface);
+	txtsurf = TTF_RenderText_Solid(d->gFont, message, c);
+	rect.x -= txtsurf->w / 2;
+	rect.y -= txtsurf->h / 2;
+	SDL_BlitSurface(txtsurf, NULL, d->sdl.screen, &rect);
+	SDL_FreeSurface(txtsurf);
 }
 
-int	draw_background(t_data *d, SDL_Event e)
+int			ini_dific(t_data *d, int active_option)
 {
-	static int active_option = 0;
-	int color;
+	if (active_option == 1)
+	{
+		d->difficulty = 2;
+		d->tick = SDL_GetTicks();
+		return (1);
+	}
+	else
+	{
+		d->difficulty = 1;
+		d->tick = SDL_GetTicks();
+		return (1);
+	}
+}
+
+int			draw_background(t_data *d, SDL_Event e)
+{
+	static int	active_option = 0;
+	int			c;
 
 	SDL_FillRect(d->sdl.screen, NULL, 0x000000);
-	color = active_option == 0 ? 0xFF0000 : 0xFFFFFF;
-	draw_message(d, "NORMAL", color, (SDL_Rect){.x = WIDTH / 2, .y = HEIGHT / 2 - 30});
-	color = active_option == 1 ? 0xFF0000 : 0xFFFFFF;
-	draw_message(d, "HARD", color, (SDL_Rect){.x = WIDTH / 2, .y = HEIGHT / 2 + 20});
+	c = active_option == 0 ? 0xFF0000 : 0xFFFFFF;
+	draw_message(d, "NRM", c, (SDL_Rect){.x = WIDTH / 2, .y = HEIGHT / 2 - 30});
+	c = active_option == 1 ? 0xFF0000 : 0xFFFFFF;
+	draw_message(d, "HRD", c, (SDL_Rect){.x = WIDTH / 2, .y = HEIGHT / 2 + 20});
 	SDL_UpdateWindowSurface(d->sdl.win);
 	while (SDL_PollEvent(&e))
-	{
-			if (e.type == SDL_KEYDOWN)
-			{
-				if (e.key.keysym.sym == SDLK_DOWN)
-					active_option--;
-				if (e.key.keysym.sym == SDLK_UP)
-					active_option++;
-				if (active_option > 1)
-					active_option = 0;
-				if (active_option < 0)
-					active_option = 1;
-				if (e.key.keysym.sym == SDLK_RETURN)
-				{
-					if (active_option == 1)
-						d->difficulty = 2;
-					else
-						d->difficulty = 1;
-					d->tick = SDL_GetTicks();
-					return (1);
-				}
-			}
-	}
+		if (e.type == SDL_KEYDOWN)
+		{
+			if (e.key.keysym.sym == SDLK_DOWN)
+				active_option--;
+			if (e.key.keysym.sym == SDLK_UP)
+				active_option++;
+			if (active_option > 1)
+				active_option = 0;
+			if (active_option < 0)
+				active_option = 1;
+			if (e.key.keysym.sym == SDLK_RETURN)
+				return (ini_dific(d, active_option));
+		}
 	return (0);
 }
 
@@ -78,7 +97,7 @@ static void	render(t_data *d)
 	SDL_UpdateWindowSurface(d->sdl.win);
 }
 
-void	loop(t_data *d)
+void		loop(t_data *d)
 {
 	SDL_Event	e;
 	uint32_t	start;

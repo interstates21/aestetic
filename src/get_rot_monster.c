@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_rot_monster.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 21:48:59 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/26 23:57:38 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/28 18:30:39 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static uint8_t	get_option(double r)
 	return (5);
 }
 
-uint8_t	get_nb_anim_from_rotation(double m_rotation,
+uint8_t			get_nb_anim_from_rotation(double m_rotation,
 		t_vec2f mon_pos, t_vec2f p_pos)
 {
 	double	r;

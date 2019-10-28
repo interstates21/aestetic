@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ceil_height.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 09:18:24 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/24 22:54:22 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/28 18:21:40 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ double	get_ceildh(t_data *d, t_sector *sect, t_vec2f v)
 		print_err("get ceil sector is null");
 	n = sect - d->sectors;
 	s = &d->sectors[n];
-
 	ceil_height = get_ceil_height(s, d->walls, n, v);
 	res = ceil_height - d->cam.pos.y;
 	return (res);

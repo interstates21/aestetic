@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   atoi.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 12:27:46 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/27 21:07:30 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/28 18:21:07 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
-
-//???????????????????
 
 static void	div_wl(int n, int div, char *s, int i)
 {

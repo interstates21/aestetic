@@ -6,7 +6,7 @@
 /*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 22:58:36 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 18:41:37 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/28 18:32:54 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,38 +92,10 @@ void	all_free(t_data *d)
 	d->assets = NULL;
 }
 
-void	free_sectors_sprites(t_data *d, short i)
-{
-	t_sprite_list	*list;
-	t_sprite_list	*need_free;
-
-	list = d->sectors[i].sprite_list;
-	d->sectors[i].sprite_list = NULL;
-	while (list)
-	{
-		need_free = list->next;
-		free(list);
-		list = need_free;
-	}
-}
-void	finish(t_data *d)
-{
-	SDL_Rect	rect;
-
-	rect.x = 0;
-	rect.y = 0;
-	rect.h = HEIGHT;
-	rect.w = WIDTH;
-
-	SDL_FillRect(d->sdl.screen, NULL, 0x000000);
-	draw_message(d, "FINISH", 0xFFFFFF, (SDL_Rect){.x = WIDTH / 2, .y = HEIGHT / 2 - 30});
-	SDL_UpdateWindowSurface(d->sdl.win);
-}
-
 void	handle_finish(t_data *d)
 {
-	int i;
-	int		f;
+	int	i;
+	int	f;
 
 	i = -1;
 	while (++i < d->nb_textures)

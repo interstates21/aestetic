@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   n_allocators.c                                     :+:      :+:    :+:   */
+/*   arrays.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 23:49:29 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/26 23:49:31 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/28 18:45:50 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
 
-void merge_vector_arr(t_vec3f **a, t_vec3f **b, int ia, int *ib)
+void	merge_vector_arr(t_vec3f **a, t_vec3f **b, int ia, int *ib)
 {
-	t_vec3f *res;
-	int c;
+	t_vec3f	*res;
+	int		c;
 
 	res = (t_vec3f *)malloc(sizeof(t_vec3f) * (ia + *ib));
 	c = -1;
