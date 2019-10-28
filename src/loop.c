@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 20:11:45 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/28 20:17:05 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/28 21:49:35 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void		draw_message(t_data *d, char *message, int color, SDL_Rect rect)
 	c.b = color & 0xFF;
 	c.g = (color >> 8) & 0xFF;
 	c.r = (color >> 16) & 0xFF;
-	txtsurf = TTF_RenderText_Solid(d->gFont, message, c);
+	txtsurf = TTF_RenderText_Solid(d->g_font, message, c);
 	rect.x -= txtsurf->w / 2;
 	rect.y -= txtsurf->h / 2;
 	SDL_BlitSurface(txtsurf, NULL, d->sdl.screen, &rect);

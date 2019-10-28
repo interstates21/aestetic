@@ -54,7 +54,7 @@ void	run(char *mapname)
 	d.loaded = 0;
 	init_sdl(&(d.sdl));
 	TTF_Init();
-	d.gFont = TTF_OpenFont("/Library/Fonts/Arial.ttf", 25);
+	d.g_font = TTF_OpenFont("/Library/Fonts/Arial.ttf", 25);
 	init_keys(&(d.keys));
 	while (z == 0)
 			z = draw_background(&d, e);

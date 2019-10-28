@@ -1,4 +1,4 @@
-#include "../includes/common.h"
+#include "doom_nukem.h"
 
 t_vec2f	v2_min(t_vec2f a, t_vec2f b)
 {
@@ -128,7 +128,7 @@ void	v2_rot(t_vec2f *p, double angle)
 }
 
 
-t_vec3f new_v3_projection(double x, double y)
+t_vec3f new_v3_proj(double x, double y)
 {
 	t_vec3f v;
 

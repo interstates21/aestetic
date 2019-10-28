@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 22:08:20 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/28 19:51:05 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/28 22:30:18 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	display_weapon(t_data *d, SDL_Surface *s, t_vec2f start, t_vec2f end)
 														(x_y.y - start.y), 0);
 			colo = alpha(((uint32_t *)d->sdl.screen->pixels)
 					[(short)x_y.x + (short)x_y.y * d->sdl.screen->w], colo);
-			pixel_put(d, new_v3_projection(x_y.x, x_y.y), colo, 0);
+			pixel_put(d, new_v3_proj(x_y.x, x_y.y), colo, 0);
 			x_y.y++;
 		}
 		x_y.x++;
