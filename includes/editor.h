@@ -520,4 +520,8 @@ void				render_sector_mosters(t_ed *ed);
 void				nice_grid(t_ed *ed);
 void				print_v(t_v2 v, const char *s);
 void				draw_square(t_ed *ed, t_v2 c, int r, Uint32 col);
+void				translate(t_vec3f *p, t_vec3f move, int dir);
+void				rot_x(t_vec3f *v, double ang, t_vec3f axis);
+void				rot_y(t_vec3f *v, double ang, t_vec3f axis);
+void				rot_z(t_vec3f *v, double ang, t_vec3f axis);
 #endif
