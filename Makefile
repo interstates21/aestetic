@@ -81,7 +81,15 @@ FILES = main \
 		loading2 \
 		move_down_vector \
 		arrays \
-		util_funcs
+		util_funcs \
+		newv2_vector \
+		newv3_vector \
+		to_vector \
+		v2_vector \
+		vector_min \
+		vector_plus \
+		vector_scale
+
 
 LIBFT_DIR = libft/
 SRC = $(addprefix src/, $(addsuffix .c, $(FILES)))
