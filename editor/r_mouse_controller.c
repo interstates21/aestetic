@@ -62,15 +62,21 @@ char		in_sector(t_ed *e)
 void		handle_left_click(t_ed *ed)
 {
 	int k;
-
-	if (pickers(ed))
+	if (pickers(ed)) {
 		return ;
+	}
 	k = in_sector(ed);
 	ed->selection.sector = k;
 	if (ed->selection.drawing)
 		loop_creation(ed);
 	else
 		corner_selected(ed);
+	if (k != -1) {
+		put_monster(ed, k);
+		put_sprite(ed, k);
+	}
+	ed->selection.monster = -1;
+	ed->selection.sprite = -1;
 }
 
 int			mouse_controller(t_ed *ed, SDL_Event *event)

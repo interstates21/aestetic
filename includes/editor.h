@@ -513,5 +513,14 @@ void				load_wp_tex(t_ed *e, const int n_tex[3], const int n_p[3]);
 void				save_wp_tex(t_ed *e, int n_tex[3], int n_p[3]);
 void				write_mons_tex(t_ed *e);
 void				write_sprt_tex(t_ed *e);
+void				put_sprite(t_ed *ed, int n_sect);
+void				put_monster(t_ed *ed, int n_sect);
+void				render_sector_sprites(t_ed *ed);
+void				render_sector_mosters(t_ed *ed);
+void				print_v(t_v2 v, const char *s);
+void				draw_selection(t_ed *ed);
+void				nice_grid(t_ed *ed);
+void				draw_mouse_highlight(t_ed *ed, t_v2 mouse);
+void				draw_square(t_ed *ed, t_v2 c, int r, Uint32 col);
 
 #endif
