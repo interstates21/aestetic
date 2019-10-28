@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_monsters.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 09:18:24 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/24 22:55:36 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/28 00:37:25 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	add_monster(t_sector *sector, int16_t id_of_monster)
 void	initialize_all_monster(t_data *d,
 		t_monster *monster, int16_t id_of_monster)
 {
-	monster->life = d->monster_type[monster->id_type].health;
+	monster->life = d->monster_type[monster->id_type].health * d->difficulty;
 	monster->activated = false;
 	monster->anim_state = 0;
 	monster->rot = 1.5 * M_PI;
