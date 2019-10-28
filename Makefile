@@ -14,6 +14,12 @@ FILES = main \
 		d_ammo_hud \
 		dr_monster \
 		display_data \
+		d_sprite \
+		disp_sprite \
+		d_wall \
+		d_wall2 \
+		d_proj \
+		wall_proj_data \
 		collision_player \
 		collision_monster \
 		load_sound \
@@ -40,8 +46,6 @@ FILES = main \
 		draw_weapon \
 		color_buffer \
 		render_sector \
-		draw_wall \
-		draw_wall2 \
 		clip_wall \
 		proj_wall \
 		pixel \
@@ -53,7 +57,6 @@ FILES = main \
 		inertia \
 		monster_collision \
 		movement \
-		draw_sprite \
 		get_rot_monster \
 		shade \
 		swap_list \

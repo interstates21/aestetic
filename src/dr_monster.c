@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 19:45:21 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 23:41:58 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/28 19:15:05 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,6 @@ short		*mont_anim(t_data *d, t_monster monster, short *nb_of_anim)
 	if (nb_of_anim[1] > 4)
 		nb_of_anim[0] = 8 - nb_of_anim[0];
 	return (nb_of_anim);
-}
-
-void		new_zbuffer_and_put_collor(t_data *d, t_vec2 x_y, uint32_t colo,
-															t_vec2f dist_mod)
-{
-	pixel_put(d, new_v3(x_y.x, x_y.y, 0), colo, 0);
-	d->zbuffer[x_y.x + x_y.y * d->sdl.screen->w] = dist_mod.x;
 }
 
 void		draw_monster(t_data *d, t_monster monster)
