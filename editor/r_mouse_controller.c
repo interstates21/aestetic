@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   r_mouse_controller.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akolomoi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 18:32:10 by akolomoi          #+#    #+#             */
-/*   Updated: 2019/10/28 18:32:11 by akolomoi         ###   ########.fr       */
+/*   Updated: 2019/10/28 22:10:23 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,17 @@ char		in_sector(t_ed *e)
 void		handle_left_click(t_ed *ed)
 {
 	int k;
-	if (pickers(ed)) {
+
+	if (pickers(ed))
 		return ;
-	}
 	k = in_sector(ed);
 	ed->selection.sector = k;
 	if (ed->selection.drawing)
 		loop_creation(ed);
 	else
 		corner_selected(ed);
-	if (k != -1) {
+	if (k != -1)
+	{
 		put_monster(ed, k);
 		put_sprite(ed, k);
 	}

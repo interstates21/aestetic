@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akolomoi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 18:10:27 by akolomoi          #+#    #+#             */
-/*   Updated: 2019/10/28 18:10:28 by akolomoi         ###   ########.fr       */
+/*   Updated: 2019/10/28 22:09:03 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void		render_manager(t_sdl *sdl, t_ed *ed)
 		draw_info(ed);
 		draw_selection(ed);
 		render_sector_mosters(ed);
-        render_sector_sprites(ed);
+		render_sector_sprites(ed);
 		sdl_apply_renderer(sdl, ed);
 		if (ed->selection.sector != -1)
 		{
