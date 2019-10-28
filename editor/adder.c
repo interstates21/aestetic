@@ -34,8 +34,8 @@ static void	draw_icon(t_ed *ed, t_v2 pos, int col)
 
 void		render_env(t_ed *e)
 {
-	int 	i;
-	int 	col;
+	int		i;
+	int		col;
 
 	i = -1;
 	while (++i < e->n_mns)
@@ -51,7 +51,7 @@ void		render_env(t_ed *e)
 
 void		add_sprite(t_ed *e)
 {
-	int 	i;
+	int		i;
 
 	if (e->n_sprt == MAX_SPRT)
 	{
@@ -63,12 +63,11 @@ void		add_sprite(t_ed *e)
 	e->sprt[i].pos = e->controller.mouse;
 	e->sprt[i].type = e->selection.sprite;
 	e->sprt[i].secnum = e->selection.sector;
-	printf("sprt+\n");
 }
 
 void		add_monster(t_ed *e)
 {
-	int 	i;
+	int		i;
 
 	if (e->n_mns == MAX_MONS)
 	{
@@ -80,5 +79,4 @@ void		add_monster(t_ed *e)
 	e->monsters[i].pos = e->controller.mouse;
 	e->monsters[i].type = e->selection.monster;
 	e->monsters[i].secnum = e->selection.sector;
-	printf("mn+\n");
 }

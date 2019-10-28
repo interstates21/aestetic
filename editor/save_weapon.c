@@ -11,11 +11,11 @@
 /* ************************************************************************** */
 
 #include "../includes/editor.h"
-int t;
+
 static void		read_wp_proj(t_ed *e, char *p, const int params[3])
 {
 	int				i;
-	char 			*path;
+	char			*path;
 	DIR				*dir;
 	struct dirent	*data;
 
@@ -36,7 +36,7 @@ static void		read_wp_proj(t_ed *e, char *p, const int params[3])
 static void		read_wp_list(t_ed *e, char *name, int params[3])
 {
 	int				i;
-	char 			*path;
+	char			*path;
 	DIR				*dir;
 	struct dirent	*data;
 
@@ -58,9 +58,9 @@ static void		read_wp_list(t_ed *e, char *name, int params[3])
 
 static void		sort_list(t_ed *e, int i, int n_tex[3], int n_p[3])
 {
-	char 		*p;
-	int 		j;
-	int 		k;
+	char		*p;
+	int			j;
+	int			k;
 
 	j = -1;
 	while (++j < n_tex[i] - 1 && ((k = j) | 1))
@@ -84,7 +84,7 @@ static void		sort_list(t_ed *e, int i, int n_tex[3], int n_p[3])
 
 static void		load_wp_list(t_ed *e, char *name[3], int n_tex[3], int n_p[3])
 {
-	int 		i;
+	int			i;
 
 	i = -1;
 	while (++i < 3)
@@ -96,9 +96,13 @@ static void		load_wp_list(t_ed *e, char *name[3], int n_tex[3], int n_p[3])
 
 void			write_weapon(t_ed *e)
 {
-	t = 0;
+	char		*str;
+
+	str = ft_strdup(M_NAME_1);
 	load_wp_list(e, (char*[]){"cryo_ballista/", "blaster/", "m16/"},
 	(int[3]){13, 15, 3}, (int[3]){20, 0, 5});
 	load_wp_tex(e, (int[3]){13, 15, 3}, (int[3]){20, 0, 5});
+	write(e->fd, &str, ft_strlen(str));
 	save_wp_tex(e, (int[3]){13, 15, 3}, (int[3]){20, 0, 5});
+	free(str);
 }

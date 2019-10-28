@@ -41,10 +41,10 @@ static void	buf_init(void **b, t_bmp *data, int fd)
 
 void		read_bmp(SDL_Surface **s, char *p)
 {
-	int 	k;
+	int		k;
 	t_bmp	data;
 	void	*buf;
-	int 	fd;
+	int		fd;
 
 	fd = -1;
 	check_header(&data, p, &fd);
@@ -67,10 +67,9 @@ void		read_bmp(SDL_Surface **s, char *p)
 
 int			bmp_check(struct dirent *data)
 {
-	int 	len;
+	int		len;
 
 	len = ft_strlen(data->d_name) - 4;
 	return (data->d_type == DT_REG &&
 	ft_strequ(&data->d_name[len], ".bmp"));
 }
-

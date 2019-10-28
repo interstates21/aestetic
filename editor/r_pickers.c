@@ -1,83 +1,106 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   r_pickers.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akolomoi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/28 18:36:57 by akolomoi          #+#    #+#             */
+/*   Updated: 2019/10/28 18:36:58 by akolomoi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/editor.h"
 
-static void init_texure_picker_rect( SDL_Rect *SrcR, SDL_Rect *DestR, t_v2 pos, int size)
+static void	init_texure_picker_rect(SDL_Rect *s, SDL_Rect *d, t_v2 p, int sz)
 {
-    SrcR->x = 0;
-    SrcR->y = 0;
-    SrcR->w = size;
-    SrcR->h = size;
-    DestR->x = ED_W - pos.x / 2 - size / 2;
-    DestR->y = ED_H - pos.y / 2 - size / 2;
-    DestR->w = size;
-    DestR->h = size;
+	s->x = 0;
+	s->y = 0;
+	s->w = sz;
+	s->h = sz;
+	d->x = ED_W - p.x / 2 - sz / 2;
+	d->y = ED_H - p.y / 2 - sz / 2;
+	d->w = sz;
+	d->h = sz;
 }
 
-void render_picker(t_ed *ed, t_sdl *sdl) {
-    SDL_Rect    SrcR;
-    SDL_Rect    DestR;
-    SDL_Texture *picker_tex;
+void		render_picker(t_ed *ed, t_sdl *sdl)
+{
+	SDL_Rect	s;
+	SDL_Rect	d;
+	SDL_Texture *picker_tex;
 
-     if (ed->texture_picker) {
-        picker_tex = SDL_CreateTextureFromSurface(sdl->renderer, ed->texture_picker);
-        init_texure_picker_rect(&SrcR, &DestR, new_v2(200, 200), SHAPE_SIZE);
-        SDL_RenderCopy(sdl->renderer, picker_tex, &SrcR, &DestR);
-    }
+	if (ed->texture_picker)
+	{
+		picker_tex = SDL_CreateTextureFromSurface(sdl->renderer,
+		ed->texture_picker);
+		init_texure_picker_rect(&s, &d, new_v2(200, 200), SHAPE_SIZE);
+		SDL_RenderCopy(sdl->renderer, picker_tex, &s, &d);
+	}
 }
 
-void render_monsters(t_ed *ed, t_sdl *sdl) {
-    SDL_Rect    SrcR;
-    SDL_Rect    DestR;
-    SDL_Texture *tex;
+void		render_monsters(t_ed *ed, t_sdl *sdl)
+{
+	SDL_Rect	s;
+	SDL_Rect	d;
+	SDL_Texture *tex;
 
-    tex = SDL_CreateTextureFromSurface(sdl->renderer, ed->monster[0].acting[1][0]);
-    init_texure_picker_rect(&SrcR, &DestR, new_v2(180, 500), 100);
-    SDL_RenderCopy(sdl->renderer, tex, &SrcR, &DestR);
-    tex = SDL_CreateTextureFromSurface(sdl->renderer, ed->monster[1].acting[0][0]);
-    init_texure_picker_rect(&SrcR, &DestR, new_v2(400, 500), 100);
-    SDL_RenderCopy(sdl->renderer, tex, &SrcR, &DestR);
+	tex = SDL_CreateTextureFromSurface(sdl->renderer,
+	ed->monster[0].acting[1][0]);
+	init_texure_picker_rect(&s, &d, new_v2(180, 500), 100);
+	SDL_RenderCopy(sdl->renderer, tex, &s, &d);
+	tex = SDL_CreateTextureFromSurface(sdl->renderer,
+	ed->monster[1].acting[0][0]);
+	init_texure_picker_rect(&s, &d, new_v2(400, 500), 100);
+	SDL_RenderCopy(sdl->renderer, tex, &s, &d);
 }
 
-void render_sprites(t_ed *ed, t_sdl *sdl) {
-    SDL_Rect    SrcR;
-    SDL_Rect    DestR;
-    SDL_Texture *tex;
-    int         i;
-    int         offset;
+void		render_sprites(t_ed *ed, t_sdl *sdl)
+{
+	SDL_Rect	s;
+	SDL_Rect	d;
+	SDL_Texture *tex;
+	int			i;
+	int			offset;
 
-    i       = 0;
-    offset  = 0;
-    while (i < ed->n_sprites) {
-        tex = SDL_CreateTextureFromSurface(sdl->renderer, ed->sprites[i].texture);
-        init_texure_picker_rect(&SrcR, &DestR, new_v2(600 - offset, 700), 30);
-        SDL_RenderCopy(sdl->renderer, tex, &SrcR, &DestR);
-        i++;
-        offset += 80;
-    }
+	i = 0;
+	offset = 0;
+	while (i < ed->n_sprites)
+	{
+		tex = SDL_CreateTextureFromSurface(sdl->renderer,
+		ed->sprites[i].texture);
+		init_texure_picker_rect(&s, &d, new_v2(600 - offset, 700), 30);
+		SDL_RenderCopy(sdl->renderer, tex, &s, &d);
+		i++;
+		offset += 80;
+	}
 }
 
-int  pickers(t_ed *ed) {
-    ed->selection.monster = -1;
+int			pickers(t_ed *ed)
+{
+	ed->selection.monster = -1;
 	ed->selection.sprite = -1;
-    if (ed->selection.sector == -1)
-        return (0);
-	if (picking_monster(ed->controller.mouse) == 1) {
-		ft_putendl("Picking monster one");
+	if (ed->selection.sector == -1)
+		return (0);
+	if (picking_monster(ed->controller.mouse) == 1)
+	{
 		ed->selection.monster = 0;
 		ed->selection.sprite = -1;
 		return (1);
 	}
-	else if (picking_monster(ed->controller.mouse) == 2) {
-		ft_putendl("Picking monster two");
+	else if (picking_monster(ed->controller.mouse) == 2)
+	{
 		ed->selection.monster = 1;
 		return (1);
 	}
-	else if (picking_sprite(ed->controller.mouse, ed->n_sprites) != -1) {
-		ed->selection.sprite = picking_sprite(ed->controller.mouse, ed->n_sprites);
-		ft_putstr("Picking sprite ");
+	else if (picking_sprite(ed->controller.mouse, ed->n_sprites) != -1)
+	{
+		ed->selection.sprite = picking_sprite(ed->controller.mouse,
+		ed->n_sprites);
 		ft_putnbr(ed->selection.sprite);
 		ft_putchar('\n');
 		ed->selection.monster = -1;
 		return (1);
 	}
-    return (0);
+	return (0);
 }

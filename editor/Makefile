@@ -3,6 +3,7 @@ NAME = dm_editor
 CC = clang
 FILES = bmp_reader \
                     draw_info \
+                    char_selector \
                     font \
 					r_helpers \
 					r_sdl \

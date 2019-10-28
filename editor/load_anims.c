@@ -14,16 +14,16 @@
 
 static void		get_rot(t_ed *e, int k, char **names, int t)
 {
-	int 		i;
-	int 		tmp;
-	int 		rot;
+	int		i;
+	int		tmp;
+	int		rot;
 
 	i = -1;
 	rot = 1;
 	while (++i < k)
 	{
 		tmp = names[i][ft_strchr(names[i], '.') - 1 - names[i]];
-		if(!ft_isdigit(tmp))
+		if (!ft_isdigit(tmp))
 			print_err("bad file name");
 		rot = MAX(tmp - '0', rot);
 	}
@@ -33,10 +33,10 @@ static void		get_rot(t_ed *e, int k, char **names, int t)
 	e->monster[e->curr_m].a_rot[t] = rot;
 }
 
-static void			load_anims(t_ed *e, char *p, char **names, int flag)
+static void		load_anims(t_ed *e, char *p, char **names, int flag)
 {
-	int 			i;
-	char 			*f;
+	int			i;
+	char		*f;
 
 	if (!(e->monster[e->curr_m].acting[flag] = (SDL_Surface**)malloc(
 			sizeof(SDL_Surface*) * e->monster[e->curr_m].anim[flag])))
@@ -55,8 +55,8 @@ void			load_names(t_ed *e, char *p, int i)
 {
 	DIR				*dir;
 	struct dirent	*data;
-	int 			k;
-	char 			**names;
+	int				k;
+	char			**names;
 
 	dir = NULL;
 	reopen(&dir, p);

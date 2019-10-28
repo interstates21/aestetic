@@ -11,11 +11,11 @@
 /* ************************************************************************** */
 
 #include "../includes/editor.h"
-int t;
+
 void		load_wp_tex(t_ed *e, const int n_tex[3], const int n_p[3])
 {
-	int 	i;
-	int 	j;
+	int		i;
+	int		j;
 
 	i = -1;
 	while (++i < 3)
@@ -31,25 +31,24 @@ void		load_wp_tex(t_ed *e, const int n_tex[3], const int n_p[3])
 
 void		save_wp_tex(t_ed *e, int n_tex[3], int n_p[3])
 {
-	int 	i;
-	int 	j;
-	t = 0;
+	int		i;
+	int		j;
+
 	i = -1;
 	while (++i < 3 && (j = -1))
 	{
 		while (++j < n_tex[i])
-			if ((t += write(e->fd, &e->wp_tex[i][j]->w, sizeof(int))) < 0
-			|| (t += write(e->fd, &e->wp_tex[i][j]->h, sizeof(int))) < 0
-			|| (t += write(e->fd, e->wp_tex[i][j]->pixels, e->wp_tex[i][j]->h * 4 *
-			e->wp_tex[i][j]->w)) < 0)
+			if (write(e->fd, &e->wp_tex[i][j]->w, sizeof(int)) < 0
+			|| write(e->fd, &e->wp_tex[i][j]->h, sizeof(int)) < 0
+			|| write(e->fd, e->wp_tex[i][j]->pixels, e->wp_tex[i][j]->h * 4 *
+			e->wp_tex[i][j]->w) < 0)
 				print_err("saving weapon texture failed");
 		j = -1;
 		while (++j < n_p[i])
-			if ((t += write(e->fd, &e->wp_p[i][j]->w, sizeof(int))) < 0
-				|| (t += write(e->fd, &e->wp_p[i][j]->h, sizeof(int))) < 0
-				|| (t += write(e->fd, e->wp_p[i][j]->pixels, e->wp_p[i][j]->h * 4 *
-				e->wp_p[i][j]->w)) < 0)
+			if (write(e->fd, &e->wp_p[i][j]->w, sizeof(int)) < 0
+				|| write(e->fd, &e->wp_p[i][j]->h, sizeof(int)) < 0
+				|| write(e->fd, e->wp_p[i][j]->pixels, e->wp_p[i][j]->h * 4 *
+				e->wp_p[i][j]->w) < 0)
 				print_err("saving weapon projectile texture failed");
 	}
-	printf("save_wp_tex total written: %d\n", t);
 }

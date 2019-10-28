@@ -12,7 +12,7 @@
 
 #include "../includes/editor.h"
 
-static void			save_me(t_ed *e, t_mnst *m)
+static void	save_me(t_ed *e, t_mnst *m)
 {
 	t_stdmonster	s;
 
@@ -22,7 +22,7 @@ static void			save_me(t_ed *e, t_mnst *m)
 		print_err("saving monster failed");
 }
 
-static void			save_me_too(t_ed *e, t_sprt *m, int i)
+static void	save_me_too(t_ed *e, t_sprt *m, int i)
 {
 	t_stdast		s;
 	t_sprite		tmp;
@@ -38,8 +38,8 @@ static void			save_me_too(t_ed *e, t_sprt *m, int i)
 
 void		write_sprites(t_ed *e)
 {
-	int 	i;
-	int 	j;
+	int		i;
+	int		j;
 	int16_t tmp;
 
 	tmp = e->n_sprt;
@@ -61,7 +61,7 @@ void		write_sprites(t_ed *e)
 
 void		write_monsters(t_ed *e)
 {
-	int 	i;
+	int		i;
 	int16_t tmp;
 
 	tmp = e->n_mns;

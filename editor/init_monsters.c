@@ -14,8 +14,8 @@
 
 static void			fetch_f(struct dirent *data, char *f, t_ed *e)
 {
-	char 			*p;
-	int 			flag;
+	char			*p;
+	int				flag;
 
 	if (ft_strequ(data->d_name, "walk") && (flag = A_WALK))
 		p = ft_strjoin(f, "/walk/");
@@ -25,7 +25,6 @@ static void			fetch_f(struct dirent *data, char *f, t_ed *e)
 		p = ft_strjoin(f, "/death/");
 	else
 		return ;
-	printf("%s\n", p);
 	load_names(e, p, flag);
 	free(p);
 }
@@ -34,7 +33,7 @@ static void			get_files(t_ed *e, int type, char *name)
 {
 	DIR				*dir;
 	struct dirent	*data;
-	char 			*f;
+	char			*f;
 
 	dir = NULL;
 	e->curr_m = type;
@@ -51,8 +50,8 @@ static void			get_ranged_files(t_ed *e)
 {
 	DIR				*dir;
 	struct dirent	*data;
-	int 			i;
-	char 			*tmp[2];
+	int				i;
+	char			*tmp[2];
 
 	tmp[0] = "../textures/assets/monsters/motherdemon/projectiles/";
 	dir = NULL;
@@ -68,10 +67,10 @@ static void			get_ranged_files(t_ed *e)
 	closedir(dir);
 }
 
-void 				init_monsters(t_ed *e)
+void				init_monsters(t_ed *e)
 {
-	char 			*names[M_TOTAL];
-	int 			i;
+	char			*names[M_TOTAL];
+	int				i;
 
 	names[M_RANGE] = M_NAME_1;
 	names[M_MELEE] = M_NAME_2;

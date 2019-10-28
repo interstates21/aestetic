@@ -12,10 +12,36 @@
 
 #include "../includes/editor.h"
 
+int			picking_sprite(t_v2 mouse, int n)
+{
+	int i;
+	int offset;
+
+	i = 0;
+	while (i < n)
+	{
+		offset = i * 36;
+		if (v2_compare(mouse, new_v2(FIRST_SPRITE_W + offset,
+		FIRST_SPRITE_H), 28))
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
+int			picking_monster(t_v2 mouse)
+{
+	if (v2_compare(mouse, new_v2(MOSTER_1_PICKER_W, MOSTER_PICKER_H), 65))
+		return (1);
+	if (v2_compare(mouse, new_v2(MOSTER_2_PICKER_W, MOSTER_PICKER_H), 65))
+		return (2);
+	return (0);
+}
+
 void		find_used_tex(t_ed *e)
 {
 	int		j;
-	int 	i;
+	int		i;
 
 	e->used_tex = (char*)malloc(sizeof(char) * e->n_tex);
 	j = -1;

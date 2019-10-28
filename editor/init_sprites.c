@@ -63,8 +63,8 @@ void				init_sprites(t_ed *e)
 {
 	DIR				*dir;
 	struct dirent	*data;
-	char 			*tmp[2];
-	int 			i;
+	char			*tmp[2];
+	int				i;
 
 	dir = NULL;
 	tmp[0] = "../textures/assets/assets/";

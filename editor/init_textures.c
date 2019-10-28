@@ -12,7 +12,6 @@
 
 #include "../includes/editor.h"
 
-
 static void			count_tex(DIR **dir, int *i)
 {
 	struct dirent	*data;
@@ -30,7 +29,7 @@ static void			count_tex(DIR **dir, int *i)
 
 static void			init_tex(char *name, t_texlist *tex, int i)
 {
-	char 			*tmp;
+	char			*tmp;
 
 	tmp = ft_strjoin(TEXT_DIR, name);
 	tex->n_tex = i;
@@ -42,7 +41,7 @@ static void			init_tex(char *name, t_texlist *tex, int i)
 static void			get_tex_names(t_ed *e, DIR **dir)
 {
 	struct dirent	*data;
-	int 			i;
+	int				i;
 
 	reopen(dir, TEXT_DIR);
 	i = 0;
@@ -57,7 +56,7 @@ static void			get_tex_names(t_ed *e, DIR **dir)
 void				init_textures(t_ed *e)
 {
 	DIR				*dir;
-	int 			i;
+	int				i;
 
 	dir = NULL;
 	count_tex(&dir, &e->n_tex);

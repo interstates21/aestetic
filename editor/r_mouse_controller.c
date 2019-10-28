@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   r_mouse_controller.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akolomoi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/28 18:32:10 by akolomoi          #+#    #+#             */
+/*   Updated: 2019/10/28 18:32:11 by akolomoi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/editor.h"
 
 int			in_range(double t)
@@ -5,12 +17,12 @@ int			in_range(double t)
 	return (t >= 0.0 && t <= 1.0);
 }
 
-int 		intersects(t_v2 l[2], t_sect *s)
+int			intersects(t_v2 l[2], t_sect *s)
 {
 	double	det;
 	double	tmp[2];
-	int 	res;
-	int 	i;
+	int		res;
+	int		i;
 
 	i = -1;
 	res = 0;
@@ -33,7 +45,7 @@ int 		intersects(t_v2 l[2], t_sect *s)
 
 char		in_sector(t_ed *e)
 {
-	int 	i;
+	int		i;
 	t_v2	line[2];
 
 	i = -1;
@@ -46,12 +58,13 @@ char		in_sector(t_ed *e)
 	}
 	return (-1);
 }
+
 void		handle_left_click(t_ed *ed)
 {
 	int k;
-	//get_sect_info(k, ed);
+
 	if (pickers(ed))
-		return;
+		return ;
 	k = in_sector(ed);
 	ed->selection.sector = k;
 	if (ed->selection.drawing)
@@ -76,7 +89,6 @@ int			mouse_controller(t_ed *ed, SDL_Event *event)
 	else if (event->type == SDL_MOUSEBUTTONUP)
 	{
 		ed->controller.mouse_is_pressed = false;
-		// handle_mouse_off();
 	}
 	return (0);
 }

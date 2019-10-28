@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: akolomoi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/15 17:11:20 by akolomoi          #+#    #+#             */
-/*   Updated: 2019/10/15 17:11:21 by akolomoi         ###   ########.fr       */
+/*   Created: 2019/10/28 18:16:55 by akolomoi          #+#    #+#             */
+/*   Updated: 2019/10/28 18:16:56 by akolomoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ static void	do_magic(t_ed *ed, int fd)
 
 static t_v3	new_pos(t_ed *e)
 {
-	int 	i;
-	int 	j;
+	int		i;
+	int		j;
 
 	i = -1;
 	while (++i < e->n_sect && (j = -1))
@@ -52,43 +52,39 @@ static t_v3	new_pos(t_ed *e)
 			e->seclist[i].walls[j].v2.x >>= 3;
 			e->seclist[i].walls[j].v2.y >>= 3;
 		}
-	return  ((t_v3){
+	return ((t_v3){
 	(e->seclist[0].walls[1].v1.x + e->seclist[0].walls[0].v1.x
 	+ e->seclist[0].walls[2].v1.x + e->seclist[0].walls[3].v1.x) >> 2,
 	e->seclist[0].height[T_FLOOR],
 	(e->seclist[0].walls[1].v1.y + e->seclist[0].walls[0].v1.y
-	 + e->seclist[0].walls[2].v1.y + e->seclist[0].walls[3].v1.y) >> 2
+	+ e->seclist[0].walls[2].v1.y + e->seclist[0].walls[3].v1.y) >> 2
 	});
 }
 
 static void	run(char *mapname)
 {
-	char 	*tmp;
-    t_ed    ed;
-    t_sdl   sdl;
+	char	*tmp;
+	t_ed	ed;
+	t_sdl	sdl;
 
-    sdl_init(&sdl);
-    sdl_init_renderer(&sdl);
-
+	sdl_init(&sdl);
+	sdl_init_renderer(&sdl);
 	tmp = add_path(mapname);
 	if (open(tmp, O_RDONLY) != -1)
 		print_err("Map already exists");
 	free(tmp);
 	do_magic(&ed, 2);
-    render_manager(&sdl, &ed);
-	//todo sdl clean
-	//saving_screen();
+	render_manager(&sdl, &ed);
 	ed.player = new_pos(&ed);
 	find_used_tex(&ed);
 	save_world(&ed, mapname);
 	close(2);
 }
 
-int			main(int argc, char **argv) {
-	printf("sector = %lu, monster = %lu\n", sizeof(t_sdtsector), sizeof(t_stdmonster));
+int			main(int argc, char **argv)
+{
 	if (argc != 2)
 		print_err("Usage: ./editor [map_name]");
 	run(argv[1]);
-	system("leaks --quiet dm_editor");
 	return (0);
 }

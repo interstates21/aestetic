@@ -12,10 +12,10 @@
 
 #include "../includes/editor.h"
 
-static void draw_element(t_ed *e, t_font *f, int n, char *word)
+static void			draw_element(t_ed *e, t_font *f, int n, char *word)
 {
-	char 	*tmp;
-	int 	c;
+	char	*tmp;
+	int		c;
 
 	tmp = ft_itoa(n);
 	f->y += 20;
@@ -30,10 +30,10 @@ static void draw_element(t_ed *e, t_font *f, int n, char *word)
 	f->col = c;
 }
 
-static void	draw_background(t_ed *e, int n, int x, int y)
+static void			draw_background(t_ed *e, int n, int x, int y)
 {
-	int 	i;
-	int 	j;
+	int		i;
+	int		j;
 
 	n *= 20;
 	i = -1;
@@ -42,25 +42,29 @@ static void	draw_background(t_ed *e, int n, int x, int y)
 			sdl_put_pix(&e->pixels, i + x, j + y, 0x111111);
 }
 
-static SDL_Surface *pick_texture(t_ed *e, int selected, int n) {
-	int index;
+static SDL_Surface	*pick_texture(t_ed *e, int selected, int n)
+{
+	int		index;
 
-	if(selected == 6) {
+	if (selected == 6)
+	{
 		index = e->seclist[n].tex[T_FLOOR];
 		return (e->texlist[index].tex);
 	}
-	else if(selected == 7) {
+	else if (selected == 7)
+	{
 		index = e->seclist[n].tex[T_WALL];
 		return (e->texlist[index].tex);
 	}
-	else if(selected == 8) {
+	else if (selected == 8)
+	{
 		index = e->seclist[n].tex[T_CEIL];
 		return (e->texlist[index].tex);
 	}
 	return (NULL);
 }
 
-static void	draw_sectinfo(t_ed *e, t_font f, int n)
+static void			draw_sectinfo(t_ed *e, t_font f, int n)
 {
 	f.col = 0xffa0fa;
 	draw_background(e, 11, f.x - 5, f.y + 15);
@@ -79,7 +83,7 @@ static void	draw_sectinfo(t_ed *e, t_font f, int n)
 	draw_element(e, &f, e->seclist[n].is_finish, "exit: ");
 }
 
-void		draw_info(t_ed *e)
+void				draw_info(t_ed *e)
 {
 	t_font	tmp;
 
@@ -94,7 +98,6 @@ void		draw_info(t_ed *e)
 		tmp.str = "Sector: not selected.";
 		e->texture_picker = NULL;
 		draw_string(e, tmp);
-		
 	}
 	else
 	{

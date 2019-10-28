@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   r_push.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akolomoi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/28 18:38:34 by akolomoi          #+#    #+#             */
+/*   Updated: 2019/10/28 18:38:35 by akolomoi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/editor.h"
 
 static void	realloc_walls(t_ed *e)
 {
 	t_wall	*tmp;
-	int 	i;
+	int		i;
 
 	tmp = (t_wall*)malloc(sizeof(t_wall) * (e->n_walls + 1));
 	i = -1;
@@ -19,7 +31,7 @@ static void	realloc_walls(t_ed *e)
 static void	realloc_sectors(t_ed *e)
 {
 	t_sect	*tmp;
-	int 	i;
+	int		i;
 
 	tmp = (t_sect*)malloc(sizeof(t_sect) * (e->n_sect + 1));
 	i = -1;
@@ -35,12 +47,13 @@ static void	realloc_sectors(t_ed *e)
 void		finish_sector(t_ed *e)
 {
 	realloc_sectors(e);
-	e->seclist[e->n_sect - 1] = init_sector(&e->walls, e->n_walls, e->n_sect - 1);
+	e->seclist[e->n_sect - 1] = init_sector(&e->walls,
+	e->n_walls, e->n_sect - 1);
 	e->selection.selected_wall->is_portal = e->n_sect - 1;
 	e->seclist[e->n_sect - 1].start_wall = e->n_all_w;
-	e->walls->is_portal = e->selection.sector;
 	e->n_all_w += e->n_walls;
-	e->selection = (t_selection){.selected_wall = NULL, .selected_vertex = NULL};
+	e->selection = (t_selection){.selected_wall = NULL,
+	.selected_vertex = NULL};
 	e->walls = NULL;
 	e->n_walls = 0;
 }

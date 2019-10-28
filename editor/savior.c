@@ -15,7 +15,7 @@
 static int	has_dir(char *p)
 {
 	char	*dst;
-	int 	i;
+	int		i;
 
 	dst = ft_strdup("../maps/");
 	i = -1;
@@ -27,12 +27,11 @@ static int	has_dir(char *p)
 		}
 	return (1);
 }
-int t;
 
 static void	save_sfx(t_ed *e, char *path)
 {
-	int 	fd;
-	int 	count;
+	int		fd;
+	int		count;
 	uint8_t	*buf;
 
 	fd = -1;
@@ -43,8 +42,8 @@ static void	save_sfx(t_ed *e, char *path)
 		print_err("reading sound file failed");
 	else if (count >= MAX_SOUND)
 		print_err("sound file is too big");
-	if ((t += write(e->fd, &count, sizeof(count))) < 0
-	|| (t += write(e->fd, buf, count)) < 0)
+	if (write(e->fd, &count, sizeof(count)) < 0
+	|| write(e->fd, buf, count) < 0)
 		print_err("saving sound file failed");
 	free(buf);
 	close(fd);
@@ -72,19 +71,18 @@ static void	write_sfx(t_ed *e)
 	save_sfx(e, "../sounds/door_open.wav");
 	save_sfx(e, "../sounds/door_close.wav");
 	save_sfx(e, "../sounds/the-pikachu-song.wav");
-	printf("total sound written: %d\n", t);
 }
 
 char		*add_path(char *p)
 {
-	int 		l;
-	char 		*tmp;
-	char 		*t;
-	char 		flags[2];
+	int			l;
+	char		*tmp;
+	char		*t;
+	char		flags[2];
 
 	l = ft_strlen(p);
 	tmp = NULL;
-	flags[0] = (l > 7) ? ft_strequ(".DNMAP" ,&p[l - 6]) : 0;
+	flags[0] = (l > 7) ? ft_strequ(".DNMAP", &p[l - 6]) : 0;
 	flags[1] = has_dir(p);
 	if (!flags[0])
 		tmp = ft_strjoin(p, ".DNMAP");

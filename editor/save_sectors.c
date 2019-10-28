@@ -15,7 +15,7 @@
 static void		save_sector(t_ed *m, t_sect *e)
 {
 	t_sdtsector	s;
-	int 		i;
+	int			i;
 
 	s = (t_sdtsector){e->start_wall, e->n_walls, e->height[H_FLOOR],
 	e->height[H_CEIL], e->tex[T_FLOOR], e->tex[T_CEIL], 1.0, 0, "", "",
@@ -37,12 +37,12 @@ static void		save_sector(t_ed *m, t_sect *e)
 static void		write_walls(t_ed *e, t_wall *w)
 {
 	t_stdwall	s;
-	int 		i;
+	int			i;
 	int16_t		val;
 
 	val = w->is_portal;
 	s = (t_stdwall){(t_v2f){w->v1.x, w->v1.y}, w->tex[T_FLOOR],
-	w->tex[T_WALL], w->tex[T_CEIL], 0, val, "", "", w->is_door,
+	w->tex[T_WALL], w->tex[T_CEIL], 0, val, "", "", 1,
 	-1, 0, -1, 0};
 	if (ft_strequ(e->texlist[w->tex[T_WALL]].name, "../textures/wiremesh.bmp")
 	|| ft_strequ(e->texlist[w->tex[T_WALL]].name, "../textures/DOOR12_1.bmp")
@@ -54,20 +54,15 @@ static void		write_walls(t_ed *e, t_wall *w)
 		s.texture_name[i] = e->texlist[w->tex[T_WALL]].name[i];
 		s.poster_name[i] = 0;
 	}
-
-	printf("wall data:\n\t%f - %f\n\t %d, %d, %d, %d, %d\n\t%s\n\t%s\n\t%d - %d, %d - %d, %d\n\n"
-	, s.point.a, s.point.b, s.upperpicnum, s.middlepicnum, s.lowerpicnum, s.flags, s.neighborsect,
-	s.texture_name, s.poster_name, s.is_door, s.door_num, s.key_num, s.posterpicnum, s.is_transparent);
-
 	if (write(e->fd, &s, sizeof(t_stdwall)) < 0
 		|| write(e->fd, e->texlist[w->tex[H_FLOOR]].name, MAX_NAME) < 0
 		|| write(e->fd, s.poster_name, MAX_NAME) < 0)
 		print_err("failed to save wall");
 }
 
-void				write_secors(t_ed *e)
+void			write_secors(t_ed *e)
 {
-	int 	i;
+	int		i;
 	int		j;
 	int16_t tmp;
 

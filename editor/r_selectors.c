@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   r_selectors.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akolomoi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/28 18:42:23 by akolomoi          #+#    #+#             */
+/*   Updated: 2019/10/28 18:42:24 by akolomoi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/editor.h"
 
 void		store_selected(t_ed *ed, t_wall *w, t_v2 *v)
@@ -10,8 +22,8 @@ void		store_selected(t_ed *ed, t_wall *w, t_v2 *v)
 
 static void	tell_em_im_here(t_ed *e)
 {
-	int 	i;
-	int 	j;
+	int		i;
+	int		j;
 
 	i = -1;
 	while (++i < e->selection.selected_wall->is_portal)
@@ -28,7 +40,7 @@ static void	tell_em_im_here(t_ed *e)
 
 static int	gut_check(t_ed *e)
 {
-	int 	i;
+	int		i;
 
 	i = -1;
 	if (e->selection.selected_wall->is_portal > -1)
@@ -44,34 +56,10 @@ static int	gut_check(t_ed *e)
 	return (1);
 }
 
-int		picking_sprite(t_v2 mouse, int n)
-{
-	int i;
-	int offset;
-
-	i = 0;
-	while (i < n) {
-		offset = i * 36;
-		if (v2_compare(mouse, new_v2(FIRST_SPRITE_W + offset, FIRST_SPRITE_H), 28))
-			return (i);
-		i++;
-	}
-	return (-1);
-}
-
-int		picking_monster(t_v2 mouse)
-{
-	if (v2_compare(mouse, new_v2(MOSTER_1_PICKER_W, MOSTER_PICKER_H), 65))
-		return (1);
-	if (v2_compare(mouse, new_v2(MOSTER_2_PICKER_W, MOSTER_PICKER_H), 65))
-		return (2);
-	return (0);
-}
-
-bool		sector_selected(t_ed *ed)
+t_bool		sector_selected(t_ed *ed)
 {
 	int		i;
-	int 	k;
+	int		k;
 
 	i = -1;
 	while (++i < ed->n_sect && (k = -1))
@@ -93,7 +81,7 @@ bool		sector_selected(t_ed *ed)
 	return (false);
 }
 
-bool		corner_selected(t_ed *ed)
+t_bool		corner_selected(t_ed *ed)
 {
-	return sector_selected(ed);
+	return (sector_selected(ed));
 }
