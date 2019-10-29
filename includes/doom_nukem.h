@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   doom_nukem.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 23:23:09 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 21:51:11 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 22:36:19 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -480,7 +480,7 @@ typedef struct				s_env
 	uint8_t					right_mouse_button;
 	t_cam					startcam;
 	t_cam					cam;
-	t_sec				sectors[N_SECTORS];
+	t_sec					sectors[N_SECTORS];
 	t_wall					walls[N_WALLS];
 	t_monster				*monsters;
 	t_objects				**objects;
@@ -822,7 +822,7 @@ void						dellay_char_demyon(t_monster *monster);
 double						shd_fct(t_env *d, t_sec *sector, double dist,
 																	int mode);
 uint32_t					shad(double factor, uint32_t c);
-void						reorder_sprite(t_env *d, t_sec *sect);//////////////////
+void						reorder_sprite(t_env *d, t_sec *sect);
 t_vec3f						v2_to_v3(t_vec2f v);
 t_vec2f						v3_to_v2(t_vec3f v);
 double						vec3f_length(t_vec3f v);
@@ -842,7 +842,7 @@ void						to_load_numbpic(t_env *d);
 void						ending_hd(t_env *d);
 void						music_player(t_env *d, uint8_t id);
 void						music_loader(t_env *d, int f);
-void						play_sound(t_env *d, uint8_t id, t_vec2f pos);/////////////
+void						play_sound(t_env *d, uint8_t id, t_vec2f pos);
 double						fun_to_edget(t_vec3f a, t_vec3f b, int x, int y);
 bool						collision_player(t_env *d, t_sec *sect);
 bool						collision_monster(t_env *d, t_sec *sect,
@@ -945,16 +945,17 @@ void						draw_char(t_env *d, t_font f);
 void						draw_bitmap(t_env *d, t_bitmap bitmap, int x,
 																	int y);
 void						dm_exit(t_env *d, int active_option, int c);
-void						month_ini(double rand, t_vec2f tmp, t_vec2f tmp2, t_monster *monster);
+void						month_ini(double rand, t_vec2f tmp, t_vec2f tmp2,
+	t_monster *monster);
 t_vec3f						transform_back(t_env *d, t_vec3f v);
 t_sec						*check_neighbor(t_env *d, int16_t nei);
-void      swap_vals(double *a, double *b);
-double      get_smh(t_vec3f v1, t_vec3f v2);
-void      change_list(t_sprite_list *one, t_sprite_list *two,
-          t_sprite_list *prev);
-void      skip(void *smh);
-int16_t      second_sin(t_env *env, short k);
-void      third_sin(t_env *env, short k);
-void      fourth_sin(t_env *env, short k);
-void      fifth_sin(t_env *env, short *k);
+void						swap_vals(double *a, double *b);
+double						get_smh(t_vec3f v1, t_vec3f v2);
+void						change_list(t_sprite_list *one, t_sprite_list *two,
+	t_sprite_list *prev);
+void						skip(void *smh);
+int16_t						second_sin(t_env *env, short k);
+void						third_sin(t_env *env, short k);
+void						fourth_sin(t_env *env, short k);
+void						fifth_sin(t_env *env, short *k);
 #endif
