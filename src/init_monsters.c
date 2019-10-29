@@ -36,14 +36,14 @@ void	add_monster(t_sector *sector, int16_t id_of_monster)
 void	initialize_all_monster(t_env *d,
 		t_monster *monster, int16_t id_of_monster)
 {
-	monster->life = d->monster_type[monster->id_type].health * d->difficulty;
+	monster->life = d->monster_type[monster->id_type].health * d->hard;
 	monster->activated = false;
 	monster->anim_state = 0;
 	monster->rot = 1.5 * M_PI;
 	monster->anim_time = 25;
 	monster->can_collide = true;
 	monster->timer = 0;
-	add_monster(&d->sectors[monster->cursectnum], id_of_monster);
+	add_monster(&d->sectors[monster->this_sect], id_of_monster);
 }
 
 void	init_monster_type_2(t_env *d)
@@ -101,7 +101,7 @@ void	init_monsters(t_env *d)
 	init_monster_type_2(d);
 	init_monst(d);
 	i = 0;
-	while (i < d->nummonsters)
+	while (i < d->monst_n)
 	{
 		initialize_all_monster(d, &(d->monsters[i]), i);
 		i++;

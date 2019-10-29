@@ -48,7 +48,7 @@ void		disp_sprite(t_env *d, SDL_Surface *s,
 					[x_y.x + x_y.y * d->sdl.screen->w], colo);
 			if (colo != pixel_pls(d->sdl.screen, x_y.x, x_y.y, 2))
 				new_zbuffer_and_put_collor(d, x_y, shade(shd_fct(d, &d->
-				sectors[disp_data.cursectnum], dist_mod.x, 0), colo), dist_mod);
+				sectors[disp_data.this_sect], dist_mod.x, 0), colo), dist_mod);
 		}
 	}
 }

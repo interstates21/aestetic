@@ -25,7 +25,7 @@ double	get_dist(t_vec2f a, t_vec2f b, t_vec2f p)
 
 void	whi_le(t_env *d, t_sector *sect, int *n, double *m)
 {
-	while (n[3] < sect->firstwallnum + sect->numwalls)
+	while (n[3] < sect->firstwallnum + sect->n_walls)
 	{
 		if (d->walls[n[2]].is_door && d->walls[n[2]].neighborsect >= 0 &&
 				(m[0] = get_dist(d->walls[n[2]].point, d->walls[n[3]].point,

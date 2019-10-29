@@ -41,9 +41,9 @@ void 	pickup_asset(t_env *d)
 
 	i = -1;
 	picked = false;
-	while (d->nb_assets && ++i < d->assets[d->cursectnum][0].nb_assets)
+	while (d->nb_assets && ++i < d->assets[d->this_sect][0].nb_assets)
 	{
-		assets = &d->assets[d->cursectnum][i];
+		assets = &d->assets[d->this_sect][i];
 		if (is_in_range(d, assets) && !assets->used && is_usable(assets))
 		{
 			picked = true;
@@ -52,5 +52,5 @@ void 	pickup_asset(t_env *d)
 		}
 	}
 	if (!picked)
-		door_use(d, &d->sectors[d->cursectnum]);
+		door_use(d, &d->sectors[d->this_sect]);
 }

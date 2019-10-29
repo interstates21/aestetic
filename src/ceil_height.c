@@ -51,7 +51,7 @@ double	get_ceil_height(t_sector *sect, t_wall *walls, int16_t sectnum,
 	{
 		if (!(sect->slopeceil))
 			return (sect->ceilheight);
-		get_sector_center(&center, walls, sect->numwalls, sect->firstwallnum);
+		get_sector_center(&center, walls, sect->n_walls, sect->firstwallnum);
 		angle = get_angle(sect->slopeceil_orientation,
 												sect->is_animatedslopeceil);
 		p = v2_min(p, center);

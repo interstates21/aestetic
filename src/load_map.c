@@ -72,18 +72,18 @@ static void	read_wall_n_sector_data(t_env *d, int f)
 {
 	int		i;
 
-	if (read(f, &d->numsectors, sizeof(int16_t)) < 0)
+	if (read(f, &d->n_sect, sizeof(int16_t)) < 0)
 		print_err("Cannot read nsectors");
 	i = -1;
-	while (++i < d->numsectors)
+	while (++i < d->n_sect)
 		if (read(f, &d->sectors[i], sizeof(t_sector)) < 0 ||
 			read(f, d->sectors[i].floor_texture_name, 100) < 0 ||
 			read(f, d->sectors[i].ceil_texture_name, 100) < 0)
 			print_err("Cannot read sector struct");
-	if (read(f, &d->numwalls, sizeof(int16_t)) < 0)
+	if (read(f, &d->n_walls, sizeof(int16_t)) < 0)
 		print_err("Cannot read numwwalls");
 	i = -1;
-	while (++i < d->numwalls)
+	while (++i < d->n_walls)
 		if (read(f, &d->walls[i], sizeof(t_wall)) < 0 ||
 			read(f, d->walls[i].texture_name, 100) < 0 ||
 			read(f, d->walls[i].poster_name, 100) < 0)
@@ -110,7 +110,7 @@ void		load_map(t_env *d, char *map)
 	if (((f = open(map_path, O_RDONLY)) == -1) ||
 		read(f, &d->startcam.pos, sizeof(t_vec3f)) == -1 ||
 		read(f, &d->startcam.rot, sizeof(double)) == -1 ||
-		read(f, &d->startsectnum, sizeof(int16_t)) == -1 ||
+		read(f, &d->sect_begin, sizeof(int16_t)) == -1 ||
 		read(f, d->nextmap, 100) < 0)
 		print_err("Doom : Map error\n");
 	read_wall_n_sector_data(d, f);

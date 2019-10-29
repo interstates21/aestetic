@@ -34,13 +34,13 @@ void	event_key_down(t_env *d, SDL_KeyboardEvent event)
 	if (event.keysym.sym == SDLK_e)
 	{
 		i = -1;
-		while (d->nb_assets && ++i < d->assets[d->cursectnum][0].nb_assets)
+		while (d->nb_assets && ++i < d->assets[d->this_sect][0].nb_assets)
 		{
-			assets = &d->assets[d->cursectnum][i];
+			assets = &d->assets[d->this_sect][i];
 			if (pick_up(d, assets))
 				return ;
 		}
-		door_use(d, &d->sectors[d->cursectnum]);
+		door_use(d, &d->sectors[d->this_sect]);
 	}
 }
 

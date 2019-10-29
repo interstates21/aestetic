@@ -36,7 +36,7 @@ void		what_doing(t_env *d, int mode)
 {
 	double	pos_heigh;
 
-	pos_heigh = d->floorheightplayer + d->player.minimum_height;
+	pos_heigh = d->player_floor_h + d->player.minimum_height;
 	if (mode == 0)
 	{
 		d->player.gravity < -0.20 ? player_fell(d) : true;
@@ -44,7 +44,7 @@ void		what_doing(t_env *d, int mode)
 		d->cam.pos.y = pos_heigh;
 	}
 	else if (mode == 1)
-		(d->cam.pos.y <= d->floorheightplayer + JUMP_FIX +
+		(d->cam.pos.y <= d->player_floor_h + JUMP_FIX +
 			d->player.minimum_height) ? ((d->player.gravity = JUMP_FORCE / 2) &&
 			(d->cam.pos.y += FLYING_SPEED) && decrease_fuel(d)) : (
 			(d->player.gravity += FLYING_SPEED * get_gravity(d->player.gravity))
@@ -57,7 +57,7 @@ void		what_doing(t_env *d, int mode)
 	else if (mode == 3)
 	{
 		d->player.gravity = 0.0;
-		d->cam.pos.y = (d->ceilheightplayer - MINIMUM_CEIL_DIST);
+		d->cam.pos.y = (d->player_ceil_h - MINIMUM_CEIL_DIST);
 	}
 }
 
@@ -65,10 +65,10 @@ void		fly_mode(t_env *d)
 {
 	double	pos_heigh;
 
-	pos_heigh = d->floorheightplayer + d->player.minimum_height;
+	pos_heigh = d->player_floor_h + d->player.minimum_height;
 	if (d->cam.pos.y < pos_heigh)
 		what_doing(d, 0);
-	if (!d->keys[SDL_SCANCODE_SPACE] && d->cam.pos.y <= d->floorheightplayer +
+	if (!d->keys[SDL_SCANCODE_SPACE] && d->cam.pos.y <= d->player_floor_h +
 			JUMP_FIX + d->player.minimum_height)
 	{
 		normal_mode(d);
@@ -85,7 +85,7 @@ void		fly_mode(t_env *d)
 	if (!d->player.is_flying)
 		d->player.gravity = 0.0;
 	d->cam.pos.y += d->player.gravity;
-	if (!d->sectors[d->cursectnum].outdoor && d->cam.pos.y > d->ceilheightplayer
+	if (!d->sectors[d->this_sect].outdoor && d->cam.pos.y > d->player_ceil_h
 			- MINIMUM_CEIL_DIST)
 		what_doing(d, 3);
 }

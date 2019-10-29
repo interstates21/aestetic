@@ -31,13 +31,13 @@ int			ini_dific(t_env *d, int active_option)
 {
 	if (active_option == 1)
 	{
-		d->difficulty = 2;
+		d->hard = 2;
 		d->tick = SDL_GetTicks();
 		return (1);
 	}
 	else
 	{
-		d->difficulty = 1;
+		d->hard = 1;
 		d->tick = SDL_GetTicks();
 		return (1);
 	}
@@ -89,7 +89,7 @@ static void	render(t_env *d)
 	while (++i < WIDTH * HEIGHT)
 		d->zbuffer[i] = INFINITY;
 	precompute_texanim(d);
-	render_sector(d, &d->sectors[d->cursectnum], &fr);
+	render_sector(d, &d->sectors[d->this_sect], &fr);
 	draw_weapon(d);
 	color_buffer(d);
 	aiming_draw(d);

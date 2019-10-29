@@ -17,16 +17,16 @@ void	set_projectile_id(t_env *d, short i, short id_of_proj_type)
 	d->anim_rots[i].is_active = true;
 	d->anim_rots[i].id_type = id_of_proj_type;
 	d->anim_rots[i].dir.z = d->cam.cos *
-		d->projectile_type[id_of_proj_type].speed;
+		d->anim_rot_type[id_of_proj_type].speed;
 	d->anim_rots[i].dir.y = d->cam.y_offset *
-		Y_OFFSET_TO_ROT * d->projectile_type[id_of_proj_type].speed;
+		Y_OFFSET_TO_ROT * d->anim_rot_type[id_of_proj_type].speed;
 	d->anim_rots[i].dir.x = d->cam.sin *
-		d->projectile_type[id_of_proj_type].speed;
+		d->anim_rot_type[id_of_proj_type].speed;
 	d->anim_rots[i].current_anim_playing =
-		d->projectile_type[id_of_proj_type].anim_order[0];
+		d->anim_rot_type[id_of_proj_type].anim_order[0];
 	d->anim_rots[i].pos = d->cam.pos;
 	d->anim_rots[i].has_collided = false;
-	d->anim_rots[i].cursectnum = d->cursectnum;
+	d->anim_rots[i].this_sect = d->this_sect;
 	d->anim_rots[i].time_remaining_anim = 5;
 	d->anim_rots[i].current_anim_playing = 0;
 	d->anim_rots[i].weapon_id = d->player.current_weapon;
@@ -44,11 +44,11 @@ void	create_projectile(t_env *d, short id_of_proj_type)
 	if (i == MAX_PROJECTILES)
 		return ;
 	nw = pure_malloc(sizeof(*nw), "ERROR");
-	nw->next = d->sectors[d->cursectnum].sprite_list;
+	nw->next = d->sectors[d->this_sect].sprite_list;
 	nw->type = IS_PROJECTILE;
 	nw->id = i;
 	set_projectile_id(d, i, id_of_proj_type);
-	d->sectors[d->cursectnum].sprite_list = nw;
+	d->sectors[d->this_sect].sprite_list = nw;
 }
 
 void	set_projectile_id_monster(t_env *d, short i,
@@ -58,21 +58,21 @@ void	set_projectile_id_monster(t_env *d, short i,
 	d->anim_rots[i].id_type = id_of_proj_type;
 	d->anim_rots[i].pos = new_v3(
 		monster->pos.x,
-		d->sectors[monster->cursectnum].floorheight + 0.8,
+		d->sectors[monster->this_sect].floorheight + 0.8,
 		monster->pos.y);
 	d->anim_rots[i].dir.z = sin(monster->rot) *
-		d->projectile_type[id_of_proj_type].speed;
+		d->anim_rot_type[id_of_proj_type].speed;
 	d->anim_rots[i].dir.y = (d->cam.pos.y -
-			(d->sectors[monster->cursectnum].floorheight + 0.8)) /
+			(d->sectors[monster->this_sect].floorheight + 0.8)) /
 		vec3f_length(v3_min(d->anim_rots[i].pos, d->cam.pos)) *
-		d->projectile_type[id_of_proj_type].speed;
+		d->anim_rot_type[id_of_proj_type].speed;
 	d->anim_rots[i].dir.x = cos(monster->rot) *
-		d->projectile_type[id_of_proj_type].speed;
+		d->anim_rot_type[id_of_proj_type].speed;
 	d->anim_rots[i].current_anim_playing =
-		d->projectile_type[id_of_proj_type].anim_order[0];
+		d->anim_rot_type[id_of_proj_type].anim_order[0];
 	d->anim_rots[i].has_collided = false;
 	d->anim_rots[i].weapon_id = d->monster_type[monster->id_type].id_of_proj;
-	d->anim_rots[i].cursectnum = monster->cursectnum;
+	d->anim_rots[i].this_sect = monster->this_sect;
 	d->anim_rots[i].time_remaining_anim = 5;
 	d->anim_rots[i].current_anim_playing = 0;
 	d->anim_rots[i].target = NULL;
@@ -90,9 +90,9 @@ void	create_projectile_monster(t_env *d, short id_of_proj_type,
 	if (i == MAX_PROJECTILES)
 		return ;
 	nw = pure_malloc(sizeof(*nw), "ERROR");
-	nw->next = d->sectors[monster->cursectnum].sprite_list;
+	nw->next = d->sectors[monster->this_sect].sprite_list;
 	nw->type = IS_PROJECTILE;
 	nw->id = i;
 	set_projectile_id_monster(d, i, id_of_proj_type, monster);
-	d->sectors[monster->cursectnum].sprite_list = nw;
+	d->sectors[monster->this_sect].sprite_list = nw;
 }

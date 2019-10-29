@@ -85,9 +85,9 @@ bool	collision_player(t_env *d, t_sector *sect)
 		--recursion;
 		return (false);
 	}
-	num_wall[0] = sect->firstwallnum + sect->numwalls - 1;
+	num_wall[0] = sect->firstwallnum + sect->n_walls - 1;
 	num_wall[1] = sect->firstwallnum;
-	while (num_wall[1] < sect->firstwallnum + sect->numwalls)
+	while (num_wall[1] < sect->firstwallnum + sect->n_walls)
 	{
 		vect[0] = get_closest(d->walls[num_wall[0]].point,
 			d->walls[num_wall[1]].point, v3_to_v2(d->cam.pos));

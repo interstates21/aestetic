@@ -5,7 +5,7 @@ void	set_doorstate(t_env *d)
 	short	i;
 
 	i = 0;
-	while (i < d->numwalls)
+	while (i < d->n_walls)
 	{
 		d->dooranimstep[i] = 0.0;
 		d->doorstate[i] = 0.0;
@@ -30,14 +30,14 @@ void	init_everything(t_env *d, char *map)
 	init_player(d, &d->player);
 	init_monsters(d);
 	init_projectiles(d);
-	if (d->startsectnum < 0)
+	if (d->sect_begin < 0)
 		print_err("error");
 	if (SDL_SetRelativeMouseMode(SDL_TRUE) == -1)
 	{
 		print_err("error");
 	}
-	d->floorheightplayer = get_floorheight_player(d, d->cursectnum);
-	d->ceilheightplayer = get_ceilheight_player(d, d->cursectnum);
+	d->player_floor_h = get_floorheight_player(d, d->this_sect);
+	d->player_ceil_h = get_ceilheight_player(d, d->this_sect);
 	play_music(d, MAIN_MUSIC);
 	next_sect_fix(d);
 	loop(d);

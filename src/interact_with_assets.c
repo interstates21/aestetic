@@ -71,9 +71,9 @@ void		interact_with_assets(t_env *d)
 	t_assets	*asset;
 
 	i = -1;
-	while (d->nb_assets && ++i < d->assets[d->cursectnum][0].nb_assets)
+	while (d->nb_assets && ++i < d->assets[d->this_sect][0].nb_assets)
 	{
-		asset = &d->assets[d->cursectnum][i];
+		asset = &d->assets[d->this_sect][i];
 		if (asset->used || asset->is_on_ceil)
 			return ;
 		dist = v2_min(v3_to_v2(d->cam.pos), asset->world_pos);

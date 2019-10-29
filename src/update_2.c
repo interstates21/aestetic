@@ -14,7 +14,7 @@
 
 //not refact
 
-void	update_monsters(uint16_t *nummonsters,
+void	update_monsters(uint16_t *monst_n,
 		t_monster monsters[MAXNUMMONSTERS], t_env *d)
 {
 	short	i;
@@ -22,7 +22,7 @@ void	update_monsters(uint16_t *nummonsters,
 	i = -1;
 	(void)d;
 	(void)monsters;
-	while (++i < *nummonsters)
+	while (++i < *monst_n)
 	{
 		if (monsters[i].can_collide)
 			monster_behaviour(d, &monsters[i], i);
@@ -36,21 +36,21 @@ void	new_proj_2(t_env *d, short i, bool coll)
 
 	update_sect = 0;
 	if (!coll && (update_sect = update_cursect_proj((int16_t[2]){
-					d->anim_rots[i].cursectnum, -1}, d, NB_OF_SECTOR_DEPTH,
+					d->anim_rots[i].this_sect, -1}, d, NB_OF_SECTOR_DEPTH,
 					d->anim_rots[i].pos)) >= 0)
 	{
-		if (update_sect != d->anim_rots[i].cursectnum)
+		if (update_sect != d->anim_rots[i].this_sect)
 		{
 			swap_list(IS_PROJECTILE, i, d,
-					(int[2]){d->anim_rots[i].cursectnum, update_sect});
+					(int[2]){d->anim_rots[i].this_sect, update_sect});
 		}
-		d->anim_rots[i].cursectnum = update_sect;
+		d->anim_rots[i].this_sect = update_sect;
 		update_anim_projectile(&d->anim_rots[i], d, i, coll);
 	}
 	else if (update_sect == -2)
 	{
 		d->anim_rots[i].is_active = false;
-		destroy_mail(i, &d->sectors[d->anim_rots[i].cursectnum],
+		destroy_mail(i, &d->sectors[d->anim_rots[i].this_sect],
 				IS_PROJECTILE);
 	}
 	else
@@ -73,10 +73,10 @@ void	new_proj(t_env *d)
 				i++;
 				continue ;
 			}
-			if (d->projectile_type[d->anim_rots[i].id_type].threat_to_monster)
+			if (d->anim_rot_type[d->anim_rots[i].id_type].threat_to_monster)
 				coll = collision_proj_monster(d, &d->sectors[d->anim_rots[i].
-						cursectnum], &d->anim_rots[i]);
-			if (d->projectile_type[d->anim_rots[i].id_type].threat_to_player)
+						this_sect], &d->anim_rots[i]);
+			if (d->anim_rot_type[d->anim_rots[i].id_type].threat_to_player)
 				coll = collision_proj_player(d, &d->anim_rots[i]);
 			new_proj_2(d, i, coll);
 		}
@@ -84,11 +84,11 @@ void	new_proj(t_env *d)
 
 void	update_2(t_env *d)
 {
-	d->floorheightplayer = get_floorheight_player(d, d->cursectnum);
-	d->ceilheightplayer = get_ceilheight_player(d, d->cursectnum);
+	d->player_floor_h = get_floorheight_player(d, d->this_sect);
+	d->player_ceil_h = get_ceilheight_player(d, d->this_sect);
 	jump(d);
 	player_actions(d);
-	update_monsters(&d->nummonsters, d->monsters, d);
+	update_monsters(&d->monst_n, d->monsters, d);
 	new_proj(d);
 	d->lightblink = sin((double)SDL_GetTicks() / 200) * 0.3 + 0.6;
 	check_dangerous_area(d);

@@ -30,8 +30,8 @@ void		draw_monster(t_env *d, t_monster monster)
 	double			h;
 	short			nb_of_anim[2];
 
-	h = get_floor_height(&d->sectors[monster.cursectnum], d->walls,
-									monster.cursectnum, monster.pos);
+	h = get_floor_height(&d->sectors[monster.this_sect], d->walls,
+									monster.this_sect, monster.pos);
 	position_monstr = new_v3(monster.pos.x, h, monster.pos.y);
 	point_in_screen = trans_v3f_in_scr(d, position_monstr);
 	if (point_in_screen.z <= 0)
@@ -40,7 +40,7 @@ void		draw_monster(t_env *d, t_monster monster)
 	new_disp_data_1(&a, d->monster_text[monster.id_type][monster.
 			anim_state][nb_of_anim[0]], point_in_screen,
 			d->monster_type[monster.id_type].size);
-	new_disp_data_2(&a, monster.cursectnum);
+	new_disp_data_2(&a, monster.this_sect);
 	if (nb_of_anim[1] < 4 && monster.anim_state < 10)
 		disp_sprite(d, d->monster_text[monster.id_type]
 	[monster.anim_state][nb_of_anim[0]], a, new_v2(point_in_screen.z, 0));

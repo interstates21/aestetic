@@ -18,7 +18,7 @@ void	render(t_env *d)
 	while (++i < WIDTH * HEIGHT)
 		d->zbuffer[i] = INFINITY;
 	precompute_texanim(d);
-	render_sector(d, &d->sectors[d->cursectnum], &fr);
+	render_sector(d, &d->sectors[d->this_sect], &fr);
 	draw_weapon(d);
 	color_buffer(d);
 	aiming_draw(d);

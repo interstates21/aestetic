@@ -29,11 +29,11 @@ void	player_fell(t_env *d)
 
 void	player_hit_proj(t_env *d, t_anim_rot *proj)
 {
-	change_buf_colo(d, d->projectile_type[proj->id_type].damage, RED);
+	change_buf_colo(d, d->anim_rot_type[proj->id_type].damage, RED);
 	if (proj)
 		change_inertia(d, atan2(proj->dir.z,
 					proj->dir.x), BOUNCING_DIST_PROJ);
-	d->player.health -= d->projectile_type[proj->id_type].damage;
+	d->player.health -= d->anim_rot_type[proj->id_type].damage;
 	play_sound(d, PLAYER_GOT_HIT_SOUND, v3_to_v2(d->cam.pos));
 }
 
@@ -41,13 +41,13 @@ void	check_dangerous_area(t_env *d)
 {
 	double	h_area;
 
-	h_area = d->cam.pos.y - d->player.minimum_height - d->floorheightplayer;
-	if (!d->sectors[d->cursectnum].is_harmful || fabs(h_area) > 0.1 ||
-					SDL_GetTicks() - d->last_dangerous_area_damage < 1000)
+	h_area = d->cam.pos.y - d->player.minimum_height - d->player_floor_h;
+	if (!d->sectors[d->this_sect].is_harmful || fabs(h_area) > 0.1 ||
+					SDL_GetTicks() - d->harmful_area < 1000)
 		return ;
 	change_buf_colo(d, 7, RED);
 	d->player.health -= 20;
-	d->last_dangerous_area_damage = SDL_GetTicks();
+	d->harmful_area = SDL_GetTicks();
 	if (d->player.health > 0)
 		play_sound(d, PLAYER_GOT_HIT_SOUND, v3_to_v2(d->cam.pos));
 }

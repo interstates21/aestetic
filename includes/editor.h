@@ -288,7 +288,7 @@ typedef struct		s_spl
 typedef struct		s_stdsector
 {
 	int16_t			firstwallnum;
-	int16_t			numwalls;
+	int16_t			n_walls;
 	float			floorheight;
 	float			ceilheight;
 	int16_t			floorpicnum;
@@ -369,7 +369,7 @@ typedef struct		s_stdmonster
 	t_v2f			pos;
 	t_v2f			dir;
 	double			rot;
-	int16_t			cursectnum;
+	int16_t			this_sect;
 	uint8_t			id_type;
 	uint8_t			anim_state;
 	uint8_t			anim_time;

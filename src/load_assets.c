@@ -35,7 +35,7 @@ void		post_whi_le(t_env *d, int f, int b)
 	}
 	else if (b == 2)
 	{
-		while (++i < d->nummonsters)
+		while (++i < d->monst_n)
 			if (read(f, &d->monsters[i], sizeof(t_monster)) < 0)
 				print_err("Cannot read monsters data");
 	}
@@ -60,11 +60,11 @@ void		read_monsters_data(t_env *d, int f)
 	int		i;
 	size_t	monsters_size;
 
-	if (read(f, &d->nummonsters, sizeof(uint16_t)) < 0)
+	if (read(f, &d->monst_n, sizeof(uint16_t)) < 0)
 		print_err("Cannot read num monsters");
-	if (d->nummonsters > 0)
+	if (d->monst_n > 0)
 	{
-		monsters_size = sizeof(t_monster) * d->nummonsters;
+		monsters_size = sizeof(t_monster) * d->monst_n;
 		d->monsters = (t_monster*)pure_malloc(monsters_size,
 												"cannot alloc monsters");
 		i = -1;
@@ -108,12 +108,12 @@ void		read_assets_data(t_env *d, int f)
 
 	if (read(f, &d->nb_assets, sizeof(int16_t)) < 0)
 		print_err("Cannot read assets num");
-	assets_size = sizeof(t_assets*) * d->numsectors;
+	assets_size = sizeof(t_assets*) * d->n_sect;
 	d->assets = (t_assets**)pure_malloc(assets_size, "cannot alloc assets");
 	if (d->nb_assets > 0)
 	{
 		s = -1;
-		while (++s < d->numsectors)
+		while (++s < d->n_sect)
 		{
 			sub_assets_size = sizeof(t_assets) * 10;
 			d->assets[s] = (t_assets*)pure_malloc(sub_assets_size,

@@ -44,11 +44,11 @@ static void	update_cursect_chargingdemon(t_env *d, t_monster *monster,
 {
 	int16_t		new_sect;
 
-	new_sect = update_cursect_smart(d, 2, monster->pos, monster->cursectnum);
-	if (new_sect != monster->cursectnum && new_sect != -1)
+	new_sect = update_cursect_smart(d, 2, monster->pos, monster->this_sect);
+	if (new_sect != monster->this_sect && new_sect != -1)
 	{
-		swap_list(IS_MONSTER, id, d, (int[2]){monster->cursectnum, new_sect});
-		monster->cursectnum = new_sect;
+		swap_list(IS_MONSTER, id, d, (int[2]){monster->this_sect, new_sect});
+		monster->this_sect = new_sect;
 	}
 }
 
@@ -74,8 +74,8 @@ void		monster_behaviour_chargingdemon(t_env *d, t_monster *monster,
 		init_load_monst(d, monster, tmp);
 	if (monster->timer && monster->dir.x != 0)
 		behaviour_update_charge(d, monster);
-	collision_monster_monster(d, monster->cursectnum, monster);
-	while (collision_monster(d, &d->sectors[monster->cursectnum],
+	collision_monster_monster(d, monster->this_sect, monster);
+	while (collision_monster(d, &d->sectors[monster->this_sect],
 				&monster->pos, COLLISION_RANGE_CHARGINGDEMON))
 		if (monster->timer < 240)
 			charging_demon_wait(monster);

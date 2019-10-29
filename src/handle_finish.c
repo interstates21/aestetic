@@ -69,9 +69,9 @@ void	all_free(t_env *d)
 
 	i = -1;
 	if (d->nb_assets > 0)
-		while (++i < d->numsectors)
+		while (++i < d->n_sect)
 			free(d->assets[i]);
-	if (d->nummonsters > 0)
+	if (d->monst_n > 0)
 		free(d->monsters);
 	i = -1;
 	if (d->n_texts > 0)
@@ -106,7 +106,7 @@ void	handle_finish(t_env *d)
 	while (++i < MAX_PROJECTILES)
 		d->anim_rots[i].is_active = false;
 	i = -1;
-	while (++i < d->numsectors)
+	while (++i < d->n_sect)
 		free_sectors_sprites(d, i);
 	finish(d);
 	SDL_Delay(500);

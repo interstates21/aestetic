@@ -44,7 +44,7 @@ void		handle_respawn(t_env *d)
 	init_player(d, &d->player);
 	play_music(d, MAIN_MUSIC);
 	i = -1;
-	while (d->nb_assets && ++i < d->numsectors)
+	while (d->nb_assets && ++i < d->n_sect)
 	{
 		j = -1;
 		while (++j < d->assets[i][0].nb_assets)

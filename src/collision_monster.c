@@ -53,9 +53,9 @@ bool	collision_monster(t_env *d, t_sector *sect, t_vec2f *pos,
 
 	if (!(collided = false) && ++recursion > 3)
 		return (false + (--recursion ? 0 : 0));
-	w[0] = sect->firstwallnum + sect->numwalls - 1;
+	w[0] = sect->firstwallnum + sect->n_walls - 1;
 	w[1] = sect->firstwallnum;
-	while (w[1] < sect->firstwallnum + sect->numwalls)
+	while (w[1] < sect->firstwallnum + sect->n_walls)
 	{
 		vect[0] = get_closest(d->walls[w[0]].point, d->walls[w[1]].point, *pos);
 		vect[1] = v2_min(*pos, vect[0]);

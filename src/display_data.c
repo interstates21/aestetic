@@ -13,7 +13,7 @@
 #include "../includes/doom_nukem.h"
 
 void	new_disp_data(t_frustum *fr, t_display_data *disp_data,
-		uint16_t cursectnum)
+		uint16_t this_sect)
 {
 	double large_x;
 	double large_y;
@@ -26,7 +26,7 @@ void	new_disp_data(t_frustum *fr, t_display_data *disp_data,
 	disp_data->scale.y = fabs(100.0 / large_y * 0.01);
 	disp_data->ytop = &fr->ytop[0];
 	disp_data->ybot = &fr->ybottom[0];
-	disp_data->cursectnum = cursectnum;
+	disp_data->this_sect = this_sect;
 }
 
 void	new_disp_data_1(t_display_data *disp_data,
@@ -44,7 +44,7 @@ void	new_disp_data_1(t_display_data *disp_data,
 }
 
 void	new_disp_data_2(t_display_data *disp_data,
-		uint16_t cursectnum)
+		uint16_t this_sect)
 {
 	double large_x;
 	double large_y;
@@ -55,5 +55,5 @@ void	new_disp_data_2(t_display_data *disp_data,
 	disp_data->cut_start = MAX(disp_data->start.x, 0);
 	disp_data->cut_end = MIN(disp_data->end.x, WIDTH - 1);
 	disp_data->scale.y = fabs(100.0 / large_y * 0.01);
-	disp_data->cursectnum = cursectnum;
+	disp_data->this_sect = this_sect;
 }

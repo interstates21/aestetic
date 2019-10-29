@@ -73,7 +73,7 @@ void		set_tab(t_env *d, short sect_to_scan, short *tab, short old_sect)
 		k++;
 	i = d->sectors[sect_to_scan].firstwallnum - 1;
 	j = d->sectors[sect_to_scan].firstwallnum +
-		d->sectors[sect_to_scan].numwalls;
+		d->sectors[sect_to_scan].n_walls;
 	while (++i < j)
 		if (d->walls[i].neighborsect != -1 &&
 				d->walls[i].neighborsect != old_sect)

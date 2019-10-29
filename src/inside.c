@@ -34,7 +34,7 @@ bool	inside(t_env *d, int16_t sectnum, t_vec2f pos)
 	t_vec2f	bon2;
 
 	rz[0] = 0;
-	rz[1] = d->sectors[sectnum].numwalls;
+	rz[1] = d->sectors[sectnum].n_walls;
 	rz[2] = 0;
 	rz[3] = rz[1] - 1;
 	while (rz[2] < rz[1])
@@ -59,7 +59,7 @@ int16_t	search_other_sectors(int16_t sects[2], t_env *d, int depth,
 
 	i = d->sectors[sects[0]].firstwallnum - 1;
 	j = d->sectors[sects[0]].firstwallnum +
-		d->sectors[sects[0]].numwalls;
+		d->sectors[sects[0]].n_walls;
 	while (++i < j)
 		if (d->walls[i].neighborsect != -1 && d->walls[i].neighborsect !=
 				sects[1] && d->doorstate[i] > 0.7)
@@ -92,7 +92,7 @@ int16_t	update_cursect_proj(int16_t sects[2], t_env *d, int depth,
 }
 
 int16_t	update_cursect_smart(t_env *d, short depth, t_vec2f pos,
-		uint16_t cursectnum)
+		uint16_t this_sect)
 {
 	short	i;
 	short	tab[MAXNUMSECTORS];
@@ -100,7 +100,7 @@ int16_t	update_cursect_smart(t_env *d, short depth, t_vec2f pos,
 
 	ft_memset(tab, -1, sizeof(tab));
 	ft_memset(tmp_tab, -1, sizeof(tmp_tab));
-	tab[0] = cursectnum;
+	tab[0] = this_sect;
 	while (depth)
 	{
 		i = 0;

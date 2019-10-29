@@ -53,7 +53,7 @@ double	get_floor_height(t_sector *sect, t_wall *walls, int16_t sectnum,
 		h = calculate_max_floor_h(sect);
 		if (!(sect->slope))
 			return (h - calculate_floor_height_epsilon(h));
-		get_sector_center(&center, walls, sect->numwalls, sect->firstwallnum);
+		get_sector_center(&center, walls, sect->n_walls, sect->firstwallnum);
 		angle = get_angle(sect->slope_orientation, sect->is_animatedslope);
 		p = v2_min(p, center);
 		v2_rot(&p, angle);

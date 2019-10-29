@@ -28,7 +28,7 @@ void		transformvertex(t_env *d, t_vec2f v, double *x, double *z)
 
 t_sector	*check_neighbor(t_env *d, int16_t nei)
 {
-	if (nei < 0 || nei >= d->numsectors)
+	if (nei < 0 || nei >= d->n_sect)
 		return (NULL);
 	return (&d->sectors[nei]);
 }
@@ -37,7 +37,7 @@ void		render_wall(t_env *d, t_projdata *p, t_frustum *fr, int i)
 {
 	p->wall = &d->walls[p->sector->firstwallnum + i];
 	p->wall2 = &d->walls[p->sector->firstwallnum +
-		(i + 1) % p->sector->numwalls];
+		(i + 1) % p->sector->n_walls];
 	transformvertex(d, p->wall->point, &p->x1, &p->z1);
 	transformvertex(d, p->wall2->point, &p->x2, &p->z2);
 	p->neighbor = check_neighbor(d, p->wall->neighborsect);
@@ -92,7 +92,7 @@ static void	rend_while(t_env *d, t_sector *sect, t_frustum *fr, t_projdata p)
 	while (++i < WIDTH)
 		p.zbuffer[i] = INFINITY;
 	i = -1;
-	while (++i < sect->numwalls)
+	while (++i < sect->n_walls)
 		render_wall(d, &p, fr, i);
 }
 

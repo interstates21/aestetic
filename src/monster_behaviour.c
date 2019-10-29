@@ -74,20 +74,20 @@ void	motherdemon_behaviour(t_env *d, t_monster *monster, uint16_t id)
 	if ((monster->timer > 0) && (monster->anim_state < 4) && !(protection = 0))
 	{
 		monster->pos = v2_plus(monster->pos, monster->dir);
-		collision_monster_monster(d, monster->cursectnum, monster);
-		while (collision_monster(d, &d->sectors[monster->cursectnum],
+		collision_monster_monster(d, monster->this_sect, monster);
+		while (collision_monster(d, &d->sectors[monster->this_sect],
 					&monster->pos, COLLISION_DIST_MOTHERDEMON))
 			if (++protection > 6)
 				break ;
 		if (monster->timer > 2)
 			monster->timer -= 2;
 		new_sect = update_cursect_smart(d, 2, monster->pos,
-				monster->cursectnum);
-		if (new_sect != monster->cursectnum && new_sect != -1)
+				monster->this_sect);
+		if (new_sect != monster->this_sect && new_sect != -1)
 		{
-			swap_list(IS_MONSTER, id, d, (int[2]){monster->cursectnum,
+			swap_list(IS_MONSTER, id, d, (int[2]){monster->this_sect,
 					new_sect});
-			monster->cursectnum = new_sect;
+			monster->this_sect = new_sect;
 		}
 	}
 	if (!monster->timer)
@@ -108,7 +108,7 @@ void	check_activation(t_env *d, t_monster *monster, t_vec2f pos, bool recur)
 	}
 	if (!recur || monster->activated == false)
 		return ;
-	tmp = d->sectors[monster->cursectnum].sprite_list;
+	tmp = d->sectors[monster->this_sect].sprite_list;
 	while (tmp)
 	{
 		if (tmp->type == IS_MONSTER && d->monsters[tmp->id].activated == false)

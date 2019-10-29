@@ -33,12 +33,12 @@ static int	calculate_next_sect(t_env *d, t_range old_range, int old_current)
 	v0 = d->walls[old_range.max].point;
 	v1 = d->walls[old_range.min].point;
 	current = -1;
-	while (++current < d->numsectors)
+	while (++current < d->n_sect)
 	{
 		range = make_range(d->sectors[current].firstwallnum,
-		d->sectors[current].firstwallnum + d->sectors[current].numwalls - 1);
+		d->sectors[current].firstwallnum + d->sectors[current].n_walls - 1);
 		while (range.min < (d->sectors[current].firstwallnum +
-												d->sectors[current].numwalls))
+												d->sectors[current].n_walls))
 		{
 			p1 = new_v2_pair(d->walls[range.max].point,
 													d->walls[range.min].point);
@@ -62,12 +62,12 @@ void		next_sect_fix(t_env *d)
 	range.min = 0;
 	range.max = 0;
 	current = 0;
-	while (current < d->numsectors)
+	while (current < d->n_sect)
 	{
 		max = d->sectors[current].firstwallnum +
-											d->sectors[current].numwalls - 1;
+											d->sectors[current].n_walls - 1;
 		min = d->sectors[current].firstwallnum;
-		sum = d->sectors[current].firstwallnum + d->sectors[current].numwalls;
+		sum = d->sectors[current].firstwallnum + d->sectors[current].n_walls;
 		range = make_range(min, max);
 		while (range.min < sum)
 		{

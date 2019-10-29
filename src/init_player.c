@@ -21,7 +21,7 @@ void	init_player_2(t_env *d, t_player *player)
 	player->can_move = 0;
 	player->health = 100;
 	player->can_be_stomped = 1;
-	d->cursectnum = d->startsectnum;
+	d->this_sect = d->sect_begin;
 	d->cam = d->startcam;
 	d->cam.rot += 0.001;
 	d->weapon_type.current_ammo = MAX_BULLETS;

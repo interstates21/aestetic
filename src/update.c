@@ -18,7 +18,7 @@ void	new_collided_proj(t_env *d, t_anim_rot *proj, bool anim,
 	int16_t		new_sectors;
 
 	anim ? (proj->time_remaining_anim--) :
-		((proj->current_anim_playing = d->projectile_type[proj->
+		((proj->current_anim_playing = d->anim_rot_type[proj->
 			id_type].anim_order[proj->current_anim_playing]) &&
 		(proj->time_remaining_anim = 2));
 	if (proj->target)
@@ -26,13 +26,13 @@ void	new_collided_proj(t_env *d, t_anim_rot *proj, bool anim,
 		proj->pos = v3_plus(v2_to_v3(proj->target->pos),
 				proj->dir);
 		if ((new_sectors = update_cursect_proj((int16_t[2]){proj->
-						cursectnum, -1}, d, NB_OF_SECTOR_DEPTH,
+						this_sect, -1}, d, NB_OF_SECTOR_DEPTH,
 						proj->pos)) != -1)
 		{
-			if (new_sectors != proj->cursectnum)
+			if (new_sectors != proj->this_sect)
 				swap_list(IS_PROJECTILE, id, d,
-								(int[2]){proj->cursectnum, new_sectors});
-			proj->cursectnum = new_sectors;
+								(int[2]){proj->this_sect, new_sectors});
+			proj->this_sect = new_sectors;
 		}
 	}
 }
@@ -42,10 +42,10 @@ void	update_anim_projectile(t_anim_rot *proj, t_env *d, short id,
 {
 	if (collided)
 	{
-		if (d->projectile_type[proj->id_type].threat_to_player)
+		if (d->anim_rot_type[proj->id_type].threat_to_player)
 			proj->dir = new_v3zero();
 		proj->current_anim_playing =
-			d->projectile_type[proj->id_type].anim_order[COLLISION_ID];
+			d->anim_rot_type[proj->id_type].anim_order[COLLISION_ID];
 		proj->time_remaining_anim = 5;
 		proj->has_collided = true;
 		play_sound(d, EXPLOSION_SOUND, v3_to_v2(proj->pos));
@@ -56,11 +56,11 @@ void	update_anim_projectile(t_anim_rot *proj, t_env *d, short id,
 		new_collided_proj(d, proj, true, id);
 		return ;
 	}
-	if (d->projectile_type[proj->id_type].anim_order[
+	if (d->anim_rot_type[proj->id_type].anim_order[
 			proj->current_anim_playing] == MUST_BE_DESTROYED)
 	{
 		proj->is_active = false;
-		destroy_mail(id, &d->sectors[proj->cursectnum], IS_PROJECTILE);
+		destroy_mail(id, &d->sectors[proj->this_sect], IS_PROJECTILE);
 		return ;
 	}
 	new_collided_proj(d, proj, false, id);
@@ -91,7 +91,7 @@ void	update(t_env *d)
 
 	if (d->player.health <= 0)
 		handle_respawn(d);
-	if (d->sectors[d->cursectnum].is_finish)
+	if (d->sectors[d->this_sect].is_finish)
 		handle_finish(d);
 	update_doors(d);
 	d->cam.rot -= d->keys[SDL_SCANCODE_LEFT] * TURN_SPEED;
@@ -101,13 +101,13 @@ void	update(t_env *d)
 	movement(d);
 	interact_with_assets(d);
 	if ((sect = update_cursect_smart(d, DEPTH_TO_SCAN, v3_to_v2(d->cam.pos),
-					d->cursectnum)) != -1)
+					d->this_sect)) != -1)
 	{
-		if (sect != d->cursectnum && d->cam.pos.y < get_floorheight_player(d,
+		if (sect != d->this_sect && d->cam.pos.y < get_floorheight_player(d,
 					sect) + d->player.minimum_height)
 			d->player.minimum_height = d->cam.pos.y - get_floorheight_player(d,
 					sect);
-		d->cursectnum = sect;
+		d->this_sect = sect;
 	}
 	update_2(d);
 }

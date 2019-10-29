@@ -44,17 +44,17 @@ void		draw_proj(t_env *d, t_frustum *fr, t_anim_rot proj)
 	dist = vec3f_length(v3_min(proj.pos, d->cam.pos));
 	a.start.x = point_on_screen.x - (d->projectile_tex[proj.weapon_id]
 			[proj.current_anim_playing]->w *
-			d->projectile_type[proj.id_type].size) / dist;
+			d->anim_rot_type[proj.id_type].size) / dist;
 	a.end.x = point_on_screen.x + (d->projectile_tex[proj.weapon_id]
 			[proj.current_anim_playing]->w *
-			d->projectile_type[proj.id_type].size) / dist;
+			d->anim_rot_type[proj.id_type].size) / dist;
 	a.start.y = point_on_screen.y - (d->projectile_tex[proj.weapon_id]
 			[proj.current_anim_playing]->h *
-			d->projectile_type[proj.id_type].size) / dist;
+			d->anim_rot_type[proj.id_type].size) / dist;
 	a.end.y = point_on_screen.y + (d->projectile_tex[proj.weapon_id]
 			[proj.current_anim_playing]->h *
-			d->projectile_type[proj.id_type].size) / dist;
-	new_disp_data(fr, &a, proj.cursectnum);
+			d->anim_rot_type[proj.id_type].size) / dist;
+	new_disp_data(fr, &a, proj.this_sect);
 	disp_sprite(d, d->projectile_tex[proj.id_type]
 			[proj.current_anim_playing], a, new_v2(point_on_screen.z, 2));
 }

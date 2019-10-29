@@ -20,7 +20,7 @@ void	activate_neighbor_door(t_env *d, t_wall *door,
 	t_vec2f a;
 	t_vec2f b;
 
-	last = nei->firstwallnum + nei->numwalls;
+	last = nei->firstwallnum + nei->n_walls;
 	i[0] = last - 1;
 	i[1] = nei->firstwallnum;
 	while (i[1] < last)
@@ -71,7 +71,7 @@ bool	door_use(t_env *d, t_sector *sect)
 	double	m[2];
 
 	m[1] = INFINITY;
-	n[2] = sect->firstwallnum + sect->numwalls - 1;
+	n[2] = sect->firstwallnum + sect->n_walls - 1;
 	n[3] = sect->firstwallnum;
 	whi_le(d, sect, n, m);
 	if (m[1] == INFINITY)

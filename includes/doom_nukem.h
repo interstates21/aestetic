@@ -102,7 +102,7 @@ typedef struct				s_sprite
 typedef struct				s_sector
 {
 	int16_t					firstwallnum;
-	int16_t					numwalls;
+	int16_t					n_walls;
 	float					floorheight;
 	float					ceilheight;
 	int16_t					floorpicnum;
@@ -172,7 +172,7 @@ typedef struct				s_monster
 	t_vec2f					pos;
 	t_vec2f					dir;
 	double					rot;
-	int16_t					cursectnum;
+	int16_t					this_sect;
 	uint8_t					id_type;
 	uint8_t					anim_state;
 	uint8_t					anim_time;
@@ -198,7 +198,7 @@ typedef struct				s_display_data
 	int						cut_end;
 	int						*ytop;
 	int						*ybot;
-	uint16_t				cursectnum;
+	uint16_t				this_sect;
 }							t_display_data;
 
 typedef struct				s_col_inf
@@ -310,7 +310,7 @@ typedef struct				s_anim_rot
 	bool					is_active;
 	bool					has_collided;
 	uint8_t					id_type;
-	uint16_t				cursectnum;
+	uint16_t				this_sect;
 	t_vec3f					pos;
 	t_vec3f					dir;
 	uint8_t					weapon_id;
@@ -329,7 +329,7 @@ typedef struct				s_proj_type
 	uint8_t					kind;
 	bool					threat_to_player;
 	bool					threat_to_monster;
-}							t_proj_type;
+}							t_anim_rot_type;
 
 typedef struct				s_weapon_type
 {
@@ -488,13 +488,13 @@ typedef struct				s_env
 	int16_t					nb_assets;
 	t_monster_type			monster_type[MAXTYPEMONSTERS];
 	t_anim_rot				anim_rots[MAX_PROJECTILES];
-	t_proj_type				projectile_type[MAX_KIND_OF_PROJECTILE];
+	t_anim_rot_type			anim_rot_type[MAX_KIND_OF_PROJECTILE];
 	t_weapon_type			weapon_type;
-	uint16_t				nummonsters;
-	int16_t					numsectors;
-	int16_t					numwalls;
-	int16_t					startsectnum;
-	int16_t					cursectnum;
+	uint16_t				monst_n;
+	int16_t					n_sect;
+	int16_t					n_walls;
+	int16_t					sect_begin;
+	int16_t					this_sect;
 	bool					debug_pause;
 	double					dooranimstep[MAXNUMWALLS];
 	double					doorstate[MAXNUMWALLS];
@@ -504,16 +504,16 @@ typedef struct				s_env
 	unsigned char			font[96][5];
 	int						used[96];
 	double					*zbuffer;
-	double					floorheightplayer;
-	double					ceilheightplayer;
+	double					player_floor_h;
+	double					player_ceil_h;
 	char					nextmap[100];
 	Mix_Chunk				*chunk[NB_OF_SOUNDS];
 	t_assets				*slot2;
 	t_assets				*slot3;
 	char					msg[100];
 	uint32_t				msg_start;
-	uint32_t				last_dangerous_area_damage;
-	int						difficulty;
+	uint32_t				harmful_area;
+	int						hard;
 	t_chars					chars;
 	int						loaded;
 	TTF_Font				*g_font;
@@ -802,7 +802,7 @@ void						init_projectiles(t_env *d);
 void						swap_list(uint8_t type, uint16_t id, t_env *d,
 																int sectnum[2]);
 int16_t						update_cursect_smart(t_env *d, short depth,
-											t_vec2f pos, uint16_t cursectnum);
+											t_vec2f pos, uint16_t this_sect);
 int16_t						update_cursect_proj(int16_t sects[2], t_env *d,
 														int depth, t_vec3f pos);
 void						destroy_mail(short id, t_sector *sector,
@@ -906,11 +906,11 @@ uint8_t						get_nb_anim_from_rotation(double monster_rot,
 void						draw_proj(t_env *d, t_frustum *fr,
 															t_anim_rot proj);
 void						new_disp_data(t_frustum *fr,
-								t_display_data *disp_data, uint16_t cursectnum);
+								t_display_data *disp_data, uint16_t this_sect);
 void						new_disp_data_1(t_display_data *disp_data,
 								SDL_Surface *s, t_vec3f p_in_scr, double size);
 void						new_disp_data_2(t_display_data *disp_data,
-														uint16_t cursectnum);
+														uint16_t this_sect);
 void						draw_monster(t_env *d, t_monster monster);
 void						disp_sprite(t_env *d, SDL_Surface *s,
 									t_display_data disp_data, t_vec2f dist_mod);
