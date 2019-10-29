@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   r_pickers.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akolomoi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 18:36:57 by akolomoi          #+#    #+#             */
-/*   Updated: 2019/10/28 22:14:26 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/28 18:36:58 by akolomoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,30 +76,30 @@ void		render_sprites(t_ed *ed, t_sdl *sdl)
 	}
 }
 
-int			pickers(t_ed *e)
+int			pickers(t_ed *ed)
 {
-	if (e->selection.sector == -1)
+	ed->selection.monster = -1;
+	ed->selection.sprite = -1;
+	if (ed->selection.sector == -1)
 		return (0);
-	if (picking_monster(e->controller.mouse) == 1)
+	if (picking_monster(ed->controller.mouse) == 1)
 	{
-		ft_putendl("Picking monster one");
-		e->selection.monster = 0;
-		e->selection.sprite = -1;
+		ed->selection.monster = 0;
+		ed->selection.sprite = -1;
 		return (1);
 	}
-	else if (picking_monster(e->controller.mouse) == 2)
+	else if (picking_monster(ed->controller.mouse) == 2)
 	{
-		ft_putendl("Picking monster two");
-		e->selection.monster = 1;
+		ed->selection.monster = 1;
 		return (1);
 	}
-	else if (picking_sprite(e->controller.mouse, e->n_sprites) != -1)
+	else if (picking_sprite(ed->controller.mouse, ed->n_sprites) != -1)
 	{
-		e->selection.sprite = picking_sprite(e->controller.mouse, e->n_sprites);
-		ft_putstr("Picking sprite ");
-		ft_putnbr(e->selection.sprite);
+		ed->selection.sprite = picking_sprite(ed->controller.mouse,
+		ed->n_sprites);
+		ft_putnbr(ed->selection.sprite);
 		ft_putchar('\n');
-		e->selection.monster = -1;
+		ed->selection.monster = -1;
 		return (1);
 	}
 	return (0);

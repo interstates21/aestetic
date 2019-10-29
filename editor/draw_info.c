@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_info.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akolomoi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 15:57:14 by akolomoi          #+#    #+#             */
-/*   Updated: 2019/10/29 16:36:51 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/23 15:57:15 by akolomoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void			draw_element(t_ed *e, t_font *f, int n, char *word)
 	f->col = c;
 }
 
-static void			displaing_backgr(t_ed *e, int n, int x, int y)
+static void			draw_background(t_ed *e, int n, int x, int y)
 {
 	int		i;
 	int		j;
@@ -67,7 +67,7 @@ static SDL_Surface	*pick_texture(t_ed *e, int selected, int n)
 static void			draw_sectinfo(t_ed *e, t_font f, int n)
 {
 	f.col = 0xffa0fa;
-	displaing_backgr(e, 11, f.x - 5, f.y + 15);
+	draw_background(e, 11, f.x - 5, f.y + 15);
 	draw_element(e, &f, n, "Sector: ");
 	f.x += 15;
 	e->texture_picker = pick_texture(e, e->selection.select, n);
@@ -92,7 +92,7 @@ void				draw_info(t_ed *e)
 	tmp.n = 1;
 	if (e->selection.sector == -1)
 	{
-		displaing_backgr(e, 1, tmp.x - 5, tmp.y + 15);
+		draw_background(e, 1, tmp.x - 5, tmp.y + 15);
 		tmp.y += 20;
 		tmp.col = 0xffaaaa;
 		tmp.str = "Sector: not selected.";

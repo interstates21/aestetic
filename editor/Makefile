@@ -1,3 +1,4 @@
+
 NAME = dm_editor
 CC = clang
 FILES = bmp_reader \
@@ -33,10 +34,7 @@ FILES = bmp_reader \
                     save_tex \
                     tex_finder \
                     save_weapon \
-					r_pickers \
-					r_render_shit \
-					r_render_sector_sprites \
-					r_put_sprite
+					r_pickers
 LIBFT_DIR = ../libft/
 SRC = $(addsuffix .c, $(FILES))
 OBJ = $(addprefix obj/, $(addsuffix .o, $(FILES)))

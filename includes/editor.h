@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:17:14 by akolomoi          #+#    #+#             */
-/*   Updated: 2019/10/28 23:13:34 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 22:51:39 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -517,7 +517,6 @@ void				put_monster(t_ed *ed, int n_sect);
 void				put_sprite(t_ed *ed, int n_sect);
 void				render_sector_sprites(t_ed *ed);
 void				render_sector_mosters(t_ed *ed);
-void				nice_grid(t_ed *ed);
 void				print_v(t_v2 v, const char *s);
 void				draw_square(t_ed *ed, t_v2 c, int r, Uint32 col);
 

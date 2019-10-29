@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_weapon.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akolomoi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 17:17:19 by akolomoi          #+#    #+#             */
-/*   Updated: 2019/10/26 17:17:20 by akolomoi         ###   ########.fr       */
+/*   Updated: 2019/10/29 22:54:47 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void		read_wp_proj(t_ed *e, char *p, const int params[3])
 	DIR				*dir;
 	struct dirent	*data;
 
-	path = ft_strjoin(p, "anim_rots/");
+	path = ft_strjoin(p, "projectiles/");
 	dir = NULL;
 	reopen(&dir, path);
 	i = 0;
