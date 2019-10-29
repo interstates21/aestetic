@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 20:04:06 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 18:14:44 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 21:13:19 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	drawing_wall(t_vec2 y_value, t_env *d, t_proj_env *p, int mode)
 				NORMALIZE(y_value.x, p->nya - p->door_h, p->nya), 3);
 		if (mode == 0 || (pix >> 24) == 0xff)
 			pixel_put(d, new_v3(p->x, y_value.x, p->z),
-					to_shades(p->shadefactor, pix), 1);
+					shad(p->shadefactor, pix), 1);
 	}
 }
 
@@ -53,9 +53,10 @@ void	displaing_no_n_wall(t_env *d, t_proj_env *p, t_frustum *fr)
 			pixel_pls(p->poster, p->u_poster, NORMALIZE(p->y, p->ya_poster,
 			p->yb_poster), 3)) >> 24) > 128))
 			pixel_put(d, new_v3(p->x, p->y, p->z),
-												to_shades(p->shadefactor, px), 1);
+												shad(p->shadefactor, px),
+																			1);
 		else
-			pixel_put(d, new_v3(p->x, p->y, p->z), to_shades(p->shadefactor,
+			pixel_put(d, new_v3(p->x, p->y, p->z), shad(p->shadefactor,
 						pixel_pls(p->tex, p->u_tex,
 							NORMALIZE(p->y, p->yc, p->yd) * p->y_scale, 3)), 1);
 }

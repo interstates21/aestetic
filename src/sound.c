@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 15:40:05 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 19:28:19 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 21:09:04 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	play_2(t_env *d, uint8_t it_smy_love, t_vec2f pos, int16_t urbanistick)
 	pos = v2_min(pos, v3_to_v2(d->cam.pos));
 	actualize_dir(d->cam.rot, &pos);
 	urbanistick = -atan2(pos.y, pos.x) * 180 / M_PI + 90;
-	it_smy_love = MIN(v2_len(v2_min(v3_to_v2(d->cam.pos), pos)) * 4,254);
+	it_smy_love = MIN(v2_len(v2_min(v3_to_v2(d->cam.pos), pos)) * 4, 254);
 }
 
 void	play_1(t_env *d, uint8_t it_smy_love, t_vec2f pos, int16_t urbanistick)

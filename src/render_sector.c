@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sect_rendering.c                                    :+:      :+:    :+:   */
+/*   render_sector.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 22:23:12 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 17:09:57 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 21:07:33 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ void		proj_ceil_or_floor(t_env *d, t_proj_env *p, int mode)
 				(p->c[2] = transform_back(d, new_v3z(2)));
 	mode == 0 ? (p->a[0] = new_v3(-WIDTH + WIDTH / 2, cl_calc_vec_cal(d,
 		p->sector, v3_to_v2(p->b[0])) * -WIDTH + (HEIGHT / 2 - d->cam.y_offset),
-		1)) : (p->v[0] = new_v3(-WIDTH + WIDTH / 2, fl_calc_vec_cal(d, p->sector,
+		1)) : (p->v[0] = new_v3(-WIDTH + WIDTH / 2, fl_calc_vec_cal(d,
+		p->sector,
 		v3_to_v2(p->c[0])) * -WIDTH + (HEIGHT / 2 - d->cam.y_offset), 1));
 	mode == 0 ? (p->a[1] = new_v3(WIDTH + WIDTH / 2, cl_calc_vec_cal(d,
 		p->sector, v3_to_v2(p->b[1])) * -WIDTH + (HEIGHT / 2 - d->cam.y_offset),

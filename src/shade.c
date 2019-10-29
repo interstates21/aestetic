@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   to_shades.c                                            :+:      :+:    :+:   */
+/*   shade.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 04:20:43 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 22:02:32 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 21:13:19 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ double		shd_fct(t_env *d, t_sec *sector, double dist, int mode)
 	return (factor);
 }
 
-uint32_t	to_shades(double factor, uint32_t c)
+uint32_t	shad(double factor, uint32_t c)
 {
 	if (factor >= 1)
 		return (c);

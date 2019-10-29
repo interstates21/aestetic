@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 09:18:24 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 18:04:09 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 21:09:40 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ double	height_play_cl_val(t_env *d, int16_t sectnum)
 {
 	double		ceil_height;
 	t_vec2f		v;
-	t_sec	*s;
+	t_sec		*s;
 
 	v.x = d->cam.pos.x;
 	v.y = d->cam.pos.z;
@@ -29,7 +29,7 @@ double	cl_calc_vec_cal(t_env *d, t_sec *sect, t_vec2f v)
 {
 	double		ceil_height;
 	int16_t		n;
-	t_sec	*s;
+	t_sec		*s;
 	double		res;
 
 	if (!sect)

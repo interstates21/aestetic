@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 22:08:20 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 18:14:39 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 21:14:05 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	draw_wall4(t_env *d, t_proj_env *p, t_frustum *fr, t_frustum *nfr)
 		p->ya = p->nya;
 }
 
-void	draw_wall3(t_env *d, t_proj_env *p, t_frustum *nfr, bool *visibility_buf)
+void	draw_wall3(t_env *d, t_proj_env *p, t_frustum *nfr,
+														bool *visibility_buf)
 {
 	int	end;
 

@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 12:27:46 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 16:58:43 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 21:09:52 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ void		tabulation_sw(short *tab, short *tmp_tab)
 	}
 }
 
-void		tabulation_new_v(t_env *d, short sect_to_scan, short *tab, short old_sect)
+void		tabulation_new_v(t_env *d, short sect_to_scan, short *tab,
+																short old_sect)
 {
 	short	i;
 	short	j;

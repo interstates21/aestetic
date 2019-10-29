@@ -6,13 +6,11 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 05:25:27 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 18:50:11 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 21:07:02 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
-
-//not refact
 
 void	update_monsters(uint16_t *monst_n,
 		t_monster monsters[MAXNUMMONSTERS], t_env *d)

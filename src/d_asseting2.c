@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 21:43:58 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 18:14:23 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 21:13:19 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	to_liet_assets(t_env *d, t_proj_env *p, SDL_Surface *tex)
 								NORMALIZE(container.two, p->ya, p->yb), 3);
 				if ((px >> 24) > 127)
 					pixel_put(d, new_v3(container.one, container.two, p->z),
-										to_shades(p->shadefactor, px), 1);
+										shad(p->shadefactor, px), 1);
 			}
 		}
 	}
