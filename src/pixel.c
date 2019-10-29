@@ -30,7 +30,7 @@ void		pixel_put(t_env *d, t_vec3f p, uint32_t color, int mode)
 		if (x >= 0 && x < WIDTH * HEIGHT)
 		{
 			((uint32_t*)d->sdl.screen->pixels)[x] = color;
-			d->zbuffer[x] = p.z;
+			d->z_buff[x] = p.z;
 		}
 	}
 }

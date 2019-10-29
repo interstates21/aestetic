@@ -14,7 +14,7 @@
 
 //not refact
 
-static void	set_var_reorder_sprite(t_sprite_list **list, t_sector *sec, int *i,
+static void	set_var_reorder_sprite(t_sprite_list **list, t_sec *sec, int *i,
 		bool type)
 {
 	if (type == SET)
@@ -40,7 +40,7 @@ void		change_list(t_sprite_list *one, t_sprite_list *two,
 	two->next = one;
 }
 
-void		reorder_sprites_algo(t_env *d, t_sector *sec, double *vla,
+void		reorder_sprites_algo(t_env *d, t_sec *sec, double *vla,
 		t_sprite_list **list)
 {
 	double		distance;
@@ -88,7 +88,7 @@ void		set_vla(t_sprite_list *tmp, double *vla, t_env *d)
 	}
 }
 
-void		reorder_sprite(t_env *d, t_sector *sect)
+void		reorder_sprite(t_env *d, t_sec *sect)
 {
 	t_sprite_list	*tmp;
 	short			i;

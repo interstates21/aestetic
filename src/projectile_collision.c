@@ -82,7 +82,7 @@ bool		collision_proj_one_monst(t_env *d, t_monster *monster,
 	return (false);
 }
 
-bool		proj_monst_colided(t_env *d, t_sector *sector,
+bool		proj_monst_colided(t_env *d, t_sec *sector,
 		t_anim_rot *projectile)
 {
 	t_vec3f			newpos;

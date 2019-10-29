@@ -12,11 +12,11 @@
 
 #include "../includes/doom_nukem.h"
 
-void		new_zbuffer_and_put_collor(t_env *d, t_vec2 x_y, uint32_t colo,
+void		new_z_buff_and_put_collor(t_env *d, t_vec2 x_y, uint32_t colo,
 															t_vec2f dist_mod)
 {
 	pixel_put(d, new_v3(x_y.x, x_y.y, 0), colo, 0);
-	d->zbuffer[x_y.x + x_y.y * d->sdl.screen->w] = dist_mod.x;
+	d->z_buff[x_y.x + x_y.y * d->sdl.screen->w] = dist_mod.x;
 }
 
 void		displaing_sprite(t_env *d, SDL_Surface *s,
@@ -33,7 +33,7 @@ void		displaing_sprite(t_env *d, SDL_Surface *s,
 		while (++x_y.y <= MIN(dist_mod.y == 2 ? disp_data.ybot[x_y.x] :
 												HEIGHT - 1, disp_data.end.y))
 		{
-			if (dist_mod.x >= d->zbuffer[x_y.x + x_y.y * d->sdl.screen->w]
+			if (dist_mod.x >= d->z_buff[x_y.x + x_y.y * d->sdl.screen->w]
 														&& dist_mod.y < 2)
 				continue;
 			colo = pixel_pls(s, dist_mod.y == 0 ?
@@ -43,7 +43,7 @@ void		displaing_sprite(t_env *d, SDL_Surface *s,
 			colo = to_search_alpha(((uint32_t *)d->sdl.screen->pixels)
 					[x_y.x + x_y.y * d->sdl.screen->w], colo);
 			if (colo != pixel_pls(d->sdl.screen, x_y.x, x_y.y, 2))
-				new_zbuffer_and_put_collor(d, x_y, to_shades(shd_fct(d, &d->
+				new_z_buff_and_put_collor(d, x_y, to_shades(shd_fct(d, &d->
 				sectors[disp_data.this_sect], dist_mod.x, 0), colo), dist_mod);
 		}
 	}

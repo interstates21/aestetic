@@ -122,7 +122,7 @@ typedef struct				s_sector
 	bool					is_elevator;
 	bool					is_finish;
 	bool					is_harmful;
-}							t_sector;
+}							t_sec;
 
 typedef struct				s_wall
 {
@@ -253,7 +253,7 @@ typedef struct				s_projdata
 	int						y2c;
 	int						y1d;
 	int						y2d;
-	t_sector				*neighbor;
+	t_sec				*neighbor;
 	int						ny1a;
 	int						ny2a;
 	int						ny1b;
@@ -263,7 +263,7 @@ typedef struct				s_projdata
 	double					y_scale;
 	t_wall					*wall;
 	t_wall					*wall2;
-	t_sector				*sector;
+	t_sec				*sector;
 	double					n;
 	double					z;
 	int						x;
@@ -275,10 +275,10 @@ typedef struct				s_projdata
 	int						yd;
 	int						nya;
 	int						nyb;
-	double					zbuffer[WIDTH];
-	bool					visible[WIDTH];
-	double					doorheight;
-	double					doorbottom;
+	double					z_buff[WIDTH];
+	bool					visibility_buf[WIDTH];
+	double					door_h;
+	double					door_begin;
 	double					u1_poster;
 	double					u2_poster;
 	double					poster_h;
@@ -302,8 +302,8 @@ typedef struct				s_projdata
 	int						margin;
 }							t_projdata;
 
-# define MAX_STATE_OF_PROJ_ANIM 21
-# define COLLISION_ID MAX_STATE_OF_PROJ_ANIM - 1
+# define N_ANIM_PROJ 21
+# define COLLISION_ID N_ANIM_PROJ - 1
 
 typedef struct				s_anim_rot
 {
@@ -325,7 +325,7 @@ typedef struct				s_proj_type
 	double					speed;
 	double					size;
 	uint16_t				damage;
-	uint8_t					anim_order[MAX_STATE_OF_PROJ_ANIM];
+	uint8_t					anim_order[N_ANIM_PROJ];
 	uint8_t					kind;
 	bool					threat_to_player;
 	bool					threat_to_monster;
@@ -388,7 +388,7 @@ typedef struct				s_pxls
 }							t_pxls;
 
 # define MAXNBOFANIMATION 5
-# define N_ANIM_ROTS_WEAPON MAX_STATE_OF_PROJ_ANIM
+# define N_ANIM_ROTS_WEAPON N_ANIM_PROJ
 # define N_ANIM_ROT_TYPES 3
 # define N_ANIM_ROTS 100
 # define MOUSE_PRESSED 1
@@ -480,7 +480,7 @@ typedef struct				s_env
 	uint8_t					right_mouse_button;
 	t_cam					startcam;
 	t_cam					cam;
-	t_sector				sectors[N_SECTORS];
+	t_sec				sectors[N_SECTORS];
 	t_wall					walls[N_WALLS];
 	t_monster				*monsters;
 	t_objects				**objects;
@@ -502,7 +502,7 @@ typedef struct				s_env
 	t_vec2f					inertia;
 	unsigned char			font[96][5];
 	int						used[96];
-	double					*zbuffer;
+	double					*z_buff;
 	double					player_floor_h;
 	double					player_ceil_h;
 	char					nextmap[100];
@@ -724,7 +724,7 @@ void						buf_to_collor2(t_env *d, uint16_t amount,
 															uint32_t colo);
 double						distanse_place(t_vec2f a, t_vec2f b, t_vec2f p);
 void						massege_print(t_env *d, char *msg);
-void						door_func(t_env *d, t_sector *sect, int *n,
+void						door_func(t_env *d, t_sec *sect, int *n,
 															double *m);
 void						alpha_serch(double *sl_y);
 void						tabulation_sw(short *tab, short *tmp_tab);
@@ -742,13 +742,13 @@ double						angle_caluk_tang(double h, double slope,
 												t_vec2f p, t_vec2f c);
 void						mid_sect_val(t_vec2f *v, t_wall *walls,
 											int n_walls, int current_wall);
-double						height_calc_fl(t_sector *s);
+double						height_calc_fl(t_sec *s);
 double						*pix_val_scr();
 void						keyboard_battons(Uint8 **keys);
 void						rotation_vector(t_vec2f *p, double angle);
-double						height_fl_val(t_sector *sect, t_wall *walls,
+double						height_fl_val(t_sec *sect, t_wall *walls,
 												int16_t sectnum, t_vec2f p);
-double						height_cl_val(t_sector *sect, t_wall *walls,
+double						height_cl_val(t_sec *sect, t_wall *walls,
 												int16_t sectnum, t_vec2f p);
 t_range						ranged_create(int min, int max);
 t_v2_pair					new_v2_pair(t_vec2f v1, t_vec2f v2);
@@ -782,7 +782,7 @@ void						displaing_cl_fl(t_env *d, t_projdata *p,
 													t_frustum *fr, int mode);
 void						actio_pl(t_env *d);
 void						displaing_weap(t_env *d);
-void						sect_rendering(t_env *d, t_sector *sect,
+void						sect_rendering(t_env *d, t_sec *sect,
 																t_frustum *fr);
 void						dislaing_not_wall(t_env *d, t_frustum *fr,
 														t_sprite_list *sprite);
@@ -795,7 +795,7 @@ int16_t						new_smart_curs(t_env *d, short depth,
 											t_vec2f pos, uint16_t this_sect);
 int16_t						new_proj_curs(int16_t sects[2], t_env *d,
 														int depth, t_vec3f pos);
-void						mailing_deleted(short id, t_sector *sector,
+void						mailing_deleted(short id, t_sec *sector,
 													uint8_t type_to_destroy);
 void						new_proj_animate(t_anim_rot *proj,
 											t_env *d, short id, bool collided);
@@ -804,7 +804,7 @@ void						monst_st_animate(t_monster *monster,
 void						monst_by_monst_colided(t_env *d, short cur_sect,
 															t_monster *monster);
 void						play_by_monst_colided(t_env *d, short cur_sect);
-bool						proj_monst_colided(t_env *d, t_sector *sector,
+bool						proj_monst_colided(t_env *d, t_sec *sector,
 													t_anim_rot *projectile);
 bool						proj_play_colided(t_env *d,
 													t_anim_rot *projectile);
@@ -816,10 +816,10 @@ void						demeanor_monst(t_env *d, t_monster *monster,
 void						demeanor_char_demyon(t_env *d,
 											t_monster *monster, uint16_t id);
 void						dellay_char_demyon(t_monster *monster);
-double						shd_fct(t_env *d, t_sector *sector, double dist,
+double						shd_fct(t_env *d, t_sec *sector, double dist,
 																	int mode);
 uint32_t					to_shades(double factor, uint32_t c);
-void						reorder_sprite(t_env *d, t_sector *sect);//////////////////
+void						reorder_sprite(t_env *d, t_sec *sect);//////////////////
 t_vec3f						v2_to_v3(t_vec2f v);
 t_vec2f						v3_to_v2(t_vec3f v);
 double						vec3f_length(t_vec3f v);
@@ -830,10 +830,10 @@ uint32_t					to_search_alpha(uint32_t	old_colo,
 void						displaing_str(t_env *d, t_font f);
 void						font_initialize(t_env *d);
 double						height_play_fl_val(t_env *d, int16_t sectnum);
-double						fl_calc_vec_cal(t_env *d, t_sector *sect,
+double						fl_calc_vec_cal(t_env *d, t_sec *sect,
 																t_vec2f v);
 double						height_play_cl_val(t_env *d, int16_t sectnum);
-double						cl_calc_vec_cal(t_env *d, t_sector *sect,
+double						cl_calc_vec_cal(t_env *d, t_sec *sect,
 																t_vec2f v);
 void						to_load_numbpic(t_env *d);
 void						ending_hd(t_env *d);
@@ -841,8 +841,8 @@ void						music_player(t_env *d, uint8_t id);
 void						music_loader(t_env *d, int f);
 void						play_sound(t_env *d, uint8_t id, t_vec2f pos);/////////////
 double						fun_to_edget(t_vec3f a, t_vec3f b, int x, int y);
-bool						collision_player(t_env *d, t_sector *sect);
-bool						collision_monster(t_env *d, t_sector *sect,
+bool						collision_player(t_env *d, t_sec *sect);
+bool						collision_monster(t_env *d, t_sec *sect,
 												t_vec2f *pos, double dist_coll);
 void						d_asseting(t_env *d, t_projdata *p,
 															int16_t sectnum);
@@ -857,7 +857,7 @@ void						displaing_invent(t_env *d,
 											SDL_Surface *tex, int x1, int y1);
 void						displaing_ammo(t_env *d, t_weapon_type weapon_type);
 void						displaing_fuel(t_env *d);
-bool						door_use(t_env *d, t_sector *sect);
+bool						door_use(t_env *d, t_sec *sect);
 t_vec2f						to_close_val(t_vec2f a, t_vec2f b, t_vec2f p);
 void						view_danget_stash(t_env *d);
 void						respauning_h(t_env *d);

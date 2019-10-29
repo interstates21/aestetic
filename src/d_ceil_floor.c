@@ -34,7 +34,7 @@ void	drawing_c_f(t_env *d, t_projdata *p, int mode, t_vec2 x_y)
 	mode == 0 ? (z = 1 / (w[0] * p->a[0].z + w[1] * p->a[1].z + w[2] *
 																p->a[2].z)) :
 			(z = 1 / (w[0] * p->v[0].z + w[1] * p->v[1].z + w[2] * p->v[2].z));
-	if (z <= d->zbuffer[x_y.x + x_y.y * WIDTH])
+	if (z <= d->z_buff[x_y.x + x_y.y * WIDTH])
 		pixel_put(d, new_v3(x_y.x, x_y.y, z), to_shades(shd_fct(d, p->sector, z, 1),
 			pixel_pls(d->texts[mode == 0 ? p->sector->ceilpicnum :
 				p->sector->floorpicnum], mode == 0 ?

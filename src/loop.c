@@ -98,7 +98,7 @@ static void	render(t_env *d)
 	}
 	i = -1;
 	while (++i < WIDTH * HEIGHT)
-		d->zbuffer[i] = INFINITY;
+		d->z_buff[i] = INFINITY;
 	texture_pre_anim(d);
 	sect_rendering(d, &d->sectors[d->this_sect], &fr);
 	displaing_weap(d);

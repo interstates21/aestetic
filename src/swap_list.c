@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-void	mailing_deleted(short id, t_sector *sector, uint8_t type_to_destroy)
+void	mailing_deleted(short id, t_sec *sector, uint8_t type_to_destroy)
 {
 	t_sprite_list	*tmp;
 	t_sprite_list	*tmp_prev;

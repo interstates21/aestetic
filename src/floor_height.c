@@ -16,7 +16,7 @@ double	height_play_fl_val(t_env *d, int16_t sectnum)
 {
 	double		floor_height;
 	t_vec2f		v;
-	t_sector	*s;
+	t_sec	*s;
 
 	s = &d->sectors[sectnum];
 	v.x = d->cam.pos.x;
@@ -25,11 +25,11 @@ double	height_play_fl_val(t_env *d, int16_t sectnum)
 	return (floor_height);
 }
 
-double	fl_calc_vec_cal(t_env *d, t_sector *sect, t_vec2f v)
+double	fl_calc_vec_cal(t_env *d, t_sec *sect, t_vec2f v)
 {
 	double		floor_height;
 	int16_t		n;
-	t_sector	*s;
+	t_sec	*s;
 	double		res;
 
 	if (!sect)
@@ -41,7 +41,7 @@ double	fl_calc_vec_cal(t_env *d, t_sector *sect, t_vec2f v)
 	return (res);
 }
 
-double	height_fl_val(t_sector *sect, t_wall *walls, int16_t sectnum,
+double	height_fl_val(t_sec *sect, t_wall *walls, int16_t sectnum,
 																t_vec2f p)
 {
 	t_vec2f		center;

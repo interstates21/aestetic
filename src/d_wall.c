@@ -23,20 +23,20 @@ void	draw_wall4(t_env *d, t_projdata *p, t_frustum *fr, t_frustum *nfr)
 		p->ya = p->nya;
 }
 
-void	draw_wall3(t_env *d, t_projdata *p, t_frustum *nfr, bool *visible)
+void	draw_wall3(t_env *d, t_projdata *p, t_frustum *nfr, bool *visibility_buf)
 {
 	int	end;
 
 	if (p->cx2 - p->cx1 <= 2)
 		return ;
 	end = p->cx2;
-	while (!visible[p->cx1] && p->cx1 < end)
+	while (!visibility_buf[p->cx1] && p->cx1 < end)
 		(p->cx1)++;
 	p->cx2--;
 	if (p->cx1 >= end)
 		return ;
 	p->cx2 = p->cx1;
-	while (visible[p->cx2] && p->cx2 < end)
+	while (visibility_buf[p->cx2] && p->cx2 < end)
 		p->cx2++;
 	if (p->neighbor && p->cx1 < p->cx2)
 	{
@@ -49,7 +49,7 @@ void	draw_wall3(t_env *d, t_projdata *p, t_frustum *nfr, bool *visible)
 void	draw_wall2(t_env *d, t_projdata *p, t_frustum *fr, t_frustum *nfr)
 {
 	if (new_proj_data(p, fr, 1))
-		return ((void)(p->visible[p->x] = false));
+		return ((void)(p->visibility_buf[p->x] = false));
 	if (p->neighbor)
 		draw_wall4(d, p, fr, nfr);
 	p->ya_poster = 0;
@@ -85,7 +85,7 @@ void	displaing_wall(t_env *d, t_projdata *p, t_frustum *fr)
 	new_proj_data(p, fr, 0);
 	while (++p->x <= p->cx2)
 		draw_wall2(d, p, fr, &new_fr);
-	draw_wall3(d, p, &new_fr, p->visible);
+	draw_wall3(d, p, &new_fr, p->visibility_buf);
 	if (p->neighbor && p->wall->is_transparent)
 	{
 		p->x = MAX(p->x1, new_fr.x1);

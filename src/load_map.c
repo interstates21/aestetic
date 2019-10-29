@@ -76,7 +76,7 @@ static void	read_wall_n_sector_data(t_env *d, int f)
 		print_err("Cannot read nsectors");
 	i = -1;
 	while (++i < d->n_sect)
-		if (read(f, &d->sectors[i], sizeof(t_sector)) < 0 ||
+		if (read(f, &d->sectors[i], sizeof(t_sec)) < 0 ||
 			read(f, d->sectors[i].floor_texture_name, 100) < 0 ||
 			read(f, d->sectors[i].ceil_texture_name, 100) < 0)
 			print_err("Cannot read sector struct");

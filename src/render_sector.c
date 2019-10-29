@@ -26,7 +26,7 @@ void		transformvertex(t_env *d, t_vec2f v, double *x, double *z)
 	*z = v.x * d->cam.sin + v.y * d->cam.cos;
 }
 
-t_sector	*check_neighbor(t_env *d, int16_t nei)
+t_sec	*check_neighbor(t_env *d, int16_t nei)
 {
 	if (nei < 0 || nei >= d->n_sect)
 		return (NULL);
@@ -84,19 +84,19 @@ void		proj_ceil_or_floor(t_env *d, t_projdata *p, int mode)
 		(p->area = fun_to_edget(p->v[0], p->v[1], p->v[2].x, p->v[2].y));
 }
 
-static void	rend_while(t_env *d, t_sector *sect, t_frustum *fr, t_projdata p)
+static void	rend_while(t_env *d, t_sec *sect, t_frustum *fr, t_projdata p)
 {
 	int				i;
 
 	i = -1;
 	while (++i < WIDTH)
-		p.zbuffer[i] = INFINITY;
+		p.z_buff[i] = INFINITY;
 	i = -1;
 	while (++i < sect->n_walls)
 		render_wall(d, &p, fr, i);
 }
 
-void		sect_rendering(t_env *d, t_sector *sect, t_frustum *fr)
+void		sect_rendering(t_env *d, t_sec *sect, t_frustum *fr)
 {
 	t_sprite_list	*lst_tmp;
 	t_projdata		p;

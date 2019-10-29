@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-void	add_monster(t_sector *sector, int16_t id_of_monster)
+void	add_monster(t_sec *sector, int16_t id_of_monster)
 {
 	t_sprite_list	*new;
 	t_sprite_list	*buff;

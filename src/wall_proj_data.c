@@ -29,10 +29,10 @@ int		new_proj_data(t_projdata *p, t_frustum *fr, int mode)
 		p->n = CLAMP(NORMALIZE(p->x, p->x1, p->x2), 0, 1);
 		p->z = 1 / LERP(p->n, p->z1, p->z2);
 		p->u = LERP(p->n, p->u1, p->u2) * p->z;
-		if (p->z >= p->zbuffer[p->x] && mode == 1)
+		if (p->z >= p->z_buff[p->x] && mode == 1)
 			return (1);
-		mode == 1 ? ((p->zbuffer[p->x] = p->z) &&
-				(p->visible[p->x] = true)) : true;
+		mode == 1 ? ((p->z_buff[p->x] = p->z) &&
+				(p->visibility_buf[p->x] = true)) : true;
 		p->ya = LERP(p->n, p->y1a, p->y2a);
 		p->yb = LERP(p->n, p->y1b, p->y2b);
 		p->yc = LERP(p->n, p->y1c, p->y2c);
@@ -50,9 +50,9 @@ int		new_proj_data2(t_env *d, t_projdata *p, t_frustum *fr, int mode)
 		(p->wall->is_door && mode == 0) ?
 			((p->nya = MAX(p->nya, p->ya)) &&
 			(p->nyb = MIN(p->nyb, p->yb))) : true;
-		p->doorbottom = MIN(mode == 0 ? p->yb : p->yd, p->nyb);
-		p->doorheight = p->doorbottom - p->yc;
-		p->nya += (p->doorbottom - MAX(p->yc, p->nya)) *
+		p->door_begin = MIN(mode == 0 ? p->yb : p->yd, p->nyb);
+		p->door_h = p->door_begin - p->yc;
+		p->nya += (p->door_begin - MAX(p->yc, p->nya)) *
 			(1 - d->door_active[p->wall - d->walls]);
 	}
 	else

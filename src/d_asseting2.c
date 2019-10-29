@@ -60,7 +60,7 @@ void	to_liet_assets(t_env *d, t_projdata *p, SDL_Surface *tex)
 		container.three = NORMALIZE(container.one, p->x1, p->x2) * tex->w;
 		while (++container.two < p->yb && container.two < HEIGHT)
 		{
-			if (p->z < d->zbuffer[container.one + container.two * WIDTH])
+			if (p->z < d->z_buff[container.one + container.two * WIDTH])
 			{
 				px = pixel_pls(tex, container.three,
 								NORMALIZE(container.two, p->ya, p->yb), 3);

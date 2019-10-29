@@ -13,7 +13,7 @@
 #include "../includes/doom_nukem.h"
 
 void	activate_neighbor_door(t_env *d, t_wall *door,
-		t_wall *nextwall, t_sector *nei)
+		t_wall *nextwall, t_sec *nei)
 {
 	int16_t last;
 	int		i[2];
@@ -61,7 +61,7 @@ bool	door_use2(t_env *d, t_wall *w, int n[4])
 	return (true);
 }
 
-bool	door_use(t_env *d, t_sector *sect)
+bool	door_use(t_env *d, t_sec *sect)
 {
 	int		n[4];
 	double	m[2];

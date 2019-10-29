@@ -16,7 +16,7 @@ double	height_play_cl_val(t_env *d, int16_t sectnum)
 {
 	double		ceil_height;
 	t_vec2f		v;
-	t_sector	*s;
+	t_sec	*s;
 
 	v.x = d->cam.pos.x;
 	v.y = d->cam.pos.z;
@@ -25,11 +25,11 @@ double	height_play_cl_val(t_env *d, int16_t sectnum)
 	return (ceil_height);
 }
 
-double	cl_calc_vec_cal(t_env *d, t_sector *sect, t_vec2f v)
+double	cl_calc_vec_cal(t_env *d, t_sec *sect, t_vec2f v)
 {
 	double		ceil_height;
 	int16_t		n;
-	t_sector	*s;
+	t_sec	*s;
 	double		res;
 
 	if (!sect)
@@ -41,7 +41,7 @@ double	cl_calc_vec_cal(t_env *d, t_sector *sect, t_vec2f v)
 	return (res);
 }
 
-double	height_cl_val(t_sector *sect, t_wall *walls, int16_t sectnum,
+double	height_cl_val(t_sec *sect, t_wall *walls, int16_t sectnum,
 																	t_vec2f p)
 {
 	t_vec2f		center;

@@ -23,7 +23,7 @@ double	distanse_place(t_vec2f a, t_vec2f b, t_vec2f p)
 	return (v2_len(v2_min(p, to_close_val(a, b, p))));
 }
 
-void	door_func(t_env *d, t_sector *sect, int *n, double *m)
+void	door_func(t_env *d, t_sec *sect, int *n, double *m)
 {
 	while (n[3] < sect->firstwallnum + sect->n_walls)
 	{

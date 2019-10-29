@@ -68,7 +68,7 @@ void	run(char *mapname)
 	keyboard_battons(&(d.keys));
 	while (z == 0)
 		z = displaing_backgr(&d, e);
-	d.zbuffer = pix_val_scr();
+	d.z_buff = pix_val_scr();
 	ft_strncpy(d.nextmap, mapname, 100);
 	init_everything(&d, d.nextmap);
 }

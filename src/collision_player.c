@@ -67,7 +67,7 @@ bool	collided_v(t_vec2f *v, int *nw, t_env *d)
 	return (false);
 }
 
-bool	collision_player(t_env *d, t_sector *sect)
+bool	collision_player(t_env *d, t_sec *sect)
 {
 	static int	recursion;
 	t_vec2f		vect[2];

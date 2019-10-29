@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-double		shd_fct(t_env *d, t_sector *sector, double dist, int mode)
+double		shd_fct(t_env *d, t_sec *sector, double dist, int mode)
 {
 	double	factor;
 

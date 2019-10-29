@@ -20,7 +20,7 @@ void	drawing_wall(t_vec2 y_value, t_env *d, t_projdata *p, int mode)
 	{
 		pix = pixel_pls(p->tex, p->u_tex, (!p->wall->is_door || mode == 1) ?
 				NORMALIZE(y_value.x, p->yc, p->yd) * p->y_scale :
-				NORMALIZE(y_value.x, p->nya - p->doorheight, p->nya), 3);
+				NORMALIZE(y_value.x, p->nya - p->door_h, p->nya), 3);
 		if (mode == 0 || (pix >> 24) == 0xff)
 			pixel_put(d, new_v3(p->x, y_value.x, p->z),
 					to_shades(p->shadefactor, pix), 1);

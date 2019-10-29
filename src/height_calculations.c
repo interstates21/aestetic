@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-double	height_calc_fl(t_sector *s)
+double	height_calc_fl(t_sec *s)
 {
 	double n;
 
