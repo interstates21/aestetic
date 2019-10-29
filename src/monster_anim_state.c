@@ -6,7 +6,7 @@
 /*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 11:41:36 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/27 02:38:25 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 15:47:42 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,33 +31,32 @@ void	precompute_texanim(t_env *d)
 	}
 }
 
-void	monst(t_monster *monster, t_monster_type *monster_type, t_env *d, int num)
+void	monst(t_monster *m, t_monster_type *monster_type, t_env *d, int num)
 {
 	if (num == 1)
 	{
-		monster->anim_time--;
-		if (monster->anim_time)
+		m->anim_time--;
+		if (m->anim_time)
 			return ;
-		monster->anim_state = monster_type[monster->
-		id_type].anim_order[monster->anim_state];
-		monster->anim_time = SPEED_ANIM;
-		if (monster->anim_state == MOTHER_DEMON_ATTACK &&
-			monster->anim_time == SPEED_ANIM)
+		m->anim_state = monster_type[m->id_type].anim_order[m->anim_state];
+		m->anim_time = SPEED_ANIM;
+		if (m->anim_state == MOTHER_DEMON_ATTACK && m->anim_time == SPEED_ANIM)
 		{
-			create_projectile_monster(d, FIREBALL_1, monster);
-			play_sound(d, MOTHER_ATK_SOUND, monster->pos);
+			create_projectile_monster(d, FIREBALL_1, m);
+			play_sound(d, MOTHER_ATK_SOUND, m->pos);
 		}
 	}
 	else if (num == 2)
-		monster->anim_time--;
-		if (monster->anim_time)
+	{
+		m->anim_time--;
+		if (m->anim_time)
 			return ;
-		monster->anim_state = monster_type[monster->
-			id_type].anim_order[monster->anim_state];
-		if (monster->anim_state < 4)
-			monster->anim_time = SPEED_ANIM_CHARG;
+		m->anim_state = monster_type[m->id_type].anim_order[m->anim_state];
+		if (m->anim_state < 4)
+			m->anim_time = SPEED_ANIM_CHARG;
 		else
-			monster->anim_time = SPEED_ANIM_CHOW;
+			m->anim_time = SPEED_ANIM_CHOW;
+	}
 }
 
 void	monster_anim_state(t_monster *monster,

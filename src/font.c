@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   font.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 09:18:24 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/27 02:49:44 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 15:44:31 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	s(int arr[8], t_bitmap *b)
 {
-	int	i;
+	int		i;
 
 	i = -1;
 	while (++i < 8)
@@ -46,7 +46,7 @@ static void	part_w(t_env *d)
 	s((int[8]){0x18, 0x18, 0x18, 0x18, 0, 0x18}, &d->chars.exc);
 }
 
-void	init_font(t_env *d)
+void		init_font(t_env *d)
 {
 	*d = (t_env){.chars.a.bit = {0x7e, 0xff, 0xe7, 0xe7, 0xff, 0xff, 0xe7,
 								0xe7},
@@ -73,7 +73,7 @@ void	init_font(t_env *d)
 	part_w(d);
 }
 
-void	draw_bitmap(t_env *d, t_bitmap bitmap, int x, int y)
+void		draw_bitmap(t_env *d, t_bitmap bitmap, int x, int y)
 {
 	int		i;
 	int		j;
@@ -90,9 +90,9 @@ void	draw_bitmap(t_env *d, t_bitmap bitmap, int x, int y)
 	}
 }
 
-void	draw_char(t_env *d, char *str, int x, int y)
+void		draw_char(t_env *d, char *str, int x, int y)
 {
-	char c;
+	char	c;
 
 	c = ft_toupper(*str);
 	if (c == 'A')
@@ -181,9 +181,9 @@ void	draw_char(t_env *d, char *str, int x, int y)
 		draw_bitmap(d, d->chars.spc, x, y);
 }
 
-void	draw_string(t_env *d, t_font f)
+void		draw_string(t_env *d, t_font f)
 {
-	int			x_start;
+	int		x_start;
 
 	x_start = f.x;
 	while (*f.str)

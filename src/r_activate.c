@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   press_e.c                                          :+:      :+:    :+:   */
+/*   r_activate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 03:08:45 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 20:58:24 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 16:03:36 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
 
-bool	is_usable(t_objects *objects) {
+bool	is_usable(t_objects *objects)
+{
 	if (objects->is_interactive)
 		return (true);
 	if (objects->is_autopick)
@@ -22,18 +23,19 @@ bool	is_usable(t_objects *objects) {
 	return (false);
 }
 
-bool	is_in_range(t_env *d, t_objects *objects) {
+bool	is_in_range(t_env *d, t_objects *objects)
+{
 	t_vec2f cam_proj;
 	double	len;
 
 	cam_proj = v3_to_v2(d->cam.pos);
 	len = v2_len(v2_min(cam_proj, objects->world_pos));
-	if (len < PICKUP_RANGE )
+	if (len < PICKUP_RANGE)
 		return (true);
 	return (false);
 }
 
-void 	pickup_asset(t_env *d)
+void	pickup_asset(t_env *d)
 {
 	int			i;
 	t_objects	*objects;

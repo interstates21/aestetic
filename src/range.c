@@ -6,7 +6,7 @@
 /*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 03:21:13 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 18:17:57 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 16:08:31 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ t_range	make_range(int min, int max)
 	r.min = min;
 	r.max = max;
 	r.t = 0;
-
 	return (r);
 }
 
@@ -30,7 +29,6 @@ t_range	add_range(t_range a, t_range b)
 	r.min = a.min + b.min;
 	r.max = a.max + b.max;
 	r.t = 0;
-
 	return (r);
 }
 
@@ -41,10 +39,8 @@ t_range	minus_range(t_range a, t_range b)
 	r.min = a.min - b.min;
 	r.max = a.max - b.max;
 	r.t = 0;
-
 	return (r);
 }
-
 
 t_range	mult_range(t_range a, t_range b)
 {
@@ -53,7 +49,6 @@ t_range	mult_range(t_range a, t_range b)
 	r.min = a.min * b.min;
 	r.max = a.max * b.max;
 	r.t = 0;
-
 	return (r);
 }
 
@@ -66,6 +61,5 @@ t_range	div_range(t_range a, t_range b)
 	r.min = a.min / b.min;
 	r.max = a.max / b.max;
 	r.t = 0;
-
 	return (r);
 }

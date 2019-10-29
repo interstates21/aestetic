@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 20:21:26 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/28 20:21:27 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 15:52:33 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	smooth_movement(t_env *d, short *count, t_vec2f *mvt)
 	inertia(d, *mvt);
 }
 
-void	movement(t_env *d)
+void		movement(t_env *d)
 {
 	t_vec2f	mvt;
 	short	count;

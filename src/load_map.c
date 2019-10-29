@@ -6,7 +6,7 @@
 /*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 11:41:36 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/27 02:27:42 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 15:42:43 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	text_whi_le(t_env *d, int f, int num)
 			if (read(f, &heig, sizeof(int)) < 0)
 				print_err("Cannot read texture size");
 			if (!(d->texts[i] = SDL_CreateRGBSurfaceWithFormat(
-									0, wid, heig, 32, SDL_PIXELFORMAT_ARGB8888)))
+				0, wid, heig, 32, SDL_PIXELFORMAT_ARGB8888)))
 				print_err("Cannot create texture surface");
 			if ((read(f, d->texts[i]->pixels, wid * heig * 4)) < 0)
 				print_err("Cannot read texts");
@@ -38,12 +38,11 @@ static void	text_whi_le(t_env *d, int f, int num)
 
 static void	read_texture_data(t_env *d, int f)
 {
-	
 	size_t	tex_size;
 
 	tex_size = sizeof(SDL_Surface*) * d->n_texts;
 	d->texts = (SDL_Surface**)pure_malloc(tex_size,
-											"cannot alloc tex memory");
+		"cannot alloc tex memory");
 	text_whi_le(d, f, 1);
 }
 
@@ -56,7 +55,8 @@ static void	read_textures_name(t_env *d, int f)
 	if (read(f, &d->n_texts, sizeof(int32_t)) < 0)
 		print_err("Cannot read texture nb");
 	memory_size = sizeof(char*) * d->n_texts;
-	d->tex_name_list = (char**)pure_malloc(memory_size, "cannot alloc texNames");
+	d->tex_name_list = (char**)pure_malloc(memory_size,
+		"cannot alloc texNames");
 	i = -1;
 	while (++i < d->n_texts)
 	{

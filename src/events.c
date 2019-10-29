@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 19:03:55 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 20:58:12 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 15:41:23 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 bool	pick_up(t_env *d, t_objects *objects)
 {
 	if (v2_len(v2_min(v3_to_v2(d->cam.pos), objects->world_pos)) <
-		1.5 && !objects->used && (objects->is_interactive || objects->is_autopick
-									|| objects->is_key || objects->is_jetpack))
+	1.5 && !objects->used && (objects->is_interactive || objects->is_autopick
+			|| objects->is_key || objects->is_jetpack))
 	{
 		use_asset(d, objects);
 		return (true);

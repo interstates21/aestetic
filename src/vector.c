@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 23:29:56 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/28 23:38:15 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 16:10:50 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ bool	is_inside_vec2f(t_vec2f p1, t_vec2f p2, t_vec2f point)
 	return (true);
 }
 
-void print_v(t_vec2 v, const char *s)
+void	print_v(t_vec2 v, const char *s)
 {
 	ft_putstr(s);
 	ft_putstr(" -- x: ");

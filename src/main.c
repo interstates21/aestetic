@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/29 15:40:05 by vslutiak          #+#    #+#             */
+/*   Updated: 2019/10/29 15:48:56 by vslutiak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/doom_nukem.h"
 
 void	set_doorstate(t_env *d)
@@ -33,9 +45,7 @@ void	init_everything(t_env *d, char *map)
 	if (d->sect_begin < 0)
 		print_err("error");
 	if (SDL_SetRelativeMouseMode(SDL_TRUE) == -1)
-	{
 		print_err("error");
-	}
 	d->player_floor_h = get_floorheight_player(d, d->this_sect);
 	d->player_ceil_h = get_ceilheight_player(d, d->this_sect);
 	play_music(d, MAIN_MUSIC);
@@ -45,9 +55,9 @@ void	init_everything(t_env *d, char *map)
 
 void	run(char *mapname)
 {
-	t_env d;
-	SDL_Event e;
-	int z;
+	t_env		d;
+	SDL_Event	e;
+	int			z;
 
 	z = 0;
 	init_font(&d);
@@ -57,7 +67,7 @@ void	run(char *mapname)
 	d.g_font = TTF_OpenFont("/Library/Fonts/Arial.ttf", 25);
 	init_keys(&(d.keys));
 	while (z == 0)
-			z = draw_background(&d, e);
+		z = draw_background(&d, e);
 	d.zbuffer = get_screen_pixels();
 	ft_strncpy(d.nextmap, mapname, 100);
 	init_everything(&d, d.nextmap);

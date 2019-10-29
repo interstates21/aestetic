@@ -6,7 +6,7 @@
 /*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 11:41:36 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/27 02:27:47 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 15:43:47 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	read_motherdemon_projectile(t_env *d, int f)
 	{
 		if (read(f, &wid, sizeof(int)) < 0 || read(f, &heig, sizeof(int)) < 0 ||
 			!(d->anim_rot_text[1][i] = SDL_CreateRGBSurfaceWithFormat(
-									0, wid, heig, 32, SDL_PIXELFORMAT_ARGB8888)) ||
+				0, wid, heig, 32, SDL_PIXELFORMAT_ARGB8888)) ||
 			read(f, d->anim_rot_text[1][i]->pixels, wid * heig * 4) < 0)
 			print_err("Failed to read motherdemon projectile\n");
 	}
@@ -31,9 +31,9 @@ static void	read_motherdemon_projectile(t_env *d, int f)
 
 static void	read_anim_death_texture(t_env *d, int f, int *i, int nb_o)
 {
-	int	o;
-	int	w;
-	int	h;
+	int		o;
+	int		w;
+	int		h;
 
 	if (read(f, &w, sizeof(int)) < 0 || read(f, &h, sizeof(int)) < 0)
 		print_err("Some Error");
@@ -49,9 +49,9 @@ static void	read_anim_death_texture(t_env *d, int f, int *i, int nb_o)
 
 static void	read_anim_texture(t_env *d, int f, int *i, int nb_o)
 {
-	int	o;
-	int	w;
-	int	h;
+	int		o;
+	int		w;
+	int		h;
 
 	o = -1;
 	while (++o < nb_o)
@@ -66,21 +66,21 @@ static void	read_anim_texture(t_env *d, int f, int *i, int nb_o)
 	}
 }
 
-static void load_whi_le(t_env *d, int f, int i, int nb_orientation)
+static void	load_whi_le(t_env *d, int f, int i, int nb_orientation)
 {
-	int a;
+	int		a;
 
 	a = -1;
 	while (++a < 7)
 		read_anim_texture(d, f, (int[2]){i, a}, nb_orientation);
 }
 
-void			load_monsters_texture(t_env *d, int f)
+void		load_monsters_texture(t_env *d, int f)
 {
-	int i;
-	int a;
-	int nb_orientation;
-	int	nb_death;
+	int		i;
+	int		a;
+	int		nb_orientation;
+	int		nb_death;
 
 	i = -1;
 	while (++i < 2)

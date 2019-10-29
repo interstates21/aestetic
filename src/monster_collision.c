@@ -6,7 +6,7 @@
 /*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 18:11:53 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/27 18:47:08 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 16:03:03 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ t_vec3f	update_pos_vec3f(t_vec3f new_pos, t_vec2f point, double radius)
 {
 	t_vec2f		tmp[2];
 
-	tmp[0] = new_v2( new_pos.x - point.x, new_pos.z - point.y );
-	tmp[1] = new_v2( radius, 0.0 );
+	tmp[0] = new_v2(new_pos.x - point.x, new_pos.z - point.y);
+	tmp[1] = new_v2(radius, 0.0);
 	actualize_dir(atan2(tmp[0].y, tmp[0].x), &tmp[1]);
 	return (new_v3(tmp[1].x + point.x, new_pos.y, tmp[1].y + point.y));
 }
@@ -27,7 +27,7 @@ t_vec2f	update_pos_vec2f(t_vec2f pos, t_vec2f point)
 	t_vec2f		tmp;
 
 	tmp = v2_min(pos, point);
-	tmp = new_v2( 0.0, MINIMUM_SIZE_AROUND_MONSTERS );
+	tmp = new_v2(0.0, MINIMUM_SIZE_AROUND_MONSTERS);
 	actualize_dir(atan2(tmp.y, tmp.x), &tmp);
 	return (v2_plus(point, tmp));
 }
@@ -77,4 +77,3 @@ void	collision_with_monster(t_env *d, short cur_sect)
 		tmp = tmp->next;
 	}
 }
-

@@ -6,7 +6,7 @@
 /*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 21:39:48 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/27 22:19:38 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 15:49:35 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	update_cursect_chargingdemon(t_env *d, t_monster *monster,
 	}
 }
 
-static void init_load_monst(t_env *d, t_monster *monster, t_vec2f tmp)
+static void	init_load_monst(t_env *d, t_monster *monster, t_vec2f tmp)
 {
 	tmp = v2_min(monster->pos, v3_to_v2(d->cam.pos));
 	monster->rot = atan2(tmp.y, tmp.x) + M_PI;

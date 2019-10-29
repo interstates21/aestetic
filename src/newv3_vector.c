@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   newv3_vector.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 23:35:55 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/28 23:36:32 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 15:55:19 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ double	vec3f_length(t_vec3f v)
 	return (sqrt(v.x * v.x + v.y * v.y + v.z * v.z));
 }
 
-t_vec3f new_v3_proj(double x, double y)
+t_vec3f	new_v3_proj(double x, double y)
 {
 	t_vec3f v;
 
@@ -27,7 +27,7 @@ t_vec3f new_v3_proj(double x, double y)
 	return (v);
 }
 
-t_vec3f new_v3zero()
+t_vec3f	new_v3zero(void)
 {
 	t_vec3f v;
 

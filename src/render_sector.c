@@ -6,13 +6,13 @@
 /*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 22:23:12 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/27 23:06:17 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 16:10:31 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
 
-t_vec3f	transform_back(t_env *d, t_vec3f v)
+t_vec3f		transform_back(t_env *d, t_vec3f v)
 {
 	return (new_v3(v.x * d->cam.cos + v.z * d->cam.sin + d->cam.pos.x, v.y,
 			v.x * -d->cam.sin + v.z * d->cam.cos + d->cam.pos.z));
@@ -56,7 +56,7 @@ void		render_wall(t_env *d, t_projdata *p, t_frustum *fr, int i)
 			v3_to_v2(transform_back(d, new_v3(p->x2, 0, p->z2)))});
 }
 
-void	proj_ceil_or_floor(t_env *d, t_projdata *p, int mode)
+void		proj_ceil_or_floor(t_env *d, t_projdata *p, int mode)
 {
 	mode == 0 ? (p->b[0] = transform_back(d, new_v3(-1, 0, 1))) :
 				(p->c[0] = transform_back(d, new_v3(-1, 0, 1)));
@@ -100,7 +100,6 @@ void		render_sector(t_env *d, t_sector *sect, t_frustum *fr)
 {
 	t_sprite_list	*lst_tmp;
 	t_projdata		p;
-	
 
 	p.sector = sect;
 	proj_ceil_or_floor(d, &p, 0);

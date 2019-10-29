@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reorder_sprite.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 03:53:07 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 05:31:18 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 16:09:06 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,4 +108,3 @@ void		reorder_sprite(t_env *d, t_sector *sect)
 		free(vla);
 	}
 }
-

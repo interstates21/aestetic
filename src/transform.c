@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   r_vector.c                                         :+:      :+:    :+:   */
+/*   transform.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akolomoi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 18:45:09 by akolomoi          #+#    #+#             */
-/*   Updated: 2019/10/28 18:45:09 by akolomoi         ###   ########.fr       */
+/*   Updated: 2019/10/29 16:11:50 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	rot_x(t_vec3f *v, double ang, t_vec3f axis)
 	double tmp;
 	double cos_t;
 	double sin_t;
-
 
 	ang = ang * M_PI / 180.0;
 	translate(v, axis, -1);

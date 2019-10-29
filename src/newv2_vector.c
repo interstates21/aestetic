@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   newv2_vector.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 23:38:36 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/28 23:42:32 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 15:54:10 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_nukem.h"
 
-t_vec2f	new_v2zero()
+t_vec2f	new_v2zero(void)
 {
 	t_vec2f v;
 

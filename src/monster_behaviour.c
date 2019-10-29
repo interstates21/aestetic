@@ -6,11 +6,12 @@
 /*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 21:39:48 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/27 22:19:21 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 15:51:28 by vslutiak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
+
 void	month_ini(double rand, t_vec2f tmp, t_vec2f tmp2, t_monster *monster)
 {
 	monster->rot = rand;
