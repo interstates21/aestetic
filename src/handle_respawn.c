@@ -14,7 +14,7 @@
 
 //notrefact
 
-static void	blackout(t_data *d)
+static void	blackout(t_env *d)
 {
 	SDL_Event	e;
 
@@ -34,7 +34,7 @@ static void	blackout(t_data *d)
 	}
 }
 
-void		handle_respawn(t_data *d)
+void		handle_respawn(t_env *d)
 {
 	int i;
 	int j;

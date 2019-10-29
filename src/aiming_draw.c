@@ -16,7 +16,7 @@
 ** bdeomin
 */
 
-void	load_tex(t_data *d, t_three_val cont, int *tex)
+void	load_tex(t_env *d, t_three_val cont, int *tex)
 {
 	int	j;
 	int	w;
@@ -43,7 +43,7 @@ void	load_tex(t_data *d, t_three_val cont, int *tex)
 	}
 }
 
-void	load_weapons_texture(t_data *d, int f, int *nb_tex,
+void	load_weapons_texture(t_env *d, int f, int *nb_tex,
 								int *nb_projectiles)
 {
 	t_three_val	container;
@@ -59,7 +59,7 @@ void	load_weapons_texture(t_data *d, int f, int *nb_tex,
 	}
 }
 
-void	drawing(t_data *d, uint32_t colo)
+void	drawing(t_env *d, uint32_t colo)
 {
 	short		i;
 
@@ -71,7 +71,7 @@ void	drawing(t_data *d, uint32_t colo)
 		pixel_put(d, new_v3((WIDTH / 2) - 16 + i, HEIGHT / 2, 0), colo, 0);
 }
 
-void	aiming_draw(t_data *d)
+void	aiming_draw(t_env *d)
 {
 	uint32_t	colo;
 

@@ -305,7 +305,7 @@ typedef struct				s_projdata
 # define MAX_STATE_OF_PROJ_ANIM 21
 # define COLLISION_ID MAX_STATE_OF_PROJ_ANIM - 1
 
-typedef struct				s_projectile
+typedef struct				s_anim_rot
 {
 	bool					is_active;
 	bool					has_collided;
@@ -317,7 +317,7 @@ typedef struct				s_projectile
 	uint8_t					time_remaining_anim;
 	uint8_t					current_anim_playing;
 	t_monster				*target;
-}							t_projectile;
+}							t_anim_rot;
 
 typedef struct				s_proj_type
 {
@@ -459,7 +459,7 @@ typedef struct				s_chars
 	t_bitmap				prc;
 }							t_chars;
 
-typedef struct				s_data
+typedef struct				s_env
 {	t_sdl					sdl;
 	t_scene					scene;
 	t_player				player;
@@ -487,7 +487,7 @@ typedef struct				s_data
 	t_assets				**assets;
 	int16_t					nb_assets;
 	t_monster_type			monster_type[MAXTYPEMONSTERS];
-	t_projectile			projectiles[MAX_PROJECTILES];
+	t_anim_rot				anim_rots[MAX_PROJECTILES];
 	t_proj_type				projectile_type[MAX_KIND_OF_PROJECTILE];
 	t_weapon_type			weapon_type;
 	uint16_t				nummonsters;
@@ -518,18 +518,18 @@ typedef struct				s_data
 	int						loaded;
 	TTF_Font				*g_font;
 	unsigned int			tick;
-}							t_data;
+}							t_env;
 
 typedef struct				s_thread_arg
 {
-	t_data					*d;
+	t_env					*d;
 	t_projdata				*p;
 	t_frustum				*fr;
 }							t_thread_arg;
 
 typedef	struct				s_args_multi_colo_buf
 {
-	t_data					*d;
+	t_env					*d;
 	short					start_x;
 	short					max_x;
 }							t_args_multi_colo_buf;
@@ -721,24 +721,24 @@ typedef	struct				s_three_val
 # define F_ANIM 1
 # define PICKUP_RANGE 2
 
-void						change_buf_colo(t_data *d, uint16_t amount,
+void						change_buf_colo(t_env *d, uint16_t amount,
 															uint32_t colo);
 double						get_dist(t_vec2f a, t_vec2f b, t_vec2f p);
-void						invoke_msg(t_data *d, char *msg);
-void						br_msg(t_data *d, t_wall *w, int *n);
-void						whi_le(t_data *d, t_sector *sect, int *n,
+void						invoke_msg(t_env *d, char *msg);
+void						br_msg(t_env *d, t_wall *w, int *n);
+void						whi_le(t_env *d, t_sector *sect, int *n,
 															double *m);
 void						alpha_y(double *sl_y);
 void						swap_tabs(short *tab, short *tmp_tab);
-void						set_tab(t_data *d, short sect_to_scan,
+void						set_tab(t_env *d, short sect_to_scan,
 												short *tab, short old_sect);
-int							draw_background(t_data *d, SDL_Event e);
-void						draw_message(t_data *d, char *message, int color,
+int							draw_background(t_env *d, SDL_Event e);
+void						draw_message(t_env *d, char *message, int color,
 												SDL_Rect rect);
-void						draw_wall_nei(t_data *d, t_projdata *p,
+void						draw_wall_nei(t_env *d, t_projdata *p,
 												t_frustum *fr);
-void						free_sectors_sprites(t_data *d, short i);
-void						finish(t_data *d);
+void						free_sectors_sprites(t_env *d, short i);
+void						finish(t_env *d);
 double						get_angle(double o, bool is_animated);
 double						tan_calculations(double h, double slope,
 												t_vec2f p, t_vec2f c);
@@ -757,81 +757,81 @@ t_v2_pair					new_v2_pair(t_vec2f v1, t_vec2f v2);
 void						*pure_malloc(size_t size, const char *err);
 char						*ft_itoa_static(int n);
 double						calculate_floor_height_epsilon(double h);
-void						aiming_draw(t_data *d);
-int16_t						scan_sect_point_line(t_data *d,
+void						aiming_draw(t_env *d);
+int16_t						scan_sect_point_line(t_env *d,
 							uint16_t sect_to_scan, double dist, bool hit_all);
-double						find_closest_wall_dist(t_data *d,
+double						find_closest_wall_dist(t_env *d,
 														uint16_t sect_to_scan);
-int16_t						recur_scan_point_line(t_data *d,
+int16_t						recur_scan_point_line(t_env *d,
 						int16_t sect_to_scan, int16_t old_sect, bool hit_all);
-double						get_dist_to_intersect_wall(t_data *d,
+double						get_dist_to_intersect_wall(t_env *d,
 												t_vec2f wall1, t_vec2f wall2);
-void						pixel_put(t_data *d, t_vec3f p, uint32_t color,
+void						pixel_put(t_env *d, t_vec3f p, uint32_t color,
 																	int mode);
 uint32_t					pixel_pls(SDL_Surface *s, double x, double y,
 																	int mode);
-bool						inside(t_data *d, int16_t sectnum, t_vec2f pos);
+bool						inside(t_env *d, int16_t sectnum, t_vec2f pos);
 bool						clip_wall(double *x1, double *z1, double x2,
 																	double z2);
-void						proj_wall(t_data *d, t_projdata *p, t_frustum *fr,
+void						proj_wall(t_env *d, t_projdata *p, t_frustum *fr,
 																t_vec2f v[2]);
 int							new_proj_data(t_projdata *p, t_frustum *fr,
 																	int mode);
-int							new_proj_data2(t_data *d, t_projdata *p,
+int							new_proj_data2(t_env *d, t_projdata *p,
 													t_frustum *fr, int mode);
-void						draw_wall(t_data *d, t_projdata *p, t_frustum *fr);
-void						draw_wall_nei(t_data *d, t_projdata *p,
+void						draw_wall(t_env *d, t_projdata *p, t_frustum *fr);
+void						draw_wall_nei(t_env *d, t_projdata *p,
 																t_frustum *fr);
-void						draw_wall_no_nei(t_data *d, t_projdata *p,
+void						draw_wall_no_nei(t_env *d, t_projdata *p,
 																t_frustum *fr);
-void						draw_wall_transparent(t_data *d, t_projdata *p,
+void						draw_wall_transparent(t_env *d, t_projdata *p,
 																t_frustum *fr);
-void						draw_sky(t_data *d, t_projdata *p, t_frustum *fr);
-void						draw_ceil_floor(t_data *d, t_projdata *p,
+void						draw_sky(t_env *d, t_projdata *p, t_frustum *fr);
+void						draw_ceil_floor(t_env *d, t_projdata *p,
 													t_frustum *fr, int mode);
-void						player_actions(t_data *d);
-void						draw_weapon(t_data *d);
-void						blaster_shot(t_data *d);
-void						render_sector(t_data *d, t_sector *sect,
+void						player_actions(t_env *d);
+void						draw_weapon(t_env *d);
+void						blaster_shot(t_env *d);
+void						render_sector(t_env *d, t_sector *sect,
 																t_frustum *fr);
-void						draw_sprite(t_data *d, t_frustum *fr,
+void						draw_sprite(t_env *d, t_frustum *fr,
 														t_sprite_list *sprite);
-void						init_player(t_data *d, t_player *player);
-void						init_monsters(t_data *d);
-void						init_projectiles(t_data *d);
-void						swap_list(uint8_t type, uint16_t id, t_data *d,
+void						init_player(t_env *d, t_player *player);
+void						init_monsters(t_env *d);
+void						init_projectiles(t_env *d);
+void						swap_list(uint8_t type, uint16_t id, t_env *d,
 																int sectnum[2]);
-int16_t						update_cursect_smart(t_data *d, short depth,
+int16_t						update_cursect_smart(t_env *d, short depth,
 											t_vec2f pos, uint16_t cursectnum);
-int16_t						update_cursect_proj(int16_t sects[2], t_data *d,
+int16_t						update_cursect_proj(int16_t sects[2], t_env *d,
 														int depth, t_vec3f pos);
 void						destroy_mail(short id, t_sector *sector,
 													uint8_t type_to_destroy);
-void						update_anim_projectile(t_projectile *proj,
-											t_data *d, short id, bool collided);
+void						update_anim_projectile(t_anim_rot *proj,
+											t_env *d, short id, bool collided);
 void						monster_anim_state(t_monster *monster,
-									t_monster_type *monster_type, t_data *d);
-void						monster_hit(t_data *d, uint16_t damage,
+									t_monster_type *monster_type, t_env *d);
+void						monster_hit(t_env *d, uint16_t damage,
 														uint16_t id_monster);
-void						collision_monster_monster(t_data *d, short cur_sect,
+void						collision_monster_monster(t_env *d, short cur_sect,
 															t_monster *monster);
-void						collision_with_monster(t_data *d, short cur_sect);
-bool						collision_proj_monster(t_data *d, t_sector *sector,
-													t_projectile *projectile);
-bool						collision_proj_player(t_data *d,
-													t_projectile *projectile);
-t_vec3f						trans_v3f_in_scr(t_data *d, t_vec3f v);
-void						check_activation(t_data *d, t_monster *monster,
+void						collision_with_monster(t_env *d, short cur_sect);
+bool						collision_proj_monster(t_env *d, t_sector *sector,
+													t_anim_rot *projectile);
+bool						collision_proj_player(t_env *d,
+													t_anim_rot *projectile);
+t_vec3f						trans_v3f_in_scr(t_env *d, t_vec3f v);
+void						check_activation(t_env *d, t_monster *monster,
 													t_vec2f pos, bool recur);
-void						monster_behaviour(t_data *d, t_monster *monster,
+void						monster_behaviour(t_env *d, t_monster *monster,
 																uint16_t id);
-void						monster_behaviour_chargingdemon(t_data *d,
+void						monster_behaviour_chargingdemon(t_env *d,
 											t_monster *monster, uint16_t id);
 void						charging_demon_wait(t_monster *monster);
-double						shd_fct(t_data *d, t_sector *sector, double dist,
+double						shd_fct(t_env *d, t_sector *sector, double dist,
 																	int mode);
 uint32_t					shade(double factor, uint32_t c);
-void						reorder_sprite(t_data *d, t_sector *sect);
+void						reorder_sprite(t_env *d, t_sector *sect);
 t_vec3f						v2_to_v3(t_vec2f v);
 t_vec2f						v3_to_v2(t_vec3f v);
 double						vec3f_length(t_vec3f v);
@@ -841,101 +841,101 @@ bool						is_near(double v1, double v2, double range);
 t_vec2f						intersect(t_vec2f p0, t_vec2f p1, t_vec2f p2,
 																t_vec2f p3);
 uint32_t					alpha(uint32_t	old_colo, uint32_t	new_colo);
-void						draw_string(t_data *d, t_font f);
-void						init_font(t_data *d);
-double						get_floorheight_player(t_data *d, int16_t sectnum);
-double						get_floordh(t_data *d, t_sector *sect, t_vec2f v);
-double						get_ceilheight_player(t_data *d, int16_t sectnum);
-double						get_ceildh(t_data *d, t_sector *sect, t_vec2f v);
-void						init_everything(t_data *d, char *map);
-void						fix_picnum(t_data *d);
-void						handle_finish(t_data *d);
-void						play_music(t_data *d, uint8_t id);
-void						load_sound(t_data *d, int f);
-void						play_sound(t_data *d, uint8_t id, t_vec2f pos);
+void						draw_string(t_env *d, t_font f);
+void						init_font(t_env *d);
+double						get_floorheight_player(t_env *d, int16_t sectnum);
+double						get_floordh(t_env *d, t_sector *sect, t_vec2f v);
+double						get_ceilheight_player(t_env *d, int16_t sectnum);
+double						get_ceildh(t_env *d, t_sector *sect, t_vec2f v);
+void						init_everything(t_env *d, char *map);
+void						fix_picnum(t_env *d);
+void						handle_finish(t_env *d);
+void						play_music(t_env *d, uint8_t id);
+void						load_sound(t_env *d, int f);
+void						play_sound(t_env *d, uint8_t id, t_vec2f pos);
 double						edge_function(t_vec3f a, t_vec3f b, int x, int y);
-bool						collision_player(t_data *d, t_sector *sect);
-bool						collision_monster(t_data *d, t_sector *sect,
+bool						collision_player(t_env *d, t_sector *sect);
+bool						collision_monster(t_env *d, t_sector *sect,
 												t_vec2f *pos, double dist_coll);
-void						d_asseting(t_data *d, t_projdata *p,
+void						d_asseting(t_env *d, t_projdata *p,
 															int16_t sectnum);
-void						proj_to_asset(t_data *d, t_projdata *p,
+void						proj_to_asset(t_env *d, t_projdata *p,
 												t_vec3f vect, SDL_Surface *tex);
-void						liting_assets(t_data *d, t_projdata *p,
+void						liting_assets(t_env *d, t_projdata *p,
 															SDL_Surface *tex);
-void						assets_to_draw(t_data *d, t_projdata *p,
+void						assets_to_draw(t_env *d, t_projdata *p,
 														int16_t sectnum, int i);
-void						interact_with_assets(t_data *d);
-void						use_asset(t_data *d, t_assets *asset);
-void						draw_hud(t_data *d);
-void						draw_inventory_slot(t_data *d,
+void						interact_with_assets(t_env *d);
+void						use_asset(t_env *d, t_assets *asset);
+void						draw_hud(t_env *d);
+void						draw_inventory_slot(t_env *d,
 											SDL_Surface *tex, int x1, int y1);
-void						draw_ammo(t_data *d, t_weapon_type weapon_type);
-void						draw_fuel(t_data *d);
-void						invoke_msg(t_data *d, char *msg);
-bool						door_use(t_data *d, t_sector *sect);
+void						draw_ammo(t_env *d, t_weapon_type weapon_type);
+void						draw_fuel(t_env *d);
+void						invoke_msg(t_env *d, char *msg);
+bool						door_use(t_env *d, t_sector *sect);
 t_vec2f						get_closest(t_vec2f a, t_vec2f b, t_vec2f p);
-void						move_monster(t_data *d, int i);
-void						draw_health(t_data *d);
-void						check_dangerous_area(t_data *d);
-void						handle_respawn(t_data *d);
-void						precompute_texanim(t_data *d);
-void						intro_screen(t_data *d);
+void						move_monster(t_env *d, int i);
+void						draw_health(t_env *d);
+void						check_dangerous_area(t_env *d);
+void						handle_respawn(t_env *d);
+void						precompute_texanim(t_env *d);
+void						intro_screen(t_env *d);
 int							ft_mod(int i, int n);
-void						next_sect_fix(t_data *d);
-void						handle_click(t_data *e);
-void						pickup_asset(t_data *d);
-void						update_2(t_data *d);
+void						next_sect_fix(t_env *d);
+void						handle_click(t_env *e);
+void						pickup_asset(t_env *d);
+void						update_2(t_env *d);
 bool						validate_argv(char *str);
-void						update(t_data *d);
-void						player_hit_proj(t_data *d,
-													t_projectile *projectile);
-void						player_fell(t_data *d);
-void						contact_with_monster(t_data *d, t_monster *monster);
-void						change_buf_colo(t_data *d, uint16_t amount,
+void						update(t_env *d);
+void						player_hit_proj(t_env *d,
+													t_anim_rot *projectile);
+void						player_fell(t_env *d);
+void						contact_with_monster(t_env *d, t_monster *monster);
+void						change_buf_colo(t_env *d, uint16_t amount,
 																uint32_t colo);
-void						color_buffer(t_data *d);
-void						change_inertia(t_data *d, double angle,
+void						color_buffer(t_env *d);
+void						change_inertia(t_env *d, double angle,
 																double length);
-void						inertia(t_data *d, t_vec2f mvt);
-void						create_projectile_monster(t_data *d,
+void						inertia(t_env *d, t_vec2f mvt);
+void						create_projectile_monster(t_env *d,
 									short id_of_proj_type, t_monster *monster);
-void						create_projectile(t_data *d, short id_of_proj_type);
+void						create_projectile(t_env *d, short id_of_proj_type);
 uint8_t						get_nb_anim_from_rotation(double monster_rot,
 									t_vec2f monster_pos, t_vec2f player_pos);
-void						draw_proj(t_data *d, t_frustum *fr,
-															t_projectile proj);
+void						draw_proj(t_env *d, t_frustum *fr,
+															t_anim_rot proj);
 void						new_disp_data(t_frustum *fr,
 								t_display_data *disp_data, uint16_t cursectnum);
 void						new_disp_data_1(t_display_data *disp_data,
 								SDL_Surface *s, t_vec3f p_in_scr, double size);
 void						new_disp_data_2(t_display_data *disp_data,
 														uint16_t cursectnum);
-void						draw_monster(t_data *d, t_monster monster);
-void						disp_sprite(t_data *d, SDL_Surface *s,
+void						draw_monster(t_env *d, t_monster monster);
+void						disp_sprite(t_env *d, SDL_Surface *s,
 									t_display_data disp_data, t_vec2f dist_mod);
 void						print_err(const char *err);
-void						print_and_quit(t_data *d, const char *str);
+void						print_and_quit(t_env *d, const char *str);
 void						init_sdl(t_sdl *sdl);
-void						loop(t_data *d);
-void						event_mouse_motion(t_data *d,
+void						loop(t_env *d);
+void						event_mouse_motion(t_env *d,
 													SDL_MouseMotionEvent event);
-void						event_mouse_button(t_data *d,
+void						event_mouse_button(t_env *d,
 													SDL_MouseButtonEvent event);
-void						event_key_down(t_data *d, SDL_KeyboardEvent event);
-void						normal_mode(t_data *d);
-void						jump(t_data *d);
-void						fly_mode(t_data *d);
-void						movement(t_data *d);
-void						load_map(t_data *d, char *map);
-void						read_posters_data(t_data *d, int f);
-void						read_monsters_data(t_data *d, int f);
-void						read_assets_texture(t_data *d, int f);
-void						read_assets_data(t_data *d, int f);
-void						load_monsters_texture(t_data *d, int f);
-void						load_weapons_texture(t_data *d, int f, int *nb_tex,
+void						event_key_down(t_env *d, SDL_KeyboardEvent event);
+void						normal_mode(t_env *d);
+void						jump(t_env *d);
+void						fly_mode(t_env *d);
+void						movement(t_env *d);
+void						load_map(t_env *d, char *map);
+void						read_posters_data(t_env *d, int f);
+void						read_monsters_data(t_env *d, int f);
+void						read_assets_texture(t_env *d, int f);
+void						read_assets_data(t_env *d, int f);
+void						load_monsters_texture(t_env *d, int f);
+void						load_weapons_texture(t_env *d, int f, int *nb_tex,
 														int *nb_projectiles);
-void						loading(t_data *d);
+void						loading(t_env *d);
 t_vec3f						new_v3_proj(double x, double y);
 t_vec3f						new_v3zero();
 t_vec3f						new_v3z(double z);
@@ -945,10 +945,10 @@ t_range						minus_range(t_range a, t_range b);
 t_range						mult_range(t_range a, t_range b);
 t_range						div_range(t_range a, t_range b);
 t_vec2						new_v2int(int x, int y);
-int							circle(t_data *e, t_vec2 c, int r, Uint32 color);
+int							circle(t_env *e, t_vec2 c, int r, Uint32 color);
 t_font						new_font(char *str, t_vec2 v, Uint32 color,
 																	int scale);
-void						print_loading_ascii(t_data *d);
+void						print_loading_ascii(t_env *d);
 t_vec3f						move_down_vector3(t_vec3f v);
 t_vec2						move_down_vector2(t_vec2 v);
 void						merge_vector_arr(t_vec3f **a, t_vec3f **b, int ia,

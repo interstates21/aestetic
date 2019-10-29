@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-double	get_floorheight_player(t_data *d, int16_t sectnum)
+double	get_floorheight_player(t_env *d, int16_t sectnum)
 {
 	double		floor_height;
 	t_vec2f		v;
@@ -25,7 +25,7 @@ double	get_floorheight_player(t_data *d, int16_t sectnum)
 	return (floor_height);
 }
 
-double	get_floordh(t_data *d, t_sector *sect, t_vec2f v)
+double	get_floordh(t_env *d, t_sector *sect, t_vec2f v)
 {
 	double		floor_height;
 	int16_t		n;

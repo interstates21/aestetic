@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-double	get_ceilheight_player(t_data *d, int16_t sectnum)
+double	get_ceilheight_player(t_env *d, int16_t sectnum)
 {
 	double		ceil_height;
 	t_vec2f		v;
@@ -25,7 +25,7 @@ double	get_ceilheight_player(t_data *d, int16_t sectnum)
 	return (ceil_height);
 }
 
-double	get_ceildh(t_data *d, t_sector *sect, t_vec2f v)
+double	get_ceildh(t_env *d, t_sector *sect, t_vec2f v)
 {
 	double		ceil_height;
 	int16_t		n;

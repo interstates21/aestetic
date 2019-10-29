@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-void		pixel_put(t_data *d, t_vec3f p, uint32_t color, int mode)
+void		pixel_put(t_env *d, t_vec3f p, uint32_t color, int mode)
 {
 	int x;
 	int	y;

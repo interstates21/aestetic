@@ -19,7 +19,7 @@ static void		read_wp_proj(t_ed *e, char *p, const int params[3])
 	DIR				*dir;
 	struct dirent	*data;
 
-	path = ft_strjoin(p, "projectiles/");
+	path = ft_strjoin(p, "anim_rots/");
 	dir = NULL;
 	reopen(&dir, path);
 	i = 0;

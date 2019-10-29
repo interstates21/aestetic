@@ -12,13 +12,13 @@
 
 #include "../includes/doom_nukem.h"
 
-t_vec3f	transform_back(t_data *d, t_vec3f v)
+t_vec3f	transform_back(t_env *d, t_vec3f v)
 {
 	return (new_v3(v.x * d->cam.cos + v.z * d->cam.sin + d->cam.pos.x, v.y,
 			v.x * -d->cam.sin + v.z * d->cam.cos + d->cam.pos.z));
 }
 
-void		transformvertex(t_data *d, t_vec2f v, double *x, double *z)
+void		transformvertex(t_env *d, t_vec2f v, double *x, double *z)
 {
 	v.x -= d->cam.pos.x;
 	v.y -= d->cam.pos.z;
@@ -26,14 +26,14 @@ void		transformvertex(t_data *d, t_vec2f v, double *x, double *z)
 	*z = v.x * d->cam.sin + v.y * d->cam.cos;
 }
 
-t_sector	*check_neighbor(t_data *d, int16_t nei)
+t_sector	*check_neighbor(t_env *d, int16_t nei)
 {
 	if (nei < 0 || nei >= d->numsectors)
 		return (NULL);
 	return (&d->sectors[nei]);
 }
 
-void		render_wall(t_data *d, t_projdata *p, t_frustum *fr, int i)
+void		render_wall(t_env *d, t_projdata *p, t_frustum *fr, int i)
 {
 	p->wall = &d->walls[p->sector->firstwallnum + i];
 	p->wall2 = &d->walls[p->sector->firstwallnum +
@@ -56,7 +56,7 @@ void		render_wall(t_data *d, t_projdata *p, t_frustum *fr, int i)
 			v3_to_v2(transform_back(d, new_v3(p->x2, 0, p->z2)))});
 }
 
-void	proj_ceil_or_floor(t_data *d, t_projdata *p, int mode)
+void	proj_ceil_or_floor(t_env *d, t_projdata *p, int mode)
 {
 	mode == 0 ? (p->b[0] = transform_back(d, new_v3(-1, 0, 1))) :
 				(p->c[0] = transform_back(d, new_v3(-1, 0, 1)));
@@ -84,7 +84,7 @@ void	proj_ceil_or_floor(t_data *d, t_projdata *p, int mode)
 		(p->area = edge_function(p->v[0], p->v[1], p->v[2].x, p->v[2].y));
 }
 
-static void	rend_while(t_data *d, t_sector *sect, t_frustum *fr, t_projdata p)
+static void	rend_while(t_env *d, t_sector *sect, t_frustum *fr, t_projdata p)
 {
 	int				i;
 
@@ -96,7 +96,7 @@ static void	rend_while(t_data *d, t_sector *sect, t_frustum *fr, t_projdata p)
 		render_wall(d, &p, fr, i);
 }
 
-void		render_sector(t_data *d, t_sector *sect, t_frustum *fr)
+void		render_sector(t_env *d, t_sector *sect, t_frustum *fr)
 {
 	t_sprite_list	*lst_tmp;
 	t_projdata		p;

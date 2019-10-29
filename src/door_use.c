@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-void	activate_neighbor_door(t_data *d, t_wall *door,
+void	activate_neighbor_door(t_env *d, t_wall *door,
 		t_wall *nextwall, t_sector *nei)
 {
 	int16_t last;
@@ -41,7 +41,7 @@ void	activate_neighbor_door(t_data *d, t_wall *door,
 	}
 }
 
-void	br_msg(t_data *d, t_wall *w, int *n)
+void	br_msg(t_env *d, t_wall *w, int *n)
 {
 	d->dooranimstep[n[0]] = (d->doorstate[n[0]] == 0 ||
 			d->dooranimstep[n[0]] < 0) ? 0.01 : -0.01;
@@ -51,7 +51,7 @@ void	br_msg(t_data *d, t_wall *w, int *n)
 			&d->sectors[d->walls[n[0]].neighborsect]);
 }
 
-bool	door_use2(t_data *d, t_wall *w, int n[4])
+bool	door_use2(t_env *d, t_wall *w, int n[4])
 {
 	if (d->slot2 && d->slot2->key_num == w->key_num && !(w->key_num = 0))
 		d->slot2 = NULL;
@@ -65,7 +65,7 @@ bool	door_use2(t_data *d, t_wall *w, int n[4])
 ** bdeomin
 */
 
-bool	door_use(t_data *d, t_sector *sect)
+bool	door_use(t_env *d, t_sector *sect)
 {
 	int		n[4];
 	double	m[2];

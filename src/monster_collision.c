@@ -32,7 +32,7 @@ t_vec2f	update_pos_vec2f(t_vec2f pos, t_vec2f point)
 	return (v2_plus(point, tmp));
 }
 
-void	collision_monster_monster(t_data *d, short cur_sect, t_monster *monster)
+void	collision_monster_monster(t_env *d, short cur_sect, t_monster *monster)
 {
 	t_sprite_list	*tmp;
 
@@ -49,7 +49,7 @@ void	collision_monster_monster(t_data *d, short cur_sect, t_monster *monster)
 	}
 }
 
-void	collision_with_monster(t_data *d, short cur_sect)
+void	collision_with_monster(t_env *d, short cur_sect)
 {
 	t_sprite_list	*tmp;
 	double			floor_height;

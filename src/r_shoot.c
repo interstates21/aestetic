@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-int	shoot(t_data *e) {
+int	shoot(t_env *e) {
 	if (!e->player.can_shoot)
 		return (0);
 	e->player.can_shoot--;
@@ -20,7 +20,7 @@ int	shoot(t_data *e) {
 }
 
 
-void update_ammo(t_data *e) {
+void update_ammo(t_env *e) {
     int ammo = e->weapon_type.current_ammo;
 
     if (!ammo)
@@ -28,14 +28,14 @@ void update_ammo(t_data *e) {
     e->weapon_type.current_ammo--;
 }
 
-int     check_last_anim(t_data *e) {
+int     check_last_anim(t_env *e) {
     if (e->player.current_anim_playing == 5)
         if (!e->player.timer_anim_weap)
             return (true);
     return (false);
 }
 
-void	player_actions(t_data *e)
+void	player_actions(t_env *e)
 {
     int ammo = e->weapon_type.current_ammo;
 	if (shoot(e))

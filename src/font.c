@@ -21,7 +21,7 @@ static void	s(int arr[8], t_bitmap *b)
 		b->bit[i] = arr[i];
 }
 
-static void	part_w(t_data *d)
+static void	part_w(t_env *d)
 {
 	s((int[8]){0xe7, 0xe7, 0xe7, 0xe7, 0xe7, 0xe7, 0x7e, 0x3c}, &d->chars.v);
 	s((int[8]){0xc3, 0xc3, 0xdb, 0xdb, 0xdb, 0xff, 0x7e, 0xaa}, &d->chars.w);
@@ -46,9 +46,9 @@ static void	part_w(t_data *d)
 	s((int[8]){0x18, 0x18, 0x18, 0x18, 0, 0x18}, &d->chars.exc);
 }
 
-void	init_font(t_data *d)
+void	init_font(t_env *d)
 {
-	*d = (t_data){.chars.a.bit = {0x7e, 0xff, 0xe7, 0xe7, 0xff, 0xff, 0xe7,
+	*d = (t_env){.chars.a.bit = {0x7e, 0xff, 0xe7, 0xe7, 0xff, 0xff, 0xe7,
 								0xe7},
 			.chars.b.bit = {0xfe, 0xff, 0xe7, 0xfe, 0xfe, 0xe7, 0xff, 0xfe},
 			.chars.c.bit = {0x7e, 0xff, 0xe7, 0xe0, 0xe0, 0xe7, 0xff, 0x7e},
@@ -73,7 +73,7 @@ void	init_font(t_data *d)
 	part_w(d);
 }
 
-void	draw_bitmap(t_data *d, t_bitmap bitmap, int x, int y)
+void	draw_bitmap(t_env *d, t_bitmap bitmap, int x, int y)
 {
 	int		i;
 	int		j;
@@ -90,7 +90,7 @@ void	draw_bitmap(t_data *d, t_bitmap bitmap, int x, int y)
 	}
 }
 
-void	draw_char(t_data *d, char *str, int x, int y)
+void	draw_char(t_env *d, char *str, int x, int y)
 {
 	char c;
 
@@ -181,7 +181,7 @@ void	draw_char(t_data *d, char *str, int x, int y)
 		draw_bitmap(d, d->chars.spc, x, y);
 }
 
-void	draw_string(t_data *d, t_font f)
+void	draw_string(t_env *d, t_font f)
 {
 	int			x_start;
 

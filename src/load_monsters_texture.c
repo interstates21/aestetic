@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-static void	read_motherdemon_projectile(t_data *d, int f)
+static void	read_motherdemon_projectile(t_env *d, int f)
 {
 	int		i;
 	int		wid;
@@ -29,7 +29,7 @@ static void	read_motherdemon_projectile(t_data *d, int f)
 	}
 }
 
-static void	read_anim_death_texture(t_data *d, int f, int *i, int nb_o)
+static void	read_anim_death_texture(t_env *d, int f, int *i, int nb_o)
 {
 	int	o;
 	int	w;
@@ -47,7 +47,7 @@ static void	read_anim_death_texture(t_data *d, int f, int *i, int nb_o)
 		d->monster_text[i[0]][i[1]][o] = d->monster_text[i[0]][i[1]][0];
 }
 
-static void	read_anim_texture(t_data *d, int f, int *i, int nb_o)
+static void	read_anim_texture(t_env *d, int f, int *i, int nb_o)
 {
 	int	o;
 	int	w;
@@ -66,7 +66,7 @@ static void	read_anim_texture(t_data *d, int f, int *i, int nb_o)
 	}
 }
 
-static void load_whi_le(t_data *d, int f, int i, int nb_orientation)
+static void load_whi_le(t_env *d, int f, int i, int nb_orientation)
 {
 	int a;
 
@@ -75,7 +75,7 @@ static void load_whi_le(t_data *d, int f, int i, int nb_orientation)
 		read_anim_texture(d, f, (int[2]){i, a}, nb_orientation);
 }
 
-void			load_monsters_texture(t_data *d, int f)
+void			load_monsters_texture(t_env *d, int f)
 {
 	int i;
 	int a;

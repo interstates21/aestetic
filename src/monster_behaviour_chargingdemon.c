@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-static void	behaviour_update_charge(t_data *d, t_monster *monster)
+static void	behaviour_update_charge(t_env *d, t_monster *monster)
 {
 	t_vec2f	tmp;
 	double	new_angle;
@@ -39,7 +39,7 @@ void		charging_demon_wait(t_monster *monster)
 	}
 }
 
-static void	update_cursect_chargingdemon(t_data *d, t_monster *monster,
+static void	update_cursect_chargingdemon(t_env *d, t_monster *monster,
 		uint16_t id)
 {
 	int16_t		new_sect;
@@ -52,7 +52,7 @@ static void	update_cursect_chargingdemon(t_data *d, t_monster *monster,
 	}
 }
 
-static void init_load_monst(t_data *d, t_monster *monster, t_vec2f tmp)
+static void init_load_monst(t_env *d, t_monster *monster, t_vec2f tmp)
 {
 	tmp = v2_min(monster->pos, v3_to_v2(d->cam.pos));
 	monster->rot = atan2(tmp.y, tmp.x) + M_PI;
@@ -65,7 +65,7 @@ static void init_load_monst(t_data *d, t_monster *monster, t_vec2f tmp)
 	monster->anim_time = 7;
 }
 
-void		monster_behaviour_chargingdemon(t_data *d, t_monster *monster,
+void		monster_behaviour_chargingdemon(t_env *d, t_monster *monster,
 		uint16_t id)
 {
 	t_vec2f		tmp;

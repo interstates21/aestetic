@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-void		draw_message(t_data *d, char *message, int color, SDL_Rect rect)
+void		draw_message(t_env *d, char *message, int color, SDL_Rect rect)
 {
 	SDL_Surface *txtsurf;
 	SDL_Color	c;
@@ -27,7 +27,7 @@ void		draw_message(t_data *d, char *message, int color, SDL_Rect rect)
 	SDL_FreeSurface(txtsurf);
 }
 
-int			ini_dific(t_data *d, int active_option)
+int			ini_dific(t_env *d, int active_option)
 {
 	if (active_option == 1)
 	{
@@ -43,7 +43,7 @@ int			ini_dific(t_data *d, int active_option)
 	}
 }
 
-int			draw_background(t_data *d, SDL_Event e)
+int			draw_background(t_env *d, SDL_Event e)
 {
 	static int	active_option = 0;
 	int			c;
@@ -71,7 +71,7 @@ int			draw_background(t_data *d, SDL_Event e)
 	return (0);
 }
 
-static void	render(t_data *d)
+static void	render(t_env *d)
 {
 	t_frustum	fr;
 	int			i;
@@ -97,7 +97,7 @@ static void	render(t_data *d)
 	SDL_UpdateWindowSurface(d->sdl.win);
 }
 
-void		loop(t_data *d)
+void		loop(t_env *d)
 {
 	SDL_Event	e;
 	uint32_t	start;

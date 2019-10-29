@@ -16,7 +16,7 @@
 ** bdeomin
 */
 
-void	draw_ammo(t_data *d, t_weapon_type weapon_type)
+void	draw_ammo(t_env *d, t_weapon_type weapon_type)
 {
 	static char buf[100] = "Ammo: ";
 	static char buf2[100] = "Health: ";

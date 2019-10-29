@@ -45,7 +45,7 @@ int		new_proj_data(t_projdata *p, t_frustum *fr, int mode)
 	return (0);
 }
 
-int		new_proj_data2(t_data *d, t_projdata *p, t_frustum *fr, int mode)
+int		new_proj_data2(t_env *d, t_projdata *p, t_frustum *fr, int mode)
 {
 	if (mode <= 1)
 	{

@@ -16,7 +16,7 @@
 ** bdeomin
 */
 
-void	display_weapon(t_data *d, SDL_Surface *s, t_vec2f start, t_vec2f end)
+void	display_weapon(t_env *d, SDL_Surface *s, t_vec2f start, t_vec2f end)
 {
 	t_vec2f		x_y;
 	uint32_t	colo;
@@ -39,7 +39,7 @@ void	display_weapon(t_data *d, SDL_Surface *s, t_vec2f start, t_vec2f end)
 	}
 }
 
-void	draw_weapon(t_data *d)
+void	draw_weapon(t_env *d)
 {
 	t_vec2f	start;
 	t_vec2f	tmp;

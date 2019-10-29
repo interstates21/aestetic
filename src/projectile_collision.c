@@ -14,7 +14,7 @@
 
 //not_refact
 
-static void	monster_hit_2(t_data *d, uint16_t damage, uint16_t id_monster)
+static void	monster_hit_2(t_env *d, uint16_t damage, uint16_t id_monster)
 {
 	if ((d->monsters[id_monster].life -= damage) <= 0)
 	{
@@ -29,7 +29,7 @@ static void	monster_hit_2(t_data *d, uint16_t damage, uint16_t id_monster)
 	}
 }
 
-void		monster_hit(t_data *d, uint16_t damage, uint16_t id_monster)
+void		monster_hit(t_env *d, uint16_t damage, uint16_t id_monster)
 {
 	t_sprite_list	*tmp;
 
@@ -53,8 +53,8 @@ void		monster_hit(t_data *d, uint16_t damage, uint16_t id_monster)
 	monster_hit_2(d, damage, id_monster);
 }
 
-bool		collision_proj_one_monst(t_data *d, t_monster *monster,
-		t_projectile *projectile, t_vec3f newpos)
+bool		collision_proj_one_monst(t_env *d, t_monster *monster,
+		t_anim_rot *projectile, t_vec3f newpos)
 {
 	double		dist;
 	t_vec2f		vec2f_tmp[2];
@@ -82,8 +82,8 @@ bool		collision_proj_one_monst(t_data *d, t_monster *monster,
 	return (false);
 }
 
-bool		collision_proj_monster(t_data *d, t_sector *sector,
-		t_projectile *projectile)
+bool		collision_proj_monster(t_env *d, t_sector *sector,
+		t_anim_rot *projectile)
 {
 	t_vec3f			newpos;
 	t_sprite_list	*tmp;
@@ -109,7 +109,7 @@ bool		collision_proj_monster(t_data *d, t_sector *sector,
 	return (false);
 }
 
-bool		collision_proj_player(t_data *d, t_projectile *projectile)
+bool		collision_proj_player(t_env *d, t_anim_rot *projectile)
 {
 	t_vec3f	newpos;
 	t_vec3f	tmp_pos;

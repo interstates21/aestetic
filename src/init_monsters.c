@@ -33,7 +33,7 @@ void	add_monster(t_sector *sector, int16_t id_of_monster)
 	buff->next = new;
 }
 
-void	initialize_all_monster(t_data *d,
+void	initialize_all_monster(t_env *d,
 		t_monster *monster, int16_t id_of_monster)
 {
 	monster->life = d->monster_type[monster->id_type].health * d->difficulty;
@@ -46,7 +46,7 @@ void	initialize_all_monster(t_data *d,
 	add_monster(&d->sectors[monster->cursectnum], id_of_monster);
 }
 
-void	init_monster_type_2(t_data *d)
+void	init_monster_type_2(t_env *d)
 {
 	int i;
 
@@ -62,7 +62,7 @@ void	init_monster_type_2(t_data *d)
 	d->monster_type[CHARGINGDEMON].anim_order[18] = 18;
 }
 
-void	init_monst(t_data *d)
+void	init_monst(t_env *d)
 {
 	d->monster_type[CHARGINGDEMON].height = 1.5;
 	d->monster_type[CHARGINGDEMON].floating = 0.1;
@@ -77,7 +77,7 @@ void	init_monst(t_data *d)
 	d->monster_type[MOTHERDEMON].id_of_proj = FIREBALL_1;
 }
 
-void	init_monster_type(t_data *d)
+void	init_monster_type(t_env *d)
 {
 	short	i;
 
@@ -93,7 +93,7 @@ void	init_monster_type(t_data *d)
 	d->monster_type[MOTHERDEMON].anim_order[18] = 18;
 }
 
-void	init_monsters(t_data *d)
+void	init_monsters(t_env *d)
 {
 	short	i;
 

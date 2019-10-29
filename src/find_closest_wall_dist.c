@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-static void	new_closest_wall(t_data *d, t_vec2f *position, short *j,
+static void	new_closest_wall(t_env *d, t_vec2f *position, short *j,
 		uint16_t sect_to_scan)
 {
 	*position = new_v2(d->cam.pos.x + 100000 * d->cam.sin,
@@ -21,7 +21,7 @@ static void	new_closest_wall(t_data *d, t_vec2f *position, short *j,
 		d->sectors[sect_to_scan].numwalls - 1;
 }
 
-static void	new_dist_of_sector(t_data *d, double *dist, t_vec2f sector)
+static void	new_dist_of_sector(t_env *d, double *dist, t_vec2f sector)
 {
 	double		value;
 
@@ -29,7 +29,7 @@ static void	new_dist_of_sector(t_data *d, double *dist, t_vec2f sector)
 	(*dist > value || *dist != -1) ? true : (*dist = value);
 }
 
-t_vec2f		checking_walls(t_data *d, t_vec2 i_j, t_vec2f position,
+t_vec2f		checking_walls(t_env *d, t_vec2 i_j, t_vec2f position,
 															t_vec2f sector)
 {
 	if (d->walls[i_j.y].neighborsect == -1 || d->doorstate[i_j.y] < 0.7)
@@ -44,7 +44,7 @@ t_vec2f		checking_walls(t_data *d, t_vec2 i_j, t_vec2f position,
 	return (new_v2(-1, -1));
 }
 
-double		find_closest_wall_dist(t_data *d, uint16_t sect_to_scan)
+double		find_closest_wall_dist(t_env *d, uint16_t sect_to_scan)
 {
 	short	i;
 	short	j;

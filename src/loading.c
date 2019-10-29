@@ -27,7 +27,7 @@ static int	to_percent(int p)
 	return (r > 100 ? 100 : r);
 }
 
-static void	draw_bar(t_data *d, int p)
+static void	draw_bar(t_env *d, int p)
 {
 	int		start;
 	int		end;
@@ -48,7 +48,7 @@ static void	draw_bar(t_data *d, int p)
 		}
 }
 
-void		correct_loading(t_data *d, uint32_t *status, SDL_Event e)
+void		correct_loading(t_env *d, uint32_t *status, SDL_Event e)
 {
 	char		*num;
 	char		*str;
@@ -76,7 +76,7 @@ void		correct_loading(t_data *d, uint32_t *status, SDL_Event e)
 	SDL_UpdateWindowSurface(d->sdl.win);
 }
 
-void		loading(t_data *d)
+void		loading(t_env *d)
 {
 	uint32_t	status[2];
 	SDL_Event	e;

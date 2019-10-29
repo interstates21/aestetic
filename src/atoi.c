@@ -61,7 +61,7 @@ void		swap_tabs(short *tab, short *tmp_tab)
 	}
 }
 
-void		set_tab(t_data *d, short sect_to_scan, short *tab, short old_sect)
+void		set_tab(t_env *d, short sect_to_scan, short *tab, short old_sect)
 {
 	short	i;
 	short	j;

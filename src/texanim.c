@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-void	precompute_texanim(t_data *d)
+void	precompute_texanim(t_env *d)
 {
 	int			i;
 	SDL_Surface	*s;

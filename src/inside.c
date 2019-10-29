@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-void	free_sectors_sprites(t_data *d, short i)
+void	free_sectors_sprites(t_env *d, short i)
 {
 	t_sprite_list	*list;
 	t_sprite_list	*need_free;
@@ -27,7 +27,7 @@ void	free_sectors_sprites(t_data *d, short i)
 	}
 }
 
-bool	inside(t_data *d, int16_t sectnum, t_vec2f pos)
+bool	inside(t_env *d, int16_t sectnum, t_vec2f pos)
 {
 	int		rz[5];
 	t_vec2f	bon0;
@@ -50,7 +50,7 @@ bool	inside(t_data *d, int16_t sectnum, t_vec2f pos)
 	return (rz[0]);
 }
 
-int16_t	search_other_sectors(int16_t sects[2], t_data *d, int depth,
+int16_t	search_other_sectors(int16_t sects[2], t_env *d, int depth,
 		t_vec3f pos)
 {
 	short	i;
@@ -72,7 +72,7 @@ int16_t	search_other_sectors(int16_t sects[2], t_data *d, int depth,
 	return (-1);
 }
 
-int16_t	update_cursect_proj(int16_t sects[2], t_data *d, int depth,
+int16_t	update_cursect_proj(int16_t sects[2], t_env *d, int depth,
 		t_vec3f pos)
 {
 	double	floor_height;
@@ -91,7 +91,7 @@ int16_t	update_cursect_proj(int16_t sects[2], t_data *d, int depth,
 	return (search_other_sectors(sects, d, depth, pos));
 }
 
-int16_t	update_cursect_smart(t_data *d, short depth, t_vec2f pos,
+int16_t	update_cursect_smart(t_env *d, short depth, t_vec2f pos,
 		uint16_t cursectnum)
 {
 	short	i;

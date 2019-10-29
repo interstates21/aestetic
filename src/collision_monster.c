@@ -16,7 +16,7 @@
 
 #include "../includes/doom_nukem.h"
 
-bool	can_traverse_monster(t_data *d, int i, t_vec2f *pos, t_sector *sect)
+bool	can_traverse_monster(t_env *d, int i, t_vec2f *pos, t_sector *sect)
 {
 	t_wall	*wall;
 	int16_t	num_sec;
@@ -43,7 +43,7 @@ bool	collided_value_one(t_vec2f *pos, t_vec2f *v, double dist_coll)
 	return (true);
 }
 
-bool	collision_monster(t_data *d, t_sector *sect, t_vec2f *pos,
+bool	collision_monster(t_env *d, t_sector *sect, t_vec2f *pos,
 															double dist_coll)
 {
 	static int	recursion;

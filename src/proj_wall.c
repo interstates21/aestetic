@@ -26,7 +26,7 @@ void	*draw_ceil_thread(void *void_arg)
 	return (NULL);
 }
 
-void	proj_wall2(t_data *d, t_projdata *p, t_frustum *fr)
+void	proj_wall2(t_env *d, t_projdata *p, t_frustum *fr)
 {
 	pthread_t		thread;
 	t_thread_arg	t;
@@ -47,7 +47,7 @@ void	proj_wall2(t_data *d, t_projdata *p, t_frustum *fr)
 		print_err("thread error");
 }
 
-void	proj_wall(t_data *d, t_projdata *p, t_frustum *fr, t_vec2f v[2])
+void	proj_wall(t_env *d, t_projdata *p, t_frustum *fr, t_vec2f v[2])
 {
 	double offset;
 

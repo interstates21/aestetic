@@ -40,7 +40,7 @@ void		change_list(t_sprite_list *one, t_sprite_list *two,
 	two->next = one;
 }
 
-void		reorder_sprites_algo(t_data *d, t_sector *sec, double *vla,
+void		reorder_sprites_algo(t_env *d, t_sector *sec, double *vla,
 		t_sprite_list **list)
 {
 	double		distance;
@@ -70,7 +70,7 @@ void		reorder_sprites_algo(t_data *d, t_sector *sec, double *vla,
 	}
 }
 
-void		set_vla(t_sprite_list *tmp, double *vla, t_data *d)
+void		set_vla(t_sprite_list *tmp, double *vla, t_env *d)
 {
 	short	i;
 
@@ -79,7 +79,7 @@ void		set_vla(t_sprite_list *tmp, double *vla, t_data *d)
 	{
 		if (tmp->type == IS_PROJECTILE)
 			vla[i] = vec3f_length(v3_min(d->cam.pos,
-						d->projectiles[tmp->id].pos));
+						d->anim_rots[tmp->id].pos));
 		if (tmp->type == IS_MONSTER)
 			vla[i] = vec3f_length(v3_min(d->cam.pos,
 				new_v3(d->monsters[tmp->id].pos.x,
@@ -88,7 +88,7 @@ void		set_vla(t_sprite_list *tmp, double *vla, t_data *d)
 	}
 }
 
-void		reorder_sprite(t_data *d, t_sector *sect)
+void		reorder_sprite(t_env *d, t_sector *sect)
 {
 	t_sprite_list	*tmp;
 	short			i;

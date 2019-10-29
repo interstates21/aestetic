@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-void		post_whi_le(t_data *d, int f, int b)
+void		post_whi_le(t_env *d, int f, int b)
 {
 	int		i;
 	int		wid;
@@ -41,7 +41,7 @@ void		post_whi_le(t_data *d, int f, int b)
 	}
 }
 
-void		read_posters_data(t_data *d, int f)
+void		read_posters_data(t_env *d, int f)
 {
 	size_t	posters_size;
 
@@ -55,7 +55,7 @@ void		read_posters_data(t_data *d, int f)
 	post_whi_le(d, f, 1);
 }
 
-void		read_monsters_data(t_data *d, int f)
+void		read_monsters_data(t_env *d, int f)
 {
 	int		i;
 	size_t	monsters_size;
@@ -72,7 +72,7 @@ void		read_monsters_data(t_data *d, int f)
 	}
 }
 
-void		read_assets_texture(t_data *d, int f)
+void		read_assets_texture(t_env *d, int f)
 {
 	int		i;
 	int		w;
@@ -99,7 +99,7 @@ void		read_assets_texture(t_data *d, int f)
 	}
 }
 
-void		read_assets_data(t_data *d, int f)
+void		read_assets_data(t_env *d, int f)
 {
 	int		i;
 	int		s;

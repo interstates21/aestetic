@@ -69,7 +69,7 @@ void	color_screen(t_args_multi_colo_buf *data)
 	}
 }
 
-void	color_wl(t_data *d, t_args_multi_colo_buf *col, short i, pthread_t *sp)
+void	color_wl(t_env *d, t_args_multi_colo_buf *col, short i, pthread_t *sp)
 {
 	while (i < MAX_THREADS)
 	{
@@ -86,7 +86,7 @@ void	color_wl(t_data *d, t_args_multi_colo_buf *col, short i, pthread_t *sp)
 		pthread_join(sp[i], NULL);
 }
 
-void	color_buffer(t_data *d)
+void	color_buffer(t_env *d)
 {
 	pthread_t				sp[MAX_THREADS];
 	t_args_multi_colo_buf	col[MAX_THREADS];

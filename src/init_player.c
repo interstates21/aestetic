@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-void	init_player_2(t_data *d, t_player *player)
+void	init_player_2(t_env *d, t_player *player)
 {
 	d->color_buf.value = 0;
 	player->is_flying = 0;
@@ -27,7 +27,7 @@ void	init_player_2(t_data *d, t_player *player)
 	d->weapon_type.current_ammo = MAX_BULLETS;
 }
 
-void	init_player(t_data *d, t_player *player)
+void	init_player(t_env *d, t_player *player)
 {
 	int i;
 

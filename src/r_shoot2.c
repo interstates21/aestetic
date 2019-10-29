@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-void handle_click(t_data *e) {
+void handle_click(t_env *e) {
     int             ammo;;
     u_int8_t        weapon;
     t_vec2f         cam_proj;

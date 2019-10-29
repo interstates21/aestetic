@@ -16,7 +16,7 @@
 
 #include "../includes/doom_nukem.h"
 
-bool	can_traverse(t_data *d, int i, t_wall *wall)
+bool	can_traverse(t_env *d, int i, t_wall *wall)
 {
 	double y_value;
 
@@ -52,7 +52,7 @@ t_vec2f	get_closest(t_vec2f a, t_vec2f b, t_vec2f p)
 	return (new_v2(a.x + plane * a_to_b.x, a.y + plane * a_to_b.y));
 }
 
-bool	collided_v(t_vec2f *v, int *nw, t_data *d)
+bool	collided_v(t_vec2f *v, int *nw, t_env *d)
 {
 	if (v2_len(v[1]) < COLLISION_DIST)
 	{
@@ -71,7 +71,7 @@ bool	collided_v(t_vec2f *v, int *nw, t_data *d)
 	return (false);
 }
 
-bool	collision_player(t_data *d, t_sector *sect)
+bool	collision_player(t_env *d, t_sector *sect)
 {
 	static int	recursion;
 	t_vec2f		vect[2];

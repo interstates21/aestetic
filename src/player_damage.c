@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-void	player_fell(t_data *d)
+void	player_fell(t_env *d)
 {
 	d->player.minimum_height = MINIMUM_CROUCH_HEIGHT;
 	d->player.gravity = fabs(d->player.gravity);
@@ -27,7 +27,7 @@ void	player_fell(t_data *d)
 		play_sound(d, PLAYER_FELL_SOUND, v3_to_v2(d->cam.pos));
 }
 
-void	player_hit_proj(t_data *d, t_projectile *proj)
+void	player_hit_proj(t_env *d, t_anim_rot *proj)
 {
 	change_buf_colo(d, d->projectile_type[proj->id_type].damage, RED);
 	if (proj)
@@ -37,7 +37,7 @@ void	player_hit_proj(t_data *d, t_projectile *proj)
 	play_sound(d, PLAYER_GOT_HIT_SOUND, v3_to_v2(d->cam.pos));
 }
 
-void	check_dangerous_area(t_data *d)
+void	check_dangerous_area(t_env *d)
 {
 	double	h_area;
 
@@ -52,7 +52,7 @@ void	check_dangerous_area(t_data *d)
 		play_sound(d, PLAYER_GOT_HIT_SOUND, v3_to_v2(d->cam.pos));
 }
 
-void	contact_with_monster(t_data *d, t_monster *monster)
+void	contact_with_monster(t_env *d, t_monster *monster)
 {
 	if (monster->id_type == MOTHERDEMON || monster->id_type == CHARGINGDEMON)
 	{

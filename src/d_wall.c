@@ -16,7 +16,7 @@
 ** bdeomin
 */
 
-void	draw_wall4(t_data *d, t_projdata *p, t_frustum *fr, t_frustum *nfr)
+void	draw_wall4(t_env *d, t_projdata *p, t_frustum *fr, t_frustum *nfr)
 {
 	new_proj_data2(d, p, fr, 0);
 	nfr->ytop[p->x] = CLAMP((p->sector->outdoor && p->neighbor->outdoor) ?
@@ -27,7 +27,7 @@ void	draw_wall4(t_data *d, t_projdata *p, t_frustum *fr, t_frustum *nfr)
 		p->ya = p->nya;
 }
 
-void	draw_wall3(t_data *d, t_projdata *p, t_frustum *nfr, bool *visible)
+void	draw_wall3(t_env *d, t_projdata *p, t_frustum *nfr, bool *visible)
 {
 	int	end;
 
@@ -50,7 +50,7 @@ void	draw_wall3(t_data *d, t_projdata *p, t_frustum *nfr, bool *visible)
 	}
 }
 
-void	draw_wall2(t_data *d, t_projdata *p, t_frustum *fr, t_frustum *nfr)
+void	draw_wall2(t_env *d, t_projdata *p, t_frustum *fr, t_frustum *nfr)
 {
 	if (new_proj_data(p, fr, 1))
 		return ((void)(p->visible[p->x] = false));
@@ -75,7 +75,7 @@ void	draw_wall2(t_data *d, t_projdata *p, t_frustum *fr, t_frustum *nfr)
 		draw_wall_nei(d, p, fr);
 }
 
-void	draw_wall(t_data *d, t_projdata *p, t_frustum *fr)
+void	draw_wall(t_env *d, t_projdata *p, t_frustum *fr)
 {
 	t_frustum	new_fr;
 

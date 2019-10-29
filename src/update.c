@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-void	new_collided_proj(t_data *d, t_projectile *proj, bool anim,
+void	new_collided_proj(t_env *d, t_anim_rot *proj, bool anim,
 		short id)
 {
 	int16_t		new_sectors;
@@ -37,7 +37,7 @@ void	new_collided_proj(t_data *d, t_projectile *proj, bool anim,
 	}
 }
 
-void	update_anim_projectile(t_projectile *proj, t_data *d, short id,
+void	update_anim_projectile(t_anim_rot *proj, t_env *d, short id,
 		bool collided)
 {
 	if (collided)
@@ -66,7 +66,7 @@ void	update_anim_projectile(t_projectile *proj, t_data *d, short id,
 	new_collided_proj(d, proj, false, id);
 }
 
-void	update_doors(t_data *d)
+void	update_doors(t_env *d)
 {
 	int i;
 
@@ -85,7 +85,7 @@ void	update_doors(t_data *d)
 		}
 }
 
-void	update(t_data *d)
+void	update(t_env *d)
 {
 	int16_t	sect;
 

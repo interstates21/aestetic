@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-bool	pick_up(t_data *d, t_assets *assets)
+bool	pick_up(t_env *d, t_assets *assets)
 {
 	if (v2_len(v2_min(v3_to_v2(d->cam.pos), assets->world_pos)) <
 		1.5 && !assets->used && (assets->is_interactive || assets->is_autopick
@@ -24,7 +24,7 @@ bool	pick_up(t_data *d, t_assets *assets)
 	return (false);
 }
 
-void	event_key_down(t_data *d, SDL_KeyboardEvent event)
+void	event_key_down(t_env *d, SDL_KeyboardEvent event)
 {
 	int			i;
 	t_assets	*assets;
@@ -44,7 +44,7 @@ void	event_key_down(t_data *d, SDL_KeyboardEvent event)
 	}
 }
 
-void	event_mouse_motion(t_data *d, SDL_MouseMotionEvent event)
+void	event_mouse_motion(t_env *d, SDL_MouseMotionEvent event)
 {
 	double	offset;
 	double	rotation;
@@ -59,7 +59,7 @@ void	event_mouse_motion(t_data *d, SDL_MouseMotionEvent event)
 	}
 }
 
-void	event_mouse_button(t_data *d, SDL_MouseButtonEvent event)
+void	event_mouse_button(t_env *d, SDL_MouseButtonEvent event)
 {
 	if (event.button == SDL_BUTTON_LEFT)
 	{

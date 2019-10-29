@@ -12,10 +12,10 @@
 
 #include "../includes/doom_nukem.h"
 
-void		draw_sprite(t_data *d, t_frustum *fr, t_sprite_list *sprite)
+void		draw_sprite(t_env *d, t_frustum *fr, t_sprite_list *sprite)
 {
 	if (sprite->type == IS_MONSTER)
 		draw_monster(d, d->monsters[sprite->id]);
 	if (sprite->type == IS_PROJECTILE)
-		draw_proj(d, fr, d->projectiles[sprite->id]);
+		draw_proj(d, fr, d->anim_rots[sprite->id]);
 }

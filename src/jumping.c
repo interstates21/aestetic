@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-void	four_action(t_data *d)
+void	four_action(t_env *d)
 {
 	if (d->keys[SDL_SCANCODE_LCTRL] && d->player.minimum_height >
 				MINIMUM_CROUCH_HEIGHT + CROUCH_SPEED)
@@ -24,7 +24,7 @@ void	four_action(t_data *d)
 			d->player.minimum_height += CROUCH_SPEED;
 }
 
-void	jump_action(t_data *d, int mode)
+void	jump_action(t_env *d, int mode)
 {
 	if (mode < 2)
 	{
@@ -51,7 +51,7 @@ void	jump_action(t_data *d, int mode)
 	}
 }
 
-void	normal_mode(t_data *d)
+void	normal_mode(t_env *d)
 {
 	if (d->cam.pos.y < d->floorheightplayer + d->player.minimum_height)
 		d->player.gravity < -0.16 ? jump_action(d, 0) : jump_action(d, 1);
@@ -73,7 +73,7 @@ void	normal_mode(t_data *d)
 		jump_action(d, 6);
 }
 
-void	jump(t_data *d)
+void	jump(t_env *d)
 {
 	if (d->player.is_flying)
 		fly_mode(d);

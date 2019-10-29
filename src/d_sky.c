@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-void	draw_sky(t_data *d, t_projdata *p, t_frustum *fr)
+void	draw_sky(t_env *d, t_projdata *p, t_frustum *fr)
 {
 	SDL_Surface	*textures;
 	t_vec2		v_h;

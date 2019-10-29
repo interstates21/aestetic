@@ -22,7 +22,7 @@ static bool	is_part(t_v2_pair wall_vects, t_v2_pair vects, bool not_itself)
 	return (pos1 && pos2 && not_itself);
 }
 
-static int	calculate_next_sect(t_data *d, t_range old_range, int old_current)
+static int	calculate_next_sect(t_env *d, t_range old_range, int old_current)
 {
 	int			current;
 	t_v2_pair	p1;
@@ -51,7 +51,7 @@ static int	calculate_next_sect(t_data *d, t_range old_range, int old_current)
 	return (-1);
 }
 
-void		next_sect_fix(t_data *d)
+void		next_sect_fix(t_env *d)
 {
 	int		current;
 	int		min;

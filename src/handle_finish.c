@@ -12,14 +12,14 @@
 
 #include "../includes/doom_nukem.h"
 
-void	monst_free(t_data *d, int i, int j, int k)
+void	monst_free(t_env *d, int i, int j, int k)
 {
 	if (d->monster_text[i][j][k])
 		SDL_FreeSurface(d->monster_text[i][j][k]);
 	d->monster_text[i][j][k] = NULL;
 }
 
-void	monst_and_assets_free(t_data *d, int i)
+void	monst_and_assets_free(t_env *d, int i)
 {
 	int	j;
 	int	k;
@@ -42,7 +42,7 @@ void	monst_and_assets_free(t_data *d, int i)
 	free(d->assets_texture);
 }
 
-void	weap_free(t_data *d)
+void	weap_free(t_env *d)
 {
 	int			i;
 	int			j;
@@ -63,7 +63,7 @@ void	weap_free(t_data *d)
 	}
 }
 
-void	all_free(t_data *d)
+void	all_free(t_env *d)
 {
 	int	i;
 
@@ -92,7 +92,7 @@ void	all_free(t_data *d)
 	d->assets = NULL;
 }
 
-void	handle_finish(t_data *d)
+void	handle_finish(t_env *d)
 {
 	int	i;
 	int	f;
@@ -104,7 +104,7 @@ void	handle_finish(t_data *d)
 	d->textures = NULL;
 	i = -1;
 	while (++i < MAX_PROJECTILES)
-		d->projectiles[i].is_active = false;
+		d->anim_rots[i].is_active = false;
 	i = -1;
 	while (++i < d->numsectors)
 		free_sectors_sprites(d, i);

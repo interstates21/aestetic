@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-void	invoke_msg(t_data *d, char *msg)
+void	invoke_msg(t_env *d, char *msg)
 {
 	ft_strcpy(d->msg, msg);
 	d->msg_start = SDL_GetTicks();
@@ -23,7 +23,7 @@ double	get_dist(t_vec2f a, t_vec2f b, t_vec2f p)
 	return (v2_len(v2_min(p, get_closest(a, b, p))));
 }
 
-void	whi_le(t_data *d, t_sector *sect, int *n, double *m)
+void	whi_le(t_env *d, t_sector *sect, int *n, double *m)
 {
 	while (n[3] < sect->firstwallnum + sect->numwalls)
 	{
@@ -37,7 +37,7 @@ void	whi_le(t_data *d, t_sector *sect, int *n, double *m)
 	}
 }
 
-void	change_buf_colo(t_data *d, uint16_t amount, uint32_t colo)
+void	change_buf_colo(t_env *d, uint16_t amount, uint32_t colo)
 {
 	if (d->color_buf.colo != colo)
 	{

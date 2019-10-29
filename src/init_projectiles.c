@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-void	init_proj(t_data *d)
+void	init_proj(t_env *d)
 {
 	d->projectile_type[FIREBALL_1].threat_to_monster = false;
 	d->projectile_type[FIREBALL_1].threat_to_player = true;
@@ -28,7 +28,7 @@ void	init_proj(t_data *d)
 	d->projectile_type[CRYO_BALLISTA].size = 1.5;
 }
 
-void	init_projectiles_type_cryo_bow(t_data *d)
+void	init_projectiles_type_cryo_bow(t_env *d)
 {
 	int i;
 
@@ -43,7 +43,7 @@ void	init_projectiles_type_cryo_bow(t_data *d)
 	d->projectile_type[CRYO_BALLISTA].anim_order[COLLISION_ID] = 7;
 }
 
-void	init_projectiles_fireball_1(t_data *d)
+void	init_projectiles_fireball_1(t_env *d)
 {
 	d->projectile_type[FIREBALL_1].anim_order[0] = 1;
 	d->projectile_type[FIREBALL_1].anim_order[1] = 0;
@@ -53,17 +53,17 @@ void	init_projectiles_fireball_1(t_data *d)
 	d->projectile_type[FIREBALL_1].anim_order[4] = MUST_BE_DESTROYED;
 }
 
-void	init_weapons(t_data *d)
+void	init_weapons(t_env *d)
 {
 	d->weapon_type.rate_of_fire[0] =
 		d->player.speed_anim[CRYO_BALLISTA] * 11;
 	d->weapon_type.has_alt_fire = false;
 }
 
-void	init_projectiles(t_data *d)
+void	init_projectiles(t_env *d)
 {
 	ft_bzero(d->projectile_type, sizeof(t_proj_type) * MAX_KIND_OF_PROJECTILE);
-	ft_bzero(d->projectiles, sizeof(t_projectile) * MAX_PROJECTILES);
+	ft_bzero(d->anim_rots, sizeof(t_anim_rot) * MAX_PROJECTILES);
 	init_weapons(d);
 	init_proj(d);
 	init_projectiles_type_cryo_bow(d);

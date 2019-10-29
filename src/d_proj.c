@@ -16,7 +16,7 @@
 ** bdeomin
 */
 
-t_vec3f		trans_v3f_in_scr(t_data *d, t_vec3f v)
+t_vec3f		trans_v3f_in_scr(t_env *d, t_vec3f v)
 {
 	t_vec3f	new;
 
@@ -32,7 +32,7 @@ t_vec3f		trans_v3f_in_scr(t_data *d, t_vec3f v)
 	return (new);
 }
 
-void		draw_proj(t_data *d, t_frustum *fr, t_projectile proj)
+void		draw_proj(t_env *d, t_frustum *fr, t_anim_rot proj)
 {
 	double			dist;
 	t_display_data	a;

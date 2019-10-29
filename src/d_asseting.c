@@ -16,7 +16,7 @@
 ** bdeomin
 */
 
-void	assets_to_draw(t_data *d, t_projdata *p, int16_t sectnum, int i)
+void	assets_to_draw(t_env *d, t_projdata *p, int16_t sectnum, int i)
 {
 	t_assets	*asset;
 	t_vec3f		vect;
@@ -34,7 +34,7 @@ void	assets_to_draw(t_data *d, t_projdata *p, int16_t sectnum, int i)
 	}
 }
 
-void	d_asseting(t_data *d, t_projdata *p, int16_t sectnum)
+void	d_asseting(t_env *d, t_projdata *p, int16_t sectnum)
 {
 	int			i;
 

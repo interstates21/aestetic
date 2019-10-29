@@ -1,6 +1,6 @@
 #include "../includes/doom_nukem.h"
 
-void	play_sound(t_data *d, uint8_t id, t_vec2f pos)
+void	play_sound(t_env *d, uint8_t id, t_vec2f pos)
 {
 	static uint8_t	i;
 	int16_t			angle;
@@ -25,7 +25,7 @@ void	play_sound(t_data *d, uint8_t id, t_vec2f pos)
 		i = 0;
 }
 
-void	play_music(t_data *d, uint8_t id)
+void	play_music(t_env *d, uint8_t id)
 {
 	if (id == 0 && Mix_Playing(99))
 		return ;

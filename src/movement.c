@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-static void	smooth_movement(t_data *d, short *count, t_vec2f *mvt)
+static void	smooth_movement(t_env *d, short *count, t_vec2f *mvt)
 {
 	if (d->keys[SDL_SCANCODE_W] && ++*count)
 	{
@@ -39,7 +39,7 @@ static void	smooth_movement(t_data *d, short *count, t_vec2f *mvt)
 	inertia(d, *mvt);
 }
 
-void	movement(t_data *d)
+void	movement(t_env *d)
 {
 	t_vec2f	mvt;
 	short	count;

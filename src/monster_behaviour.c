@@ -18,7 +18,7 @@ void	month_ini(double rand, t_vec2f tmp, t_vec2f tmp2, t_monster *monster)
 	monster->timer = 100;
 }
 
-bool	motherdemon_behaviour_change_after_attack(t_data *d,
+bool	motherdemon_behaviour_change_after_attack(t_env *d,
 		t_monster *monster, double rand, t_vec2f tmp)
 {
 	t_vec2f	tmp2;
@@ -44,7 +44,7 @@ bool	motherdemon_behaviour_change_after_attack(t_data *d,
 	return (true);
 }
 
-void	motherdemon_behaviour_change_pattern(t_data *d, t_monster *monster)
+void	motherdemon_behaviour_change_pattern(t_env *d, t_monster *monster)
 {
 	t_vec2f tmp;
 	double	rand;
@@ -66,7 +66,7 @@ void	motherdemon_behaviour_change_pattern(t_data *d, t_monster *monster)
 	}
 }
 
-void	motherdemon_behaviour(t_data *d, t_monster *monster, uint16_t id)
+void	motherdemon_behaviour(t_env *d, t_monster *monster, uint16_t id)
 {
 	short	new_sect;
 	int		protection;
@@ -94,7 +94,7 @@ void	motherdemon_behaviour(t_data *d, t_monster *monster, uint16_t id)
 		motherdemon_behaviour_change_pattern(d, monster);
 }
 
-void	check_activation(t_data *d, t_monster *monster, t_vec2f pos, bool recur)
+void	check_activation(t_env *d, t_monster *monster, t_vec2f pos, bool recur)
 {
 	t_sprite_list	*tmp;
 
@@ -117,7 +117,7 @@ void	check_activation(t_data *d, t_monster *monster, t_vec2f pos, bool recur)
 	}
 }
 
-void	monster_behaviour(t_data *d, t_monster *monster, uint16_t id)
+void	monster_behaviour(t_env *d, t_monster *monster, uint16_t id)
 {
 	if (!monster->can_collide)
 		return ;

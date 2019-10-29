@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-static void	circle_pix(t_data *e, t_vec2 c, t_vec2 v, Uint32 color)
+static void	circle_pix(t_env *e, t_vec2 c, t_vec2 v, Uint32 color)
 {
 	pixel_put(e, new_v3(c.x + v.x, c.y + v.y, 0), color, 0);
 	pixel_put(e, new_v3(c.x - v.x, c.y - v.y, 0), color, 0);
@@ -24,7 +24,7 @@ static void	circle_pix(t_data *e, t_vec2 c, t_vec2 v, Uint32 color)
 	pixel_put(e, new_v3(c.x - v.y, c.y - v.x, 0), color, 0);
 }
 
-int			circle(t_data *e, t_vec2 c, int r, Uint32 color)
+int			circle(t_env *e, t_vec2 c, int r, Uint32 color)
 {
 	int	j;
 	int	i;

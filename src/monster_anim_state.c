@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-void	precompute_texanim(t_data *d)
+void	precompute_texanim(t_env *d)
 {
 	int			i;
 	SDL_Surface	*s;
@@ -31,7 +31,7 @@ void	precompute_texanim(t_data *d)
 	}
 }
 
-void	monst(t_monster *monster, t_monster_type *monster_type, t_data *d, int num)
+void	monst(t_monster *monster, t_monster_type *monster_type, t_env *d, int num)
 {
 	if (num == 1)
 	{
@@ -61,7 +61,7 @@ void	monst(t_monster *monster, t_monster_type *monster_type, t_data *d, int num)
 }
 
 void	monster_anim_state(t_monster *monster,
-		t_monster_type *monster_type, t_data *d)
+		t_monster_type *monster_type, t_env *d)
 {
 	if (monster->id_type == MOTHERDEMON)
 		monst(monster, monster_type, d, 1);

@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-static bool	check_if_return(t_data *d, t_assets *asset)
+static bool	check_if_return(t_env *d, t_assets *asset)
 {
 	if (d->player.health == 100 && asset->stat_mod.heal)
 		return (true);
@@ -22,7 +22,7 @@ static bool	check_if_return(t_data *d, t_assets *asset)
 	return (false);
 }
 
-static bool	check_jetpack(t_data *d, t_assets *asset)
+static bool	check_jetpack(t_env *d, t_assets *asset)
 {
 	if (asset->stat_mod.ballista_ammo)
 		play_sound(d, AMMO_SOUND, v3_to_v2(d->cam.pos));
@@ -42,7 +42,7 @@ static bool	check_jetpack(t_data *d, t_assets *asset)
 	return (true);
 }
 
-void		use_asset(t_data *d, t_assets *asset)
+void		use_asset(t_env *d, t_assets *asset)
 {
 	d->player.health += asset->stat_mod.heal;
 	d->player.health = MIN(100, d->player.health);
@@ -63,7 +63,7 @@ void		use_asset(t_data *d, t_assets *asset)
 ** bdeomin
 */
 
-void		interact_with_assets(t_data *d)
+void		interact_with_assets(t_env *d)
 {
 	int			i;
 	t_vec2f		dist;

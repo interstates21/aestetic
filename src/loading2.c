@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-void		print_1(t_data *d)
+void		print_1(t_env *d)
 {
 	char	*s1;
 	char	*s2;
@@ -34,7 +34,7 @@ void		print_1(t_data *d)
 	draw_string(d, new_font(s4, v, RED, 2));
 }
 
-void		print_2(t_data *d)
+void		print_2(t_env *d)
 {
 	char	*s1;
 	char	*s2;
@@ -52,7 +52,7 @@ void		print_2(t_data *d)
 	draw_string(d, new_font(s3, v, RED, 2));
 }
 
-void		print_loading_ascii(t_data *d)
+void		print_loading_ascii(t_env *d)
 {
 	print_1(d);
 	print_2(d);

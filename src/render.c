@@ -1,6 +1,6 @@
 #include "../includes/doom_nukem.h"
 
-void	render(t_data *d)
+void	render(t_env *d)
 {
 	t_frustum	fr;
 	int			i;

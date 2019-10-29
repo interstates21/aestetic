@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-void		load_sound(t_data *d, int f)
+void		load_sound(t_env *d, int f)
 {
 	int			i;
 	int			rozm;

@@ -16,14 +16,14 @@
 ** bdeomin
 */
 
-void		new_zbuffer_and_put_collor(t_data *d, t_vec2 x_y, uint32_t colo,
+void		new_zbuffer_and_put_collor(t_env *d, t_vec2 x_y, uint32_t colo,
 															t_vec2f dist_mod)
 {
 	pixel_put(d, new_v3(x_y.x, x_y.y, 0), colo, 0);
 	d->zbuffer[x_y.x + x_y.y * d->sdl.screen->w] = dist_mod.x;
 }
 
-void		disp_sprite(t_data *d, SDL_Surface *s,
+void		disp_sprite(t_env *d, SDL_Surface *s,
 		t_display_data disp_data, t_vec2f dist_mod)
 {
 	t_vec2		x_y;

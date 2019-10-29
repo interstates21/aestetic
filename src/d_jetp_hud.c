@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-void	draw_fuel(t_data *d)
+void	draw_fuel(t_env *d)
 {
 	static char buf[100] = "Fuel: ";
 
@@ -20,7 +20,7 @@ void	draw_fuel(t_data *d)
 	draw_string(d, (t_font){buf, 50, 110, 0, 2});
 }
 
-void	draw_inventory_slot(t_data *d, SDL_Surface *tex, int x1, int y1)
+void	draw_inventory_slot(t_env *d, SDL_Surface *tex, int x1, int y1)
 {
 	uint32_t	px;
 	t_vec2		x_y;

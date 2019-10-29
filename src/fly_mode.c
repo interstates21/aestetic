@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-static bool	decrease_fuel(t_data *d)
+static bool	decrease_fuel(t_env *d)
 {
 	d->player.is_flying -= 1;
 	if (d->player.is_flying)
@@ -32,7 +32,7 @@ double		get_gravity(double gravitation)
 		return (0.3);
 }
 
-void		what_doing(t_data *d, int mode)
+void		what_doing(t_env *d, int mode)
 {
 	double	pos_heigh;
 
@@ -61,7 +61,7 @@ void		what_doing(t_data *d, int mode)
 	}
 }
 
-void		fly_mode(t_data *d)
+void		fly_mode(t_env *d)
 {
 	double	pos_heigh;
 

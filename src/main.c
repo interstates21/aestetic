@@ -1,6 +1,6 @@
 #include "../includes/doom_nukem.h"
 
-void	set_doorstate(t_data *d)
+void	set_doorstate(t_env *d)
 {
 	short	i;
 
@@ -13,7 +13,7 @@ void	set_doorstate(t_data *d)
 	}
 }
 
-void	init_everything(t_data *d, char *map)
+void	init_everything(t_env *d, char *map)
 {
 	int i;
 	int	j;
@@ -45,7 +45,7 @@ void	init_everything(t_data *d, char *map)
 
 void	run(char *mapname)
 {
-	t_data d;
+	t_env d;
 	SDL_Event e;
 	int z;
 

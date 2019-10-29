@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-static void	text_whi_le(t_data *d, int f, int num)
+static void	text_whi_le(t_env *d, int f, int num)
 {
 	int		i;
 	int		wid;
@@ -36,7 +36,7 @@ static void	text_whi_le(t_data *d, int f, int num)
 	}
 }
 
-static void	read_texture_data(t_data *d, int f)
+static void	read_texture_data(t_env *d, int f)
 {
 	
 	size_t	tex_size;
@@ -47,7 +47,7 @@ static void	read_texture_data(t_data *d, int f)
 	text_whi_le(d, f, 1);
 }
 
-static void	read_textures_name(t_data *d, int f)
+static void	read_textures_name(t_env *d, int f)
 {
 	int		i;
 	size_t	memory_size;
@@ -68,7 +68,7 @@ static void	read_textures_name(t_data *d, int f)
 	}
 }
 
-static void	read_wall_n_sector_data(t_data *d, int f)
+static void	read_wall_n_sector_data(t_env *d, int f)
 {
 	int		i;
 
@@ -100,7 +100,7 @@ int			contain_map_path(char *path)
 	return (0);
 }
 
-void		load_map(t_data *d, char *map)
+void		load_map(t_env *d, char *map)
 {
 	int		f;
 	char	*map_path;

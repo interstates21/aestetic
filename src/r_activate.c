@@ -22,7 +22,7 @@ bool	is_usable(t_assets *assets) {
 	return (false);
 }
 
-bool	is_in_range(t_data *d, t_assets *assets) {
+bool	is_in_range(t_env *d, t_assets *assets) {
 	t_vec2f cam_proj;
 	double	len;
 
@@ -33,7 +33,7 @@ bool	is_in_range(t_data *d, t_assets *assets) {
 	return (false);
 }
 
-void 	pickup_asset(t_data *d)
+void 	pickup_asset(t_env *d)
 {
 	int			i;
 	t_assets	*assets;

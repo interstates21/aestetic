@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-short		*mont_anim(t_data *d, t_monster monster, short *nb_of_anim)
+short		*mont_anim(t_env *d, t_monster monster, short *nb_of_anim)
 {
 	nb_of_anim[1] = get_nb_anim_from_rotation(monster.rot,
 			monster.pos, v3_to_v2(d->cam.pos));
@@ -22,7 +22,7 @@ short		*mont_anim(t_data *d, t_monster monster, short *nb_of_anim)
 	return (nb_of_anim);
 }
 
-void		draw_monster(t_data *d, t_monster monster)
+void		draw_monster(t_env *d, t_monster monster)
 {
 	t_display_data	a;
 	t_vec3f			point_in_screen;

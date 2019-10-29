@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-void	in_perk1(t_data *d, t_vec2f mvt, double perk1)
+void	in_perk1(t_env *d, t_vec2f mvt, double perk1)
 {
 	if (v2_len(d->inertia) > MAX_INERTIA)
 	{
@@ -22,7 +22,7 @@ void	in_perk1(t_data *d, t_vec2f mvt, double perk1)
 	}
 }
 
-void	inertia(t_data *d, t_vec2f mvt)
+void	inertia(t_env *d, t_vec2f mvt)
 {
 	double	perk1;
 
@@ -38,7 +38,7 @@ void	inertia(t_data *d, t_vec2f mvt)
 	}
 }
 
-void	change_inertia(t_data *d, double perk1, double length)
+void	change_inertia(t_env *d, double perk1, double length)
 {
 	d->inertia = new_v2(length, 0.0);
 	actualize_dir(perk1, &d->inertia);

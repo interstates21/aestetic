@@ -28,7 +28,7 @@ void	destroy_mail(short id, t_sector *sector, uint8_t type_to_destroy)
 	}
 }
 
-void	swap_list(uint8_t type, uint16_t id, t_data *d, int sectnum[2])
+void	swap_list(uint8_t type, uint16_t id, t_env *d, int sectnum[2])
 {
 	t_sprite_list *tmp[3];
 

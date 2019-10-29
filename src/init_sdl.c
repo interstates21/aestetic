@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-void	x_cm(t_data *d, int pos_r)
+void	x_cm(t_env *d, int pos_r)
 {
 	int		i;
 
@@ -29,7 +29,7 @@ void	x_cm(t_data *d, int pos_r)
 		}
 }
 
-void	fix_picnum(t_data *d)
+void	fix_picnum(t_env *d)
 {
 	int		i;
 	int		pos_r;
