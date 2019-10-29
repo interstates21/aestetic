@@ -64,7 +64,6 @@ void	color_screen(t_args_multi_colo_buf *data)
 						data->d->pxls.value);
 			colo = data->d->pxls.colo + (tmp << 24);
 			pixel_put(data->d, new_v3(x, y, 0),
-
 			to_search_alpha(pixel_pls(data->d->sdl.screen, x, y, 2),
 			colo), 0);
 		}

@@ -12,8 +12,6 @@
 
 #include "../includes/doom_nukem.h"
 
-//notrefact
-
 static void	blackout(t_env *d)
 {
 	SDL_Event	e;

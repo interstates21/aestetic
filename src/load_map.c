@@ -12,8 +12,6 @@
 
 #include "../includes/doom_nukem.h"
 
-
-
 static void	read_textures_name(t_env *d, int f)
 {
 	int		i;
