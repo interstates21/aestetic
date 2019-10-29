@@ -52,8 +52,8 @@
 # define M_NAME_1			"motherdemon"
 # define M_NAME_2			"chargingdemon"
 
-# define TEXT_DIR	"../textures/"
-# define MONSTERS	"../textures/assets/monsters/"
+# define TEXT_DIR	"../texts/"
+# define MONSTERS	"../texts/assets/monsters/"
 
 typedef	enum	e_bool
 {

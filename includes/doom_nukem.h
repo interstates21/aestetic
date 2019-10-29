@@ -463,10 +463,10 @@ typedef struct				s_env
 {	t_sdl					sdl;
 	t_scene					scene;
 	t_player				player;
-	SDL_Surface				**textures;
-	int32_t					nb_textures;
+	SDL_Surface				**texts;
+	int32_t					n_texts;
 	SDL_Surface				**posters;
-	int32_t					nb_posters;
+	int32_t					n_posters;
 	SDL_Surface				**assets_texture;
 	int16_t					nb_assets_texture;
 	char					**tex_name_list;

@@ -18,7 +18,7 @@ void	x_cm(t_env *d, int pos_r)
 
 	i = -1;
 	while (++i < d->numsectors && (pos_r = -1))
-		while (++pos_r < d->nb_textures)
+		while (++pos_r < d->n_texts)
 		{
 			if (ft_strequ(d->sectors[i].floor_texture_name,
 													d->tex_name_list[pos_r]))
@@ -36,7 +36,7 @@ void	fix_picnum(t_env *d)
 
 	i = -1;
 	while (++i < d->numwalls && (pos_r = -1))
-		while (++pos_r < d->nb_textures)
+		while (++pos_r < d->n_texts)
 			if (ft_strequ(d->walls[i].texture_name, d->tex_name_list[pos_r]))
 			{
 				d->walls[i].lowerpicnum = pos_r;

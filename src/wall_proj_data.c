@@ -61,7 +61,7 @@ int		new_proj_data2(t_env *d, t_projdata *p, t_frustum *fr, int mode)
 	}
 	else
 	{
-		p->tex = d->textures[mode == 4 ? p->wall->lowerpicnum :
+		p->tex = d->texts[mode == 4 ? p->wall->lowerpicnum :
 											p->wall->middlepicnum];
 		p->u_tex = (p->u - floor(p->u)) * p->tex->w;
 		mode < 4 ? p->shadefactor = shd_fct(d, p->sector, p->z, 1) : true;

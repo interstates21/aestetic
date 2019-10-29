@@ -74,13 +74,13 @@ void	all_free(t_env *d)
 	if (d->nummonsters > 0)
 		free(d->monsters);
 	i = -1;
-	if (d->nb_textures > 0)
-		while (++i < d->nb_textures)
+	if (d->n_texts > 0)
+		while (++i < d->n_texts)
 			free(d->tex_name_list[i]);
 	i = -1;
 	if ((intptr_t)d->posters > 0)
 	{
-		while (++i < d->nb_posters)
+		while (++i < d->n_posters)
 			SDL_FreeSurface(d->posters[i]);
 		free(d->posters);
 	}
@@ -98,10 +98,10 @@ void	handle_finish(t_env *d)
 	int	f;
 
 	i = -1;
-	while (++i < d->nb_textures)
-		SDL_FreeSurface(d->textures[i]);
-	free(d->textures);
-	d->textures = NULL;
+	while (++i < d->n_texts)
+		SDL_FreeSurface(d->texts[i]);
+	free(d->texts);
+	d->texts = NULL;
 	i = -1;
 	while (++i < MAX_PROJECTILES)
 		d->anim_rots[i].is_active = false;

@@ -20,9 +20,9 @@ void	precompute_texanim(t_env *d)
 
 	frames.x = SDL_GetTicks() / 80;
 	i = -1;
-	while (++i < d->nb_textures)
+	while (++i < d->n_texts)
 	{
-		s = d->textures[i];
+		s = d->texts[i];
 		frames.y = s->h / s->w;
 		if (frames.y <= 5)
 			s->userdata = 0;

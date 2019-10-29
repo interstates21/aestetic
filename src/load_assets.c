@@ -21,7 +21,7 @@ void		post_whi_le(t_env *d, int f, int b)
 	i = -1;
 	if (b == 1)
 	{
-		while (++i < d->nb_posters)
+		while (++i < d->n_posters)
 		{
 			if (read(f, &wid, sizeof(int)) < 0 || read(f, &heig,
 				sizeof(int)) < 0)
@@ -45,11 +45,11 @@ void		read_posters_data(t_env *d, int f)
 {
 	size_t	posters_size;
 
-	if (read(f, &d->nb_posters, sizeof(int32_t)) < 0)
+	if (read(f, &d->n_posters, sizeof(int32_t)) < 0)
 		print_err("Cannot read num posters");
-	if (d->nb_posters <= 0)
+	if (d->n_posters <= 0)
 		return ;
-	posters_size = sizeof(SDL_Surface*) * d->nb_posters;
+	posters_size = sizeof(SDL_Surface*) * d->n_posters;
 	d->posters = (SDL_Surface**)pure_malloc(posters_size,
 												"Cannot alloc posters");
 	post_whi_le(d, f, 1);
