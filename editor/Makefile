@@ -1,4 +1,3 @@
-
 NAME = dm_editor
 CC = clang
 FILES = bmp_reader \
