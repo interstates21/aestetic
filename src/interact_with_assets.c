@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 21:43:27 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/27 21:08:42 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 16:27:15 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ void		use_asset(t_env *d, t_objects *asset)
 	if (asset->stat_mod.heal > 0)
 	{
 		play_sound(d, HEALTH_SOUND, v3_to_v2(d->cam.pos));
-		change_buf_colo(d, asset->stat_mod.heal / 2, HEALTH_COLO);
+		new_buffer_color(d, asset->stat_mod.heal / 2, HEALTH_COLO);
 	}
 	if (!check_jetpack(d, asset))
-		return (invoke_msg(d, "INVENTORY IS FULL"));
+		return (massege_print(d, "INVENTORY IS FULL"));
 	asset->used = true;
 }
 

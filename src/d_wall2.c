@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 20:04:06 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/28 19:26:00 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 16:38:51 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	draw_wall_transparent(t_env *d, t_projdata *p, t_frustum *fr)
 																	d, p, 1);
 }
 
-void	draw_wall_nei(t_env *d, t_projdata *p, t_frustum *fr)
+void	displaing_n_wall(t_env *d, t_projdata *p, t_frustum *fr)
 {
 	drawing_wall((t_vec2){p->y, MIN(fr->ybottom[p->x], p->nya)}, d, p, 0);
 	new_proj_data2(d, p, fr, 4);

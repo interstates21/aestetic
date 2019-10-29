@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handlers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 20:07:46 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/28 18:34:10 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 16:41:18 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	print_err(const char *err)
 	exit(1);
 }
 
-void	finish(t_env *d)
+void	ending(t_env *d)
 {
 	SDL_Rect	rect;
 
@@ -38,7 +38,7 @@ void	finish(t_env *d)
 	rect.h = HEIGHT;
 	rect.w = WIDTH;
 	SDL_FillRect(d->sdl.screen, NULL, 0x000000);
-	draw_message(d, "FINISH", 0xFFFFFF,
+	displaing_msg(d, "FINISH", 0xFFFFFF,
 		(SDL_Rect){.x = WIDTH / 2, .y = HEIGHT / 2 - 30});
 	SDL_UpdateWindowSurface(d->sdl.win);
 }

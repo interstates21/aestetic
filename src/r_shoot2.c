@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   r_shoot2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 03:03:45 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 16:06:52 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 16:27:15 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	handle_click(t_env *e)
 	{
 		if (!ammo)
 		{
-			invoke_msg(e, "Don't have patrons = (((");
+			massege_print(e, "Don't have patrons = (((");
 			return ;
 		}
 		play_sound(e, CRYO_SOUND, cam_proj);

@@ -6,13 +6,13 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 20:11:45 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/28 21:49:35 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 16:37:17 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
 
-void		draw_message(t_env *d, char *message, int color, SDL_Rect rect)
+void		displaing_msg(t_env *d, char *message, int color, SDL_Rect rect)
 {
 	SDL_Surface *txtsurf;
 	SDL_Color	c;
@@ -43,16 +43,16 @@ int			ini_dific(t_env *d, int active_option)
 	}
 }
 
-int			draw_background(t_env *d, SDL_Event e)
+int			displaing_backgr(t_env *d, SDL_Event e)
 {
 	static int	active_option = 0;
 	int			c;
 
 	SDL_FillRect(d->sdl.screen, NULL, 0x000000);
 	c = active_option == 0 ? 0xFF0000 : 0xFFFFFF;
-	draw_message(d, "NRM", c, (SDL_Rect){.x = WIDTH / 2, .y = HEIGHT / 2 - 30});
+	displaing_msg(d, "NRM", c, (SDL_Rect){.x = WIDTH / 2, .y = HEIGHT / 2 - 30});
 	c = active_option == 1 ? 0xFF0000 : 0xFFFFFF;
-	draw_message(d, "HRD", c, (SDL_Rect){.x = WIDTH / 2, .y = HEIGHT / 2 + 20});
+	displaing_msg(d, "HRD", c, (SDL_Rect){.x = WIDTH / 2, .y = HEIGHT / 2 + 20});
 	SDL_UpdateWindowSurface(d->sdl.win);
 	while (SDL_PollEvent(&e))
 		if (e.type == SDL_KEYDOWN)

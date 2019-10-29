@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ceil_height.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 09:18:24 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/28 18:21:40 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 16:45:11 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ double	get_ceil_height(t_sector *sect, t_wall *walls, int16_t sectnum,
 	{
 		if (!(sect->slopeceil))
 			return (sect->ceilheight);
-		get_sector_center(&center, walls, sect->n_walls, sect->firstwallnum);
-		angle = get_angle(sect->slopeceil_orientation,
+		mid_sect_val(&center, walls, sect->n_walls, sect->firstwallnum);
+		angle = angles_val(sect->slopeceil_orientation,
 												sect->is_animatedslopeceil);
 		p = v2_min(p, center);
 		v2_rot(&p, angle);
 		p = v2_plus(p, center);
-		return (tan_calculations(sect->ceilheight, sect->slopeceil, p, center));
+		return (angle_caluk_tang(sect->ceilheight, sect->slopeceil, p, center));
 	}
 	print_err("0 sectors");
 	return (1);

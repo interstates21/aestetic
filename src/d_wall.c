@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   d_weapon.c                                         :+:      :+:    :+:   */
+/*   d_wall.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 22:08:20 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/28 19:51:05 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 16:38:51 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	draw_wall2(t_env *d, t_projdata *p, t_frustum *fr, t_frustum *nfr)
 	if (!p->neighbor)
 		draw_wall_no_nei(d, p, fr);
 	else if (p->neighbor)
-		draw_wall_nei(d, p, fr);
+		displaing_n_wall(d, p, fr);
 }
 
 void	draw_wall(t_env *d, t_projdata *p, t_frustum *fr)

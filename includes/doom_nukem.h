@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 23:23:09 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/28 23:23:47 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 16:45:11 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -713,35 +713,34 @@ typedef	struct				s_three_val
 # define NORMAL 1
 # define HARD 2
 # define RED 0xFF0000
-# define PURPLE 0x800080
+# define PURPLE
 # define GREEN_BLAST 0x5CE26E
 # define HEALTH_COLO 0xFFFF66
 # define SAME_POS(v1, v2) (((v1.x) == (v2.x)) && ((v1.y) == (v2.y)))
 # define F_ANIM 1
 # define PICKUP_RANGE 2
 
-void						change_buf_colo(t_env *d, uint16_t amount,
+void						new_buffer_color(t_env *d, uint16_t amount,
 															uint32_t colo);
-double						get_dist(t_vec2f a, t_vec2f b, t_vec2f p);
-void						invoke_msg(t_env *d, char *msg);
-void						br_msg(t_env *d, t_wall *w, int *n);
-void						whi_le(t_env *d, t_sector *sect, int *n,
+double						distanse_place(t_vec2f a, t_vec2f b, t_vec2f p);
+void						massege_print(t_env *d, char *msg);
+void						door_func(t_env *d, t_sector *sect, int *n,
 															double *m);
-void						alpha_y(double *sl_y);
-void						swap_tabs(short *tab, short *tmp_tab);
-void						set_tab(t_env *d, short sect_to_scan,
+void						alpha_serch(double *sl_y);
+void						tabulation_sw(short *tab, short *tmp_tab);
+void						tabulation_new_v(t_env *d, short sect_to_scan,
 												short *tab, short old_sect);
-int							draw_background(t_env *d, SDL_Event e);
-void						draw_message(t_env *d, char *message, int color,
+int							displaing_backgr(t_env *d, SDL_Event e);
+void						displaing_msg(t_env *d, char *message, int color,
 												SDL_Rect rect);
-void						draw_wall_nei(t_env *d, t_projdata *p,
+void						displaing_n_wall(t_env *d, t_projdata *p,
 												t_frustum *fr);
-void						free_sectors_sprites(t_env *d, short i);
-void						finish(t_env *d);
-double						get_angle(double o, bool is_animated);
-double						tan_calculations(double h, double slope,
+void						del_mem_spr(t_env *d, short i);
+void						ending(t_env *d);
+double						angles_val(double o, bool is_animated);
+double						angle_caluk_tang(double h, double slope,
 												t_vec2f p, t_vec2f c);
-void						get_sector_center(t_vec2f *v, t_wall *walls,
+void						mid_sect_val(t_vec2f *v, t_wall *walls,
 											int n_walls, int current_wall);
 double						calculate_max_floor_h(t_sector *s);
 double						*get_screen_pixels();
@@ -779,8 +778,6 @@ int							new_proj_data(t_projdata *p, t_frustum *fr,
 int							new_proj_data2(t_env *d, t_projdata *p,
 													t_frustum *fr, int mode);
 void						draw_wall(t_env *d, t_projdata *p, t_frustum *fr);
-void						draw_wall_nei(t_env *d, t_projdata *p,
-																t_frustum *fr);
 void						draw_wall_no_nei(t_env *d, t_projdata *p,
 																t_frustum *fr);
 void						draw_wall_transparent(t_env *d, t_projdata *p,
@@ -871,7 +868,6 @@ void						draw_inventory_slot(t_env *d,
 											SDL_Surface *tex, int x1, int y1);
 void						draw_ammo(t_env *d, t_weapon_type weapon_type);
 void						draw_fuel(t_env *d);
-void						invoke_msg(t_env *d, char *msg);
 bool						door_use(t_env *d, t_sector *sect);
 t_vec2f						get_closest(t_vec2f a, t_vec2f b, t_vec2f p);
 void						move_monster(t_env *d, int i);
@@ -891,7 +887,7 @@ void						player_hit_proj(t_env *d,
 													t_anim_rot *projectile);
 void						player_fell(t_env *d);
 void						contact_with_monster(t_env *d, t_monster *monster);
-void						change_buf_colo(t_env *d, uint16_t amount,
+void						new_buffer_color(t_env *d, uint16_t amount,
 																uint32_t colo);
 void						color_buffer(t_env *d);
 void						change_inertia(t_env *d, double angle,

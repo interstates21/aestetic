@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 20:00:42 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/26 20:09:49 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 16:45:11 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,12 @@ double	get_floor_height(t_sector *sect, t_wall *walls, int16_t sectnum,
 		h = calculate_max_floor_h(sect);
 		if (!(sect->slope))
 			return (h - calculate_floor_height_epsilon(h));
-		get_sector_center(&center, walls, sect->n_walls, sect->firstwallnum);
-		angle = get_angle(sect->slope_orientation, sect->is_animatedslope);
+		mid_sect_val(&center, walls, sect->n_walls, sect->firstwallnum);
+		angle = angles_val(sect->slope_orientation, sect->is_animatedslope);
 		p = v2_min(p, center);
 		v2_rot(&p, angle);
 		p = v2_plus(p, center);
-		return (tan_calculations(h, sect->slope, p, center));
+		return (angle_caluk_tang(h, sect->slope, p, center));
 	}
 	print_err("0 sectors");
 	return (1);

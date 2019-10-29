@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 15:40:05 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 15:48:56 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 16:36:51 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	run(char *mapname)
 	d.g_font = TTF_OpenFont("/Library/Fonts/Arial.ttf", 25);
 	init_keys(&(d.keys));
 	while (z == 0)
-		z = draw_background(&d, e);
+		z = displaing_backgr(&d, e);
 	d.zbuffer = get_screen_pixels();
 	ft_strncpy(d.nextmap, mapname, 100);
 	init_everything(&d, d.nextmap);

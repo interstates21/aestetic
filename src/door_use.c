@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 21:22:56 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/27 21:09:03 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 16:31:38 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ bool	door_use(t_env *d, t_sector *sect)
 	m[1] = INFINITY;
 	n[2] = sect->firstwallnum + sect->n_walls - 1;
 	n[3] = sect->firstwallnum;
-	whi_le(d, sect, n, m);
+	door_func(d, sect, n, m);
 	if (m[1] == INFINITY)
 		return (false);
 	return (door_use2(d, &d->walls[n[0]], n));

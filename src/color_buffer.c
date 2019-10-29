@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 09:18:24 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/27 21:21:06 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 16:33:53 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	set_find_alpha(double *sl_x, double *sl_y)
 		sl_x[x] = fabs(x - WIDTH * 0.5) / (WIDTH * 0.5);
 		x++;
 	}
-	alpha_y(sl_y);
+	alpha_serch(sl_y);
 }
 
 double	find_alpha(short x, short y, uint32_t which_ret)

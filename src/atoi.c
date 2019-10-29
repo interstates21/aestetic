@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   atoi.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 12:27:46 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/28 18:21:07 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 16:35:40 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char		*ft_itoa_static(int n)
 	return (s);
 }
 
-void		swap_tabs(short *tab, short *tmp_tab)
+void		tabulation_sw(short *tab, short *tmp_tab)
 {
 	short	i;
 
@@ -61,7 +61,7 @@ void		swap_tabs(short *tab, short *tmp_tab)
 	}
 }
 
-void		set_tab(t_env *d, short sect_to_scan, short *tab, short old_sect)
+void		tabulation_new_v(t_env *d, short sect_to_scan, short *tab, short old_sect)
 {
 	short	i;
 	short	j;

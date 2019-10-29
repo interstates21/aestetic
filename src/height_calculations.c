@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 20:08:25 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/26 20:09:06 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 16:45:11 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ double	calculate_max_floor_h(t_sector *s)
 	return (n);
 }
 
-void	get_sector_center(t_vec2f *v, t_wall *walls, int n_walls,
+void	mid_sect_val(t_vec2f *v, t_wall *walls, int n_walls,
 														int current_wall)
 {
 	int			i;
@@ -40,12 +40,12 @@ void	get_sector_center(t_vec2f *v, t_wall *walls, int n_walls,
 	*v = v2_scale(*v, interp);
 }
 
-double	tan_calculations(double h, double slope, t_vec2f p, t_vec2f c)
+double	angle_caluk_tang(double h, double slope, t_vec2f p, t_vec2f c)
 {
 	return (h + tan(slope * M_PI / 180) * (p.x - c.x));
 }
 
-double	get_angle(double o, bool is_animated)
+double	angles_val(double o, bool is_animated)
 {
 	double temp;
 

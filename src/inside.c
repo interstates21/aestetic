@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   inside.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 09:18:24 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/28 18:32:37 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 16:39:36 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
 
-void	free_sectors_sprites(t_env *d, short i)
+void	del_mem_spr(t_env *d, short i)
 {
 	t_sprite_list	*list;
 	t_sprite_list	*need_free;
@@ -108,10 +108,10 @@ int16_t	update_cursect_smart(t_env *d, short depth, t_vec2f pos,
 		{
 			if (inside(d, tab[i], pos))
 				return (tab[i]);
-			set_tab(d, tab[i], &tmp_tab[0], tab[i]);
+			tabulation_new_v(d, tab[i], &tmp_tab[0], tab[i]);
 			i++;
 		}
-		swap_tabs(&tab[0], &tmp_tab[0]);
+		tabulation_sw(&tab[0], &tmp_tab[0]);
 		depth--;
 	}
 	return (-1);

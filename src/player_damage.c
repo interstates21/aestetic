@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 03:50:07 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 22:39:52 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 16:23:17 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	player_fell(t_env *d)
 {
 	d->player.min_h = MINIMUM_CROUCH_HEIGHT;
 	d->player.gravity = fabs(d->player.gravity);
-	change_buf_colo(d, d->player.gravity * 100, 0x111111);
+	new_buffer_color(d, d->player.gravity * 100, 0x111111);
 	if (d->player.gravity > 0.2)
 		d->player.moving = 40;
 	else
@@ -29,7 +29,7 @@ void	player_fell(t_env *d)
 
 void	player_hit_proj(t_env *d, t_anim_rot *proj)
 {
-	change_buf_colo(d, d->anim_rot_type[proj->id_type].damage, RED);
+	new_buffer_color(d, d->anim_rot_type[proj->id_type].damage, RED);
 	if (proj)
 		change_inertia(d, atan2(proj->dir.z,
 					proj->dir.x), BOUNCING_DIST_PROJ);
@@ -45,7 +45,7 @@ void	check_dangerous_area(t_env *d)
 	if (!d->sectors[d->this_sect].is_harmful || fabs(h_area) > 0.1 ||
 					SDL_GetTicks() - d->harmful_area < 1000)
 		return ;
-	change_buf_colo(d, 7, RED);
+	new_buffer_color(d, 7, RED);
 	d->player.health -= 20;
 	d->harmful_area = SDL_GetTicks();
 	if (d->player.health > 0)
@@ -63,8 +63,8 @@ void	contact_with_monster(t_env *d, t_monster *monster)
 			else if (monster->id_type == CHARGINGDEMON)
 				d->player.health -= 20;
 			d->player.can_be_stomped = 30;
-			monster->id_type == MOTHERDEMON ? change_buf_colo(d, 5, RED) :
-												change_buf_colo(d, 8, RED);
+			monster->id_type == MOTHERDEMON ? new_buffer_color(d, 5, RED) :
+												new_buffer_color(d, 8, RED);
 			if (d->player.health > 0)
 			{
 				monster->id_type == CHARGINGDEMON ?

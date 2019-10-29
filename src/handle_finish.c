@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_finish.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 22:58:36 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/28 18:32:54 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 16:41:18 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,8 @@ void	handle_finish(t_env *d)
 		d->anim_rots[i].is_active = false;
 	i = -1;
 	while (++i < d->n_sect)
-		free_sectors_sprites(d, i);
-	finish(d);
+		del_mem_spr(d, i);
+	ending(d);
 	SDL_Delay(500);
 	all_free(d);
 	exit(1);
