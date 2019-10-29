@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-void	new_assets_p(t_projdata *p, t_vec3f vect, t_three_val container)
+void	new_assets_p(t_proj_env *p, t_vec3f vect, t_three_val container)
 {
 	p->x1 = vect.x - container.one / 2;
 	p->x2 = p->x1 + container.one;
@@ -29,7 +29,7 @@ void	new_assets_p(t_projdata *p, t_vec3f vect, t_three_val container)
 	p->z = vect.z;
 }
 
-void	proj_to_asset(t_env *d, t_projdata *p, t_vec3f vect, SDL_Surface *tex)
+void	proj_to_asset(t_env *d, t_proj_env *p, t_vec3f vect, SDL_Surface *tex)
 {
 	double		scale;
 	t_three_val	container;
@@ -46,7 +46,7 @@ void	proj_to_asset(t_env *d, t_projdata *p, t_vec3f vect, SDL_Surface *tex)
 	new_assets_p(p, vect, container);
 }
 
-void	to_liet_assets(t_env *d, t_projdata *p, SDL_Surface *tex)
+void	to_liet_assets(t_env *d, t_proj_env *p, SDL_Surface *tex)
 {
 	t_three_val	container;
 	uint32_t	px;

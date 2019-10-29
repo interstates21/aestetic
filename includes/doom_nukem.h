@@ -239,6 +239,44 @@ typedef struct				s_frustum
 
 typedef struct				s_projdata
 {
+	t_sec					*portal;
+	int						ny1a;
+	int						ny2a;
+	int						ny1b;
+	int						ny2b;
+	double					u1;
+	double					u2;
+	double					y_scale;
+	t_wall					*wall;
+	t_wall					*wall2;
+	t_sec					*sector;
+	double					n;
+	double					z;
+	int						x;
+	int						y;
+	double					u;
+	int						ya;
+	int						yb;
+	int						yc;
+	int						yd;
+	int						nya;
+	int						nyb;
+	t_vec3f					v[3];
+	t_vec3f					c[3];
+	double					area;
+	t_vec3f					a[3];
+	t_vec3f					b[3];
+	double					z_buff[WIDTH];
+	bool					visibility_buf[WIDTH];
+	double					door_h;
+	double					door_begin;
+	double					u1_poster;
+	double					u2_poster;
+	double					poster_h;
+	double					areaa;
+	bool					is_on_floor;
+	double					shadefactor;
+	double					len;
 	double					x1;
 	double					x2;
 	int						cx1;
@@ -253,44 +291,6 @@ typedef struct				s_projdata
 	int						y2c;
 	int						y1d;
 	int						y2d;
-	t_sec				*neighbor;
-	int						ny1a;
-	int						ny2a;
-	int						ny1b;
-	int						ny2b;
-	double					u1;
-	double					u2;
-	double					y_scale;
-	t_wall					*wall;
-	t_wall					*wall2;
-	t_sec				*sector;
-	double					n;
-	double					z;
-	int						x;
-	int						y;
-	double					u;
-	int						ya;
-	int						yb;
-	int						yc;
-	int						yd;
-	int						nya;
-	int						nyb;
-	double					z_buff[WIDTH];
-	bool					visibility_buf[WIDTH];
-	double					door_h;
-	double					door_begin;
-	double					u1_poster;
-	double					u2_poster;
-	double					poster_h;
-	t_vec3f					v[3];
-	t_vec3f					c[3];
-	double					area;
-	t_vec3f					a[3];
-	t_vec3f					b[3];
-	double					areaa;
-	bool					is_on_floor;
-	double					shadefactor;
-	double					len;
 	double					scale1;
 	double					scale2;
 	int						u_tex;
@@ -300,7 +300,7 @@ typedef struct				s_projdata
 	int						ya_poster;
 	int						yb_poster;
 	int						margin;
-}							t_projdata;
+}							t_proj_env;
 
 # define N_ANIM_PROJ 21
 # define COLLISION_ID N_ANIM_PROJ - 1
@@ -522,7 +522,7 @@ typedef struct				s_env
 typedef struct				s_thread_arg
 {
 	t_env					*d;
-	t_projdata				*p;
+	t_proj_env				*p;
 	t_frustum				*fr;
 }							t_thread_arg;
 
@@ -733,7 +733,7 @@ void						tabulation_new_v(t_env *d, short sect_to_scan,
 int							displaing_backgr(t_env *d, SDL_Event e);
 void						displaing_msg(t_env *d, char *message, int color,
 												SDL_Rect rect);
-void						displaing_n_wall(t_env *d, t_projdata *p,
+void						displaing_n_wall(t_env *d, t_proj_env *p,
 												t_frustum *fr);
 void						del_mem_spr(t_env *d, short i);
 void						ending(t_env *d);
@@ -764,21 +764,21 @@ uint32_t					pixel_pls(SDL_Surface *s, double x, double y,
 																	int mode);
 bool						to_wall_lock(double *x1, double *z1, double x2,
 																	double z2);
-void						proj_wall(t_env *d, t_projdata *p, t_frustum *fr,
+void						proj_wall(t_env *d, t_proj_env *p, t_frustum *fr,
 																t_vec2f v[2]);
-int							new_proj_data(t_projdata *p, t_frustum *fr,
+int							new_proj_data(t_proj_env *p, t_frustum *fr,
 																	int mode);
-int							new_proj_data2(t_env *d, t_projdata *p,
+int							new_proj_data2(t_env *d, t_proj_env *p,
 													t_frustum *fr, int mode);
-void						displaing_wall(t_env *d, t_projdata *p,
+void						displaing_wall(t_env *d, t_proj_env *p,
 																t_frustum *fr);
-void						displaing_no_n_wall(t_env *d, t_projdata *p,
+void						displaing_no_n_wall(t_env *d, t_proj_env *p,
 																t_frustum *fr);
-void						displaing_to_transp_wall(t_env *d, t_projdata *p,
+void						displaing_to_transp_wall(t_env *d, t_proj_env *p,
 																t_frustum *fr);
-void						displaing_sky(t_env *d, t_projdata *p,
+void						displaing_sky(t_env *d, t_proj_env *p,
 																t_frustum *fr);
-void						displaing_cl_fl(t_env *d, t_projdata *p,
+void						displaing_cl_fl(t_env *d, t_proj_env *p,
 													t_frustum *fr, int mode);
 void						actio_pl(t_env *d);
 void						displaing_weap(t_env *d);
@@ -844,11 +844,11 @@ double						fun_to_edget(t_vec3f a, t_vec3f b, int x, int y);
 bool						collision_player(t_env *d, t_sec *sect);
 bool						collision_monster(t_env *d, t_sec *sect,
 												t_vec2f *pos, double dist_coll);
-void						d_asseting(t_env *d, t_projdata *p,
+void						d_asseting(t_env *d, t_proj_env *p,
 															int16_t sectnum);
-void						proj_to_asset(t_env *d, t_projdata *p,
+void						proj_to_asset(t_env *d, t_proj_env *p,
 												t_vec3f vect, SDL_Surface *tex);
-void						to_liet_assets(t_env *d, t_projdata *p,
+void						to_liet_assets(t_env *d, t_proj_env *p,
 															SDL_Surface *tex);
 void						assets_to_interactive(t_env *d);
 void						use_asset(t_env *d, t_objects *asset);

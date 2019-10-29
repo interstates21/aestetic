@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-void	assets_to_draw(t_env *d, t_projdata *p, int16_t sectnum, int i)
+void	assets_to_draw(t_env *d, t_proj_env *p, int16_t sectnum, int i)
 {
 	t_objects	*asset;
 	t_vec3f		vect;
@@ -30,7 +30,7 @@ void	assets_to_draw(t_env *d, t_projdata *p, int16_t sectnum, int i)
 	}
 }
 
-void	d_asseting(t_env *d, t_projdata *p, int16_t sectnum)
+void	d_asseting(t_env *d, t_proj_env *p, int16_t sectnum)
 {
 	int			i;
 

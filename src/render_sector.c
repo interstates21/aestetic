@@ -33,14 +33,14 @@ t_sec	*check_neighbor(t_env *d, int16_t nei)
 	return (&d->sectors[nei]);
 }
 
-void		render_wall(t_env *d, t_projdata *p, t_frustum *fr, int i)
+void		render_wall(t_env *d, t_proj_env *p, t_frustum *fr, int i)
 {
 	p->wall = &d->walls[p->sector->firstwallnum + i];
 	p->wall2 = &d->walls[p->sector->firstwallnum +
 		(i + 1) % p->sector->n_walls];
 	transformvertex(d, p->wall->point, &p->x1, &p->z1);
 	transformvertex(d, p->wall2->point, &p->x2, &p->z2);
-	p->neighbor = check_neighbor(d, p->wall->neighborsect);
+	p->portal = check_neighbor(d, p->wall->neighborsect);
 	p->wall->lowerpicnum = p->wall2->middlepicnum;
 	p->len = v2_len(new_v2(p->x2 - p->x1, p->z2 - p->z1));
 	p->u1 = 0;
@@ -56,7 +56,7 @@ void		render_wall(t_env *d, t_projdata *p, t_frustum *fr, int i)
 			v3_to_v2(transform_back(d, new_v3(p->x2, 0, p->z2)))});
 }
 
-void		proj_ceil_or_floor(t_env *d, t_projdata *p, int mode)
+void		proj_ceil_or_floor(t_env *d, t_proj_env *p, int mode)
 {
 	mode == 0 ? (p->b[0] = transform_back(d, new_v3(-1, 0, 1))) :
 				(p->c[0] = transform_back(d, new_v3(-1, 0, 1)));
@@ -84,7 +84,7 @@ void		proj_ceil_or_floor(t_env *d, t_projdata *p, int mode)
 		(p->area = fun_to_edget(p->v[0], p->v[1], p->v[2].x, p->v[2].y));
 }
 
-static void	rend_while(t_env *d, t_sec *sect, t_frustum *fr, t_projdata p)
+static void	rend_while(t_env *d, t_sec *sect, t_frustum *fr, t_proj_env p)
 {
 	int				i;
 
@@ -99,7 +99,7 @@ static void	rend_while(t_env *d, t_sec *sect, t_frustum *fr, t_projdata p)
 void		sect_rendering(t_env *d, t_sec *sect, t_frustum *fr)
 {
 	t_sprite_list	*lst_tmp;
-	t_projdata		p;
+	t_proj_env		p;
 
 	p.sector = sect;
 	proj_ceil_or_floor(d, &p, 0);

@@ -17,7 +17,7 @@ double	fun_to_edget(t_vec3f a, t_vec3f b, int x, int y)
 	return (x - a.x) * (b.y - a.y) - (y - a.y) * (b.x - a.x);
 }
 
-void	drawing_c_f(t_env *d, t_projdata *p, int mode, t_vec2 x_y)
+void	drawing_c_f(t_env *d, t_proj_env *p, int mode, t_vec2 x_y)
 {
 	double		w[3];
 	double		z;
@@ -46,7 +46,7 @@ void	drawing_c_f(t_env *d, t_projdata *p, int mode, t_vec2 x_y)
 					p->c[2].z) * z), 1)), 1);
 }
 
-void	displaing_cl_fl(t_env *d, t_projdata *p, t_frustum *fr, int mode)
+void	displaing_cl_fl(t_env *d, t_proj_env *p, t_frustum *fr, int mode)
 {
 	t_vec2		x_y;
 

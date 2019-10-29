@@ -12,13 +12,13 @@
 
 #include "../includes/doom_nukem.h"
 
-void	displaing_sky(t_env *d, t_projdata *p, t_frustum *fr)
+void	displaing_sky(t_env *d, t_proj_env *p, t_frustum *fr)
 {
 	SDL_Surface	*texts;
 	t_vec2		v_h;
 	t_vec2		x_y;
 
-	if (p->neighbor && p->neighbor->outdoor)
+	if (p->portal && p->portal->outdoor)
 		return ;
 	texts = d->texts[p->sector->ceilpicnum];
 	v_h.y = HEIGHT + MAX_Y_OFFSET * 2;
