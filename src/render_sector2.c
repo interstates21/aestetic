@@ -12,14 +12,14 @@
 
 #include "../includes/doom_nukem.h"
 
-t_sec*check_neighbor(t_env *d, int16_t nei)
+t_sec* check_neighbor(t_env *d, int16_t nei)
 {
 	if (nei < 0 || nei >= d->n_sect)
 		return (NULL);
 	return (&d->sectors[nei]);
 }
 
-t_vec3ftransform_back(t_env *d, t_vec3f v)
+t_vec3f transform_back(t_env *d, t_vec3f v)
 {
 	return (new_v3(v.x * d->cam.cos + v.z * d->cam.sin + d->cam.pos.x, v.y,
 			v.x * -d->cam.sin + v.z * d->cam.cos + d->cam.pos.z));

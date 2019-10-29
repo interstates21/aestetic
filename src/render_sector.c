@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 22:23:12 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 21:07:33 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 22:05:02 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void		proj_ceil_or_floor(t_env *d, t_proj_env *p, int mode)
 
 void	rend_while(t_env *d, t_sec *sect, t_frustum *fr, t_proj_env p)
 {
-	int				i;
+	int	i;
 
 	i = -1;
 	while (++i < WIDTH)
