@@ -67,7 +67,7 @@ void				init_sprites(t_ed *e)
 	int				i;
 
 	dir = NULL;
-	tmp[0] = "../textures/objects/objects/";
+	tmp[0] = "../texts/objects/objects/";
 	reopen(&dir, tmp[0]);
 	while ((data = readdir(dir)))
 		if (bmp_check(data))

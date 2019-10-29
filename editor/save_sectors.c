@@ -44,9 +44,9 @@ static void		write_walls(t_ed *e, t_wall *w)
 	s = (t_stdwall){(t_v2f){w->v1.x, w->v1.y}, w->tex[T_FLOOR],
 	w->tex[T_WALL], w->tex[T_CEIL], 0, val, "", "", 1,
 	-1, 0, -1, 0};
-	if (ft_strequ(e->texlist[w->tex[T_WALL]].name, "../textures/wiremesh.bmp")
-	|| ft_strequ(e->texlist[w->tex[T_WALL]].name, "../textures/DOOR12_1.bmp")
-	|| ft_strequ(e->texlist[w->tex[T_WALL]].name, "../textures/M1_1.bmp"))
+	if (ft_strequ(e->texlist[w->tex[T_WALL]].name, "../texts/wiremesh.bmp")
+	|| ft_strequ(e->texlist[w->tex[T_WALL]].name, "../texts/DOOR12_1.bmp")
+	|| ft_strequ(e->texlist[w->tex[T_WALL]].name, "../texts/M1_1.bmp"))
 		s.is_transparent = 1;
 	i = -1;
 	while (++i < MAX_NAME)
