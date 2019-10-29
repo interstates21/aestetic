@@ -12,8 +12,6 @@
 
 #include "../includes/doom_nukem.h"
 
-//not_refact
-
 static void	monster_hit_2(t_env *d, uint16_t damage, uint16_t id_monster)
 {
 	if ((d->monsters[id_monster].life -= damage) <= 0)

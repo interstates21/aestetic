@@ -42,7 +42,6 @@ FILES = main \
 		reorder_sprite \
 		create_projectile \
 		projectile_collision \
-		update_2 \
 		update \
 		color_buffer \
 		render_sector \
@@ -95,7 +94,10 @@ FILES = main \
 		vector_scale \
 		char_selector \
 		loop2 \
-		monster_behaviour2
+		monster_behaviour2 \
+		update_2 \
+		update_things \
+		sprite_things 
 LIBFT_DIR = libft/
 SRC = $(addprefix src/, $(addsuffix .c, $(FILES)))
 OBJ = $(addprefix obj/, $(addsuffix .o, $(FILES)))

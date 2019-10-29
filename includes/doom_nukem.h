@@ -948,5 +948,13 @@ void						dm_exit(t_env *d, int active_option, int c);
 void						month_ini(double rand, t_vec2f tmp, t_vec2f tmp2, t_monster *monster);
 t_vec3f						transform_back(t_env *d, t_vec3f v);
 t_sec						*check_neighbor(t_env *d, int16_t nei);
-
+void      swap_vals(double *a, double *b);
+double      get_smh(t_vec3f v1, t_vec3f v2);
+void      change_list(t_sprite_list *one, t_sprite_list *two,
+          t_sprite_list *prev);
+void      skip(void *smh);
+int16_t      second_sin(t_env *env, short k);
+void      third_sin(t_env *env, short k);
+void      fourth_sin(t_env *env, short k);
+void      fifth_sin(t_env *env, short *k);
 #endif

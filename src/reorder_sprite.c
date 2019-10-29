@@ -12,99 +12,79 @@
 
 #include "../includes/doom_nukem.h"
 
-//not refact
-
-static void	set_var_reorder_sprite(t_sprite_list **list, t_sec *sec, int *i,
-		bool type)
+static void	if_it_loops(t_sprite_list **lt, t_sec *sec, int *j,
+bool type)
 {
-	if (type == SET)
-	{
-		list[2] = sec->sprite_list->next;
-		list[1] = sec->sprite_list;
-		*i = 0;
-	}
-	if (type == INCREMENT)
-	{
-		*i = *i + 1;
-		list[0] = list[1];
-		list[1] = list[2];
-		list[2] = list[2]->next;
-	}
+	*j = type == INCREMENT ? *j + 1 : *j;
+	*j = type == SET ? 0 : *j;
+	lt[0] = type == INCREMENT ? lt[1] : lt[0];
+	lt[1] = type == INCREMENT ? lt[2] : lt[1];
+	lt[2] = type == INCREMENT ? lt[2]->next : lt[2];
+	lt[2] = type == SET ? sec->sprite_list->next : lt[2];
+	lt[1] = type == SET ? sec->sprite_list : lt[1];
 }
 
-void		change_list(t_sprite_list *one, t_sprite_list *two,
-		t_sprite_list *prev)
+void		sp_alg(t_env *d, t_sec *sec, double *smh,
+		t_sprite_list **lt)
 {
-	prev->next = two;
-	one->next = two->next;
-	two->next = one;
-}
+	int			j;
 
-void		reorder_sprites_algo(t_env *d, t_sec *sec, double *vla,
-		t_sprite_list **list)
-{
-	double		distance;
-	int			i;
-
-	set_var_reorder_sprite(list, sec, &i, SET);
-	while (list[2])
+	if_it_loops(lt, sec, &j, SET);
+	while (lt[2])
 	{
-		if (vla[i] < vla[i + 1])
+		if (smh[j] < smh[j + 1])
 		{
-			distance = vla[i];
-			vla[i] = vla[i + 1];
-			vla[i + 1] = distance;
-			if (i != 0)
+			swap_vals(&smh[j], &smh[j + 1]);
+			if (j != 0)
 			{
-				change_list(list[1], list[2], list[0]);
-				reorder_sprites_algo(d, sec, vla, list);
+				change_list(lt[1], lt[2], lt[0]);
+				sp_alg(d, sec, smh, lt);
 				return ;
 			}
-			list[1]->next = list[2]->next;
-			list[2]->next = sec->sprite_list;
-			sec->sprite_list = list[2];
-			reorder_sprites_algo(d, sec, vla, list);
+			lt[1]->next = lt[2]->next;
+			lt[2]->next = sec->sprite_list;
+			sec->sprite_list = lt[2];
+			sp_alg(d, sec, smh, lt);
 			return ;
 		}
-		set_var_reorder_sprite(list, sec, &i, INCREMENT);
+		if_it_loops(lt, sec, &j, INCREMENT);
 	}
 }
 
-void		set_vla(t_sprite_list *tmp, double *vla, t_env *d)
+void		reset_smh(t_sprite_list *some_val, double *smh, t_env *d)
 {
-	short	i;
+	short	j;
 
-	i = -1;
-	while (tmp && (++i))
+	j = -1;
+	while (some_val && (j += 1))
 	{
-		if (tmp->type == IS_PROJECTILE)
-			vla[i] = vec3f_length(v3_min(d->cam.pos,
-						d->anim_rots[tmp->id].pos));
-		if (tmp->type == IS_MONSTER)
-			vla[i] = vec3f_length(v3_min(d->cam.pos,
-				new_v3(d->monsters[tmp->id].pos.x,
-					0.0, d->monsters[tmp->id].pos.y)));
-		tmp = tmp->next;
+		smh[j] = some_val->type == IS_PROJECTILE
+		? get_smh(d->anim_rots[some_val->id].pos, d->cam.pos)
+		: smh[j];
+		smh[j] = some_val->type == IS_MONSTER
+		? get_smh(new_v3(d->monsters[some_val->id].pos.x, 0.0,
+		d->monsters[some_val->id].pos.y), d->cam.pos)
+		: smh[j];
+		some_val = some_val->next;
 	}
 }
 
 void		reorder_sprite(t_env *d, t_sec *sect)
 {
-	t_sprite_list	*tmp;
-	short			i;
-	double			*vla;
-	t_sprite_list	*list[3];
+	double			*smh;
+	t_sprite_list	*lt[3];
+	short			j;
+	t_sprite_list	*some_val;
 
-	i = -1;
-	tmp = sect->sprite_list;
-	while (tmp && (++i))
-		tmp = tmp->next;
-	if (i > 1)
-	{
-		vla = pure_malloc(sizeof(*vla) * i, "alloc reorder sprites failed");
-		tmp = sect->sprite_list;
-		set_vla(tmp, vla, d);
-		reorder_sprites_algo(d, sect, vla, &list[0]);
-		free(vla);
-	}
+	j = -1;
+	smh = NULL;
+	some_val = sect->sprite_list;
+	while (some_val && (++j))
+		some_val = some_val->next;
+	j - 0b1 > 0x0 ? pure_malloc(sizeof(*smh) * j,
+	"alloc reorder sprites failed") : skip(NULL);
+	some_val = j - 0b1 > 0x0 ? sect->sprite_list : some_val;
+	j - 01 > 0x0 ? reset_smh(some_val, smh, d) : skip(NULL);
+	j - 0b1 > 0b0 ? sp_alg(d, sect, smh, &lt[00]) : skip(NULL);
+	j - 0x1 > 00 ? free(smh) : skip(NULL);
 }

@@ -72,7 +72,7 @@ void		proj_ceil_or_floor(t_env *d, t_proj_env *p, int mode)
 		(p->area = fun_to_edget(p->v[0], p->v[1], p->v[2].x, p->v[2].y));
 }
 
-void	rend_while(t_env *d, t_sec *sect, t_frustum *fr, t_proj_env p)
+void		rend_while(t_env *d, t_sec *sect, t_frustum *fr, t_proj_env p)
 {
 	int	i;
 

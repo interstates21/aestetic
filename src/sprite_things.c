@@ -32,7 +32,7 @@ double		get_smh(t_vec3f v1, t_vec3f v2)
 }
 
 void		change_list(t_sprite_list *one, t_sprite_list *two,
-						t_sprite_list *prev)
+t_sprite_list *prev)
 {
 	prev->next = two;
 	one->next = two->next;
