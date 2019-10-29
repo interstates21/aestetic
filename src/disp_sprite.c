@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 19:17:21 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 18:42:40 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 21:13:19 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void		displaing_sprite(t_env *d, SDL_Surface *s,
 			colo = to_search_alpha(((uint32_t *)d->sdl.screen->pixels)
 					[x_y.x + x_y.y * d->sdl.screen->w], colo);
 			if (colo != pixel_pls(d->sdl.screen, x_y.x, x_y.y, 2))
-				new_z_buff_and_put_collor(d, x_y, to_shades(shd_fct(d, &d->
+				new_z_buff_and_put_collor(d, x_y, shad(shd_fct(d, &d->
 				sectors[disp_data.this_sect], dist_mod.x, 0), colo), dist_mod);
 		}
 	}

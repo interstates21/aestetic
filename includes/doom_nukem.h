@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 23:23:09 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 19:00:28 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 21:51:11 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -789,6 +789,8 @@ void						dislaing_not_wall(t_env *d, t_frustum *fr,
 														t_sprite_list *sprite);
 void						play_initialization(t_env *d, t_player *player);
 void						monters_inicialization(t_env *d);
+void						init_monster_type(t_env *d);
+void						init_monster_type_2(t_env *d);
 void						proj_initialization(t_env *d);
 void						list_swp(uint8_t type, uint16_t id, t_env *d,
 																int sectnum[2]);
@@ -819,7 +821,7 @@ void						demeanor_char_demyon(t_env *d,
 void						dellay_char_demyon(t_monster *monster);
 double						shd_fct(t_env *d, t_sec *sector, double dist,
 																	int mode);
-uint32_t					to_shades(double factor, uint32_t c);
+uint32_t					shad(double factor, uint32_t c);
 void						reorder_sprite(t_env *d, t_sec *sect);//////////////////
 t_vec3f						v2_to_v3(t_vec2f v);
 t_vec2f						v3_to_v2(t_vec3f v);
@@ -939,4 +941,9 @@ void						read_texture_data(t_env *d, int f);
 t_vec3f						transform_back(t_env *d, t_vec3f v);
 t_sec						*check_neighbor(t_env *d, int16_t nei);
 t_vec3f						transform_back(t_env *d, t_vec3f v);
+void						draw_char(t_env *d, t_font f);
+void						draw_bitmap(t_env *d, t_bitmap bitmap, int x,
+																	int y);
+void						transformvertex(t_env *d, t_vec2f v, double *x, double *z);
+
 #endif

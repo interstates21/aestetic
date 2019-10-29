@@ -29,6 +29,7 @@ FILES = main \
 		handle_respawn \
 		init_sdl \
 		init_monsters \
+		init_monster_type \
 		init_projectiles \
 		init_player \
 		loop \
@@ -90,8 +91,9 @@ FILES = main \
 		v2_vector \
 		vector_min \
 		vector_plus \
+		render_sector2 \
 		vector_scale \
-		render_sector2
+		char_selector
 LIBFT_DIR = libft/
 SRC = $(addprefix src/, $(addsuffix .c, $(FILES)))
 OBJ = $(addprefix obj/, $(addsuffix .o, $(FILES)))

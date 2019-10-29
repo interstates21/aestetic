@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 21:22:56 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 18:14:59 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 21:35:08 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,7 @@ bool	door_use2(t_env *d, t_wall *w, int n[4])
 {
 	d->vslutiak = d->slot2;
 	if (d->vslutiak && d->slot2->key_num == w->key_num && !(w->key_num = 0))
-	{
 		d->vslutiak = NULL;
-		system("leaks doom_nukem");
-	}
 	else if (d->slot3 && d->slot3->key_num == w->key_num && !(w->key_num = 0))
 		d->slot3 = NULL;
 	br_msg(d, w, n);

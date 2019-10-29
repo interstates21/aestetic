@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 09:18:24 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 17:49:58 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 21:49:18 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,97 +90,6 @@ void		draw_bitmap(t_env *d, t_bitmap bitmap, int x, int y)
 	}
 }
 
-void		draw_char(t_env *d, char *str, int x, int y)
-{
-	char	c;
-
-	c = ft_toupper(*str);
-	if (c == 'A')
-		draw_bitmap(d, d->chars.a, x, y);
-	else if (c == 'B')
-		draw_bitmap(d, d->chars.b, x, y);
-	else if (c == 'C')
-		draw_bitmap(d, d->chars.c, x, y);
-	else if (c == 'D')
-		draw_bitmap(d, d->chars.d, x, y);
-	else if (c == 'E')
-		draw_bitmap(d, d->chars.e, x, y);
-	else if (c == 'F')
-		draw_bitmap(d, d->chars.f, x, y);
-	else if (c == 'G')
-		draw_bitmap(d, d->chars.g, x, y);
-	else if (c == 'H')
-		draw_bitmap(d, d->chars.h, x, y);
-	else if (c == 'I')
-		draw_bitmap(d, d->chars.i, x, y);
-	else if (c == 'J')
-		draw_bitmap(d, d->chars.j, x, y);
-	else if (c == 'K')
-		draw_bitmap(d, d->chars.k, x, y);
-	else if (c == 'L')
-		draw_bitmap(d, d->chars.l, x, y);
-	else if (c == 'M')
-		draw_bitmap(d, d->chars.m, x, y);
-	else if (c == 'N')
-		draw_bitmap(d, d->chars.n, x, y);
-	else if (c == 'O')
-		draw_bitmap(d, d->chars.o, x, y);
-	else if (c == 'P')
-		draw_bitmap(d, d->chars.p, x, y);
-	else if (c == 'Q')
-		draw_bitmap(d, d->chars.q, x, y);
-	else if (c == 'R')
-		draw_bitmap(d, d->chars.r, x, y);
-	else if (c == 'S')
-		draw_bitmap(d, d->chars.s, x, y);
-	else if (c == 'T')
-		draw_bitmap(d, d->chars.t, x, y);
-	else if (c == 'U')
-		draw_bitmap(d, d->chars.u, x, y);
-	else if (c == 'V')
-		draw_bitmap(d, d->chars.v, x, y);
-	else if (c == 'W')
-		draw_bitmap(d, d->chars.w, x, y);
-	else if (c == 'X')
-		draw_bitmap(d, d->chars.x, x, y);
-	else if (c == 'Y')
-		draw_bitmap(d, d->chars.y, x, y);
-	else if (c == 'Z')
-		draw_bitmap(d, d->chars.z, x, y);
-	else if (c == '.')
-		draw_bitmap(d, d->chars.dot, x, y);
-	else if (c == '!')
-		draw_bitmap(d, d->chars.exc, x, y);
-	else if (c == '0')
-		draw_bitmap(d, d->chars.n0, x, y);
-	else if (c == '1')
-		draw_bitmap(d, d->chars.n1, x, y);
-	else if (c == '2')
-		draw_bitmap(d, d->chars.n2, x, y);
-	else if (c == '3')
-		draw_bitmap(d, d->chars.n3, x, y);
-	else if (c == '4')
-		draw_bitmap(d, d->chars.n4, x, y);
-	else if (c == '5')
-		draw_bitmap(d, d->chars.n5, x, y);
-	else if (c == '6')
-		draw_bitmap(d, d->chars.n6, x, y);
-	else if (c == '7')
-		draw_bitmap(d, d->chars.n7, x, y);
-	else if (c == '8')
-		draw_bitmap(d, d->chars.n8, x, y);
-	else if (c == '9')
-		draw_bitmap(d, d->chars.n9, x, y);
-	else if (c == ':')
-		draw_bitmap(d, d->chars.semi, x, y);
-	else if (c == '/')
-		draw_bitmap(d, d->chars.slh, x, y);
-	else if (c == '%')
-		draw_bitmap(d, d->chars.prc, x, y);
-	else
-		draw_bitmap(d, d->chars.spc, x, y);
-}
-
 void		displaing_str(t_env *d, t_font f)
 {
 	int		x_start;
@@ -188,10 +97,10 @@ void		displaing_str(t_env *d, t_font f)
 	x_start = f.x;
 	while (*f.str)
 	{
-		draw_char(d, f.str, f.x, f.y);
+		draw_char(d, f);
 		f.x += 10;
 		f.str++;
 		if (*f.str == '\n' && ((f.x = x_start) == x_start) && f.str++)
-			f.y += (CHAR_HEIGHT + 10) * f.scale;
+			f.y += 36;
 	}
 }

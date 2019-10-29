@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 22:04:20 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 18:14:27 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 21:13:19 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	drawing_c_f(t_env *d, t_proj_env *p, int mode, t_vec2 v)
 																p->a[2].z)) :
 			(z = 1 / (w[0] * p->v[0].z + w[1] * p->v[1].z + w[2] * p->v[2].z));
 	if (z <= d->z_buff[v.x + v.y * WIDTH])
-		pixel_put(d, new_v3(v.x, v.y, z), to_shades(shd_fct(d, p->sector, z, 1),
+		pixel_put(d, new_v3(v.x, v.y, z), shad(shd_fct(d, p->sector, z, 1),
 			pixel_pls(d->texts[mode == 0 ? p->sector->ceilpicnum :
 				p->sector->floorpicnum], mode == 0 ?
 				((w[0] * p->b[0].x + w[1] * p->b[1].x + w[2] * p->b[2].x) * z) :
