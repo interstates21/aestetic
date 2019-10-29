@@ -39,14 +39,14 @@ void	door_func(t_env *d, t_sector *sect, int *n, double *m)
 
 void	buf_to_collor2(t_env *d, uint16_t amount, uint32_t colo)
 {
-	if (d->color_buf.colo != colo)
+	if (d->pxls.colo != colo)
 	{
-		d->color_buf.value = 0;
-		d->color_buf.colo = colo;
+		d->pxls.value = 0;
+		d->pxls.colo = colo;
 	}
-	d->color_buf.value += amount * 18;
-	if (d->color_buf.value > MAX_BUF_VALUE)
-		d->color_buf.value = MAX_BUF_VALUE;
+	d->pxls.value += amount * 18;
+	if (d->pxls.value > MAX_BUF_VALUE)
+		d->pxls.value = MAX_BUF_VALUE;
 }
 
 void	alpha_serch(double *sl_y)

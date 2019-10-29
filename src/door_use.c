@@ -32,8 +32,8 @@ void	activate_neighbor_door(t_env *d, t_wall *door,
 			if (a.x == nextwall->point.x && a.y == nextwall->point.y &&
 					b.x == door->point.x && b.y == door->point.y)
 			{
-				d->doorstate[i[0]] = d->doorstate[door - d->walls];
-				d->dooranimstep[i[0]] = d->dooranimstep[door - d->walls];
+				d->door_active[i[0]] = d->door_active[door - d->walls];
+				d->anim_door[i[0]] = d->anim_door[door - d->walls];
 				return ((void)(d->walls[i[0]].key_num = 0));
 			}
 		}
@@ -43,9 +43,9 @@ void	activate_neighbor_door(t_env *d, t_wall *door,
 
 void	br_msg(t_env *d, t_wall *w, int *n)
 {
-	d->dooranimstep[n[0]] = (d->doorstate[n[0]] == 0 ||
-			d->dooranimstep[n[0]] < 0) ? 0.01 : -0.01;
-	play_sound(d, d->dooranimstep[n[0]] > 0 ? OPEN_DOOR_SOUND :
+	d->anim_door[n[0]] = (d->door_active[n[0]] == 0 ||
+			d->anim_door[n[0]] < 0) ? 0.01 : -0.01;
+	play_sound(d, d->anim_door[n[0]] > 0 ? OPEN_DOOR_SOUND :
 			CLOSE_DOOR_SOUND, v3_to_v2(d->cam.pos));
 	activate_neighbor_door(d, &d->walls[n[0]], &d->walls[n[1]],
 			&d->sectors[d->walls[n[0]].neighborsect]);

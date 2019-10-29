@@ -20,7 +20,7 @@ bool	can_traverse_monster(t_env *d, int i, t_vec2f *pos, t_sector *sect)
 	wall = &d->walls[i];
 	num_sec = sect - &d->sectors[0];
 	if (wall->neighborsect != -1 && !(wall->is_transparent) &&
-		d->doorstate[i] > 0.7 &&
+		d->door_active[i] > 0.7 &&
 		(height_fl_val(&d->sectors[num_sec], d->walls, num_sec, *pos) +
 			MIN_HEIGHT_MONSTER_TO_WALK != height_fl_val(&d->sectors[num_sec],
 				d->walls, num_sec, *pos))

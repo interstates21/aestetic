@@ -62,7 +62,7 @@ int16_t	search_other_sectors(int16_t sects[2], t_env *d, int depth,
 		d->sectors[sects[0]].n_walls;
 	while (++i < j)
 		if (d->walls[i].neighborsect != -1 && d->walls[i].neighborsect !=
-				sects[1] && d->doorstate[i] > 0.7)
+				sects[1] && d->door_active[i] > 0.7)
 			if ((ret_value = new_proj_curs((int16_t[2]){d->walls[i].
 							neighborsect, sects[0]}, d, depth - 1, pos)) != -1)
 				return (ret_value);

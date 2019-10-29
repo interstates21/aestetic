@@ -12,15 +12,15 @@
 
 #include "../includes/doom_nukem.h"
 
-void	set_doorstate(t_env *d)
+void	set_door_active(t_env *d)
 {
 	short	i;
 
 	i = 0;
 	while (i < d->n_walls)
 	{
-		d->dooranimstep[i] = 0.0;
-		d->doorstate[i] = 0.0;
+		d->anim_door[i] = 0.0;
+		d->door_active[i] = 0.0;
 		i++;
 	}
 }
@@ -37,7 +37,7 @@ void	init_everything(t_env *d, char *map)
 			while (++k < MAXNBOFANIMATION)
 				d->monster_text[i][j][k] = NULL;
 	to_loading_map(d, map);
-	set_doorstate(d);
+	set_door_active(d);
 	to_load_numbpic(d);
 	play_initialization(d, &d->player);
 	monters_inicialization(d);

@@ -381,11 +381,11 @@ typedef	struct				s_player
 
 # define MAX_BUF_VALUE 240
 
-typedef struct				s_color_buf
+typedef struct				s_pxls
 {
 	uint32_t				colo;
 	int16_t					value;
-}							t_color_buf;
+}							t_pxls;
 
 # define MAXNBOFANIMATION 5
 # define N_ANIM_ROTS_WEAPON MAX_STATE_OF_PROJ_ANIM
@@ -495,10 +495,10 @@ typedef struct				s_env
 	int16_t					sect_begin;
 	int16_t					this_sect;
 	bool					debug_pause;
-	double					dooranimstep[N_WALLS];
-	double					doorstate[N_WALLS];
-	double					lightblink;
-	t_color_buf				color_buf;
+	double					anim_door[N_WALLS];
+	double					door_active[N_WALLS];
+	double					sparks;
+	t_pxls					pxls;
 	t_vec2f					inertia;
 	unsigned char			font[96][5];
 	int						used[96];
@@ -894,7 +894,7 @@ void						displaing_sprite(t_env *d, SDL_Surface *s,
 void						print_err(const char *err);
 void						print_and_quit(t_env *d, const char *str);
 void						sdl_inicialization(t_sdl *sdl);
-void						loop(t_env *d);//////////////////////////////////
+void						loop(t_env *d);
 void						ev_mot_mouse(t_env *d,
 													SDL_MouseMotionEvent event);
 void						ev_butt_mouse(t_env *d,
@@ -930,9 +930,9 @@ t_vec3f						move_down_vector3(t_vec3f v);
 t_vec2						move_down_vector2(t_vec2 v);
 void						merge_vector_arr(t_vec3f **a, t_vec3f **b, int ia,
 																	int *ib);
-void				translate(t_vec3f *p, t_vec3f move, int dir);
-void				rot_x(t_vec3f *v, double ang, t_vec3f axis);
-void				rot_y(t_vec3f *v, double ang, t_vec3f axis);
-void				rot_z(t_vec3f *v, double ang, t_vec3f axis);
+void						translate(t_vec3f *p, t_vec3f move, int dir);
+void						rot_x(t_vec3f *v, double ang, t_vec3f axis);
+void						rot_y(t_vec3f *v, double ang, t_vec3f axis);
+void						rot_z(t_vec3f *v, double ang, t_vec3f axis);
 
 #endif

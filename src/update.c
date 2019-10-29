@@ -73,14 +73,14 @@ void	update_doors(t_env *d)
 	i = -1;
 	while (++i < N_WALLS)
 		if (!d->walls[i].is_door || d->walls[i].neighborsect == -1)
-			d->doorstate[i] = 1;
+			d->door_active[i] = 1;
 		else
 		{
-			d->doorstate[i] += d->dooranimstep[i];
-			if (d->doorstate[i] >= 1 || d->doorstate[i] <= 0)
+			d->door_active[i] += d->anim_door[i];
+			if (d->door_active[i] >= 1 || d->door_active[i] <= 0)
 			{
-				d->doorstate[i] = CLAMP(d->doorstate[i], 0, 1);
-				d->dooranimstep[i] = 0;
+				d->door_active[i] = CLAMP(d->door_active[i], 0, 1);
+				d->anim_door[i] = 0;
 			}
 		}
 }

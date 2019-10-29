@@ -1,7 +1,0 @@
-{
-	"files.associations": {
-		"algorithm": "c",
-		"doom_nukem.h": "c",
-		"sdl_ttf.h": "c"
-	}
-}

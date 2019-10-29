@@ -53,7 +53,7 @@ int		new_proj_data2(t_env *d, t_projdata *p, t_frustum *fr, int mode)
 		p->doorbottom = MIN(mode == 0 ? p->yb : p->yd, p->nyb);
 		p->doorheight = p->doorbottom - p->yc;
 		p->nya += (p->doorbottom - MAX(p->yc, p->nya)) *
-			(1 - d->doorstate[p->wall - d->walls]);
+			(1 - d->door_active[p->wall - d->walls]);
 	}
 	else
 	{

@@ -90,6 +90,6 @@ void	reloade_2(t_env *d)
 	actio_pl(d);
 	update_monsters(&d->monst_n, d->monsters, d);
 	new_proj(d);
-	d->lightblink = sin((double)SDL_GetTicks() / 200) * 0.3 + 0.6;
+	d->sparks = sin((double)SDL_GetTicks() / 200) * 0.3 + 0.6;
 	view_danget_stash(d);
 }

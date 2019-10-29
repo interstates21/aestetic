@@ -14,7 +14,7 @@
 
 void	init_player_2(t_env *d, t_player *player)
 {
-	d->color_buf.value = 0;
+	d->pxls.value = 0;
 	player->flying = 0;
 	player->min_h = MINIMUM_HEIGHT;
 	player->gravity = 0.0;

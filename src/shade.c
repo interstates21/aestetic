@@ -16,7 +16,7 @@ double		shd_fct(t_env *d, t_sector *sector, double dist, int mode)
 {
 	double	factor;
 
-	factor = (sector->blinking) ? d->lightblink : sector->light;
+	factor = (sector->blinking) ? d->sparks : sector->light;
 	if (dist && !sector->outdoor && sector->light == 1)
 		mode == 0 ? (factor -= dist / 30) : (factor -= dist / 20);
 	return (factor);

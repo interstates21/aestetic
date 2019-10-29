@@ -19,7 +19,7 @@ bool	can_traverse(t_env *d, int i, t_wall *wall)
 	y_value = d->cam.pos.y + d->player.min_h;
 	if (wall->neighborsect != -1 &&
 		wall->is_transparent == false &&
-		d->doorstate[i] > 0.7 &&
+		d->door_active[i] > 0.7 &&
 		y_value > height_play_fl_val(d, wall->neighborsect) +
 			MINIMUM_HEIGHT_TO_WALK &&
 		(d->sectors[wall->neighborsect].outdoor ||

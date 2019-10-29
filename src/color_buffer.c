@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color_buffer.c                                     :+:      :+:    :+:   */
+/*   pxlsfer.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -56,13 +56,13 @@ void	color_screen(t_args_multi_colo_buf *data)
 		y = -1;
 		while (++y < HEIGHT)
 		{
-			if (data->d->color_buf.colo == GREEN_BLAST)
+			if (data->d->pxls.colo == GREEN_BLAST)
 				tmp = (uint8_t)((1 - find_alpha(x, y,
-					data->d->color_buf.colo)) * data->d->color_buf.value);
+					data->d->pxls.colo)) * data->d->pxls.value);
 			else
-				tmp = (uint8_t)((find_alpha(x, y, data->d->color_buf.colo)) *
-						data->d->color_buf.value);
-			colo = data->d->color_buf.colo + (tmp << 24);
+				tmp = (uint8_t)((find_alpha(x, y, data->d->pxls.colo)) *
+						data->d->pxls.value);
+			colo = data->d->pxls.colo + (tmp << 24);
 			pixel_put(data->d, new_v3(x, y, 0),
 					to_search_alpha(pixel_pls(data->d->sdl.screen, x, y, 2), colo), 0);
 		}
@@ -92,13 +92,13 @@ void	buf_to_collor1(t_env *d)
 	t_args_multi_colo_buf	col[MAX_THREADS];
 	short					i;
 
-	if (!d->color_buf.value)
+	if (!d->pxls.value)
 		return ;
 	i = 0;
 	color_wl(d, col, i, sp);
-	if (col->d->color_buf.colo == GREEN_BLAST)
-		col->d->color_buf.value -= 6;
+	if (col->d->pxls.colo == GREEN_BLAST)
+		col->d->pxls.value -= 6;
 	else
-		col->d->color_buf.value -= 1;
-	col->d->color_buf.value = MAX(0, col->d->color_buf.value);
+		col->d->pxls.value -= 1;
+	col->d->pxls.value = MAX(0, col->d->pxls.value);
 }
