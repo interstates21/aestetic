@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sect_rendering.c                                    :+:      :+:    :+:   */
+/*   render_sector2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 22:23:12 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 17:09:57 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 22:03:42 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void		transformvertex(t_env *d, t_vec2f v, double *x, double *z)
 	*z = v.x * d->cam.sin + v.y * d->cam.cos;
 }
 
-t_sec	*check_neighbor(t_env *d, int16_t nei)
+t_sec		*check_neighbor(t_env *d, int16_t nei)
 {
 	if (nei < 0 || nei >= d->n_sect)
 		return (NULL);

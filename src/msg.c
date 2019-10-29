@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 21:21:44 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 18:27:34 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 22:06:25 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	door_func(t_env *d, t_sec *sect, int *n, double *m)
 	while (n[3] < sect->firstwallnum + sect->n_walls)
 	{
 		if (d->walls[n[2]].is_door && d->walls[n[2]].neighborsect >= 0 &&
-				(m[0] = distanse_place(d->walls[n[2]].point, d->walls[n[3]].point,
+				(m[0] = distanse_place(d->walls[n[2]].point, d->
+														walls[n[3]].point,
 				v3_to_v2(d->cam.pos))) < ACTIVATION_DIST && m[0] < m[1] &&
 					(m[1] = m[0]) >= 0 &&
 					(n[0] = n[2]) >= 0)
