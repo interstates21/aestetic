@@ -366,7 +366,6 @@ typedef	struct				s_player
 	int16_t					health;
 	uint8_t					can_be_stomped;
 	uint8_t					curr_weap;
-	uint8_t					charging;
 	uint8_t					shooting;
 	uint8_t					time_new_weapon;
 	uint8_t					time_anim_weapon;
@@ -375,8 +374,8 @@ typedef	struct				s_player
 	uint8_t					anim_weap[N_WEAPONS][N_ANIM_WEAPON];
 	uint8_t					click;
 	uint16_t				flying;
-	uint8_t					can_move;
-	double					minimum_height;
+	uint8_t					moving;
+	double					min_h;
 	double					gravity;
 }							t_player;
 

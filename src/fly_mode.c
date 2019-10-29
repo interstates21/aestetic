@@ -36,7 +36,7 @@ void		what_doing(t_env *d, int mode)
 {
 	double	pos_heigh;
 
-	pos_heigh = d->player_floor_h + d->player.minimum_height;
+	pos_heigh = d->player_floor_h + d->player.min_h;
 	if (mode == 0)
 	{
 		d->player.gravity < -0.20 ? player_fell(d) : true;
@@ -45,7 +45,7 @@ void		what_doing(t_env *d, int mode)
 	}
 	else if (mode == 1)
 		(d->cam.pos.y <= d->player_floor_h + JUMP_FIX +
-			d->player.minimum_height) ? ((d->player.gravity = JUMP_FORCE / 2) &&
+			d->player.min_h) ? ((d->player.gravity = JUMP_FORCE / 2) &&
 			(d->cam.pos.y += FLYING_SPEED) && decrease_fuel(d)) : (
 			(d->player.gravity += FLYING_SPEED * get_gravity(d->player.gravity))
 			&& (d->cam.pos.y += FLYING_SPEED) && decrease_fuel(d));
@@ -65,11 +65,11 @@ void		fly_mode(t_env *d)
 {
 	double	pos_heigh;
 
-	pos_heigh = d->player_floor_h + d->player.minimum_height;
+	pos_heigh = d->player_floor_h + d->player.min_h;
 	if (d->cam.pos.y < pos_heigh)
 		what_doing(d, 0);
 	if (!d->keys[SDL_SCANCODE_SPACE] && d->cam.pos.y <= d->player_floor_h +
-			JUMP_FIX + d->player.minimum_height)
+			JUMP_FIX + d->player.min_h)
 	{
 		normal_mode(d);
 		return ;

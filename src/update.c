@@ -104,8 +104,8 @@ void	update(t_env *d)
 					d->this_sect)) != -1)
 	{
 		if (sect != d->this_sect && d->cam.pos.y < get_floorheight_player(d,
-					sect) + d->player.minimum_height)
-			d->player.minimum_height = d->cam.pos.y - get_floorheight_player(d,
+					sect) + d->player.min_h)
+			d->player.min_h = d->cam.pos.y - get_floorheight_player(d,
 					sect);
 		d->this_sect = sect;
 	}

@@ -14,14 +14,14 @@
 
 void	four_action(t_env *d)
 {
-	if (d->keys[SDL_SCANCODE_LCTRL] && d->player.minimum_height >
+	if (d->keys[SDL_SCANCODE_LCTRL] && d->player.min_h >
 				MINIMUM_CROUCH_HEIGHT + CROUCH_SPEED)
-		d->player.minimum_height -= CROUCH_SPEED;
-	if (!d->keys[SDL_SCANCODE_LCTRL] && d->player.minimum_height
+		d->player.min_h -= CROUCH_SPEED;
+	if (!d->keys[SDL_SCANCODE_LCTRL] && d->player.min_h
 				< MINIMUM_HEIGHT)
 		if ((d->player_ceil_h - d->player_floor_h - MINIMUM_CEIL_DIST)
-					> d->player.minimum_height + CROUCH_SPEED)
-			d->player.minimum_height += CROUCH_SPEED;
+					> d->player.min_h + CROUCH_SPEED)
+			d->player.min_h += CROUCH_SPEED;
 }
 
 void	jump_action(t_env *d, int mode)
@@ -30,7 +30,7 @@ void	jump_action(t_env *d, int mode)
 	{
 		mode == 0 ? player_fell(d) : true;
 		d->player.gravity = 0.0;
-		d->cam.pos.y = d->player_floor_h + d->player.minimum_height;
+		d->cam.pos.y = d->player_floor_h + d->player.min_h;
 	}
 	else if (mode < 4)
 	{
@@ -41,9 +41,9 @@ void	jump_action(t_env *d, int mode)
 		four_action(d);
 	else if (mode == 5)
 		(d->player_ceil_h - d->player_floor_h - MINIMUM_CEIL_DIST <=
-			MINIMUM_HEIGHT) ? (d->player.minimum_height = d->player_ceil_h -
+			MINIMUM_HEIGHT) ? (d->player.min_h = d->player_ceil_h -
 				d->player_floor_h - MINIMUM_CEIL_DIST - CROUCH_SPEED) :
-				(d->player.minimum_height = MINIMUM_HEIGHT);
+				(d->player.min_h = MINIMUM_HEIGHT);
 	else if (mode == 6)
 	{
 		d->player.gravity = 0.0;
@@ -53,20 +53,20 @@ void	jump_action(t_env *d, int mode)
 
 void	normal_mode(t_env *d)
 {
-	if (d->cam.pos.y < d->player_floor_h + d->player.minimum_height)
+	if (d->cam.pos.y < d->player_floor_h + d->player.min_h)
 		d->player.gravity < -0.16 ? jump_action(d, 0) : jump_action(d, 1);
 	if (d->cam.pos.y <= d->player_floor_h + JUMP_FIX +
-			d->player.minimum_height && d->keys[SDL_SCANCODE_SPACE])
+			d->player.min_h && d->keys[SDL_SCANCODE_SPACE])
 		d->player.gravity = JUMP_FORCE;
-	if (d->cam.pos.y > d->player_floor_h + d->player.minimum_height)
+	if (d->cam.pos.y > d->player_floor_h + d->player.min_h)
 		(d->player.gravity > 0 && d->keys[SDL_SCANCODE_SPACE]) ?
 										jump_action(d, 2) : jump_action(d, 3);
-	if (d->cam.pos.y <= d->player_floor_h + d->player.minimum_height)
+	if (d->cam.pos.y <= d->player_floor_h + d->player.min_h)
 		jump_action(d, 4);
 	if (d->keys[SDL_SCANCODE_SPACE])
 		jump_action(d, 5);
-	if (d->player.minimum_height < MINIMUM_CROUCH_HEIGHT)
-		d->player.minimum_height += CROUCH_SPEED + CROUCH_SPEED + CROUCH_SPEED;
+	if (d->player.min_h < MINIMUM_CROUCH_HEIGHT)
+		d->player.min_h += CROUCH_SPEED + CROUCH_SPEED + CROUCH_SPEED;
 	d->cam.pos.y += d->player.gravity;
 	if (!d->sectors[d->this_sect].outdoor && d->cam.pos.y > d->player_ceil_h
 			- MINIMUM_CEIL_DIST)

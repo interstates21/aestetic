@@ -14,13 +14,13 @@
 
 void	player_fell(t_env *d)
 {
-	d->player.minimum_height = MINIMUM_CROUCH_HEIGHT;
+	d->player.min_h = MINIMUM_CROUCH_HEIGHT;
 	d->player.gravity = fabs(d->player.gravity);
 	change_buf_colo(d, d->player.gravity * 100, 0x111111);
 	if (d->player.gravity > 0.2)
-		d->player.can_move = 40;
+		d->player.moving = 40;
 	else
-		d->player.can_move = 20;
+		d->player.moving = 20;
 	d->player.gravity = 0.0;
 	d->player.health -= 10;
 	if (d->player.health > 0)
@@ -41,7 +41,7 @@ void	check_dangerous_area(t_env *d)
 {
 	double	h_area;
 
-	h_area = d->cam.pos.y - d->player.minimum_height - d->player_floor_h;
+	h_area = d->cam.pos.y - d->player.min_h - d->player_floor_h;
 	if (!d->sectors[d->this_sect].is_harmful || fabs(h_area) > 0.1 ||
 					SDL_GetTicks() - d->harmful_area < 1000)
 		return ;

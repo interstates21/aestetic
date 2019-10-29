@@ -20,7 +20,7 @@ bool	can_traverse(t_env *d, int i, t_wall *wall)
 {
 	double y_value;
 
-	y_value = d->cam.pos.y + d->player.minimum_height;
+	y_value = d->cam.pos.y + d->player.min_h;
 	if (wall->neighborsect != -1 &&
 		wall->is_transparent == false &&
 		d->doorstate[i] > 0.7 &&
@@ -31,7 +31,7 @@ bool	can_traverse(t_env *d, int i, t_wall *wall)
 			get_ceilheight_player(d, wall->neighborsect) -
 				get_floorheight_player(d,
 			wall->neighborsect) - MINIMUM_CEIL_DIST >
-				d->player.minimum_height)))
+				d->player.min_h)))
 		return (true);
 	return (false);
 }

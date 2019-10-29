@@ -16,9 +16,9 @@ void	init_player_2(t_env *d, t_player *player)
 {
 	d->color_buf.value = 0;
 	player->flying = 0;
-	player->minimum_height = MINIMUM_HEIGHT;
+	player->min_h = MINIMUM_HEIGHT;
 	player->gravity = 0.0;
-	player->can_move = 0;
+	player->moving = 0;
 	player->health = 100;
 	player->can_be_stomped = 1;
 	d->this_sect = d->sect_begin;

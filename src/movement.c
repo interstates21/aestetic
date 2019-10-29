@@ -47,7 +47,7 @@ void	movement(t_env *d)
 
 	if (d->player.can_be_stomped)
 		d->player.can_be_stomped--;
-	if (!d->player.can_move)
+	if (!d->player.moving)
 	{
 		count = 0;
 		ft_bzero(&mvt, sizeof(t_vec2f));
@@ -56,7 +56,7 @@ void	movement(t_env *d)
 		d->cam.pos.x += d->inertia.x;
 	}
 	else
-		d->player.can_move--;
+		d->player.moving--;
 	protection = 0;
 	while (collision_player(d, &d->sectors[d->this_sect]))
 		if (++protection > 6)
