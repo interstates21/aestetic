@@ -61,7 +61,7 @@ void		tabulation_sw(short *tab, short *tmp_tab)
 	}
 }
 
-void		tabulation_new_v(t_env *d, short sect_to_scan, short *tab, short old_sect)
+void		tab_new(t_env *d, short sect_to_scan, short *tab, short old_sect)
 {
 	short	i;
 	short	j;

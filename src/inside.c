@@ -108,7 +108,7 @@ int16_t	new_smart_curs(t_env *d, short depth, t_vec2f pos,
 		{
 			if (inside(d, tab[i], pos))
 				return (tab[i]);
-			tabulation_new_v(d, tab[i], &tmp_tab[0], tab[i]);
+			tab_new(d, tab[i], &tmp_tab[0], tab[i]);
 			i++;
 		}
 		tabulation_sw(&tab[0], &tmp_tab[0]);

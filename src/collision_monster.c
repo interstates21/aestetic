@@ -43,7 +43,7 @@ bool	collision_monster(t_env *d, t_sec *sect, t_vec2f *pos,
 															double dist_coll)
 {
 	static int	recursion;
-	t_vec2f		vect[2];
+	t_vec2f		v[2];
 	bool		collided;
 	int			w[2];
 
@@ -53,15 +53,15 @@ bool	collision_monster(t_env *d, t_sec *sect, t_vec2f *pos,
 	w[1] = sect->firstwallnum;
 	while (w[1] < sect->firstwallnum + sect->n_walls)
 	{
-		vect[0] = to_close_val(d->walls[w[0]].point, d->walls[w[1]].point, *pos);
-		vect[1] = v2_min(*pos, vect[0]);
-		if (v2_len(vect[1]) < dist_coll)
+		v[0] = to_close_val(d->walls[w[0]].point, d->walls[w[1]].point, *pos);
+		v[1] = v2_min(*pos, v[0]);
+		if (v2_len(v[1]) < dist_coll)
 		{
 			if (can_traverse_monster(d, w[0], pos, sect))
 				collided = collision_monster(d,
 					&d->sectors[d->walls[w[0]].neighborsect], pos, dist_coll);
 			else
-				collided = collided_value_one(pos, vect, dist_coll);
+				collided = collided_value_one(pos, v, dist_coll);
 		}
 		w[0] = w[1]++;
 	}

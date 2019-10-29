@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pxlsfer.c                                     :+:      :+:    :+:   */
+/*   load_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/22 09:18:24 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 18:28:03 by bdeomin          ###   ########.fr       */
+/*   Created: 2019/10/26 11:41:36 by vslutiak          #+#    #+#             */
+/*   Updated: 2019/10/29 18:57:25 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ void	color_screen(t_args_multi_colo_buf *data)
 						data->d->pxls.value);
 			colo = data->d->pxls.colo + (tmp << 24);
 			pixel_put(data->d, new_v3(x, y, 0),
-					to_search_alpha(pixel_pls(data->d->sdl.screen, x, y, 2), colo), 0);
+			to_search_alpha(pixel_pls(data->d->sdl.screen, x, y, 2),
+			colo), 0);
 		}
 	}
 }
