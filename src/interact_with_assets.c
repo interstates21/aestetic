@@ -12,7 +12,7 @@
 
 #include "../includes/doom_nukem.h"
 
-static bool	check_if_return(t_env *d, t_assets *asset)
+static bool	check_if_return(t_env *d, t_objects *asset)
 {
 	if (d->player.health == 100 && asset->stat_mod.heal)
 		return (true);
@@ -22,7 +22,7 @@ static bool	check_if_return(t_env *d, t_assets *asset)
 	return (false);
 }
 
-static bool	check_jetpack(t_env *d, t_assets *asset)
+static bool	check_jetpack(t_env *d, t_objects *asset)
 {
 	if (asset->stat_mod.ballista_ammo)
 		play_sound(d, AMMO_SOUND, v3_to_v2(d->cam.pos));
@@ -42,7 +42,7 @@ static bool	check_jetpack(t_env *d, t_assets *asset)
 	return (true);
 }
 
-void		use_asset(t_env *d, t_assets *asset)
+void		use_asset(t_env *d, t_objects *asset)
 {
 	d->player.health += asset->stat_mod.heal;
 	d->player.health = MIN(100, d->player.health);
@@ -68,12 +68,12 @@ void		interact_with_assets(t_env *d)
 	int			i;
 	t_vec2f		dist;
 	double		dist_len;
-	t_assets	*asset;
+	t_objects	*asset;
 
 	i = -1;
-	while (d->nb_assets && ++i < d->assets[d->this_sect][0].nb_assets)
+	while (d->objects_n && ++i < d->objects[d->this_sect][0].objects_n)
 	{
-		asset = &d->assets[d->this_sect][i];
+		asset = &d->objects[d->this_sect][i];
 		if (asset->used || asset->is_on_ceil)
 			return ;
 		dist = v2_min(v3_to_v2(d->cam.pos), asset->world_pos);

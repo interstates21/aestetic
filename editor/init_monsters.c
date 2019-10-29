@@ -53,7 +53,7 @@ static void			get_ranged_files(t_ed *e)
 	int				i;
 	char			*tmp[2];
 
-	tmp[0] = "../textures/assets/monsters/motherdemon/anim_rots/";
+	tmp[0] = "../textures/objects/monsters/motherdemon/anim_rots/";
 	dir = NULL;
 	reopen(&dir, tmp[0]);
 	i = 0;

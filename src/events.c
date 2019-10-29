@@ -12,13 +12,13 @@
 
 #include "../includes/doom_nukem.h"
 
-bool	pick_up(t_env *d, t_assets *assets)
+bool	pick_up(t_env *d, t_objects *objects)
 {
-	if (v2_len(v2_min(v3_to_v2(d->cam.pos), assets->world_pos)) <
-		1.5 && !assets->used && (assets->is_interactive || assets->is_autopick
-									|| assets->is_key || assets->is_jetpack))
+	if (v2_len(v2_min(v3_to_v2(d->cam.pos), objects->world_pos)) <
+		1.5 && !objects->used && (objects->is_interactive || objects->is_autopick
+									|| objects->is_key || objects->is_jetpack))
 	{
-		use_asset(d, assets);
+		use_asset(d, objects);
 		return (true);
 	}
 	return (false);
@@ -27,17 +27,17 @@ bool	pick_up(t_env *d, t_assets *assets)
 void	event_key_down(t_env *d, SDL_KeyboardEvent event)
 {
 	int			i;
-	t_assets	*assets;
+	t_objects	*objects;
 
 	if (event.keysym.sym == SDLK_ESCAPE)
 		print_and_quit(d, "ESC");
 	if (event.keysym.sym == SDLK_e)
 	{
 		i = -1;
-		while (d->nb_assets && ++i < d->assets[d->this_sect][0].nb_assets)
+		while (d->objects_n && ++i < d->objects[d->this_sect][0].objects_n)
 		{
-			assets = &d->assets[d->this_sect][i];
-			if (pick_up(d, assets))
+			objects = &d->objects[d->this_sect][i];
+			if (pick_up(d, objects))
 				return ;
 		}
 		door_use(d, &d->sectors[d->this_sect]);

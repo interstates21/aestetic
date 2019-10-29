@@ -44,10 +44,10 @@ void		handle_respawn(t_env *d)
 	init_player(d, &d->player);
 	play_music(d, MAIN_MUSIC);
 	i = -1;
-	while (d->nb_assets && ++i < d->n_sect)
+	while (d->objects_n && ++i < d->n_sect)
 	{
 		j = -1;
-		while (++j < d->assets[i][0].nb_assets)
-			d->assets[i][j].used = false;
+		while (++j < d->objects[i][0].objects_n)
+			d->objects[i][j].used = false;
 	}
 }

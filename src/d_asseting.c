@@ -18,10 +18,10 @@
 
 void	assets_to_draw(t_env *d, t_projdata *p, int16_t sectnum, int i)
 {
-	t_assets	*asset;
+	t_objects	*asset;
 	t_vec3f		vect;
 
-	asset = &d->assets[sectnum][i];
+	asset = &d->objects[sectnum][i];
 	if (!asset->used)
 	{
 		vect = v2_to_v3(asset->world_pos);
@@ -40,6 +40,6 @@ void	d_asseting(t_env *d, t_projdata *p, int16_t sectnum)
 
 	sectnum = p->sector - d->sectors;
 	i = -1;
-	while (d->nb_assets && ++i < d->assets[sectnum][0].nb_assets)
+	while (d->objects_n && ++i < d->objects[sectnum][0].objects_n)
 		assets_to_draw(d, p, sectnum, i);
 }

@@ -12,22 +12,22 @@
 
 #include "../includes/doom_nukem.h"
 
-bool	is_usable(t_assets *assets) {
-	if (assets->is_interactive)
+bool	is_usable(t_objects *objects) {
+	if (objects->is_interactive)
 		return (true);
-	if (assets->is_autopick)
+	if (objects->is_autopick)
 		return (true);
-	if (assets->is_jetpack)
+	if (objects->is_jetpack)
 		return (true);
 	return (false);
 }
 
-bool	is_in_range(t_env *d, t_assets *assets) {
+bool	is_in_range(t_env *d, t_objects *objects) {
 	t_vec2f cam_proj;
 	double	len;
 
 	cam_proj = v3_to_v2(d->cam.pos);
-	len = v2_len(v2_min(cam_proj, assets->world_pos));
+	len = v2_len(v2_min(cam_proj, objects->world_pos));
 	if (len < PICKUP_RANGE )
 		return (true);
 	return (false);
@@ -36,19 +36,19 @@ bool	is_in_range(t_env *d, t_assets *assets) {
 void 	pickup_asset(t_env *d)
 {
 	int			i;
-	t_assets	*assets;
+	t_objects	*objects;
 	bool		picked;
 
 	i = -1;
 	picked = false;
-	while (d->nb_assets && ++i < d->assets[d->this_sect][0].nb_assets)
+	while (d->objects_n && ++i < d->objects[d->this_sect][0].objects_n)
 	{
-		assets = &d->assets[d->this_sect][i];
-		if (is_in_range(d, assets) && !assets->used && is_usable(assets))
+		objects = &d->objects[d->this_sect][i];
+		if (is_in_range(d, objects) && !objects->used && is_usable(objects))
 		{
 			picked = true;
 			break ;
-			use_asset(d, assets);
+			use_asset(d, objects);
 		}
 	}
 	if (!picked)

@@ -68,9 +68,9 @@ void	all_free(t_env *d)
 	int	i;
 
 	i = -1;
-	if (d->nb_assets > 0)
+	if (d->objects_n > 0)
 		while (++i < d->n_sect)
-			free(d->assets[i]);
+			free(d->objects[i]);
 	if (d->monst_n > 0)
 		free(d->monsters);
 	i = -1;
@@ -87,9 +87,9 @@ void	all_free(t_env *d)
 	weap_free(d);
 	monst_and_assets_free(d, -1);
 	free(d->tex_name_list);
-	free(d->assets);
+	free(d->objects);
 	d->tex_name_list = NULL;
-	d->assets = NULL;
+	d->objects = NULL;
 }
 
 void	handle_finish(t_env *d)

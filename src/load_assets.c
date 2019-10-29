@@ -80,12 +80,12 @@ void		read_assets_texture(t_env *d, int f)
 	size_t	assets_size;
 
 	if (read(f, &d->nb_assets_texture, sizeof(int16_t)) < 0)
-		print_err("Cannot read num assets");
+		print_err("Cannot read num objects");
 	if (d->nb_assets_texture <= 0)
 		return ;
 	assets_size = sizeof(SDL_Surface*) * d->nb_assets_texture;
 	d->assets_texture = (SDL_Surface**)pure_malloc(assets_size,
-												"cannot alloc assets");
+												"cannot alloc objects");
 	i = -1;
 	while (++i < d->nb_assets_texture)
 	{
@@ -93,7 +93,7 @@ void		read_assets_texture(t_env *d, int f)
 			print_err("Cannot read asset size");
 		if (!(d->assets_texture[i] = SDL_CreateRGBSurfaceWithFormat(
 								0, w, h, 32, SDL_PIXELFORMAT_ARGB8888)))
-			print_err("Cannot alloc assets");
+			print_err("Cannot alloc objects");
 		if ((read(f, d->assets_texture[i]->pixels, w * h * 4)) < 0)
 			print_err("Cannot read asset texture");
 	}
@@ -106,23 +106,23 @@ void		read_assets_data(t_env *d, int f)
 	size_t	assets_size;
 	size_t	sub_assets_size;
 
-	if (read(f, &d->nb_assets, sizeof(int16_t)) < 0)
-		print_err("Cannot read assets num");
-	assets_size = sizeof(t_assets*) * d->n_sect;
-	d->assets = (t_assets**)pure_malloc(assets_size, "cannot alloc assets");
-	if (d->nb_assets > 0)
+	if (read(f, &d->objects_n, sizeof(int16_t)) < 0)
+		print_err("Cannot read objects num");
+	assets_size = sizeof(t_objects*) * d->n_sect;
+	d->objects = (t_objects**)pure_malloc(assets_size, "cannot alloc objects");
+	if (d->objects_n > 0)
 	{
 		s = -1;
 		while (++s < d->n_sect)
 		{
-			sub_assets_size = sizeof(t_assets) * 10;
-			d->assets[s] = (t_assets*)pure_malloc(sub_assets_size,
+			sub_assets_size = sizeof(t_objects) * 10;
+			d->objects[s] = (t_objects*)pure_malloc(sub_assets_size,
 												"cannot alloc subAssets");
-			if (read(f, &d->assets[s][0].nb_assets, sizeof(int)) < 0)
+			if (read(f, &d->objects[s][0].objects_n, sizeof(int)) < 0)
 				print_err("Cannot read nb asset for sect");
 			i = -1;
-			while (++i < d->assets[s][0].nb_assets)
-				if (read(f, &d->assets[s][i], sizeof(t_assets)) < 0)
+			while (++i < d->objects[s][0].objects_n)
+				if (read(f, &d->objects[s][i], sizeof(t_objects)) < 0)
 					print_err("Cannot read asset[][]");
 		}
 	}

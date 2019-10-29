@@ -53,7 +53,7 @@
 # define M_NAME_2			"chargingdemon"
 
 # define TEXT_DIR	"../texts/"
-# define MONSTERS	"../texts/assets/monsters/"
+# define MONSTERS	"../texts/objects/monsters/"
 
 typedef	enum	e_bool
 {
@@ -390,7 +390,7 @@ typedef struct		s_smd
 
 typedef struct		s_stdast
 {
-	int				nb_assets;
+	int				objects_n;
 	int				picnum;
 	t_v2f			world_pos;
 	char			is_on_floor;

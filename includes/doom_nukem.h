@@ -152,7 +152,7 @@ typedef struct				s_stat_modifier
 
 typedef struct				s_assets
 {
-	int						nb_assets;
+	int						objects_n;
 	int						picnum;
 	t_vec2f					world_pos;
 	bool					is_on_floor;
@@ -165,7 +165,7 @@ typedef struct				s_assets
 	bool					is_key;
 	int						key_num;
 	bool					used;
-}							t_assets;
+}							t_objects;
 
 typedef struct				s_monster
 {
@@ -484,8 +484,8 @@ typedef struct				s_env
 	t_sector				sectors[MAXNUMSECTORS];
 	t_wall					walls[MAXNUMWALLS];
 	t_monster				*monsters;
-	t_assets				**assets;
-	int16_t					nb_assets;
+	t_objects				**objects;
+	int16_t					objects_n;
 	t_monster_type			monster_type[MAXTYPEMONSTERS];
 	t_anim_rot				anim_rots[MAX_PROJECTILES];
 	t_anim_rot_type			anim_rot_type[MAX_KIND_OF_PROJECTILE];
@@ -508,8 +508,8 @@ typedef struct				s_env
 	double					player_ceil_h;
 	char					nextmap[100];
 	Mix_Chunk				*chunk[NB_OF_SOUNDS];
-	t_assets				*slot2;
-	t_assets				*slot3;
+	t_objects				*slot2;
+	t_objects				*slot3;
 	char					msg[100];
 	uint32_t				msg_start;
 	uint32_t				harmful_area;
@@ -866,7 +866,7 @@ void						liting_assets(t_env *d, t_projdata *p,
 void						assets_to_draw(t_env *d, t_projdata *p,
 														int16_t sectnum, int i);
 void						interact_with_assets(t_env *d);
-void						use_asset(t_env *d, t_assets *asset);
+void						use_asset(t_env *d, t_objects *asset);
 void						draw_hud(t_env *d);
 void						draw_inventory_slot(t_env *d,
 											SDL_Surface *tex, int x1, int y1);

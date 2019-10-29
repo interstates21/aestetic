@@ -40,7 +40,7 @@ static void		read_wp_list(t_ed *e, char *name, int params[3])
 	DIR				*dir;
 	struct dirent	*data;
 
-	path = ft_strjoin("../textures/assets/weapons/", name);
+	path = ft_strjoin("../textures/objects/weapons/", name);
 	dir = NULL;
 	reopen(&dir, path);
 	i = 0;
