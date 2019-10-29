@@ -36,7 +36,7 @@ static void	text_whi_le(t_env *d, int f, int num)
 	}
 }
 
-void	read_texture_data(t_env *d, int f)
+void		read_texture_data(t_env *d, int f)
 {
 	size_t	tex_size;
 
