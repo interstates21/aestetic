@@ -64,7 +64,7 @@ void	new_proj(t_env *d)
 
 	i = -1;
 	coll = false;
-	while (++i < MAX_PROJECTILES)
+	while (++i < N_ANIM_ROTS)
 		if (d->anim_rots[i].is_active)
 		{
 			if (d->anim_rots[i].has_collided)

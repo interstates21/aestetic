@@ -71,7 +71,7 @@ void	update_doors(t_env *d)
 	int i;
 
 	i = -1;
-	while (++i < MAXNUMWALLS)
+	while (++i < N_WALLS)
 		if (!d->walls[i].is_door || d->walls[i].neighborsect == -1)
 			d->doorstate[i] = 1;
 		else

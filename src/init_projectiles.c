@@ -62,8 +62,8 @@ void	init_weapons(t_env *d)
 
 void	init_projectiles(t_env *d)
 {
-	ft_bzero(d->anim_rot_type, sizeof(t_anim_rot_type) * MAX_KIND_OF_PROJECTILE);
-	ft_bzero(d->anim_rots, sizeof(t_anim_rot) * MAX_PROJECTILES);
+	ft_bzero(d->anim_rot_type, sizeof(t_anim_rot_type) * N_ANIM_ROT_TYPES);
+	ft_bzero(d->anim_rots, sizeof(t_anim_rot) * N_ANIM_ROTS);
 	init_weapons(d);
 	init_proj(d);
 	init_projectiles_type_cryo_bow(d);

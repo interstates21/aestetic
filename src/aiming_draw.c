@@ -31,12 +31,12 @@ void	load_tex(t_env *d, t_three_val cont, int *tex)
 				!(d->weapon_tex[cont.two][j] =
 					SDL_CreateRGBSurfaceWithFormat(0, w, h, 32,
 						SDL_PIXELFORMAT_ARGB8888)) :
-				!(d->projectile_tex[cont.two][j] =
+				!(d->anim_rot_text[cont.two][j] =
 					SDL_CreateRGBSurfaceWithFormat(0, w, h, 32,
 						SDL_PIXELFORMAT_ARGB8888))) ||
 			read(cont.one, cont.three == 0 ?
 				d->weapon_tex[cont.two][j]->pixels :
-				d->projectile_tex[cont.two][j]->pixels, w * h * 4) < 0)
+				d->anim_rot_text[cont.two][j]->pixels, w * h * 4) < 0)
 			cont.three == 0 ? print_err("cannot read num weapon") :
 								print_err("cannot read texture projectile");
 		j++;

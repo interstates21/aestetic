@@ -22,9 +22,9 @@ static void	read_motherdemon_projectile(t_env *d, int f)
 	while (++i < 5)
 	{
 		if (read(f, &wid, sizeof(int)) < 0 || read(f, &heig, sizeof(int)) < 0 ||
-			!(d->projectile_tex[1][i] = SDL_CreateRGBSurfaceWithFormat(
+			!(d->anim_rot_text[1][i] = SDL_CreateRGBSurfaceWithFormat(
 									0, wid, heig, 32, SDL_PIXELFORMAT_ARGB8888)) ||
-			read(f, d->projectile_tex[1][i]->pixels, wid * heig * 4) < 0)
+			read(f, d->anim_rot_text[1][i]->pixels, wid * heig * 4) < 0)
 			print_err("Failed to read motherdemon projectile\n");
 	}
 }

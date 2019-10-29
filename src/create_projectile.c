@@ -39,9 +39,9 @@ void	create_projectile(t_env *d, short id_of_proj_type)
 	short			i;
 
 	i = 0;
-	while (i < MAX_PROJECTILES && d->anim_rots[i].is_active)
+	while (i < N_ANIM_ROTS && d->anim_rots[i].is_active)
 		i++;
-	if (i == MAX_PROJECTILES)
+	if (i == N_ANIM_ROTS)
 		return ;
 	nw = pure_malloc(sizeof(*nw), "ERROR");
 	nw->next = d->sectors[d->this_sect].sprite_list;
@@ -85,9 +85,9 @@ void	create_projectile_monster(t_env *d, short id_of_proj_type,
 	short			i;
 
 	i = 0;
-	while (i < MAX_PROJECTILES && d->anim_rots[i].is_active)
+	while (i < N_ANIM_ROTS && d->anim_rots[i].is_active)
 		i++;
-	if (i == MAX_PROJECTILES)
+	if (i == N_ANIM_ROTS)
 		return ;
 	nw = pure_malloc(sizeof(*nw), "ERROR");
 	nw->next = d->sectors[monster->this_sect].sprite_list;

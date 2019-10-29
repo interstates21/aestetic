@@ -31,10 +31,10 @@
 # include <dirent.h>
 # include <math.h>
 
-# define MAXNUMSECTORS 1024
+# define N_SECTORS 1024
 # define MAXNUMMONSTERS 256
-# define MAXNUMWALLS 4096
-# define MAXTYPEMONSTERS 2
+# define N_WALLS 4096
+# define N_MONSTER_TYPES 2
 # define DOUBLE_PI 		(2 * M_PI)
 
 typedef struct				s_vec3f
@@ -234,7 +234,7 @@ typedef struct				s_frustum
 	int						ybottom[WIDTH];
 	int						x1;
 	int						x2;
-	bool					visitedportals[MAXNUMWALLS];
+	bool					visitedportals[N_WALLS];
 }							t_frustum;
 
 typedef struct				s_projdata
@@ -356,8 +356,8 @@ typedef struct				s_monster_type
 	uint8_t					anim_order[MAX_STATE_MONSTER];
 }							t_monster_type;
 
-# define MAX_KIND_OF_WEAP 3
-# define MAX_ANIM_PER_WEAP 15
+# define N_WEAPONS 3
+# define N_ANIM_WEAPON 15
 # define LEFT_CLICK 1
 # define RIGHT_CLICK 2
 
@@ -371,8 +371,8 @@ typedef	struct				s_player
 	uint8_t					timer_change_weap;
 	uint8_t					timer_anim_weap;
 	uint8_t					current_anim_playing;
-	uint8_t					speed_anim[MAX_KIND_OF_WEAP];
-	uint8_t					weapon_anim[MAX_KIND_OF_WEAP][MAX_ANIM_PER_WEAP];
+	uint8_t					speed_anim[N_WEAPONS];
+	uint8_t					weapon_anim[N_WEAPONS][N_ANIM_WEAPON];
 	uint8_t					click;
 	uint16_t				is_flying;
 	uint8_t					can_move;
@@ -389,13 +389,13 @@ typedef struct				s_color_buf
 }							t_color_buf;
 
 # define MAXNBOFANIMATION 5
-# define MAX_PROJECTILE_TEX_PER_WEAP MAX_STATE_OF_PROJ_ANIM
-# define MAX_KIND_OF_PROJECTILE 3
-# define MAX_PROJECTILES 100
+# define N_ANIM_ROTS_WEAPON MAX_STATE_OF_PROJ_ANIM
+# define N_ANIM_ROT_TYPES 3
+# define N_ANIM_ROTS 100
 # define MOUSE_PRESSED 1
 # define MOUSE_RELEASED 2
 # define MOUSE_NO_ACTION 3
-# define NB_OF_SOUNDS 20
+# define N_SOUNDS 20
 
 typedef struct				s_sdl {
 	SDL_Window				*win;
@@ -470,25 +470,25 @@ typedef struct				s_env
 	SDL_Surface				**assets_texture;
 	int16_t					nb_assets_texture;
 	char					**tex_name_list;
-	SDL_Surface				*monster_text[MAXTYPEMONSTERS]
+	SDL_Surface				*monster_text[N_MONSTER_TYPES]
 	[MAX_STATE_MONSTER][MAXNBOFANIMATION];
-	SDL_Surface				*projectile_tex[MAX_KIND_OF_PROJECTILE]
-	[MAX_PROJECTILE_TEX_PER_WEAP];
-	SDL_Surface				*weapon_tex[MAX_KIND_OF_WEAP]
-	[MAX_ANIM_PER_WEAP];
+	SDL_Surface				*anim_rot_text[N_ANIM_ROT_TYPES]
+	[N_ANIM_ROTS_WEAPON];
+	SDL_Surface				*weapon_tex[N_WEAPONS]
+	[N_ANIM_WEAPON];
 	Uint8					*keys;
 	uint8_t					left_mouse_button;
 	uint8_t					right_mouse_button;
 	t_cam					startcam;
 	t_cam					cam;
-	t_sector				sectors[MAXNUMSECTORS];
-	t_wall					walls[MAXNUMWALLS];
+	t_sector				sectors[N_SECTORS];
+	t_wall					walls[N_WALLS];
 	t_monster				*monsters;
 	t_objects				**objects;
 	int16_t					objects_n;
-	t_monster_type			monster_type[MAXTYPEMONSTERS];
-	t_anim_rot				anim_rots[MAX_PROJECTILES];
-	t_anim_rot_type			anim_rot_type[MAX_KIND_OF_PROJECTILE];
+	t_monster_type			monster_type[N_MONSTER_TYPES];
+	t_anim_rot				anim_rots[N_ANIM_ROTS];
+	t_anim_rot_type			anim_rot_type[N_ANIM_ROT_TYPES];
 	t_weapon_type			weapon_type;
 	uint16_t				monst_n;
 	int16_t					n_sect;
@@ -496,8 +496,8 @@ typedef struct				s_env
 	int16_t					sect_begin;
 	int16_t					this_sect;
 	bool					debug_pause;
-	double					dooranimstep[MAXNUMWALLS];
-	double					doorstate[MAXNUMWALLS];
+	double					dooranimstep[N_WALLS];
+	double					doorstate[N_WALLS];
 	double					lightblink;
 	t_color_buf				color_buf;
 	t_vec2f					inertia;
@@ -507,7 +507,7 @@ typedef struct				s_env
 	double					player_floor_h;
 	double					player_ceil_h;
 	char					nextmap[100];
-	Mix_Chunk				*chunk[NB_OF_SOUNDS];
+	Mix_Chunk				*chunk[N_SOUNDS];
 	t_objects				*slot2;
 	t_objects				*slot3;
 	char					msg[100];

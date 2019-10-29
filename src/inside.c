@@ -95,8 +95,8 @@ int16_t	update_cursect_smart(t_env *d, short depth, t_vec2f pos,
 		uint16_t this_sect)
 {
 	short	i;
-	short	tab[MAXNUMSECTORS];
-	short	tmp_tab[MAXNUMSECTORS];
+	short	tab[N_SECTORS];
+	short	tmp_tab[N_SECTORS];
 
 	ft_memset(tab, -1, sizeof(tab));
 	ft_memset(tmp_tab, -1, sizeof(tmp_tab));

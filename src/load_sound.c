@@ -22,7 +22,7 @@ void		load_sound(t_env *d, int f)
 	i = 0;
 	if (d->chunk[0])
 		return ;
-	while (i++ < NB_OF_SOUNDS)
+	while (i++ < N_SOUNDS)
 	{
 		if (read(f, &rozm, sizeof(int)) < 0)
 			print_err("cannot read sound data");

@@ -20,7 +20,7 @@ void	init_everything(t_env *d, char *map)
 	int	k;
 
 	i = -1;
-	while (++i < MAXTYPEMONSTERS && (j = -1))
+	while (++i < N_MONSTER_TYPES && (j = -1))
 		while (++j < MAX_STATE_MONSTER && (k = -1))
 			while (++k < MAXNBOFANIMATION)
 				d->monster_text[i][j][k] = NULL;

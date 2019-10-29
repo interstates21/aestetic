@@ -25,7 +25,7 @@ void	monst_and_assets_free(t_env *d, int i)
 	int	k;
 
 	j = -1;
-	while (++i < MAXTYPEMONSTERS)
+	while (++i < N_MONSTER_TYPES)
 	{
 		k = -1;
 		while (++j < 10)
@@ -59,7 +59,7 @@ void	weap_free(t_env *d)
 			SDL_FreeSurface(d->weapon_tex[i][j]);
 		j = -1;
 		while (++j < numb_proj[i])
-			SDL_FreeSurface(d->projectile_tex[i][j]);
+			SDL_FreeSurface(d->anim_rot_text[i][j]);
 	}
 }
 
@@ -103,7 +103,7 @@ void	handle_finish(t_env *d)
 	free(d->texts);
 	d->texts = NULL;
 	i = -1;
-	while (++i < MAX_PROJECTILES)
+	while (++i < N_ANIM_ROTS)
 		d->anim_rots[i].is_active = false;
 	i = -1;
 	while (++i < d->n_sect)
