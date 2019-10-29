@@ -56,7 +56,7 @@ void	init_projectiles_fireball_1(t_env *d)
 void	init_weapons(t_env *d)
 {
 	d->weapon_type.rate_of_fire[0] =
-		d->player.speed_anim[CRYO_BALLISTA] * 11;
+		d->player.anim_speed[CRYO_BALLISTA] * 11;
 	d->weapon_type.has_alt_fire = false;
 }
 

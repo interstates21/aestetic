@@ -14,8 +14,8 @@
 
 static bool	decrease_fuel(t_env *d)
 {
-	d->player.is_flying -= 1;
-	if (d->player.is_flying)
+	d->player.flying -= 1;
+	if (d->player.flying)
 		return (true);
 	if (d->slot2 && d->slot2->is_jetpack)
 		d->slot2 = NULL;
@@ -82,7 +82,7 @@ void		fly_mode(t_env *d)
 		what_doing(d, 2);
 	if (!(d->cam.pos.y > pos_heigh))
 		d->player.gravity = 0.0;
-	if (!d->player.is_flying)
+	if (!d->player.flying)
 		d->player.gravity = 0.0;
 	d->cam.pos.y += d->player.gravity;
 	if (!d->sectors[d->this_sect].outdoor && d->cam.pos.y > d->player_ceil_h

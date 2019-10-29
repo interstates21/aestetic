@@ -18,8 +18,8 @@ void	new_collided_proj(t_env *d, t_anim_rot *proj, bool anim,
 	int16_t		new_sectors;
 
 	anim ? (proj->time_remaining_anim--) :
-		((proj->current_anim_playing = d->anim_rot_type[proj->
-			id_type].anim_order[proj->current_anim_playing]) &&
+		((proj->is_curr_anim = d->anim_rot_type[proj->
+			id_type].anim_order[proj->is_curr_anim]) &&
 		(proj->time_remaining_anim = 2));
 	if (proj->target)
 	{
@@ -44,7 +44,7 @@ void	update_anim_projectile(t_anim_rot *proj, t_env *d, short id,
 	{
 		if (d->anim_rot_type[proj->id_type].threat_to_player)
 			proj->dir = new_v3zero();
-		proj->current_anim_playing =
+		proj->is_curr_anim =
 			d->anim_rot_type[proj->id_type].anim_order[COLLISION_ID];
 		proj->time_remaining_anim = 5;
 		proj->has_collided = true;
@@ -57,7 +57,7 @@ void	update_anim_projectile(t_anim_rot *proj, t_env *d, short id,
 		return ;
 	}
 	if (d->anim_rot_type[proj->id_type].anim_order[
-			proj->current_anim_playing] == MUST_BE_DESTROYED)
+			proj->is_curr_anim] == MUST_BE_DESTROYED)
 	{
 		proj->is_active = false;
 		destroy_mail(id, &d->sectors[proj->this_sect], IS_PROJECTILE);

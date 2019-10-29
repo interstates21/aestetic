@@ -22,14 +22,14 @@ void	set_projectile_id(t_env *d, short i, short id_of_proj_type)
 		Y_OFFSET_TO_ROT * d->anim_rot_type[id_of_proj_type].speed;
 	d->anim_rots[i].dir.x = d->cam.sin *
 		d->anim_rot_type[id_of_proj_type].speed;
-	d->anim_rots[i].current_anim_playing =
+	d->anim_rots[i].is_curr_anim =
 		d->anim_rot_type[id_of_proj_type].anim_order[0];
 	d->anim_rots[i].pos = d->cam.pos;
 	d->anim_rots[i].has_collided = false;
 	d->anim_rots[i].this_sect = d->this_sect;
 	d->anim_rots[i].time_remaining_anim = 5;
-	d->anim_rots[i].current_anim_playing = 0;
-	d->anim_rots[i].weapon_id = d->player.current_weapon;
+	d->anim_rots[i].is_curr_anim = 0;
+	d->anim_rots[i].weapon_id = d->player.curr_weap;
 	d->anim_rots[i].target = NULL;
 }
 
@@ -68,13 +68,13 @@ void	set_projectile_id_monster(t_env *d, short i,
 		d->anim_rot_type[id_of_proj_type].speed;
 	d->anim_rots[i].dir.x = cos(monster->rot) *
 		d->anim_rot_type[id_of_proj_type].speed;
-	d->anim_rots[i].current_anim_playing =
+	d->anim_rots[i].is_curr_anim =
 		d->anim_rot_type[id_of_proj_type].anim_order[0];
 	d->anim_rots[i].has_collided = false;
 	d->anim_rots[i].weapon_id = d->monster_type[monster->id_type].id_of_proj;
 	d->anim_rots[i].this_sect = monster->this_sect;
 	d->anim_rots[i].time_remaining_anim = 5;
-	d->anim_rots[i].current_anim_playing = 0;
+	d->anim_rots[i].is_curr_anim = 0;
 	d->anim_rots[i].target = NULL;
 }
 

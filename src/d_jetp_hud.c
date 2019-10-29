@@ -16,7 +16,7 @@ void	draw_fuel(t_env *d)
 {
 	static char buf[100] = "Fuel: ";
 
-	ft_strcpy(buf + 6, ft_itoa_static(d->player.is_flying));
+	ft_strcpy(buf + 6, ft_itoa_static(d->player.flying));
 	draw_string(d, (t_font){buf, 50, 110, 0, 2});
 }
 

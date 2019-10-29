@@ -315,7 +315,7 @@ typedef struct				s_anim_rot
 	t_vec3f					dir;
 	uint8_t					weapon_id;
 	uint8_t					time_remaining_anim;
-	uint8_t					current_anim_playing;
+	uint8_t					is_curr_anim;
 	t_monster				*target;
 }							t_anim_rot;
 
@@ -365,16 +365,16 @@ typedef	struct				s_player
 {
 	int16_t					health;
 	uint8_t					can_be_stomped;
-	uint8_t					current_weapon;
+	uint8_t					curr_weap;
 	uint8_t					charging;
-	uint8_t					can_shoot;
-	uint8_t					timer_change_weap;
-	uint8_t					timer_anim_weap;
-	uint8_t					current_anim_playing;
-	uint8_t					speed_anim[N_WEAPONS];
-	uint8_t					weapon_anim[N_WEAPONS][N_ANIM_WEAPON];
+	uint8_t					shooting;
+	uint8_t					time_new_weapon;
+	uint8_t					time_anim_weapon;
+	uint8_t					is_curr_anim;
+	uint8_t					anim_speed[N_WEAPONS];
+	uint8_t					anim_weap[N_WEAPONS][N_ANIM_WEAPON];
 	uint8_t					click;
-	uint16_t				is_flying;
+	uint16_t				flying;
 	uint8_t					can_move;
 	double					minimum_height;
 	double					gravity;

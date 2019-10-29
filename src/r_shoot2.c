@@ -18,7 +18,7 @@ void handle_click(t_env *e) {
     t_vec2f         cam_proj;
 
     ammo = e->weapon_type.current_ammo;
-    weapon = e->player.current_weapon;
+    weapon = e->player.curr_weap;
     cam_proj = v3_to_v2(e->cam.pos);
 	if (e->left_mouse_button == MOUSE_PRESSED)
 	{
@@ -28,8 +28,8 @@ void handle_click(t_env *e) {
         }
         play_sound(e, CRYO_SOUND, cam_proj);
 		e->player.click = 1;
-		e->player.can_shoot = e->weapon_type.rate_of_fire[0];
-		e->player.current_anim_playing = F_ANIM;
-		e->player.timer_anim_weap = e->player.speed_anim[weapon];
+		e->player.shooting = e->weapon_type.rate_of_fire[0];
+		e->player.is_curr_anim = F_ANIM;
+		e->player.time_anim_weapon = e->player.anim_speed[weapon];
 	}
 }

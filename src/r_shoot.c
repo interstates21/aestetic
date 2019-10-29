@@ -13,9 +13,9 @@
 #include "../includes/doom_nukem.h"
 
 int	shoot(t_env *e) {
-	if (!e->player.can_shoot)
+	if (!e->player.shooting)
 		return (0);
-	e->player.can_shoot--;
+	e->player.shooting--;
 	return (1);
 }
 
@@ -29,8 +29,8 @@ void update_ammo(t_env *e) {
 }
 
 int     check_last_anim(t_env *e) {
-    if (e->player.current_anim_playing == 5)
-        if (!e->player.timer_anim_weap)
+    if (e->player.is_curr_anim == 5)
+        if (!e->player.time_anim_weapon)
             return (true);
     return (false);
 }

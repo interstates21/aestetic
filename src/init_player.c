@@ -15,7 +15,7 @@
 void	init_player_2(t_env *d, t_player *player)
 {
 	d->color_buf.value = 0;
-	player->is_flying = 0;
+	player->flying = 0;
 	player->minimum_height = MINIMUM_HEIGHT;
 	player->gravity = 0.0;
 	player->can_move = 0;
@@ -33,14 +33,14 @@ void	init_player(t_env *d, t_player *player)
 
 	i = 1;
 	ft_bzero(player, sizeof(*player));
-	player->current_weapon = CRYO_BALLISTA;
-	player->speed_anim[CRYO_BALLISTA] = 4;
-	player->weapon_anim[CRYO_BALLISTA][0] = 0;
+	player->curr_weap = CRYO_BALLISTA;
+	player->anim_speed[CRYO_BALLISTA] = 4;
+	player->anim_weap[CRYO_BALLISTA][0] = 0;
 	while (i < 12)
 	{
-		player->weapon_anim[CRYO_BALLISTA][i] = i + 1;
+		player->anim_weap[CRYO_BALLISTA][i] = i + 1;
 		i++;
 	}
-	player->weapon_anim[CRYO_BALLISTA][12] = 0;
+	player->anim_weap[CRYO_BALLISTA][12] = 0;
 	init_player_2(d, player);
 }

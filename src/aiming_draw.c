@@ -75,7 +75,7 @@ void	aiming_draw(t_env *d)
 {
 	uint32_t	colo;
 
-	if (d->player.current_weapon == CRYO_BALLISTA)
+	if (d->player.curr_weap == CRYO_BALLISTA)
 		colo = 0xDDFF;
 	drawing(d, colo);
 	pixel_put(d, new_v3(WIDTH / 2, HEIGHT / 2, 0), colo, 0);

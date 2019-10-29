@@ -75,7 +75,7 @@ void	normal_mode(t_env *d)
 
 void	jump(t_env *d)
 {
-	if (d->player.is_flying)
+	if (d->player.flying)
 		fly_mode(d);
 	else
 		normal_mode(d);

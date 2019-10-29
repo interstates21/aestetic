@@ -32,6 +32,6 @@ void	draw_hud(t_env *d)
 				140, HEIGHT - 100);
 	draw_timed_msg(d);
 	draw_ammo(d, d->weapon_type);
-	if (d->player.is_flying)
+	if (d->player.flying)
 		draw_fuel(d);
 }

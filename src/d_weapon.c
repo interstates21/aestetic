@@ -46,24 +46,24 @@ void	draw_weapon(t_env *d)
 	t_vec2	weap;
 	t_vec2f	end;
 
-	if (!d->player.timer_anim_weap)
-		(d->player.current_anim_playing = d->player.weapon_anim[d->player.
-		current_weapon][d->player.current_anim_playing]) && (d->player.
-		timer_anim_weap = d->player.speed_anim[d->player.current_weapon]);
-	weap.x = d->weapon_tex[d->player.current_weapon]
-		[d->player.current_anim_playing]->w;
-	weap.y = d->weapon_tex[d->player.current_weapon]
-		[d->player.current_anim_playing]->h;
-	d->player.timer_anim_weap--;
-	start.x = WIDTH * 0.5 + d->player.timer_change_weap * WIDTH * 0.003 -
+	if (!d->player.time_anim_weapon)
+		(d->player.is_curr_anim = d->player.anim_weap[d->player.
+		curr_weap][d->player.is_curr_anim]) && (d->player.
+		time_anim_weapon = d->player.anim_speed[d->player.curr_weap]);
+	weap.x = d->weapon_tex[d->player.curr_weap]
+		[d->player.is_curr_anim]->w;
+	weap.y = d->weapon_tex[d->player.curr_weap]
+		[d->player.is_curr_anim]->h;
+	d->player.time_anim_weapon--;
+	start.x = WIDTH * 0.5 + d->player.time_new_weapon * WIDTH * 0.003 -
 	weap.x * 0.5 * SIZE_OF_WEAP;
 	tmp = d->inertia;
 	actualize_dir(d->cam.rot, &tmp);
 	start.x -= tmp.x * 150;
 	end.x = start.x + weap.x * SIZE_OF_WEAP;
-	end.y = (HEIGHT + d->player.timer_change_weap *
+	end.y = (HEIGHT + d->player.time_new_weapon *
 		HEIGHT * 0.010 + MAX_INERTIA * 50) + tmp.y * 50;
 	start.y = end.y - weap.y * SIZE_OF_WEAP;
-	display_weapon(d, d->weapon_tex[d->player.current_weapon]
-		[d->player.current_anim_playing], start, end);
+	display_weapon(d, d->weapon_tex[d->player.curr_weap]
+		[d->player.is_curr_anim], start, end);
 }

@@ -38,7 +38,7 @@ static bool	check_jetpack(t_env *d, t_objects *asset)
 	else if (asset->is_jetpack)
 		return (false);
 	if (asset->is_jetpack)
-		d->player.is_flying = MIN(d->player.is_flying + FUEL, MAX_FUEL);
+		d->player.flying = MIN(d->player.flying + FUEL, MAX_FUEL);
 	return (true);
 }
 
