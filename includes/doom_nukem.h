@@ -729,7 +729,7 @@ void						door_func(t_env *d, t_sec *sect, int *n,
 															double *m);
 void						alpha_serch(double *sl_y);
 void						tabulation_sw(short *tab, short *tmp_tab);
-void						tabulation_new_v(t_env *d, short sect_to_scan,
+void						tab_new(t_env *d, short sect_to_scan,
 												short *tab, short old_sect);
 int							displaing_backgr(t_env *d, SDL_Event e);
 void						displaing_msg(t_env *d, char *message, int color,
@@ -935,5 +935,8 @@ void						translate(t_vec3f *p, t_vec3f move, int dir);
 void						rot_x(t_vec3f *v, double ang, t_vec3f axis);
 void						rot_y(t_vec3f *v, double ang, t_vec3f axis);
 void						rot_z(t_vec3f *v, double ang, t_vec3f axis);
-
+void						read_texture_data(t_env *d, int f);
+t_vec3f						transform_back(t_env *d, t_vec3f v);
+t_sec						*check_neighbor(t_env *d, int16_t nei);
+t_vec3f						transform_back(t_env *d, t_vec3f v);
 #endif

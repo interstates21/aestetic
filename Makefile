@@ -77,6 +77,7 @@ FILES = main \
 		r_shoot2 \
 		r_activate \
 		circle \
+		load_map2 \
 		new_font \
 		loading2 \
 		move_down_vector \
@@ -89,7 +90,8 @@ FILES = main \
 		v2_vector \
 		vector_min \
 		vector_plus \
-		vector_scale
+		vector_scale \
+		render_sector2
 LIBFT_DIR = libft/
 SRC = $(addprefix src/, $(addsuffix .c, $(FILES)))
 OBJ = $(addprefix obj/, $(addsuffix .o, $(FILES)))
