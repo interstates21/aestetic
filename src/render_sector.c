@@ -12,6 +12,14 @@
 
 #include "../includes/doom_nukem.h"
 
+void		transformvertex(t_env *d, t_vec2f v, double *x, double *z)
+{
+	v.x -= d->cam.pos.x;
+	v.y -= d->cam.pos.z;
+	*x = v.x * d->cam.cos - v.y * d->cam.sin;
+	*z = v.x * d->cam.sin + v.y * d->cam.cos;
+}
+
 void		render_wall(t_env *d, t_proj_env *p, t_frustum *fr, int i)
 {
 	p->wall = &d->walls[p->sector->firstwallnum + i];
@@ -64,7 +72,7 @@ void		proj_ceil_or_floor(t_env *d, t_proj_env *p, int mode)
 		(p->area = fun_to_edget(p->v[0], p->v[1], p->v[2].x, p->v[2].y));
 }
 
-static void	rend_while(t_env *d, t_sec *sect, t_frustum *fr, t_proj_env p)
+void	rend_while(t_env *d, t_sec *sect, t_frustum *fr, t_proj_env p)
 {
 	int				i;
 
