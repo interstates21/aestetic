@@ -17,8 +17,8 @@ static bool	decrease_fuel(t_env *d)
 	d->player.flying -= 1;
 	if (d->player.flying)
 		return (true);
-	if (d->slot2 && d->slot2->is_jetpack)
-		d->slot2 = NULL;
+	if (d->vslutiak && d->slot2->is_jetpack)
+		d->vslutiak = NULL;
 	if (d->slot3 && d->slot3->is_jetpack)
 		d->slot3 = NULL;
 	return (true);

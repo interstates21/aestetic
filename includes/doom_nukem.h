@@ -517,6 +517,7 @@ typedef struct				s_env
 	int						loaded;
 	TTF_Font				*g_font;
 	unsigned int			tick;
+	void					*vslutiak;
 }							t_env;
 
 typedef struct				s_thread_arg
