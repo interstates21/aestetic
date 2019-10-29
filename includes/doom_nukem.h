@@ -945,5 +945,7 @@ void						draw_char(t_env *d, t_font f);
 void						draw_bitmap(t_env *d, t_bitmap bitmap, int x,
 																	int y);
 void						transformvertex(t_env *d, t_vec2f v, double *x, double *z);
+void						dm_exit(t_env *d, int active_option, int c);
+void						month_ini(double rand, t_vec2f tmp, t_vec2f tmp2, t_monster *monster);
 
 #endif

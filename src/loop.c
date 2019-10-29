@@ -43,16 +43,6 @@ int			ini_dific(t_env *d, int active_option)
 	}
 }
 
-void		dm_exit(t_env *d, int active_option, int c)
-{
-	SDL_FillRect(d->sdl.screen, NULL, 0x000000);
-	c = active_option == 0 ? 0xFF0000 : 0xFFFFFF;
-	displaing_msg(d, "NRM", c, (SDL_Rect){.x = WIDTH / 2, .y = HEIGHT / 2 - 30});
-	c = active_option == 1 ? 0xFF0000 : 0xFFFFFF;
-	displaing_msg(d, "HRD", c, (SDL_Rect){.x = WIDTH / 2, .y = HEIGHT / 2 + 20});
-	SDL_UpdateWindowSurface(d->sdl.win);
-}
-
 int			displaing_backgr(t_env *d, SDL_Event e)
 {
 	static int	active_option = 0;

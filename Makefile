@@ -93,7 +93,9 @@ FILES = main \
 		vector_plus \
 		render_sector2 \
 		vector_scale \
-		char_selector
+		char_selector \
+		loop2 \
+		monster_behaviour2
 LIBFT_DIR = libft/
 SRC = $(addprefix src/, $(addsuffix .c, $(FILES)))
 OBJ = $(addprefix obj/, $(addsuffix .o, $(FILES)))
