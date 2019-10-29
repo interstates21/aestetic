@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 11:41:36 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 15:42:43 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 18:57:25 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int			contain_map_path(char *path)
 	return (0);
 }
 
-void		load_map(t_env *d, char *map)
+void		to_loading_map(t_env *d, char *map)
 {
 	int		f;
 	char	*map_path;
@@ -114,15 +114,15 @@ void		load_map(t_env *d, char *map)
 		read(f, d->nextmap, 100) < 0)
 		print_err("Doom : Map error\n");
 	read_wall_n_sector_data(d, f);
-	read_monsters_data(d, f);
-	read_assets_data(d, f);
+	loading_data_monst(d, f);
+	loading_data_asset(d, f);
 	read_textures_name(d, f);
 	read_texture_data(d, f);
-	read_posters_data(d, f);
-	load_weapons_texture(d, f, NB_TEX, NB_PROJECTILE);
-	load_monsters_texture(d, f);
-	read_assets_texture(d, f);
-	load_sound(d, f);
+	loading_data_post(d, f);
+	loading_text_weap(d, f, NB_TEX, NB_PROJECTILE);
+	loading_text_monst(d, f);
+	loading_asset_text(d, f);
+	music_loader(d, f);
 	close(f);
 	free(map_path);
 }

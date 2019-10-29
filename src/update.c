@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 05:22:33 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 17:32:05 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:51:14 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,29 +85,29 @@ void	update_doors(t_env *d)
 		}
 }
 
-void	update(t_env *d)
+void	reloade(t_env *d)
 {
 	int16_t	sect;
 
 	if (d->player.health <= 0)
-		handle_respawn(d);
+		respauning_h(d);
 	if (d->sectors[d->this_sect].is_finish)
-		handle_finish(d);
+		ending_hd(d);
 	update_doors(d);
 	d->cam.rot -= d->keys[SDL_SCANCODE_LEFT] * TURN_SPEED;
 	d->cam.rot += d->keys[SDL_SCANCODE_RIGHT] * TURN_SPEED;
 	d->cam.sin = sin(d->cam.rot);
 	d->cam.cos = cos(d->cam.rot);
-	movement(d);
-	interact_with_assets(d);
+	to_move_func(d);
+	assets_to_interactive(d);
 	if ((sect = new_smart_curs(d, DEPTH_TO_SCAN, v3_to_v2(d->cam.pos),
 					d->this_sect)) != -1)
 	{
-		if (sect != d->this_sect && d->cam.pos.y < get_floorheight_player(d,
+		if (sect != d->this_sect && d->cam.pos.y < height_play_fl_val(d,
 					sect) + d->player.min_h)
-			d->player.min_h = d->cam.pos.y - get_floorheight_player(d,
+			d->player.min_h = d->cam.pos.y - height_play_fl_val(d,
 					sect);
 		d->this_sect = sect;
 	}
-	update_2(d);
+	reloade_2(d);
 }

@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 04:52:13 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/28 22:27:02 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:50:11 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	jump_action(t_env *d, int mode)
 {
 	if (mode < 2)
 	{
-		mode == 0 ? player_fell(d) : true;
+		mode == 0 ? play_active(d) : true;
 		d->player.gravity = 0.0;
 		d->cam.pos.y = d->player_floor_h + d->player.min_h;
 	}
@@ -73,7 +73,7 @@ void	normal_mode(t_env *d)
 		jump_action(d, 6);
 }
 
-void	jump(t_env *d)
+void	jumping(t_env *d)
 {
 	if (d->player.flying)
 		fly_mode(d);

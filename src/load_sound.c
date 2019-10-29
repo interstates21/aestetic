@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   load_sound.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 02:27:59 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/27 02:28:54 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 18:09:46 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
 
-void		load_sound(t_env *d, int f)
+void		music_loader(t_env *d, int f)
 {
 	int			i;
 	int			rozm;

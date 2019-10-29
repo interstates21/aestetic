@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 21:21:44 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 16:33:53 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:27:34 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	massege_print(t_env *d, char *msg)
 
 double	distanse_place(t_vec2f a, t_vec2f b, t_vec2f p)
 {
-	return (v2_len(v2_min(p, get_closest(a, b, p))));
+	return (v2_len(v2_min(p, to_close_val(a, b, p))));
 }
 
 void	door_func(t_env *d, t_sector *sect, int *n, double *m)
@@ -37,7 +37,7 @@ void	door_func(t_env *d, t_sector *sect, int *n, double *m)
 	}
 }
 
-void	new_buffer_color(t_env *d, uint16_t amount, uint32_t colo)
+void	buf_to_collor2(t_env *d, uint16_t amount, uint32_t colo)
 {
 	if (d->color_buf.colo != colo)
 	{

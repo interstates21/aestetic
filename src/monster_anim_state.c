@@ -6,13 +6,13 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 11:41:36 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 17:32:46 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:39:34 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
 
-void	precompute_texanim(t_env *d)
+void	texture_pre_anim(t_env *d)
 {
 	int			i;
 	SDL_Surface	*s;
@@ -42,7 +42,7 @@ void	monst(t_monster *m, t_monster_type *monster_type, t_env *d, int num)
 		m->anim_time = SPEED_ANIM;
 		if (m->anim_state == MOTHER_DEMON_ATTACK && m->anim_time == SPEED_ANIM)
 		{
-			create_projectile_monster(d, FIREBALL_1, m);
+			proj_monst_creat(d, FIREBALL_1, m);
 			play_sound(d, MOTHER_ATK_SOUND, m->pos);
 		}
 	}

@@ -6,15 +6,11 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 19:19:18 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 17:36:09 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:42:40 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
-
-/*
-** bdeomin
-*/
 
 t_vec3f		v3f_transpar(t_env *d, t_vec3f v)
 {
@@ -32,7 +28,7 @@ t_vec3f		v3f_transpar(t_env *d, t_vec3f v)
 	return (new);
 }
 
-void		draw_proj(t_env *d, t_frustum *fr, t_anim_rot proj)
+void		display_proj(t_env *d, t_frustum *fr, t_anim_rot proj)
 {
 	double			dist;
 	t_display_data	a;
@@ -54,7 +50,7 @@ void		draw_proj(t_env *d, t_frustum *fr, t_anim_rot proj)
 	a.end.y = point_on_screen.y + (d->anim_rot_text[proj.weapon_id]
 			[proj.is_curr_anim]->h *
 			d->anim_rot_type[proj.id_type].size) / dist;
-	new_disp_data(fr, &a, proj.this_sect);
-	disp_sprite(d, d->anim_rot_text[proj.id_type]
+	replace_data_to_disp(fr, &a, proj.this_sect);
+	displaing_sprite(d, d->anim_rot_text[proj.id_type]
 			[proj.is_curr_anim], a, new_v2(point_on_screen.z, 2));
 }

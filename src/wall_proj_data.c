@@ -6,15 +6,11 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 19:03:59 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/28 19:11:21 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:15:07 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
-
-/*
-** bdeomin
-*/
 
 int		new_proj_data(t_projdata *p, t_frustum *fr, int mode)
 {

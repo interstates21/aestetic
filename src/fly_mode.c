@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 20:03:13 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/28 20:00:14 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:24:26 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void		what_doing(t_env *d, int mode)
 	pos_heigh = d->player_floor_h + d->player.min_h;
 	if (mode == 0)
 	{
-		d->player.gravity < -0.20 ? player_fell(d) : true;
+		d->player.gravity < -0.20 ? play_active(d) : true;
 		d->player.gravity = 0.0;
 		d->cam.pos.y = pos_heigh;
 	}

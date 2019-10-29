@@ -64,24 +64,24 @@ void		proj_ceil_or_floor(t_env *d, t_projdata *p, int mode)
 				(p->c[1] = transform_back(d, new_v3(1, 0, 1)));
 	mode == 0 ? (p->b[2] = transform_back(d, new_v3z(2))) :
 				(p->c[2] = transform_back(d, new_v3z(2)));
-	mode == 0 ? (p->a[0] = new_v3(-WIDTH + WIDTH / 2, get_ceildh(d,
+	mode == 0 ? (p->a[0] = new_v3(-WIDTH + WIDTH / 2, cl_calc_vec_cal(d,
 		p->sector, v3_to_v2(p->b[0])) * -WIDTH + (HEIGHT / 2 - d->cam.y_offset),
-		1)) : (p->v[0] = new_v3(-WIDTH + WIDTH / 2, get_floordh(d, p->sector,
+		1)) : (p->v[0] = new_v3(-WIDTH + WIDTH / 2, fl_calc_vec_cal(d, p->sector,
 		v3_to_v2(p->c[0])) * -WIDTH + (HEIGHT / 2 - d->cam.y_offset), 1));
-	mode == 0 ? (p->a[1] = new_v3(WIDTH + WIDTH / 2, get_ceildh(d,
+	mode == 0 ? (p->a[1] = new_v3(WIDTH + WIDTH / 2, cl_calc_vec_cal(d,
 		p->sector, v3_to_v2(p->b[1])) * -WIDTH + (HEIGHT / 2 - d->cam.y_offset),
-		1)) : (p->v[1] = new_v3(WIDTH + WIDTH / 2, get_floordh(d, p->sector,
+		1)) : (p->v[1] = new_v3(WIDTH + WIDTH / 2, fl_calc_vec_cal(d, p->sector,
 		v3_to_v2(p->c[1])) * -WIDTH + (HEIGHT / 2 - d->cam.y_offset), 1));
-	mode == 0 ? (p->a[2] = new_v3(WIDTH / 2, get_ceildh(d, p->sector,
+	mode == 0 ? (p->a[2] = new_v3(WIDTH / 2, cl_calc_vec_cal(d, p->sector,
 		v3_to_v2(p->b[2])) * -WIDTH * 0.5 + (HEIGHT / 2 - d->cam.y_offset),
-		0.5)) : (p->v[2] = new_v3(WIDTH / 2, get_floordh(d, p->sector,
+		0.5)) : (p->v[2] = new_v3(WIDTH / 2, fl_calc_vec_cal(d, p->sector,
 		v3_to_v2(p->c[2])) * -WIDTH * 0.5 + (HEIGHT / 2 - d->cam.y_offset),
 		0.5));
 	mode == 0 ? (p->b[2].x /= 2) : (p->c[2].x /= 2);
 	mode == 0 ? (p->b[2].z /= 2) : (p->c[2].z /= 2);
-	mode == 0 ? (p->areaa = edge_function(p->a[0], p->a[1],
+	mode == 0 ? (p->areaa = fun_to_edget(p->a[0], p->a[1],
 												p->a[2].x, p->a[2].y)) :
-		(p->area = edge_function(p->v[0], p->v[1], p->v[2].x, p->v[2].y));
+		(p->area = fun_to_edget(p->v[0], p->v[1], p->v[2].x, p->v[2].y));
 }
 
 static void	rend_while(t_env *d, t_sector *sect, t_frustum *fr, t_projdata p)

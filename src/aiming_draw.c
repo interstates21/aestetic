@@ -6,15 +6,11 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 17:25:37 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 17:00:28 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:57:25 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
-
-/*
-** bdeomin
-*/
 
 void	load_tex(t_env *d, t_three_val cont, int *tex)
 {
@@ -43,7 +39,7 @@ void	load_tex(t_env *d, t_three_val cont, int *tex)
 	}
 }
 
-void	load_weapons_texture(t_env *d, int f, int *nb_tex,
+void	loading_text_weap(t_env *d, int f, int *nb_tex,
 								int *nb_projectiles)
 {
 	t_three_val	container;

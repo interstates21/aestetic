@@ -6,15 +6,11 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 21:43:58 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 22:02:32 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:14:23 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
-
-/*
-** bdeomin
-*/
 
 void	new_assets_p(t_projdata *p, t_vec3f vect, t_three_val container)
 {
@@ -50,7 +46,7 @@ void	proj_to_asset(t_env *d, t_projdata *p, t_vec3f vect, SDL_Surface *tex)
 	new_assets_p(p, vect, container);
 }
 
-void	liting_assets(t_env *d, t_projdata *p, SDL_Surface *tex)
+void	to_liet_assets(t_env *d, t_projdata *p, SDL_Surface *tex)
 {
 	t_three_val	container;
 	uint32_t	px;
@@ -70,7 +66,7 @@ void	liting_assets(t_env *d, t_projdata *p, SDL_Surface *tex)
 								NORMALIZE(container.two, p->ya, p->yb), 3);
 				if ((px >> 24) > 127)
 					pixel_put(d, new_v3(container.one, container.two, p->z),
-										shade(p->shadefactor, px), 1);
+										to_shades(p->shadefactor, px), 1);
 			}
 		}
 	}

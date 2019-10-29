@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 21:08:42 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 16:57:09 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:20:59 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	calculate_next_sect(t_env *d, t_range old_range, int old_current)
 	return (-1);
 }
 
-void		next_sect_fix(t_env *d)
+void		to_sector_load(t_env *d)
 {
 	int		current;
 	int		min;

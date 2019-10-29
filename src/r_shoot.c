@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 03:03:45 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 17:17:16 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:40:17 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ void	actio_pl(t_env *e)
 	if (shoot(e))
 		ft_putstr("");
 	else
-		handle_click(e);
+		check_pressed(e);
 	if (check_last_anim(e))
 	{
 		update_ammo(e);
-		create_projectile(e, e->weapon_type.left_projectile);
+		to_proj_creat(e, e->weapon_type.left_projectile);
 	}
 }

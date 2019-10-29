@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inertia.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 09:18:24 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/24 19:59:40 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 18:38:46 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	in_perk1(t_env *d, t_vec2f mvt, double perk1)
 	}
 }
 
-void	inertia(t_env *d, t_vec2f mvt)
+void	to_iner(t_env *d, t_vec2f mvt)
 {
 	double	perk1;
 
@@ -38,7 +38,7 @@ void	inertia(t_env *d, t_vec2f mvt)
 	}
 }
 
-void	change_inertia(t_env *d, double perk1, double length)
+void	to_ch_iter(t_env *d, double perk1, double length)
 {
 	d->inertia = new_v2(length, 0.0);
 	actualize_dir(perk1, &d->inertia);

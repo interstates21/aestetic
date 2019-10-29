@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loading.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 17:59:42 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/28 18:40:46 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 18:59:11 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,13 @@ void		correct_loading(t_env *d, uint32_t *status, SDL_Event e)
 	free(tmp);
 	free(num);
 	draw_bar(d, status[1]);
-	draw_string(d, (t_font){ str, (WIDTH >> 1) - 56,
+	displaing_str(d, (t_font){ str, (WIDTH >> 1) - 56,
 									(HEIGHT >> 1) - 42, 0xaaaaaa, 2 });
 	free(str);
 	SDL_UpdateWindowSurface(d->sdl.win);
 }
 
-void		loading(t_env *d)
+void		to_load(t_env *d)
 {
 	uint32_t	status[2];
 	SDL_Event	e;

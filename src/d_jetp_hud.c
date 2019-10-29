@@ -6,21 +6,21 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 23:10:02 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 16:58:43 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:16:54 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
 
-void	draw_fuel(t_env *d)
+void	displaing_fuel(t_env *d)
 {
 	static char buf[100] = "Fuel: ";
 
 	ft_strcpy(buf + 6, new_itoa_fun(d->player.flying));
-	draw_string(d, (t_font){buf, 50, 110, 0, 2});
+	displaing_str(d, (t_font){buf, 50, 110, 0, 2});
 }
 
-void	draw_inventory_slot(t_env *d, SDL_Surface *tex, int x1, int y1)
+void	displaing_invent(t_env *d, SDL_Surface *tex, int x1, int y1)
 {
 	uint32_t	px;
 	t_vec2		x_y;

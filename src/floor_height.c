@@ -6,13 +6,13 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 20:00:42 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 16:59:23 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:03:09 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
 
-double	get_floorheight_player(t_env *d, int16_t sectnum)
+double	height_play_fl_val(t_env *d, int16_t sectnum)
 {
 	double		floor_height;
 	t_vec2f		v;
@@ -25,7 +25,7 @@ double	get_floorheight_player(t_env *d, int16_t sectnum)
 	return (floor_height);
 }
 
-double	get_floordh(t_env *d, t_sector *sect, t_vec2f v)
+double	fl_calc_vec_cal(t_env *d, t_sector *sect, t_vec2f v)
 {
 	double		floor_height;
 	int16_t		n;

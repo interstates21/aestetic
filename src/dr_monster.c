@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 19:45:21 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 17:36:09 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:42:40 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ short		*mont_anim(t_env *d, t_monster monster, short *nb_of_anim)
 	return (nb_of_anim);
 }
 
-void		draw_monster(t_env *d, t_monster monster)
+void		displaing_monst(t_env *d, t_monster monster)
 {
 	t_display_data	a;
 	t_vec3f			point_in_screen;
@@ -37,14 +37,14 @@ void		draw_monster(t_env *d, t_monster monster)
 	if (point_in_screen.z <= 0)
 		return ;
 	nb_of_anim[0] = *mont_anim(d, monster, nb_of_anim);
-	new_disp_data_1(&a, d->monster_text[monster.id_type][monster.
+	replace_data_to_disp_1(&a, d->monster_text[monster.id_type][monster.
 			anim_state][nb_of_anim[0]], point_in_screen,
 			d->monster_type[monster.id_type].size);
-	new_disp_data_2(&a, monster.this_sect);
+	replace_data_to_disp_2(&a, monster.this_sect);
 	if (nb_of_anim[1] < 4 && monster.anim_state < 10)
-		disp_sprite(d, d->monster_text[monster.id_type]
+		displaing_sprite(d, d->monster_text[monster.id_type]
 	[monster.anim_state][nb_of_anim[0]], a, new_v2(point_in_screen.z, 0));
 	else
-		disp_sprite(d, d->monster_text[monster.id_type]
+		displaing_sprite(d, d->monster_text[monster.id_type]
 	[monster.anim_state][nb_of_anim[0]], a, new_v2(point_in_screen.z, 1));
 }

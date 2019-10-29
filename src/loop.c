@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 20:11:45 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 17:22:37 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 19:30:49 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,20 +43,30 @@ int			ini_dific(t_env *d, int active_option)
 	}
 }
 
-int			displaing_backgr(t_env *d, SDL_Event e)
+void		dm_exit(t_env *d, int active_option, int c)
 {
-	static int	active_option = 0;
-	int			c;
-
 	SDL_FillRect(d->sdl.screen, NULL, 0x000000);
 	c = active_option == 0 ? 0xFF0000 : 0xFFFFFF;
 	displaing_msg(d, "NRM", c, (SDL_Rect){.x = WIDTH / 2, .y = HEIGHT / 2 - 30});
 	c = active_option == 1 ? 0xFF0000 : 0xFFFFFF;
 	displaing_msg(d, "HRD", c, (SDL_Rect){.x = WIDTH / 2, .y = HEIGHT / 2 + 20});
 	SDL_UpdateWindowSurface(d->sdl.win);
+}
+
+int			displaing_backgr(t_env *d, SDL_Event e)
+{
+	static int	active_option = 0;
+	int			c;
+
+	dm_exit(d, active_option, c);
 	while (SDL_PollEvent(&e))
+	{
+		if (e.type == SDL_QUIT)
+			print_and_quit(d, "RED CROSS");
 		if (e.type == SDL_KEYDOWN)
 		{
+			if (e.key.keysym.sym == SDLK_ESCAPE)
+				print_and_quit(d, "ESC");
 			if (e.key.keysym.sym == SDLK_DOWN)
 				active_option--;
 			if (e.key.keysym.sym == SDLK_UP)
@@ -68,6 +78,7 @@ int			displaing_backgr(t_env *d, SDL_Event e)
 			if (e.key.keysym.sym == SDLK_RETURN)
 				return (ini_dific(d, active_option));
 		}
+	}
 	return (0);
 }
 
@@ -88,12 +99,12 @@ static void	render(t_env *d)
 	i = -1;
 	while (++i < WIDTH * HEIGHT)
 		d->zbuffer[i] = INFINITY;
-	precompute_texanim(d);
+	texture_pre_anim(d);
 	sect_rendering(d, &d->sectors[d->this_sect], &fr);
 	displaing_weap(d);
-	color_buffer(d);
+	buf_to_collor1(d);
 	displaing_aiming(d);
-	draw_hud(d);
+	displaing_huds(d);
 	SDL_UpdateWindowSurface(d->sdl.win);
 }
 
@@ -102,24 +113,24 @@ void		loop(t_env *d)
 	SDL_Event	e;
 	uint32_t	start;
 
-	loading(d);
-	play_music(d, MAIN_MUSIC);
+	to_load(d);
+	music_player(d, MAIN_MUSIC);
 	while (1)
 	{
 		start = SDL_GetTicks();
 		while (SDL_PollEvent(&e))
 		{
 			if (e.type == SDL_KEYDOWN)
-				event_key_down(d, e.key);
+				ev_keydown(d, e.key);
 			if (e.type == SDL_MOUSEMOTION)
-				event_mouse_motion(d, e.motion);
+				ev_mot_mouse(d, e.motion);
 			if (e.type == SDL_MOUSEBUTTONDOWN ||
 					e.type == SDL_MOUSEBUTTONUP)
-				event_mouse_button(d, e.button);
+				ev_butt_mouse(d, e.button);
 			if (e.type == SDL_QUIT)
 				print_and_quit(d, "RED CROSS");
 		}
-		update(d);
+		reloade(d);
 		render(d);
 		if (1000 / FPS > SDL_GetTicks() - start)
 			SDL_Delay(1000 / FPS - (SDL_GetTicks() - start));

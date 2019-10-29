@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 19:03:55 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 15:41:23 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 18:49:06 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ bool	pick_up(t_env *d, t_objects *objects)
 	return (false);
 }
 
-void	event_key_down(t_env *d, SDL_KeyboardEvent event)
+void	ev_keydown(t_env *d, SDL_KeyboardEvent event)
 {
 	int			i;
 	t_objects	*objects;
@@ -44,7 +44,7 @@ void	event_key_down(t_env *d, SDL_KeyboardEvent event)
 	}
 }
 
-void	event_mouse_motion(t_env *d, SDL_MouseMotionEvent event)
+void	ev_mot_mouse(t_env *d, SDL_MouseMotionEvent event)
 {
 	double	offset;
 	double	rotation;
@@ -59,7 +59,7 @@ void	event_mouse_motion(t_env *d, SDL_MouseMotionEvent event)
 	}
 }
 
-void	event_mouse_button(t_env *d, SDL_MouseButtonEvent event)
+void	ev_butt_mouse(t_env *d, SDL_MouseButtonEvent event)
 {
 	if (event.button == SDL_BUTTON_LEFT)
 	{

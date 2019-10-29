@@ -6,13 +6,13 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 03:03:45 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 16:27:15 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:21:22 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
 
-void	handle_click(t_env *e)
+void	check_pressed(t_env *e)
 {
 	int			ammo;
 	u_int8_t	weapon;

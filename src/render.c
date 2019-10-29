@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 15:40:05 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 17:22:37 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:28:03 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ void	render(t_env *d)
 	i = -1;
 	while (++i < WIDTH * HEIGHT)
 		d->zbuffer[i] = INFINITY;
-	precompute_texanim(d);
+	texture_pre_anim(d);
 	sect_rendering(d, &d->sectors[d->this_sect], &fr);
 	displaing_weap(d);
-	color_buffer(d);
+	buf_to_collor1(d);
 	displaing_aiming(d);
-	draw_hud(d);
+	displaing_huds(d);
 	SDL_UpdateWindowSurface(d->sdl.win);
 }

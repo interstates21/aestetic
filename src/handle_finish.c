@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 22:58:36 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 16:41:18 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:06:06 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	all_free(t_env *d)
 	d->objects = NULL;
 }
 
-void	handle_finish(t_env *d)
+void	ending_hd(t_env *d)
 {
 	int	i;
 	int	f;

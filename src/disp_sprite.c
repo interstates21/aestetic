@@ -6,15 +6,11 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 19:17:21 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/28 19:17:40 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:42:40 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
-
-/*
-** bdeomin
-*/
 
 void		new_zbuffer_and_put_collor(t_env *d, t_vec2 x_y, uint32_t colo,
 															t_vec2f dist_mod)
@@ -23,7 +19,7 @@ void		new_zbuffer_and_put_collor(t_env *d, t_vec2 x_y, uint32_t colo,
 	d->zbuffer[x_y.x + x_y.y * d->sdl.screen->w] = dist_mod.x;
 }
 
-void		disp_sprite(t_env *d, SDL_Surface *s,
+void		displaing_sprite(t_env *d, SDL_Surface *s,
 		t_display_data disp_data, t_vec2f dist_mod)
 {
 	t_vec2		x_y;
@@ -44,10 +40,10 @@ void		disp_sprite(t_env *d, SDL_Surface *s,
 				1 - (disp_data.scale.x * (x_y.x - disp_data.start.x)) :
 					disp_data.scale.x * (x_y.x - disp_data.start.x),
 			disp_data.scale.y * (x_y.y - disp_data.start.y), 0);
-			colo = alpha(((uint32_t *)d->sdl.screen->pixels)
+			colo = to_search_alpha(((uint32_t *)d->sdl.screen->pixels)
 					[x_y.x + x_y.y * d->sdl.screen->w], colo);
 			if (colo != pixel_pls(d->sdl.screen, x_y.x, x_y.y, 2))
-				new_zbuffer_and_put_collor(d, x_y, shade(shd_fct(d, &d->
+				new_zbuffer_and_put_collor(d, x_y, to_shades(shd_fct(d, &d->
 				sectors[disp_data.this_sect], dist_mod.x, 0), colo), dist_mod);
 		}
 	}

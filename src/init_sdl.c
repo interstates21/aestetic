@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 09:18:24 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 16:54:30 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:46:16 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	x_cm(t_env *d, int pos_r)
 		}
 }
 
-void	fix_picnum(t_env *d)
+void	to_load_numbpic(t_env *d)
 {
 	int		i;
 	int		pos_r;
@@ -46,7 +46,7 @@ void	fix_picnum(t_env *d)
 	x_cm(d, pos_r);
 }
 
-void	init_sdl(t_sdl *sdl)
+void	sdl_inicialization(t_sdl *sdl)
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
 	if (!(sdl->win = SDL_CreateWindow("doom-nukem", SDL_WINDOWPOS_UNDEFINED,

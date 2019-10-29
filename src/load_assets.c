@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_assets.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 11:41:36 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/28 20:22:10 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 18:56:36 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void		post_whi_le(t_env *d, int f, int b)
 	}
 }
 
-void		read_posters_data(t_env *d, int f)
+void		loading_data_post(t_env *d, int f)
 {
 	size_t	posters_size;
 
@@ -55,7 +55,7 @@ void		read_posters_data(t_env *d, int f)
 	post_whi_le(d, f, 1);
 }
 
-void		read_monsters_data(t_env *d, int f)
+void		loading_data_monst(t_env *d, int f)
 {
 	int		i;
 	size_t	monsters_size;
@@ -72,7 +72,7 @@ void		read_monsters_data(t_env *d, int f)
 	}
 }
 
-void		read_assets_texture(t_env *d, int f)
+void		loading_asset_text(t_env *d, int f)
 {
 	int		i;
 	int		w;
@@ -99,7 +99,7 @@ void		read_assets_texture(t_env *d, int f)
 	}
 }
 
-void		read_assets_data(t_env *d, int f)
+void		loading_data_asset(t_env *d, int f)
 {
 	int		i;
 	int		s;

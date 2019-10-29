@@ -50,7 +50,8 @@ FILES = main \
 		pixel \
 		getpixel \
 		player_damage \
-		load_map load_assets \
+		load_map \
+		load_assets \
 		inside \
 		fly_mode \
 		jumping \

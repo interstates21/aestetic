@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   font.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 09:18:24 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 15:44:31 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 17:49:58 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	part_w(t_env *d)
 	s((int[8]){0x18, 0x18, 0x18, 0x18, 0, 0x18}, &d->chars.exc);
 }
 
-void		init_font(t_env *d)
+void		font_initialize(t_env *d)
 {
 	*d = (t_env){.chars.a.bit = {0x7e, 0xff, 0xe7, 0xe7, 0xff, 0xff, 0xe7,
 								0xe7},
@@ -181,7 +181,7 @@ void		draw_char(t_env *d, char *str, int x, int y)
 		draw_bitmap(d, d->chars.spc, x, y);
 }
 
-void		draw_string(t_env *d, t_font f)
+void		displaing_str(t_env *d, t_font f)
 {
 	int		x_start;
 

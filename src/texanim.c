@@ -6,13 +6,13 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 05:39:26 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 05:40:33 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:19:22 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
 
-void	precompute_texanim(t_env *d)
+void	texture_pre_anim(t_env *d)
 {
 	int			i;
 	SDL_Surface	*s;

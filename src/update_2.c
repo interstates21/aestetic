@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 05:25:27 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 17:39:02 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:50:11 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,14 @@ void	new_proj(t_env *d)
 		}
 }
 
-void	update_2(t_env *d)
+void	reloade_2(t_env *d)
 {
-	d->player_floor_h = get_floorheight_player(d, d->this_sect);
-	d->player_ceil_h = get_ceilheight_player(d, d->this_sect);
-	jump(d);
+	d->player_floor_h = height_play_fl_val(d, d->this_sect);
+	d->player_ceil_h = height_play_cl_val(d, d->this_sect);
+	jumping(d);
 	actio_pl(d);
 	update_monsters(&d->monst_n, d->monsters, d);
 	new_proj(d);
 	d->lightblink = sin((double)SDL_GetTicks() / 200) * 0.3 + 0.6;
-	check_dangerous_area(d);
+	view_danget_stash(d);
 }

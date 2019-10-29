@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 09:18:24 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 16:33:53 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:28:03 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	color_screen(t_args_multi_colo_buf *data)
 						data->d->color_buf.value);
 			colo = data->d->color_buf.colo + (tmp << 24);
 			pixel_put(data->d, new_v3(x, y, 0),
-					alpha(pixel_pls(data->d->sdl.screen, x, y, 2), colo), 0);
+					to_search_alpha(pixel_pls(data->d->sdl.screen, x, y, 2), colo), 0);
 		}
 	}
 }
@@ -86,7 +86,7 @@ void	color_wl(t_env *d, t_args_multi_colo_buf *col, short i, pthread_t *sp)
 		pthread_join(sp[i], NULL);
 }
 
-void	color_buffer(t_env *d)
+void	buf_to_collor1(t_env *d)
 {
 	pthread_t				sp[MAX_THREADS];
 	t_args_multi_colo_buf	col[MAX_THREADS];

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pixel.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 21:09:51 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 18:36:47 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 17:47:43 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void		pixel_put(t_env *d, t_vec3f p, uint32_t color, int mode)
 	}
 }
 
-uint32_t	alpha(uint32_t old_colo, uint32_t new_colo)
+uint32_t	to_search_alpha(uint32_t old_colo, uint32_t new_colo)
 {
 	t_vec2f			percents;
 	uint8_t			r[2];

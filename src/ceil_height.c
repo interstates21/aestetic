@@ -6,13 +6,13 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 09:18:24 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 16:55:52 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:04:09 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
 
-double	get_ceilheight_player(t_env *d, int16_t sectnum)
+double	height_play_cl_val(t_env *d, int16_t sectnum)
 {
 	double		ceil_height;
 	t_vec2f		v;
@@ -25,7 +25,7 @@ double	get_ceilheight_player(t_env *d, int16_t sectnum)
 	return (ceil_height);
 }
 
-double	get_ceildh(t_env *d, t_sector *sect, t_vec2f v)
+double	cl_calc_vec_cal(t_env *d, t_sector *sect, t_vec2f v)
 {
 	double		ceil_height;
 	int16_t		n;

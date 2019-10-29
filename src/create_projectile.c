@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_projectile.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:34:05 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/24 15:35:28 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 18:40:17 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	set_projectile_id(t_env *d, short i, short id_of_proj_type)
 	d->anim_rots[i].target = NULL;
 }
 
-void	create_projectile(t_env *d, short id_of_proj_type)
+void	to_proj_creat(t_env *d, short id_of_proj_type)
 {
 	t_sprite_list	*nw;
 	short			i;
@@ -78,7 +78,7 @@ void	set_projectile_id_monster(t_env *d, short i,
 	d->anim_rots[i].target = NULL;
 }
 
-void	create_projectile_monster(t_env *d, short id_of_proj_type,
+void	proj_monst_creat(t_env *d, short id_of_proj_type,
 		t_monster *monster)
 {
 	t_sprite_list	*nw;

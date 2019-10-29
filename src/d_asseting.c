@@ -6,15 +6,11 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 18:26:21 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 21:51:05 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:14:19 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
-
-/*
-** bdeomin
-*/
 
 void	assets_to_draw(t_env *d, t_projdata *p, int16_t sectnum, int i)
 {
@@ -26,11 +22,11 @@ void	assets_to_draw(t_env *d, t_projdata *p, int16_t sectnum, int i)
 	{
 		vect = v2_to_v3(asset->world_pos);
 		vect.y = (asset->is_on_floor) ?
-			get_floordh(d, p->sector, v3_to_v2(vect)) :
-			get_ceildh(d, p->sector, v3_to_v2(vect));
+			fl_calc_vec_cal(d, p->sector, v3_to_v2(vect)) :
+			cl_calc_vec_cal(d, p->sector, v3_to_v2(vect));
 		p->is_on_floor = asset->is_on_floor;
 		proj_to_asset(d, p, vect, d->assets_texture[asset->picnum]);
-		liting_assets(d, p, d->assets_texture[asset->picnum]);
+		to_liet_assets(d, p, d->assets_texture[asset->picnum]);
 	}
 }
 

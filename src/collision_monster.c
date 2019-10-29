@@ -6,13 +6,9 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 20:59:00 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 16:55:52 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:17:13 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-** bdeomin
-*/
 
 #include "../includes/doom_nukem.h"
 
@@ -57,7 +53,7 @@ bool	collision_monster(t_env *d, t_sector *sect, t_vec2f *pos,
 	w[1] = sect->firstwallnum;
 	while (w[1] < sect->firstwallnum + sect->n_walls)
 	{
-		vect[0] = get_closest(d->walls[w[0]].point, d->walls[w[1]].point, *pos);
+		vect[0] = to_close_val(d->walls[w[0]].point, d->walls[w[1]].point, *pos);
 		vect[1] = v2_min(*pos, vect[0]);
 		if (v2_len(vect[1]) < dist_coll)
 		{

@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 15:40:05 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 17:26:18 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:52:40 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ void	init_everything(t_env *d, char *map)
 		while (++j < MAX_STATE_MONSTER && (k = -1))
 			while (++k < MAXNBOFANIMATION)
 				d->monster_text[i][j][k] = NULL;
-	load_map(d, map);
+	to_loading_map(d, map);
 	set_doorstate(d);
-	fix_picnum(d);
+	to_load_numbpic(d);
 	play_initialization(d, &d->player);
 	monters_inicialization(d);
 	proj_initialization(d);
@@ -46,10 +46,10 @@ void	init_everything(t_env *d, char *map)
 		print_err("error");
 	if (SDL_SetRelativeMouseMode(SDL_TRUE) == -1)
 		print_err("error");
-	d->player_floor_h = get_floorheight_player(d, d->this_sect);
-	d->player_ceil_h = get_ceilheight_player(d, d->this_sect);
-	play_music(d, MAIN_MUSIC);
-	next_sect_fix(d);
+	d->player_floor_h = height_play_fl_val(d, d->this_sect);
+	d->player_ceil_h = height_play_cl_val(d, d->this_sect);
+	music_player(d, MAIN_MUSIC);
+	to_sector_load(d);
 	loop(d);
 }
 
@@ -60,9 +60,9 @@ void	run(char *mapname)
 	int			z;
 
 	z = 0;
-	init_font(&d);
+	font_initialize(&d);
 	d.loaded = 0;
-	init_sdl(&(d.sdl));
+	sdl_inicialization(&(d.sdl));
 	TTF_Init();
 	d.g_font = TTF_OpenFont("/Library/Fonts/Arial.ttf", 25);
 	keyboard_battons(&(d.keys));
@@ -77,7 +77,7 @@ int		main(int argc, char **argv)
 {
 	if (argc != 2)
 		print_err("Wrong number of args =(");
-	if (!validate_argv(argv[1]))
+	if (!check_inp_par(argv[1]))
 		print_err("Wrong mapname");
 	run(argv[1]);
 }

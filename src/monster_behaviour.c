@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 21:39:48 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 17:39:02 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 17:41:33 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,5 +130,5 @@ void	demeanor_monst(t_env *d, t_monster *monster, uint16_t id)
 	if (monster->id_type == MOTHERDEMON)
 		motherdemon_behaviour(d, monster, id);
 	if (monster->id_type == CHARGINGDEMON)
-		monster_behaviour_chargingdemon(d, monster, id);
+		demeanor_char_demyon(d, monster, id);
 }

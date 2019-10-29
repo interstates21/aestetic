@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_monsters_texture.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 11:41:36 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 15:43:47 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 18:57:09 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static void	load_whi_le(t_env *d, int f, int i, int nb_orientation)
 		read_anim_texture(d, f, (int[2]){i, a}, nb_orientation);
 }
 
-void		load_monsters_texture(t_env *d, int f)
+void		loading_text_monst(t_env *d, int f)
 {
 	int		i;
 	int		a;

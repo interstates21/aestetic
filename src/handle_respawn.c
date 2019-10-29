@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 20:03:40 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 17:25:31 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:18:43 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	blackout(t_env *d)
 	play_sound(d, PLAYER_DEATH_SOUND, v3_to_v2(d->cam.pos));
 	ft_memset(d->sdl.screen->pixels, 0,
 	d->sdl.screen->pitch * d->sdl.screen->h);
-	draw_string(d, (t_font){ "YOU DIED\n \nR to Restart\nEsc to quit",
+	displaing_str(d, (t_font){ "YOU DIED\n \nR to Restart\nEsc to quit",
 			WIDTH / 2 - 80, HEIGHT / 2 - 100, 0xffffff, 2});
 	Mix_HaltChannel(99);
 	SDL_UpdateWindowSurface(d->sdl.win);
@@ -34,7 +34,7 @@ static void	blackout(t_env *d)
 	}
 }
 
-void		handle_respawn(t_env *d)
+void		respauning_h(t_env *d)
 {
 	int i;
 	int j;
@@ -42,7 +42,7 @@ void		handle_respawn(t_env *d)
 	blackout(d);
 	monters_inicialization(d);
 	play_initialization(d, &d->player);
-	play_music(d, MAIN_MUSIC);
+	music_player(d, MAIN_MUSIC);
 	i = -1;
 	while (d->objects_n && ++i < d->n_sect)
 	{

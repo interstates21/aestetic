@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   monster_behaviour_chargingdemon.c                  :+:      :+:    :+:   */
+/*   demeanor_char_demyon.c                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -28,7 +28,7 @@ static void	behaviour_update_charge(t_env *d, t_monster *monster)
 	monster->pos = v2_plus(monster->pos, monster->dir);
 }
 
-void		charging_demon_wait(t_monster *monster)
+void		dellay_char_demyon(t_monster *monster)
 {
 	monster->dir = new_v2zero();
 	monster->timer = 30;
@@ -65,7 +65,7 @@ static void	init_load_monst(t_env *d, t_monster *monster, t_vec2f tmp)
 	monster->anim_time = 7;
 }
 
-void		monster_behaviour_chargingdemon(t_env *d, t_monster *monster,
+void		demeanor_char_demyon(t_env *d, t_monster *monster,
 		uint16_t id)
 {
 	t_vec2f		tmp;
@@ -78,6 +78,6 @@ void		monster_behaviour_chargingdemon(t_env *d, t_monster *monster,
 	while (collision_monster(d, &d->sectors[monster->this_sect],
 				&monster->pos, COLLISION_RANGE_CHARGINGDEMON))
 		if (monster->timer < 240)
-			charging_demon_wait(monster);
+			dellay_char_demyon(monster);
 	update_cursect_chargingdemon(d, monster, id);
 }

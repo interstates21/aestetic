@@ -6,13 +6,13 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 23:03:43 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/28 18:40:23 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:41:33 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
 
-void	new_disp_data(t_frustum *fr, t_display_data *disp_data,
+void	replace_data_to_disp(t_frustum *fr, t_display_data *disp_data,
 		uint16_t this_sect)
 {
 	double large_x;
@@ -29,7 +29,7 @@ void	new_disp_data(t_frustum *fr, t_display_data *disp_data,
 	disp_data->this_sect = this_sect;
 }
 
-void	new_disp_data_1(t_display_data *disp_data,
+void	replace_data_to_disp_1(t_display_data *disp_data,
 	SDL_Surface *s, t_vec3f p_in_scr, double size)
 {
 	double	start_x;
@@ -43,7 +43,7 @@ void	new_disp_data_1(t_display_data *disp_data,
 	disp_data->end.y = p_in_scr.y;
 }
 
-void	new_disp_data_2(t_display_data *disp_data,
+void	replace_data_to_disp_2(t_display_data *disp_data,
 		uint16_t this_sect)
 {
 	double large_x;

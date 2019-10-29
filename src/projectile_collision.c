@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 03:16:36 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 17:36:56 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:23:38 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ bool		proj_play_colided(t_env *d, t_anim_rot *projectile)
 	{
 		tmp_pos = v3_min(projectile->pos, d->cam.pos);
 		tmp = new_v2(MIN_DIST_TO_PLAYER, 0.0);
-		player_hit_proj(d, projectile);
+		proj_to_hit_play(d, projectile);
 		actualize_dir(atan2(tmp_pos.y, tmp_pos.x) - M_PI_2, &tmp);
 		projectile->pos = new_v3(
 			tmp.x + d->cam.pos.x,

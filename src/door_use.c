@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 21:22:56 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 16:31:38 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:14:59 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,6 @@ bool	door_use2(t_env *d, t_wall *w, int n[4])
 	br_msg(d, w, n);
 	return (true);
 }
-
-/*
-** bdeomin
-*/
 
 bool	door_use(t_env *d, t_sector *sect)
 {

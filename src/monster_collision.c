@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 18:11:53 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 17:34:48 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:24:54 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	play_by_monst_colided(t_env *d, short cur_sect)
 				d->cam.pos = update_pos_vec3f(d->cam.pos, d->monsters
 						[tmp->id].pos, d->monster_type[d->monsters[tmp->id].
 						id_type].hitbox_radius + MONSTER_MIN_DIST_HITBOX);
-				contact_with_monster(d, &(d->monsters[tmp->id]));
+				play_and_monst_acive(d, &(d->monsters[tmp->id]));
 			}
 		tmp = tmp->next;
 	}

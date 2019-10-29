@@ -6,15 +6,11 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 22:08:20 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 17:22:37 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:14:39 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
-
-/*
-** bdeomin
-*/
 
 void	draw_wall4(t_env *d, t_projdata *p, t_frustum *fr, t_frustum *nfr)
 {

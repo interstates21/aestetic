@@ -6,15 +6,11 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 22:08:20 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 17:17:49 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:30:25 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
-
-/*
-** bdeomin
-*/
 
 void	display_weapon(t_env *d, SDL_Surface *s, t_vec2f start, t_vec2f end)
 {
@@ -30,7 +26,7 @@ void	display_weapon(t_env *d, SDL_Surface *s, t_vec2f start, t_vec2f end)
 			colo = pixel_pls(s, 100.0 / (end.x - start.x) * 0.01 *
 				(x_y.x - start.x), 100.0 / (end.y - start.y) * 0.01 *
 														(x_y.y - start.y), 0);
-			colo = alpha(((uint32_t *)d->sdl.screen->pixels)
+			colo = to_search_alpha(((uint32_t *)d->sdl.screen->pixels)
 					[(short)x_y.x + (short)x_y.y * d->sdl.screen->w], colo);
 			pixel_put(d, new_v3_proj(x_y.x, x_y.y), colo, 0);
 			x_y.y++;

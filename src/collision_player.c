@@ -3,16 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   collision_player.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 21:11:09 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/28 18:25:53 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 18:17:13 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-** bdeomin
-*/
 
 #include "../includes/doom_nukem.h"
 
@@ -24,19 +20,19 @@ bool	can_traverse(t_env *d, int i, t_wall *wall)
 	if (wall->neighborsect != -1 &&
 		wall->is_transparent == false &&
 		d->doorstate[i] > 0.7 &&
-		y_value > get_floorheight_player(d, wall->neighborsect) +
+		y_value > height_play_fl_val(d, wall->neighborsect) +
 			MINIMUM_HEIGHT_TO_WALK &&
 		(d->sectors[wall->neighborsect].outdoor ||
-			(d->cam.pos.y < get_ceilheight_player(d, wall->neighborsect) &&
-			get_ceilheight_player(d, wall->neighborsect) -
-				get_floorheight_player(d,
+			(d->cam.pos.y < height_play_cl_val(d, wall->neighborsect) &&
+			height_play_cl_val(d, wall->neighborsect) -
+				height_play_fl_val(d,
 			wall->neighborsect) - MINIMUM_CEIL_DIST >
 				d->player.min_h)))
 		return (true);
 	return (false);
 }
 
-t_vec2f	get_closest(t_vec2f a, t_vec2f b, t_vec2f p)
+t_vec2f	to_close_val(t_vec2f a, t_vec2f b, t_vec2f p)
 {
 	t_vec2f a_to_p;
 	t_vec2f	a_to_b;
@@ -89,7 +85,7 @@ bool	collision_player(t_env *d, t_sector *sect)
 	num_wall[1] = sect->firstwallnum;
 	while (num_wall[1] < sect->firstwallnum + sect->n_walls)
 	{
-		vect[0] = get_closest(d->walls[num_wall[0]].point,
+		vect[0] = to_close_val(d->walls[num_wall[0]].point,
 			d->walls[num_wall[1]].point, v3_to_v2(d->cam.pos));
 		vect[1] = v2_min(v3_to_v2(d->cam.pos), vect[0]);
 		collided_v(vect, num_wall, d);

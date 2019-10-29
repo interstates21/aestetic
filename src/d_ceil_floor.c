@@ -6,17 +6,13 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 22:04:20 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 17:15:46 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:14:27 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
 
-/*
-** bdeomin
-*/
-
-double	edge_function(t_vec3f a, t_vec3f b, int x, int y)
+double	fun_to_edget(t_vec3f a, t_vec3f b, int x, int y)
 {
 	return (x - a.x) * (b.y - a.y) - (y - a.y) * (b.x - a.x);
 }
@@ -26,20 +22,20 @@ void	drawing_c_f(t_env *d, t_projdata *p, int mode, t_vec2 x_y)
 	double		w[3];
 	double		z;
 
-	mode == 0 ? (w[0] = edge_function(p->a[1], p->a[2], x_y.x, x_y.y) /
+	mode == 0 ? (w[0] = fun_to_edget(p->a[1], p->a[2], x_y.x, x_y.y) /
 																	p->areaa) :
-			(w[0] = edge_function(p->v[1], p->v[2], x_y.x, x_y.y) / p->area);
-	mode == 0 ? (w[1] = edge_function(p->a[2], p->a[0], x_y.x, x_y.y) /
+			(w[0] = fun_to_edget(p->v[1], p->v[2], x_y.x, x_y.y) / p->area);
+	mode == 0 ? (w[1] = fun_to_edget(p->a[2], p->a[0], x_y.x, x_y.y) /
 																	p->areaa) :
-			(w[1] = edge_function(p->v[2], p->v[0], x_y.x, x_y.y) / p->area);
-	mode == 0 ? (w[2] = edge_function(p->a[0], p->a[1], x_y.x, x_y.y) /
+			(w[1] = fun_to_edget(p->v[2], p->v[0], x_y.x, x_y.y) / p->area);
+	mode == 0 ? (w[2] = fun_to_edget(p->a[0], p->a[1], x_y.x, x_y.y) /
 																	p->areaa) :
-			(w[2] = edge_function(p->v[0], p->v[1], x_y.x, x_y.y) / p->area);
+			(w[2] = fun_to_edget(p->v[0], p->v[1], x_y.x, x_y.y) / p->area);
 	mode == 0 ? (z = 1 / (w[0] * p->a[0].z + w[1] * p->a[1].z + w[2] *
 																p->a[2].z)) :
 			(z = 1 / (w[0] * p->v[0].z + w[1] * p->v[1].z + w[2] * p->v[2].z));
 	if (z <= d->zbuffer[x_y.x + x_y.y * WIDTH])
-		pixel_put(d, new_v3(x_y.x, x_y.y, z), shade(shd_fct(d, p->sector, z, 1),
+		pixel_put(d, new_v3(x_y.x, x_y.y, z), to_shades(shd_fct(d, p->sector, z, 1),
 			pixel_pls(d->texts[mode == 0 ? p->sector->ceilpicnum :
 				p->sector->floorpicnum], mode == 0 ?
 				((w[0] * p->b[0].x + w[1] * p->b[1].x + w[2] * p->b[2].x) * z) :

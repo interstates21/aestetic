@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 20:21:26 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 17:34:33 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 18:51:14 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ static void	smooth_movement(t_env *d, short *count, t_vec2f *mvt)
 	}
 	if (*count == 2)
 		*mvt = v2_scale(*mvt, 0.707);
-	inertia(d, *mvt);
+	to_iner(d, *mvt);
 }
 
-void		movement(t_env *d)
+void		to_move_func(t_env *d)
 {
 	t_vec2f	mvt;
 	short	count;

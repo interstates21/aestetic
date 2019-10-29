@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loading2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 17:59:42 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/28 18:53:52 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 17:49:07 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ void		print_1(t_env *d)
 	s3 = "| | | | | | || | | | .  . | |  \\| | | | | |/ / | |__ | .  . |";
 	s4 = "| | | | | | || | | | |\\/| | | . ` | | | |    \\ |  __|| |\\/| |";
 	v = new_v2int((WIDTH >> 1) - 56, 100);
-	draw_string(d, new_font(s1, v, RED, 2));
+	displaing_str(d, new_font(s1, v, RED, 2));
 	v = move_down_vector2(v);
-	draw_string(d, new_font(s2, v, RED, 2));
+	displaing_str(d, new_font(s2, v, RED, 2));
 	v = move_down_vector2(v);
-	draw_string(d, new_font(s3, v, RED, 2));
+	displaing_str(d, new_font(s3, v, RED, 2));
 	v = move_down_vector2(v);
-	draw_string(d, new_font(s4, v, RED, 2));
+	displaing_str(d, new_font(s4, v, RED, 2));
 }
 
 void		print_2(t_env *d)
@@ -45,11 +45,11 @@ void		print_2(t_env *d)
 	s2 = "| |/ /\\ \\_/ /\\ \\_/ / |  | | | |\\  | |_| | |\\  \\| |___| |  | |";
 	s3 = "|___/  \\___/  \\___/\\_|  |_/ \\_| \\_/\\___/\\_| \\_/\\____/\\_|_/";
 	v = new_v2int((WIDTH >> 1) - 56, 100);
-	draw_string(d, new_font(s1, v, RED, 2));
+	displaing_str(d, new_font(s1, v, RED, 2));
 	v = move_down_vector2(v);
-	draw_string(d, new_font(s2, v, RED, 2));
+	displaing_str(d, new_font(s2, v, RED, 2));
 	v = move_down_vector2(v);
-	draw_string(d, new_font(s3, v, RED, 2));
+	displaing_str(d, new_font(s3, v, RED, 2));
 }
 
 void		print_loading_ascii(t_env *d)
