@@ -930,5 +930,9 @@ t_vec3f						move_down_vector3(t_vec3f v);
 t_vec2						move_down_vector2(t_vec2 v);
 void						merge_vector_arr(t_vec3f **a, t_vec3f **b, int ia,
 																	int *ib);
+void				translate(t_vec3f *p, t_vec3f move, int dir);
+void				rot_x(t_vec3f *v, double ang, t_vec3f axis);
+void				rot_y(t_vec3f *v, double ang, t_vec3f axis);
+void				rot_z(t_vec3f *v, double ang, t_vec3f axis);
 
 #endif
