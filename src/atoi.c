@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 12:27:46 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 16:35:40 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 16:58:43 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	div_wl(int n, int div, char *s, int i)
 	s[i] = '\0';
 }
 
-char		*ft_itoa_static(int n)
+char		*new_itoa_fun(int n)
 {
 	int			tmpn;
 	int			div;

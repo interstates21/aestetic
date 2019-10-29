@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 19:19:18 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/28 19:20:16 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 17:36:09 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** bdeomin
 */
 
-t_vec3f		trans_v3f_in_scr(t_env *d, t_vec3f v)
+t_vec3f		v3f_transpar(t_env *d, t_vec3f v)
 {
 	t_vec3f	new;
 
@@ -38,7 +38,7 @@ void		draw_proj(t_env *d, t_frustum *fr, t_anim_rot proj)
 	t_display_data	a;
 	t_vec3f			point_on_screen;
 
-	point_on_screen = trans_v3f_in_scr(d, proj.pos);
+	point_on_screen = v3f_transpar(d, proj.pos);
 	if (point_on_screen.z <= 0)
 		return ;
 	dist = vec3f_length(v3_min(proj.pos, d->cam.pos));

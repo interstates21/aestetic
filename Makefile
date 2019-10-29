@@ -41,7 +41,6 @@ FILES = main \
 		reorder_sprite \
 		create_projectile \
 		projectile_collision \
-		find_closest_wall_dist \
 		update_2 \
 		update \
 		color_buffer \

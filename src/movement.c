@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 20:21:26 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 15:52:33 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 17:34:33 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,5 @@ void		movement(t_env *d)
 	while (collision_player(d, &d->sectors[d->this_sect]))
 		if (++protection > 6)
 			break ;
-	collision_with_monster(d, d->this_sect);
+	play_by_monst_colided(d, d->this_sect);
 }

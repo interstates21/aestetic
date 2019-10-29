@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:30:39 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/28 21:41:36 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 17:26:18 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	init_weapons(t_env *d)
 	d->weapon_type.has_alt_fire = false;
 }
 
-void	init_projectiles(t_env *d)
+void	proj_initialization(t_env *d)
 {
 	ft_bzero(d->anim_rot_type, sizeof(t_anim_rot_type) * N_ANIM_ROT_TYPES);
 	ft_bzero(d->anim_rots, sizeof(t_anim_rot) * N_ANIM_ROTS);

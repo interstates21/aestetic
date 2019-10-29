@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   swap_list.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 15:40:05 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 16:08:46 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 17:30:20 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
 
-void	destroy_mail(short id, t_sector *sector, uint8_t type_to_destroy)
+void	mailing_deleted(short id, t_sector *sector, uint8_t type_to_destroy)
 {
 	t_sprite_list	*tmp;
 	t_sprite_list	*tmp_prev;
@@ -40,7 +40,7 @@ void	destroy_mail(short id, t_sector *sector, uint8_t type_to_destroy)
 	}
 }
 
-void	swap_list(uint8_t type, uint16_t id, t_env *d, int sectnum[2])
+void	list_swp(uint8_t type, uint16_t id, t_env *d, int sectnum[2])
 {
 	t_sprite_list *tmp[3];
 

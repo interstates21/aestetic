@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 20:59:00 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 21:20:57 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 16:55:52 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ bool	can_traverse_monster(t_env *d, int i, t_vec2f *pos, t_sector *sect)
 	num_sec = sect - &d->sectors[0];
 	if (wall->neighborsect != -1 && !(wall->is_transparent) &&
 		d->doorstate[i] > 0.7 &&
-		(get_floor_height(&d->sectors[num_sec], d->walls, num_sec, *pos) +
-			MIN_HEIGHT_MONSTER_TO_WALK != get_floor_height(&d->sectors[num_sec],
+		(height_fl_val(&d->sectors[num_sec], d->walls, num_sec, *pos) +
+			MIN_HEIGHT_MONSTER_TO_WALK != height_fl_val(&d->sectors[num_sec],
 				d->walls, num_sec, *pos))
 		&& (d->sectors[wall->neighborsect].outdoor ||
-		get_ceil_height(&d->sectors[num_sec], d->walls, num_sec, *pos) -
-			get_floor_height(&d->sectors[num_sec], d->walls, num_sec, *pos) >
+		height_cl_val(&d->sectors[num_sec], d->walls, num_sec, *pos) -
+			height_fl_val(&d->sectors[num_sec], d->walls, num_sec, *pos) >
 				SMALLEST_HEIGHT_FOR_MONSTERS))
 		return (true);
 	return (false);

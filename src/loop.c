@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 20:11:45 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 16:37:17 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 17:22:37 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,10 @@ static void	render(t_env *d)
 	while (++i < WIDTH * HEIGHT)
 		d->zbuffer[i] = INFINITY;
 	precompute_texanim(d);
-	render_sector(d, &d->sectors[d->this_sect], &fr);
-	draw_weapon(d);
+	sect_rendering(d, &d->sectors[d->this_sect], &fr);
+	displaing_weap(d);
 	color_buffer(d);
-	aiming_draw(d);
+	displaing_aiming(d);
 	draw_hud(d);
 	SDL_UpdateWindowSurface(d->sdl.win);
 }

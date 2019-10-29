@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monster_collision.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 18:11:53 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 16:03:03 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 17:34:48 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_vec2f	update_pos_vec2f(t_vec2f pos, t_vec2f point)
 	return (v2_plus(point, tmp));
 }
 
-void	collision_monster_monster(t_env *d, short cur_sect, t_monster *monster)
+void	monst_by_monst_colided(t_env *d, short cur_sect, t_monster *monster)
 {
 	t_sprite_list	*tmp;
 
@@ -49,7 +49,7 @@ void	collision_monster_monster(t_env *d, short cur_sect, t_monster *monster)
 	}
 }
 
-void	collision_with_monster(t_env *d, short cur_sect)
+void	play_by_monst_colided(t_env *d, short cur_sect)
 {
 	t_sprite_list	*tmp;
 	double			floor_height;
@@ -59,7 +59,7 @@ void	collision_with_monster(t_env *d, short cur_sect)
 	pos = d->monsters[tmp->id].pos;
 	while (tmp)
 	{
-		floor_height = get_floor_height(&d->sectors[cur_sect],
+		floor_height = height_fl_val(&d->sectors[cur_sect],
 													d->walls, cur_sect, pos);
 		if (tmp->type == IS_MONSTER && d->monsters[tmp->id].can_collide)
 			if (v2_len(v2_min(d->monsters[tmp->id].pos,

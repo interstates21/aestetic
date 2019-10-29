@@ -6,13 +6,13 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 21:07:52 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/28 19:20:07 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 17:23:47 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
 
-void		draw_sprite(t_env *d, t_frustum *fr, t_sprite_list *sprite)
+void		dislaing_not_wall(t_env *d, t_frustum *fr, t_sprite_list *sprite)
 {
 	if (sprite->type == IS_MONSTER)
 		draw_monster(d, d->monsters[sprite->id]);

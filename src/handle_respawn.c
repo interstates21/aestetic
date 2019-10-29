@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 20:03:40 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/26 20:05:56 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 17:25:31 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void		handle_respawn(t_env *d)
 	int j;
 
 	blackout(d);
-	init_monsters(d);
-	init_player(d, &d->player);
+	monters_inicialization(d);
+	play_initialization(d, &d->player);
 	play_music(d, MAIN_MUSIC);
 	i = -1;
 	while (d->objects_n && ++i < d->n_sect)

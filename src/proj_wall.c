@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 03:12:36 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 22:22:51 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 17:15:46 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	*draw_ceil_thread(void *void_arg)
 
 	arg = (t_thread_arg*)void_arg;
 	if (!arg->p->sector->outdoor)
-		draw_ceil_floor(arg->d, arg->p, arg->fr, 0);
+		displaing_cl_fl(arg->d, arg->p, arg->fr, 0);
 	else
-		draw_sky(arg->d, arg->p, arg->fr);
+		displaing_sky(arg->d, arg->p, arg->fr);
 	return (NULL);
 }
 
@@ -38,11 +38,11 @@ void	proj_wall2(t_env *d, t_projdata *p, t_frustum *fr)
 		p->poster_h = POSTER_W * ((double)d->posters[p->wall->posterpicnum]->h /
 				d->posters[p->wall->posterpicnum]->w) / p->y_scale;
 	}
-	draw_wall(d, p, fr);
+	displaing_wall(d, p, fr);
 	t = (t_thread_arg){d, p, fr};
 	if (pthread_create(&thread, NULL, draw_ceil_thread, &t))
 		print_err("thread error");
-	draw_ceil_floor(d, p, fr, 1);
+	displaing_cl_fl(d, p, fr, 1);
 	if (pthread_join(thread, NULL))
 		print_err("thread error");
 }

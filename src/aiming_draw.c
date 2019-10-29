@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 17:25:37 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 21:31:23 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 17:00:28 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	drawing(t_env *d, uint32_t colo)
 		pixel_put(d, new_v3((WIDTH / 2) - 16 + i, HEIGHT / 2, 0), colo, 0);
 }
 
-void	aiming_draw(t_env *d)
+void	displaing_aiming(t_env *d)
 {
 	uint32_t	colo;
 

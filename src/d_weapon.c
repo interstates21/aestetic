@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 22:08:20 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/28 22:30:18 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 17:17:49 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	display_weapon(t_env *d, SDL_Surface *s, t_vec2f start, t_vec2f end)
 	}
 }
 
-void	draw_weapon(t_env *d)
+void	displaing_weap(t_env *d)
 {
 	t_vec2f	start;
 	t_vec2f	tmp;

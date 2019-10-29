@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 12:54:20 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/24 22:54:50 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 17:09:57 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_vec2f		intersect(t_vec2f p0, t_vec2f p1, t_vec2f p2, t_vec2f p3)
 			(arr[0] * arr[5] - arr[1] * arr[4]) / broz));
 }
 
-bool		clip_wall(double *x1, double *z1, double x2, double z2)
+bool		to_wall_lock(double *x1, double *z1, double x2, double z2)
 {
 	t_vec2f	p0;
 	t_vec2f p1;

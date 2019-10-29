@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 15:40:05 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 16:36:51 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 17:26:18 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void	init_everything(t_env *d, char *map)
 	load_map(d, map);
 	set_doorstate(d);
 	fix_picnum(d);
-	init_player(d, &d->player);
-	init_monsters(d);
-	init_projectiles(d);
+	play_initialization(d, &d->player);
+	monters_inicialization(d);
+	proj_initialization(d);
 	if (d->sect_begin < 0)
 		print_err("error");
 	if (SDL_SetRelativeMouseMode(SDL_TRUE) == -1)
@@ -65,10 +65,10 @@ void	run(char *mapname)
 	init_sdl(&(d.sdl));
 	TTF_Init();
 	d.g_font = TTF_OpenFont("/Library/Fonts/Arial.ttf", 25);
-	init_keys(&(d.keys));
+	keyboard_battons(&(d.keys));
 	while (z == 0)
 		z = displaing_backgr(&d, e);
-	d.zbuffer = get_screen_pixels();
+	d.zbuffer = pix_val_scr();
 	ft_strncpy(d.nextmap, mapname, 100);
 	init_everything(&d, d.nextmap);
 }

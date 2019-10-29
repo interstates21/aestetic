@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 09:18:24 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 16:39:36 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 17:28:45 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int16_t	search_other_sectors(int16_t sects[2], t_env *d, int depth,
 	while (++i < j)
 		if (d->walls[i].neighborsect != -1 && d->walls[i].neighborsect !=
 				sects[1] && d->doorstate[i] > 0.7)
-			if ((ret_value = update_cursect_proj((int16_t[2]){d->walls[i].
+			if ((ret_value = new_proj_curs((int16_t[2]){d->walls[i].
 							neighborsect, sects[0]}, d, depth - 1, pos)) != -1)
 				return (ret_value);
 	if (sects[1] == -1 && d->sectors[sects[0]].outdoor &&
@@ -72,15 +72,15 @@ int16_t	search_other_sectors(int16_t sects[2], t_env *d, int depth,
 	return (-1);
 }
 
-int16_t	update_cursect_proj(int16_t sects[2], t_env *d, int depth,
+int16_t	new_proj_curs(int16_t sects[2], t_env *d, int depth,
 		t_vec3f pos)
 {
 	double	floor_height;
 	double	ceil_height;
 
-	floor_height = get_floor_height(&d->sectors[sects[0]], d->walls,
+	floor_height = height_fl_val(&d->sectors[sects[0]], d->walls,
 													sects[0], v3_to_v2(pos));
-	ceil_height = get_ceil_height(&d->sectors[sects[0]], d->walls,
+	ceil_height = height_cl_val(&d->sectors[sects[0]], d->walls,
 													sects[0], v3_to_v2(pos));
 	if (inside(d, sects[0], new_v2(pos.x, pos.z)) &&
 			(pos.y < ceil_height || d->sectors[sects[0]].outdoor) &&
@@ -91,7 +91,7 @@ int16_t	update_cursect_proj(int16_t sects[2], t_env *d, int depth,
 	return (search_other_sectors(sects, d, depth, pos));
 }
 
-int16_t	update_cursect_smart(t_env *d, short depth, t_vec2f pos,
+int16_t	new_smart_curs(t_env *d, short depth, t_vec2f pos,
 		uint16_t this_sect)
 {
 	short	i;

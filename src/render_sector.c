@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_sector.c                                    :+:      :+:    :+:   */
+/*   sect_rendering.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 22:23:12 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 16:10:31 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 17:09:57 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ void		render_wall(t_env *d, t_projdata *p, t_frustum *fr, int i)
 	p->u1 = 0;
 	p->u2 = p->len;
 	if ((p->z1 <= 0 && p->z2 <= 0) || ((p->z1 <= 0) &&
-			!(clip_wall(&p->x1, &p->z1, p->x2, p->z2) && (p->u1 = p->u2 -
+			!(to_wall_lock(&p->x1, &p->z1, p->x2, p->z2) && (p->u1 = p->u2 -
 			v2_len(new_v2(p->x2 - p->x1, p->z2 - p->z1))))) ||
-			((p->z2 <= 0) && !(clip_wall(&p->x2, &p->z2, p->x1, p->z1) &&
+			((p->z2 <= 0) && !(to_wall_lock(&p->x2, &p->z2, p->x1, p->z1) &&
 			(p->u2 = v2_len(new_v2(p->x2 - p->x1, p->z2 - p->z1))))))
 		return ;
 	proj_wall(d, p, fr, (t_vec2f[2]){
@@ -96,7 +96,7 @@ static void	rend_while(t_env *d, t_sector *sect, t_frustum *fr, t_projdata p)
 		render_wall(d, &p, fr, i);
 }
 
-void		render_sector(t_env *d, t_sector *sect, t_frustum *fr)
+void		sect_rendering(t_env *d, t_sector *sect, t_frustum *fr)
 {
 	t_sprite_list	*lst_tmp;
 	t_projdata		p;
@@ -110,7 +110,7 @@ void		render_sector(t_env *d, t_sector *sect, t_frustum *fr)
 	lst_tmp = sect->sprite_list;
 	while (lst_tmp)
 	{
-		draw_sprite(d, fr, lst_tmp);
+		dislaing_not_wall(d, fr, lst_tmp);
 		lst_tmp = lst_tmp->next;
 	}
 	d_asseting(d, &p, sect - d->sectors);

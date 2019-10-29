@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 09:18:24 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/24 23:00:02 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 16:54:30 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	init_sdl(t_sdl *sdl)
 		print_err(SDL_GetError());
 }
 
-void	init_keys(Uint8 **keys)
+void	keyboard_battons(Uint8 **keys)
 {
 	*(keys) = (Uint8*)SDL_GetKeyboardState(NULL);
 }

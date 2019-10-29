@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 09:18:24 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 16:45:11 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 16:55:52 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ double	get_ceilheight_player(t_env *d, int16_t sectnum)
 	v.x = d->cam.pos.x;
 	v.y = d->cam.pos.z;
 	s = &d->sectors[sectnum];
-	ceil_height = get_ceil_height(s, d->walls, sectnum, v);
+	ceil_height = height_cl_val(s, d->walls, sectnum, v);
 	return (ceil_height);
 }
 
@@ -36,12 +36,12 @@ double	get_ceildh(t_env *d, t_sector *sect, t_vec2f v)
 		print_err("get ceil sector is null");
 	n = sect - d->sectors;
 	s = &d->sectors[n];
-	ceil_height = get_ceil_height(s, d->walls, n, v);
+	ceil_height = height_cl_val(s, d->walls, n, v);
 	res = ceil_height - d->cam.pos.y;
 	return (res);
 }
 
-double	get_ceil_height(t_sector *sect, t_wall *walls, int16_t sectnum,
+double	height_cl_val(t_sector *sect, t_wall *walls, int16_t sectnum,
 																	t_vec2f p)
 {
 	t_vec2f		center;
@@ -55,7 +55,7 @@ double	get_ceil_height(t_sector *sect, t_wall *walls, int16_t sectnum,
 		angle = angles_val(sect->slopeceil_orientation,
 												sect->is_animatedslopeceil);
 		p = v2_min(p, center);
-		v2_rot(&p, angle);
+		rotation_vector(&p, angle);
 		p = v2_plus(p, center);
 		return (angle_caluk_tang(sect->ceilheight, sect->slopeceil, p, center));
 	}

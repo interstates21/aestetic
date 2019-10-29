@@ -6,13 +6,13 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 20:08:25 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 16:45:11 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 16:59:23 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
 
-double	calculate_max_floor_h(t_sector *s)
+double	height_calc_fl(t_sector *s)
 {
 	double n;
 
@@ -55,7 +55,7 @@ double	angles_val(double o, bool is_animated)
 	return (temp);
 }
 
-double	calculate_floor_height_epsilon(double h)
+double	height_calc_fl_eps(double h)
 {
 	return (h > 5 ? 1.2 : 1.1);
 }

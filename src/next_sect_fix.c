@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 21:08:42 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/26 21:09:47 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 16:57:09 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	calculate_next_sect(t_env *d, t_range old_range, int old_current)
 	current = -1;
 	while (++current < d->n_sect)
 	{
-		range = make_range(d->sectors[current].firstwallnum,
+		range = ranged_create(d->sectors[current].firstwallnum,
 		d->sectors[current].firstwallnum + d->sectors[current].n_walls - 1);
 		while (range.min < (d->sectors[current].firstwallnum +
 												d->sectors[current].n_walls))
@@ -68,7 +68,7 @@ void		next_sect_fix(t_env *d)
 											d->sectors[current].n_walls - 1;
 		min = d->sectors[current].firstwallnum;
 		sum = d->sectors[current].firstwallnum + d->sectors[current].n_walls;
-		range = make_range(min, max);
+		range = ranged_create(min, max);
 		while (range.min < sum)
 		{
 			d->walls[range.max].neighborsect =

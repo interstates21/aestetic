@@ -6,13 +6,13 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 23:49:29 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/26 23:49:31 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 16:52:54 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
 
-double	*get_screen_pixels(void)
+double	*pix_val_scr(void)
 {
 	double	*arr;
 	size_t	memory_size;

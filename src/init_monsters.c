@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_monsters.c                                    :+:      :+:    :+:   */
+/*   monters_inicialization.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -93,7 +93,7 @@ void	init_monster_type(t_env *d)
 	d->monster_type[MOTHERDEMON].anim_order[18] = 18;
 }
 
-void	init_monsters(t_env *d)
+void	monters_inicialization(t_env *d)
 {
 	short	i;
 

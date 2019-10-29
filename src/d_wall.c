@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 22:08:20 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 16:38:51 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 17:22:37 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	draw_wall3(t_env *d, t_projdata *p, t_frustum *nfr, bool *visible)
 	{
 		nfr->x1 = p->cx1;
 		nfr->x2 = p->cx2;
-		render_sector(d, p->neighbor, nfr);
+		sect_rendering(d, p->neighbor, nfr);
 	}
 }
 
@@ -70,12 +70,12 @@ void	draw_wall2(t_env *d, t_projdata *p, t_frustum *fr, t_frustum *nfr)
 	}
 	new_proj_data2(d, p, fr, 2);
 	if (!p->neighbor)
-		draw_wall_no_nei(d, p, fr);
+		displaing_no_n_wall(d, p, fr);
 	else if (p->neighbor)
 		displaing_n_wall(d, p, fr);
 }
 
-void	draw_wall(t_env *d, t_projdata *p, t_frustum *fr)
+void	displaing_wall(t_env *d, t_projdata *p, t_frustum *fr)
 {
 	t_frustum	new_fr;
 
@@ -94,6 +94,6 @@ void	draw_wall(t_env *d, t_projdata *p, t_frustum *fr)
 	{
 		p->x = MAX(p->x1, new_fr.x1);
 		while (++p->x <= MIN(p->x2, new_fr.x2))
-			draw_wall_transparent(d, p, &new_fr);
+			displaing_to_transp_wall(d, p, &new_fr);
 	}
 }

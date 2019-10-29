@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monster_anim_state.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 11:41:36 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 15:47:42 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 17:32:46 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	monst(t_monster *m, t_monster_type *monster_type, t_env *d, int num)
 	}
 }
 
-void	monster_anim_state(t_monster *monster,
+void	monst_st_animate(t_monster *monster,
 		t_monster_type *monster_type, t_env *d)
 {
 	if (monster->id_type == MOTHERDEMON)

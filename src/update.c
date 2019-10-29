@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 05:22:33 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 21:05:04 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 17:32:05 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ void	new_collided_proj(t_env *d, t_anim_rot *proj, bool anim,
 	{
 		proj->pos = v3_plus(v2_to_v3(proj->target->pos),
 				proj->dir);
-		if ((new_sectors = update_cursect_proj((int16_t[2]){proj->
+		if ((new_sectors = new_proj_curs((int16_t[2]){proj->
 						this_sect, -1}, d, NB_OF_SECTOR_DEPTH,
 						proj->pos)) != -1)
 		{
 			if (new_sectors != proj->this_sect)
-				swap_list(IS_PROJECTILE, id, d,
+				list_swp(IS_PROJECTILE, id, d,
 								(int[2]){proj->this_sect, new_sectors});
 			proj->this_sect = new_sectors;
 		}
 	}
 }
 
-void	update_anim_projectile(t_anim_rot *proj, t_env *d, short id,
+void	new_proj_animate(t_anim_rot *proj, t_env *d, short id,
 		bool collided)
 {
 	if (collided)
@@ -60,7 +60,7 @@ void	update_anim_projectile(t_anim_rot *proj, t_env *d, short id,
 			proj->is_curr_anim] == MUST_BE_DESTROYED)
 	{
 		proj->is_active = false;
-		destroy_mail(id, &d->sectors[proj->this_sect], IS_PROJECTILE);
+		mailing_deleted(id, &d->sectors[proj->this_sect], IS_PROJECTILE);
 		return ;
 	}
 	new_collided_proj(d, proj, false, id);
@@ -100,7 +100,7 @@ void	update(t_env *d)
 	d->cam.cos = cos(d->cam.rot);
 	movement(d);
 	interact_with_assets(d);
-	if ((sect = update_cursect_smart(d, DEPTH_TO_SCAN, v3_to_v2(d->cam.pos),
+	if ((sect = new_smart_curs(d, DEPTH_TO_SCAN, v3_to_v2(d->cam.pos),
 					d->this_sect)) != -1)
 	{
 		if (sect != d->this_sect && d->cam.pos.y < get_floorheight_player(d,

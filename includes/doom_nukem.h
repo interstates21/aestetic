@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 23:23:09 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 16:45:11 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 17:39:02 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -742,34 +742,27 @@ double						angle_caluk_tang(double h, double slope,
 												t_vec2f p, t_vec2f c);
 void						mid_sect_val(t_vec2f *v, t_wall *walls,
 											int n_walls, int current_wall);
-double						calculate_max_floor_h(t_sector *s);
-double						*get_screen_pixels();
-void						init_keys(Uint8 **keys);
-void						v2_rot(t_vec2f *p, double angle);
-double						get_floor_height(t_sector *sect, t_wall *walls,
+double						height_calc_fl(t_sector *s);
+double						*pix_val_scr();
+void						keyboard_battons(Uint8 **keys);
+void						rotation_vector(t_vec2f *p, double angle);
+double						height_fl_val(t_sector *sect, t_wall *walls,
 												int16_t sectnum, t_vec2f p);
-double						get_ceil_height(t_sector *sect, t_wall *walls,
+double						height_cl_val(t_sector *sect, t_wall *walls,
 												int16_t sectnum, t_vec2f p);
-t_range						make_range(int min, int max);
+t_range						ranged_create(int min, int max);
 t_v2_pair					new_v2_pair(t_vec2f v1, t_vec2f v2);
 void						*pure_malloc(size_t size, const char *err);
-char						*ft_itoa_static(int n);
-double						calculate_floor_height_epsilon(double h);
-void						aiming_draw(t_env *d);
-int16_t						scan_sect_point_line(t_env *d,
-							uint16_t sect_to_scan, double dist, bool hit_all);
-double						find_closest_wall_dist(t_env *d,
-														uint16_t sect_to_scan);
-int16_t						recur_scan_point_line(t_env *d,
-						int16_t sect_to_scan, int16_t old_sect, bool hit_all);
+char						*new_itoa_fun(int n);
+double						height_calc_fl_eps(double h);
+void						displaing_aiming(t_env *d);
 double						get_dist_to_intersect_wall(t_env *d,
 												t_vec2f wall1, t_vec2f wall2);
 void						pixel_put(t_env *d, t_vec3f p, uint32_t color,
 																	int mode);
 uint32_t					pixel_pls(SDL_Surface *s, double x, double y,
 																	int mode);
-bool						inside(t_env *d, int16_t sectnum, t_vec2f pos);
-bool						clip_wall(double *x1, double *z1, double x2,
+bool						to_wall_lock(double *x1, double *z1, double x2,
 																	double z2);
 void						proj_wall(t_env *d, t_projdata *p, t_frustum *fr,
 																t_vec2f v[2]);
@@ -777,49 +770,48 @@ int							new_proj_data(t_projdata *p, t_frustum *fr,
 																	int mode);
 int							new_proj_data2(t_env *d, t_projdata *p,
 													t_frustum *fr, int mode);
-void						draw_wall(t_env *d, t_projdata *p, t_frustum *fr);
-void						draw_wall_no_nei(t_env *d, t_projdata *p,
+void						displaing_wall(t_env *d, t_projdata *p,
 																t_frustum *fr);
-void						draw_wall_transparent(t_env *d, t_projdata *p,
+void						displaing_no_n_wall(t_env *d, t_projdata *p,
 																t_frustum *fr);
-void						draw_sky(t_env *d, t_projdata *p, t_frustum *fr);
-void						draw_ceil_floor(t_env *d, t_projdata *p,
+void						displaing_to_transp_wall(t_env *d, t_projdata *p,
+																t_frustum *fr);
+void						displaing_sky(t_env *d, t_projdata *p,
+																t_frustum *fr);
+void						displaing_cl_fl(t_env *d, t_projdata *p,
 													t_frustum *fr, int mode);
-void						player_actions(t_env *d);
-void						draw_weapon(t_env *d);
-void						blaster_shot(t_env *d);
-void						render_sector(t_env *d, t_sector *sect,
+void						actio_pl(t_env *d);
+void						displaing_weap(t_env *d);
+void						sect_rendering(t_env *d, t_sector *sect,
 																t_frustum *fr);
-void						draw_sprite(t_env *d, t_frustum *fr,
+void						dislaing_not_wall(t_env *d, t_frustum *fr,
 														t_sprite_list *sprite);
-void						init_player(t_env *d, t_player *player);
-void						init_monsters(t_env *d);
-void						init_projectiles(t_env *d);
-void						swap_list(uint8_t type, uint16_t id, t_env *d,
+void						play_initialization(t_env *d, t_player *player);
+void						monters_inicialization(t_env *d);
+void						proj_initialization(t_env *d);
+void						list_swp(uint8_t type, uint16_t id, t_env *d,
 																int sectnum[2]);
-int16_t						update_cursect_smart(t_env *d, short depth,
+int16_t						new_smart_curs(t_env *d, short depth,
 											t_vec2f pos, uint16_t this_sect);
-int16_t						update_cursect_proj(int16_t sects[2], t_env *d,
+int16_t						new_proj_curs(int16_t sects[2], t_env *d,
 														int depth, t_vec3f pos);
-void						destroy_mail(short id, t_sector *sector,
+void						mailing_deleted(short id, t_sector *sector,
 													uint8_t type_to_destroy);
-void						update_anim_projectile(t_anim_rot *proj,
+void						new_proj_animate(t_anim_rot *proj,
 											t_env *d, short id, bool collided);
-void						monster_anim_state(t_monster *monster,
+void						monst_st_animate(t_monster *monster,
 									t_monster_type *monster_type, t_env *d);
-void						monster_hit(t_env *d, uint16_t damage,
-														uint16_t id_monster);
-void						collision_monster_monster(t_env *d, short cur_sect,
+void						monst_by_monst_colided(t_env *d, short cur_sect,
 															t_monster *monster);
-void						collision_with_monster(t_env *d, short cur_sect);
-bool						collision_proj_monster(t_env *d, t_sector *sector,
+void						play_by_monst_colided(t_env *d, short cur_sect);
+bool						proj_monst_colided(t_env *d, t_sector *sector,
 													t_anim_rot *projectile);
-bool						collision_proj_player(t_env *d,
+bool						proj_play_colided(t_env *d,
 													t_anim_rot *projectile);
-t_vec3f						trans_v3f_in_scr(t_env *d, t_vec3f v);
-void						check_activation(t_env *d, t_monster *monster,
+t_vec3f						v3f_transpar(t_env *d, t_vec3f v);
+void						activate_tring(t_env *d, t_monster *monster,
 													t_vec2f pos, bool recur);
-void						monster_behaviour(t_env *d, t_monster *monster,
+void						demeanor_monst(t_env *d, t_monster *monster,
 																uint16_t id);
 void						monster_behaviour_chargingdemon(t_env *d,
 											t_monster *monster, uint16_t id);

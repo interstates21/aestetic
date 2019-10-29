@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:17:11 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/24 22:55:44 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 17:24:19 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	init_player_2(t_env *d, t_player *player)
 	d->weapon_type.current_ammo = MAX_BULLETS;
 }
 
-void	init_player(t_env *d, t_player *player)
+void	play_initialization(t_env *d, t_player *player)
 {
 	int i;
 

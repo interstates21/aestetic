@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 23:10:02 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 22:42:36 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 16:58:43 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	draw_fuel(t_env *d)
 {
 	static char buf[100] = "Fuel: ";
 
-	ft_strcpy(buf + 6, ft_itoa_static(d->player.flying));
+	ft_strcpy(buf + 6, new_itoa_fun(d->player.flying));
 	draw_string(d, (t_font){buf, 50, 110, 0, 2});
 }
 

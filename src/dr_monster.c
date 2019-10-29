@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 19:45:21 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/28 19:15:05 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 17:36:09 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void		draw_monster(t_env *d, t_monster monster)
 	double			h;
 	short			nb_of_anim[2];
 
-	h = get_floor_height(&d->sectors[monster.this_sect], d->walls,
+	h = height_fl_val(&d->sectors[monster.this_sect], d->walls,
 									monster.this_sect, monster.pos);
 	position_monstr = new_v3(monster.pos.x, h, monster.pos.y);
-	point_in_screen = trans_v3f_in_scr(d, position_monstr);
+	point_in_screen = v3f_transpar(d, position_monstr);
 	if (point_in_screen.z <= 0)
 		return ;
 	nb_of_anim[0] = *mont_anim(d, monster, nb_of_anim);

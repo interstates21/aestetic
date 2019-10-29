@@ -6,13 +6,13 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 19:08:35 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 22:09:40 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 17:15:22 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/doom_nukem.h"
 
-void	draw_sky(t_env *d, t_projdata *p, t_frustum *fr)
+void	displaing_sky(t_env *d, t_projdata *p, t_frustum *fr)
 {
 	SDL_Surface	*texts;
 	t_vec2		v_h;

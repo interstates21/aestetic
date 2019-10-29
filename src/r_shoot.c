@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   r_shoot.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 03:03:45 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/29 16:04:08 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 17:17:16 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		check_last_anim(t_env *e)
 	return (false);
 }
 
-void	player_actions(t_env *e)
+void	actio_pl(t_env *e)
 {
 	int	ammo;
 

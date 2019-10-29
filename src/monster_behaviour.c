@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monster_behaviour.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vslutiak <vslutiak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 21:39:48 by vslutiak          #+#    #+#             */
-/*   Updated: 2019/10/29 15:51:28 by vslutiak         ###   ########.fr       */
+/*   Updated: 2019/10/29 17:39:02 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,18 +75,18 @@ void	motherdemon_behaviour(t_env *d, t_monster *monster, uint16_t id)
 	if ((monster->timer > 0) && (monster->anim_state < 4) && !(protection = 0))
 	{
 		monster->pos = v2_plus(monster->pos, monster->dir);
-		collision_monster_monster(d, monster->this_sect, monster);
+		monst_by_monst_colided(d, monster->this_sect, monster);
 		while (collision_monster(d, &d->sectors[monster->this_sect],
 					&monster->pos, COLLISION_DIST_MOTHERDEMON))
 			if (++protection > 6)
 				break ;
 		if (monster->timer > 2)
 			monster->timer -= 2;
-		new_sect = update_cursect_smart(d, 2, monster->pos,
+		new_sect = new_smart_curs(d, 2, monster->pos,
 				monster->this_sect);
 		if (new_sect != monster->this_sect && new_sect != -1)
 		{
-			swap_list(IS_MONSTER, id, d, (int[2]){monster->this_sect,
+			list_swp(IS_MONSTER, id, d, (int[2]){monster->this_sect,
 					new_sect});
 			monster->this_sect = new_sect;
 		}
@@ -95,7 +95,7 @@ void	motherdemon_behaviour(t_env *d, t_monster *monster, uint16_t id)
 		motherdemon_behaviour_change_pattern(d, monster);
 }
 
-void	check_activation(t_env *d, t_monster *monster, t_vec2f pos, bool recur)
+void	activate_tring(t_env *d, t_monster *monster, t_vec2f pos, bool recur)
 {
 	t_sprite_list	*tmp;
 
@@ -113,17 +113,17 @@ void	check_activation(t_env *d, t_monster *monster, t_vec2f pos, bool recur)
 	while (tmp)
 	{
 		if (tmp->type == IS_MONSTER && d->monsters[tmp->id].activated == false)
-			check_activation(d, &d->monsters[tmp->id], monster->pos, false);
+			activate_tring(d, &d->monsters[tmp->id], monster->pos, false);
 		tmp = tmp->next;
 	}
 }
 
-void	monster_behaviour(t_env *d, t_monster *monster, uint16_t id)
+void	demeanor_monst(t_env *d, t_monster *monster, uint16_t id)
 {
 	if (!monster->can_collide)
 		return ;
 	if (!monster->activated)
-		check_activation(d, monster, v3_to_v2(d->cam.pos), true);
+		activate_tring(d, monster, v3_to_v2(d->cam.pos), true);
 	if (!monster->activated)
 		return ;
 	monster->timer--;

@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 03:16:36 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 04:25:27 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 17:36:56 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void		monster_hit(t_env *d, uint16_t damage, uint16_t id_monster)
 		{
 			if (tmp->type == IS_MONSTER && d->monsters[tmp->id].activated ==
 					false)
-				check_activation(d, &d->monsters[tmp->id],
+				activate_tring(d, &d->monsters[tmp->id],
 						d->monsters[id_monster].pos, false);
 			tmp = tmp->next;
 		}
@@ -60,7 +60,7 @@ bool		collision_proj_one_monst(t_env *d, t_monster *monster,
 	t_vec2f		vec2f_tmp[2];
 	double		floor_height;
 
-	floor_height = get_floor_height(&d->sectors[monster->this_sect],
+	floor_height = height_fl_val(&d->sectors[monster->this_sect],
 								d->walls, monster->this_sect, monster->pos);
 	dist = v2_len(v2_min(v3_to_v2(newpos), monster->pos));
 	if (dist < d->anim_rot_type[projectile->id_type].hitbox_radius +
@@ -82,7 +82,7 @@ bool		collision_proj_one_monst(t_env *d, t_monster *monster,
 	return (false);
 }
 
-bool		collision_proj_monster(t_env *d, t_sector *sector,
+bool		proj_monst_colided(t_env *d, t_sector *sector,
 		t_anim_rot *projectile)
 {
 	t_vec3f			newpos;
@@ -109,7 +109,7 @@ bool		collision_proj_monster(t_env *d, t_sector *sector,
 	return (false);
 }
 
-bool		collision_proj_player(t_env *d, t_anim_rot *projectile)
+bool		proj_play_colided(t_env *d, t_anim_rot *projectile)
 {
 	t_vec3f	newpos;
 	t_vec3f	tmp_pos;

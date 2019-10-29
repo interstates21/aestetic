@@ -6,7 +6,7 @@
 /*   By: bdeomin <bdeomin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 22:04:20 by bdeomin           #+#    #+#             */
-/*   Updated: 2019/10/27 22:07:41 by bdeomin          ###   ########.fr       */
+/*   Updated: 2019/10/29 17:15:46 by bdeomin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	drawing_c_f(t_env *d, t_projdata *p, int mode, t_vec2 x_y)
 					p->c[2].z) * z), 1)), 1);
 }
 
-void	draw_ceil_floor(t_env *d, t_projdata *p, t_frustum *fr, int mode)
+void	displaing_cl_fl(t_env *d, t_projdata *p, t_frustum *fr, int mode)
 {
 	t_vec2		x_y;
 
